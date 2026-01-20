@@ -1,0 +1,22 @@
+{
+  "lane": "website",
+  "prd_version": "v1.1",
+  "epoch_id": "E0003-evidence-first-era",
+  "run_id": "e86133f2",
+  "attempt": null,
+  "lane_root": "products/website",
+  "dist_dir": "products/website/dist",
+  "tool": "cursor",
+  "agent": "a",
+  "model": "claude-opus-4",
+  "worktree_path": "/Users/chrisklapp/.cursor/worktrees/klappy.dev/cvs",
+  "branch": "run/website/prd-v0.3/cursor/a/claude-opus-4/f1d8cc88",
+  "target_branch": "run/website/prd-v1.1/cursor/a/claude-opus-4/e86133f2",
+  "git_head": "df0cea5f9499b73af9538681af13b44f8ad1bd07",
+  "registered_at": "2026-01-20T06:09:18.095Z",
+  "completed_at": null,
+  "finalized_at": null,
+  "status": "OPEN",
+  "evidence_index": [],
+  "preview_url": null
+}
