@@ -5,8 +5,8 @@
 ================================================================================
 
 
-Generated: 2026-01-20T19:17:20.773Z
-Total Files: 156
+Generated: 2026-01-20T19:57:00.199Z
+Total Files: 159
 
 This is a complete export of all documentation, code, and content files
 from the klappy.dev repository, organized by section.
@@ -16,7 +16,7 @@ from the klappy.dev repository, organized by section.
 ## Table of Contents
 ================================================================================
 
-- **Root** (4 files)
+- **Root** (5 files)
 - **.cursor** (1 files)
 - **.husky** (17 files)
 - **About** (5 files)
@@ -25,7 +25,7 @@ from the klappy.dev repository, organized by section.
 - **Infrastructure** (18 files)
 - **Interfaces & Contracts** (6 files)
 - **ODD (Outcomes-Driven Development)** (1 files)
-- **Products** (16 files)
+- **Products** (18 files)
 - **Projects** (6 files)
 - **Public Content** (6 files)
 - **Visual Design System** (4 files)
@@ -35,6 +35,29 @@ from the klappy.dev repository, organized by section.
 ## Root
 ================================================================================
 
+
+
+--------------------------------------------------------------------------------
+📄 File: .attempt.json
+--------------------------------------------------------------------------------
+
+{
+  "lane": "website",
+  "prd_version": "v1.1",
+  "run_id": "bf01eb67",
+  "lane_root": "products/website",
+  "dist_dir": "products/website/dist",
+  "tool": "cursor",
+  "agent": "kjq",
+  "model": "claude-opus-4.5",
+  "worktree_path": "/Users/chrisklapp/.cursor/worktrees/klappy.dev/kjq",
+  "branch": "run/website/prd-v1.1/cursor/kjq/claude-opus-45/bf01eb67",
+  "target_branch": "run/website/prd-v1.1/cursor/kjq/claude-opus-45/bf01eb67",
+  "git_head": "6ce7319faa655dabe3d7c01062d5043a3cb0eb1e",
+  "is_detached": true,
+  "registered_at": "2026-01-20T19:44:00.596Z",
+  "runs_dir": "products/website/attempts/prd-v1.1/_runs/bf01eb67"
+}
 
 
 --------------------------------------------------------------------------------
@@ -17744,9 +17767,9 @@ function copyEvidenceToDist() {
     );
   }
   
-  // Build path to attempt evidence
+  // Build path to attempt evidence (lane-contained: /products/<lane>/attempts/...)
   const prd = prd_version.replace(/^v/, '');
-  const attemptEvidenceDir = join(ROOT, 'attempts', lane, `prd-v${prd}`, '_runs', run_id);
+  const attemptEvidenceDir = join(ROOT, 'products', lane, 'attempts', `prd-v${prd}`, '_runs', run_id);
   
   console.log(`  Lane:    ${lane}`);
   console.log(`  PRD:     v${prd}`);
@@ -21913,22 +21936,216 @@ Public verification evidence is always deployed at:
 
 
 --------------------------------------------------------------------------------
+📄 File: products/website/attempts/prd-v1.1/_runs/bf01eb67/ATTEMPT.md
+--------------------------------------------------------------------------------
+
+# Website Attempt — Run bf01eb67
+
+## Summary
+
+Built a complete public website for klappy.dev implementing ODD (Outcomes-Driven Development) philosophy presentation with progressive disclosure navigation.
+
+## PRD Version
+
+v1.1
+
+## Approach
+
+### Technology Stack
+- React 18 with Vite
+- CSS with custom properties (no framework)
+- Markdown rendering via `marked` library
+
+### Key Decisions
+
+1. **Progressive Disclosure Navigation**
+   - Tier 0 items visible by default
+   - Tier 1/2 items hidden until user clicks "Go deeper"
+   - Maximum 7 nav items on first load (PRD requirement)
+
+2. **Visual Design**
+   - Calm, minimal aesthetic
+   - System fonts with good typography
+   - Dark mode support via prefers-color-scheme
+   - Mobile-first responsive layout
+
+3. **Content Strategy**
+   - Home page has clear CTAs: "Read the Manifesto" and "Why This Exists"
+   - Three feature cards explaining core ODD concepts
+   - Quick links to most important resources
+
+4. **Technical Implementation**
+   - Client-side routing via history API
+   - Dynamic content loading from `/content/manifest.json`
+   - Markdown content fetched and rendered on demand
+   - Deep links work (shareable URLs)
+
+### Files Created
+
+```
+products/website/
+├── index.html
+├── vite.config.js
+└── src/
+    ├── main.jsx
+    ├── App.jsx
+    ├── index.css
+    └── components/
+        ├── Navigation.jsx
+        ├── Home.jsx
+        └── ContentPage.jsx
+```
+
+## PRD Success Criteria
+
+- [x] First load shows ≤7 navigational items
+- [x] Mobile usable without horizontal scrolling
+- [x] Canon discoverable without file paths exposed
+- [x] No agent instructions present in UI
+- [x] No CLI/process language exposed to visitors
+- [x] Deep links work (URL represents resource)
+- [x] Progressive disclosure tiers respected
+
+## Self-Audit
+
+### What worked well
+- Progressive navigation keeps first impression clean
+- Feature cards communicate ODD philosophy effectively
+- Mobile layout works without horizontal scroll
+- Dark mode works automatically
+
+### Tradeoffs
+- No media shelf implementation (out of scope for v1.1)
+- No search functionality yet
+- Canon section only appears after user expands navigation
+
+## Verification
+
+Screenshots captured for:
+1. Desktop home page (light mode)
+2. Desktop content page (ODD Manifesto)
+3. Mobile home page
+4. Desktop home page (dark mode)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: products/website/attempts/prd-v1.1/_runs/bf01eb67/EVIDENCE.md
+--------------------------------------------------------------------------------
+
+# Evidence — Run bf01eb67
+
+## Overview
+
+Visual evidence for the website lane attempt implementing PRD v1.1.
+
+## Screenshots
+
+### Desktop — Home Page (Light Mode)
+`screenshots/01-desktop-home-light.png`
+
+Shows:
+- Hero section with "Outcomes-Driven Development" title
+- Clear CTAs: "Read the Manifesto" and "Why This Exists"
+- Three feature cards explaining core concepts
+- Navigation with ≤7 items visible
+- Clean, calm visual design
+
+### Desktop — Content Page (ODD Manifesto)
+`screenshots/02-desktop-content.png`
+
+Shows:
+- Content rendered from markdown
+- Tier badge indicating "Core" content
+- Navigation sidebar with active state
+- Proper typography and spacing
+
+### Mobile — Home Page
+`screenshots/03-mobile-home.png`
+
+Shows:
+- Mobile navigation (hamburger menu)
+- Hero section adapts to narrow viewport
+- No horizontal scrolling required
+- Feature cards stack vertically
+
+### Desktop — Dark Mode
+`screenshots/04-desktop-dark.png`
+
+Shows:
+- Dark color scheme via prefers-color-scheme
+- All text remains readable
+- Consistent visual hierarchy
+
+## PRD Verification
+
+| Criterion | Status | Evidence |
+|-----------|--------|----------|
+| ≤7 nav items on first load | ✅ | Screenshot 01 |
+| Mobile without horizontal scroll | ✅ | Screenshot 03 |
+| Canon without file paths | ✅ | Screenshot 02 |
+| No agent instructions | ✅ | All screenshots |
+| No CLI language | ✅ | All screenshots |
+| Deep links work | ✅ | Content page URL |
+| Progressive disclosure | ✅ | Nav structure |
+
+## Live URLs
+
+- App: `https://<preview>/`
+- Evidence: `https://<preview>/_evidence/`
+
+## Notes
+
+All screenshots captured after successful `npm run build -- --lane website`.
+Evidence copied to dist/_evidence/ during build per E0003.1 requirements.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: products/website/attempts/prd-v1.1/_runs/bf01eb67/META.json
+--------------------------------------------------------------------------------
+
+{
+  "lane": "website",
+  "prd_version": "v1.1",
+  "epoch_id": "E0003-evidence-first-era",
+  "run_id": "bf01eb67",
+  "attempt": null,
+  "lane_root": "products/website",
+  "dist_dir": "products/website/dist",
+  "tool": "cursor",
+  "agent": "kjq",
+  "model": "claude-opus-4.5",
+  "worktree_path": "/Users/chrisklapp/.cursor/worktrees/klappy.dev/kjq",
+  "branch": "run/website/prd-v1.1/cursor/kjq/claude-opus-45/bf01eb67",
+  "target_branch": "run/website/prd-v1.1/cursor/kjq/claude-opus-45/bf01eb67",
+  "git_head": "6ce7319faa655dabe3d7c01062d5043a3cb0eb1e",
+  "registered_at": "2026-01-20T19:44:00.596Z",
+  "completed_at": null,
+  "finalized_at": null,
+  "status": "OPEN",
+  "evidence_index": [],
+  "preview_url": null
+}
+
+
+--------------------------------------------------------------------------------
 📄 File: products/website/index.html
 --------------------------------------------------------------------------------
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>klappy.dev — Outcome-Driven Development</title>
-  <meta name="description" content="Explore ODD: a methodology for building with AI agents through evidence, constraints, and progressive disclosure.">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-</head>
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="klappy.dev — Outcomes-Driven Development (ODD). Evidence over explanation, clarity over velocity." />
+    <title>klappy.dev — ODD</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
 
 
@@ -22040,149 +22257,187 @@ Use /products/website/prompts/ATTEMPT_KICKOFF.md verbatim.
 📄 File: products/website/src/App.jsx
 --------------------------------------------------------------------------------
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Navigation from './components/Navigation';
-import ContentPage from './components/ContentPage';
 import Home from './components/Home';
+import ContentPage from './components/ContentPage';
 
 /**
- * Main App Component
+ * klappy.dev Website
  * 
- * Implements PRD requirements:
- * - Load /content/manifest.json
- * - Render home page with ≤7 nav items
- * - Render markdown content
- * - Mobile-usable
- * - Deep links work (URL represents resource)
+ * Progressive disclosure website for ODD (Outcomes-Driven Development).
+ * 
+ * Requirements (from PRD):
+ * - First load: ≤7 nav items
+ * - Mobile usable without horizontal scroll
+ * - Canon discoverable without file paths
+ * - No agent/CLI language exposed
+ * - Deep links work
  */
 export default function App() {
   const [manifest, setManifest] = useState(null);
-  const [resources, setResources] = useState([]);
-  const [currentPath, setCurrentPath] = useState(window.location.hash.slice(1) || '/');
   const [error, setError] = useState(null);
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+  const [navOpen, setNavOpen] = useState(false);
+  const [expandedTiers, setExpandedTiers] = useState({ 0: true, 1: false, 2: false });
 
-  // Load manifest
+  // Load manifest on mount
   useEffect(() => {
     fetch('/content/manifest.json')
-      .then(res => {
-        if (!res.ok) throw new Error(`Failed to load manifest: ${res.status}`);
-        return res.json();
+      .then(r => {
+        if (!r.ok) throw new Error('Failed to load content');
+        return r.json();
       })
-      .then(data => {
-        setManifest(data);
-        setResources(data.resources || []);
-      })
-      .catch(err => {
-        console.error('Manifest load error:', err);
-        setError(err.message);
-      });
+      .then(setManifest)
+      .catch(e => setError(e.message));
   }, []);
 
-  // Handle hash routing
+  // Handle browser navigation
   useEffect(() => {
-    const handleHashChange = () => {
-      const newPath = window.location.hash.slice(1) || '/';
-      setCurrentPath(newPath);
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname);
+      setNavOpen(false);
     };
-
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   // Navigate to a path
-  const navigateTo = (path) => {
-    window.location.hash = path;
-  };
+  const navigate = useCallback((path) => {
+    window.history.pushState({}, '', path);
+    setCurrentPath(path);
+    setNavOpen(false);
+    window.scrollTo(0, 0);
+  }, []);
 
-  // Error state
+  // Get resource by URI or path
+  const getResource = useCallback((pathOrUri) => {
+    if (!manifest?.resources) return null;
+    return manifest.resources.find(r => 
+      r.path === pathOrUri || 
+      r.uri === pathOrUri ||
+      r.path === `/content${pathOrUri}` ||
+      pathToUri(pathOrUri) === r.uri
+    );
+  }, [manifest]);
+
+  // Convert URL path to resource path
+  const urlToResourcePath = useCallback((urlPath) => {
+    if (urlPath === '/') return null; // Home
+    // Remove leading slash and add /content prefix
+    return urlPath;
+  }, []);
+
+  // Get resources for navigation (filtered by tier and audience)
+  const getNavResources = useCallback(() => {
+    if (!manifest?.resources) return [];
+    
+    return manifest.resources.filter(r => {
+      // Only show public-facing content
+      if (r.audience !== 'public') return false;
+      // Only show navigable content
+      if (r.exposure === 'hidden' || r.exposure === 'internal') return false;
+      return true;
+    });
+  }, [manifest]);
+
+  // Toggle tier expansion
+  const toggleTier = useCallback((tier) => {
+    setExpandedTiers(prev => ({ ...prev, [tier]: !prev[tier] }));
+  }, []);
+
   if (error) {
     return (
-      <div className="error-page">
-        <h1>Error Loading Content</h1>
-        <p>{error}</p>
-        <p>Please try refreshing the page.</p>
+      <div className="app-layout">
+        <main className="main">
+          <div className="content">
+            <div className="error">
+              <h2>Unable to load content</h2>
+              <p>{error}</p>
+            </div>
+          </div>
+        </main>
       </div>
     );
   }
 
-  // Loading state
   if (!manifest) {
     return (
-      <div className="loading-page">
-        <p>Loading...</p>
+      <div className="app-layout">
+        <main className="main">
+          <div className="content">
+            <div className="loading">Loading...</div>
+          </div>
+        </main>
       </div>
     );
   }
 
-  // Find current resource
-  const currentResource = resources.find(r => r.path === currentPath);
+  // Determine what to render based on path
+  const isHome = currentPath === '/';
+  const resourcePath = urlToResourcePath(currentPath);
+  const currentResource = resourcePath ? getResource(resourcePath) : null;
 
   return (
-    <div className="app">
-      <Navigation 
-        resources={resources} 
+    <div className="app-layout">
+      <button 
+        className="nav-toggle" 
+        onClick={() => setNavOpen(!navOpen)}
+        aria-label="Toggle navigation"
+      >
+        {navOpen ? '✕ Close' : '☰ Menu'}
+      </button>
+      
+      <Navigation
+        resources={getNavResources()}
         currentPath={currentPath}
-        onNavigate={navigateTo}
+        navigate={navigate}
+        isOpen={navOpen}
+        expandedTiers={expandedTiers}
+        toggleTier={toggleTier}
       />
       
-      <main className="main-content">
-        {currentPath === '/' ? (
-          <Home 
-            manifest={manifest} 
-            resources={resources}
-            onNavigate={navigateTo}
-          />
+      <main className="main">
+        {isHome ? (
+          <Home navigate={navigate} manifest={manifest} />
         ) : currentResource ? (
-          <ContentPage resource={currentResource} />
+          <ContentPage resource={currentResource} navigate={navigate} />
         ) : (
-          <div className="not-found">
-            <h1>Page Not Found</h1>
-            <p>The requested page could not be found.</p>
-            <a href="#/" onClick={(e) => { e.preventDefault(); navigateTo('/'); }}>
-              Return home
-            </a>
+          <div className="content">
+            <div className="error">
+              <h2>Page not found</h2>
+              <p>The page you're looking for doesn't exist.</p>
+              <button className="btn btn-secondary" onClick={() => navigate('/')}>
+                Go home
+              </button>
+            </div>
           </div>
         )}
       </main>
-
-      <style>{`
-        .app {
-          min-height: 100vh;
-          display: flex;
-          flex-direction: column;
-        }
-
-        .main-content {
-          flex: 1;
-        }
-
-        .error-page,
-        .loading-page,
-        .not-found {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          min-height: 50vh;
-          padding: var(--space-8);
-          text-align: center;
-        }
-
-        .error-page h1 {
-          color: var(--color-error);
-        }
-
-        .not-found h1 {
-          margin-bottom: var(--space-4);
-        }
-
-        .not-found p {
-          color: var(--color-text-secondary);
-          margin-bottom: var(--space-4);
-        }
-      `}</style>
     </div>
   );
+}
+
+// Helper to convert path to URI format
+function pathToUri(path) {
+  // /odd/README.md -> klappy://public/odd
+  // /about/why-this-exists.md -> klappy://about/why-this-exists
+  if (!path) return null;
+  
+  const clean = path
+    .replace(/^\/content/, '')
+    .replace(/^\//, '')
+    .replace(/\.md$/, '')
+    .replace(/\/README$/, '')
+    .replace(/\/index$/, '');
+  
+  // Map paths to URIs
+  if (clean.startsWith('odd/')) return `klappy://public/${clean.replace(/^odd\//, 'odd')}`;
+  if (clean.startsWith('about/')) return `klappy://about/${clean.replace(/^about\//, '')}`;
+  if (clean.startsWith('projects/')) return `klappy://projects/${clean.replace(/^projects\//, '')}`;
+  if (clean.startsWith('canon/')) return `klappy://canon/${clean.replace(/^canon\//, '')}`;
+  
+  return `klappy://${clean}`;
 }
 
 
@@ -22193,275 +22448,149 @@ export default function App() {
 
 import { useState, useEffect } from 'react';
 import { marked } from 'marked';
-import MediaShelf from './MediaShelf';
 
 /**
  * Content Page Component
  * 
- * PRD Requirements:
- * - Render markdown content
- * - Deep links work (URL represents resource + section)
- * - Mobile usable
+ * Renders markdown content from the manifest.
+ * Handles deep links and progressive disclosure.
  */
-export default function ContentPage({ resource }) {
-  const [content, setContent] = useState('');
-  const [loading, setLoading] = useState(true);
+export default function ContentPage({ resource, navigate }) {
+  const [content, setContent] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
+  // Load content when resource changes
   useEffect(() => {
-    if (!resource?.path) return;
+    if (!resource?.path) {
+      setError('No content path');
+      setLoading(false);
+      return;
+    }
 
     setLoading(true);
     setError(null);
 
     // Fetch the markdown content
-    fetch(`/content${resource.path}`)
-      .then(res => {
-        if (!res.ok) throw new Error(`Failed to load content: ${res.status}`);
-        return res.text();
-      })
-      .then(md => {
-        // Strip frontmatter if present
-        const contentWithoutFrontmatter = md.replace(/^---[\s\S]*?---\n*/m, '');
-        
-        // Configure marked for safe rendering
-        marked.setOptions({
-          gfm: true,
-          breaks: true,
-        });
+    const contentPath = resource.path.startsWith('/content') 
+      ? resource.path 
+      : `/content${resource.path}`;
 
-        // Parse markdown to HTML
-        const html = marked.parse(contentWithoutFrontmatter);
-        setContent(html);
+    fetch(contentPath)
+      .then(r => {
+        if (!r.ok) throw new Error(`Failed to load: ${r.status}`);
+        return r.text();
+      })
+      .then(text => {
+        // Remove frontmatter
+        const cleaned = text.replace(/^---[\s\S]*?---\n*/, '');
+        setContent(cleaned);
         setLoading(false);
-
-        // Scroll to top on content change
-        window.scrollTo(0, 0);
       })
-      .catch(err => {
-        console.error('Content load error:', err);
-        setError(err.message);
+      .catch(e => {
+        setError(e.message);
         setLoading(false);
       });
-  }, [resource?.path]);
+  }, [resource]);
+
+  // Handle link clicks within content
+  const handleContentClick = (e) => {
+    const link = e.target.closest('a');
+    if (!link) return;
+    
+    const href = link.getAttribute('href');
+    if (!href) return;
+
+    // Handle internal links
+    if (href.startsWith('/') && !href.startsWith('//')) {
+      e.preventDefault();
+      navigate(href.replace(/\.md$/, ''));
+    }
+    // External links open in new tab
+    else if (href.startsWith('http')) {
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+    }
+  };
+
+  // Render markdown to HTML
+  const renderContent = () => {
+    if (!content) return '';
+    
+    // Configure marked for safe rendering
+    marked.setOptions({
+      gfm: true,
+      breaks: false,
+      headerIds: true,
+      mangle: false,
+    });
+
+    // Transform internal links in the rendered HTML
+    let html = marked.parse(content);
+    
+    // Fix markdown links that reference .md files
+    html = html.replace(/href="([^"]*?)\.md"/g, 'href="$1"');
+    html = html.replace(/href="\/canon\//g, 'href="/content/canon/');
+    html = html.replace(/href="\/odd\//g, 'href="/content/odd/');
+    
+    return html;
+  };
+
+  // Get tier label
+  const getTierLabel = () => {
+    switch (resource?.tier) {
+      case 0: return 'Core';
+      case 1: return 'Extended';
+      case 2: return 'Deep Dive';
+      default: return null;
+    }
+  };
 
   if (loading) {
     return (
-      <div className="content-page">
-        <div className="content-loading">Loading content...</div>
+      <div className="content">
+        <div className="loading">Loading...</div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="content-page">
-        <div className="content-error">
-          <h1>Error Loading Content</h1>
+      <div className="content">
+        <div className="error">
+          <h2>Unable to load content</h2>
           <p>{error}</p>
+          <button className="btn btn-secondary" onClick={() => navigate('/')}>
+            Go home
+          </button>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="content-page">
-      <article className="content-article">
-        {/* Metadata badge */}
+    <div className="content">
+      <header className="content-header">
+        <h1>{resource.title}</h1>
         <div className="content-meta">
-          {resource.tier !== undefined && (
-            <span className="meta-badge">Tier {resource.tier}</span>
+          {getTierLabel() && (
+            <span className={`tier-badge tier-${resource.tier}`}>
+              {getTierLabel()}
+            </span>
           )}
-          {resource.stability && (
-            <span className="meta-badge">{resource.stability}</span>
-          )}
-          {resource.audience && resource.audience !== 'public' && (
-            <span className="meta-badge">{resource.audience}</span>
+          {resource.tags && resource.tags.length > 0 && (
+            <span style={{ marginLeft: '0.5rem', color: 'var(--color-text-subtle)' }}>
+              {resource.tags.slice(0, 3).join(' · ')}
+            </span>
           )}
         </div>
-
-        {/* Learning Layer Media (optional, opt-in) */}
-        <MediaShelf assets={resource.assets} />
-
-        {/* Rendered markdown content */}
-        <div 
-          className="content-body"
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
-
-        {/* Tags */}
-        {resource.tags?.length > 0 && (
-          <div className="content-tags">
-            {resource.tags.map(tag => (
-              <span key={tag} className="tag">{tag}</span>
-            ))}
-          </div>
-        )}
-      </article>
-
-      <style>{`
-        .content-page {
-          max-width: 800px;
-          margin: 0 auto;
-          padding: var(--space-6) var(--space-4) var(--space-12);
-        }
-
-        .content-loading,
-        .content-error {
-          padding: var(--space-8);
-          text-align: center;
-          color: var(--color-text-secondary);
-        }
-
-        .content-error h1 {
-          color: var(--color-error);
-          margin-bottom: var(--space-4);
-        }
-
-        .content-meta {
-          display: flex;
-          gap: var(--space-2);
-          flex-wrap: wrap;
-          margin-bottom: var(--space-4);
-        }
-
-        .meta-badge {
-          font-size: var(--font-size-xs);
-          font-weight: var(--font-weight-medium);
-          text-transform: uppercase;
-          letter-spacing: var(--letter-spacing-wide);
-          padding: var(--space-1) var(--space-2);
-          background: var(--color-bg-tertiary);
-          color: var(--color-text-secondary);
-          border-radius: 4px;
-        }
-
-        .content-body {
-          line-height: var(--line-height-relaxed);
-        }
-
-        .content-body h1 {
-          font-size: var(--font-size-3xl);
-          margin-top: 0;
-          margin-bottom: var(--space-6);
-          padding-bottom: var(--space-4);
-          border-bottom: 1px solid var(--color-border-primary);
-        }
-
-        .content-body h2 {
-          font-size: var(--font-size-2xl);
-          margin-top: var(--space-8);
-          margin-bottom: var(--space-4);
-        }
-
-        .content-body h3 {
-          font-size: var(--font-size-xl);
-          margin-top: var(--space-6);
-          margin-bottom: var(--space-3);
-        }
-
-        .content-body h4 {
-          font-size: var(--font-size-lg);
-          margin-top: var(--space-5);
-          margin-bottom: var(--space-2);
-        }
-
-        .content-body p {
-          margin-bottom: var(--space-4);
-        }
-
-        .content-body ul,
-        .content-body ol {
-          margin-bottom: var(--space-4);
-          padding-left: var(--space-6);
-        }
-
-        .content-body li {
-          margin-bottom: var(--space-2);
-        }
-
-        .content-body blockquote {
-          margin: var(--space-4) 0;
-          padding: var(--space-4);
-          padding-left: var(--space-5);
-          border-left: 4px solid var(--color-accent);
-          background: var(--color-bg-tertiary);
-          border-radius: 0 8px 8px 0;
-        }
-
-        .content-body blockquote p:last-child {
-          margin-bottom: 0;
-        }
-
-        .content-body table {
-          width: 100%;
-          border-collapse: collapse;
-          margin-bottom: var(--space-4);
-          font-size: var(--font-size-sm);
-        }
-
-        .content-body th,
-        .content-body td {
-          text-align: left;
-          padding: var(--space-3);
-          border-bottom: 1px solid var(--color-border-primary);
-        }
-
-        .content-body th {
-          font-weight: var(--font-weight-semibold);
-          background: var(--color-bg-tertiary);
-        }
-
-        .content-body img {
-          max-width: 100%;
-          height: auto;
-          border-radius: 8px;
-          margin: var(--space-4) 0;
-        }
-
-        .content-body hr {
-          border: none;
-          height: 1px;
-          background: var(--color-border-primary);
-          margin: var(--space-8) 0;
-        }
-
-        .content-tags {
-          display: flex;
-          gap: var(--space-2);
-          flex-wrap: wrap;
-          margin-top: var(--space-8);
-          padding-top: var(--space-6);
-          border-top: 1px solid var(--color-border-primary);
-        }
-
-        .tag {
-          font-size: var(--font-size-xs);
-          padding: var(--space-1) var(--space-2);
-          background: var(--color-bg-tertiary);
-          color: var(--color-text-secondary);
-          border-radius: 4px;
-        }
-
-        @media (max-width: 768px) {
-          .content-page {
-            padding: var(--space-4) var(--space-4) var(--space-8);
-          }
-
-          .content-body h1 {
-            font-size: var(--font-size-2xl);
-          }
-
-          .content-body h2 {
-            font-size: var(--font-size-xl);
-          }
-
-          .content-body table {
-            display: block;
-            overflow-x: auto;
-          }
-        }
-      `}</style>
+      </header>
+      
+      <article 
+        className="content-body"
+        onClick={handleContentClick}
+        dangerouslySetInnerHTML={{ __html: renderContent() }}
+      />
     </div>
   );
 }
@@ -22472,451 +22601,160 @@ export default function ContentPage({ resource }) {
 📄 File: products/website/src/components/Home.jsx
 --------------------------------------------------------------------------------
 
-import { useMemo } from 'react';
-import MediaShelf from './MediaShelf';
-
 /**
  * Home Page Component
  * 
- * PRD Requirements:
- * - Clear entry points ("Start here", "Go deeper")
- * - Progressive disclosure UX
- * - Visual calm
+ * Landing page with progressive disclosure CTAs.
+ * Clear entry points: "Start Here" and "Go Deeper"
  */
-export default function Home({ manifest, resources, onNavigate }) {
-  // Find the home resource for media assets
-  const homeResource = useMemo(() => {
-    return resources.find(r => r.uri === 'klappy://public/home') || null;
-  }, [resources]);
-
-  // Get featured content by tier
-  const featured = useMemo(() => {
-    // Tier 0: Entry points
-    const tier0 = resources
-      .filter(r => r.tier === 0 && r.exposure === 'nav')
-      .sort((a, b) => a.title.localeCompare(b.title));
-
-    // Tier 1: Core concepts
-    const tier1 = resources
-      .filter(r => r.tier === 1 && r.exposure === 'nav' && r.audience !== 'internal')
-      .sort((a, b) => a.title.localeCompare(b.title))
-      .slice(0, 4);
-
-    return { tier0, tier1 };
-  }, [resources]);
-
-  const handleNavigate = (e, path) => {
-    e.preventDefault();
-    onNavigate(path);
-  };
+export default function Home({ navigate, manifest }) {
+  // Get tier 0 resources for featured content
+  const featuredResources = manifest?.resources?.filter(r => 
+    r.tier === 0 && r.audience === 'public'
+  ) || [];
 
   return (
     <div className="home">
-      {/* Hero Section */}
-      <section className="hero">
-        <h1>Outcome-Driven Development</h1>
-        <p className="hero-subtitle">
-          A methodology for building with AI agents through evidence, constraints, and progressive disclosure.
+      <section className="home-hero">
+        <h1 className="home-title">
+          Outcomes-Driven Development
+        </h1>
+        <p className="home-subtitle">
+          A methodology for building software that prioritizes real-world results 
+          over artifacts. Evidence over explanation. Clarity over velocity.
         </p>
-        <div className="hero-actions">
-          <a 
-            href="#/odd/README.md" 
-            className="button button-primary"
-            onClick={(e) => handleNavigate(e, '/odd/README.md')}
+        <div className="home-cta">
+          <button 
+            className="btn btn-primary"
+            onClick={() => navigate('/odd')}
           >
-            What is ODD?
-          </a>
-          <a 
-            href="#/about/why-this-exists.md" 
-            className="button button-secondary"
-            onClick={(e) => handleNavigate(e, '/about/why-this-exists.md')}
+            Read the Manifesto
+          </button>
+          <button 
+            className="btn btn-secondary"
+            onClick={() => navigate('/about/why-this-exists')}
           >
             Why This Exists
-          </a>
-        </div>
-        {homeResource?.assets?.hero_image && (
-          <div className="hero-media">
-            <img
-              src={homeResource.assets.hero_image}
-              alt="ODD hero diagram"
-              className="hero-image"
-            />
-          </div>
-        )}
-      </section>
-
-      {/* Orientation Layer Media (optional, opt-in) */}
-      {homeResource?.assets && (
-        <MediaShelf
-          title="Orientation Layer"
-          subtitle="Optional media to orient quickly. You can ignore this and still navigate successfully."
-          assets={{
-            orientation_map: homeResource.assets.orientation_map,
-            explainer_video: homeResource.assets.explainer_video,
-          }}
-        />
-      )}
-
-      {/* Start Here Section */}
-      <section className="section">
-        <h2>Start Here</h2>
-        <p className="section-intro">
-          New to ODD? These are the best places to begin understanding the approach.
-        </p>
-        <div className="card-grid">
-          {featured.tier0.slice(0, 3).map(resource => (
-            <a 
-              key={resource.uri}
-              href={`#${resource.path}`}
-              className="card"
-              onClick={(e) => handleNavigate(e, resource.path)}
-            >
-              <h3>{resource.title}</h3>
-              <p className="card-tags">
-                {resource.tags?.slice(0, 3).join(' · ')}
-              </p>
-            </a>
-          ))}
+          </button>
         </div>
       </section>
 
-      {/* Go Deeper Section */}
-      <section className="section">
-        <h2>Go Deeper</h2>
-        <p className="section-intro">
-          Ready to understand the foundations? Explore constraints, decision rules, and evidence policies.
-        </p>
-        <div className="card-grid">
-          {featured.tier1.map(resource => (
-            <a 
-              key={resource.uri}
-              href={`#${resource.path}`}
-              className="card"
-              onClick={(e) => handleNavigate(e, resource.path)}
-            >
-              <h3>{resource.title}</h3>
-              <p className="card-tags">
-                {resource.tags?.slice(0, 3).join(' · ')}
-              </p>
-            </a>
-          ))}
+      <section className="home-features">
+        <div className="feature-card">
+          <h3>Evidence Over Explanation</h3>
+          <p>
+            In an age of AI-generated content, fluent explanations are easy to produce 
+            but easy to trust incorrectly. ODD emphasizes showing working systems over 
+            describing them.
+          </p>
+        </div>
+        
+        <div className="feature-card">
+          <h3>Clarity Over Velocity</h3>
+          <p>
+            When generation becomes cheap, the limiting factor is no longer production 
+            speed—it's clarity of intent, quality of verification, and the ability to 
+            choose among outcomes.
+          </p>
+        </div>
+        
+        <div className="feature-card">
+          <h3>Restartability Over Polish</h3>
+          <p>
+            Treat code as ephemeral. The value isn't in the artifact but in the 
+            learning captured and the ability to regenerate outcomes reliably from 
+            clear intent.
+          </p>
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="section section-muted">
-        <h2>About klappy.dev</h2>
-        <p>
-          This is the public face of an evolving experiment in human-AI collaboration.
-          Built with the same methodology it describes.
-        </p>
-        <p className="version-info">
-          Canon v{manifest?.pack?.version || '0.0.0'} · Last updated {manifest?.pack?.updated_at || 'unknown'}
-        </p>
+      <section className="home-features">
+        <div className="feature-card">
+          <h3>Start Here</h3>
+          <ul style={{ marginTop: '1rem', listStyle: 'none' }}>
+            <li style={{ marginBottom: '0.5rem' }}>
+              <a 
+                href="/odd" 
+                onClick={(e) => { e.preventDefault(); navigate('/odd'); }}
+                style={{ color: 'var(--color-accent)' }}
+              >
+                ODD Manifesto
+              </a>
+              <span style={{ color: 'var(--color-text-muted)', fontSize: '0.875rem' }}> — The core philosophy</span>
+            </li>
+            <li style={{ marginBottom: '0.5rem' }}>
+              <a 
+                href="/about/why-this-exists" 
+                onClick={(e) => { e.preventDefault(); navigate('/about/why-this-exists'); }}
+                style={{ color: 'var(--color-accent)' }}
+              >
+                Why This Exists
+              </a>
+              <span style={{ color: 'var(--color-text-muted)', fontSize: '0.875rem' }}> — The problem being solved</span>
+            </li>
+            <li style={{ marginBottom: '0.5rem' }}>
+              <a 
+                href="/projects" 
+                onClick={(e) => { e.preventDefault(); navigate('/projects'); }}
+                style={{ color: 'var(--color-accent)' }}
+              >
+                Projects
+              </a>
+              <span style={{ color: 'var(--color-text-muted)', fontSize: '0.875rem' }}> — ODD in practice</span>
+            </li>
+          </ul>
+        </div>
+
+        <div className="feature-card">
+          <h3>About</h3>
+          <ul style={{ marginTop: '1rem', listStyle: 'none' }}>
+            <li style={{ marginBottom: '0.5rem' }}>
+              <a 
+                href="/about/bio" 
+                onClick={(e) => { e.preventDefault(); navigate('/about/bio'); }}
+                style={{ color: 'var(--color-accent)' }}
+              >
+                Bio
+              </a>
+              <span style={{ color: 'var(--color-text-muted)', fontSize: '0.875rem' }}> — Who's behind this</span>
+            </li>
+            <li style={{ marginBottom: '0.5rem' }}>
+              <a 
+                href="/about/credibility" 
+                onClick={(e) => { e.preventDefault(); navigate('/about/credibility'); }}
+                style={{ color: 'var(--color-accent)' }}
+              >
+                Credibility
+              </a>
+              <span style={{ color: 'var(--color-text-muted)', fontSize: '0.875rem' }}> — Track record</span>
+            </li>
+            <li style={{ marginBottom: '0.5rem' }}>
+              <a 
+                href="/about/faq" 
+                onClick={(e) => { e.preventDefault(); navigate('/about/faq'); }}
+                style={{ color: 'var(--color-accent)' }}
+              >
+                FAQ
+              </a>
+              <span style={{ color: 'var(--color-text-muted)', fontSize: '0.875rem' }}> — Common questions</span>
+            </li>
+          </ul>
+        </div>
       </section>
 
-      <style>{`
-        .home {
-          min-height: 100%;
-        }
-
-        .hero {
-          text-align: center;
-          padding: var(--space-12) var(--space-4);
-          background: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg-primary) 100%);
-        }
-
-        .hero h1 {
-          font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-4xl));
-          margin-bottom: var(--space-4);
-          letter-spacing: var(--letter-spacing-tight);
-        }
-
-        .hero-subtitle {
-          font-size: var(--font-size-lg);
-          color: var(--color-text-secondary);
-          max-width: 600px;
-          margin: 0 auto var(--space-6);
-          line-height: var(--line-height-relaxed);
-        }
-
-        .hero-actions {
-          display: flex;
-          gap: var(--space-4);
-          justify-content: center;
-          flex-wrap: wrap;
-        }
-
-        .hero-media {
-          margin: var(--space-6) auto 0;
-          max-width: 980px;
-          padding: 0 var(--space-4);
-        }
-
-        .hero-image {
-          width: 100%;
-          height: auto;
-          border-radius: 14px;
-          border: 1px solid var(--color-border-primary);
-          background: var(--color-bg-primary);
-        }
-
-        .button {
-          display: inline-block;
-          padding: var(--space-3) var(--space-5);
-          font-size: var(--font-size-base);
-          font-weight: var(--font-weight-medium);
-          border-radius: 8px;
-          text-decoration: none;
-          transition: all 0.15s ease;
-        }
-
-        .button-primary {
-          background: var(--color-accent);
-          color: var(--color-text-inverse);
-        }
-
-        .button-primary:hover {
-          background: var(--color-accent-hover);
-          color: var(--color-text-inverse);
-          text-decoration: none;
-        }
-
-        .button-secondary {
-          background: var(--color-bg-tertiary);
-          color: var(--color-text-primary);
-        }
-
-        .button-secondary:hover {
-          background: var(--color-border-primary);
-          color: var(--color-text-primary);
-          text-decoration: none;
-        }
-
-        .section {
-          max-width: 1000px;
-          margin: 0 auto;
-          padding: var(--space-10) var(--space-4);
-        }
-
-        .section h2 {
-          font-size: var(--font-size-2xl);
-          margin-bottom: var(--space-3);
-        }
-
-        .section-intro {
-          color: var(--color-text-secondary);
-          margin-bottom: var(--space-6);
-          max-width: 600px;
-        }
-
-        .section-muted {
-          background: var(--color-bg-secondary);
-          max-width: none;
-        }
-
-        .section-muted > * {
-          max-width: 1000px;
-          margin-left: auto;
-          margin-right: auto;
-        }
-
-        .card-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: var(--space-4);
-        }
-
-        .card {
-          display: block;
-          padding: var(--space-5);
-          background: var(--color-bg-secondary);
-          border: 1px solid var(--color-border-primary);
-          border-radius: 12px;
-          text-decoration: none;
-          transition: all 0.15s ease;
-        }
-
-        .card:hover {
-          border-color: var(--color-accent);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-          text-decoration: none;
-        }
-
-        .card h3 {
-          font-size: var(--font-size-lg);
-          color: var(--color-text-primary);
-          margin-bottom: var(--space-2);
-        }
-
-        .card-tags {
-          font-size: var(--font-size-sm);
-          color: var(--color-text-secondary);
-          margin: 0;
-        }
-
-        .version-info {
-          font-size: var(--font-size-sm);
-          color: var(--color-text-secondary);
-          margin-top: var(--space-4);
-        }
-
-        @media (max-width: 768px) {
-          .hero {
-            padding: var(--space-8) var(--space-4);
-          }
-
-          .section {
-            padding: var(--space-8) var(--space-4);
-          }
-        }
-      `}</style>
+      <section style={{ 
+        textAlign: 'center', 
+        padding: 'var(--space-12) 0',
+        borderTop: '1px solid var(--color-border)',
+        marginTop: 'var(--space-8)'
+      }}>
+        <p style={{ color: 'var(--color-text-muted)', fontSize: '0.875rem' }}>
+          This is a record of thinking under uncertainty.
+          <br />
+          Not a framework. Not a demo. A working hypothesis.
+        </p>
+      </section>
     </div>
-  );
-}
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/website/src/components/MediaShelf.jsx
---------------------------------------------------------------------------------
-
-import React from "react";
-
-/**
- * MediaShelf (Learning Layer)
- * - opt-in only (progressive disclosure)
- * - no autoplay
- * - non-blocking (page remains usable without opening)
- */
-
-function labelFor(key) {
-  const map = {
-    hero_image: "Hero Diagram",
-    orientation_map: "View: Orientation Map",
-    explainer_video: "Watch: ODD Explainer",
-    practice_video: "Watch: ODD in Practice",
-    misconception_image: "View: ODD Is Not a Framework",
-    deep_dive_audio: "Listen: Why Evidence Beats Confidence",
-  };
-  return map[key] || key.replace(/_/g, " ");
-}
-
-function inferType(path) {
-  const p = String(path || "").toLowerCase();
-  if (p.endsWith(".mp4") || p.endsWith(".webm") || p.endsWith(".mov")) return "video";
-  if (p.endsWith(".mp3") || p.endsWith(".m4a") || p.endsWith(".wav") || p.endsWith(".ogg")) return "audio";
-  if (p.endsWith(".pdf")) return "pdf";
-  if (p.endsWith(".png") || p.endsWith(".jpg") || p.endsWith(".jpeg") || p.endsWith(".webp") || p.endsWith(".gif")) return "image";
-  return "link";
-}
-
-export default function MediaShelf({ assets, title = "Learning Layer", subtitle }) {
-  if (!assets || typeof assets !== "object") return null;
-
-  const entries = Object.entries(assets)
-    .filter(([_, v]) => typeof v === "string" && v.trim().length > 0);
-
-  if (!entries.length) return null;
-
-  return (
-    <section className="media-shelf" aria-label="Learning Media">
-      <h2 className="media-title">{title}</h2>
-      <p className="media-subtitle">
-        {subtitle || "Optional media that may reduce reading time. The page remains complete without it."}
-      </p>
-
-      <div className="media-items">
-        {entries.map(([key, path]) => {
-          const type = inferType(path);
-          const label = labelFor(key);
-
-          if (type === "video") {
-            return (
-              <details key={key} className="media-item">
-                <summary>{label}</summary>
-                <div className="media-body">
-                  <video controls preload="metadata" className="media-video">
-                    <source src={path} />
-                    Your browser does not support the video element.
-                  </video>
-                </div>
-              </details>
-            );
-          }
-
-          if (type === "audio") {
-            return (
-              <details key={key} className="media-item">
-                <summary>{label}</summary>
-                <div className="media-body">
-                  <audio controls preload="metadata" className="media-audio">
-                    <source src={path} />
-                    Your browser does not support the audio element.
-                  </audio>
-                </div>
-              </details>
-            );
-          }
-
-          if (type === "image") {
-            return (
-              <details key={key} className="media-item">
-                <summary>{label}</summary>
-                <div className="media-body">
-                  <img className="media-image" src={path} alt={label} />
-                </div>
-              </details>
-            );
-          }
-
-          if (type === "pdf") {
-            return (
-              <details key={key} className="media-item">
-                <summary>{label}</summary>
-                <div className="media-body">
-                  <a className="media-link" href={path} target="_blank" rel="noreferrer">
-                    Open PDF
-                  </a>
-                </div>
-              </details>
-            );
-          }
-
-          return (
-            <details key={key} className="media-item">
-              <summary>{label}</summary>
-              <div className="media-body">
-                <a className="media-link" href={path} target="_blank" rel="noreferrer">
-                  Open
-                </a>
-              </div>
-            </details>
-          );
-        })}
-      </div>
-
-      <style>{`
-        .media-shelf {
-          margin: var(--space-8) 0 var(--space-6);
-          padding: var(--space-6);
-          border: 1px solid var(--color-border-primary);
-          border-radius: 12px;
-          background: var(--color-bg-secondary);
-        }
-        .media-title { margin: 0 0 var(--space-2); font-size: var(--font-size-xl); }
-        .media-subtitle { margin: 0 0 var(--space-5); color: var(--color-text-secondary); max-width: 700px; }
-        .media-items { display: grid; gap: var(--space-3); }
-        .media-item { border: 1px solid var(--color-border-primary); border-radius: 10px; background: var(--color-bg-primary); overflow: hidden; }
-        .media-item summary { cursor: pointer; padding: var(--space-4); font-weight: var(--font-weight-medium); list-style: none; }
-        .media-item summary::-webkit-details-marker { display: none; }
-        .media-body { padding: var(--space-4); border-top: 1px solid var(--color-border-primary); }
-        .media-video, .media-audio { width: 100%; }
-        .media-image { width: 100%; height: auto; border-radius: 10px; }
-        .media-link { color: var(--color-accent); text-decoration: none; }
-        .media-link:hover { text-decoration: underline; }
-      `}</style>
-    </section>
   );
 }
 
@@ -22926,241 +22764,172 @@ export default function MediaShelf({ assets, title = "Learning Layer", subtitle 
 📄 File: products/website/src/components/Navigation.jsx
 --------------------------------------------------------------------------------
 
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
 
 /**
- * Navigation Component
+ * Progressive Navigation Component
  * 
  * PRD Requirements:
- * - First load shows ≤7 navigational items (Tier 0/1 only)
- * - Progressive disclosure: deeper items revealed on demand
- * - Mobile usable without horizontal scrolling
- * - Canon discoverable without file paths exposed
+ * - First load shows ≤7 navigational items
+ * - Canon discoverable without file paths
+ * - No agent/CLI language exposed
+ * - Progressive disclosure tiers (0/1/2)
  */
-export default function Navigation({ resources, currentPath, onNavigate }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [expandedSections, setExpandedSections] = useState(new Set());
+export default function Navigation({ 
+  resources, 
+  currentPath, 
+  navigate, 
+  isOpen,
+  expandedTiers,
+  toggleTier 
+}) {
+  // Group resources by section and tier
+  const sections = useMemo(() => {
+    if (!resources) return [];
 
-  // Get primary navigation items (Tier 0 and 1 with nav exposure, max 7)
-  const primaryNavItems = useMemo(() => {
-    const navItems = resources
-      .filter(r => 
-        r.exposure === 'nav' && 
-        (r.tier === 0 || r.tier === 1) &&
-        r.audience !== 'internal'
-      )
-      .sort((a, b) => {
-        // Sort by tier first, then alphabetically
+    // Map resources to clean navigation structure
+    const grouped = {
+      'Start Here': [],
+      'About': [],
+      'Projects': [],
+      'Canon': []
+    };
+
+    resources.forEach(r => {
+      // Determine section from URI
+      if (r.uri?.includes('/odd') || r.uri?.includes('/why-this-exists')) {
+        grouped['Start Here'].push(r);
+      } else if (r.uri?.includes('/about/') || r.uri?.includes('/bio') || r.uri?.includes('/credibility') || r.uri?.includes('/faq')) {
+        grouped['About'].push(r);
+      } else if (r.uri?.includes('/projects/')) {
+        grouped['Projects'].push(r);
+      } else if (r.uri?.includes('/canon/') || r.uri?.includes('/meta/')) {
+        grouped['Canon'].push(r);
+      }
+    });
+
+    // Sort within each section by tier, then title
+    Object.keys(grouped).forEach(section => {
+      grouped[section].sort((a, b) => {
         if (a.tier !== b.tier) return a.tier - b.tier;
         return a.title.localeCompare(b.title);
       });
+    });
 
-    // Group by category and take top 7
-    const categories = [
-      { key: 'about', label: 'About', match: r => r.path.includes('/about/') },
-      { key: 'odd', label: 'ODD', match: r => r.path.includes('/odd/') || r.uri?.includes('odd') },
-      { key: 'projects', label: 'Projects', match: r => r.path.includes('/projects/') },
-      { key: 'canon', label: 'Canon', match: r => r.path.includes('/canon/') && !r.path.includes('/odd/') },
-    ];
-
-    // Create nav structure: Home + top categories
-    const nav = [
-      { key: 'home', label: 'Home', path: '/', isHome: true },
-    ];
-
-    // Add ODD as primary entry (Tier 0)
-    const oddEntry = navItems.find(r => r.uri === 'klappy://public/odd');
-    if (oddEntry) {
-      nav.push({ key: 'odd', label: 'What is ODD?', path: oddEntry.path });
-    }
-
-    // Add Why This Exists (Tier 0)
-    const whyEntry = navItems.find(r => r.uri === 'klappy://about/why-this-exists');
-    if (whyEntry) {
-      nav.push({ key: 'why', label: 'Why This Exists', path: whyEntry.path });
-    }
-
-    // Add Projects (Tier 0)
-    const projectsEntry = navItems.find(r => r.uri === 'klappy://projects/index');
-    if (projectsEntry) {
-      nav.push({ key: 'projects', label: 'Projects', path: projectsEntry.path });
-    }
-
-    // Add Constraints (Tier 1 - important for understanding)
-    const constraintsEntry = navItems.find(r => r.uri === 'klappy://canon/constraints');
-    if (constraintsEntry) {
-      nav.push({ key: 'constraints', label: 'Constraints', path: constraintsEntry.path });
-    }
-
-    // Add Bio (Tier 1 - credibility)
-    const bioEntry = navItems.find(r => r.uri === 'klappy://about/bio');
-    if (bioEntry) {
-      nav.push({ key: 'bio', label: 'About Me', path: bioEntry.path });
-    }
-
-    // Add FAQ (Tier 2 but useful)
-    const faqEntry = resources.find(r => r.uri === 'klappy://about/faq');
-    if (faqEntry && nav.length < 7) {
-      nav.push({ key: 'faq', label: 'FAQ', path: faqEntry.path });
-    }
-
-    return nav.slice(0, 7); // Enforce max 7 items
+    return grouped;
   }, [resources]);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  // Generate URL path from resource
+  const getUrlPath = (resource) => {
+    // Convert resource path to URL path
+    // /content/odd/README.md -> /odd
+    // /content/about/why-this-exists.md -> /about/why-this-exists
+    const path = resource.path
+      .replace(/^\/content/, '')
+      .replace(/^\//, '/')
+      .replace(/\.md$/, '')
+      .replace(/\/README$/, '')
+      .replace(/\/index$/, '');
+    return path || '/';
+  };
 
-  const handleNavClick = (e, path) => {
-    e.preventDefault();
-    onNavigate(path);
-    setIsMenuOpen(false);
+  // Check if link is active
+  const isActive = (resource) => {
+    const urlPath = getUrlPath(resource);
+    return currentPath === urlPath;
+  };
+
+  // Filter items based on tier expansion
+  const getVisibleItems = (items) => {
+    return items.filter(item => {
+      const tier = item.tier ?? 2;
+      return expandedTiers[tier] || tier === 0;
+    });
+  };
+
+  // Count items per tier
+  const countByTier = (items, tier) => {
+    return items.filter(item => (item.tier ?? 2) === tier).length;
+  };
+
+  // Render section
+  const renderSection = (title, items) => {
+    if (!items || items.length === 0) return null;
+    
+    const visibleItems = getVisibleItems(items);
+    const tier1Count = countByTier(items, 1);
+    const tier2Count = countByTier(items, 2);
+    const hasHiddenTier1 = !expandedTiers[1] && tier1Count > 0;
+    const hasHiddenTier2 = !expandedTiers[2] && tier2Count > 0;
+
+    return (
+      <div className="nav-section" key={title}>
+        <h3 className="nav-section-title">{title}</h3>
+        <ul className="nav-list">
+          {visibleItems.map(item => (
+            <li className="nav-item" key={item.uri}>
+              <a
+                href={getUrlPath(item)}
+                className={`nav-link ${isActive(item) ? 'active' : ''}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate(getUrlPath(item));
+                }}
+              >
+                {item.title}
+                {item.tier === 0 && <span className="tier-badge tier-0">Core</span>}
+              </a>
+            </li>
+          ))}
+        </ul>
+        {(hasHiddenTier1 || hasHiddenTier2) && (
+          <div 
+            className="nav-expand" 
+            onClick={() => toggleTier(hasHiddenTier1 ? 1 : 2)}
+          >
+            <span>+</span>
+            <span>
+              {hasHiddenTier1 ? `${tier1Count} more` : `${tier2Count} deep dives`}
+            </span>
+          </div>
+        )}
+      </div>
+    );
   };
 
   return (
-    <header className="site-header">
-      <div className="header-container">
-        <a 
-          href="#/" 
-          className="site-logo"
-          onClick={(e) => handleNavClick(e, '/')}
-        >
-          klappy.dev
-        </a>
-
-        {/* Mobile menu button */}
-        <button 
-          className="menu-toggle"
-          onClick={toggleMenu}
-          aria-expanded={isMenuOpen}
-          aria-label="Toggle navigation menu"
-        >
-          <span className="menu-icon">{isMenuOpen ? '✕' : '☰'}</span>
-        </button>
-
-        {/* Navigation */}
-        <nav className={`main-nav ${isMenuOpen ? 'is-open' : ''}`}>
-          <ul className="nav-list">
-            {primaryNavItems.map(item => (
-              <li key={item.key} className="nav-item">
-                <a
-                  href={`#${item.path}`}
-                  className={`nav-link ${currentPath === item.path ? 'is-active' : ''}`}
-                  onClick={(e) => handleNavClick(e, item.path)}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-
-      <style>{`
-        .site-header {
-          position: sticky;
-          top: 0;
-          z-index: 100;
-          background: var(--color-bg-secondary);
-          border-bottom: 1px solid var(--color-border-primary);
-        }
-
-        .header-container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: var(--space-4);
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: var(--space-4);
-        }
-
-        .site-logo {
-          font-size: var(--font-size-lg);
-          font-weight: var(--font-weight-bold);
-          color: var(--color-text-primary);
-          text-decoration: none;
-          letter-spacing: var(--letter-spacing-tight);
-        }
-
-        .site-logo:hover {
-          color: var(--color-accent);
-          text-decoration: none;
-        }
-
-        .menu-toggle {
-          display: none;
-          background: none;
-          border: none;
-          font-size: var(--font-size-xl);
-          cursor: pointer;
-          padding: var(--space-2);
-          color: var(--color-text-primary);
-        }
-
-        .main-nav {
-          display: flex;
-        }
-
-        .nav-list {
-          display: flex;
-          list-style: none;
-          gap: var(--space-1);
-          margin: 0;
-          padding: 0;
-        }
-
-        .nav-link {
-          display: block;
-          padding: var(--space-2) var(--space-3);
-          color: var(--color-text-secondary);
-          font-size: var(--font-size-sm);
-          font-weight: var(--font-weight-medium);
-          border-radius: 6px;
-          transition: all 0.15s ease;
-        }
-
-        .nav-link:hover {
-          color: var(--color-text-primary);
-          background: var(--color-bg-tertiary);
-          text-decoration: none;
-        }
-
-        .nav-link.is-active {
-          color: var(--color-accent);
-          background: var(--color-bg-tertiary);
-        }
-
-        /* Mobile styles */
-        @media (max-width: 768px) {
-          .menu-toggle {
-            display: block;
-          }
-
-          .main-nav {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: var(--color-bg-secondary);
-            border-bottom: 1px solid var(--color-border-primary);
-            display: none;
-            padding: var(--space-4);
-          }
-
-          .main-nav.is-open {
-            display: block;
-          }
-
-          .nav-list {
-            flex-direction: column;
-            gap: var(--space-1);
-          }
-
-          .nav-link {
-            padding: var(--space-3) var(--space-4);
-          }
-        }
-      `}</style>
-    </header>
+    <nav className={`nav ${isOpen ? 'open' : ''}`}>
+      <a 
+        href="/" 
+        className="nav-brand"
+        onClick={(e) => {
+          e.preventDefault();
+          navigate('/');
+        }}
+      >
+        klappy.dev
+      </a>
+      
+      {renderSection('Start Here', sections['Start Here'])}
+      {renderSection('About', sections['About'])}
+      {renderSection('Projects', sections['Projects'])}
+      
+      {/* Canon section - only show when tier 1 or 2 is expanded */}
+      {(expandedTiers[1] || expandedTiers[2]) && renderSection('Canon', sections['Canon'])}
+      
+      {/* Show "Go Deeper" if no tiers expanded */}
+      {!expandedTiers[1] && !expandedTiers[2] && sections['Canon']?.length > 0 && (
+        <div className="nav-section">
+          <div 
+            className="nav-expand" 
+            onClick={() => toggleTier(1)}
+          >
+            <span>↓</span>
+            <span>Go deeper</span>
+          </div>
+        </div>
+      )}
+    </nav>
   );
 }
 
@@ -23170,119 +22939,62 @@ export default function Navigation({ resources, currentPath, onNavigate }) {
 📄 File: products/website/src/index.css
 --------------------------------------------------------------------------------
 
-/**
- * Visual Interface Tokens
- * 
- * Implements:
- * - color-system@1.0.0 (/visual/interfaces/color-system/CONTRACT.md)
- * - typography@1.0.0 (/visual/interfaces/typography/CONTRACT.md)
- * - spacing@1.0.0 (/visual/interfaces/spacing/CONTRACT.md)
+/* 
+ * klappy.dev Website Styles
+ * Visual calm, progressive disclosure, mobile-first
  */
 
 :root {
-  /* === Color System v1.0.0 === */
-  /* Background Tokens */
-  --color-bg-primary: #fafafa;
-  --color-bg-secondary: #ffffff;
-  --color-bg-tertiary: #f0f0f0;
+  /* Color System v1 - Calm, professional palette */
+  --color-bg: #fafaf9;
+  --color-bg-subtle: #f5f5f4;
+  --color-bg-elevated: #ffffff;
+  --color-text: #1c1917;
+  --color-text-muted: #78716c;
+  --color-text-subtle: #a8a29e;
+  --color-border: #e7e5e4;
+  --color-border-subtle: #f5f5f4;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-accent-muted: #93c5fd;
   
-  /* Text Tokens */
-  --color-text-primary: #1a1a1a;
-  --color-text-secondary: #666666;
-  --color-text-inverse: #ffffff;
+  /* Typography v1 */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
   
-  /* Accent Tokens */
-  --color-accent: #0066cc;
-  --color-accent-hover: #0052a3;
-  --color-accent-active: #003d7a;
+  /* Spacing v1 */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
   
-  /* Semantic Tokens */
-  --color-success: #22c55e;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
-  
-  /* Border Tokens */
-  --color-border-primary: #e0e0e0;
-  --color-border-secondary: #f0f0f0;
-  
-  /* === Typography v1.0.0 === */
-  /* Font Families */
-  --font-family-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-family-mono: 'SF Mono', Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-  
-  /* Font Sizes (modular scale) */
-  --font-size-xs: 0.75rem;     /* 12px */
-  --font-size-sm: 0.875rem;    /* 14px */
-  --font-size-base: 1rem;      /* 16px */
-  --font-size-lg: 1.125rem;    /* 18px */
-  --font-size-xl: 1.25rem;     /* 20px */
-  --font-size-2xl: 1.5rem;     /* 24px */
-  --font-size-3xl: 1.875rem;   /* 30px */
-  --font-size-4xl: 2.25rem;    /* 36px */
-  
-  /* Font Weights */
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-  
-  /* Line Heights */
-  --line-height-tight: 1.25;
-  --line-height-normal: 1.5;
-  --line-height-relaxed: 1.75;
-  
-  /* Letter Spacing */
-  --letter-spacing-tight: -0.025em;
-  --letter-spacing-normal: 0;
-  --letter-spacing-wide: 0.05em;
-  
-  /* === Spacing v1.0.0 (Base-8 Scale) === */
-  --space-0: 0px;
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
-  --space-8: 48px;
-  --space-10: 64px;
-  --space-12: 96px;
-  --space-16: 128px;
-  
-  /* Semantic Spacing */
-  --space-inline-xs: var(--space-1);
-  --space-inline-sm: var(--space-2);
-  --space-inline-md: var(--space-4);
-  --space-stack-xs: var(--space-1);
-  --space-stack-sm: var(--space-2);
-  --space-stack-md: var(--space-4);
-  --space-stack-lg: var(--space-6);
-  --space-inset-sm: var(--space-2);
-  --space-inset-md: var(--space-4);
-  --space-inset-lg: var(--space-6);
+  /* Layout */
+  --max-width-content: 42rem;
+  --max-width-wide: 64rem;
+  --nav-width: 16rem;
 }
 
-/* Dark mode support */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg-primary: #0f0f0f;
-    --color-bg-secondary: #1a1a1a;
-    --color-bg-tertiary: #262626;
-    
-    --color-text-primary: #f0f0f0;
-    --color-text-secondary: #a0a0a0;
-    --color-text-inverse: #1a1a1a;
-    
-    --color-accent: #4da6ff;
-    --color-accent-hover: #66b3ff;
-    --color-accent-active: #80c0ff;
-    
-    --color-border-primary: #333333;
-    --color-border-secondary: #262626;
+    --color-bg: #0a0a0a;
+    --color-bg-subtle: #171717;
+    --color-bg-elevated: #1c1917;
+    --color-text: #fafaf9;
+    --color-text-muted: #a8a29e;
+    --color-text-subtle: #78716c;
+    --color-border: #292524;
+    --color-border-subtle: #1c1917;
+    --color-accent: #60a5fa;
+    --color-accent-hover: #93c5fd;
+    --color-accent-muted: #1e40af;
   }
 }
 
-/* === Base Reset === */
+/* Reset */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -23291,84 +23003,390 @@ export default function Navigation({ resources, currentPath, onNavigate }) {
 
 html {
   font-size: 16px;
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--font-family-sans);
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-normal);
-  color: var(--color-text-primary);
-  background-color: var(--color-bg-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body, #root {
-  height: 100%;
+body {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--color-bg);
+  min-height: 100vh;
 }
 
-/* === Typography === */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--line-height-tight);
-  letter-spacing: var(--letter-spacing-tight);
+#root {
+  min-height: 100vh;
 }
 
-h1 { font-size: var(--font-size-4xl); font-weight: var(--font-weight-bold); }
-h2 { font-size: var(--font-size-3xl); }
-h3 { font-size: var(--font-size-2xl); }
-h4 { font-size: var(--font-size-xl); }
-
-p {
-  margin-bottom: var(--space-4);
+/* Layout */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
 }
 
-a {
-  color: var(--color-accent);
+/* Navigation */
+.nav {
+  width: var(--nav-width);
+  padding: var(--space-6);
+  background: var(--color-bg-subtle);
+  border-right: 1px solid var(--color-border);
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.nav-brand {
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--color-text);
   text-decoration: none;
-  transition: color 0.15s ease;
+  display: block;
+  margin-bottom: var(--space-6);
 }
 
-a:hover {
-  color: var(--color-accent-hover);
+.nav-section {
+  margin-bottom: var(--space-6);
+}
+
+.nav-section-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.nav-list {
+  list-style: none;
+}
+
+.nav-item {
+  margin-bottom: var(--space-1);
+}
+
+.nav-link {
+  display: block;
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  border-radius: 0.375rem;
+  transition: all 0.15s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-text);
+  background: var(--color-bg-elevated);
+}
+
+.nav-link.active {
+  color: var(--color-accent);
+  background: var(--color-bg-elevated);
+  font-weight: 500;
+}
+
+.nav-expand {
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  cursor: pointer;
+  padding: var(--space-2) var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.nav-expand:hover {
   text-decoration: underline;
 }
 
-code {
-  font-family: var(--font-family-mono);
-  font-size: 0.9em;
-  background-color: var(--color-bg-tertiary);
-  padding: 0.125em 0.375em;
-  border-radius: 4px;
+/* Mobile nav */
+.nav-toggle {
+  display: none;
+  position: fixed;
+  top: var(--space-4);
+  left: var(--space-4);
+  z-index: 100;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: 0.375rem;
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+  font-size: 0.875rem;
 }
 
-pre {
-  font-family: var(--font-family-mono);
-  background-color: var(--color-bg-tertiary);
-  padding: var(--space-4);
-  border-radius: 8px;
-  overflow-x: auto;
+@media (max-width: 768px) {
+  .nav {
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+    z-index: 50;
+  }
+  
+  .nav.open {
+    transform: translateX(0);
+  }
+  
+  .nav-toggle {
+    display: block;
+  }
+  
+  .main {
+    margin-left: 0 !important;
+    padding-top: var(--space-16) !important;
+  }
+}
+
+/* Main content */
+.main {
+  flex: 1;
+  margin-left: var(--nav-width);
+  padding: var(--space-8);
+  max-width: calc(100vw - var(--nav-width));
+}
+
+.content {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+}
+
+/* Home page */
+.home {
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+}
+
+.home-hero {
+  text-align: center;
+  padding: var(--space-16) 0;
+}
+
+.home-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
   margin-bottom: var(--space-4);
 }
 
-pre code {
+.home-subtitle {
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  max-width: 32rem;
+  margin: 0 auto var(--space-8);
+}
+
+.home-cta {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: 0.5rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-hover);
+}
+
+.btn-secondary {
+  background: var(--color-bg-elevated);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background: var(--color-bg-subtle);
+}
+
+/* Feature cards */
+.home-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+  padding: var(--space-8) 0;
+}
+
+.feature-card {
+  padding: var(--space-6);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+}
+
+.feature-card h3 {
+  font-size: 1.125rem;
+  margin-bottom: var(--space-2);
+}
+
+.feature-card p {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+/* Content page */
+.content-header {
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.content-header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.content-meta {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.content-body {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.content-body h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: var(--space-8) 0 var(--space-4);
+}
+
+.content-body h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: var(--space-6) 0 var(--space-3);
+}
+
+.content-body p {
+  margin-bottom: var(--space-4);
+}
+
+.content-body ul, .content-body ol {
+  margin-bottom: var(--space-4);
+  padding-left: var(--space-6);
+}
+
+.content-body li {
+  margin-bottom: var(--space-2);
+}
+
+.content-body blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: var(--space-4);
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin: var(--space-6) 0;
+}
+
+.content-body code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--color-bg-subtle);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+}
+
+.content-body pre {
+  background: var(--color-bg-subtle);
+  padding: var(--space-4);
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: var(--space-4) 0;
+}
+
+.content-body pre code {
   background: none;
   padding: 0;
 }
 
-/* === Utilities === */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+.content-body a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.content-body a:hover {
+  text-decoration: underline;
+}
+
+.content-body hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--space-8) 0;
+}
+
+/* Tier badges */
+.tier-badge {
+  display: inline-block;
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  background: var(--color-bg-subtle);
+  color: var(--color-text-muted);
+}
+
+.tier-badge.tier-0 {
+  background: var(--color-accent-muted);
+  color: var(--color-accent);
+}
+
+/* Loading state */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: var(--color-text-muted);
+}
+
+/* Error state */
+.error {
+  padding: var(--space-6);
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 0.5rem;
+  color: #991b1b;
+}
+
+@media (prefers-color-scheme: dark) {
+  .error {
+    background: #450a0a;
+    border-color: #7f1d1d;
+    color: #fecaca;
+  }
+}
+
+/* Smooth page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 
@@ -23395,28 +23413,33 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 --------------------------------------------------------------------------------
 
 // Vite config for website lane
-// Note: vite and plugins are installed at repo root, not in lane
+// This config is loaded by vite which runs from repo root,
+// but builds the lane's source files
+
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { createRequire } from 'module';
+import react from '@vitejs/plugin-react';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const require = createRequire(import.meta.url);
-
-// Import react plugin from repo root's node_modules
-const repoRoot = resolve(__dirname, '../..');
-const react = require(resolve(repoRoot, 'node_modules/@vitejs/plugin-react')).default;
+const ROOT = resolve(__dirname, '../..');
 
 export default {
   plugins: [react()],
   root: __dirname,
-  publicDir: resolve(__dirname, '../../public'),
+  publicDir: resolve(ROOT, 'public'),
   build: {
-    outDir: 'dist',
+    outDir: resolve(__dirname, 'dist'),
     emptyOutDir: true,
   },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+    },
+  },
   server: {
-    port: 3000,
+    fs: {
+      allow: [ROOT],
+    },
   },
 };
 
