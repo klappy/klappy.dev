@@ -1,0 +1,17 @@
+{
+  "lane": "website",
+  "prd_version": "v1.1",
+  "run_id": "c11dfab1",
+  "lane_root": "products/website",
+  "dist_dir": "products/website/dist",
+  "tool": "cursor",
+  "agent": "a",
+  "model": "gemini-3-flash-preview",
+  "worktree_path": "/Users/chrisklapp/.cursor/worktrees/klappy.dev/gzi",
+  "branch": "run/website/prd-v1.1/cursor/a/gemini-3-flash-preview/kickoff",
+  "target_branch": "run/website/prd-v1.1/cursor/a/gemini-3-flash-previ/c11dfab1",
+  "git_head": "df0cea5f9499b73af9538681af13b44f8ad1bd07",
+  "is_detached": false,
+  "registered_at": "2026-01-20T06:07:19.812Z",
+  "runs_dir": "attempts/website/prd-v1.1/_runs/c11dfab1"
+}
