@@ -4,7 +4,11 @@
 
 Visual evidence for the website lane attempt implementing PRD v1.1.
 
+**STATUS: Build succeeded, CF preview blocked**
+
 ## Screenshots
+
+All screenshots captured via Puppeteer after successful local build.
 
 ### Desktop — Home Page (Light Mode)
 `screenshots/01-desktop-home-light.png`
@@ -54,12 +58,40 @@ Shows:
 | Deep links work | ✅ | Content page URL |
 | Progressive disclosure | ✅ | Nav structure |
 
-## Live URLs
+## Build Verification
 
-- App: `https://<preview>/`
-- Evidence: `https://<preview>/_evidence/`
+| Step | Status |
+|------|--------|
+| `npm install` | ✅ |
+| `npm run build -- --lane website` | ✅ |
+| Evidence copied to dist | ✅ |
+| Evidence index generated | ✅ |
+| Branch pushed to origin | ✅ |
+
+## Cloudflare Preview Verification
+
+| Check | Status |
+|-------|--------|
+| App URL (/) | ❌ HTTP 404 |
+| Evidence URL (/_evidence/) | ❌ HTTP 404 |
+
+**Reason:** CF Pages not configured for automatic preview deployments on `run/*` branches.
+
+## URLs
+
+### Expected (if CF deployed)
+- App: `https://run-website-prd-v1-1-cursor-kjq-claude-opus-45-bf01eb67.klappy-dev-website.pages.dev/`
+- Evidence: `https://run-website-prd-v1-1-cursor-kjq-claude-opus-45-bf01eb67.klappy-dev-website.pages.dev/_evidence/`
+
+### Actual
+Both URLs return HTTP 404 due to CF configuration gap.
 
 ## Notes
 
-All screenshots captured after successful `npm run build -- --lane website`.
-Evidence copied to dist/_evidence/ during build per E0003.1 requirements.
+Per ATTEMPT_KICKOFF.md:
+- ✅ Branch pushed to origin
+- ❌ CF preview not reachable
+- ❌ Cannot verify HTTP 200
+
+This attempt demonstrates working code but is blocked on CF infrastructure.
+The implementation satisfies all PRD functional requirements when run locally.

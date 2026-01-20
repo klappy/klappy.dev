@@ -5,7 +5,7 @@
 ================================================================================
 
 
-Generated: 2026-01-20T19:57:00.199Z
+Generated: 2026-01-20T20:03:01.972Z
 Total Files: 159
 
 This is a complete export of all documentation, code, and content files
@@ -21945,6 +21945,8 @@ Public verification evidence is always deployed at:
 
 Built a complete public website for klappy.dev implementing ODD (Outcomes-Driven Development) philosophy presentation with progressive disclosure navigation.
 
+**OUTCOME: BLOCKED — CF Preview Not Reachable**
+
 ## PRD Version
 
 v1.1
@@ -22006,26 +22008,63 @@ products/website/
 - [x] Deep links work (URL represents resource)
 - [x] Progressive disclosure tiers respected
 
-## Self-Audit
-
-### What worked well
-- Progressive navigation keeps first impression clean
-- Feature cards communicate ODD philosophy effectively
-- Mobile layout works without horizontal scroll
-- Dark mode works automatically
-
-### Tradeoffs
-- No media shelf implementation (out of scope for v1.1)
-- No search functionality yet
-- Canon section only appears after user expands navigation
-
 ## Verification
 
-Screenshots captured for:
+### Local Build
+- ✅ `npm run build -- --lane website` completed successfully
+- ✅ Output in `products/website/dist/`
+- ✅ Evidence copied to `dist/_evidence/`
+- ✅ 4 screenshots captured
+
+### Screenshots Captured
 1. Desktop home page (light mode)
 2. Desktop content page (ODD Manifesto)
 3. Mobile home page
 4. Desktop home page (dark mode)
+
+### Cloudflare Preview Verification — BLOCKED
+
+Attempted URLs (all returned HTTP 404):
+- `https://run-website-prd-v1-1-cursor-kjq-claude-opus-45-bf01eb67.klappy-dev-website.pages.dev/`
+- `https://run-website-prd-v1-1-cursor-kjq-claude-opus-45-bf01eb67.klappy-dev.pages.dev/`
+- Various other permutations
+
+**Root Cause Analysis:**
+The Cloudflare Pages project does not appear to be configured to automatically deploy preview branches matching the `run/*` pattern. The previous champion (PRD v1.0) used URL `https://website-attempt-test.klappy-dev-website.pages.dev` which doesn't match the branch-to-dashes convention, suggesting manual CF configuration was involved.
+
+**Constraints:**
+Per ATTEMPT_KICKOFF.md, `wrangler pages deploy` is forbidden. Without automatic CF preview deployments, the HTTP 200 verification cannot complete.
+
+## Self-Audit
+
+### What worked
+- Build pipeline is solid
+- Evidence generation and indexing works
+- Code compiles and runs locally
+- All PRD success criteria met locally
+
+### What didn't
+- CF preview deployment not triggered by push
+- Previous deployment used manual CF aliasing
+- Can't verify HTTP 200 without CF configuration change
+
+### Tradeoff
+This attempt demonstrates working code but cannot satisfy the "online evidence" requirement without CF infrastructure changes.
+
+## Recommendation
+
+Before the next attempt, CF Pages needs configuration to:
+1. Watch for `run/*` branch patterns
+2. Deploy previews automatically on push
+3. Use build output from `products/website/dist`
+
+Or: Update ATTEMPT_KICKOFF.md to document the CF setup required for the branch→preview flow to work.
+
+## Git State
+
+- Branch: `run/website/prd-v1.1/cursor/kjq/claude-opus-45/bf01eb67`
+- Pushed to origin: ✅
+- Commit: See META.json for SHA
 
 
 
@@ -22039,7 +22078,11 @@ Screenshots captured for:
 
 Visual evidence for the website lane attempt implementing PRD v1.1.
 
+**STATUS: Build succeeded, CF preview blocked**
+
 ## Screenshots
+
+All screenshots captured via Puppeteer after successful local build.
 
 ### Desktop — Home Page (Light Mode)
 `screenshots/01-desktop-home-light.png`
@@ -22089,15 +22132,43 @@ Shows:
 | Deep links work | ✅ | Content page URL |
 | Progressive disclosure | ✅ | Nav structure |
 
-## Live URLs
+## Build Verification
 
-- App: `https://<preview>/`
-- Evidence: `https://<preview>/_evidence/`
+| Step | Status |
+|------|--------|
+| `npm install` | ✅ |
+| `npm run build -- --lane website` | ✅ |
+| Evidence copied to dist | ✅ |
+| Evidence index generated | ✅ |
+| Branch pushed to origin | ✅ |
+
+## Cloudflare Preview Verification
+
+| Check | Status |
+|-------|--------|
+| App URL (/) | ❌ HTTP 404 |
+| Evidence URL (/_evidence/) | ❌ HTTP 404 |
+
+**Reason:** CF Pages not configured for automatic preview deployments on `run/*` branches.
+
+## URLs
+
+### Expected (if CF deployed)
+- App: `https://run-website-prd-v1-1-cursor-kjq-claude-opus-45-bf01eb67.klappy-dev-website.pages.dev/`
+- Evidence: `https://run-website-prd-v1-1-cursor-kjq-claude-opus-45-bf01eb67.klappy-dev-website.pages.dev/_evidence/`
+
+### Actual
+Both URLs return HTTP 404 due to CF configuration gap.
 
 ## Notes
 
-All screenshots captured after successful `npm run build -- --lane website`.
-Evidence copied to dist/_evidence/ during build per E0003.1 requirements.
+Per ATTEMPT_KICKOFF.md:
+- ✅ Branch pushed to origin
+- ❌ CF preview not reachable
+- ❌ Cannot verify HTTP 200
+
+This attempt demonstrates working code but is blocked on CF infrastructure.
+The implementation satisfies all PRD functional requirements when run locally.
 
 
 
