@@ -2,4 +2,24 @@
 
 ## Screenshots
 
-_TODO: Add evidence files to evidence/ folder and reference them here_
+Visual proof available in `screenshots/`:
+1. `01-home-desktop.png` - Homepage at 1920x1080 (desktop view)
+2. `02-odd-page.png` - ODD Manifesto content page with navigation
+3. `03-home-mobile.png` - Homepage at 375x667 (mobile view)
+
+## Success Criteria Verification
+
+- [x] First load shows ≤7 nav items (shows 4: Home, ODD, About, Projects, Canon)
+- [x] Mobile usable without horizontal scrolling (verified via 375px screenshot)
+- [x] Canon discoverable without file paths exposed (uses manifest.json + URIs)
+- [x] No agent instructions present in UI (content is human-facing only)
+- [x] No CLI/process language exposed to visitors (clean public interface)
+- [x] Deep links work (hash-based routing with klappy:// URIs)
+- [x] Progressive disclosure tiers respected (tier 0/1 in nav, tier 2 via content links)
+
+## Deployment
+
+Branch: `run/website/prd-v1.1/cursor/a/claude-opus-4/4ab9667c`
+
+Cloudflare Preview: TBD after push
+Evidence Index: TBD after push
