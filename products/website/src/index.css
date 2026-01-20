@@ -1,0 +1,161 @@
+:root {
+  --bg: #ffffff;
+  --text: #1d1d1f;
+  --accent: #0071e3;
+  --secondary: #86868b;
+  --border: #d2d2d7;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.app-container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: saturate(180%) blur(20px);
+  z-index: 100;
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav li {
+  margin-left: 20px;
+}
+
+.main-nav button {
+  background: none;
+  border: none;
+  color: var(--secondary);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.main-nav button:hover {
+  color: var(--text);
+}
+
+.main-nav li.active button {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+main {
+  padding: 60px 0;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: var(--secondary);
+  margin-bottom: 40px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+.hero-actions button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 980px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.hero-actions button:hover {
+  opacity: 0.8;
+}
+
+.hero-actions button:last-child {
+  background: none;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.home-media, .resource-media {
+  margin-top: 80px;
+  padding: 40px;
+  background: #f5f5f7;
+  border-radius: 20px;
+}
+
+article {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+article h1, article h2, article h3 {
+  margin-top: 2em;
+}
+
+article img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+.breadcrumb {
+  margin-bottom: 40px;
+  color: var(--secondary);
+  font-size: 0.9rem;
+}
+
+.breadcrumb button {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+}
+
+@media (max-width: 734px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  .main-nav ul {
+    display: none; /* Simplification for mobile */
+  }
+}
