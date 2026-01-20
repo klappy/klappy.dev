@@ -5,7 +5,7 @@
 ================================================================================
 
 
-Generated: 2026-01-20T20:42:37.556Z
+Generated: 2026-01-20T20:48:36.114Z
 Total Files: 156
 
 This is a complete export of all documentation, code, and content files
@@ -22002,8 +22002,8 @@ Public verification evidence is always deployed at:
 
 ## Online URLs (filled after push)
 
-- Preview URL: (pending)
-- Evidence URL: (pending) `/_evidence/`
+- Preview URL: https://attempt-website-prd-v1-1-a.klappy-dev-website.pages.dev/
+- Evidence URL: https://attempt-website-prd-v1-1-a.klappy-dev-website.pages.dev/_evidence/
 
 
 
@@ -22027,11 +22027,11 @@ Public verification evidence is always deployed at:
   "target_branch": "run/website/prd-v1.1/cursor/a/gpt-52/61b138d9",
   "git_head": "6ce7319faa655dabe3d7c01062d5043a3cb0eb1e",
   "registered_at": "2026-01-20T20:36:37.912Z",
-  "completed_at": null,
+  "completed_at": "2026-01-20T20:48:11Z",
   "finalized_at": null,
   "status": "OPEN",
   "evidence_index": [],
-  "preview_url": null
+  "preview_url": "https://attempt-website-prd-v1-1-a.klappy-dev-website.pages.dev/"
 }
 
 

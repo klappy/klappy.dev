@@ -16,5 +16,5 @@
 
 ## Online URLs (filled after push)
 
-- Preview URL: (pending)
-- Evidence URL: (pending) `/_evidence/`
+- Preview URL: https://attempt-website-prd-v1-1-a.klappy-dev-website.pages.dev/
+- Evidence URL: https://attempt-website-prd-v1-1-a.klappy-dev-website.pages.dev/_evidence/

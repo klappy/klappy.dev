@@ -14,9 +14,9 @@
   "target_branch": "run/website/prd-v1.1/cursor/a/gpt-52/61b138d9",
   "git_head": "6ce7319faa655dabe3d7c01062d5043a3cb0eb1e",
   "registered_at": "2026-01-20T20:36:37.912Z",
-  "completed_at": null,
+  "completed_at": "2026-01-20T20:48:11Z",
   "finalized_at": null,
   "status": "OPEN",
   "evidence_index": [],
-  "preview_url": null
+  "preview_url": "https://attempt-website-prd-v1-1-a.klappy-dev-website.pages.dev/"
 }
