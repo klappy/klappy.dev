@@ -20,6 +20,19 @@ Visual proof available in `screenshots/`:
 ## Deployment
 
 Branch: `run/website/prd-v1.1/cursor/a/claude-opus-4/4ab9667c`
+Commit: `7d9feb4`
+Pushed to: `origin/run/website/prd-v1.1/cursor/a/claude-opus-4/4ab9667c`
 
-Cloudflare Preview: TBD after push
-Evidence Index: TBD after push
+**Cloudflare Preview Status:** Build may be in progress or awaiting configuration.
+
+Attempted URLs (both returned 404 as of 2026-01-20 06:17 UTC):
+- `https://7d9feb4.klappy-dev-website.pages.dev/`
+- `https://run-website-prd-v1-1-cursor-a-claude-opus-4-4ab9667c.klappy-dev-website.pages.dev/`
+
+**Note:** Cloudflare Pages project `klappy-dev-website` may need to be configured to:
+1. Connect to the GitHub repository
+2. Enable preview deployments for all branches
+3. Use build command: `npm run build -- --lane website`
+4. Use build output: `products/website/dist`
+
+Once deployed, evidence index will be available at `<preview-url>/_evidence/`
