@@ -5,7 +5,7 @@
 ================================================================================
 
 
-Generated: 2026-01-20T20:29:28.991Z
+Generated: 2026-01-20T20:31:08.190Z
 Total Files: 163
 
 This is a complete export of all documentation, code, and content files
@@ -17888,8 +17888,8 @@ function copyEvidenceToDist() {
   console.log('  ✅ Documents verified: EVIDENCE.md, ATTEMPT.md, META.json');
   
   // Count proof assets
-  const screenshotsDir = join(distEvidenceDir, 'screenshots');
-  const recordingsDir = join(distEvidenceDir, 'recordings');
+  const screenshotsDir = join(distEvidenceDir, 'evidence', 'screenshots');
+  const recordingsDir = join(distEvidenceDir, 'evidence', 'recordings');
   
   let screenshotCount = 0;
   let recordingCount = 0;

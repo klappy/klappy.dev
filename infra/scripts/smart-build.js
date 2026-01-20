@@ -164,8 +164,8 @@ function copyEvidenceToDist() {
   console.log('  ✅ Documents verified: EVIDENCE.md, ATTEMPT.md, META.json');
   
   // Count proof assets
-  const screenshotsDir = join(distEvidenceDir, 'screenshots');
-  const recordingsDir = join(distEvidenceDir, 'recordings');
+  const screenshotsDir = join(distEvidenceDir, 'evidence', 'screenshots');
+  const recordingsDir = join(distEvidenceDir, 'evidence', 'recordings');
   
   let screenshotCount = 0;
   let recordingCount = 0;
