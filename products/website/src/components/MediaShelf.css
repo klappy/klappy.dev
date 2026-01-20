@@ -1,0 +1,138 @@
+.media-shelf {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+}
+
+.media-shelf-title {
+  font-size: 24px;
+  margin-bottom: var(--space-3);
+}
+
+.media-shelf-description {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+  font-size: 15px;
+}
+
+.media-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.media-item {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+.media-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s var(--ease-out);
+}
+
+.media-toggle:hover {
+  background: var(--color-surface);
+}
+
+.media-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.media-label {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.expand-arrow {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  transition: transform 0.2s var(--ease-out);
+  flex-shrink: 0;
+}
+
+.expand-arrow.expanded {
+  transform: rotate(180deg);
+}
+
+.media-content {
+  padding: 0 var(--space-4) var(--space-4) var(--space-4);
+  animation: slideDown 0.3s var(--ease-out);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.media-player {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  background: #000;
+}
+
+.media-image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  display: block;
+}
+
+.media-link-wrapper {
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+
+.media-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-accent);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s var(--ease-out);
+}
+
+.media-link:hover {
+  color: var(--color-accent-hover);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .media-shelf {
+    padding: var(--space-6);
+  }
+  
+  .media-toggle {
+    padding: var(--space-3);
+  }
+  
+  .media-icon {
+    font-size: 18px;
+  }
+  
+  .media-label {
+    font-size: 15px;
+  }
+}

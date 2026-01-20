@@ -1,0 +1,22 @@
+{
+  "lane": "website",
+  "prd_version": "v1.1",
+  "epoch_id": "E0003-evidence-first-era",
+  "run_id": "b497df0e",
+  "attempt": null,
+  "lane_root": "products/website",
+  "dist_dir": "products/website/dist",
+  "tool": "cursor",
+  "agent": "a",
+  "model": "claude-sonnet-4.5",
+  "worktree_path": "/Users/chrisklapp/.cursor/worktrees/klappy.dev/tar",
+  "branch": "run/website/prd-v1.1/cursor/a/claude-sonnet-45/b497df0e",
+  "target_branch": "run/website/prd-v1.1/cursor/a/claude-sonnet-45/b497df0e",
+  "git_head": "6ce7319faa655dabe3d7c01062d5043a3cb0eb1e",
+  "registered_at": "2026-01-20T19:44:32.318Z",
+  "completed_at": null,
+  "finalized_at": null,
+  "status": "OPEN",
+  "evidence_index": [],
+  "preview_url": null
+}
