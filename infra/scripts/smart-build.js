@@ -133,7 +133,17 @@ function copyEvidenceToDist() {
   
   // Build path to attempt evidence
   const prd = prd_version.replace(/^v/, '');
-  const attemptEvidenceDir = join(ROOT, 'attempts', lane, `prd-v${prd}`, '_runs', run_id);
+  // Attempt artifacts are lane-contained under products/<lane>/attempts/...
+  // Root /attempts/** is legacy and read-only (see canon product-lanes).
+  const attemptEvidenceDir = join(
+    ROOT,
+    'products',
+    lane,
+    'attempts',
+    `prd-v${prd}`,
+    '_runs',
+    run_id
+  );
   
   console.log(`  Lane:    ${lane}`);
   console.log(`  PRD:     v${prd}`);

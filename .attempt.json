@@ -1,0 +1,17 @@
+{
+  "lane": "website",
+  "prd_version": "v1.1",
+  "run_id": "61b138d9",
+  "lane_root": "products/website",
+  "dist_dir": "products/website/dist",
+  "tool": "cursor",
+  "agent": "a",
+  "model": "gpt-5.2",
+  "worktree_path": "/Users/chrisklapp/.cursor/worktrees/klappy.dev/onr",
+  "branch": "attempt/website/prd-v1.1/a",
+  "target_branch": "run/website/prd-v1.1/cursor/a/gpt-52/61b138d9",
+  "git_head": "6ce7319faa655dabe3d7c01062d5043a3cb0eb1e",
+  "is_detached": false,
+  "registered_at": "2026-01-20T20:36:37.912Z",
+  "runs_dir": "products/website/attempts/prd-v1.1/_runs/61b138d9"
+}
