@@ -1,7 +1,9 @@
 {
   "lane": "website",
   "prd_version": "v1.1",
+  "epoch_id": "E0003-evidence-first-era",
   "run_id": "d388cbf4",
+  "attempt": null,
   "lane_root": "products/website",
   "dist_dir": "products/website/dist",
   "tool": "cursor",
@@ -11,7 +13,10 @@
   "branch": "run/website/prd-v1.1/cursor/a/claude-opus-4/57c20915",
   "target_branch": "run/website/prd-v1.1/cursor/a/claude-opus-4/d388cbf4",
   "git_head": "805dcddcab0e2ce46fa0c4e1e1d96fa2bb5cadec",
-  "is_detached": false,
   "registered_at": "2026-01-20T19:47:15.533Z",
-  "runs_dir": "products/website/attempts/prd-v1.1/_runs/d388cbf4"
+  "completed_at": null,
+  "finalized_at": null,
+  "status": "OPEN",
+  "evidence_index": [],
+  "preview_url": null
 }
