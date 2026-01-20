@@ -5,7 +5,7 @@
 ================================================================================
 
 
-Generated: 2026-01-20T20:31:08.190Z
+Generated: 2026-01-20T20:34:12.196Z
 Total Files: 163
 
 This is a complete export of all documentation, code, and content files
@@ -17969,7 +17969,14 @@ function main() {
   // Always run sync and verify first
   console.log('1️⃣  Syncing content...');
   run('npm run sync');
-  
+
+  // Copy public directory to lane for Vite to include
+  console.log('\n1️⃣.5️⃣  Copying public assets to lane...');
+  if (existsSync(PUBLIC_PATH)) {
+    cpSync(PUBLIC_PATH, join(LANE_ROOT, 'public'), { recursive: true });
+    console.log('  ✅ Public assets copied to lane');
+  }
+
   console.log('\n2️⃣  Verifying content...');
   run('npm run verify:content');
   
