@@ -1,0 +1,18 @@
+{
+  "attempt_id": "attempt-001",
+  "prd_version": "v1.3",
+  "lane": "agent-skill",
+  "status": "in_progress",
+  "started": "2026-01-21T18:00:00.000Z",
+  "canon_version": "0.8.0",
+  "pack": "prd-guide",
+  "deliverables": [
+    "INSTRUCTIONS.md",
+    "prd-guide-pack.md"
+  ],
+  "evidence": [
+    "compile-output.txt",
+    "instructions-diff.md",
+    "deployment-verification.md"
+  ]
+}
