@@ -4,7 +4,7 @@ This lane produces compiled packs for AI agent consumption. The primary delivera
 
 ## Current Champion
 
-**v1.2.4** — Canon refresh v0.8.0 (path fixes + new content)
+**v1.3** — PRD Elicitation Enhancement (interview mechanics, stage typing)
 
 **Public URL**: `https://main.klappy-dev-agent-skill.pages.dev/latest/prd-guide-pack.md`
 
@@ -40,8 +40,8 @@ See the [usage README](https://main.klappy-dev-agent-skill.pages.dev/latest/READ
 | [v1.2.1/](v1.2.1/) | Champion | Lane-owned Cloudflare Pages deployment |
 | [v1.2.2/](v1.2.2/) | Failed | Exposed ODD violations (ephemeral artifacts, compile plan location) |
 | [v1.2.3/](v1.2.3/) | Champion | Canon refresh v0.5.4 + ODD compliance |
-| [v1.2.4/](v1.2.4/) | Champion | Canon refresh v0.8.0 (path fixes + new content) |
-| [v1.3/](v1.3/) | **Active** | PRD Elicitation Enhancement (interview mechanics, stage typing) |
+| [v1.2.4/](v1.2.4/) | Superseded | Canon refresh v0.8.0 (path fixes + new content) |
+| [v1.3/](v1.3/) | **Champion** | PRD Elicitation Enhancement (interview mechanics, stage typing) |
 
 ## Structure
 

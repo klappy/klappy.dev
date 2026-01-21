@@ -5,8 +5,8 @@
 ================================================================================
 
 
-Generated: 2026-01-21T20:23:28.595Z
-Total Files: 151
+Generated: 2026-01-21T20:24:19.950Z
+Total Files: 152
 
 This is a documentation export of all markdown files from the klappy.dev
 repository. It includes lane guidance docs but excludes implementation
@@ -24,7 +24,7 @@ details (attempts, version folders, source code).
 - **Infrastructure** (9 files)
 - **Interfaces & Contracts** (6 files)
 - **ODD (Outcomes-Driven Development)** (21 files)
-- **Products** (31 files)
+- **Products** (32 files)
 - **Projects** (6 files)
 - **Visual Design System** (5 files)
 
@@ -18632,7 +18632,7 @@ This lane produces compiled packs for AI agent consumption. The primary delivera
 
 ## Current Champion
 
-**v1.2.4** — Canon refresh v0.8.0 (path fixes + new content)
+**v1.3** — PRD Elicitation Enhancement (interview mechanics, stage typing)
 
 **Public URL**: `https://main.klappy-dev-agent-skill.pages.dev/latest/prd-guide-pack.md`
 
@@ -18668,8 +18668,8 @@ See the [usage README](https://main.klappy-dev-agent-skill.pages.dev/latest/READ
 | [v1.2.1/](v1.2.1/) | Champion | Lane-owned Cloudflare Pages deployment |
 | [v1.2.2/](v1.2.2/) | Failed | Exposed ODD violations (ephemeral artifacts, compile plan location) |
 | [v1.2.3/](v1.2.3/) | Champion | Canon refresh v0.5.4 + ODD compliance |
-| [v1.2.4/](v1.2.4/) | Champion | Canon refresh v0.8.0 (path fixes + new content) |
-| [v1.3/](v1.3/) | **Active** | PRD Elicitation Enhancement (interview mechanics, stage typing) |
+| [v1.2.4/](v1.2.4/) | Superseded | Canon refresh v0.8.0 (path fixes + new content) |
+| [v1.3/](v1.3/) | **Champion** | PRD Elicitation Enhancement (interview mechanics, stage typing) |
 
 ## Structure
 
@@ -20054,6 +20054,81 @@ Canon refresh to v0.8.0 with ODD path fixes (elevated from `/canon/odd/` to `/od
 
 
 --------------------------------------------------------------------------------
+📄 File: products/agent-skill/history/H0008-v1.3-champion.md
+--------------------------------------------------------------------------------
+
+# H0008 — PRD v1.3 Champion
+
+- **Date**: 2026-01-21
+- **Type**: Champion
+- **PRD**: v1.3
+- **Epoch**: E0003 (evidence-first)
+- **Attempt**: `v1.3/attempts/attempt-001/`
+
+## Summary
+
+PRD Elicitation Enhancement — transformed the prd-guide pack from teaching ODD to actively eliciting PRDs through structured questioning.
+
+## Deliverable
+
+- **Pack**: `public/agent-skill/v1.3/prd-guide-pack.md`
+- **Latest**: `public/agent-skill/latest/prd-guide-pack.md`
+- **Preview URL**: `https://dd379b0d.klappy-dev-agent-skill.pages.dev/v1.3/prd-guide-pack.md`
+- **PR**: https://github.com/klappy/klappy.dev/pull/4
+
+## What's New
+
+### Agent Role Declaration
+Clear framing: "You extract. You do not invent."
+
+### PRD Stage Typing
+6 types with evidence/ambiguity expectations (PoC, Feature, Fix, Product slice, Refactor, Other)
+
+### Asset Intake Contract
+4 asset types (Text, Media, Links, Oral testimony) with guidance for partial information
+
+### 8-Phase Interview Loop
+Resequenced from 7 stages:
+- Phase 0: Stage Identification (NEW)
+- Phase 1: Orient (NEW)
+- Phase 2: Inventory (NEW)
+- Phase 3: Constraint Surfacing (moved)
+- Phase 4: Outcome Framing (moved)
+- Phase 5: Evidence Definition (moved)
+- Phase 6: Ambiguity Capture (NEW)
+- Phase 7: Draft Assembly (consolidated)
+
+Key change: Inventory BEFORE Outcome (can't define what you want until you know what you have)
+
+## What Worked
+
+- Clean separation of elicitation phases
+- Stage typing table provides clear evidence expectations
+- Asset intake prevents blocking on missing information
+- Ambiguity capture aligns with ODD philosophy
+- Example dialogue demonstrates full flow
+
+## What Didn't
+
+- Pack size increased (~16K tokens vs ~15K)
+- Interview loop may feel long for simple PRDs
+
+## Learnings
+
+1. **Inventory before scope**: You can't define what you want until you know what you have
+2. **Stage typing sets expectations**: Different PRD types need different rigor
+3. **Ambiguity is expected**: ODD principle — acknowledged early is cheaper than discovered late
+4. **Extract, don't invent**: The agent's role is elicitation, not authorship
+
+## Follow-up
+
+- Monitor feedback on interview loop length
+- Consider v1.3.1 for streamlined flow if needed
+- Production deploy to stable URL when PR merges
+
+
+
+--------------------------------------------------------------------------------
 📄 File: products/agent-skill/history/index.md
 --------------------------------------------------------------------------------
 
@@ -20076,6 +20151,7 @@ For future vision, see [ROADMAP.md](../ROADMAP.md).
 | [H0005](./H0005-v1.2.2-failed.md) | v1.2.2 | Failed — Exposed ODD violations (ephemeral artifacts, compile plan location) | 2026-01-21 |
 | [H0006](./H0006-v1.2.3-champion.md) | v1.2.3 | Champion — Canon refresh v0.5.4 + ODD compliance | 2026-01-21 |
 | [H0007](./H0007-v1.2.4-champion.md) | v1.2.4 | Champion — Canon refresh v0.8.0 (path fixes + new content) | 2026-01-21 |
+| [H0008](./H0008-v1.3-champion.md) | v1.3 | Champion — PRD Elicitation Enhancement (interview mechanics, stage typing) | 2026-01-21 |
 
 ---
 
