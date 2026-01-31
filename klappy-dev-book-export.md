@@ -5,7 +5,7 @@
 ================================================================================
 
 
-Generated: 2026-01-31T21:20:42.609Z
+Generated: 2026-01-31T21:23:39.973Z
 Total Files: 257
 
 This is a documentation export of all markdown files from the klappy.dev
@@ -34219,7 +34219,7 @@ Reduce pressure. Preserve freedom.
 
 # Odd Teaser — Attempt Kickoff
 
-Read `/infra/prompts/attempt-kickoff/BOOTSTRAP.md` then `products/odd-teaser/PRD.md`. Use `oddkit` for all policy questions — do not answer from memory, oddkit agents, mcp tools, everything.
+Read `/infra/prompts/attempt-kickoff/BOOTSTRAP.md` then `products/odd-teaser/PRD.md`. Use `oddkit` for all policy questions — do not answer from memory, odd subagents, mcp tools, everything.
 
 
 
