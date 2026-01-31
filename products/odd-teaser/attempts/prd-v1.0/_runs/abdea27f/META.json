@@ -22,7 +22,7 @@
     "screenshots/artifact-created.png",
     "screenshots/all-three-artifacts.png"
   ],
-  "preview_url": null,
-  "github_url": "https://github.com/klappy/klappy.dev/tree/run/odd-teaser/prd-v1.0/cursor/a/claude-opus-4/402940ce",
-  "notes": "PENDING: Cloudflare Pages project needs to be created for odd-teaser lane. This is the first attempt on this lane."
+  "preview_url": "https://run-odd-teaser-prd-v1-0-curs.klappy-dev-website.pages.dev",
+  "evidence_url": "https://run-odd-teaser-prd-v1-0-curs.klappy-dev-website.pages.dev/_evidence/",
+  "github_url": "https://github.com/klappy/klappy.dev/tree/run/odd-teaser/prd-v1.0/cursor/a/claude-opus-4/402940ce"
 }

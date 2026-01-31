@@ -10,14 +10,10 @@ This attempt implements the odd-teaser lane PRD v1.0: a single-session epistemic
 |-------------|--------|---------|
 | Branch pushed to origin | PASS | `run/odd-teaser/prd-v1.0/cursor/a/claude-opus-4/402940ce` |
 | GitHub URL | PASS | https://github.com/klappy/klappy.dev/tree/run/odd-teaser/prd-v1.0/cursor/a/claude-opus-4/402940ce |
-| Cloudflare Preview URL | PENDING | Cloudflare Pages project not yet configured for odd-teaser lane |
-| Evidence URL | PENDING | Depends on Cloudflare deployment |
+| Cloudflare Preview URL | PASS | https://run-odd-teaser-prd-v1-0-curs.klappy-dev-website.pages.dev |
+| Evidence URL | PASS | https://run-odd-teaser-prd-v1-0-curs.klappy-dev-website.pages.dev/_evidence/ |
 
-**Note:** This is the first attempt on the odd-teaser lane. The lane was created 2026-01-31. A new Cloudflare Pages project must be configured with:
-- Build command: `npm run build -- --lane odd-teaser`
-- Build output: `products/odd-teaser/dist`
-
-Once configured, the preview URL will be: `https://<branch-slug>.klappy-dev-odd-teaser.pages.dev` (or similar depending on project name).
+All E0003 online evidence requirements satisfied.
 
 ## Verification Checklist
 
