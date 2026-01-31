@@ -134,9 +134,9 @@ function copyEvidenceToDist() {
     );
   }
 
-  // Build path to attempt evidence
+  // Build path to attempt evidence (lane-contained: products/<lane>/attempts/...)
   const prd = prd_version.replace(/^v/, "");
-  const attemptEvidenceDir = join(ROOT, "attempts", lane, `prd-v${prd}`, "_runs", run_id);
+  const attemptEvidenceDir = join(ROOT, "products", lane, "attempts", `prd-v${prd}`, "_runs", run_id);
 
   console.log(`  Lane:    ${lane}`);
   console.log(`  PRD:     v${prd}`);
