@@ -1,0 +1,17 @@
+{
+  "lane": "odd-teaser",
+  "prd_version": "v1.0",
+  "run_id": "abdea27f",
+  "lane_root": "products/odd-teaser",
+  "dist_dir": "products/odd-teaser/dist",
+  "tool": "cursor",
+  "agent": "a",
+  "model": "claude-opus-4",
+  "worktree_path": "/Users/chrisklapp/klappy.dev",
+  "branch": "run/odd-teaser/prd-v1.0/cursor/a/claude-opus-4/402940ce",
+  "target_branch": "run/odd-teaser/prd-v1.0/cursor/a/claude-opus-4/abdea27f",
+  "git_head": "14f97206398a86fe47781c117e16cf2c55f7986a",
+  "is_detached": false,
+  "registered_at": "2026-01-31T18:33:52.518Z",
+  "runs_dir": "products/odd-teaser/attempts/prd-v1.0/_runs/abdea27f"
+}

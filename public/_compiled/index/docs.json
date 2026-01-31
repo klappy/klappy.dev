@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-01-31T18:36:29.211Z",
+  "generated_at": "2026-01-31T18:45:44.036Z",
   "description": "Fast-lookup index for Librarian retrieval. Per docs/agents/librarian/contract.md",
   "schema_notes": {
     "authority_band": "Resolved authority (frontmatter override > inferred from root)",
