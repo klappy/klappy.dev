@@ -8,9 +8,11 @@ Implementation of odd-teaser PRD v1.1 with thinking-first entry posture. Artifac
 
 | Requirement | Status | URL |
 |-------------|--------|-----|
-| Branch pushed | PENDING | `run/odd-teaser/prd-v1.1/cursor/a/claude-opus-4/dc7fda79` |
-| Cloudflare Preview | PENDING | (will be populated after push) |
-| Evidence URL | PENDING | (will be populated after push) |
+| Branch pushed | PASS | `run/odd-teaser/prd-v1.1/cursor/a/claude-opus-4/dc7fda79` |
+| Cloudflare Preview | PASS | https://run-odd-teaser-prd-v1-1-curs.klappy-dev-website.pages.dev |
+| Evidence URL | PASS | https://run-odd-teaser-prd-v1-1-curs.klappy-dev-website.pages.dev/_evidence/ |
+
+All E0003/E0004 online evidence requirements satisfied.
 
 ## Visual Proof
 

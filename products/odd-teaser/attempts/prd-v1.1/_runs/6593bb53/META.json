@@ -23,5 +23,7 @@
     "screenshots/commit-options.png",
     "screenshots/artifact-created.png"
   ],
-  "preview_url": null
+  "preview_url": "https://run-odd-teaser-prd-v1-1-curs.klappy-dev-website.pages.dev",
+  "evidence_url": "https://run-odd-teaser-prd-v1-1-curs.klappy-dev-website.pages.dev/_evidence/",
+  "github_url": "https://github.com/klappy/klappy.dev/tree/run/odd-teaser/prd-v1.1/cursor/a/claude-opus-4/dc7fda79"
 }
