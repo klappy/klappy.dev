@@ -14,9 +14,9 @@
   "target_branch": "run/odd-teaser/prd-v1.1/cursor/a/claude-opus-4/6593bb53",
   "git_head": "46429b42e02a84310f03962471cb506a1da1fb8d",
   "registered_at": "2026-01-31T21:29:10.189Z",
-  "completed_at": null,
+  "completed_at": "2026-01-31T21:36:00.000Z",
   "finalized_at": null,
-  "status": "OPEN",
+  "status": "CLOSED",
   "evidence_index": [
     "screenshots/initial-state.png",
     "screenshots/ready-to-commit.png",
