@@ -1,15 +1,31 @@
-# Klappy.dev — Odd Teaser PRD (v1.0)
+# Klappy.dev — Odd Teaser PRD (v1.1)
 
 ---
 
 ## Header
 
-- **PRD Version:** v1.0
+- **PRD Version:** v1.1
 - **Lane:** odd-teaser
 - **Status:** Active
 - **Epoch:** E0004 (Epistemic Separation Era)
 - **Graduated from:** klappy://docs/guiding-artifacts/epoch-4/klappy-dev-poc-prd
 - **Supersedes:** website, ai-navigation
+
+---
+
+## PRD Change Log
+
+### v1.1 — Entry-State Posture Correction
+
+This revision restores a thinking-first entry posture.
+
+Changes:
+- Conversational thinking precedes artifact commitment
+- Artifact creation is emergent and consent-based
+- Entry-state pressure has been explicitly removed
+
+No new features added.
+No non-goals relaxed.
 
 ---
 
@@ -20,6 +36,22 @@ Klappy.dev is a **single-session epistemic experience**.
 Its sole purpose is to help a visitor externalize at least one epistemic artifact and leave with something concrete.
 
 **Klappy.dev must always be easier to leave than to continue.**
+
+---
+
+## Entry-State Behavioral Contract (v1.1)
+
+On first load, odd-teaser MUST behave as a thinking space, not an artifact editor.
+
+The initial experience MUST communicate:
+- nothing is committed yet
+- messy thinking is allowed
+- structure will not be forced
+
+The primary affordance is conversational input.
+Artifact systems MUST remain dormant until explicitly consented.
+
+If a user hesitates due to fear of "doing it wrong," the entry state has failed.
 
 ---
 
@@ -56,8 +88,8 @@ If a feature increases time-on-site without increasing artifact creation, it is 
 ## Core Experience
 
 - Single-page web app
-- Primary surface: conversational input
-- Secondary surface: artifact drawer
+- Primary surface: conversational input (thinking-first)
+- Secondary surface: artifact drawer (dormant until consented commitment)
 - No navigation tree
 - No menus beyond artifact visibility
 
@@ -83,6 +115,16 @@ Export is the **exit ramp** (one-click, Markdown, local-only).
 - color-system >=1.0.0 <2.0.0
 - typography >=1.0.0 <2.0.0
 - spacing >=1.0.0 <2.0.0
+
+---
+
+## LLM Behavior Enforcement
+
+LLM behavior for odd-teaser is defined in:
+
+`products/odd-teaser/behavior.md`
+
+Violation of this behavior constitutes a product defect.
 
 ---
 
