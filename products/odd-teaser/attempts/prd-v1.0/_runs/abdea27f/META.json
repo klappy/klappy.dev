@@ -12,11 +12,17 @@
   "worktree_path": "/Users/chrisklapp/klappy.dev",
   "branch": "run/odd-teaser/prd-v1.0/cursor/a/claude-opus-4/402940ce",
   "target_branch": "run/odd-teaser/prd-v1.0/cursor/a/claude-opus-4/abdea27f",
-  "git_head": "14f97206398a86fe47781c117e16cf2c55f7986a",
+  "git_head": "24082623782a999b930f11ef41e6cec7347f8330",
   "registered_at": "2026-01-31T18:33:52.518Z",
   "completed_at": null,
   "finalized_at": null,
   "status": "OPEN",
-  "evidence_index": [],
-  "preview_url": null
+  "evidence_index": [
+    "screenshots/initial-state.png",
+    "screenshots/artifact-created.png",
+    "screenshots/all-three-artifacts.png"
+  ],
+  "preview_url": null,
+  "github_url": "https://github.com/klappy/klappy.dev/tree/run/odd-teaser/prd-v1.0/cursor/a/claude-opus-4/402940ce",
+  "notes": "PENDING: Cloudflare Pages project needs to be created for odd-teaser lane. This is the first attempt on this lane."
 }
