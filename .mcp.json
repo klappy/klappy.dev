@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "oddkit": {
-      "command": "npx",
-      "args": ["--yes", "--package", "github:klappy/oddkit", "oddkit-mcp"],
+      "command": "oddkit-mcp",
+      "args": [],
       "env": {
         "ODDKIT_BASELINE": "https://github.com/klappy/klappy.dev.git"
       }
