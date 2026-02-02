@@ -945,6 +945,24 @@
       ]
     },
     {
+      "uri": "klappy://canon/agents/odd-teaser",
+      "path": "/canon/agents/odd-teaser.md",
+      "title": "ODD Teaser",
+      "type": "agent-role",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "neutral",
+      "stability": "evolving",
+      "tags": [
+        "odd",
+        "teaser",
+        "thinking-companion",
+        "artifacts",
+        "chat"
+      ]
+    },
+    {
       "uri": "klappy://canon/resonance/ooda-loop",
       "path": "/canon/resonance/ooda-loop.md",
       "title": "OODA Loop",
