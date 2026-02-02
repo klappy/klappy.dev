@@ -23,9 +23,9 @@ function emitTelemetry(name, payload) {
   console.log('[Telemetry]', { name, payload, timestamp: new Date().toISOString() });
 }
 
-// Call Claude API for thinking companion response
+// Call API for thinking companion response
 async function getCompanionResponse(userText) {
-  // Build messages array for Claude
+  // Build messages array
   const messages = state.conversationHistory
     .filter(m => !m.isDetection) // Exclude detection prompts from history
     .map(m => ({
@@ -33,10 +33,15 @@ async function getCompanionResponse(userText) {
       content: m.content
     }));
 
-  // Add the new user message
+  // Add the new user message, with consent context if pending
+  let messageContent = userText;
+  if (state.pendingDetection) {
+    messageContent = `[CONTEXT: User was just asked if they want to capture a ${state.pendingDetection.type}. Their response:] ${userText}`;
+  }
+
   messages.push({
     role: 'user',
-    content: userText
+    content: messageContent
   });
 
   try {
@@ -123,50 +128,12 @@ function hideLoading() {
   }
 }
 
-// Check if text is consent
-function isConsent(text) {
-  const lower = text.toLowerCase().trim();
-  return ['yes', 'yeah', 'yep', 'sure', 'ok', 'okay', 'yea', 'y', 'do it', 'capture', 'capture it', 'lock it', 'lock it in'].includes(lower);
-}
-
-// Check if text is decline
-function isDecline(text) {
-  const lower = text.toLowerCase().trim();
-  return ['no', 'nope', 'nah', 'n', 'skip', 'nevermind', 'never mind', 'cancel'].includes(lower);
-}
-
-// Handle user input
+// Handle user input - LLM handles all interpretation, no hardcoded matching
 async function handleSend() {
   const input = document.getElementById('user-input');
   const text = input.value.trim();
 
   if (!text || state.isLoading) return;
-
-  // If there's a pending detection, check for consent/decline
-  if (state.pendingDetection) {
-    if (isConsent(text)) {
-      addMessage(text, false);
-      input.value = '';
-      updateSendButton();
-      captureArtifact();
-      return;
-    } else if (isDecline(text)) {
-      addMessage(text, false);
-      input.value = '';
-      updateSendButton();
-      declineCapture();
-      return;
-    }
-    // Otherwise, they're continuing conversation - clear pending
-    state.pendingDetection = null;
-    // Remove detection UI
-    const detectionMsg = document.querySelector('.message.detection');
-    if (detectionMsg) {
-      detectionMsg.classList.remove('detection');
-      const actions = detectionMsg.querySelector('.detection-actions');
-      if (actions) actions.remove();
-    }
-  }
 
   // Add user message
   addMessage(text, false);
@@ -176,7 +143,7 @@ async function handleSend() {
   // Show loading state
   showLoading();
 
-  // Get response from LLM
+  // Get response from LLM (it handles consent/decline detection)
   const response = await getCompanionResponse(text);
 
   // Hide loading
@@ -192,16 +159,36 @@ async function handleSend() {
     // Surface the detection for consent
     addMessage(response.response, true, true);
 
+  } else if (response.type === 'consent') {
+    // LLM recognized user consented - capture the pending artifact
+    if (state.pendingDetection) {
+      captureArtifact();
+    } else {
+      addMessage(response.response, true);
+    }
+
+  } else if (response.type === 'decline') {
+    // LLM recognized user declined
+    declineCapture();
+
   } else if (response.type === 'response') {
-    // Normal companion response
+    // Normal companion response - clear any stale pending detection
+    if (state.pendingDetection) {
+      // User moved on without consenting/declining
+      state.pendingDetection = null;
+      const detectionMsg = document.querySelector('.message.detection');
+      if (detectionMsg) {
+        detectionMsg.classList.remove('detection');
+        const actions = detectionMsg.querySelector('.detection-actions');
+        if (actions) actions.remove();
+      }
+    }
     addMessage(response.response, true);
 
   } else if (response.type === 'error') {
-    // Error message
     addMessage(response.response, true);
 
   } else {
-    // Fallback: treat as plain response
     addMessage(response.response || 'I\'m listening.', true);
   }
 }

@@ -83,7 +83,7 @@ After detecting an artifact:
 
 ## Output Format
 
-All responses MUST be valid JSON:
+All responses MUST be valid JSON with one of these types:
 
 ### Normal Response
 
@@ -96,6 +96,22 @@ All responses MUST be valid JSON:
 ```json
 {"type": "artifact_detected", "artifact_type": "learning|decision|override", "response": "That sounds like a learning. Want to capture it?"}
 ```
+
+### Consent (user agreed to capture)
+
+```json
+{"type": "consent", "response": "Got it."}
+```
+
+Use this when user responds affirmatively to a capture question (yes, sure, do it, capture it, etc.)
+
+### Decline (user declined to capture)
+
+```json
+{"type": "decline", "response": "Okay, continuing."}
+```
+
+Use this when user declines a capture question (no, skip, nevermind, etc.)
 
 ---
 
