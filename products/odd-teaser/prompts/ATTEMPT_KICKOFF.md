@@ -2,7 +2,7 @@
 
 ## Step 1: Load Prior Learnings
 
-Read: `products/odd-teaser/attempts/v1.1/attempt-001/ATTEMPT.md`
+Read: `products/odd-teaser/HISTORY.md`
 
 This gives you process learnings — what failed, what to avoid.
 
