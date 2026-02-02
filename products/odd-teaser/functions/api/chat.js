@@ -58,10 +58,24 @@ export async function onRequestPost(context) {
     'Access-Control-Allow-Headers': 'Content-Type',
   };
 
+  // DEBUG: Log what we have
+  const debug = {
+    hasEnv: !!env,
+    hasOpenAIKey: !!env?.OPENAI_API_KEY,
+    keyPrefix: env?.OPENAI_API_KEY?.substring(0, 7) || 'MISSING',
+    url: request.url,
+    method: request.method
+  };
+  console.log('[DEBUG] Request received:', JSON.stringify(debug));
+
   try {
     const apiKey = env.OPENAI_API_KEY;
     if (!apiKey) {
-      return new Response(JSON.stringify({ error: 'API key not configured' }), {
+      console.log('[DEBUG] No API key found in env');
+      return new Response(JSON.stringify({
+        error: 'API key not configured',
+        debug: { hasEnv: !!env, envKeys: Object.keys(env || {}) }
+      }), {
         status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' }
       });
@@ -131,8 +145,12 @@ export async function onRequestPost(context) {
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('OpenAI API error:', errorText);
-      return new Response(JSON.stringify({ error: 'OpenAI API error', details: errorText }), {
+      console.error('[DEBUG] OpenAI API error:', response.status, errorText);
+      return new Response(JSON.stringify({
+        error: 'OpenAI API error',
+        status: response.status,
+        details: errorText
+      }), {
         status: response.status,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' }
       });

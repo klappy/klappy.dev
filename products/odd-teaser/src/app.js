@@ -50,6 +50,7 @@ async function getCompanionResponse(userText) {
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
+      console.error('API response error:', response.status, errorData);
 
       if (response.status === 429) {
         return {
@@ -58,7 +59,12 @@ async function getCompanionResponse(userText) {
         };
       }
 
-      throw new Error(errorData.error || 'API request failed');
+      // Show detailed error for debugging
+      const details = errorData.details || errorData.error || `Status ${response.status}`;
+      return {
+        type: 'error',
+        response: `API Error: ${details}`
+      };
     }
 
     return await response.json();
@@ -67,7 +73,7 @@ async function getCompanionResponse(userText) {
     console.error('API error:', error);
     return {
       type: 'error',
-      response: 'Connection hiccup. Write more and I\'ll catch up.'
+      response: `Error: ${error.message}`
     };
   }
 }
