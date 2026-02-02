@@ -1,10 +1,10 @@
-# Klappy.dev — Odd Teaser PRD (v1.1)
+# Klappy.dev — Odd Teaser PRD (v1.2)
 
 ---
 
 ## Header
 
-- **PRD Version:** v1.1
+- **PRD Version:** v1.2
 - **Lane:** odd-teaser
 - **Status:** Active
 - **Epoch:** E0004 (Epistemic Separation Era)
@@ -15,6 +15,18 @@
 
 ## PRD Change Log
 
+### v1.2 — Reference Implementation with Real LLM
+
+This revision requires **real Claude API integration**.
+
+Changes:
+- Pattern matching / regex is explicitly forbidden
+- Cloudflare Worker required for API proxy
+- Rate limiting required (100 requests/hour per IP)
+- Streaming responses required
+
+This is a **reference implementation** — it must demonstrate how ODD actually works.
+
 ### v1.1 — Entry-State Posture Correction
 
 This revision restores a thinking-first entry posture.
@@ -23,9 +35,6 @@ Changes:
 - Conversational thinking precedes artifact commitment
 - Artifact creation is emergent and consent-based
 - Entry-state pressure has been explicitly removed
-
-No new features added.
-No non-goals relaxed.
 
 ---
 
@@ -39,7 +48,56 @@ Its sole purpose is to help a visitor externalize at least one epistemic artifac
 
 ---
 
-## Entry-State Behavioral Contract (v1.1)
+## Reference Implementation Requirement (v1.2)
+
+Klappy.dev is the **reference implementation of Observation-Driven Development**.
+
+A visitor arrives, engages in genuine epistemic externalization powered by **real LLM orchestration**, and leaves with artifacts they can use.
+
+### Forbidden
+
+- Regex pattern matching for artifact detection
+- Keyword-based detection
+- Simulated LLM responses
+- Hollow companion responses ("Go on.", "Mmm.")
+
+### Required
+
+- Real Claude API integration
+- LLM understands context, not just keywords
+- Meaningful companion responses
+- Artifact suggestions with reasoning
+
+---
+
+## Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                     klappy.dev/odd-teaser                    │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  ┌──────────────┐    ┌─────────────────────────────────┐   │
+│  │   Frontend   │───▶│      Cloudflare Worker          │   │
+│  │  (Thinking   │    │      (API proxy)                │   │
+│  │   Space UI)  │◀───│                                 │   │
+│  └──────────────┘    └─────────────────────────────────┘   │
+│                                │                            │
+│                                ▼                            │
+│                      ┌─────────────────┐                   │
+│                      │  Claude API     │                   │
+│                      └─────────────────┘                   │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+- **Frontend**: Thinking-first UI at `products/odd-teaser/src/`
+- **Cloudflare Worker**: Proxies Claude API, handles rate limiting
+- **No persistence**: Stateless, no auth, no localStorage
+
+---
+
+## Entry-State Behavioral Contract
 
 On first load, odd-teaser MUST behave as a thinking space, not an artifact editor.
 
@@ -80,6 +138,7 @@ The product must NOT:
 - Become a documentation site
 - Navigate users to canon/docs
 - Answer questions about ODD
+- Use regex/pattern matching for artifact detection
 
 If a feature increases time-on-site without increasing artifact creation, it is invalid.
 
@@ -136,19 +195,28 @@ Violation of this behavior constitutes a product defect.
 - The system can stop interacting without error
 - Telemetry events fire correctly
 - No features that increase time-on-site without increasing artifact creation
+- **Real LLM responses (not regex/keywords)**
 
 ---
 
-## Definition of Done
+## Definition of Done (v1.2)
 
-- Build output produced
-- Visual proof captured
-- Artifact creation verified (all 3 types)
-- Export round-trip verified
-- Cloudflare Preview URL provided
-- Evidence URL provided
-- Self-audit confirms no retention/engagement features
-- Self-audit confirms no teaching/navigation features
+### Must Have
+- [ ] Real Claude API integration (not regex)
+- [ ] Streaming responses to frontend
+- [ ] Cloudflare Worker deployment
+- [ ] Rate limiting (100 requests/hour per IP)
+- [ ] Export works without any backend dependency
+- [ ] Build output produced
+- [ ] Visual proof captured (screenshots committed)
+- [ ] Artifact creation verified (all 3 types)
+
+### Must NOT Have
+- [ ] User accounts or authentication
+- [ ] Persistent storage of conversations
+- [ ] Engagement optimization features
+- [ ] Navigation beyond single-page experience
+- [ ] Regex pattern matching
 
 ---
 
