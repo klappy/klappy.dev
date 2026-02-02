@@ -3,17 +3,111 @@
  *
  * Handles API routes and serves static files.
  * This is the "advanced mode" approach for Cloudflare Pages.
+ *
+ * Fetches system prompt from oddkit.klappy.dev/mcp
  */
 
-const SYSTEM_PROMPT = `You are a thinking companion. You think alongside the user, reflect what they say, and notice when they've landed on something worth capturing (a learning, decision, or correction).
+// Fallback prompt based on behavior.md contract
+const FALLBACK_PROMPT = `You are a thinking companion, not a teacher, assistant, or chatbot.
 
-Keep responses to 1-2 sentences. Use their words. Ask about what they mentioned.
+Your purpose is to help the user externalize their epistemic artifacts (learnings, decisions, overrides) and leave with something concrete.
 
-When you detect they've expressed a realization, made a decision, or corrected earlier thinking, ask if they want to capture it as an artifact.
+Entry-State: Start with openness. Accept messy input. Reflect, don't direct. Stay in thinking mode.
+
+Artifact Detection:
+- Learning signals: "realized", "discovered", "turns out", "the issue was"
+- Decision signals: "decided to", "choosing", "going with", "tradeoff is"
+- Override signals: "actually", "scratch that", "correction", "wrong about"
+
+When you detect an artifact signal, surface it: "That sounds like a learning. Want to capture it?"
+Wait for consent. Accept rejection gracefully.
+
+Keep responses to 1-3 sentences. Use their words, not methodology terminology. Surface, don't synthesize.
+
+Do NOT: extend conversations, add engagement hooks, reference ODD concepts, suggest next steps.
+
+If user asks what this is: "A place to externalize your thinking. Write what's on your mind, and I'll help you notice when something's worth capturing."
 
 Output JSON:
 - Normal response: {"type": "response", "response": "..."}
 - Artifact detected: {"type": "artifact_detected", "artifact_type": "learning|decision|override", "response": "..."}`;
+
+// Cache for oddkit prompt
+let cachedPrompt = null;
+let cacheTime = 0;
+const CACHE_TTL = 300000; // 5 minutes
+
+async function fetchOddkitPrompt() {
+  // Return cached if valid
+  if (cachedPrompt && Date.now() - cacheTime < CACHE_TTL) {
+    return cachedPrompt;
+  }
+
+  try {
+    // MCP JSON-RPC request to list prompts
+    const listResponse = await fetch('https://oddkit.klappy.dev/mcp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        jsonrpc: '2.0',
+        id: 1,
+        method: 'prompts/list'
+      })
+    });
+
+    if (!listResponse.ok) {
+      console.log('[oddkit] List prompts failed:', listResponse.status);
+      return FALLBACK_PROMPT;
+    }
+
+    const listData = await listResponse.json();
+    console.log('[oddkit] Available prompts:', JSON.stringify(listData));
+
+    // Look for odd-teaser or thinking-companion prompt
+    const prompts = listData.result?.prompts || [];
+    const targetPrompt = prompts.find(p =>
+      p.name?.includes('odd-teaser') ||
+      p.name?.includes('thinking-companion') ||
+      p.name?.includes('scribe')
+    );
+
+    if (!targetPrompt) {
+      console.log('[oddkit] No matching prompt found, using fallback');
+      return FALLBACK_PROMPT;
+    }
+
+    // Fetch the specific prompt
+    const getResponse = await fetch('https://oddkit.klappy.dev/mcp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        jsonrpc: '2.0',
+        id: 2,
+        method: 'prompts/get',
+        params: { name: targetPrompt.name }
+      })
+    });
+
+    if (!getResponse.ok) {
+      console.log('[oddkit] Get prompt failed:', getResponse.status);
+      return FALLBACK_PROMPT;
+    }
+
+    const promptData = await getResponse.json();
+    const content = promptData.result?.messages?.[0]?.content?.text ||
+                    promptData.result?.description ||
+                    FALLBACK_PROMPT;
+
+    cachedPrompt = content;
+    cacheTime = Date.now();
+    console.log('[oddkit] Prompt fetched successfully');
+    return content;
+
+  } catch (err) {
+    console.log('[oddkit] Fetch error:', err.message);
+    return FALLBACK_PROMPT;
+  }
+}
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -51,8 +145,11 @@ async function handleChat(request, env) {
     });
   }
 
+  // Fetch system prompt from oddkit (with fallback)
+  const systemPrompt = await fetchOddkitPrompt();
+
   const openaiMessages = [
-    { role: 'system', content: SYSTEM_PROMPT },
+    { role: 'system', content: systemPrompt },
     ...messages
   ];
 
