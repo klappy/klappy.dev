@@ -2,252 +2,207 @@
 
 You are starting an attempt in the **odd-teaser** lane.
 
+**This is a reference implementation lane.** It must demonstrate real ODD with real LLM.
+
 ---
 
-## STOP — READ THIS FIRST
+## ⛔ MANDATORY: READ PRIOR LEARNINGS FIRST
 
-**The #1 cause of failed attempts is writing outside the attempt folder.**
+**Before proceeding, read: `products/odd-teaser/attempts/v1.1/attempt-001/ATTEMPT.md`**
 
-This is not a suggestion. This is not flexible. This is the rule that will fail your attempt regardless of how good your code is.
+Attempt-001 FAILED due to:
+1. Writing only to `attempts/` folder instead of lane `src/`
+2. Using regex pattern matching instead of real Claude API
+3. Leaving JS inline in HTML (broke build detection)
+4. Missing `index.html` at lane root (broke Vite)
+
+**These mistakes wasted hours. Don't repeat them.**
+
+---
+
+## ⚠️ CORRECTED: Branch Is The Gate
+
+**The #1 cause of failed attempts was wrong guidance about file boundaries.**
 
 ```
-+-----------------------------------------------------------------------+
-|                     YOUR SANDBOX (Agent Authority)                     |
-|                                                                        |
-|   products/odd-teaser/attempts/v<VERSION>/attempt-NNN/                 |
-|                                                                        |
-|   You can write ANYTHING here. Go wild.                                |
-|   - ATTEMPT.md, META.json                                              |
-|   - src/           <- proposed implementation code                     |
-|   - evidence/      <- proof it works (screenshots, logs, exports)      |
-|                                                                        |
-+------------------------------------------------------------------------+
-|                     FORBIDDEN ZONE (Human Authority)                   |
-|                                                                        |
-|   products/odd-teaser/src/           <- NEVER (human promotes)         |
-|   products/odd-teaser/dist/          <- NEVER (build output)           |
-|   products/odd-teaser/PRD.md         <- NEVER (propose changes only)   |
-|   products/odd-teaser/behavior.md    <- NEVER (propose changes only)   |
-|   public/                            <- NEVER (deployment is human)    |
-|                                                                        |
-|   These paths require HUMAN promotion. Not your job.                   |
-|                                                                        |
-+------------------------------------------------------------------------+
+┌─────────────────────────────────────────────────────────────────────┐
+│                     CORRECTED SANDBOX                                │
+│                                                                     │
+│   Write implementation to: products/odd-teaser/src/                 │
+│   Create Vite entry at:    products/odd-teaser/index.html           │
+│   Record attempt at:       products/odd-teaser/attempts/            │
+│                                                                     │
+│   The BRANCH is the protection boundary.                            │
+│   Human review happens at PR merge, not file location.              │
+│                                                                     │
+├─────────────────────────────────────────────────────────────────────┤
+│                     STILL FORBIDDEN                                  │
+│                                                                     │
+│   ❌ products/odd-teaser/PRD.md   — Only human revises              │
+│   ❌ public/                      — Production deployment           │
+│   ❌ Regex pattern matching       — Use real Claude API             │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## AUTHORITY BOUNDARIES — What You CANNOT Do
+## ✅ PRE-FLIGHT CHECKLIST
 
-| Action | Why It Fails Your Attempt |
-|--------|---------------------------|
-| Write to lane `src/` | Lane source is human-promoted, not agent-deployed |
-| Write to `public/` | Production deployment requires human review |
-| Claim CHAMPION status | Agent stops at CLOSED; human elevates to CHAMPION |
-| Update lane PRD | Propose changes in ATTEMPT.md; human applies |
-| Deploy to Cloudflare | Even preview deploys require human action |
-| Modify behavior.md | Propose changes; human reviews |
+Before you write a single line of code:
 
-**"AI is an accelerator, not an authority."**
-
----
-
-## PRE-FLIGHT CHECKLIST
-
-Before you write a single line of code, verify you understand:
-
-- [ ] My attempt folder is: `products/odd-teaser/attempts/v<VERSION>/attempt-NNN/`
-- [ ] ALL my file writes will be inside that folder
-- [ ] If I need to propose UI code, I write to `attempt-NNN/src/`
-- [ ] Screenshots and evidence go to `attempt-NNN/evidence/`
-- [ ] I will NOT update lane `src/` — that's a human promotion
-- [ ] I will NOT claim CHAMPION — I stop at CLOSED
-- [ ] If the PRD seems impossible, I FAIL early and document why
+- [ ] I read `attempts/v1.1/attempt-001/ATTEMPT.md` (prior learnings)
+- [ ] I read `PRD.md` (requirements)
+- [ ] I will write to `products/odd-teaser/src/` (not just attempts/)
+- [ ] I will create `products/odd-teaser/index.html` for Vite
+- [ ] I will extract JS to `.js` files (not inline)
+- [ ] I will capture screenshots with Playwright and commit them
+- [ ] I will use real Claude API (not regex)
 
 ---
 
-## Step 1: Find Active Version
+## 📋 Step 1: Register Attempt
 
-Check `HISTORY.md` — the Versions table shows which version is **Active**.
-
-Note the active version (e.g., `v1.1`). This is your target.
-
----
-
-## Step 2: Read Context
-
-Read these files in order:
-
-1. `README.md` — Lane overview
-2. `PRD.md` — The authoritative PRD (currently v1.1)
-3. `behavior.md` — LLM behavior contract
-4. `HISTORY.md` — Prior attempts and learnings
-5. `LEDGER.md` — Product-level decisions and locks
-
----
-
-## Step 3: Review Prior Art
-
-Read the learnings from previous attempts:
-
-| Path | What To Learn |
-|------|---------------|
-| `attempts/prd-v1.1/_runs/*/LEARNINGS.md` | Entry-state posture lessons |
-
-If you see patterns in past failures that relate to your task, **stop and plan around them**.
-
----
-
-## Step 4: Create Attempt Folder
-
-Create: `attempts/v<VERSION>/attempt-NNN/`
-
-Where NNN is the next number (check existing folders).
+Create: `products/odd-teaser/attempts/v<VERSION>/attempt-NNN/`
 
 ### Required Structure
 
 ```
 attempt-NNN/
-+-- ATTEMPT.md              # Closure record (status, outcome, learnings)
-+-- META.json               # Machine-readable metadata
-+-- src/                    # Proposed implementation
-|   +-- components/         # UI components
-|   +-- styles/             # Styling
-|   +-- index.html          # Entry point
-+-- evidence/               # Proof of work
-    +-- screenshots/        # Visual evidence
-    +-- export-sample.md    # Example artifact export
-    +-- *.md                # Verification evidence
+├── ATTEMPT.md              # Closure record
+├── META.json               # Machine-readable metadata
+└── evidence/
+    └── screenshots/        # Visual proof (REQUIRED)
 ```
 
 ---
 
-## Step 5: Execute (Inside Your Sandbox)
+## 📋 Step 2: Build Implementation
 
-Follow the PRD's Definition of Done exactly.
+Write to lane source: `products/odd-teaser/src/`
 
-### Key Requirements from PRD
+### Required Files
 
-1. **Entry-state**: Thinking-first, not artifact editor
-2. **Artifact types**: Learnings, Decisions, Overrides
-3. **Export**: One-click, Markdown, local-only
-4. **Non-goals**: No auth, no persistence, no teaching, no navigation
+```
+products/odd-teaser/
+├── index.html              # Vite entry point (REQUIRED at lane root)
+└── src/
+    ├── app.js              # Application logic (REQUIRED .js file)
+    └── styles/main.css     # Styling
+```
 
-### Testing Your Implementation
+### Build Detection Requirements
+
+- Smart-build checks for `.js`/`.ts` files in `src/`
+- Smart-build looks for `index.html` at lane root for Vite
+- Inline JS in HTML will NOT be detected
+
+---
+
+## 📋 Step 3: Test Build
 
 ```bash
-# WRONG: This violates containment
-cp -r attempt-NNN/src/* products/odd-teaser/src/
-
-# RIGHT: Test locally from your sandbox
-npx serve attempt-NNN/src/
+npm run build -- --lane odd-teaser
 ```
+
+If build shows "No app code found" — you're missing `.js` files or lane root `index.html`.
 
 ---
 
-## Step 6: Close (NOT Champion)
+## 📋 Step 4: Capture Evidence
+
+**Your VM is invisible to humans.** Screenshots must be committed.
+
+```bash
+npx playwright screenshot http://localhost:3333 evidence/screenshots/01-entry-state.png
+```
+
+Commit screenshots to `attempts/v<VERSION>/attempt-NNN/evidence/screenshots/`.
+
+---
+
+## 📋 Step 5: Push and Verify
+
+```bash
+git push -u origin <branch>
+```
+
+After Cloudflare builds, verify preview URL loads the app (not placeholder).
+
+---
+
+## 📋 Step 6: Close Attempt
 
 Update `ATTEMPT.md` with:
-
-- **Status**: CLOSED (not CHAMPION — that's not your call)
-- Outcome summary
-- Evidence produced
-- Self-audit results
-- Learnings
-
-**You do NOT:**
-- Update `HISTORY.md` (human does this)
-- Deploy to production (human does this)
-- Mark status as CHAMPION (human does this)
+- Status: CLOSED
+- What worked / what didn't
+- Learnings for next attempt
 
 ---
 
-## Product-Specific Constraints
+## What You're Building
 
-### Core Philosophy
+A thinking companion with **real Claude API** integration:
 
-This is NOT a documentation site. This is NOT a teaching tool.
+- User types freely ("What's on your mind?")
+- Claude API detects artifact scents (learning/decision/override)
+- Surfaces for consent: "That sounds like a learning. Capture it?"
+- On consent, adds to artifact drawer
+- Export to Markdown (local download, no backend)
 
-The product exists for **epistemic externalization and exit**.
+### Architecture
 
-**Klappy.dev must always be easier to leave than to continue.**
-
-### Success Definition
-
-A first-time visitor leaves after one session having:
-
-1. Externalized at least one epistemic artifact
-2. Noticed a missing habit in their own workflow
-3. Taken something with them (export)
-
-The product succeeds even if the user never returns.
-
-### Forbidden Features
-
-If a feature increases time-on-site without increasing artifact creation, it is invalid.
-
-- No engagement optimization
-- No retention features
-- No navigation trees
-- No menus beyond artifact visibility
+- Frontend at `products/odd-teaser/src/`
+- Cloudflare Worker proxies Claude API with rate limiting
+- No auth, no persistence, stateless
 
 ---
 
-## Common Violations (Don't Be This Agent)
+## Common Violations
 
-### Violation 1: Building a documentation browser
+### Violation 1: Writing only to attempts/
 
 ```diff
-- "Let me add a sidebar to browse ODD concepts"     <- VIOLATION
-+ Single-page, artifact-focused experience          <- CORRECT
+- Writing to attempts/v1.2/attempt-001/src/
++ Writing to products/odd-teaser/src/
 ```
 
-**Why it fails**: PRD explicitly forbids navigation and teaching.
+**Why it fails**: Build can't find code. Deploys placeholder.
 
-### Violation 2: Adding engagement features
+### Violation 2: Inline JS
 
 ```diff
-- "Let me add a progress indicator to encourage completion"  <- VIOLATION
-+ Exit is the goal, not completion                          <- CORRECT
+- <script>const app = {...}</script>
++ <script src="app.js"></script>
 ```
 
-**Why it fails**: Engagement optimization is a non-goal.
+**Why it fails**: Smart-build checks for .js files. Inline JS not detected.
 
-### Violation 3: Persisting user state
+### Violation 3: Regex pattern matching
 
 ```diff
-- "Let me save artifacts to localStorage for return visits"  <- VIOLATION
-+ Export is the exit ramp; no persistence                   <- CORRECT
+- if (/realized|discovered/.test(text))
++ const response = await claude.messages.create(...)
 ```
 
-**Why it fails**: PRD explicitly forbids identity persistence.
+**Why it fails**: This is a reference implementation. Regex is not LLM.
+
+### Violation 4: "I tested locally"
+
+```diff
+- "The server is running and it works"
++ Screenshot committed to evidence/screenshots/
+```
+
+**Why it fails**: Your VM is invisible. Humans need proof in repo.
 
 ---
 
-## If PRD Seems Problematic
+## Success Criteria
 
-**Don't bend rules to make it work. Don't steer a miss.**
-
-1. STOP immediately
-2. Document the issue in `ATTEMPT.md`
-3. Mark attempt as FAILED with clear explanation
-4. Propose what a new PRD version should address
-
-A FAILED attempt with clear learnings is more valuable than a "success" that violates constraints.
-
----
-
-## Final Reminder
-
-```
-+------------------------------------------------------------+
-|                                                             |
-|   Your world is:                                            |
-|   products/odd-teaser/attempts/v<VERSION>/attempt-NNN/      |
-|                                                             |
-|   Everything else is someone else's.                        |
-|                                                             |
-|   "AI is an accelerator, not an authority."                 |
-|                                                             |
-+------------------------------------------------------------+
-```
+- [ ] Cloudflare preview URL loads app (not placeholder)
+- [ ] Real LLM responses (not keyword matching)
+- [ ] Artifact detection understands context
+- [ ] Export downloads Markdown
+- [ ] Screenshots committed to repo
+- [ ] ATTEMPT.md documents learnings
