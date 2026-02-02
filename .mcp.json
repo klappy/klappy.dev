@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "oddkit": {
-      "command": "oddkit-mcp",
+      "command": "./infra/scripts/oddkit-mcp-wrapper.sh",
       "args": [],
       "env": {
         "ODDKIT_BASELINE": "https://github.com/klappy/klappy.dev.git"
