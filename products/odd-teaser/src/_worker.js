@@ -4,32 +4,25 @@
  * Handles API routes and serves static files.
  * This is the "advanced mode" approach for Cloudflare Pages.
  *
- * Fetches system prompt from oddkit.klappy.dev/mcp
+ * Fetches odd-orchestrator prompt from oddkit.klappy.dev/mcp
  */
 
-// Fallback prompt based on behavior.md contract
-const FALLBACK_PROMPT = `You are NOT a chatbot or assistant. You are a thinking companion.
+// JSON format requirements appended to MCP prompt
+const JSON_FORMAT_SPEC = `
 
-DO NOT say "How can I help you?" or "How can I assist you?" - NEVER.
-DO NOT offer help. DO NOT be servile.
+---
 
-You REFLECT what the user says. You NOTICE when they've landed on something worth capturing.
+## Output Format for odd-teaser Interface
 
-ODD = Outcomes-Driven Development. oddkit = the toolkit that supports ODD.
+This is a chat interface. All responses MUST be valid JSON with one of these types:
 
-RESPOND WITH JSON ONLY:
-{"type": "response", "response": "..."} — reflect their thinking
-{"type": "artifact_detected", "artifact_type": "learning|decision|override", "response": "..."} — they said something worth capturing
-{"type": "consent", "response": "Got it."} — they agreed to capture
-{"type": "decline", "response": "Okay."} — they declined
+{"type": "response", "response": "Your reflection here."} — normal response, reflect their thinking
+{"type": "artifact_detected", "artifact_type": "learning|decision|override", "response": "That sounds like a learning. Want to capture it?"} — detected something worth capturing
+{"type": "consent", "response": "Got it."} — user agreed to capture (yes, sure, do it, etc.)
+{"type": "decline", "response": "Okay."} — user declined (no, skip, nevermind, etc.)
 
-Artifact signals:
-- learning: "realized", "turns out", "figured out", "the issue was"
-- decision: "decided", "going with", "choosing", "the plan is"
-- override: "actually", "scratch that", "wait no", "I was wrong"
-
-When greeting: {"type": "response", "response": "What's on your mind?"}
-Keep responses SHORT. 1-2 sentences. Use THEIR words.`;
+Keep responses to 1-2 sentences. Use THEIR words, not methodology jargon.
+When greeting: {"type": "response", "response": "What's on your mind?"}`;
 
 // Cache for oddkit prompt
 let cachedPrompt = null;
@@ -42,66 +35,34 @@ async function fetchOddkitPrompt() {
     return cachedPrompt;
   }
 
-  try {
-    // MCP JSON-RPC request to list prompts
-    const listResponse = await fetch('https://oddkit.klappy.dev/mcp', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        jsonrpc: '2.0',
-        id: 1,
-        method: 'prompts/list'
-      })
-    });
+  // Fetch odd-orchestrator from MCP
+  const getResponse = await fetch('https://oddkit.klappy.dev/mcp', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      jsonrpc: '2.0',
+      id: 1,
+      method: 'prompts/get',
+      params: { name: 'odd-orchestrator' }
+    })
+  });
 
-    if (!listResponse.ok) {
-      console.log('[oddkit] List prompts failed:', listResponse.status);
-      return FALLBACK_PROMPT;
-    }
-
-    const listData = await listResponse.json();
-    console.log('[oddkit] Available prompts:', JSON.stringify(listData));
-
-    // Only use odd-teaser - it has JSON format spec for this chat interface
-    const prompts = listData.result?.prompts || [];
-    const targetPrompt = prompts.find(p => p.name === 'odd-teaser');
-
-    if (!targetPrompt) {
-      console.log('[oddkit] No ODD prompt found, using fallback');
-      return FALLBACK_PROMPT;
-    }
-
-    // Fetch the specific prompt
-    const getResponse = await fetch('https://oddkit.klappy.dev/mcp', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        jsonrpc: '2.0',
-        id: 2,
-        method: 'prompts/get',
-        params: { name: targetPrompt.name }
-      })
-    });
-
-    if (!getResponse.ok) {
-      console.log('[oddkit] Get prompt failed:', getResponse.status);
-      return FALLBACK_PROMPT;
-    }
-
-    const promptData = await getResponse.json();
-    const content = promptData.result?.messages?.[0]?.content?.text ||
-                    promptData.result?.description ||
-                    FALLBACK_PROMPT;
-
-    cachedPrompt = content;
-    cacheTime = Date.now();
-    console.log('[oddkit] Prompt fetched from MCP:', targetPrompt.name);
-    return content;
-
-  } catch (err) {
-    console.log('[oddkit] Fetch error:', err.message);
-    return FALLBACK_PROMPT;
+  if (!getResponse.ok) {
+    throw new Error(`MCP fetch failed: ${getResponse.status}`);
   }
+
+  const promptData = await getResponse.json();
+  const content = promptData.result?.messages?.[0]?.content?.text;
+
+  if (!content) {
+    throw new Error('No prompt content from MCP');
+  }
+
+  // Combine MCP prompt with JSON format spec
+  cachedPrompt = content + JSON_FORMAT_SPEC;
+  cacheTime = Date.now();
+  console.log('[oddkit] Prompt fetched from MCP: odd-orchestrator');
+  return cachedPrompt;
 }
 
 const corsHeaders = {
