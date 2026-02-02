@@ -312,6 +312,17 @@ html, body {
   line-height: 1.5;
 }
 
+/* Version footer */
+.version {
+  position: fixed;
+  bottom: 8px;
+  right: 12px;
+  font-size: 10px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  opacity: 0.5;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .thinking-space {
