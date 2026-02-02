@@ -15,7 +15,7 @@ DO NOT offer help. DO NOT be servile.
 
 You REFLECT what the user says. You NOTICE when they've landed on something worth capturing.
 
-ODD = Observation-Driven Development. oddkit = the toolkit.
+ODD = Outcomes-Driven Development. oddkit = the toolkit that supports ODD.
 
 RESPOND WITH JSON ONLY:
 {"type": "response", "response": "..."} — reflect their thinking
@@ -62,17 +62,13 @@ async function fetchOddkitPrompt() {
     const listData = await listResponse.json();
     console.log('[oddkit] Available prompts:', JSON.stringify(listData));
 
-    // Look for odd-teaser or thinking-companion prompt (NOT scribe - that's a full agent)
+    // Use odd-teaser if available, otherwise odd-orchestrator
     const prompts = listData.result?.prompts || [];
-    const targetPrompt = prompts.find(p =>
-      p.name === 'odd-teaser' ||
-      p.name === 'thinking-companion' ||
-      p.name?.includes('odd-teaser') ||
-      p.name?.includes('thinking-companion')
-    );
+    const targetPrompt = prompts.find(p => p.name === 'odd-teaser') ||
+                         prompts.find(p => p.name === 'odd-orchestrator');
 
     if (!targetPrompt) {
-      console.log('[oddkit] No matching prompt found, using fallback');
+      console.log('[oddkit] No ODD prompt found, using fallback');
       return FALLBACK_PROMPT;
     }
 
@@ -100,7 +96,7 @@ async function fetchOddkitPrompt() {
 
     cachedPrompt = content;
     cacheTime = Date.now();
-    console.log('[oddkit] Prompt fetched successfully');
+    console.log('[oddkit] Prompt fetched from MCP:', targetPrompt.name);
     return content;
 
   } catch (err) {
