@@ -331,6 +331,41 @@ body {
 }
 
 /* ============================================
+   LOADING INDICATOR
+   ============================================ */
+
+.message.loading p {
+  display: flex;
+  gap: 4px;
+}
+
+.message.loading .dot {
+  color: var(--color-text-muted);
+  animation: bounce 1.4s infinite ease-in-out;
+}
+
+.message.loading .dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.message.loading .dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.message.loading .dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 

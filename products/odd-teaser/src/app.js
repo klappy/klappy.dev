@@ -1,63 +1,75 @@
 // ============================================
 // ODD TEASER — Thinking Companion
-// PRD v1.1 Implementation
+// PRD v1.2 Implementation
 //
-// KEY CHANGE FROM PRIOR ATTEMPT:
-// - NO manual categorization buttons
-// - LLM-based artifact detection via pattern matching
-// - Surfaces potential artifacts for user consent
+// REAL CLAUDE API INTEGRATION
+// - No regex pattern matching
+// - LLM-based artifact detection
+// - Cloudflare Worker proxy at /api/chat
 // ============================================
 
 const state = {
   artifacts: [],
   pendingDetection: null,
-  conversationHistory: []
+  conversationHistory: [],
+  isLoading: false
 };
 
-// Artifact type patterns (simulating LLM detection)
-const ARTIFACT_PATTERNS = {
-  learning: {
-    patterns: [
-      /\b(realized|discovered|learned|turns out|found out|the issue was|it became clear|now I see|I understand now|figured out)\b/i,
-      /\b(ah[,!]|oh[,!]|aha)\b.*\b(that's|it's|this is)\b/i,
-      /\bthe (real |actual )?(problem|issue|cause|reason) (is|was)\b/i
-    ],
-    surfaceText: "That sounds like something you learned. Want to capture it?"
-  },
-  decision: {
-    patterns: [
-      /\b(decided|choosing|going with|I('ll| will) go with|made the call|the choice is|opting for|picked|selected)\b/i,
-      /\b(tradeoff|trade-off) is\b/i,
-      /\bI'm going to\b.*\binstead of\b/i,
-      /\b(after weighing|considering|given the options)\b/i
-    ],
-    surfaceText: "That reads like a decision. Want to capture it?"
-  },
-  override: {
-    patterns: [
-      /\b(actually|scratch that|correction|wrong about|take that back|on second thought|nevermind|I was wrong)\b/i,
-      /\b(previous|earlier|before).*\b(wrong|incorrect|mistaken)\b/i,
-      /\bupdating my (thinking|understanding|view)\b/i
-    ],
-    surfaceText: "That sounds like you're correcting something. Want to capture it as an override?"
-  }
-};
+// API endpoint (relative URL, works on same origin)
+const API_ENDPOINT = '/api/chat';
 
 // Telemetry (console-only, no PII)
 function emitTelemetry(name, payload) {
   console.log('[Telemetry]', { name, payload, timestamp: new Date().toISOString() });
 }
 
-// Detect artifact scent in text
-function detectArtifactScent(text) {
-  for (const [type, config] of Object.entries(ARTIFACT_PATTERNS)) {
-    for (const pattern of config.patterns) {
-      if (pattern.test(text)) {
-        return { type, surfaceText: config.surfaceText };
+// Call Claude API for thinking companion response
+async function getCompanionResponse(userText) {
+  // Build messages array for Claude
+  const messages = state.conversationHistory
+    .filter(m => !m.isDetection) // Exclude detection prompts from history
+    .map(m => ({
+      role: m.isCompanion ? 'assistant' : 'user',
+      content: m.content
+    }));
+
+  // Add the new user message
+  messages.push({
+    role: 'user',
+    content: userText
+  });
+
+  try {
+    const response = await fetch(API_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ messages })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+
+      if (response.status === 429) {
+        return {
+          type: 'error',
+          response: `Taking a breather. Try again in ${errorData.retryAfter || 60} seconds.`
+        };
       }
+
+      throw new Error(errorData.error || 'API request failed');
     }
+
+    return await response.json();
+
+  } catch (error) {
+    console.error('API error:', error);
+    return {
+      type: 'error',
+      response: 'Connection hiccup. Write more and I\'ll catch up.'
+    };
   }
-  return null;
 }
 
 // Add message to conversation
@@ -68,14 +80,14 @@ function addMessage(content, isCompanion = false, isDetection = false) {
 
   if (isDetection) {
     msg.innerHTML = `
-      <p>${content}</p>
+      <p>${escapeHtml(content)}</p>
       <div class="detection-actions">
         <button class="capture-btn" onclick="captureArtifact()">Yes, capture it</button>
         <button class="decline-btn" onclick="declineCapture()">No, keep writing</button>
       </div>
     `;
   } else {
-    msg.innerHTML = `<p>${content}</p>`;
+    msg.innerHTML = `<p>${escapeHtml(content)}</p>`;
   }
 
   conversation.appendChild(msg);
@@ -84,57 +96,69 @@ function addMessage(content, isCompanion = false, isDetection = false) {
   state.conversationHistory.push({ content, isCompanion, isDetection });
 }
 
-// Companion response (non-directive)
-function getCompanionResponse(userText, detection) {
-  if (detection) {
-    return detection.surfaceText;
-  }
+// Add loading indicator
+function showLoading() {
+  state.isLoading = true;
+  const conversation = document.getElementById('conversation');
+  const loader = document.createElement('div');
+  loader.id = 'loading-indicator';
+  loader.className = 'message companion loading';
+  loader.innerHTML = '<p><span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></p>';
+  conversation.appendChild(loader);
+  conversation.scrollTop = conversation.scrollHeight;
+}
 
-  // Reflective, non-directive responses
-  const reflections = [
-    "I hear you.",
-    "Go on.",
-    "What else?",
-    "Mmm.",
-    "Keep going if there's more."
-  ];
-
-  // Only respond sometimes to avoid over-engagement
-  if (Math.random() > 0.4) {
-    return reflections[Math.floor(Math.random() * reflections.length)];
+// Remove loading indicator
+function hideLoading() {
+  state.isLoading = false;
+  const loader = document.getElementById('loading-indicator');
+  if (loader) {
+    loader.remove();
   }
-  return null;
 }
 
 // Handle user input
-function handleSend() {
+async function handleSend() {
   const input = document.getElementById('user-input');
   const text = input.value.trim();
 
-  if (!text) return;
+  if (!text || state.isLoading) return;
 
   // Add user message
   addMessage(text, false);
   input.value = '';
   updateSendButton();
 
-  // Detect artifact scent
-  const detection = detectArtifactScent(text);
+  // Show loading state
+  showLoading();
 
-  if (detection) {
-    state.pendingDetection = { type: detection.type, content: text };
+  // Get response from Claude API
+  const response = await getCompanionResponse(text);
+
+  // Hide loading
+  hideLoading();
+
+  // Handle response based on type
+  if (response.type === 'artifact_detected') {
+    // Store pending detection for capture
+    state.pendingDetection = {
+      type: response.artifact_type,
+      content: text
+    };
     // Surface the detection for consent
-    setTimeout(() => {
-      addMessage(detection.surfaceText, true, true);
-    }, 500);
+    addMessage(response.response, true, true);
+
+  } else if (response.type === 'response') {
+    // Normal companion response
+    addMessage(response.response, true);
+
+  } else if (response.type === 'error') {
+    // Error message
+    addMessage(response.response, true);
+
   } else {
-    // Non-directive companion response
-    const response = getCompanionResponse(text, null);
-    if (response) {
-      setTimeout(() => {
-        addMessage(response, true);
-      }, 500);
-    }
+    // Fallback: treat as plain response
+    addMessage(response.response || 'I\'m listening.', true);
   }
 }
 
@@ -168,7 +192,7 @@ function captureArtifact() {
 
   // Brief confirmation
   setTimeout(() => {
-    addMessage("What else is on your mind?", true);
+    addMessage("Got it. What else?", true);
   }, 300);
 }
 
@@ -180,7 +204,7 @@ function declineCapture() {
   const detectionMsg = document.querySelector('.message.detection');
   if (detectionMsg) {
     detectionMsg.classList.remove('detection');
-    detectionMsg.innerHTML = `<p>Okay, let's keep going.</p>`;
+    detectionMsg.innerHTML = `<p>Okay, continuing.</p>`;
   }
 }
 
@@ -204,7 +228,7 @@ function renderArtifacts() {
 // Export artifacts as Markdown (local download)
 function exportArtifacts() {
   if (state.artifacts.length === 0) {
-    addMessage("Nothing to export yet. Write something first.", true);
+    addMessage("Nothing to export yet.", true);
     return;
   }
 
@@ -267,8 +291,12 @@ function capitalize(str) {
 function updateSendButton() {
   const input = document.getElementById('user-input');
   const btn = document.getElementById('send-btn');
-  btn.disabled = !input.value.trim();
+  btn.disabled = !input.value.trim() || state.isLoading;
 }
+
+// Make functions globally accessible for onclick handlers
+window.captureArtifact = captureArtifact;
+window.declineCapture = declineCapture;
 
 // Event listeners
 document.getElementById('user-input').addEventListener('input', updateSendButton);
