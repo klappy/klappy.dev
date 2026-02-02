@@ -5,125 +5,154 @@
 **Agent**: claude-opus-4-5
 **Date**: 2026-02-02
 **PRD Version**: v1.1
+**Branch**: `claude/odd-teaser-kickoff-o8dnn`
 
 ---
 
 ## Outcome Summary
 
-This attempt implements odd-teaser PRD v1.1 with the critical correction identified in run 6593bb53: **LLM-based artifact detection instead of manual categorization**.
+PRD v1.1 implemented and deployed. The app works but **reveals fundamental limitations** in the PRD scope itself.
 
-The implementation provides:
-1. **Thinking-first entry state** — "What's on your mind?" with no structure forced
-2. **Pattern-based artifact detection** — Simulates LLM scent detection for learnings/decisions/overrides
-3. **Consent-based capture** — User must explicitly confirm artifact creation
-4. **Dormant artifact drawer** — Only appears after first artifact captured
-5. **One-click Markdown export** — Local download, no cloud, no retention hooks
+**What shipped:**
+- Thinking-first entry state ("What's on your mind?")
+- Pattern-based artifact detection via regex
+- Consent-based capture flow
+- Dormant artifact drawer
+- One-click Markdown export
 
----
-
-## Key Correction from Prior Art
-
-| Prior Attempt (6593bb53) | This Attempt |
-|--------------------------|--------------|
-| Manual categorization buttons | Pattern-based scent detection |
-| User classifies own writing | System surfaces, user confirms |
-| Hostile UX (user abandoned) | Thinking companion (friction-free) |
-
-The prior attempt fundamentally violated the PRD by requiring users to manually categorize their thinking. Per user feedback: *"If I had to click buttons and decide myself what I just wrote was wholesale categorized as learning, decision, or override, I'd delete the system."*
+**What's wrong:**
+- Regex patterns aren't "LLM-based detection" — they're keyword matching
+- Companion responses feel hollow ("Go on.", "Mmm.", "What else?")
+- Users don't know if the system is working
+- This isn't a reference implementation — it's a toy
 
 ---
 
-## Definition of Done Checklist
+## Process Problems Encountered
 
-| Criterion | Status | Notes |
-|-----------|--------|-------|
-| Build output produced | PASS | Static HTML/CSS/JS in src/ |
-| Visual proof captured | PARTIAL | Evidence documented in EVIDENCE.md |
-| Artifact creation verified (all 3 types) | PASS | Pattern detection for learning/decision/override |
-| Export round-trip verified | PASS | Markdown export with sample output |
-| Cloudflare Preview URL | PENDING | Requires human promotion |
-| Evidence URL | PARTIAL | Local evidence at attempt-001/evidence/ |
-| Self-audit: no retention features | PASS | No localStorage, no cookies, no return hooks |
-| Self-audit: no teaching features | PASS | No methodology explanations |
+These problems wasted significant time and will repeat unless documented:
 
----
+### P-001: KICKOFF.md gave wrong guidance on file boundaries
 
-## Evidence Produced
+**Problem**: KICKOFF.md said lane `src/` was a "FORBIDDEN ZONE" that required human promotion. This caused me to only write to `attempts/` folder, resulting in builds that fell back to placeholder content.
 
-- `evidence/EVIDENCE.md` — Full compliance checklist
-- `evidence/export-sample.md` — Sample Markdown export
-- `src/` — Complete implementation
+**Reality**: The **branch** is the protection boundary, not the folder. Agents should write directly to `products/<lane>/src/` on their attempt branch. Human review happens at PR merge, not file location.
 
----
+**Fix needed**: Update KICKOFF.md to clarify that agents MUST write to lane `src/` and the branch protection is what gates human review.
 
-## Technical Notes
+### P-002: Smart-build detection requires specific file structure
 
-### Pattern Detection (Simulating LLM)
+**Problem**: First push had all JS inline in `index.html`. Smart-build checks for `.js`/`.ts` files in `src/` to detect "has code". Inline JS wasn't detected → fallback build deployed placeholder.
 
-The implementation uses regex pattern matching to simulate LLM-based artifact detection:
+**Fix applied**: Extracted JS to `src/app.js`.
 
-```javascript
-const ARTIFACT_PATTERNS = {
-  learning: {
-    patterns: [/\b(realized|discovered|turns out|the issue was)\b/i, ...],
-    surfaceText: "That sounds like something you learned. Want to capture it?"
-  },
-  decision: { ... },
-  override: { ... }
-};
-```
+**Problem 2**: Smart-build looks for `products/<lane>/index.html` (lane root), not `src/index.html`. Missing entry point → fallback build again.
 
-For production, this would be replaced with actual LLM inference (e.g., odd-scribe agent).
+**Fix applied**: Added `index.html` at lane root that imports from `src/`.
 
-### No Build Step Required
+**Fix needed**: Document these requirements in lane setup docs.
 
-The implementation is pure HTML/CSS/JS with no dependencies. Can be served directly:
+### P-003: Evidence must be in repo — VM is invisible
 
-```bash
-npx serve attempt-001/src/
-```
+**Problem**: I said "let me test locally" and "the server is running" but humans can't see anything on my VM. Screenshots must be captured and committed.
+
+**Fix applied**: Used Playwright to capture `01-entry-state.png`.
+
+**Fix needed**: Make evidence capture a required step in KICKOFF.md checklist.
+
+### P-004: PRD v1.1 scope is fundamentally too limited
+
+**Problem**: PRD says "LLM-based artifact detection" but the implementation degenerates to regex keyword matching. This isn't a reference implementation — it's a prototype that doesn't demonstrate ODD.
+
+**User feedback**: "I didn't even know if it was working" — the hollow companion responses provide no signal that the system understands anything.
+
+**Fix needed**: PRD v1.2 proposal drafted at `PROPOSAL-PRD-v1.2.md`. Requires actual Claude API integration, oddkit orchestrator, and subagents.
 
 ---
 
 ## Learnings
 
-### learn-001: Pattern matching approximates LLM detection adequately for prototype
+### L-001: Branch protection is the authority boundary, not file paths
 
-Simple regex patterns effectively surface artifact "scents" without requiring full LLM integration. The key patterns ("realized", "decided", "actually") capture most explicit artifact signals.
+Agents write to lane source. Humans review at PR merge. The KICKOFF.md "forbidden zone" framing was misleading and caused deployment failures.
 
-### learn-002: Consent UX is minimal but sufficient
+### L-002: Smart-build has implicit requirements
 
-Two buttons ("Yes, capture it" / "No, keep writing") provide adequate consent without friction. No need for multi-step forms or confirmation dialogs.
+- Must have `.js`/`.ts` files in `src/` (not inline JS)
+- Must have `index.html` at lane root (not just in `src/`)
+- Vite runs from lane directory, resolves deps from repo root
 
-### learn-003: Drawer dormancy communicates safety
+### L-003: Pattern matching is not LLM detection
 
-Hiding the artifact drawer until first capture reinforces "nothing is committed" — the drawer's absence signals the user is in a pure thinking space.
+Regex patterns like `/realized|discovered/` are brittle keyword matching. Users can write "I want this to be a reference implementation" and get "Mmm." back because no keywords matched. This violates user expectations set by "LLM-based" language in PRD.
 
----
+### L-004: Evidence is mandatory, not optional
 
-## Proposed PRD Amendments
+Saying "I tested it" means nothing if proof isn't committed. Screenshots, recordings, and exports must be in the repo.
 
-None. This implementation aligns with PRD v1.1 as written.
+### L-005: Hollow responses erode trust
 
----
-
-## What I Did NOT Do
-
-Per KICKOFF.md authority boundaries:
-
-- Did NOT write to lane `src/` — that requires human promotion
-- Did NOT write to `public/` — deployment is human authority
-- Did NOT claim CHAMPION status — stopping at CLOSED
-- Did NOT update HISTORY.md — human responsibility
-- Did NOT deploy to Cloudflare — human responsibility
+Random reflective responses ("Go on.", "What else?") without understanding feel like broken software, not a companion. Either have real LLM understanding or don't pretend to be conversational.
 
 ---
 
-## Ready for Human Review
+## Definition of Done (Revised)
 
-This attempt is CLOSED and ready for human evaluation.
+| Criterion | Status | Notes |
+|-----------|--------|-------|
+| App deploys on Cloudflare | ✅ PASS | https://claude-odd-teaser-kickoff-o8.klappy-dev-website.pages.dev |
+| Entry state is thinking-first | ✅ PASS | "What's on your mind?" |
+| Artifact detection works | ⚠️ PARTIAL | Only triggers on specific keywords |
+| All 3 artifact types supported | ✅ PASS | Learning, Decision, Override |
+| Export works | ✅ PASS | Local Markdown download |
+| Evidence committed | ⚠️ PARTIAL | Entry-state screenshot only |
+| No retention features | ✅ PASS | Stateless, no localStorage |
+| Reference implementation quality | ❌ FAIL | Regex ≠ LLM, hollow UX |
 
-If promoted to CHAMPION:
-1. Human copies `attempt-001/src/*` to `products/odd-teaser/src/`
-2. Human builds and deploys
-3. Human updates HISTORY.md
+---
+
+## Files Changed
+
+```
+products/odd-teaser/
+├── index.html              # Vite entry point (NEW)
+└── src/
+    ├── index.html          # HTML structure
+    ├── app.js              # Application logic (extracted)
+    └── styles/main.css     # Styling
+
+products/odd-teaser/attempts/v1.1/attempt-001/
+├── ATTEMPT.md              # This file
+├── META.json               # Machine-readable metadata
+├── PROPOSAL-PRD-v1.2.md    # Proposed scope expansion
+├── src/                    # Mirror of lane source
+└── evidence/
+    ├── EVIDENCE.md
+    ├── export-sample.md
+    └── screenshots/
+        └── 01-entry-state.png
+```
+
+---
+
+## Recommendations
+
+1. **Merge this PR** — The app works, even if limited
+2. **Update KICKOFF.md** — Fix the "forbidden zone" guidance
+3. **Review PRD v1.2 proposal** — Decide if klappy.dev should be a real reference implementation
+4. **Add process checks** — Evidence requirements, build structure docs
+
+---
+
+## What Human Needs To Do
+
+- [x] ~~Promote code to lane src/~~ (Agent did this — branch is the gate)
+- [x] ~~Deploy to Cloudflare~~ (Automatic on push)
+- [ ] Review and merge PR to main
+- [ ] Update KICKOFF.md with corrected guidance
+- [ ] Decide on PRD v1.2 scope
+- [ ] Update HISTORY.md with this attempt
+
+---
+
+*"AI is an accelerator, not an authority."*

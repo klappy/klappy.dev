@@ -150,13 +150,29 @@ All telemetry is console-only, no PII, no raw text logging.
 
 ---
 
-## Local Testing
+## Visual Evidence
 
-```bash
-cd products/odd-teaser/attempts/v1.1/attempt-001/src
-npx serve -l 3333
-# Open http://localhost:3333
-```
+### Screenshot 01: Entry State
+![Entry State](screenshots/01-entry-state.png)
+
+Shows:
+- "What's on your mind?" companion message
+- Text input with "Write freely. Nothing is committed until you say so."
+- No artifact drawer visible (dormant)
+
+### Production Deployment Test (Mobile)
+
+Tested on production URL: `https://claude-odd-teaser-kickoff-o8.klappy-dev-website.pages.dev`
+
+User test messages:
+- "Hello" → Companion: "Go on."
+- "I want Klappy.dev to be a reference implementation" → No detection (no keywords)
+- "Did you see that?" → Companion: "Mmm."
+- "What's going on?" → No response
+- "This is weird" → No response
+- "NO idea if this is working" → Companion: "What else?"
+
+**Finding**: Without artifact keywords, the app feels unresponsive and confusing. This validates that regex pattern matching is insufficient for a reference implementation.
 
 ---
 
