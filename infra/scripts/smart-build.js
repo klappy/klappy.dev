@@ -221,14 +221,15 @@ function copyEvidenceToDist() {
   console.log("  ✅ Evidence index generated");
 }
 
-function copyFunctionsToDist() {
-  // Copy Cloudflare Pages Functions to dist if they exist
-  const laneFunctionsDir = join(LANE_ROOT, "functions");
-  const distFunctionsDir = join(DIST_PATH, "functions");
+function copyWorkerToDist() {
+  // Copy _worker.js to dist root for Cloudflare Pages advanced mode
+  // This is needed for monorepos where functions/ at repo root won't work
+  const srcWorker = join(LANE_ROOT, "src", "_worker.js");
+  const distWorker = join(DIST_PATH, "_worker.js");
 
-  if (existsSync(laneFunctionsDir)) {
-    cpSync(laneFunctionsDir, distFunctionsDir, { recursive: true });
-    console.log("  ✅ Copied functions/ to dist/");
+  if (existsSync(srcWorker)) {
+    cpSync(srcWorker, distWorker);
+    console.log("  ✅ Copied _worker.js to dist/");
   }
 }
 
@@ -243,7 +244,7 @@ function viteBuild() {
     // Run vite from lane root directory — outputs to products/<lane>/dist
     // Do NOT use --root flag; cwd is the correct approach for Cloudflare compatibility
     run(`npx vite build --outDir dist --emptyOutDir`, { cwd: LANE_ROOT });
-    copyFunctionsToDist();
+    copyWorkerToDist();
   } else if (lane === "ai-navigation" && existsSync(join(ROOT, "index.html"))) {
     // Transitional: repo-root app builds to lane dist for ai-navigation
     run(`npx vite build --outDir "products/${lane}/dist" --emptyOutDir`);
