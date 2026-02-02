@@ -221,6 +221,17 @@ function copyEvidenceToDist() {
   console.log("  ✅ Evidence index generated");
 }
 
+function copyFunctionsToDist() {
+  // Copy Cloudflare Pages Functions to dist if they exist
+  const laneFunctionsDir = join(LANE_ROOT, "functions");
+  const distFunctionsDir = join(DIST_PATH, "functions");
+
+  if (existsSync(laneFunctionsDir)) {
+    cpSync(laneFunctionsDir, distFunctionsDir, { recursive: true });
+    console.log("  ✅ Copied functions/ to dist/");
+  }
+}
+
 function viteBuild() {
   console.log("\n🔨 Building with Vite...\n");
   // Canonical output: products/<lane>/dist
@@ -232,6 +243,7 @@ function viteBuild() {
     // Run vite from lane root directory — outputs to products/<lane>/dist
     // Do NOT use --root flag; cwd is the correct approach for Cloudflare compatibility
     run(`npx vite build --outDir dist --emptyOutDir`, { cwd: LANE_ROOT });
+    copyFunctionsToDist();
   } else if (lane === "ai-navigation" && existsSync(join(ROOT, "index.html"))) {
     // Transitional: repo-root app builds to lane dist for ai-navigation
     run(`npx vite build --outDir "products/${lane}/dist" --emptyOutDir`);
