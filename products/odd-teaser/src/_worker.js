@@ -63,12 +63,13 @@ async function fetchOddkitPrompt() {
     const listData = await listResponse.json();
     console.log('[oddkit] Available prompts:', JSON.stringify(listData));
 
-    // Look for odd-teaser or thinking-companion prompt
+    // Look for odd-teaser or thinking-companion prompt (NOT scribe - that's a full agent)
     const prompts = listData.result?.prompts || [];
     const targetPrompt = prompts.find(p =>
+      p.name === 'odd-teaser' ||
+      p.name === 'thinking-companion' ||
       p.name?.includes('odd-teaser') ||
-      p.name?.includes('thinking-companion') ||
-      p.name?.includes('scribe')
+      p.name?.includes('thinking-companion')
     );
 
     if (!targetPrompt) {
