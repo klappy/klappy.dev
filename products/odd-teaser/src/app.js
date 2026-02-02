@@ -123,12 +123,50 @@ function hideLoading() {
   }
 }
 
+// Check if text is consent
+function isConsent(text) {
+  const lower = text.toLowerCase().trim();
+  return ['yes', 'yeah', 'yep', 'sure', 'ok', 'okay', 'yea', 'y', 'do it', 'capture', 'capture it', 'lock it', 'lock it in'].includes(lower);
+}
+
+// Check if text is decline
+function isDecline(text) {
+  const lower = text.toLowerCase().trim();
+  return ['no', 'nope', 'nah', 'n', 'skip', 'nevermind', 'never mind', 'cancel'].includes(lower);
+}
+
 // Handle user input
 async function handleSend() {
   const input = document.getElementById('user-input');
   const text = input.value.trim();
 
   if (!text || state.isLoading) return;
+
+  // If there's a pending detection, check for consent/decline
+  if (state.pendingDetection) {
+    if (isConsent(text)) {
+      addMessage(text, false);
+      input.value = '';
+      updateSendButton();
+      captureArtifact();
+      return;
+    } else if (isDecline(text)) {
+      addMessage(text, false);
+      input.value = '';
+      updateSendButton();
+      declineCapture();
+      return;
+    }
+    // Otherwise, they're continuing conversation - clear pending
+    state.pendingDetection = null;
+    // Remove detection UI
+    const detectionMsg = document.querySelector('.message.detection');
+    if (detectionMsg) {
+      detectionMsg.classList.remove('detection');
+      const actions = detectionMsg.querySelector('.detection-actions');
+      if (actions) actions.remove();
+    }
+  }
 
   // Add user message
   addMessage(text, false);
@@ -138,7 +176,7 @@ async function handleSend() {
   // Show loading state
   showLoading();
 
-  // Get response from Claude API
+  // Get response from LLM
   const response = await getCompanionResponse(text);
 
   // Hide loading
