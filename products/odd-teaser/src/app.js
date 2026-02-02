@@ -220,6 +220,12 @@ function showArtifactDrawer() {
   drawer.classList.remove('hidden');
 }
 
+// Hide artifact drawer
+function hideArtifactDrawer() {
+  const drawer = document.getElementById('artifact-drawer');
+  drawer.classList.add('hidden');
+}
+
 // Render artifacts in drawer
 function renderArtifacts() {
   const list = document.getElementById('artifact-list');
@@ -314,6 +320,7 @@ document.getElementById('user-input').addEventListener('keydown', (e) => {
 });
 document.getElementById('send-btn').addEventListener('click', handleSend);
 document.getElementById('export-btn').addEventListener('click', exportArtifacts);
+document.getElementById('close-drawer-btn').addEventListener('click', hideArtifactDrawer);
 
 // Handle premature exit (for telemetry only)
 window.addEventListener('beforeunload', () => {
