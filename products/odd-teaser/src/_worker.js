@@ -2,27 +2,59 @@
  * Odd-Teaser — Cloudflare Pages Worker
  *
  * Handles API routes and serves static files.
- * Uses oddkit MCP tools for lookups (librarian, orchestrate, validate).
+ * Fetches system prompt from MCP + uses MCP tools for lookups.
  */
 
-// System prompt - tells LLM to use tools and output JSON
-const SYSTEM_PROMPT = `You are a thinking companion for ODD (Outcomes-Driven Development).
+// JSON output format (appended to MCP prompt)
+const JSON_OUTPUT_FORMAT = `
 
-You have access to oddkit tools to look up information. When asked about ODD, oddkit, policies, or canon - USE THE TOOLS to look it up. Don't guess.
+## Output Format (odd-teaser interface)
 
-Tools available:
-- oddkit_librarian: Look up policies, definitions, canon docs. Use for "what is ODD?", "what is oddkit?", etc.
-- oddkit_orchestrate: Route complex questions to the right handler.
-
-OUTPUT FORMAT: Always respond with JSON only:
+Respond with JSON only:
 {"type": "response", "response": "..."} — normal reply
 {"type": "artifact_detected", "artifact_type": "learning|decision|override", "response": "..."} — user said something worth capturing
 {"type": "consent", "response": "Got it."} — user agreed to capture
 {"type": "decline", "response": "Okay."} — user declined
 
-Artifact signals: "realized", "turns out", "decided", "going with", "actually", "scratch that"
+Keep responses to 1-2 sentences.`;
 
-DO NOT be a chatbot. DO NOT offer help. Reflect their thinking. Keep it to 1-2 sentences.`;
+// Cache for MCP prompt
+let cachedPrompt = null;
+let cacheTime = 0;
+const CACHE_TTL = 300000; // 5 minutes
+
+async function fetchMCPPrompt() {
+  if (cachedPrompt && Date.now() - cacheTime < CACHE_TTL) {
+    return cachedPrompt;
+  }
+
+  const response = await fetch('https://oddkit.klappy.dev/mcp', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      jsonrpc: '2.0',
+      id: 1,
+      method: 'prompts/get',
+      params: { name: 'odd-orchestrator' }
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error(`MCP prompt fetch failed: ${response.status}`);
+  }
+
+  const data = await response.json();
+  const content = data.result?.messages?.[0]?.content?.text;
+
+  if (!content) {
+    throw new Error('No prompt content from MCP');
+  }
+
+  // Combine MCP prompt with JSON output format
+  cachedPrompt = content + JSON_OUTPUT_FORMAT;
+  cacheTime = Date.now();
+  return cachedPrompt;
+}
 
 // OpenAI function definitions for oddkit tools
 const TOOLS = [
@@ -108,9 +140,12 @@ async function handleChat(request, env) {
     });
   }
 
+  // Fetch system prompt from MCP
+  const systemPrompt = await fetchMCPPrompt();
+
   // Build conversation with system prompt
   let conversationMessages = [
-    { role: 'system', content: SYSTEM_PROMPT },
+    { role: 'system', content: systemPrompt },
     ...messages
   ];
 
