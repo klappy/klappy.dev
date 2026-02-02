@@ -62,10 +62,9 @@ async function fetchOddkitPrompt() {
     const listData = await listResponse.json();
     console.log('[oddkit] Available prompts:', JSON.stringify(listData));
 
-    // Use odd-teaser if available, otherwise odd-orchestrator
+    // Only use odd-teaser - it has JSON format spec for this chat interface
     const prompts = listData.result?.prompts || [];
-    const targetPrompt = prompts.find(p => p.name === 'odd-teaser') ||
-                         prompts.find(p => p.name === 'odd-orchestrator');
+    const targetPrompt = prompts.find(p => p.name === 'odd-teaser');
 
     if (!targetPrompt) {
       console.log('[oddkit] No ODD prompt found, using fallback');
