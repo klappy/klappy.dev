@@ -1,72 +1,55 @@
 // ============================================
 // ODD TEASER — Thinking Companion
-// PRD v1.1 Implementation
+// PRD v1.1 Implementation (Attempt 002)
 //
-// KEY CHANGE FROM PRIOR ATTEMPT:
-// - NO manual categorization buttons
-// - LLM-based artifact detection via pattern matching
-// - Surfaces potential artifacts for user consent
+// CRITICAL CHANGE FROM ATTEMPT-001:
+// - Real Claude API for artifact detection (NOT regex)
+// - Cloudflare Pages Function at /api/chat
+// - Genuine companion responses with understanding
 // ============================================
 
 const state = {
   artifacts: [],
   pendingDetection: null,
-  conversationHistory: []
+  conversationHistory: [],
+  isLoading: false
 };
 
-// Artifact type patterns (simulating LLM detection)
-const ARTIFACT_PATTERNS = {
-  learning: {
-    patterns: [
-      /\b(realized|discovered|learned|turns out|found out|the issue was|it became clear|now I see|I understand now|figured out)\b/i,
-      /\b(ah[,!]|oh[,!]|aha)\b.*\b(that's|it's|this is)\b/i,
-      /\bthe (real |actual )?(problem|issue|cause|reason) (is|was)\b/i
-    ],
-    surfaceText: "That sounds like something you learned. Want to capture it?"
-  },
-  decision: {
-    patterns: [
-      /\b(decided|choosing|going with|I('ll| will) go with|made the call|the choice is|opting for|picked|selected)\b/i,
-      /\b(tradeoff|trade-off) is\b/i,
-      /\bI'm going to\b.*\binstead of\b/i,
-      /\b(after weighing|considering|given the options)\b/i
-    ],
-    surfaceText: "That reads like a decision. Want to capture it?"
-  },
-  override: {
-    patterns: [
-      /\b(actually|scratch that|correction|wrong about|take that back|on second thought|nevermind|I was wrong)\b/i,
-      /\b(previous|earlier|before).*\b(wrong|incorrect|mistaken)\b/i,
-      /\bupdating my (thinking|understanding|view)\b/i
-    ],
-    surfaceText: "That sounds like you're correcting something. Want to capture it as an override?"
-  }
-};
+// API endpoint for Claude
+const API_ENDPOINT = '/api/chat';
 
 // Telemetry (console-only, no PII)
 function emitTelemetry(name, payload) {
   console.log('[Telemetry]', { name, payload, timestamp: new Date().toISOString() });
 }
 
-// Detect artifact scent in text
-function detectArtifactScent(text) {
-  for (const [type, config] of Object.entries(ARTIFACT_PATTERNS)) {
-    for (const pattern of config.patterns) {
-      if (pattern.test(text)) {
-        return { type, surfaceText: config.surfaceText };
-      }
-    }
+// Call Claude API via Cloudflare Function
+async function callClaudeAPI(message) {
+  const response = await fetch(API_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      message,
+      history: state.conversationHistory.slice(-10) // Last 10 messages for context
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error(`API error: ${response.status}`);
   }
-  return null;
+
+  return response.json();
 }
 
 // Add message to conversation
-function addMessage(content, isCompanion = false, isDetection = false) {
+function addMessage(content, isCompanion = false, isDetection = false, artifact = null) {
   const conversation = document.getElementById('conversation');
   const msg = document.createElement('div');
   msg.className = `message ${isCompanion ? 'companion' : 'user'}${isDetection ? ' detection' : ''}`;
 
-  if (isDetection) {
+  if (isDetection && artifact) {
     msg.innerHTML = `
       <p>${content}</p>
       <div class="detection-actions">
@@ -75,66 +58,82 @@ function addMessage(content, isCompanion = false, isDetection = false) {
       </div>
     `;
   } else {
-    msg.innerHTML = `<p>${content}</p>`;
+    msg.innerHTML = `<p>${escapeHtml(content)}</p>`;
   }
 
   conversation.appendChild(msg);
   conversation.scrollTop = conversation.scrollHeight;
 
-  state.conversationHistory.push({ content, isCompanion, isDetection });
+  // Store in history (for context in API calls)
+  state.conversationHistory.push({ content, isCompanion });
 }
 
-// Companion response (non-directive)
-function getCompanionResponse(userText, detection) {
-  if (detection) {
-    return detection.surfaceText;
-  }
+// Show loading indicator
+function showLoading() {
+  const conversation = document.getElementById('conversation');
+  const loading = document.createElement('div');
+  loading.id = 'loading-indicator';
+  loading.className = 'message companion loading';
+  loading.innerHTML = '<p>...</p>';
+  conversation.appendChild(loading);
+  conversation.scrollTop = conversation.scrollHeight;
+}
 
-  // Reflective, non-directive responses
-  const reflections = [
-    "I hear you.",
-    "Go on.",
-    "What else?",
-    "Mmm.",
-    "Keep going if there's more."
-  ];
-
-  // Only respond sometimes to avoid over-engagement
-  if (Math.random() > 0.4) {
-    return reflections[Math.floor(Math.random() * reflections.length)];
+// Hide loading indicator
+function hideLoading() {
+  const loading = document.getElementById('loading-indicator');
+  if (loading) {
+    loading.remove();
   }
-  return null;
 }
 
 // Handle user input
-function handleSend() {
+async function handleSend() {
   const input = document.getElementById('user-input');
   const text = input.value.trim();
 
-  if (!text) return;
+  if (!text || state.isLoading) return;
 
   // Add user message
   addMessage(text, false);
   input.value = '';
   updateSendButton();
 
-  // Detect artifact scent
-  const detection = detectArtifactScent(text);
+  // Show loading and disable input
+  state.isLoading = true;
+  showLoading();
+  input.disabled = true;
 
-  if (detection) {
-    state.pendingDetection = { type: detection.type, content: text };
-    // Surface the detection for consent
-    setTimeout(() => {
-      addMessage(detection.surfaceText, true, true);
-    }, 500);
-  } else {
-    // Non-directive companion response
-    const response = getCompanionResponse(text, null);
-    if (response) {
-      setTimeout(() => {
-        addMessage(response, true);
-      }, 500);
+  try {
+    // Call Claude API for real LLM detection
+    const result = await callClaudeAPI(text);
+
+    hideLoading();
+
+    if (result.error && result.fallback) {
+      // API key not configured - show fallback response
+      console.warn('Claude API not configured, using fallback');
+      addMessage(result.response, true);
+    } else if (result.artifact) {
+      // Artifact detected - surface for consent
+      state.pendingDetection = {
+        type: result.artifact.type,
+        content: result.artifact.detected_content || text
+      };
+      addMessage(result.artifact.surface_prompt, true, true, result.artifact);
+    } else if (result.response) {
+      // Regular companion response
+      addMessage(result.response, true);
     }
+  } catch (error) {
+    console.error('API call failed:', error);
+    hideLoading();
+    // Graceful degradation - still allow the app to function
+    addMessage("I hear you.", true);
+  } finally {
+    state.isLoading = false;
+    input.disabled = false;
+    input.focus();
   }
 }
 
@@ -267,19 +266,23 @@ function capitalize(str) {
 function updateSendButton() {
   const input = document.getElementById('user-input');
   const btn = document.getElementById('send-btn');
-  btn.disabled = !input.value.trim();
+  btn.disabled = !input.value.trim() || state.isLoading;
 }
 
 // Event listeners
 document.getElementById('user-input').addEventListener('input', updateSendButton);
 document.getElementById('user-input').addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' && !e.shiftKey) {
+  if (e.key === 'Enter' && !e.shiftKey && !state.isLoading) {
     e.preventDefault();
     handleSend();
   }
 });
 document.getElementById('send-btn').addEventListener('click', handleSend);
 document.getElementById('export-btn').addEventListener('click', exportArtifacts);
+
+// Make functions available globally for onclick handlers
+window.captureArtifact = captureArtifact;
+window.declineCapture = declineCapture;
 
 // Handle premature exit (for telemetry only)
 window.addEventListener('beforeunload', () => {
