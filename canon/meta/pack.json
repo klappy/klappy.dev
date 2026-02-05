@@ -1,7 +1,7 @@
 {
   "name": "klappy-canon",
-  "version": "0.26.0",
-  "updated_at": "2026-01-31",
+  "version": "0.28.0",
+  "updated_at": "2026-02-05",
   "description": "Canonical orientation, constraints, decision rules, evidence policies, and ODD appendices used across klappy.dev.",
   "public_entrypoint": "klappy://public/odd",
   "canon_entrypoint": "klappy://meta/canon-index",

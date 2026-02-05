@@ -18,6 +18,47 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
+## 0.28.0 — 2026-02-05
+
+**ODD Acronym Visibility + ESE Promotion + Content Discovery**
+
+This release addresses LLM hallucination of the ODD acronym, promotes Epistemic Surface Extraction (ESE) from apocrypha to canon, and adds comprehensive content discovery.
+
+### Added
+
+- **Epistemic Surface Extraction (ESE)** (`/canon/epistemic-surface-extraction.md`) — Promoted from apocrypha. Defines how to make non-text evidence (screenshots, recordings, videos) legible to agents without turning them into doctrine. Establishes sidecar convention (`.surface.json`, `.surface.md`), segmentation rules by modality, anchor contracts for time-based media, and mandatory containment clauses.
+
+- **Comprehensive Content Map** (`/docs/CONTENT-MAP.md`) — Discovery index for ALL repository content including apocrypha. Surfaces hidden/experimental docs, lists key acronyms (ODD, ESE, MCP, PRD, ADR), and provides navigation tips.
+
+### Changed
+
+- **ODD Acronym Definitions** — Added "ODD = Outcomes-Driven Development" callouts to key oddkit entry points to prevent LLM hallucination:
+  - `/docs/WHY.md` — Added callout at top + link in "How to Learn More"
+  - `/docs/oddkit/ABOUT.md` — Added callout + links to WHY.md and /odd/README.md
+  - `/docs/README.md` — Expanded "implements ODD" to include full acronym definition
+
+- **Verification & Evidence** (`/canon/verification-and-evidence.md`) — Added ESE to "See Also" section
+
+- **Root README** — Added CONTENT-MAP.md to "Start Here" section
+
+- **Apocrypha ESE** (`/apocrypha/artifacts/SURFACE-EXTRACTION.md`) — Marked as PROMOTED with redirect to canonical version
+
+### Philosophy
+
+- **Acronyms must be visible at entry points** — LLMs entering through oddkit documentation never saw "Outcomes-Driven Development" because the acronym was only defined in `/odd/README.md`. Entry points must define or link to acronym expansions.
+
+- **ESE makes evidence legible** — Screenshots and recordings are evidence but were invisible to agents without structured extraction. ESE provides the protocol without canonizing the artifacts themselves.
+
+- **Discovery includes experimental content** — Apocrypha and hidden docs are valuable for exploration but were hard to find. CONTENT-MAP makes all content navigable.
+
+### Notes
+
+- ESE is now the canonical reference for evidence extraction from non-text artifacts
+- CONTENT-MAP is intentionally comprehensive (includes apocrypha) and can be filtered later
+- Original apocrypha ESE doc retained with PROMOTED notice for provenance
+
+---
+
 ## 0.27.0 — 2026-01-31
 
 **Scope Over Folders — Path Independence Invariant**
