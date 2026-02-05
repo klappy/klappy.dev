@@ -1,36 +1,43 @@
 ---
-uri: klappy://apocrypha/artifacts/surface-extraction
-title: "Epistemic Surface Extraction (PROMOTED)"
-audience: apocrypha
-exposure: hidden
-tier: 2
+uri: klappy://canon/epistemic-surface-extraction
+title: "Epistemic Surface Extraction (ESE)"
+audience: canon
+exposure: nav
+tier: 1
 voice: neutral
-stability: archived
-tags: ["apocrypha", "artifacts", "ese", "surface", "ocr", "asr", "video", "promoted"]
-promoted_to: "/canon/epistemic-surface-extraction.md"
+stability: evolving
+tags: ["evidence", "verification", "ese", "surface", "ocr", "asr", "video", "screenshots", "recordings"]
+relevance: decision
+execution_posture: governing
 ---
 
-# Epistemic Surface Extraction
+# Epistemic Surface Extraction (ESE)
 
-> **⚠️ PROMOTED**: This document has been promoted to Canon. See [/canon/epistemic-surface-extraction.md](/canon/epistemic-surface-extraction.md) for the authoritative version.
-
----
-
-> Draft rules for making visual/audio/video artifacts *legible* to agents without turning them into doctrine.
+> Making visual/audio/video evidence legible to agents without turning it into doctrine.
 
 ## Purpose
 
-Many artifacts in this system are not text-first (PDF slides, images, audio, video). Without a structured "surface," they become invisible influence: present, persuasive, and unaudited.
+Many verification artifacts are not text-first: screenshots, recordings, videos, PDF slides. Without a structured "surface," they become invisible influence: present, persuasive, and unauditable.
 
 **Epistemic Surface Extraction (ESE)** is a repeatable method to extract *what an artifact asserts and depicts* in a way that:
 
-- makes content discoverable and searchable for humans and agents
-- preserves emphasis and structure (not just words)
-- prevents accidental canonization
-- maintains contestability
+- makes evidence **discoverable** and **searchable** for humans and agents
+- preserves **emphasis** and **structure** (not just words)
+- prevents **accidental canonization**
+- maintains **contestability**
 
-ESE is not "OCR."  
+ESE is not "OCR."
 ESE is **awareness extraction**.
+
+---
+
+## Operating Constraints
+
+- MUST produce sidecar files for any non-text evidence artifact
+- MUST include containment clause marking surfaces as non-canonical
+- MUST use anchor contracts for time-based media (audio/video)
+- MUST NOT treat surface extractions as doctrine or instruction
+- MUST reference source artifacts explicitly
 
 ---
 
@@ -72,17 +79,20 @@ Every `*.surface.json` MUST contain:
 
 ## Segmentation Rules by Modality
 
-### Slides / PDFs
-- **unit:** `page`
-- **anchor_type:** `page_number`
-- **segments:** 1 per page
+### Screenshots / Images
 
-### Images (single)
 - **unit:** `frame`
 - **anchor_type:** `frame_index` (or `1`)
 - **segments:** 1 per image (unless intentionally subdividing regions)
 
-### Audio
+### Slides / PDFs
+
+- **unit:** `page`
+- **anchor_type:** `page_number`
+- **segments:** 1 per page
+
+### Audio Recordings
+
 Audio is time-structured. Meaning may rely on emphasis and pacing.
 
 Choose segmentation based on source:
@@ -96,9 +106,10 @@ Anchors MUST be stable:
 
 Where:
 - `timestamp_start` / `timestamp_end` are included
-- `snippet_hash` is included (see Anchor Contract)
+- `snippet_hash` is included (see Anchor Contract below)
 
-### Video
+### Video Recordings
+
 Video contains two channels: speech + visuals.
 
 - **unit:** `scene` (preferred) or `topic_block`
@@ -128,6 +139,7 @@ Therefore anchors MUST include BOTH:
 - `snippet_hash`
 
 ### snippet_hash
+
 A short, stable identifier derived from a transcript snippet near the start of the segment.
 
 Guidelines:
@@ -177,7 +189,7 @@ Precedence:
 
 ---
 
-## Promotion Rule (Simple)
+## Promotion Rule
 
 Surfaces can inform canon edits, but:
 
@@ -187,6 +199,23 @@ Surfaces can inform canon edits, but:
 
 ---
 
-## Status
+## Failure Modes
 
-This document is a **draft** and will evolve after the first audio/video artifacts are surfaced.
+- **Raw Dump**: Extracting text without structure or emphasis
+- **Doctrine Creep**: Treating a surface extraction as instruction
+- **Anchor Drift**: Using timestamps alone without hash anchors
+- **Missing Containment**: Omitting the non-canonical warning
+
+---
+
+## See Also
+
+- [Verification & Evidence](/canon/verification-and-evidence.md)
+- [Visual Proof Standards](/canon/visual-proof.md)
+- [Definition of Done](/canon/definition-of-done.md)
+
+---
+
+## Provenance
+
+Promoted from `/apocrypha/artifacts/SURFACE-EXTRACTION.md` to Canon.

@@ -11,7 +11,9 @@ tags: ["docs", "implementation", "reference", "index"]
 
 # 📖 Implementation Documentation
 
-> How klappy.dev implements ODD. This is the reference implementation, not the philosophy.
+> How klappy.dev implements **ODD (Outcomes-Driven Development)**. This is the reference implementation, not the philosophy.
+>
+> **ODD** = **Outcomes-Driven Development** — see [/odd/README.md](/odd/README.md) for the full philosophy.
 
 ## 🗺️ Where You Are in the Hierarchy
 
@@ -55,6 +57,12 @@ tags: ["docs", "implementation", "reference", "index"]
 ---
 
 ## 📁 Contents
+
+### Discovery & Navigation
+
+| File | Purpose |
+|------|---------|
+| [CONTENT-MAP.md](./CONTENT-MAP.md) | **Comprehensive index of ALL content** (including apocrypha) |
 
 ### Workflows & Procedures
 

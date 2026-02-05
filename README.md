@@ -16,6 +16,7 @@ If you are new:
 
 Read this first:
 → `docs/WHY.md`
+→ `docs/CONTENT-MAP.md` — Comprehensive index of ALL content (including apocrypha)
 
 ---
 

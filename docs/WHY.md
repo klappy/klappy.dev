@@ -11,9 +11,11 @@ tags: ["orientation", "oddkit", "agents", "epistemic-hygiene"]
 
 # Why oddkit Exists
 
+> **ODD** = **Outcomes-Driven Development** — see [/odd/README.md](/odd/README.md) for the full philosophy.
+
 oddkit is not an AI agent.
 
-oddkit is a **librarian and validator** that other AI agents use to manage knowledge, restart cleanly, and prove claims with evidence.
+oddkit is a **librarian and validator** that other AI agents use to manage knowledge, restart cleanly, and prove claims with evidence. It is the reference tooling for **ODD (Outcomes-Driven Development)**.
 
 It exists because agentic systems fail in predictable ways:
 
@@ -80,6 +82,7 @@ This makes agent systems slower at first — and dramatically more reliable over
 
 ## How to Learn More
 
+- To **understand ODD philosophy**: see [/odd/README.md](/odd/README.md)
 - To **run oddkit**: see `docs/orchestrator/QUICKSTART.md`
 - To **understand validation**: see `docs/agents/validation/README.md`
 - To **understand retrieval**: see `docs/agents/librarian/README.md`
