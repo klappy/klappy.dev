@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-02-06T02:10:21.952Z",
+  "generated_at": "2026-02-06T04:11:51.663Z",
   "description": "Fast-lookup index for Librarian retrieval. Per docs/agents/librarian/contract.md",
   "schema_notes": {
     "authority_band": "Resolved authority (frontmatter override > inferred from root)",
@@ -30,20 +30,20 @@
     }
   },
   "stats": {
-    "total_documents": 186,
-    "with_frontmatter": 179,
-    "with_headings": 182,
+    "total_documents": 200,
+    "with_frontmatter": 193,
+    "with_headings": 196,
     "by_root": {
-      "apocrypha": 14,
-      "canon": 49,
-      "docs": 91,
+      "apocrypha": 15,
+      "canon": 61,
+      "docs": 92,
       "interfaces": 6,
       "odd": 26
     },
     "by_authority": {
-      "non-governing": 14,
-      "governing": 75,
-      "operational": 97
+      "non-governing": 15,
+      "governing": 87,
+      "operational": 98
     },
     "with_authority_override": 0,
     "with_authority_warning": 0
@@ -63,6 +63,9 @@
         "video",
         "artifacts",
         "ese"
+      ],
+      "acronyms": [
+        "avl"
       ],
       "stability": "evolving",
       "tier": "2",
@@ -245,6 +248,9 @@
         "video",
         "promoted"
       ],
+      "acronyms": [
+        "ese"
+      ],
       "stability": "archived",
       "tier": "2",
       "audience": "apocrypha",
@@ -346,6 +352,9 @@
       "title": "The Apocrypha: Fragments and System Closure",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "afsc"
+      ],
       "stability": null,
       "tier": null,
       "audience": null,
@@ -457,6 +466,9 @@
       "title": "The Book That Was Read Only Once",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "btroo"
+      ],
       "stability": null,
       "tier": null,
       "audience": null,
@@ -477,6 +489,9 @@
       "title": "The Last Commit",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "lc"
+      ],
       "stability": null,
       "tier": null,
       "audience": null,
@@ -502,6 +517,9 @@
         "thresholds",
         "optimization",
         "governance"
+      ],
+      "acronyms": [
+        "finet"
       ],
       "stability": "stable",
       "tier": "1",
@@ -529,6 +547,9 @@
       "title": "Meta-ODD: Writing Constraints for Fragments of the Canon",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "mowcfc"
+      ],
       "stability": null,
       "tier": null,
       "audience": "internal",
@@ -605,6 +626,9 @@
       "title": "Fragments of the Canon",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "fc"
+      ],
       "stability": null,
       "tier": null,
       "audience": null,
@@ -688,6 +712,35 @@
       "has_frontmatter": true
     },
     {
+      "path": "apocrypha/fragments/when-arbitration-went-global.md",
+      "root": "apocrypha",
+      "authority_band": "non-governing",
+      "authority_inferred": "non-governing",
+      "uri": "klappy://apocrypha/fragments/when-arbitration-went-global",
+      "title": "When Arbitration Went Global",
+      "subtitle": null,
+      "tags": [],
+      "acronyms": [
+        "wawg"
+      ],
+      "stability": "fragment",
+      "tier": null,
+      "audience": null,
+      "exposure": "hidden",
+      "voice": "system_first_person",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "When Arbitration Went Global",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
+      "has_frontmatter": true
+    },
+    {
       "path": "apocrypha/reconstructions/fragment-01-recon.md",
       "root": "apocrypha",
       "authority_band": "non-governing",
@@ -699,6 +752,9 @@
         "fragments-of-the-canon",
         "reconstruction",
         "cinematic"
+      ],
+      "acronyms": [
+        "btroo"
       ],
       "stability": "evolving",
       "tier": "2",
@@ -729,6 +785,9 @@
         "fragments-of-the-canon",
         "reconstruction",
         "cinematic"
+      ],
+      "acronyms": [
+        "lc"
       ],
       "stability": "evolving",
       "tier": "2",
@@ -761,6 +820,9 @@
         "metrics",
         "dashboards"
       ],
+      "acronyms": [
+        "net"
+      ],
       "stability": "evolving",
       "tier": "2",
       "audience": "apocrypha",
@@ -792,6 +854,9 @@
       "title": "Fragments of the Canon — Reconstructions",
       "subtitle": "Cinematic retellings that orbit canon without contaminating it.",
       "tags": [],
+      "acronyms": [
+        "fc—r"
+      ],
       "stability": null,
       "tier": null,
       "audience": null,
@@ -839,6 +904,9 @@
         "governance",
         "phase",
         "validation"
+      ],
+      "acronyms": [
+        "oeg"
       ],
       "stability": "evolving",
       "tier": "2",
@@ -978,6 +1046,9 @@
         "source-citing",
         "no-bypass"
       ],
+      "acronyms": [
+        "oig"
+      ],
       "stability": "evolving",
       "tier": "2",
       "audience": "canon",
@@ -1045,6 +1116,9 @@
         "maintenance",
         "registry",
         "patch-plan"
+      ],
+      "acronyms": [
+        "oisi"
       ],
       "stability": "evolving",
       "tier": "2",
@@ -1139,6 +1213,9 @@
         "discovery",
         "progressive-reading"
       ],
+      "acronyms": [
+        "omn"
+      ],
       "stability": "evolving",
       "tier": "2",
       "audience": "canon",
@@ -1222,6 +1299,9 @@
         "confidence",
         "mcp"
       ],
+      "acronyms": [
+        "oms"
+      ],
       "stability": "evolving",
       "tier": "2",
       "audience": "canon",
@@ -1302,7 +1382,15 @@
       "uri": "klappy://canon/agents/odd-orchestrator",
       "title": "ODD Orchestrator",
       "subtitle": null,
-      "tags": "[agent, guide, scribe, orchestrator]",
+      "tags": [
+        "agent",
+        "guide",
+        "scribe",
+        "orchestrator"
+      ],
+      "acronyms": [
+        "oo"
+      ],
       "stability": null,
       "tier": null,
       "audience": "agents",
@@ -1405,6 +1493,9 @@
         "epistemics",
         "decisions",
         "ledger"
+      ],
+      "acronyms": [
+        "os"
       ],
       "stability": "evolving",
       "tier": "2",
@@ -1522,6 +1613,9 @@
       "title": "Apocrypha Charter",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "ac"
+      ],
       "stability": null,
       "tier": null,
       "audience": null,
@@ -1593,6 +1687,9 @@
       "title": "canon/apocrypha/fragments/on-artifacts.md",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "ca"
+      ],
       "stability": "fragment",
       "tier": null,
       "audience": null,
@@ -1613,6 +1710,9 @@
       "title": "canon/apocrypha/fragments/on-consent-drift.md",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "ccd"
+      ],
       "stability": "fragment",
       "tier": null,
       "audience": null,
@@ -1636,6 +1736,9 @@
         "meta",
         "changelog",
         "versioning"
+      ],
+      "acronyms": [
+        "cc"
       ],
       "stability": "semi_stable",
       "tier": "3",
@@ -2816,6 +2919,9 @@
         "completion-report",
         "template"
       ],
+      "acronyms": [
+        "crt"
+      ],
       "stability": "evolving",
       "tier": "3",
       "audience": "canon",
@@ -2951,95 +3057,243 @@
         {
           "level": 2,
           "text": "Operating Constraints",
-          "line": 26
+          "line": 30
         },
         {
           "level": 2,
           "text": "Defaults",
-          "line": 37
+          "line": 45
         },
         {
           "level": 2,
           "text": "Failure Modes",
-          "line": 48
+          "line": 56
         },
         {
           "level": 2,
           "text": "Verification",
-          "line": 59
+          "line": 67
         },
         {
           "level": 2,
           "text": "Content",
-          "line": 69
+          "line": 77
         },
         {
           "level": 2,
           "text": "1. Offline-First (Default)",
-          "line": 90
+          "line": 98
         },
         {
           "level": 2,
           "text": "2. Long Timelines & Changing Ownership",
-          "line": 116
+          "line": 124
         },
         {
           "level": 2,
           "text": "3. Maintainability Over Cleverness",
-          "line": 141
+          "line": 149
         },
         {
           "level": 2,
           "text": "4. Interoperability Over Feature Completeness",
-          "line": 160
+          "line": 168
         },
         {
           "level": 2,
           "text": "5. Stateless or Low-State by Default",
-          "line": 184
+          "line": 192
         },
         {
           "level": 2,
           "text": "6. AI as Accelerator, Not Authority",
-          "line": 208
+          "line": 216
         },
         {
           "level": 2,
           "text": "7. Evidence Over Assertion",
-          "line": 231
+          "line": 239
         },
         {
           "level": 2,
           "text": "8. UX Is Contextual, Not Universal",
-          "line": 249
+          "line": 257
         },
         {
           "level": 2,
           "text": "9. Ephemeral Artifacts Are Acceptable",
-          "line": 273
+          "line": 281
         },
         {
           "level": 2,
           "text": "10. Explicit Tradeoffs",
-          "line": 293
+          "line": 301
         },
         {
           "level": 2,
           "text": "11. Lane Self-Containment",
-          "line": 311
+          "line": 319
         },
         {
           "level": 2,
           "text": "💡 Closing Note",
-          "line": 336
+          "line": 344
         },
         {
           "level": 2,
           "text": "✅ Status",
-          "line": 347
+          "line": 355
         }
       ],
       "heading_count": 21,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/constraints/boundary-transitions-require-deceleration.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/constraints/boundary-transitions-require-deceleration",
+      "title": "Boundary Transitions Require Deceleration",
+      "subtitle": "Speed is allowed inside a boundary. Transitions require slowing down.",
+      "tags": [
+        "canon",
+        "constraints",
+        "boundaries",
+        "deceleration"
+      ],
+      "acronyms": [
+        "btrd"
+      ],
+      "stability": "stable",
+      "tier": "1",
+      "audience": "canon",
+      "exposure": "nav",
+      "voice": "first_person",
+      "relevance": "decision",
+      "execution_posture": "governing",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Boundary Transitions Require Deceleration",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Outline",
+          "line": 12
+        },
+        {
+          "level": 2,
+          "text": "Content",
+          "line": 22
+        },
+        {
+          "level": 3,
+          "text": "Boundary Exit (Closure)",
+          "line": 26
+        },
+        {
+          "level": 3,
+          "text": "Boundary Entry (Preparation)",
+          "line": 34
+        },
+        {
+          "level": 3,
+          "text": "What This Forces",
+          "line": 44
+        },
+        {
+          "level": 3,
+          "text": "What This Forbids",
+          "line": 50
+        },
+        {
+          "level": 2,
+          "text": "See Also",
+          "line": 58
+        }
+      ],
+      "heading_count": 9,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/constraints/encode-epistemic-decisions.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/constraints/encode-epistemic-decisions",
+      "title": "Encode Epistemic Decisions",
+      "subtitle": "If a decision matters, it must become durable and inspectable.",
+      "tags": [
+        "canon",
+        "constraints",
+        "durability",
+        "decisions"
+      ],
+      "acronyms": [
+        "eed"
+      ],
+      "stability": "stable",
+      "tier": "1",
+      "audience": "canon",
+      "exposure": "nav",
+      "voice": "first_person",
+      "relevance": "decision",
+      "execution_posture": "governing",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Encode Epistemic Decisions",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Outline",
+          "line": 12
+        },
+        {
+          "level": 2,
+          "text": "Content",
+          "line": 22
+        },
+        {
+          "level": 3,
+          "text": "What Counts as \"Epistemic\"",
+          "line": 26
+        },
+        {
+          "level": 3,
+          "text": "What This Forces",
+          "line": 35
+        },
+        {
+          "level": 3,
+          "text": "What This Forbids",
+          "line": 41
+        },
+        {
+          "level": 3,
+          "text": "Evidence Requirements",
+          "line": 47
+        },
+        {
+          "level": 2,
+          "text": "See Also",
+          "line": 57
+        }
+      ],
+      "heading_count": 9,
       "has_frontmatter": true
     },
     {
@@ -3056,6 +3310,9 @@
         "constraints",
         "ergonomics",
         "epistemic-discipline"
+      ],
+      "acronyms": [
+        "hvi"
       ],
       "stability": "stable",
       "tier": "1",
@@ -3113,6 +3370,9 @@
         "portability",
         "oddkit"
       ],
+      "acronyms": [
+        "mmndp"
+      ],
       "stability": "stable",
       "tier": "1",
       "audience": "canon",
@@ -3156,6 +3416,155 @@
       "has_frontmatter": true
     },
     {
+      "path": "canon/constraints/odd-is-epistemic-os-not-values.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/constraints/odd-is-epistemic-os-not-values",
+      "title": "ODD Is an Epistemic OS, Not a Value System",
+      "subtitle": "ODD constrains reasoning and integrity. It does not define truth, morality, or authority.",
+      "tags": [
+        "canon",
+        "constraints",
+        "odd",
+        "authority",
+        "values"
+      ],
+      "acronyms": [
+        "oeonvs"
+      ],
+      "stability": "stable",
+      "tier": "1",
+      "audience": "canon",
+      "exposure": "nav",
+      "voice": "first_person",
+      "relevance": "decision",
+      "execution_posture": "governing",
+      "headings": [
+        {
+          "level": 1,
+          "text": "ODD Is an Epistemic OS, Not a Value System",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Outline",
+          "line": 12
+        },
+        {
+          "level": 2,
+          "text": "Content",
+          "line": 22
+        },
+        {
+          "level": 3,
+          "text": "What ODD Governs",
+          "line": 26
+        },
+        {
+          "level": 3,
+          "text": "What ODD Does Not Govern",
+          "line": 33
+        },
+        {
+          "level": 3,
+          "text": "What This Forces",
+          "line": 40
+        },
+        {
+          "level": 3,
+          "text": "What This Forbids",
+          "line": 46
+        },
+        {
+          "level": 2,
+          "text": "See Also",
+          "line": 54
+        }
+      ],
+      "heading_count": 9,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/constraints/single-agent-integrity-precedes-collaboration.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/constraints/single-agent-integrity-precedes-collaboration",
+      "title": "Single-Agent Integrity Precedes Collaboration",
+      "subtitle": "Collaboration is only constructive when integrity exists first.",
+      "tags": [
+        "canon",
+        "constraints",
+        "integrity",
+        "collaboration"
+      ],
+      "acronyms": [
+        "saipc"
+      ],
+      "stability": "stable",
+      "tier": "1",
+      "audience": "canon",
+      "exposure": "nav",
+      "voice": "first_person",
+      "relevance": "decision",
+      "execution_posture": "governing",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Single-Agent Integrity Precedes Collaboration",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Outline",
+          "line": 12
+        },
+        {
+          "level": 2,
+          "text": "Content",
+          "line": 22
+        },
+        {
+          "level": 3,
+          "text": "What I Mean by Integrity",
+          "line": 26
+        },
+        {
+          "level": 3,
+          "text": "What This Forces",
+          "line": 35
+        },
+        {
+          "level": 3,
+          "text": "What This Forbids",
+          "line": 41
+        },
+        {
+          "level": 3,
+          "text": "When It Doesn't Apply",
+          "line": 47
+        },
+        {
+          "level": 2,
+          "text": "See Also",
+          "line": 53
+        }
+      ],
+      "heading_count": 9,
+      "has_frontmatter": true
+    },
+    {
       "path": "canon/decision-rules.md",
       "root": "canon",
       "authority_band": "governing",
@@ -3166,6 +3575,9 @@
       "tags": [
         "decision-rules",
         "heuristics"
+      ],
+      "acronyms": [
+        "dr"
       ],
       "stability": "stable",
       "tier": "2",
@@ -3314,6 +3726,9 @@
         "canon",
         "governance"
       ],
+      "acronyms": [
+        "drs"
+      ],
       "stability": "evolving",
       "tier": "2",
       "audience": "canon",
@@ -3415,6 +3830,9 @@
         "models",
         "mutation",
         "governance"
+      ],
+      "acronyms": [
+        "mnmc"
       ],
       "stability": "stable",
       "tier": "1",
@@ -3537,6 +3955,9 @@
       "title": "Epistemic Posture",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "ep"
+      ],
       "stability": "evolving",
       "tier": null,
       "audience": "canon",
@@ -3563,6 +3984,9 @@
       "title": "Evidence Intake",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "ei"
+      ],
       "stability": "evolving",
       "tier": null,
       "audience": "canon",
@@ -3591,6 +4015,9 @@
       "tags": [
         "definition-of-done",
         "evidence"
+      ],
+      "acronyms": [
+        "dd&ep"
       ],
       "stability": "semi_stable",
       "tier": "1",
@@ -3705,6 +4132,71 @@
       "has_frontmatter": true
     },
     {
+      "path": "canon/definitions/cognitive-saturation-threshold.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/definitions/cognitive-saturation-threshold",
+      "title": "Cognitive Saturation Threshold (CST)",
+      "subtitle": "The point at which continued conceptual exploration yields diminishing returns and must stop.",
+      "tags": [
+        "canon",
+        "definition",
+        "cst",
+        "closure",
+        "limits"
+      ],
+      "acronyms": [
+        "cst"
+      ],
+      "stability": "stable",
+      "tier": "1",
+      "audience": "canon",
+      "exposure": "nav",
+      "voice": "first_person",
+      "relevance": "decision",
+      "execution_posture": "governing",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Cognitive Saturation Threshold (CST)",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Definition",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "What CST Is",
+          "line": 20
+        },
+        {
+          "level": 2,
+          "text": "What CST Is Not",
+          "line": 33
+        },
+        {
+          "level": 2,
+          "text": "CST and Closure",
+          "line": 48
+        },
+        {
+          "level": 2,
+          "text": "CST and Extreme Exploration",
+          "line": 61
+        },
+        {
+          "level": 2,
+          "text": "Constraint",
+          "line": 70
+        }
+      ],
+      "heading_count": 7,
+      "has_frontmatter": true
+    },
+    {
       "path": "canon/diagnostics/ritual-detected.md",
       "root": "canon",
       "authority_band": "governing",
@@ -3717,6 +4209,9 @@
         "smell",
         "ritual",
         "lint"
+      ],
+      "acronyms": [
+        "dr"
       ],
       "stability": "evolving",
       "tier": "3",
@@ -3762,6 +4257,9 @@
         "templates",
         "agents",
         "documentation"
+      ],
+      "acronyms": [
+        "aedo"
       ],
       "stability": "stable",
       "tier": "1",
@@ -3882,6 +4380,9 @@
         "documentation",
         "agents",
         "governance"
+      ],
+      "acronyms": [
+        "ep"
       ],
       "stability": "stable",
       "tier": "1",
@@ -4072,6 +4573,9 @@
         "documentation",
         "context-packs"
       ],
+      "acronyms": [
+        "tvr"
+      ],
       "stability": "stable",
       "tier": "1",
       "audience": "canon",
@@ -4169,6 +4673,9 @@
         "validation",
         "collaboration"
       ],
+      "acronyms": [
+        "ec"
+      ],
       "stability": "semi_stable",
       "tier": "2",
       "audience": "canon",
@@ -4229,6 +4736,9 @@
         "governance",
         "learning",
         "promotion"
+      ],
+      "acronyms": [
+        "eh"
       ],
       "stability": "stable",
       "tier": "2",
@@ -4315,6 +4825,9 @@
         "decision-making",
         "governance"
       ],
+      "acronyms": [
+        "em"
+      ],
       "stability": "stable",
       "tier": "1",
       "audience": "canon",
@@ -4400,6 +4913,9 @@
         "tiers",
         "epistemic-obligation",
         "architecture"
+      ],
+      "acronyms": [
+        "eodt"
       ],
       "stability": "stable",
       "tier": "1",
@@ -4511,6 +5027,9 @@
         "video",
         "screenshots",
         "recordings"
+      ],
+      "acronyms": [
+        "ese"
       ],
       "stability": "evolving",
       "tier": "1",
@@ -4628,6 +5147,9 @@
       "title": "Epistemic Architecture",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "ea"
+      ],
       "stability": "long_lived",
       "tier": null,
       "audience": "canon",
@@ -4676,6 +5198,457 @@
       "has_frontmatter": true
     },
     {
+      "path": "canon/methods/boundary-transition-review.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/methods/boundary-transition-review",
+      "title": "Method: Boundary Transition Review",
+      "subtitle": "A repeatable review-and-prepare step used when moving between epistemic boundaries.",
+      "tags": [
+        "canon",
+        "methods",
+        "boundaries",
+        "review"
+      ],
+      "acronyms": [
+        "mbtr"
+      ],
+      "stability": "draft",
+      "tier": "2",
+      "audience": "canon",
+      "exposure": "nav",
+      "voice": "first_person",
+      "relevance": "decision",
+      "execution_posture": "governing",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Method: Boundary Transition Review",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Outline",
+          "line": 10
+        },
+        {
+          "level": 2,
+          "text": "Content",
+          "line": 20
+        },
+        {
+          "level": 3,
+          "text": "Exit Checklist",
+          "line": 24
+        },
+        {
+          "level": 3,
+          "text": "Entry Checklist",
+          "line": 31
+        },
+        {
+          "level": 2,
+          "text": "See Also",
+          "line": 39
+        }
+      ],
+      "heading_count": 7,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/methods/choosing-the-right-narrative-container.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/methods/choosing-the-right-narrative-container",
+      "title": "Method: Choosing the Right Narrative Container",
+      "subtitle": "Not every insight belongs in the same kind of document.",
+      "tags": [
+        "canon",
+        "methods",
+        "writing",
+        "structure"
+      ],
+      "acronyms": [
+        "mcrnc"
+      ],
+      "stability": "stable",
+      "tier": "2",
+      "audience": "canon",
+      "exposure": "nav",
+      "voice": "first_person",
+      "relevance": "decision",
+      "execution_posture": "governing",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Method: Choosing the Right Narrative Container",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "The Three Containers",
+          "line": 14
+        },
+        {
+          "level": 3,
+          "text": "Canon",
+          "line": 16
+        },
+        {
+          "level": 3,
+          "text": "Apocrypha Fragment",
+          "line": 28
+        },
+        {
+          "level": 3,
+          "text": "Cinematic Retelling",
+          "line": 44
+        },
+        {
+          "level": 2,
+          "text": "Diagnostic Signals",
+          "line": 57
+        }
+      ],
+      "heading_count": 7,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/methods/exploration-exhaust.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/methods/exploration-exhaust",
+      "title": "Method: Exploration Exhaust",
+      "subtitle": "A repeatable way to preserve exploration context, closures, and warnings so scope stays closed.",
+      "tags": [
+        "canon",
+        "methods",
+        "exploration",
+        "durability"
+      ],
+      "acronyms": [
+        "mee"
+      ],
+      "stability": "draft",
+      "tier": "2",
+      "audience": "canon",
+      "exposure": "nav",
+      "voice": "first_person",
+      "relevance": "decision",
+      "execution_posture": "governing",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Method: Exploration Exhaust",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Outline",
+          "line": 10
+        },
+        {
+          "level": 2,
+          "text": "Content",
+          "line": 20
+        },
+        {
+          "level": 3,
+          "text": "Required Sections",
+          "line": 24
+        },
+        {
+          "level": 3,
+          "text": "What Must Not Happen",
+          "line": 32
+        },
+        {
+          "level": 3,
+          "text": "Closure Rule",
+          "line": 38
+        },
+        {
+          "level": 2,
+          "text": "See Also",
+          "line": 44
+        }
+      ],
+      "heading_count": 8,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/methods/extreme-exploration-for-limit-discovery.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/methods/extreme-exploration-for-limit-discovery",
+      "title": "Method: Extreme Exploration for Limit Discovery",
+      "subtitle": "Exploration may go to the edge so implementation does not have to.",
+      "tags": [
+        "canon",
+        "methods",
+        "exploration",
+        "limits",
+        "cst"
+      ],
+      "acronyms": [
+        "meeld"
+      ],
+      "stability": "stable",
+      "tier": "2",
+      "audience": "canon",
+      "exposure": "nav",
+      "voice": "first_person",
+      "relevance": "decision",
+      "execution_posture": "governing",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Method: Extreme Exploration for Limit Discovery",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "What Extreme Exploration Is",
+          "line": 17
+        },
+        {
+          "level": 2,
+          "text": "What Extreme Exploration Is Not",
+          "line": 35
+        },
+        {
+          "level": 2,
+          "text": "The Pullback Rule",
+          "line": 49
+        },
+        {
+          "level": 2,
+          "text": "Relationship to CST",
+          "line": 63
+        },
+        {
+          "level": 2,
+          "text": "Why This Method Exists",
+          "line": 71
+        },
+        {
+          "level": 2,
+          "text": "Constraint",
+          "line": 84
+        }
+      ],
+      "heading_count": 8,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/methods/README.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/methods",
+      "title": "Methods",
+      "subtitle": "Repeatable ways to apply principles and satisfy constraints without re-deriving safe application patterns each time.",
+      "tags": [
+        "canon",
+        "methods",
+        "practice",
+        "application"
+      ],
+      "stability": "stable",
+      "tier": "1",
+      "audience": "canon",
+      "exposure": "nav",
+      "voice": "first_person",
+      "relevance": "decision",
+      "execution_posture": "governing",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Methods",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Outline",
+          "line": 13
+        },
+        {
+          "level": 2,
+          "text": "What Methods Are",
+          "line": 23
+        },
+        {
+          "level": 2,
+          "text": "What Methods Are Not",
+          "line": 32
+        },
+        {
+          "level": 2,
+          "text": "How Methods Relate to Constraints and Principles",
+          "line": 41
+        },
+        {
+          "level": 2,
+          "text": "When to Add a Method",
+          "line": 47
+        },
+        {
+          "level": 2,
+          "text": "See Also",
+          "line": 63
+        }
+      ],
+      "heading_count": 8,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/methods/using-ease-and-resistance-as-signals.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/methods/using-ease-and-resistance-as-signals",
+      "title": "Method: Using Ease and Resistance as Signals",
+      "subtitle": "Resistance is often a classification error, not a lack of insight.",
+      "tags": [
+        "canon",
+        "methods",
+        "writing",
+        "signals"
+      ],
+      "acronyms": [
+        "muers"
+      ],
+      "stability": "stable",
+      "tier": "2",
+      "audience": "canon",
+      "exposure": "nav",
+      "voice": "first_person",
+      "relevance": "decision",
+      "execution_posture": "governing",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Method: Using Ease and Resistance as Signals",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Ease as a Signal",
+          "line": 12
+        },
+        {
+          "level": 2,
+          "text": "Resistance as a Signal",
+          "line": 24
+        },
+        {
+          "level": 2,
+          "text": "Reclassification Loop",
+          "line": 36
+        },
+        {
+          "level": 2,
+          "text": "Constraint",
+          "line": 49
+        }
+      ],
+      "heading_count": 6,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/methods/writing-apocrypha-fragments.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/methods/writing-apocrypha-fragments",
+      "title": "Method: Writing Apocrypha Fragments",
+      "subtitle": "Apocrypha fragments are not guidance. They are residue.",
+      "tags": [
+        "canon",
+        "methods",
+        "apocrypha",
+        "writing"
+      ],
+      "acronyms": [
+        "mwaf"
+      ],
+      "stability": "stable",
+      "tier": "2",
+      "audience": "canon",
+      "exposure": "nav",
+      "voice": "first_person",
+      "relevance": "decision",
+      "execution_posture": "governing",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Method: Writing Apocrypha Fragments",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Required Properties",
+          "line": 14
+        },
+        {
+          "level": 2,
+          "text": "Structural Constraints",
+          "line": 29
+        },
+        {
+          "level": 2,
+          "text": "Tone Smells",
+          "line": 42
+        },
+        {
+          "level": 2,
+          "text": "Ending Rule",
+          "line": 56
+        }
+      ],
+      "heading_count": 6,
+      "has_frontmatter": true
+    },
+    {
       "path": "canon/odd/appendices/tool-specialization.md",
       "root": "canon",
       "authority_band": "governing",
@@ -4688,6 +5661,9 @@
         "pattern",
         "tools",
         "decision-complexity"
+      ],
+      "acronyms": [
+        "ts"
       ],
       "stability": "evolving",
       "tier": "3",
@@ -4755,6 +5731,9 @@
       "title": "Bulldoze the App, Keep the Blueprint",
       "subtitle": "**When code stops being the scarce resource**",
       "tags": [],
+      "acronyms": [
+        "bakb"
+      ],
       "stability": "stable",
       "tier": "2",
       "audience": "canon",
@@ -4826,6 +5805,9 @@
       "title": "Documentation Is the Lever, Not the Goal",
       "subtitle": "**\"How does this improve our ability to achieve better outcomes?\"**",
       "tags": [],
+      "acronyms": [
+        "dlng"
+      ],
       "stability": "semi_stable",
       "tier": "1",
       "audience": "canon",
@@ -4878,6 +5860,9 @@
         "stateless",
         "continuity",
         "ergonomics"
+      ],
+      "acronyms": [
+        "rs"
       ],
       "stability": "semi_stable",
       "tier": "2",
@@ -4934,6 +5919,9 @@
         "portability",
         "ritual-smell",
         "oddkit"
+      ],
+      "acronyms": [
+        "sof"
       ],
       "stability": "draft",
       "tier": "2",
@@ -5026,77 +6014,77 @@
         {
           "level": 3,
           "text": "Principles",
-          "line": 25
+          "line": 26
         },
         {
           "level": 3,
           "text": "Subfolders",
-          "line": 32
+          "line": 33
         },
         {
           "level": 3,
           "text": "Resonance (External Alignment & Divergence)",
-          "line": 43
+          "line": 46
         },
         {
           "level": 3,
           "text": "ODD Appendices (Patterns)",
-          "line": 55
+          "line": 58
         },
         {
           "level": 2,
           "text": "🚀 Start Here",
-          "line": 63
+          "line": 66
         },
         {
           "level": 2,
           "text": "📖 Precedence & Interpretation",
-          "line": 73
+          "line": 76
         },
         {
           "level": 2,
           "text": "🧠 What the Canon Is (and Is Not)",
-          "line": 87
+          "line": 90
         },
         {
           "level": 2,
           "text": "🔒 Public vs Internal Boundary",
-          "line": 104
+          "line": 107
         },
         {
           "level": 2,
           "text": "📋 Meta Rules",
-          "line": 113
+          "line": 116
         },
         {
           "level": 2,
           "text": "🔄 Stability & Change Philosophy",
-          "line": 134
+          "line": 137
         },
         {
           "level": 2,
           "text": "⚠️ Confidence & Drift Risk",
-          "line": 147
+          "line": 150
         },
         {
           "level": 2,
           "text": "🚫 What Is Intentionally Undefined",
-          "line": 173
+          "line": 176
         },
         {
           "level": 2,
           "text": "📦 For Pack Compilation",
-          "line": 185
+          "line": 188
         },
         {
           "level": 2,
           "text": "🔗 See Also",
-          "line": 196
+          "line": 199
         },
         {
           "level": 2,
           "text": "✅ Status",
-          "line": 204
+          "line": 207
         }
       ],
       "heading_count": 18,
@@ -5184,6 +6172,9 @@
         "learning",
         "iteration"
       ],
+      "acronyms": [
+        "ls"
+      ],
       "stability": "stable",
       "tier": "3",
       "audience": "canon",
@@ -5251,6 +6242,9 @@
         "decision-making",
         "feedback"
       ],
+      "acronyms": [
+        "ol"
+      ],
       "stability": "stable",
       "tier": "3",
       "audience": "canon",
@@ -5316,6 +6310,9 @@
         "index",
         "principles",
         "divergence"
+      ],
+      "acronyms": [
+        "ri"
       ],
       "stability": "stable",
       "tier": "3",
@@ -5453,6 +6450,9 @@
         "resonance",
         "template"
       ],
+      "acronyms": [
+        "rpt"
+      ],
       "stability": "stable",
       "tier": "3",
       "audience": "canon",
@@ -5556,6 +6556,9 @@
       "tags": [
         "self-audit",
         "verification"
+      ],
+      "acronyms": [
+        "sac"
       ],
       "stability": "evolving",
       "tier": "2",
@@ -5680,6 +6683,9 @@
       "tags": [
         "canon",
         "template"
+      ],
+      "acronyms": [
+        "cat"
       ],
       "stability": "stable",
       "tier": "3",
@@ -5818,6 +6824,9 @@
         "epistemology",
         "agents"
       ],
+      "acronyms": [
+        "v&e"
+      ],
       "stability": "stable",
       "tier": "1",
       "audience": "canon",
@@ -5916,6 +6925,9 @@
       "tags": [
         "visual-proof",
         "evidence"
+      ],
+      "acronyms": [
+        "vps"
       ],
       "stability": "semi_stable",
       "tier": "2",
@@ -6052,6 +7064,9 @@
         "relevance",
         "epistemic-hygiene",
         "promotion"
+      ],
+      "acronyms": [
+        "wr&a"
       ],
       "stability": "stable",
       "tier": "2",
@@ -6200,6 +7215,9 @@
         "entrypoint",
         "redirect"
       ],
+      "acronyms": [
+        "aep"
+      ],
       "stability": "stable",
       "tier": "1",
       "audience": "docs",
@@ -6251,6 +7269,9 @@
         "agent",
         "kickoff",
         "entry-point"
+      ],
+      "acronyms": [
+        "ak"
       ],
       "stability": "stable",
       "tier": "1",
@@ -6338,6 +7359,9 @@
         "mcp",
         "implementation"
       ],
+      "acronyms": [
+        "sa"
+      ],
       "stability": "evolving",
       "tier": "3",
       "audience": "docs",
@@ -6404,6 +7428,9 @@
       "title": "Discovery Role Overlay",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "dro"
+      ],
       "stability": "experimental",
       "tier": null,
       "audience": null,
@@ -6475,6 +7502,9 @@
       "title": "Discovery Interview Protocol",
       "subtitle": "Adaptive decision tree for discovery sessions. Not a fixed script.",
       "tags": [],
+      "acronyms": [
+        "dip"
+      ],
       "stability": "experimental",
       "tier": null,
       "audience": null,
@@ -6566,6 +7596,9 @@
       "title": "Discovery Agent Behavior",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "dab"
+      ],
       "stability": null,
       "tier": null,
       "audience": null,
@@ -6622,6 +7655,9 @@
         "retrieval",
         "citations",
         "provenance"
+      ],
+      "acronyms": [
+        "lc"
       ],
       "stability": "stable",
       "tier": "2",
@@ -6710,6 +7746,9 @@
         "citations",
         "provenance"
       ],
+      "acronyms": [
+        "la"
+      ],
       "stability": "evolving",
       "tier": "3",
       "audience": "docs",
@@ -6761,6 +7800,9 @@
         "policy",
         "mcp",
         "trust"
+      ],
+      "acronyms": [
+        "tsp"
       ],
       "stability": "evolving",
       "tier": "2",
@@ -6819,6 +7861,9 @@
         "validation",
         "librarian"
       ],
+      "acronyms": [
+        "ecm"
+      ],
       "stability": "evolving",
       "tier": "2",
       "audience": "docs",
@@ -6870,6 +7915,9 @@
       "title": "Agent Behavior & Contracts",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "ab&c"
+      ],
       "stability": null,
       "tier": null,
       "audience": null,
@@ -6946,6 +7994,9 @@
         "overlay",
         "role"
       ],
+      "acronyms": [
+        "vro"
+      ],
       "stability": "evolving",
       "tier": "3",
       "audience": "docs",
@@ -7002,6 +8053,9 @@
         "protocol",
         "evidence",
         "dod"
+      ],
+      "acronyms": [
+        "vp"
       ],
       "stability": "stable",
       "tier": "2",
@@ -7095,6 +8149,9 @@
         "claims",
         "dod"
       ],
+      "acronyms": [
+        "va"
+      ],
       "stability": "evolving",
       "tier": "2",
       "audience": "docs",
@@ -7155,6 +8212,9 @@
         "attempt",
         "lifecycle",
         "restartability"
+      ],
+      "acronyms": [
+        "al"
       ],
       "stability": "semi_stable",
       "tier": "2",
@@ -7393,6 +8453,9 @@
         "epochs",
         "drift"
       ],
+      "acronyms": [
+        "cc"
+      ],
       "stability": "stable",
       "tier": "3",
       "audience": "docs",
@@ -7505,6 +8568,9 @@
         "portability",
         "packs",
         "lanes"
+      ],
+      "acronyms": [
+        "ct"
       ],
       "stability": "stable",
       "tier": "3",
@@ -7689,6 +8755,9 @@
         "memory",
         "drift"
       ],
+      "acronyms": [
+        "cm"
+      ],
       "stability": "evolving",
       "tier": "3",
       "audience": "docs",
@@ -7781,6 +8850,9 @@
         "portability",
         "oddkit"
       ],
+      "acronyms": [
+        "cre"
+      ],
       "stability": "draft",
       "tier": "3",
       "audience": "docs",
@@ -7868,6 +8940,9 @@
         "cloudflare",
         "attempts"
       ],
+      "acronyms": [
+        "de"
+      ],
       "stability": "stable",
       "tier": "2",
       "audience": "docs",
@@ -7933,6 +9008,9 @@
         "drift",
         "verification",
         "contracts"
+      ],
+      "acronyms": [
+        "dc"
       ],
       "stability": "evolving",
       "tier": "3",
@@ -8217,6 +9295,9 @@
         "layout",
         "deploy"
       ],
+      "acronyms": [
+        "lbl"
+      ],
       "stability": "evolving",
       "tier": "3",
       "audience": "docs",
@@ -8288,6 +9369,9 @@
         "deployment",
         "contract",
         "build"
+      ],
+      "acronyms": [
+        "lsis"
       ],
       "stability": "stable",
       "tier": "3",
@@ -8369,6 +9453,9 @@
         "memory",
         "elevation",
         "portability"
+      ],
+      "acronyms": [
+        "ma"
       ],
       "stability": "evolving",
       "tier": "3",
@@ -8487,6 +9574,9 @@
         "attempts",
         "validation"
       ],
+      "acronyms": [
+        "oer"
+      ],
       "stability": "stable",
       "tier": "2",
       "audience": "docs",
@@ -8563,6 +9653,9 @@
         "architecture",
         "lanes",
         "orientation"
+      ],
+      "acronyms": [
+        "plodd"
       ],
       "stability": "stable",
       "tier": "3",
@@ -8731,6 +9824,9 @@
         "reference",
         "index"
       ],
+      "acronyms": [
+        "ia"
+      ],
       "stability": "evolving",
       "tier": "3",
       "audience": "docs",
@@ -8801,6 +9897,9 @@
         "topology",
         "structure",
         "decoupling"
+      ],
+      "acronyms": [
+        "rt"
       ],
       "stability": "semi_stable",
       "tier": "3",
@@ -8918,6 +10017,9 @@
         "epistemic",
         "audit",
         "drift"
+      ],
+      "acronyms": [
+        "rta"
       ],
       "stability": "semi_stable",
       "tier": "3",
@@ -9046,6 +10148,9 @@
         "truth",
         "cleanup"
       ],
+      "acronyms": [
+        "rt&eh"
+      ],
       "stability": "stable",
       "tier": "3",
       "audience": "docs",
@@ -9127,6 +10232,9 @@
         "attempts",
         "workflow",
         "human"
+      ],
+      "acronyms": [
+        "aw"
       ],
       "stability": "stable",
       "tier": "1",
@@ -9240,6 +10348,9 @@
         "records",
         "evidence"
       ],
+      "acronyms": [
+        "arp"
+      ],
       "stability": "stable",
       "tier": "3",
       "audience": "docs",
@@ -9291,6 +10402,9 @@
         "attempts",
         "lifecycle",
         "orientation"
+      ],
+      "acronyms": [
+        "al"
       ],
       "stability": "stable",
       "tier": "1",
@@ -9429,6 +10543,9 @@
         "deploy",
         "configuration"
       ],
+      "acronyms": [
+        "cpc"
+      ],
       "stability": "stable",
       "tier": "2",
       "audience": "docs",
@@ -9516,6 +10633,9 @@
         "overview",
         "problem-statement"
       ],
+      "acronyms": [
+        "cs"
+      ],
       "stability": "stable",
       "tier": "2",
       "audience": "docs",
@@ -9598,6 +10718,9 @@
         "map",
         "apocrypha",
         "all-docs"
+      ],
+      "acronyms": [
+        "ccm"
       ],
       "stability": "evolving",
       "tier": "1",
@@ -9719,6 +10842,9 @@
         "context-packs",
         "projection",
         "detail-levels"
+      ],
+      "acronyms": [
+        "cppd"
       ],
       "stability": "evolving",
       "tier": "2",
@@ -9856,6 +10982,9 @@
         "branch",
         "deploy"
       ],
+      "acronyms": [
+        "dpbp"
+      ],
       "stability": "stable",
       "tier": "2",
       "audience": "docs",
@@ -9931,6 +11060,9 @@
         "decisions",
         "provenance",
         "model"
+      ],
+      "acronyms": [
+        "dapr"
       ],
       "stability": "stable",
       "tier": "2",
@@ -10018,6 +11150,9 @@
         "prd",
         "version"
       ],
+      "acronyms": [
+        "dpvad"
+      ],
       "stability": "stable",
       "tier": "2",
       "audience": "docs",
@@ -10104,6 +11239,9 @@
         "cleanup",
         "hygiene"
       ],
+      "acronyms": [
+        "drt&cm"
+      ],
       "stability": "stable",
       "tier": "2",
       "audience": "docs",
@@ -10189,6 +11327,9 @@
         "decisions",
         "nuke",
         "safety"
+      ],
+      "acronyms": [
+        "dncsg"
       ],
       "stability": "stable",
       "tier": "2",
@@ -10281,6 +11422,9 @@
         "dogfooding",
         "validation"
       ],
+      "acronyms": [
+        "ddr"
+      ],
       "stability": "stable",
       "tier": "2",
       "audience": "docs",
@@ -10371,6 +11515,9 @@
         "decisions",
         "branches",
         "provenance"
+      ],
+      "acronyms": [
+        "dbnc"
       ],
       "stability": "stable",
       "tier": "2",
@@ -10464,6 +11611,9 @@
         "provenance",
         "independence"
       ],
+      "acronyms": [
+        "drbn"
+      ],
       "stability": "stable",
       "tier": "2",
       "audience": "docs",
@@ -10555,6 +11705,9 @@
         "lanes",
         "prd",
         "architecture"
+      ],
+      "acronyms": [
+        "dmlpa"
       ],
       "stability": "stable",
       "tier": "2",
@@ -10648,6 +11801,9 @@
         "kickoff",
         "entrypoint"
       ],
+      "acronyms": [
+        "dcak"
+      ],
       "stability": "stable",
       "tier": "2",
       "audience": "docs",
@@ -10739,6 +11895,9 @@
         "contract",
         "version",
         "epoch"
+      ],
+      "acronyms": [
+        "dosc2"
       ],
       "stability": "stable",
       "tier": "2",
@@ -10844,6 +12003,9 @@
         "interfaces",
         "tooling"
       ],
+      "acronyms": [
+        "deti"
+      ],
       "stability": "stable",
       "tier": "3",
       "audience": "docs",
@@ -10927,6 +12089,9 @@
         "deploy",
         "contracts"
       ],
+      "acronyms": [
+        "dbotls"
+      ],
       "stability": "stable",
       "tier": "2",
       "audience": "docs",
@@ -10999,6 +12164,9 @@
         "cloudflare",
         "attempts",
         "lanes"
+      ],
+      "acronyms": [
+        "ddeefe"
       ],
       "stability": "stable",
       "tier": "2",
@@ -11087,6 +12255,9 @@
         "prd",
         "structure",
         "convention"
+      ],
+      "acronyms": [
+        "dlpsa"
       ],
       "stability": "stable",
       "tier": "2",
@@ -11206,6 +12377,9 @@
         "reference",
         "index"
       ],
+      "acronyms": [
+        "idl"
+      ],
       "stability": "evolving",
       "tier": "3",
       "audience": "docs",
@@ -11320,6 +12494,9 @@
         "template",
         "decision",
         "adr"
+      ],
+      "acronyms": [
+        "dt"
       ],
       "stability": "stable",
       "tier": "3",
@@ -11453,6 +12630,9 @@
         "classification",
         "archive"
       ],
+      "acronyms": [
+        "cdc"
+      ],
       "stability": "stable",
       "tier": "3",
       "audience": "docs",
@@ -11524,6 +12704,9 @@
       "title": "From Execution to Outcome: A QA Validation Case Study",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "eoqvcs"
+      ],
       "stability": "evolving",
       "tier": "2",
       "audience": "practitioners",
@@ -11590,6 +12773,9 @@
         "case-studies",
         "index"
       ],
+      "acronyms": [
+        "ei"
+      ],
       "stability": "evolving",
       "tier": "3",
       "audience": "docs",
@@ -11631,6 +12817,9 @@
       "title": "Klappy.dev Website PoC PRD",
       "subtitle": "\"Should the website also...?\"",
       "tags": [],
+      "acronyms": [
+        "kwpp"
+      ],
       "stability": "guiding_artifact",
       "tier": null,
       "audience": "docs",
@@ -11782,6 +12971,9 @@
       "title": "☁️ Cloudflare Pages — Branch Deploys (Observation Infrastructure)",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "☁cp—bd"
+      ],
       "stability": null,
       "tier": null,
       "audience": null,
@@ -11833,6 +13025,9 @@
       "title": "Klappy.dev Website Documentation",
       "subtitle": "\"Should the website also...?\"",
       "tags": [],
+      "acronyms": [
+        "kwd"
+      ],
       "stability": "stable",
       "tier": null,
       "audience": "docs",
@@ -11884,6 +13079,9 @@
       "title": "Website Closure Statement",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "wcs"
+      ],
       "stability": "stable",
       "tier": null,
       "audience": "docs",
@@ -11910,6 +13108,9 @@
       "title": "Website Telemetry Specification",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "wts"
+      ],
       "stability": "stable",
       "tier": null,
       "audience": "docs",
@@ -11961,6 +13162,9 @@
         "scope",
         "experiments",
         "portability"
+      ],
+      "acronyms": [
+        "semm"
       ],
       "stability": "draft",
       "tier": "2",
@@ -12052,6 +13256,9 @@
         "execution",
         "collaboration"
       ],
+      "acronyms": [
+        "msc"
+      ],
       "stability": "evolving",
       "tier": "2",
       "audience": "docs",
@@ -12121,6 +13328,9 @@
         "about",
         "orientation"
       ],
+      "acronyms": [
+        "ao"
+      ],
       "stability": "stable",
       "tier": "1",
       "audience": "docs",
@@ -12147,6 +13357,9 @@
       "title": "oddkit Epistemic Instructions",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "oei"
+      ],
       "stability": "stable",
       "tier": null,
       "audience": "docs",
@@ -12196,6 +13409,9 @@
         "oddkit",
         "implementation",
         "epistemic-modes"
+      ],
+      "acronyms": [
+        "iaoeem"
       ],
       "stability": "evolving",
       "tier": "3",
@@ -12287,6 +13503,9 @@
         "implementation",
         "epistemic-modes"
       ],
+      "acronyms": [
+        "ioemh"
+      ],
       "stability": "evolving",
       "tier": "3",
       "audience": "docs",
@@ -12377,6 +13596,9 @@
         "agents",
         "epistemic-modes"
       ],
+      "acronyms": [
+        "emgo"
+      ],
       "stability": "evolving",
       "tier": "2",
       "audience": "docs",
@@ -12440,6 +13662,9 @@
         "librarian",
         "validation",
         "arbitration"
+      ],
+      "acronyms": [
+        "osm"
       ],
       "stability": "stable",
       "tier": "2",
@@ -12517,6 +13742,9 @@
         "librarian",
         "challenge",
         "workflow"
+      ],
+      "acronyms": [
+        "ec"
       ],
       "stability": "evolving",
       "tier": "2",
@@ -12615,6 +13843,9 @@
         "promotions",
         "quickstart"
       ],
+      "acronyms": [
+        "oq"
+      ],
       "stability": "evolving",
       "tier": "2",
       "audience": "docs",
@@ -12711,6 +13942,9 @@
         "policy",
         "lookup"
       ],
+      "acronyms": [
+        "ul"
+      ],
       "stability": "evolving",
       "tier": "2",
       "audience": "docs",
@@ -12782,6 +14016,9 @@
         "canon",
         "governance"
       ],
+      "acronyms": [
+        "up"
+      ],
       "stability": "evolving",
       "tier": "2",
       "audience": "docs",
@@ -12837,6 +14074,9 @@
         "evidence",
         "dod",
         "claims"
+      ],
+      "acronyms": [
+        "uv"
       ],
       "stability": "evolving",
       "tier": "2",
@@ -12898,6 +14138,9 @@
         "prd",
         "index"
       ],
+      "acronyms": [
+        "pi"
+      ],
       "stability": "stable",
       "tier": "2",
       "audience": "docs",
@@ -12957,6 +14200,9 @@
         "docs",
         "prd",
         "template"
+      ],
+      "acronyms": [
+        "pt"
       ],
       "stability": "stable",
       "tier": "3",
@@ -13060,6 +14306,9 @@
         "cloudflare",
         "local"
       ],
+      "acronyms": [
+        "pla"
+      ],
       "stability": "evolving",
       "tier": "3",
       "audience": "docs",
@@ -13140,6 +14389,9 @@
         "proposed",
         "validation",
         "evidence"
+      ],
+      "acronyms": [
+        "pccra"
       ],
       "stability": "evolving",
       "tier": "3",
@@ -13233,6 +14485,9 @@
         "patterns",
         "governance"
       ],
+      "acronyms": [
+        "pp"
+      ],
       "stability": "evolving",
       "tier": "2",
       "audience": "docs",
@@ -13306,6 +14561,9 @@
       "tags": [
         "promotions",
         "template"
+      ],
+      "acronyms": [
+        "pat"
       ],
       "stability": "stable",
       "tier": "3",
@@ -13403,6 +14661,9 @@
         "reference",
         "index"
       ],
+      "acronyms": [
+        "id"
+      ],
       "stability": "evolving",
       "tier": "1",
       "audience": "docs",
@@ -13481,6 +14742,35 @@
       "has_frontmatter": true
     },
     {
+      "path": "docs/retellings/when-arbitration-went-global.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "klappy://docs/retellings/when-arbitration-went-global",
+      "title": "When Arbitration Went Global",
+      "subtitle": null,
+      "tags": [],
+      "acronyms": [
+        "wawg"
+      ],
+      "stability": "historical",
+      "tier": null,
+      "audience": null,
+      "exposure": "docs",
+      "voice": "narrative_third_person",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "When Arbitration Went Global",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
+      "has_frontmatter": true
+    },
+    {
       "path": "docs/synthesis-ledger.md",
       "root": "docs",
       "authority_band": "operational",
@@ -13492,6 +14782,9 @@
         "exploration",
         "learning",
         "synthesis"
+      ],
+      "acronyms": [
+        "sl"
       ],
       "stability": "evolving",
       "tier": "2",
@@ -13557,6 +14850,9 @@
         "template",
         "readme",
         "index"
+      ],
+      "acronyms": [
+        "rit"
       ],
       "stability": "stable",
       "tier": "3",
@@ -13691,6 +14987,9 @@
       "tags": [
         "template",
         "article"
+      ],
+      "acronyms": [
+        "at"
       ],
       "stability": "stable",
       "tier": "3",
@@ -13834,6 +15133,9 @@
         "authority",
         "reference"
       ],
+      "acronyms": [
+        "tm"
+      ],
       "stability": "stable",
       "tier": "1",
       "audience": "docs",
@@ -13906,6 +15208,9 @@
         "boundaries",
         "philosophy"
       ],
+      "acronyms": [
+        "wtrn"
+      ],
       "stability": "stable",
       "tier": "2",
       "audience": "docs",
@@ -13962,6 +15267,9 @@
         "agents",
         "epistemic-hygiene"
       ],
+      "acronyms": [
+        "woe"
+      ],
       "stability": "stable",
       "tier": "1",
       "audience": "human",
@@ -14008,6 +15316,9 @@
       "title": "Attempt CLI Contract (attempt-cli@2.0.0)",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "acc"
+      ],
       "stability": null,
       "tier": null,
       "audience": null,
@@ -14094,6 +15405,9 @@
       "title": "Build Output Contract (build-output@3.0.0)",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "boc"
+      ],
       "stability": null,
       "tier": null,
       "audience": null,
@@ -14155,6 +15469,9 @@
         "frontmatter",
         "schema",
         "verification"
+      ],
+      "acronyms": [
+        "cfc"
       ],
       "stability": "stable",
       "tier": "2",
@@ -14263,6 +15580,9 @@
       "title": "Manifest Contract (manifest@2.0.0)",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "mc"
+      ],
       "stability": null,
       "tier": null,
       "audience": null,
@@ -14344,6 +15664,9 @@
       "title": "MCP Contract (mcp@0.1.0)",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "mc"
+      ],
       "stability": null,
       "tier": null,
       "audience": null,
@@ -14390,6 +15713,9 @@
         "drift",
         "hygiene",
         "selection-pressure"
+      ],
+      "acronyms": [
+        "ar"
       ],
       "stability": "stable",
       "tier": "2",
@@ -14487,6 +15813,9 @@
         "automation",
         "orientation"
       ],
+      "acronyms": [
+        "ena"
+      ],
       "stability": "semi_stable",
       "tier": "2",
       "audience": "canon",
@@ -14567,6 +15896,9 @@
         "evolution",
         "modularity",
         "regenerability"
+      ],
+      "acronyms": [
+        "fdm"
       ],
       "stability": "stable",
       "tier": "2",
@@ -14649,6 +15981,9 @@
         "learning",
         "progressive-disclosure",
         "website"
+      ],
+      "acronyms": [
+        "mll"
       ],
       "stability": "stable",
       "tier": "3",
@@ -14736,6 +16071,9 @@
         "portability",
         "elevation",
         "decay"
+      ],
+      "acronyms": [
+        "pe&d"
       ],
       "stability": "stable",
       "tier": "1",
@@ -14854,6 +16192,9 @@
         "uncertainty",
         "orientation"
       ],
+      "acronyms": [
+        "qd"
+      ],
       "stability": "semi_stable",
       "tier": "3",
       "audience": "canon",
@@ -14970,6 +16311,9 @@
         "index",
         "portable"
       ],
+      "acronyms": [
+        "oa"
+      ],
       "stability": "evolving",
       "tier": "3",
       "audience": "canon",
@@ -15019,6 +16363,9 @@
         "odd",
         "appendices",
         "template"
+      ],
+      "acronyms": [
+        "oat"
       ],
       "stability": "stable",
       "tier": "3",
@@ -15151,6 +16498,9 @@
         "evolution",
         "interfaces"
       ],
+      "acronyms": [
+        "ve"
+      ],
       "stability": "semi_stable",
       "tier": "3",
       "audience": "canon",
@@ -15252,6 +16602,9 @@
         "scaling",
         "decision-load"
       ],
+      "acronyms": [
+        "cp"
+      ],
       "stability": "evolving",
       "tier": "1",
       "audience": "docs",
@@ -15324,6 +16677,9 @@
         "governance",
         "agents"
       ],
+      "acronyms": [
+        "caml"
+      ],
       "stability": "stable",
       "tier": "1",
       "audience": "odd",
@@ -15384,6 +16740,9 @@
         "constraint",
         "tension-wire",
         "non-framework"
+      ],
+      "acronyms": [
+        "uowh"
       ],
       "stability": "constrained",
       "tier": "1",
@@ -15471,6 +16830,9 @@
         "version",
         "semver",
         "compatibility"
+      ],
+      "acronyms": [
+        "osc"
       ],
       "stability": "stable",
       "tier": "1",
@@ -15593,6 +16955,9 @@
       "title": "Epistemic Contract",
       "subtitle": null,
       "tags": [],
+      "acronyms": [
+        "ec"
+      ],
       "stability": "long_lived",
       "tier": null,
       "audience": "odd",
@@ -15643,6 +17008,9 @@
         "architecture",
         "conceptual-model",
         "philosophy"
+      ],
+      "acronyms": [
+        "ttch"
       ],
       "stability": "stable",
       "tier": "1",
@@ -15775,6 +17143,9 @@
         "conceptual",
         "philosophy"
       ],
+      "acronyms": [
+        "ocd"
+      ],
       "stability": "stable",
       "tier": "3",
       "audience": "canon",
@@ -15826,6 +17197,9 @@
         "oddkit",
         "getting-started",
         "experimental"
+      ],
+      "acronyms": [
+        "a&m"
       ],
       "stability": "evolving",
       "tier": "3",
@@ -15925,6 +17299,9 @@
         "what-is-odd",
         "methodology"
       ],
+      "acronyms": [
+        "odd"
+      ],
       "stability": "stable",
       "tier": "1",
       "audience": "canon",
@@ -15977,6 +17354,9 @@
         "manifesto",
         "governance",
         "definition"
+      ],
+      "acronyms": [
+        "om—e"
       ],
       "stability": "stable",
       "tier": "2",
@@ -16157,6 +17537,9 @@
         "maturity",
         "governance"
       ],
+      "acronyms": [
+        "pm&pg"
+      ],
       "stability": "semi_stable",
       "tier": "2",
       "audience": "canon",
@@ -16246,6 +17629,9 @@
         "odd",
         "misuse",
         "failure-modes"
+      ],
+      "acronyms": [
+        "omp"
       ],
       "stability": "evolving",
       "tier": "2",
@@ -16409,6 +17795,9 @@
         "prompt-architecture",
         "orchestration"
       ],
+      "acronyms": [
+        "pa"
+      ],
       "stability": "semi_stable",
       "tier": "2",
       "audience": "canon",
@@ -16504,6 +17893,9 @@
         "public",
         "overview"
       ],
+      "acronyms": [
+        "wo—odd"
+      ],
       "stability": "semi_stable",
       "tier": "1",
       "audience": "public",
@@ -16582,6 +17974,9 @@
       "tags": [
         "odd",
         "template"
+      ],
+      "acronyms": [
+        "oat"
       ],
       "stability": "stable",
       "tier": "3",
@@ -16716,6 +18111,9 @@
         "definition",
         "outcomes-driven-development",
         "glossary"
+      ],
+      "acronyms": [
+        "\ud83dot&d"
       ],
       "stability": "evolving",
       "tier": "1",

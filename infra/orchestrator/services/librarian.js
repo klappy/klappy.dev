@@ -24,6 +24,7 @@ const INDEX_PATH = join(ROOT, "public/_compiled/index/docs.json");
 const WEIGHTS = {
   exact_uri: 50,
   exact_title: 30,
+  acronym_match: 25,
   token_title: 12,
   token_heading: 8,
   token_tag: 6,
@@ -151,7 +152,10 @@ function scoreDocument(doc, tokens, quotedPhrases) {
   const uriLower = (doc.uri || "").toLowerCase();
   const subtitleLower = (doc.subtitle || "").toLowerCase();
   const pathLower = (doc.path || "").toLowerCase();
-  const tagsLower = (doc.tags || []).map((t) => t.toLowerCase());
+  const rawTags = Array.isArray(doc.tags) ? doc.tags : [];
+  const tagsLower = rawTags.map((t) => t.toLowerCase());
+  const rawAcronyms = Array.isArray(doc.acronyms) ? doc.acronyms : [];
+  const acronymsLower = rawAcronyms.map((a) => a.toLowerCase());
   const headingsLower = (doc.headings || []).map((h) => ({
     ...h,
     textLower: h.text.toLowerCase(),
@@ -196,6 +200,12 @@ function scoreDocument(doc, tokens, quotedPhrases) {
     if (tagsLower.some((tag) => tag.includes(token))) {
       score += WEIGHTS.token_tag;
       matches.push({ type: "tag", token });
+    }
+
+    // Acronyms (high-value match for short tokens like "CST", "ODD", "ESE")
+    if (acronymsLower.some((acr) => acr === token)) {
+      score += WEIGHTS.acronym_match;
+      matches.push({ type: "acronym", token });
     }
 
     // Subtitle

@@ -146,7 +146,12 @@ function parseFrontmatter(content) {
       try {
         value = JSON.parse(value);
       } catch (e) {
-        // Keep as string if JSON parse fails
+        // Fallback: parse comma-separated values like [agent, guide, scribe]
+        value = value
+          .slice(1, -1)
+          .split(",")
+          .map((v) => v.trim())
+          .filter((v) => v.length > 0);
       }
     }
 
@@ -225,6 +230,55 @@ function getAllMarkdownFiles(dir, rootName) {
 }
 
 // ============================================================================
+// ACRONYM EXTRACTION
+// ============================================================================
+
+// Common words to skip when generating acronyms from titles
+const ACRONYM_STOP_WORDS = new Set([
+  "a", "an", "the", "and", "or", "but", "in", "on", "at", "to", "for",
+  "of", "with", "by", "from", "as", "is", "was", "are", "were", "be",
+  "been", "being", "have", "has", "had", "do", "does", "did",
+]);
+
+/**
+ * Extracts acronyms from a title string.
+ *
+ * Two strategies:
+ * 1. Parenthetical: "Cognitive Saturation Threshold (CST)" → ["cst"]
+ * 2. Initials: "Cognitive Saturation Threshold" → ["cst"]
+ *    (first letter of each significant word, if result is 2-6 chars)
+ *
+ * @param {string} title
+ * @returns {string[]} - Lowercase acronyms
+ */
+function extractAcronyms(title) {
+  if (!title) return [];
+
+  const acronyms = new Set();
+
+  // Strategy 1: Extract parenthetical acronyms e.g. "(CST)", "(ODD)"
+  const parenMatches = title.matchAll(/\(([A-Z][A-Z0-9]{1,5})\)/g);
+  for (const match of parenMatches) {
+    acronyms.add(match[1].toLowerCase());
+  }
+
+  // Strategy 2: Generate acronym from title initials
+  // Remove any parenthetical content first
+  const cleaned = title.replace(/\s*\([^)]*\)\s*/g, " ").trim();
+  const words = cleaned.split(/[\s\-]+/).filter((w) => w.length > 0);
+  const significantWords = words.filter((w) => !ACRONYM_STOP_WORDS.has(w.toLowerCase()));
+
+  if (significantWords.length >= 2 && significantWords.length <= 6) {
+    const initials = significantWords.map((w) => w[0].toLowerCase()).join("");
+    if (initials.length >= 2 && initials.length <= 6) {
+      acronyms.add(initials);
+    }
+  }
+
+  return [...acronyms];
+}
+
+// ============================================================================
 // INDEX ENTRY GENERATION
 // ============================================================================
 
@@ -243,6 +297,9 @@ function generateIndexEntry(filePath, rootName) {
     rootName,
   );
 
+  // Extract acronyms from title and headings
+  const acronyms = extractAcronyms(title);
+
   const entry = {
     path: relPath,
     root: rootName,
@@ -256,6 +313,7 @@ function generateIndexEntry(filePath, rootName) {
     title: title,
     subtitle: subtitle,
     tags: frontmatter?.tags || [],
+    acronyms: acronyms.length > 0 ? acronyms : undefined,
     stability: frontmatter?.stability || null,
     tier: frontmatter?.tier || null,
     audience: frontmatter?.audience || null,

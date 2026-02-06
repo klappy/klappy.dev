@@ -45,8 +45,8 @@ const LOOKUP_PATTERNS = [
   /how\s+(do|does|should|must)\s+(i|we|one)/i,
   /how\s+is\s+(this|that)\s+(done|handled|implemented)/i,
 
-  // Definition queries
-  /what\s+(is|are)\s+(a|an|the)\s+\w+\?/i,
+  // Definition queries (article is optional so "What is CST?" works)
+  /what\s+(is|are)\s+(?:(?:a|an|the)\s+)?\w+\??/i,
   /define\s+\w+/i,
   /definition\s+of/i,
 

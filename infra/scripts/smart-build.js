@@ -253,6 +253,10 @@ function main() {
   console.log("\n2️⃣  Verifying content...");
   run("npm run verify:content");
 
+  // Rebuild docs index so Librarian always has fresh data
+  console.log("\n2.5️⃣  Rebuilding docs index...");
+  run("npm run docs:index");
+
   // Check if we have app code for this lane
   console.log("\n3️⃣  Checking lane source...");
 

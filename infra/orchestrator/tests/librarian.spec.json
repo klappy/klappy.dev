@@ -111,5 +111,32 @@
     "expect_authority_band": "governing",
     "min_quote_overlap": 1,
     "notes": "Should return governing canon doc for epistemic challenge doctrine with constraints section"
+  },
+  {
+    "name": "CST acronym lookup",
+    "query": "What is CST?",
+    "expect_status": "SUPPORTED",
+    "expect_sources_include": ["canon/definitions/cognitive-saturation-threshold.md"],
+    "expect_authority_band": "governing",
+    "min_quote_overlap": 1,
+    "notes": "Acronym search - should find Cognitive Saturation Threshold definition via acronym matching"
+  },
+  {
+    "name": "ODD acronym lookup",
+    "query": "Define ODD",
+    "expect_status": "SUPPORTED",
+    "expect_sources_include": [],
+    "expect_authority_band_any": ["governing", "operational"],
+    "min_quote_overlap": 0,
+    "notes": "Acronym search - should find Outcomes-Driven Development docs via path and title matching"
+  },
+  {
+    "name": "ESE acronym lookup",
+    "query": "What is ESE?",
+    "expect_status": "SUPPORTED",
+    "expect_sources_include": ["canon/epistemic-surface-extraction.md"],
+    "expect_authority_band": "governing",
+    "min_quote_overlap": 0,
+    "notes": "Acronym search - should find Epistemic Surface Extraction via acronym matching"
   }
 ]
