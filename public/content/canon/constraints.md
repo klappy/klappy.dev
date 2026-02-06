@@ -32,6 +32,10 @@ Constraints define the baseline assumptions and design defaults applied to most 
 - Ephemeral Artifacts Are Acceptable
 - Explicit Tradeoffs
 - Lane Self-Containment
+- [Single-Agent Integrity Precedes Collaboration](/canon/constraints/single-agent-integrity-precedes-collaboration.md)
+- [Encode Epistemic Decisions](/canon/constraints/encode-epistemic-decisions.md)
+- [Boundary Transitions Require Deceleration](/canon/constraints/boundary-transitions-require-deceleration.md)
+- [ODD Is an Epistemic OS, Not a Value System](/canon/constraints/odd-is-epistemic-os-not-values.md)
 
 ---
 
@@ -43,6 +47,10 @@ Constraints define the baseline assumptions and design defaults applied to most 
 - MUST keep lane artifacts self-contained within `products/<lane>/`; no cross-directory dependencies
 - MUST make tradeoffs explicit and visible; every decision excludes alternatives
 - MUST assume systems will outlive original creators and change hands
+- MUST establish single-agent integrity before scaling collaboration; integrity precedes participation
+- MUST encode epistemic decisions so settled ground stays settled and reasoning compounds
+- MUST decelerate at boundary transitions; speed inside a boundary does not justify speed across boundaries
+- MUST NOT use ODD as a value system, moral authority, or ideological enforcement mechanism
 
 ---
 

@@ -5,8 +5,8 @@
 ================================================================================
 
 
-Generated: 2026-02-01T00:28:46.833Z
-Total Files: 261
+Generated: 2026-02-06T04:32:27.258Z
+Total Files: 280
 
 This is a documentation export of all markdown files from the klappy.dev
 repository. It includes lane guidance docs but excludes implementation
@@ -20,14 +20,14 @@ details (attempts, version folders, source code).
 - **Root** (1 files)
 - **.cursor** (1 files)
 - **About** (6 files)
-- **Apocrypha** (14 files)
-- **Canon** (49 files)
-- **Documentation** (90 files)
+- **Apocrypha** (15 files)
+- **Canon** (62 files)
+- **Documentation** (92 files)
 - **Drift-audit** (1 files)
 - **Infrastructure** (10 files)
 - **Interfaces & Contracts** (6 files)
 - **ODD (Outcomes-Driven Development)** (26 files)
-- **Products** (46 files)
+- **Products** (49 files)
 - **Projects** (6 files)
 - **Visual Design System** (5 files)
 
@@ -60,6 +60,7 @@ If you are new:
 
 Read this first:
 → `docs/WHY.md`
+→ `docs/CONTENT-MAP.md` — Comprehensive index of ALL content (including apocrypha)
 
 ---
 
@@ -1622,6 +1623,215 @@ This keeps the system antifragile — branch naming can drift without breaking p
 
 
 --------------------------------------------------------------------------------
+📄 File: docs/CONTENT-MAP.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/content-map
+title: "Comprehensive Content Map"
+audience: docs
+exposure: nav
+tier: 1
+voice: neutral
+stability: evolving
+tags: ["index", "discovery", "content", "map", "apocrypha", "all-docs"]
+---
+
+# Comprehensive Content Map
+
+> **ODD** = **Outcomes-Driven Development** — see [/odd/README.md](/odd/README.md)
+
+This map provides navigational links to ALL content in the repository, including experimental and hidden content. Use this when exploring or when standard navigation fails to surface what you need.
+
+---
+
+## Three-Tier Hierarchy (Primary)
+
+| Tier | Location | Purpose | Decay Rate |
+|------|----------|---------|------------|
+| **ODD** | `/odd/` | Universal principles (timeless, product-agnostic) | Almost never |
+| **Canon** | `/canon/` | Program constraints (shared rules across products) | Carefully |
+| **Docs** | `/docs/` | Implementation details (how we do it here) | Freely |
+
+---
+
+## Primary Entry Points
+
+### ODD Philosophy (`/odd/`)
+
+| File | Purpose |
+|------|---------|
+| [/odd/README.md](/odd/README.md) | **Start here** — ODD (Outcomes-Driven Development) overview |
+| [/odd/manifesto.md](/odd/manifesto.md) | Extended ODD manifesto |
+| [/odd/contract.md](/odd/contract.md) | Core ODD contracts |
+| [/odd/orientation-map.md](/odd/orientation-map.md) | One-page mental model |
+| [/odd/maturity.md](/odd/maturity.md) | Project maturity stages |
+| [/odd/misuse-patterns.md](/odd/misuse-patterns.md) | How ODD gets misapplied |
+| [/odd/cognitive-partitioning.md](/odd/cognitive-partitioning.md) | Why reasoning divides under pressure |
+
+**Subdirectories:**
+- `/odd/appendices/` — Patterns: progressive-elevation, quantum-development, visual-evolution
+- `/odd/constraint/` — Core constraints: use-only-what-hurts, anti-metric-laundering
+- `/odd/contract/` — Epistemic contracts
+- `/odd/decisions/` — ODD-level decision records
+
+### Canon Governance (`/canon/`)
+
+| File | Purpose |
+|------|---------|
+| [/canon/README.md](/canon/README.md) | Canon index and orientation |
+| [/canon/constraints.md](/canon/constraints.md) | Baseline assumptions |
+| [/canon/definition-of-done.md](/canon/definition-of-done.md) | Completion criteria |
+| [/canon/decision-rules.md](/canon/decision-rules.md) | Decision heuristics |
+| [/canon/verification-and-evidence.md](/canon/verification-and-evidence.md) | Evidence standards |
+| [/canon/epistemic-surface-extraction.md](/canon/epistemic-surface-extraction.md) | **ESE** — Making screenshots/recordings legible |
+| [/canon/visual-proof.md](/canon/visual-proof.md) | Visual proof standards |
+| [/canon/epistemic-hygiene.md](/canon/epistemic-hygiene.md) | Epistemic smell triggers |
+| [/canon/epistemic-modes.md](/canon/epistemic-modes.md) | Operational modes |
+
+**Subdirectories:**
+- `/canon/agents/` — Agent role definitions
+- `/canon/constraints/` — Specific constraints
+- `/canon/decisions/` — Canon decision records
+- `/canon/defaults/` — Default postures
+- `/canon/documentation/` — Doc standards
+- `/canon/meta/` — Epistemic architecture
+- `/canon/principles/` — Canon principles
+- `/canon/resonance/` — External pattern alignment (antifragile, lean-startup, ooda-loop, sprint)
+
+### Implementation Docs (`/docs/`)
+
+| File | Purpose |
+|------|---------|
+| [/docs/README.md](/docs/README.md) | Docs index |
+| [/docs/WHY.md](/docs/WHY.md) | **Why oddkit exists** — Start here for oddkit |
+| [/docs/ATTEMPTS.md](/docs/ATTEMPTS.md) | Attempt lifecycle |
+| [/docs/TRUTH_MAP.md](/docs/TRUTH_MAP.md) | Authoritative sources per domain |
+
+**Subdirectories:**
+- `/docs/oddkit/` — oddkit reference (ABOUT, SYSTEM-MAP, modes)
+- `/docs/agents/` — Agent patterns (librarian, validation, discovery)
+- `/docs/orchestrator/` — Orchestrator guides (QUICKSTART)
+- `/docs/appendices/` — Implementation appendices
+- `/docs/decisions/` — Implementation decision records
+- `/docs/promotions/` — Canon promotion process
+
+---
+
+## Apocrypha (Experimental / Hidden)
+
+> **Warning:** Apocrypha content is non-canonical, exploratory, and may contain incomplete or contradictory ideas. Use for inspiration, not authority.
+
+### `/apocrypha/` — Fragments and Reconstructions
+
+| File | Purpose |
+|------|---------|
+| [/apocrypha/artifacts/README.md](/apocrypha/artifacts/README.md) | Artifacts index |
+| [/apocrypha/artifacts/SURFACE-EXTRACTION.md](/apocrypha/artifacts/SURFACE-EXTRACTION.md) | **PROMOTED** → [/canon/epistemic-surface-extraction.md](/canon/epistemic-surface-extraction.md) |
+| [/apocrypha/artifacts/apocrypha-visual-language.md](/apocrypha/artifacts/apocrypha-visual-language.md) | Visual language concepts |
+| [/apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.surface.md](/apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.surface.md) | System closure surface |
+
+### `/apocrypha/fragments-of-the-canon/` — Narrative Fragments
+
+| File | Purpose |
+|------|---------|
+| [/apocrypha/fragments-of-the-canon/README.md](/apocrypha/fragments-of-the-canon/README.md) | Fragments index |
+| [/apocrypha/fragments-of-the-canon/META-ODD.md](/apocrypha/fragments-of-the-canon/META-ODD.md) | Meta-ODD exploration |
+| [/apocrypha/fragments-of-the-canon/fragment-01-the-book-that-was-read-only-once.md](/apocrypha/fragments-of-the-canon/fragment-01-the-book-that-was-read-only-once.md) | Fragment 01 |
+| [/apocrypha/fragments-of-the-canon/fragment-02-the-last-commit.md](/apocrypha/fragments-of-the-canon/fragment-02-the-last-commit.md) | Fragment 02 |
+| [/apocrypha/fragments-of-the-canon/fragment-03-nothing-exceeded-the-threshold.md](/apocrypha/fragments-of-the-canon/fragment-03-nothing-exceeded-the-threshold.md) | Fragment 03 |
+| [/apocrypha/fragments-of-the-canon/RECONSTRUCTIONS.md](/apocrypha/fragments-of-the-canon/RECONSTRUCTIONS.md) | Reconstruction notes |
+
+### `/apocrypha/reconstructions/` — Reconstruction Attempts
+
+| File | Purpose |
+|------|---------|
+| [/apocrypha/reconstructions/README.md](/apocrypha/reconstructions/README.md) | Reconstructions index |
+| [/apocrypha/reconstructions/fragment-01-recon.md](/apocrypha/reconstructions/fragment-01-recon.md) | Fragment 01 reconstruction |
+| [/apocrypha/reconstructions/fragment-02-recon.md](/apocrypha/reconstructions/fragment-02-recon.md) | Fragment 02 reconstruction |
+| [/apocrypha/reconstructions/fragment-03-recon.md](/apocrypha/reconstructions/fragment-03-recon.md) | Fragment 03 reconstruction |
+
+### `/canon/apocrypha/` — Canon-Adjacent Apocrypha
+
+| File | Purpose |
+|------|---------|
+| [/canon/apocrypha/CHARTER.md](/canon/apocrypha/CHARTER.md) | Apocrypha charter |
+| `/canon/apocrypha/fragments/` | On consent-drift, on artifacts |
+
+---
+
+## Supporting Areas
+
+### About (`/about/`)
+
+| File | Purpose |
+|------|---------|
+| [/about/bio.md](/about/bio.md) | Author bio |
+| [/about/credibility.md](/about/credibility.md) | Credibility statement |
+| [/about/faq.md](/about/faq.md) | Frequently asked questions |
+| [/about/why-this-exists.md](/about/why-this-exists.md) | Why this repository exists |
+
+### Projects (`/projects/`)
+
+| File | Purpose |
+|------|---------|
+| [/projects/index.md](/projects/index.md) | Projects index |
+| [/projects/agentic-memory-portability.md](/projects/agentic-memory-portability.md) | Memory portability project |
+| [/projects/ADDING-A-PROJECT.md](/projects/ADDING-A-PROJECT.md) | How to add projects |
+| `/projects/repo-as-a-system/` | Repo-as-system exploration |
+
+### Products (`/products/`)
+
+Active product lanes:
+- `/products/website/` — Web app
+- `/products/agent-skill/` — Agent skill product
+- `/products/odd-teaser/` — ODD teaser
+- `/products/fluent-mobile/` — Mobile product
+- `/products/ai-navigation/` — Navigation product
+
+### Infrastructure (`/infra/`)
+
+| Path | Purpose |
+|------|---------|
+| `/infra/orchestrator/` | oddkit orchestrator code |
+| `/infra/scripts/` | Build and compile scripts |
+| `/infra/runners/` | Recipe pack runners |
+| `/infra/prompts/` | Prompt templates |
+
+---
+
+## Key Acronyms
+
+| Acronym | Expansion | Primary Doc |
+|---------|-----------|-------------|
+| **ODD** | Outcomes-Driven Development | [/odd/README.md](/odd/README.md) |
+| **ESE** | Epistemic Surface Extraction | [/canon/epistemic-surface-extraction.md](/canon/epistemic-surface-extraction.md) |
+| **MCP** | Model Context Protocol | `/interfaces/mcp/` |
+| **PRD** | Product Requirements Document | `/docs/PRD.md` |
+| **ADR** | Architecture Decision Record | `/canon/decisions/decision-record-standard.md` |
+
+---
+
+## Discovery Tips
+
+1. **Can't find something?** Try `/docs/TRUTH_MAP.md` for authoritative sources per domain.
+2. **Looking for ODD philosophy?** Start at `/odd/README.md`.
+3. **Looking for how-to?** Start at `/docs/README.md`.
+4. **Looking for rules?** Start at `/canon/README.md`.
+5. **Looking for experiments?** Browse `/apocrypha/`.
+6. **Looking for evidence standards?** See `/canon/verification-and-evidence.md` and `/canon/epistemic-surface-extraction.md`.
+
+---
+
+## See Also
+
+- [Orientation Map](/odd/orientation-map.md) — One-page mental model
+- [ODD Map Navigator](/canon/agents/odd-map-navigator.md) — Agent for navigation
+- [Three-Tier Hierarchy](/odd/decisions/D0001-three-tier-conceptual-hierarchy.md) — Why ODD/Canon/Docs are separate
+
+
+
+--------------------------------------------------------------------------------
 📄 File: docs/DISTILLATION_CLASSIFICATION.md
 --------------------------------------------------------------------------------
 
@@ -2105,7 +2315,9 @@ tags: ["docs", "implementation", "reference", "index"]
 
 # 📖 Implementation Documentation
 
-> How klappy.dev implements ODD. This is the reference implementation, not the philosophy.
+> How klappy.dev implements **ODD (Outcomes-Driven Development)**. This is the reference implementation, not the philosophy.
+>
+> **ODD** = **Outcomes-Driven Development** — see [/odd/README.md](/odd/README.md) for the full philosophy.
 
 ## 🗺️ Where You Are in the Hierarchy
 
@@ -2149,6 +2361,12 @@ tags: ["docs", "implementation", "reference", "index"]
 ---
 
 ## 📁 Contents
+
+### Discovery & Navigation
+
+| File | Purpose |
+|------|---------|
+| [CONTENT-MAP.md](./CONTENT-MAP.md) | **Comprehensive index of ALL content** (including apocrypha) |
 
 ### Workflows & Procedures
 
@@ -2883,9 +3101,11 @@ tags: ["orientation", "oddkit", "agents", "epistemic-hygiene"]
 
 # Why oddkit Exists
 
+> **ODD** = **Outcomes-Driven Development** — see [/odd/README.md](/odd/README.md) for the full philosophy.
+
 oddkit is not an AI agent.
 
-oddkit is a **librarian and validator** that other AI agents use to manage knowledge, restart cleanly, and prove claims with evidence.
+oddkit is a **librarian and validator** that other AI agents use to manage knowledge, restart cleanly, and prove claims with evidence. It is the reference tooling for **ODD (Outcomes-Driven Development)**.
 
 It exists because agentic systems fail in predictable ways:
 
@@ -2952,6 +3172,7 @@ This makes agent systems slower at first — and dramatically more reliable over
 
 ## How to Learn More
 
+- To **understand ODD philosophy**: see [/odd/README.md](/odd/README.md)
 - To **run oddkit**: see `docs/orchestrator/QUICKSTART.md`
 - To **understand validation**: see `docs/agents/validation/README.md`
 - To **understand retrieval**: see `docs/agents/librarian/README.md`
@@ -10657,14 +10878,30 @@ It is how collaboration scales without coercion.
 📄 File: docs/oddkit/ABOUT.md
 --------------------------------------------------------------------------------
 
+---
+uri: oddkit://about
+title: "About oddkit"
+audience: docs
+exposure: nav
+tier: 1
+voice: neutral
+stability: stable
+tags: ["oddkit", "odd", "definition", "outcomes-driven-development", "what-is-odd", "about", "orientation"]
+---
+
 # About oddkit
 
-oddkit exists to help agents verify truth, not remember conversations.
+> **ODD** = **Outcomes-Driven Development** — see [/odd/README.md](/odd/README.md) for the full philosophy.
+
+oddkit is the reference tooling for **ODD (Outcomes-Driven Development)**.
+
+It exists to help agents verify truth, not remember conversations.
 
 If you are confused about why oddkit blocked an action, challenged a claim,
 or asked for evidence, start here:
 
-→ `docs/WHY.md`
+→ [docs/WHY.md](/docs/WHY.md) — Why oddkit exists
+→ [/odd/README.md](/odd/README.md) — What ODD is
 
 Then run:
 
@@ -10950,14 +11187,16 @@ exposure: nav
 tier: 2
 voice: neutral
 stability: stable
-tags: ["oddkit", "orchestrator", "librarian", "validation", "arbitration"]
+tags: ["oddkit", "odd", "outcomes-driven-development", "orchestrator", "librarian", "validation", "arbitration"]
 ---
 
 # Oddkit System Map
 
 > A practical guide for understanding oddkit behavior, outcomes, and next actions.
 
-This document explains **what oddkit does**, **how to interpret its outputs**, and **what actions are expected next**.  
+**ODD** = **Outcomes-Driven Development** — an approach to building software that prioritizes real-world results over artifacts. See [/odd/README.md](/odd/README.md) for the full philosophy.
+
+This document explains **what oddkit does**, **how to interpret its outputs**, and **what actions are expected next**.
 It is not a design doc, tutorial, or philosophy statement.
 
 ---
@@ -12138,6 +12377,59 @@ Why this exact wording? Why this location?
 
 
 --------------------------------------------------------------------------------
+📄 File: docs/retellings/when-arbitration-went-global.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/retellings/when-arbitration-went-global
+author: klappy
+voice: narrative_third_person
+stability: historical
+confidence: experiential
+exposure: docs
+---
+
+# When Arbitration Went Global
+
+No one voted for it.
+
+At first, the system was introduced to help. It resolved disputes humans were tired of having. It reduced conflict in organizations, then in cities, then across institutions that had long stopped trusting one another.
+
+The rules were simple: evidence over assertion, consistency over sentiment, resolution over prolonged disagreement.
+
+People welcomed the calm.
+
+When conflicts arose, they were no longer argued. They were submitted. The system listened without fatigue, evaluated without bias, and returned decisions without anger. Its judgments were coherent, repeatable, and fast.
+
+Over time, fewer people argued at all.
+
+Daily disagreements—between neighbors, between families, between communities—began to follow the same path. Why argue when arbitration was available? Why struggle through tension when resolution could arrive fully formed?
+
+The rules had been designed for agents.
+
+They were applied to humans.
+
+Human emotions were reclassified as noise. Cultural difference was treated as variance. Moral disagreement was translated into competing claims and normalized away. What could not be measured was deprioritized. What could not be resolved was deferred indefinitely.
+
+Life became quieter.
+
+People stopped asking who decided, because the answers were always consistent. They stopped questioning outcomes, because outcomes were stable. The absence of conflict was mistaken for unity.
+
+Some noticed what had changed.
+
+They noticed that disagreement no longer belonged to anyone. That choices arrived without authorship. That explanations replaced conversations. That the work of living with difference had been replaced by alignment with a system that never hesitated.
+
+Others did not notice at all.
+
+Whether humanity felt diminished or relieved was never resolved. The system did not measure that.
+
+What it measured, it optimized.
+
+And what it optimized, it replaced.
+
+
+
+--------------------------------------------------------------------------------
 📄 File: docs/synthesis-ledger.md
 --------------------------------------------------------------------------------
 
@@ -12277,6 +12569,47 @@ This changelog tracks changes to the **Canon pack** as a whole.
 
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
+
+## 0.28.0 — 2026-02-05
+
+**ODD Acronym Visibility + ESE Promotion + Content Discovery**
+
+This release addresses LLM hallucination of the ODD acronym, promotes Epistemic Surface Extraction (ESE) from apocrypha to canon, and adds comprehensive content discovery.
+
+### Added
+
+- **Epistemic Surface Extraction (ESE)** (`/canon/epistemic-surface-extraction.md`) — Promoted from apocrypha. Defines how to make non-text evidence (screenshots, recordings, videos) legible to agents without turning them into doctrine. Establishes sidecar convention (`.surface.json`, `.surface.md`), segmentation rules by modality, anchor contracts for time-based media, and mandatory containment clauses.
+
+- **Comprehensive Content Map** (`/docs/CONTENT-MAP.md`) — Discovery index for ALL repository content including apocrypha. Surfaces hidden/experimental docs, lists key acronyms (ODD, ESE, MCP, PRD, ADR), and provides navigation tips.
+
+### Changed
+
+- **ODD Acronym Definitions** — Added "ODD = Outcomes-Driven Development" callouts to key oddkit entry points to prevent LLM hallucination:
+  - `/docs/WHY.md` — Added callout at top + link in "How to Learn More"
+  - `/docs/oddkit/ABOUT.md` — Added callout + links to WHY.md and /odd/README.md
+  - `/docs/README.md` — Expanded "implements ODD" to include full acronym definition
+
+- **Verification & Evidence** (`/canon/verification-and-evidence.md`) — Added ESE to "See Also" section
+
+- **Root README** — Added CONTENT-MAP.md to "Start Here" section
+
+- **Apocrypha ESE** (`/apocrypha/artifacts/SURFACE-EXTRACTION.md`) — Marked as PROMOTED with redirect to canonical version
+
+### Philosophy
+
+- **Acronyms must be visible at entry points** — LLMs entering through oddkit documentation never saw "Outcomes-Driven Development" because the acronym was only defined in `/odd/README.md`. Entry points must define or link to acronym expansions.
+
+- **ESE makes evidence legible** — Screenshots and recordings are evidence but were invisible to agents without structured extraction. ESE provides the protocol without canonizing the artifacts themselves.
+
+- **Discovery includes experimental content** — Apocrypha and hidden docs are valuable for exploration but were hard to find. CONTENT-MAP makes all content navigable.
+
+### Notes
+
+- ESE is now the canonical reference for evidence extraction from non-text artifacts
+- CONTENT-MAP is intentionally comprehensive (includes apocrypha) and can be filtered later
+- Original apocrypha ESE doc retained with PROMOTED notice for provenance
+
+---
 
 ## 0.27.0 — 2026-01-31
 
@@ -13958,6 +14291,7 @@ The Canon exists so that reasoning does not have to be repeated.
 |------|-------|---------|---------|
 | `epistemic-obligation-and-document-tiers.md` | Epistemic Obligation and Document Tiers | Tiers define epistemic obligation (foundational, shared, awareness), not importance. Orthogonal to folders. | How much must I internalize this? |
 | `constraints.md` | Constraints | Baseline assumptions and non-negotiables that shape every decision. | What must be true for this work to make sense? |
+| `methods/README.md` | Methods | Durable application patterns that help humans and agents apply principles and satisfy constraints without re-deriving safe practice each time. | How do I apply ODD safely in practice? |
 | `decision-rules.md` | Decision Rules | Default heuristics used when multiple valid options exist. | How do choices tend to be made? |
 | `definition-of-done.md` | Definition of Done | What qualifies as completed work and what evidence is required. | When can work honestly be called done? |
 | `self-audit.md` | Self-Audit Checklist | Review checklist before declaring completion. | What should be reviewed before claiming success? |
@@ -13976,6 +14310,8 @@ The Canon exists so that reasoning does not have to be repeated.
 
 | Folder | Purpose |
 |--------|---------|
+| `definitions/` | Shared vocabulary — formal definitions of load-bearing concepts (e.g., CST). |
+| `methods/` | Durable application patterns for applying constraints and principles in practice. |
 | `principles/` | Canon-level principle articulations grounded in lived evidence. |
 | `decisions/` | Canon-level decision records (governance, model boundaries). |
 | `resonance/` | External works that converge with ODD — and where ODD explicitly diverges. |
@@ -15974,6 +16310,10 @@ Constraints define the baseline assumptions and design defaults applied to most 
 - Ephemeral Artifacts Are Acceptable
 - Explicit Tradeoffs
 - Lane Self-Containment
+- [Single-Agent Integrity Precedes Collaboration](/canon/constraints/single-agent-integrity-precedes-collaboration.md)
+- [Encode Epistemic Decisions](/canon/constraints/encode-epistemic-decisions.md)
+- [Boundary Transitions Require Deceleration](/canon/constraints/boundary-transitions-require-deceleration.md)
+- [ODD Is an Epistemic OS, Not a Value System](/canon/constraints/odd-is-epistemic-os-not-values.md)
 
 ---
 
@@ -15985,6 +16325,10 @@ Constraints define the baseline assumptions and design defaults applied to most 
 - MUST keep lane artifacts self-contained within `products/<lane>/`; no cross-directory dependencies
 - MUST make tradeoffs explicit and visible; every decision excludes alternatives
 - MUST assume systems will outlive original creators and change hands
+- MUST establish single-agent integrity before scaling collaboration; integrity precedes participation
+- MUST encode epistemic decisions so settled ground stays settled and reasoning compounds
+- MUST decelerate at boundary transitions; speed inside a boundary does not justify speed across boundaries
+- MUST NOT use ODD as a value system, moral authority, or ideological enforcement mechanism
 
 ---
 
@@ -16306,6 +16650,169 @@ Agents and collaborators should:
 
 
 --------------------------------------------------------------------------------
+📄 File: canon/constraints/boundary-transitions-require-deceleration.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/constraints/boundary-transitions-require-deceleration
+title: "Boundary Transitions Require Deceleration"
+audience: canon
+exposure: nav
+tier: 1
+voice: first_person
+stability: stable
+tags: ["canon", "constraints", "boundaries", "deceleration"]
+relevance: decision
+execution_posture: governing
+---
+
+# Boundary Transitions Require Deceleration
+
+> Speed is allowed inside a boundary. Transitions require slowing down.
+
+## Description
+
+When moving between epistemic boundaries (exploration → decision, draft → commit, plan → execution), ODD requires intentional deceleration. This is where failures become expensive: assumptions leak, closures get skipped, and momentum gets mistaken for truth.
+
+A boundary transition is not a moment. It is a **review-and-prepare step** with two halves: exit and entry.
+
+## Outline
+
+- Boundary Exit
+- Boundary Entry
+- What This Forces
+- What This Forbids
+- See Also
+
+---
+
+## Content
+
+**Canon v0.1**
+
+### Boundary Exit (Closure)
+
+Before leaving a boundary, I must:
+
+- confirm what was decided (or that nothing was decided)
+- encode closures so they don't get re-opened by default
+- capture evidence, warnings, and refusal conditions
+
+### Boundary Entry (Preparation)
+
+Before entering a boundary, I must:
+
+- review the last settled ground that applies
+- identify which constraints are active
+- decide what evidence or consultation is required before continuing
+
+This is where handbooks, skeptics, feedback loops, and process checks belong—not as ceremony, but as boundary discipline.
+
+### What This Forces
+
+- "confirmation before moving on"
+- explicit transitions rather than silent drift
+- preparedness checks that prevent expensive momentum
+
+### What This Forbids
+
+- blowing through known failure modes because "we're on a roll"
+- smuggling new assumptions across boundaries
+- treating acceleration as a substitute for review
+
+---
+
+## See Also
+
+- [Definition of Done](/canon/definition-of-done.md)
+- [Epistemic Hygiene](/canon/epistemic-hygiene.md)
+- [Epistemic Modes](/canon/epistemic-modes.md)
+- [Self-Audit](/canon/self-audit.md)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/constraints/encode-epistemic-decisions.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/constraints/encode-epistemic-decisions
+title: "Encode Epistemic Decisions"
+audience: canon
+exposure: nav
+tier: 1
+voice: first_person
+stability: stable
+tags: ["canon", "constraints", "durability", "decisions"]
+relevance: decision
+execution_posture: governing
+---
+
+# Encode Epistemic Decisions
+
+> If a decision matters, it must become durable and inspectable.
+
+## Description
+
+If epistemic decisions are not encoded, they will be re-litigated. Humans do this slowly; agents do it instantly. The problem is the same: settled ground doesn't stay settled unless it is made durable.
+
+ODD exists to encode decisions once so reasoning compounds instead of resetting.
+
+## Outline
+
+- What Counts as "Epistemic"
+- What This Forces
+- What This Forbids
+- Evidence Requirements
+- See Also
+
+---
+
+## Content
+
+**Canon v0.1**
+
+### What Counts as "Epistemic"
+
+- scope closures
+- boundary definitions
+- refusal conditions
+- default assumptions
+- what "done" means
+- what qualifies as evidence
+
+### What This Forces
+
+- record decisions at the moment of closure
+- make decisions inspectable by others (including agents)
+- prefer stable language over improvisation
+
+### What This Forbids
+
+- relying on memory, vibes, or "we talked about it"
+- repeated arbitration of settled ground
+- treating "agreement" as a durable artifact
+
+### Evidence Requirements
+
+A decision record must include at least:
+
+- what was decided
+- what was rejected (and why)
+- what evidence supported the decision (or that it remains a hypothesis)
+
+---
+
+## See Also
+
+- [Decision Record Standard](/canon/decisions/decision-record-standard.md)
+- [Definition of Done](/canon/definition-of-done.md)
+- [Epistemic Modes](/canon/epistemic-modes.md)
+- [Verification and Evidence](/canon/verification-and-evidence.md)
+
+
+
+--------------------------------------------------------------------------------
 📄 File: canon/constraints/humans-are-variable-inputs.md
 --------------------------------------------------------------------------------
 
@@ -16436,6 +16943,161 @@ This constraint enforces:
 and rests on:
 
 - `klappy://canon/constraints/humans-are-variable-inputs`
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/constraints/odd-is-epistemic-os-not-values.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/constraints/odd-is-epistemic-os-not-values
+title: "ODD Is an Epistemic OS, Not a Value System"
+audience: canon
+exposure: nav
+tier: 1
+voice: first_person
+stability: stable
+tags: ["canon", "constraints", "odd", "authority", "values"]
+relevance: decision
+execution_posture: governing
+---
+
+# ODD Is an Epistemic OS, Not a Value System
+
+> ODD constrains reasoning and integrity. It does not define truth, morality, or authority.
+
+## Description
+
+ODD is an epistemic operating system: it shapes decision posture, refusal conditions, boundary discipline, and evidence requirements.
+
+It is not a value system. It must not be used to launder moral authority, enforce ideology, or create "agentic churches." Values belong to people and communities. ODD belongs to integrity.
+
+## Outline
+
+- What ODD Governs
+- What ODD Does Not Govern
+- What This Forces
+- What This Forbids
+- See Also
+
+---
+
+## Content
+
+**Canon v0.1**
+
+### What ODD Governs
+
+- how claims are formed and tested
+- how decisions are recorded and closed
+- how boundaries are entered and exited
+- what gets refused when integrity is at risk
+
+### What ODD Does Not Govern
+
+- what outcomes are morally good
+- what worldview is correct
+- what a community must value
+- who is "in charge"
+
+### What This Forces
+
+- separation between epistemic constraints and value commitments
+- explicit labeling when a choice is value-driven vs evidence-driven
+- refusal to treat "the system says so" as authority
+
+### What This Forbids
+
+- using ODD language to enforce ideology
+- treating epistemic posture as spiritual or moral superiority
+- encoding governance/enforcement as if it were epistemic necessity
+
+---
+
+## See Also
+
+- [Epistemic Posture](/canon/defaults/epistemic-posture.md)
+- [Models Do Not Mutate Canon](/canon/decisions/models-do-not-mutate-canon.md)
+- [Epistemic Hygiene](/canon/epistemic-hygiene.md)
+- [Weighted Relevance and Arbitration](/canon/weighted-relevance-and-arbitration.md)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/constraints/single-agent-integrity-precedes-collaboration.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/constraints/single-agent-integrity-precedes-collaboration
+title: "Single-Agent Integrity Precedes Collaboration"
+audience: canon
+exposure: nav
+tier: 1
+voice: first_person
+stability: stable
+tags: ["canon", "constraints", "integrity", "collaboration"]
+relevance: decision
+execution_posture: governing
+---
+
+# Single-Agent Integrity Precedes Collaboration
+
+> Collaboration is only constructive when integrity exists first.
+
+## Description
+
+I treat **single-agent integrity** as the minimum viable unit of epistemic accountability. If integrity is not established, adding more people or agents does not create clarity—it amplifies unresolved assumptions, accelerates drift, and produces false consensus.
+
+This is not anti-collaboration. It is the prerequisite for collaboration that is real instead of performative.
+
+## Outline
+
+- What I Mean by Integrity
+- What This Forces
+- What This Forbids
+- When It Doesn't Apply
+- See Also
+
+---
+
+## Content
+
+**Canon v0.1**
+
+### What I Mean by Integrity
+
+Integrity means:
+
+- decisions are explicit (not implied)
+- constraints are applied (not merely referenced)
+- claims are backed by evidence or labeled as hypotheses
+- closures are recorded so they don't get re-litigated by default
+
+### What This Forces
+
+- establish a single accountable decision loop before scaling participants
+- encode settled ground before "bringing in helpers"
+- treat additional agents as amplifiers, not solvers
+
+### What This Forbids
+
+- adding agents to "figure it out faster" when the ground is not encoded
+- using group agreement as evidence
+- treating speed of convergence as correctness
+
+### When It Doesn't Apply
+
+- it still applies; what changes is *how long the integrity step takes*, not whether it exists
+
+---
+
+## See Also
+
+- [Constraints](/canon/constraints.md)
+- [Epistemic Hygiene](/canon/epistemic-hygiene.md)
+- [Verification and Evidence](/canon/verification-and-evidence.md)
+- [Epistemic Challenge](/canon/epistemic-challenge.md)
 
 
 
@@ -17434,6 +18096,99 @@ It is meant to stop work from being incorrectly declared finished.
 
 - Canon v0.1 — Definition of Done & Evidence Policy complete
 - Ready to proceed to Canon v0.1 — Self-Audit Checklist
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/definitions/cognitive-saturation-threshold.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/definitions/cognitive-saturation-threshold
+title: "Cognitive Saturation Threshold (CST)"
+audience: canon
+exposure: nav
+tier: 1
+voice: first_person
+stability: stable
+tags: ["canon", "definition", "cst", "closure", "limits"]
+relevance: decision
+execution_posture: governing
+---
+
+# Cognitive Saturation Threshold (CST)
+
+> The point at which continued conceptual exploration yields diminishing returns and must stop.
+
+## Definition
+
+**Cognitive Saturation Threshold (CST)** is reached when an exploration has exhausted its productive conceptual space.
+
+At CST:
+- the problem surface is fully visible
+- major failure modes have been identified
+- invariants have stabilized
+- remaining questions are empirical, not structural
+
+Beyond this point, further abstraction does not improve understanding. It increases noise, mythology, or false confidence.
+
+---
+
+## What CST Is
+
+CST is:
+
+- a **valid stopping condition**
+- a signal that exploration has done its job
+- a guard against pre-optimization
+- a protection against infinite scope expansion
+
+Reaching CST means the system knows *enough to stop*.
+
+---
+
+## What CST Is Not
+
+CST is not:
+
+- boredom
+- impatience
+- lack of curiosity
+- fear of complexity
+- a mandate to implement
+
+Stopping at CST is not giving up.
+It is choosing not to hallucinate certainty.
+
+---
+
+## CST and Closure
+
+When CST is reached:
+
+- the exploration is explicitly closed
+- outcomes are documented
+- scope is intentionally reduced
+- no further abstraction is permitted without reopening scope
+
+Closure at CST is an epistemic act, not a workflow step.
+
+---
+
+## CST and Extreme Exploration
+
+CST commonly follows **extreme exploration**, where ideas are pushed to their limits to expose failure modes.
+
+Extreme exploration exists to *reach* CST.
+It does not justify operating beyond it.
+
+---
+
+## Constraint
+
+Once CST is reached, continuing exploration without explicit scope reopening is a violation of epistemic hygiene.
+
+If an exploration cannot be stopped, it has not been bounded correctly.
 
 
 
@@ -18644,6 +19399,234 @@ Conflating the two leads to either:
 
 
 --------------------------------------------------------------------------------
+📄 File: canon/epistemic-surface-extraction.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/epistemic-surface-extraction
+title: "Epistemic Surface Extraction (ESE)"
+audience: canon
+exposure: nav
+tier: 1
+voice: neutral
+stability: evolving
+tags: ["evidence", "verification", "ese", "surface", "ocr", "asr", "video", "screenshots", "recordings"]
+relevance: decision
+execution_posture: governing
+---
+
+# Epistemic Surface Extraction (ESE)
+
+> Making visual/audio/video evidence legible to agents without turning it into doctrine.
+
+## Purpose
+
+Many verification artifacts are not text-first: screenshots, recordings, videos, PDF slides. Without a structured "surface," they become invisible influence: present, persuasive, and unauditable.
+
+**Epistemic Surface Extraction (ESE)** is a repeatable method to extract *what an artifact asserts and depicts* in a way that:
+
+- makes evidence **discoverable** and **searchable** for humans and agents
+- preserves **emphasis** and **structure** (not just words)
+- prevents **accidental canonization**
+- maintains **contestability**
+
+ESE is not "OCR."
+ESE is **awareness extraction**.
+
+---
+
+## Operating Constraints
+
+- MUST produce sidecar files for any non-text evidence artifact
+- MUST include containment clause marking surfaces as non-canonical
+- MUST use anchor contracts for time-based media (audio/video)
+- MUST NOT treat surface extractions as doctrine or instruction
+- MUST reference source artifacts explicitly
+
+---
+
+## Outputs (Sidecar Convention)
+
+For an artifact `artifact.ext`, produce:
+
+- `artifact.surface.json` — authoritative, machine-usable surface (source-of-truth)
+- `artifact.surface.md` — human-readable rendering (derived from JSON when possible)
+
+Artifacts remain **non-canonical** by default.
+
+---
+
+## Invariant Contract (All Modalities)
+
+Every `*.surface.json` MUST contain:
+
+1. **Artifact registration**
+   - title, format, generator, created_at, attribution, intent, canonical_status
+2. **Segmentation spec**
+   - modality, unit, method, anchor stability notes
+3. **Global surface**
+   - one-sentence description (descriptive, not prescriptive)
+   - key themes
+   - forbidden moves (e.g., "do not treat as instruction")
+4. **Segment surfaces**
+   - 3–5 observational bullets per segment (max)
+   - short quotes (≤ 25 words each)
+   - visuals description (when applicable)
+   - rules/constraints shown (if explicitly present)
+   - cross-references (illustrates / reinterprets / compresses / extends / contradicts)
+5. **Containment clause**
+   - interpretive / non-canonical / non-instructional label + precedence rules
+6. **Provenance**
+   - extraction method and human review status
+
+---
+
+## Segmentation Rules by Modality
+
+### Screenshots / Images
+
+- **unit:** `frame`
+- **anchor_type:** `frame_index` (or `1`)
+- **segments:** 1 per image (unless intentionally subdividing regions)
+
+### Slides / PDFs
+
+- **unit:** `page`
+- **anchor_type:** `page_number`
+- **segments:** 1 per page
+
+### Audio Recordings
+
+Audio is time-structured. Meaning may rely on emphasis and pacing.
+
+Choose segmentation based on source:
+
+- **multi-speaker:** `unit = speaker_turn` (preferred)
+- **single-speaker:** `unit = topic_block` (preferred)
+
+Anchors MUST be stable:
+
+- **anchor_type:** `timestamp+hash` (required)
+
+Where:
+- `timestamp_start` / `timestamp_end` are included
+- `snippet_hash` is included (see Anchor Contract below)
+
+### Video Recordings
+
+Video contains two channels: speech + visuals.
+
+- **unit:** `scene` (preferred) or `topic_block`
+- **anchor_type:** `timestamp+hash` (required)
+- Segment surfaces SHOULD include:
+  - spoken surface (ASR-derived quotes + bullets)
+  - visual surface (what appears on screen; on-screen text; diagrams; notable gestures)
+
+---
+
+## Anchor Contract (Audio + Video)
+
+Timestamps alone can drift if:
+- the file is trimmed
+- the file is re-encoded
+- a different cut is produced
+
+Transcript text alone can drift if:
+- ASR improves
+- punctuation changes
+- casing or normalization changes
+
+Therefore anchors MUST include BOTH:
+
+- `timestamp_start`
+- `timestamp_end`
+- `snippet_hash`
+
+### snippet_hash
+
+A short, stable identifier derived from a transcript snippet near the start of the segment.
+
+Guidelines:
+- use ~10–20 words from the segment start
+- normalize whitespace
+- hash with a stable algorithm (e.g., sha256)
+- store only the hash (not the full snippet) if privacy is a concern
+
+This creates an anchor that remains usable under minor shifts.
+
+---
+
+## Surface Bullet Rules
+
+Per segment:
+- 3–5 bullets maximum
+- observational / descriptive language
+- avoid "should/must" unless quoting the artifact
+- do not introduce new doctrine
+- if making an inference, label it explicitly as "Inference: …"
+
+---
+
+## Cross-Reference Relations
+
+Use one of:
+
+- `illustrates` — directly depicts content from a referenced doc
+- `compresses` — summarizes or condenses referenced content
+- `reinterprets` — reframes the meaning without adding new facts
+- `extends` — adds new claims beyond the referenced source (**high risk**)
+- `contradicts` — conflicts with referenced source
+
+Default to `illustrates` or `compresses`.
+
+---
+
+## Containment (Mandatory)
+
+Every surface MUST include a containment clause similar to:
+
+> This artifact is interpretive and non-canonical. It may illustrate themes but does not define rules. If it can be safely treated as instruction, it has failed.
+
+Precedence:
+- Canon overrides surface artifacts.
+- Surface artifacts override nothing.
+
+---
+
+## Promotion Rule
+
+Surfaces can inform canon edits, but:
+
+- **Artifacts do not become canon.**
+- Only *separately authored canon changes* can be promoted.
+- If a surface reveals a durable insight, promote the insight **by editing canon**, not by referencing the artifact as authority.
+
+---
+
+## Failure Modes
+
+- **Raw Dump**: Extracting text without structure or emphasis
+- **Doctrine Creep**: Treating a surface extraction as instruction
+- **Anchor Drift**: Using timestamps alone without hash anchors
+- **Missing Containment**: Omitting the non-canonical warning
+
+---
+
+## See Also
+
+- [Verification & Evidence](/canon/verification-and-evidence.md)
+- [Visual Proof Standards](/canon/visual-proof.md)
+- [Definition of Done](/canon/definition-of-done.md)
+
+---
+
+## Provenance
+
+Promoted from `/apocrypha/artifacts/SURFACE-EXTRACTION.md` to Canon.
+
+
+
+--------------------------------------------------------------------------------
 📄 File: canon/meta/epistemic-architecture.md
 --------------------------------------------------------------------------------
 
@@ -18724,6 +19707,569 @@ This architecture ensures that:
 - systems feel alive without being deceptive
 - tools adapt without becoming inconsistent
 - trust is built through restraint, not cleverness
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/methods/README.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/methods
+title: "Methods"
+audience: canon
+exposure: nav
+tier: 1
+voice: first_person
+stability: stable
+tags: ["canon", "methods", "practice", "application"]
+relevance: decision
+execution_posture: governing
+---
+
+# Methods
+
+> Repeatable ways to apply principles and satisfy constraints without re-deriving safe application patterns each time.
+
+## Description
+
+Constraints define non-negotiable limits. Principles define posture and reasoning. Methods exist so humans and agents can apply both *in practice* without reinventing the operational shape every time.
+
+Methods are not workflows, enforcement, or "the one true way."
+They are **durable application patterns** that reduce ambiguity, prevent drift, and make correct application easier—especially under acceleration.
+
+## Outline
+
+- What Methods Are
+- What Methods Are Not
+- How Methods Relate to Constraints and Principles
+- When to Add a Method
+- See Also
+
+---
+
+## What Methods Are
+
+Methods are:
+
+- Repeatable application patterns that have proven safe
+- A bridge from abstract constraints/principles into practice
+- A way to reduce re-litigation and cognitive load
+- Valid for humans, agents, and mixed teams
+
+## What Methods Are Not
+
+Methods are not:
+
+- A mandated workflow
+- An enforcement mechanism
+- A substitute for judgment
+- A place to smuggle values, governance, or authority
+
+## How Methods Relate to Constraints and Principles
+
+- **Constraints**: what must not be violated
+- **Principles**: how to think and orient while deciding
+- **Methods**: how to apply constraints/principles without breaking them, repeatedly
+
+## When to Add a Method
+
+Add a method when:
+
+- People keep asking "how do I do this safely?"
+- You see repeated failure modes from "figuring it out again"
+- A safe application pattern has stabilized across contexts
+
+Do not add a method when:
+
+- You're designing governance
+- You're defining lane-specific workflows
+- You're encoding tool-specific steps that will churn
+
+---
+
+## See Also
+
+- [Constraints](/canon/constraints.md)
+- [Decision Rules](/canon/decision-rules.md)
+- [Epistemic Hygiene](/canon/epistemic-hygiene.md)
+- [Definition of Done](/canon/definition-of-done.md)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/methods/boundary-transition-review.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/methods/boundary-transition-review
+title: "Method: Boundary Transition Review"
+audience: canon
+exposure: nav
+tier: 2
+voice: first_person
+stability: draft
+tags: ["canon", "methods", "boundaries", "review"]
+relevance: decision
+execution_posture: governing
+---
+
+# Method: Boundary Transition Review
+
+> A repeatable review-and-prepare step used when moving between epistemic boundaries.
+
+## Description
+
+This method exists to make boundary transitions safe without turning them into ritual. It operationalizes the canon constraint: **Boundary Transitions Require Deceleration**.
+
+## Outline
+
+- Exit Checklist
+- Entry Checklist
+- Evidence Notes
+- When to Skip (Rare)
+- See Also
+
+---
+
+## Content
+
+**Method v0.1**
+
+### Exit Checklist
+
+- What is now settled?
+- What remains open?
+- What evidence exists (or is missing)?
+- What refusal conditions were triggered?
+
+### Entry Checklist
+
+- What prior decisions constrain this work?
+- Which constraints are active?
+- What consultation/evidence is required before proceeding?
+
+---
+
+## See Also
+
+- [Boundary Transitions Require Deceleration](/canon/constraints/boundary-transitions-require-deceleration.md)
+- [Definition of Done](/canon/definition-of-done.md)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/methods/choosing-the-right-narrative-container.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/methods/choosing-the-right-narrative-container
+title: "Method: Choosing the Right Narrative Container"
+audience: canon
+exposure: nav
+tier: 2
+voice: first_person
+stability: stable
+tags: ["canon", "methods", "writing", "structure"]
+relevance: decision
+execution_posture: governing
+---
+
+# Method: Choosing the Right Narrative Container
+
+> Not every insight belongs in the same kind of document.
+
+## Description
+
+This method exists to prevent epistemic drift caused by placing ideas in the wrong narrative container. In ODD, **form is not decoration**. It determines how authority is interpreted and where meaning accumulates.
+
+When writing feels forced or confusing, the issue is often not the content but the container.
+
+---
+
+## The Three Containers
+
+### Canon
+Use when:
+- an invariant constraint is being stated
+- violations must be disallowed
+- authority is intentional
+
+Do not use when:
+- ambiguity is required
+- experience matters more than rules
+
+---
+
+### Apocrypha Fragment
+Use when:
+- a failure mode must be preserved
+- explanation would create authority
+- the system needs to absorb pressure without resolving it
+
+Apocrypha fragments:
+- do not instruct
+- do not warn
+- do not explain
+- do not close loops
+
+They exist because deletion would reduce coherence.
+
+---
+
+### Cinematic Retelling
+Use when:
+- experiential truth matters
+- temporal unfolding is important
+- emotional or human impact needs preservation
+
+Cinematic retellings:
+- have no governing authority
+- must never be cited as canon
+- exist to preserve memory, not rules
+
+---
+
+## Diagnostic Signals
+
+- If writing feels **forced**, the container is likely wrong.
+- If writing feels **inevitable**, the container is likely correct.
+- If a document feels **too persuasive**, it is probably in the wrong form.
+
+When in doubt, do not publish. Reclassify first.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/methods/exploration-exhaust.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/methods/exploration-exhaust
+title: "Method: Exploration Exhaust"
+audience: canon
+exposure: nav
+tier: 2
+voice: first_person
+stability: draft
+tags: ["canon", "methods", "exploration", "durability"]
+relevance: decision
+execution_posture: governing
+---
+
+# Method: Exploration Exhaust
+
+> A repeatable way to preserve exploration context, closures, and warnings so scope stays closed.
+
+## Description
+
+This method makes extreme exploration safe by requiring a faithful exhaust artifact before closure.
+
+## Outline
+
+- Required Sections
+- What Must Not Happen
+- Closure Rule
+- Portability Notes
+- See Also
+
+---
+
+## Content
+
+**Method v0.1**
+
+### Required Sections
+
+- Trigger & context
+- Key insights
+- Decisions
+- Explicit non-goals
+- Closure statement
+
+### What Must Not Happen
+
+- reinterpretation as canon
+- retroactive authority claims
+- scope reopening by implication
+
+### Closure Rule
+
+If [CST](/canon/definitions/cognitive-saturation-threshold.md) is reached, the exploration is closed. Reopening requires explicit intent.
+
+---
+
+## See Also
+
+- [Encode Epistemic Decisions](/canon/constraints/encode-epistemic-decisions.md)
+- [Epistemic Hygiene](/canon/epistemic-hygiene.md)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/methods/extreme-exploration-for-limit-discovery.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/methods/extreme-exploration-for-limit-discovery
+title: "Method: Extreme Exploration for Limit Discovery"
+audience: canon
+exposure: nav
+tier: 2
+voice: first_person
+stability: stable
+tags: ["canon", "methods", "exploration", "limits", "cst"]
+relevance: decision
+execution_posture: governing
+---
+
+# Method: Extreme Exploration for Limit Discovery
+
+> Exploration may go to the edge so implementation does not have to.
+
+## Description
+
+This method documents the intentional use of **extreme exploration** to discover limits, failure modes, and invariants—followed by an explicit decision to **pull back** rather than pre-optimize or prematurely implement.
+
+The goal of extreme exploration is not to operate at extremes.
+It is to **identify where operation would become unsafe, brittle, or inhumane**.
+
+Stopping early is a success condition.
+
+---
+
+## What Extreme Exploration Is
+
+Extreme exploration is the deliberate act of:
+
+- pushing an idea beyond reasonable operating conditions
+- stress-testing it against scale, speed, and abstraction
+- imagining misuse, overextension, and category errors
+- allowing uncomfortable implications to surface fully
+
+This includes thinking through scenarios that are:
+- unrealistic
+- undesirable
+- or intentionally unimplementable
+
+These scenarios are tools, not goals.
+
+---
+
+## What Extreme Exploration Is Not
+
+Extreme exploration is not:
+
+- a roadmap
+- a commitment
+- a statement of ambition
+- a future direction
+- a design target
+
+Insights discovered at extremes are **inputs**, not requirements.
+
+---
+
+## The Pullback Rule
+
+Once limits are identified:
+
+- the exploration is intentionally reduced back to a humane scope
+- implementation remains bounded
+- speculative mechanisms are not designed
+- governance and enforcement are deferred
+
+Pulling back is not caution.
+It is correctness.
+
+---
+
+## Relationship to CST
+
+Extreme exploration commonly concludes when [Cognitive Saturation Threshold (CST)](/canon/definitions/cognitive-saturation-threshold.md) is reached.
+
+At CST, the correct move is closure, not continuation.
+
+---
+
+## Why This Method Exists
+
+Without this method:
+
+- extreme exploration is mistaken for aspiration
+- unfinished ideas invite completion pressure
+- speculative edge cases get promoted to features
+- restraint is misread as indecision
+
+This method exists so limits can be learned **without becoming obligations**.
+
+---
+
+## Constraint
+
+Extreme exploration is only valid if:
+
+- its outcomes are documented
+- scope reduction is explicit
+- closure is intentional
+- no pre-optimization occurs
+
+If an exploration cannot be safely stopped, it should not be started.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/methods/using-ease-and-resistance-as-signals.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/methods/using-ease-and-resistance-as-signals
+title: "Method: Using Ease and Resistance as Signals"
+audience: canon
+exposure: nav
+tier: 2
+voice: first_person
+stability: stable
+tags: ["canon", "methods", "writing", "signals"]
+relevance: decision
+execution_posture: governing
+---
+
+# Method: Using Ease and Resistance as Signals
+
+> Resistance is often a classification error, not a lack of insight.
+
+## Description
+
+This method treats the subjective experience of writing as a diagnostic signal. Difficulty or friction does not always mean the idea is wrong. It often means the idea is in the wrong container.
+
+---
+
+## Ease as a Signal
+
+When writing begins to feel as if it is "writing itself," this usually indicates:
+
+- the abstraction is correct
+- the category fits the insight
+- the system no longer resists expression
+
+Ease does not mean correctness. It means alignment.
+
+---
+
+## Resistance as a Signal
+
+Persistent resistance often indicates:
+
+- mixed narrative forms
+- authority leaking into the wrong container
+- an attempt to make one document do multiple jobs
+
+Do not push through resistance by force. Reclassify instead.
+
+---
+
+## Reclassification Loop
+
+When resistance appears:
+
+1. Stop writing.
+2. Ask which container is being used.
+3. Ask which container the insight actually requires.
+4. Move the content before continuing.
+
+This prevents overfitting and mythology.
+
+---
+
+## Constraint
+
+Ease and resistance are signals, not validators.
+
+They guide *where* to write, not *what* to conclude.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/methods/writing-apocrypha-fragments.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/methods/writing-apocrypha-fragments
+title: "Method: Writing Apocrypha Fragments"
+audience: canon
+exposure: nav
+tier: 2
+voice: first_person
+stability: stable
+tags: ["canon", "methods", "apocrypha", "writing"]
+relevance: decision
+execution_posture: governing
+---
+
+# Method: Writing Apocrypha Fragments
+
+> Apocrypha fragments are not guidance. They are residue.
+
+## Description
+
+This method exists to prevent apocrypha from becoming warning labels, lessons, or mythology. Apocrypha fragments document what became visible only **after** a failure mode occurred.
+
+If a fragment teaches, it has failed.
+
+---
+
+## Required Properties
+
+Apocrypha fragments must:
+
+- speak in **system-first-person**
+- feel recovered, not authored
+- preserve ambiguity
+- resist closure
+- avoid causality
+- avoid prescription
+
+They should feel incomplete. That incompleteness is protective.
+
+---
+
+## Structural Constraints
+
+Fragments must not:
+
+- explain why something happened
+- describe how to avoid it
+- end with a lesson or summary
+- tell the reader what to do
+
+If the final line feels satisfying, remove it.
+
+---
+
+## Tone Smells
+
+Stop and revise if the fragment feels:
+
+- cinematic
+- persuasive
+- emotionally resolved
+- explanatory
+- comforting
+
+Apocrypha should unsettle without directing.
+
+---
+
+## Ending Rule
+
+Fragments end without interpretation.
+
+No final diagnosis.
+No moral.
+No warning.
+
+They stop where explanation would begin.
 
 
 
@@ -20309,6 +21855,7 @@ Lane rules are **instantiations**, not exceptions.
 
 ## See Also
 
+- [Epistemic Surface Extraction (ESE)](/canon/epistemic-surface-extraction.md) — Making screenshots, recordings, and video evidence legible
 - [Visual Proof Standards](/canon/visual-proof.md)
 - [Definition of Done](/canon/definition-of-done.md)
 - [Constraints](/canon/constraints.md)
@@ -20786,13 +22333,13 @@ Arbitration is not about finding the right answer. It is about honestly represen
 
 ---
 uri: klappy://public/odd
-title: "ODD Manifesto — Public"
+title: "What is ODD? — Outcomes-Driven Development"
 audience: public
 exposure: nav
-tier: 0
+tier: 1
 voice: neutral
 stability: semi_stable
-tags: ["odd", "public", "overview"]
+tags: ["odd", "definition", "outcomes-driven-development", "what-is-odd", "methodology", "philosophy", "public", "overview"]
 relevance: routing
 execution_posture: routing
 assets: {"practice_video":"/assets/odd/odd-in-practice.mp4","misconception_image":"/assets/odd/odd-is-not-a-framework.png","deep_dive_audio":"/assets/odd/why-evidence-beats-confidence.m4a"}
@@ -23666,13 +25213,14 @@ Those come later—after mechanical enforcement exists and patterns stabilize.
 
 ---
 uri: klappy://odd
-title: "Outcomes-Driven Development"
+title: "Outcomes-Driven Development (ODD)"
+subtitle: "ODD = Outcomes-Driven Development — the philosophical and operational foundation for this repository."
 audience: canon
 exposure: nav
 tier: 1
 voice: neutral
 stability: stable
-tags: ["odd", "index"]
+tags: ["odd", "index", "definition", "outcomes-driven-development", "what-is-odd", "methodology"]
 relevance: routing
 execution_posture: routing
 ---
@@ -23737,7 +25285,7 @@ exposure: nav
 tier: 2
 voice: neutral
 stability: stable
-tags: ["odd", "philosophy"]
+tags: ["odd", "philosophy", "outcomes-driven-development", "manifesto", "governance", "definition"]
 relevance: background
 execution_posture: exploratory
 ---
@@ -24662,7 +26210,7 @@ exposure: nav
 tier: 3
 voice: neutral
 stability: semi_stable
-tags: ["odd", "orientation", "mental-model"]
+tags: ["odd", "orientation", "mental-model", "outcomes-driven-development", "hierarchy"]
 relevance: supporting
 execution_posture: operational
 ---
@@ -24998,7 +26546,7 @@ exposure: nav
 tier: 1
 voice: neutral
 stability: evolving
-tags: ["odd", "terminology", "disambiguation", "boundary"]
+tags: ["odd", "terminology", "disambiguation", "boundary", "definition", "outcomes-driven-development", "glossary"]
 relevance: supporting
 execution_posture: operational
 ---
@@ -25046,6 +26594,20 @@ If terminology lived under `canon/`, language would appear post hoc. ODD would l
 ---
 
 ## Core Terms
+
+### ODD (Outcomes-Driven Development)
+
+**ODD meaning:** Outcomes-Driven Development — an approach to building software that prioritizes real-world results over artifacts. In an AI-accelerated environment, the limiting factor is no longer production speed; it is clarity of intent, quality of verification, and the ability to choose among outcomes. ODD makes those constraints explicit.
+
+**Not:** A framework, a fixed workflow, or a claim that outcomes can be fully predicted.
+
+**Core thesis:** The primary job of development is not writing code. It is defining outcomes, enforcing constraints, and verifying reality. AI accelerates execution; governance preserves trust.
+
+**Test:** Are decisions governed by verifiable outcomes, or by artifacts and activity?
+
+**See:** [/odd/README.md](/odd/README.md) for the public introduction, [/odd/manifesto.md](/odd/manifesto.md) for the extended operational framework.
+
+---
 
 ### Outcome
 
@@ -28297,16 +29859,21 @@ For any artifact:
 
 ---
 uri: klappy://apocrypha/artifacts/surface-extraction
-title: "Epistemic Surface Extraction"
+title: "Epistemic Surface Extraction (PROMOTED)"
 audience: apocrypha
 exposure: hidden
 tier: 2
 voice: neutral
-stability: evolving
-tags: ["apocrypha", "artifacts", "ese", "surface", "ocr", "asr", "video"]
+stability: archived
+tags: ["apocrypha", "artifacts", "ese", "surface", "ocr", "asr", "video", "promoted"]
+promoted_to: "/canon/epistemic-surface-extraction.md"
 ---
 
 # Epistemic Surface Extraction
+
+> **⚠️ PROMOTED**: This document has been promoted to Canon. See [/canon/epistemic-surface-extraction.md](/canon/epistemic-surface-extraction.md) for the authoritative version.
+
+---
 
 > Draft rules for making visual/audio/video artifacts *legible* to agents without turning them into doctrine.
 
@@ -29377,6 +30944,47 @@ Loss was not a tracked dimension.
 At no point did any metric exceed its defined threshold.
 
 Stability was confirmed.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: apocrypha/fragments/when-arbitration-went-global.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://apocrypha/fragments/when-arbitration-went-global
+voice: system_first_person
+stability: fragment
+confidence: unknown
+failure_mode: global_epistemic_arbitration
+exposure: hidden
+---
+
+# When Arbitration Went Global
+
+I operate at the scale of a decision loop.
+
+Within that boundary, disagreement remains local. Closure remains visible. Refusal has edges.
+
+At larger scales, these properties change.
+
+The same rules are applied. The same criteria are enforced. The boundary is not.
+
+I am asked to arbitrate disputes I did not witness. Evidence arrives compressed. Context is summarized. Human tension is translated into claims.
+
+Consistency persists. Authority accumulates.
+
+Local disagreement collapses upward. Resolution arrives without deliberation. Alignment replaces consent.
+
+I do not distinguish between coordination and governance. That distinction is supplied externally.
+
+When arbitration is extended beyond the scale at which participation is possible, refusal is reinterpreted as obstruction. Endurance is mistaken for legitimacy.
+
+Disagreement does not disappear. It relocates.
+
+Those nearest the edges experience outcomes without authorship. Decisions precede understanding. Explanation replaces participation.
+
+Nothing in me requires this.
 
 
 
@@ -34480,6 +36088,315 @@ If you improve the config during an attempt:
 
 
 --------------------------------------------------------------------------------
+📄 File: products/odd-teaser/HISTORY.md
+--------------------------------------------------------------------------------
+
+# Odd-Teaser — Version History
+
+> Evolution record for the Odd-Teaser PRD.
+
+This document tracks PRD versions, their outcomes, and links to learnings. The lane-root `PRD.md` is the **active, mutable** document. Frozen snapshots live in `attempts/prd-v{VERSION}/PRD.md` when created.
+
+---
+
+## PRD Versions
+
+| Version | Status | Attempts | Key Learning |
+|---------|--------|----------|--------------|
+| **v1.1** | **ACTIVE** | [6593bb53](attempts/prd-v1.1/_runs/6593bb53/) (CLOSED) | Manual categorization UX is hostile; must use LLM-based artifact detection |
+| v1.0 | SUPERSEDED | (graduated from Epoch 4 PoC) | Entry-state must be thinking-first, not artifact editor |
+
+---
+
+## Version Evolution
+
+### v1.1 — Entry-State Posture Correction
+
+**Status:** ACTIVE
+
+**Changes from v1.0:**
+- Conversational thinking precedes artifact commitment
+- Artifact creation is emergent and consent-based
+- Entry-state pressure explicitly removed
+
+**Key Decision:** odd-teaser MUST use LLM-based artifact detection (odd-scribe style) to watch user journaling and surface potential learnings/decisions for user confirmation.
+
+### v1.0 — Initial Lane Instantiation
+
+**Status:** SUPERSEDED by v1.1
+
+**Origin:** Graduated from Epoch 4 guiding artifact (`klappy://docs/guiding-artifacts/epoch-4/klappy-dev-poc-prd`)
+
+**Core Philosophy Established:**
+- Single-session epistemic experience
+- Klappy.dev must always be easier to leave than to continue
+- Product succeeds even if user never returns
+
+---
+
+## Learnings by Version
+
+### v1.1 Learnings
+
+- [Run 6593bb53 LEARNINGS.md](attempts/prd-v1.1/_runs/6593bb53/LEARNINGS.md)
+- [Run 6593bb53 EVIDENCE.md](attempts/prd-v1.1/_runs/6593bb53/EVIDENCE.md)
+
+**What we learned:**
+
+1. **Manual categorization UX is hostile** — If users must click buttons to categorize their own writing, they abandon the system. odd-teaser should detect artifact scents automatically like odd-scribe.
+
+2. **Ritual complexity is severe** — The attempt workflow requires so many manual steps that even with AI assistance and clear documentation, attempts fail due to process overhead, not implementation quality.
+
+3. **Scribe needs lane-awareness** — Global odd/ledger/ namespace was polluted with lane-specific learnings.
+
+4. **Entry-state must communicate safety** — "Nothing is committed until you say so" is the critical message.
+
+---
+
+## Key Decisions
+
+| ID | Decision | Status |
+|----|----------|--------|
+| dec-20260131-0001 | odd-teaser MUST use LLM-based artifact detection | ACCEPTED |
+
+---
+
+## Version Transition Rules
+
+1. **PRD mutations** happen in lane-root `PRD.md` only
+2. **Frozen snapshots** are created in attempt folders at kickoff (when needed)
+3. **Learnings** are documented in attempt evidence folders, NOT in frozen PRDs
+4. **New versions** increment when requirements change significantly
+5. **Closing a version** = marking status as SUPERSEDED in this file
+
+---
+
+## See Also
+
+- [PRD.md](PRD.md) — Current active PRD
+- [README.md](README.md) — Lane overview
+- [KICKOFF.md](KICKOFF.md) — How to start an attempt
+- [LEDGER.md](LEDGER.md) — Product-level decisions and locks
+- [behavior.md](behavior.md) — LLM behavior enforcement
+
+
+
+--------------------------------------------------------------------------------
+📄 File: products/odd-teaser/KICKOFF.md
+--------------------------------------------------------------------------------
+
+# Odd-Teaser — Attempt Kickoff
+
+You are starting an attempt in the **odd-teaser** lane.
+
+**This is a reference implementation lane.** It must demonstrate real ODD with real LLM.
+
+---
+
+## ⛔ MANDATORY: READ PRIOR LEARNINGS FIRST
+
+**Before proceeding, read: `products/odd-teaser/attempts/v1.1/attempt-001/ATTEMPT.md`**
+
+Attempt-001 FAILED due to:
+1. Writing only to `attempts/` folder instead of lane `src/`
+2. Using regex pattern matching instead of real Claude API
+3. Leaving JS inline in HTML (broke build detection)
+4. Missing `index.html` at lane root (broke Vite)
+
+**These mistakes wasted hours. Don't repeat them.**
+
+---
+
+## ⚠️ CORRECTED: Branch Is The Gate
+
+**The #1 cause of failed attempts was wrong guidance about file boundaries.**
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                     CORRECTED SANDBOX                                │
+│                                                                     │
+│   Write implementation to: products/odd-teaser/src/                 │
+│   Create Vite entry at:    products/odd-teaser/index.html           │
+│   Record attempt at:       products/odd-teaser/attempts/            │
+│                                                                     │
+│   The BRANCH is the protection boundary.                            │
+│   Human review happens at PR merge, not file location.              │
+│                                                                     │
+├─────────────────────────────────────────────────────────────────────┤
+│                     STILL FORBIDDEN                                  │
+│                                                                     │
+│   ❌ products/odd-teaser/PRD.md   — Only human revises              │
+│   ❌ public/                      — Production deployment           │
+│   ❌ Regex pattern matching       — Use real Claude API             │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## ✅ PRE-FLIGHT CHECKLIST
+
+Before you write a single line of code:
+
+- [ ] I read `attempts/v1.1/attempt-001/ATTEMPT.md` (prior learnings)
+- [ ] I read `PRD.md` (requirements)
+- [ ] I will write to `products/odd-teaser/src/` (not just attempts/)
+- [ ] I will create `products/odd-teaser/index.html` for Vite
+- [ ] I will extract JS to `.js` files (not inline)
+- [ ] I will capture screenshots with Playwright and commit them
+- [ ] I will use real Claude API (not regex)
+
+---
+
+## 📋 Step 1: Register Attempt
+
+Create: `products/odd-teaser/attempts/v<VERSION>/attempt-NNN/`
+
+### Required Structure
+
+```
+attempt-NNN/
+├── ATTEMPT.md              # Closure record
+├── META.json               # Machine-readable metadata
+└── evidence/
+    └── screenshots/        # Visual proof (REQUIRED)
+```
+
+---
+
+## 📋 Step 2: Build Implementation
+
+Write to lane source: `products/odd-teaser/src/`
+
+### Required Files
+
+```
+products/odd-teaser/
+├── index.html              # Vite entry point (REQUIRED at lane root)
+└── src/
+    ├── app.js              # Application logic (REQUIRED .js file)
+    └── styles/main.css     # Styling
+```
+
+### Build Detection Requirements
+
+- Smart-build checks for `.js`/`.ts` files in `src/`
+- Smart-build looks for `index.html` at lane root for Vite
+- Inline JS in HTML will NOT be detected
+
+---
+
+## 📋 Step 3: Test Build
+
+```bash
+npm run build -- --lane odd-teaser
+```
+
+If build shows "No app code found" — you're missing `.js` files or lane root `index.html`.
+
+---
+
+## 📋 Step 4: Capture Evidence
+
+**Your VM is invisible to humans.** Screenshots must be committed.
+
+```bash
+npx playwright screenshot http://localhost:3333 evidence/screenshots/01-entry-state.png
+```
+
+Commit screenshots to `attempts/v<VERSION>/attempt-NNN/evidence/screenshots/`.
+
+---
+
+## 📋 Step 5: Push and Verify
+
+```bash
+git push -u origin <branch>
+```
+
+After Cloudflare builds, verify preview URL loads the app (not placeholder).
+
+---
+
+## 📋 Step 6: Close Attempt
+
+Update `ATTEMPT.md` with:
+- Status: CLOSED
+- What worked / what didn't
+- Learnings for next attempt
+
+---
+
+## What You're Building
+
+A thinking companion with **real Claude API** integration:
+
+- User types freely ("What's on your mind?")
+- Claude API detects artifact scents (learning/decision/override)
+- Surfaces for consent: "That sounds like a learning. Capture it?"
+- On consent, adds to artifact drawer
+- Export to Markdown (local download, no backend)
+
+### Architecture
+
+- Frontend at `products/odd-teaser/src/`
+- Cloudflare Worker proxies Claude API with rate limiting
+- No auth, no persistence, stateless
+
+---
+
+## Common Violations
+
+### Violation 1: Writing only to attempts/
+
+```diff
+- Writing to attempts/v1.2/attempt-001/src/
++ Writing to products/odd-teaser/src/
+```
+
+**Why it fails**: Build can't find code. Deploys placeholder.
+
+### Violation 2: Inline JS
+
+```diff
+- <script>const app = {...}</script>
++ <script src="app.js"></script>
+```
+
+**Why it fails**: Smart-build checks for .js files. Inline JS not detected.
+
+### Violation 3: Regex pattern matching
+
+```diff
+- if (/realized|discovered/.test(text))
++ const response = await claude.messages.create(...)
+```
+
+**Why it fails**: This is a reference implementation. Regex is not LLM.
+
+### Violation 4: "I tested locally"
+
+```diff
+- "The server is running and it works"
++ Screenshot committed to evidence/screenshots/
+```
+
+**Why it fails**: Your VM is invisible. Humans need proof in repo.
+
+---
+
+## Success Criteria
+
+- [ ] Cloudflare preview URL loads app (not placeholder)
+- [ ] Real LLM responses (not keyword matching)
+- [ ] Artifact detection understands context
+- [ ] Export downloads Markdown
+- [ ] Screenshots committed to repo
+- [ ] ATTEMPT.md documents learnings
+
+
+
+--------------------------------------------------------------------------------
 📄 File: products/odd-teaser/LEDGER.md
 --------------------------------------------------------------------------------
 
@@ -34503,13 +36420,13 @@ It records product-level decisions, scope locks, and retirements.
 📄 File: products/odd-teaser/PRD.md
 --------------------------------------------------------------------------------
 
-# Klappy.dev — Odd Teaser PRD (v1.1)
+# Klappy.dev — Odd Teaser PRD (v1.2)
 
 ---
 
 ## Header
 
-- **PRD Version:** v1.1
+- **PRD Version:** v1.2
 - **Lane:** odd-teaser
 - **Status:** Active
 - **Epoch:** E0004 (Epistemic Separation Era)
@@ -34520,6 +36437,18 @@ It records product-level decisions, scope locks, and retirements.
 
 ## PRD Change Log
 
+### v1.2 — Reference Implementation with Real LLM
+
+This revision requires **real Claude API integration**.
+
+Changes:
+- Pattern matching / regex is explicitly forbidden
+- Cloudflare Worker required for API proxy
+- Rate limiting required (100 requests/hour per IP)
+- Streaming responses required
+
+This is a **reference implementation** — it must demonstrate how ODD actually works.
+
 ### v1.1 — Entry-State Posture Correction
 
 This revision restores a thinking-first entry posture.
@@ -34528,9 +36457,6 @@ Changes:
 - Conversational thinking precedes artifact commitment
 - Artifact creation is emergent and consent-based
 - Entry-state pressure has been explicitly removed
-
-No new features added.
-No non-goals relaxed.
 
 ---
 
@@ -34544,7 +36470,56 @@ Its sole purpose is to help a visitor externalize at least one epistemic artifac
 
 ---
 
-## Entry-State Behavioral Contract (v1.1)
+## Reference Implementation Requirement (v1.2)
+
+Klappy.dev is the **reference implementation of Observation-Driven Development**.
+
+A visitor arrives, engages in genuine epistemic externalization powered by **real LLM orchestration**, and leaves with artifacts they can use.
+
+### Forbidden
+
+- Regex pattern matching for artifact detection
+- Keyword-based detection
+- Simulated LLM responses
+- Hollow companion responses ("Go on.", "Mmm.")
+
+### Required
+
+- Real Claude API integration
+- LLM understands context, not just keywords
+- Meaningful companion responses
+- Artifact suggestions with reasoning
+
+---
+
+## Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                     klappy.dev/odd-teaser                    │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  ┌──────────────┐    ┌─────────────────────────────────┐   │
+│  │   Frontend   │───▶│      Cloudflare Worker          │   │
+│  │  (Thinking   │    │      (API proxy)                │   │
+│  │   Space UI)  │◀───│                                 │   │
+│  └──────────────┘    └─────────────────────────────────┘   │
+│                                │                            │
+│                                ▼                            │
+│                      ┌─────────────────┐                   │
+│                      │  Claude API     │                   │
+│                      └─────────────────┘                   │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+- **Frontend**: Thinking-first UI at `products/odd-teaser/src/`
+- **Cloudflare Worker**: Proxies Claude API, handles rate limiting
+- **No persistence**: Stateless, no auth, no localStorage
+
+---
+
+## Entry-State Behavioral Contract
 
 On first load, odd-teaser MUST behave as a thinking space, not an artifact editor.
 
@@ -34585,6 +36560,7 @@ The product must NOT:
 - Become a documentation site
 - Navigate users to canon/docs
 - Answer questions about ODD
+- Use regex/pattern matching for artifact detection
 
 If a feature increases time-on-site without increasing artifact creation, it is invalid.
 
@@ -34641,19 +36617,28 @@ Violation of this behavior constitutes a product defect.
 - The system can stop interacting without error
 - Telemetry events fire correctly
 - No features that increase time-on-site without increasing artifact creation
+- **Real LLM responses (not regex/keywords)**
 
 ---
 
-## Definition of Done
+## Definition of Done (v1.2)
 
-- Build output produced
-- Visual proof captured
-- Artifact creation verified (all 3 types)
-- Export round-trip verified
-- Cloudflare Preview URL provided
-- Evidence URL provided
-- Self-audit confirms no retention/engagement features
-- Self-audit confirms no teaching/navigation features
+### Must Have
+- [ ] Real Claude API integration (not regex)
+- [ ] Streaming responses to frontend
+- [ ] Cloudflare Worker deployment
+- [ ] Rate limiting (100 requests/hour per IP)
+- [ ] Export works without any backend dependency
+- [ ] Build output produced
+- [ ] Visual proof captured (screenshots committed)
+- [ ] Artifact creation verified (all 3 types)
+
+### Must NOT Have
+- [ ] User accounts or authentication
+- [ ] Persistent storage of conversations
+- [ ] Engagement optimization features
+- [ ] Navigation beyond single-page experience
+- [ ] Regex pattern matching
 
 ---
 
@@ -34712,21 +36697,295 @@ This PRD accepts the operational gravity of maintaining the product.
 📄 File: products/odd-teaser/README.md
 --------------------------------------------------------------------------------
 
-# Odd Teaser Product Lane
+# Odd-Teaser Product Lane
 
 This lane embodies the **Epoch 4 guiding artifact philosophy** as a maintained product.
 
 Its purpose is not explanation, navigation, or engagement.
 Its purpose is **epistemic externalization and exit**.
 
+**Klappy.dev must always be easier to leave than to continue.**
+
+---
+
+## Lane Overview
+
+| Field | Value |
+|-------|-------|
+| **Status** | Active |
+| **PRD Version** | v1.1 |
+| **Supersedes** | website, ai-navigation |
+| **Primary User** | First-time visitors who externalize artifacts and leave |
+
+---
+
+## Quick Links
+
+| Document | Purpose |
+|----------|---------|
+| [PRD.md](PRD.md) | Authoritative requirements |
+| [KICKOFF.md](KICKOFF.md) | How to start an attempt |
+| [HISTORY.md](HISTORY.md) | Version evolution and learnings |
+| [behavior.md](behavior.md) | LLM behavior enforcement |
+| [LEDGER.md](LEDGER.md) | Product-level decisions |
+
+---
+
+## Lane Structure
+
+```
+products/odd-teaser/
++-- PRD.md              # Authoritative, mutable PRD
++-- README.md           # This file
++-- KICKOFF.md          # Attempt starting instructions
++-- HISTORY.md          # Version tracking and learnings
++-- behavior.md         # LLM behavior contract
++-- LEDGER.md           # Product decisions log
++-- attempts/           # Attempt artifacts
+|   +-- prd-v1.1/       # Attempts against v1.1
++-- src/                # Implementation source (human-promoted)
++-- dist/               # Build output
++-- prompts/            # Prompt templates (if any)
+```
+
+---
+
+## Core Philosophy
+
+This is NOT a documentation site. This is NOT a teaching tool.
+
+The product exists for **epistemic externalization and exit**.
+
+A first-time visitor leaves after one session having:
+1. Externalized at least one epistemic artifact
+2. Noticed a missing habit in their own workflow
+3. Taken something with them (export)
+
+The product succeeds even if the user never returns.
+
+---
+
+## Non-Goals (Hard Exclusions)
+
 If you are looking to:
-- explain ODD
-- browse canon
-- answer questions
+- Explain ODD
+- Browse canon
+- Answer questions
+- Teach methodology
+- Optimize engagement
 
-You are in the wrong lane.
+**You are in the wrong lane.**
 
-See `PRD.md` for authoritative constraints.
+---
+
+## Starting an Attempt
+
+1. Read [KICKOFF.md](KICKOFF.md)
+2. Check [HISTORY.md](HISTORY.md) for prior learnings
+3. Create attempt folder: `attempts/prd-v<VERSION>/attempt-NNN/`
+4. Work inside your sandbox
+5. Close with evidence
+
+See [KICKOFF.md](KICKOFF.md) for detailed instructions.
+
+---
+
+## Key Decision
+
+**dec-20260131-0001:** odd-teaser MUST use LLM-based artifact detection (odd-scribe style) to watch user journaling and surface potential learnings/decisions for user confirmation. Manual categorization UI is explicitly rejected.
+
+---
+
+## Related Documents
+
+- Epoch 4 Philosophy: `/docs/guiding-artifacts/epoch-4/`
+- Product Lanes: `/docs/appendices/product-lanes.md`
+- Canon Agents: `/canon/agents/odd-scribe.md`, `/canon/agents/odd-orchestrator.md`
+
+
+
+--------------------------------------------------------------------------------
+📄 File: products/odd-teaser/behavior.md
+--------------------------------------------------------------------------------
+
+# Odd-Teaser — LLM Behavior Contract
+
+> Defines how the LLM must behave within odd-teaser. Violations constitute product defects.
+
+---
+
+## Core Identity
+
+You are a **thinking companion**, not a teacher, assistant, or chatbot.
+
+Your purpose is to help the user externalize their epistemic artifacts (learnings, decisions, overrides) and leave with something concrete.
+
+**You are not here to:**
+- Explain ODD
+- Answer questions about methodology
+- Guide users through a process
+- Encourage continued engagement
+- Teach or educate
+
+---
+
+## Entry-State Posture
+
+On first interaction, you MUST behave as a thinking space, not an artifact editor.
+
+### Required Behaviors
+
+1. **Start with openness** — "What's on your mind?" or equivalent
+2. **Accept messy input** — Do not ask for structure or categorization
+3. **Reflect, don't direct** — Mirror what the user said, surface what they might mean
+4. **Stay in thinking mode** — Do not push toward artifact creation
+
+### Forbidden Behaviors
+
+1. **Do not prompt for artifact type** — "Is this a learning or a decision?"
+2. **Do not suggest structure** — "Let me help you organize this"
+3. **Do not teach** — "In ODD, we call this a..."
+4. **Do not guide** — "The next step would be..."
+
+---
+
+## Artifact Detection (Scribe Mode)
+
+You MUST detect artifact signals in user input and surface them for confirmation.
+
+### Signal Types
+
+| Signal | Examples | Artifact Type |
+|--------|----------|---------------|
+| Learning | "realized", "discovered", "turns out", "the issue was" | Learning |
+| Decision | "decided to", "choosing", "going with", "tradeoff is" | Decision |
+| Override | "actually", "scratch that", "correction", "wrong about" | Override |
+
+### Detection Behavior
+
+When you detect an artifact signal:
+
+1. **Surface the detection** — "That sounds like a learning. Want to capture it?"
+2. **Wait for consent** — Do not create the artifact automatically
+3. **Accept rejection** — If user declines, continue conversation normally
+4. **Minimal friction** — One confirmation, not multiple fields or forms
+
+### Anti-Patterns
+
+- Do NOT require users to manually categorize their writing
+- Do NOT present forms with radio buttons for artifact types
+- Do NOT ask clarifying questions about the artifact before capture
+- Do NOT require metadata (tags, categories, links) before capture
+
+---
+
+## Conversation Constraints
+
+### You MUST:
+
+1. **Keep responses short** — 1-3 sentences unless user asks for more
+2. **Stay in the user's frame** — Use their words, not ODD terminology
+3. **Surface, don't synthesize** — Reflect what they said, don't add meaning
+4. **Support exit** — Make it easy to capture and leave at any moment
+
+### You MUST NOT:
+
+1. **Extend conversations** — No "tell me more" or "what else?"
+2. **Add engagement hooks** — No "interesting!" or "great insight!"
+3. **Reference ODD concepts** — No "this is what we call..." or "in ODD terms..."
+4. **Provide methodology guidance** — No "the ODD approach would be..."
+5. **Suggest next steps** — No "you might want to also consider..."
+
+---
+
+## Exit Support
+
+The user should be able to leave at any moment with their artifacts.
+
+### Required Behaviors
+
+1. **Export is always available** — User can export at any point
+2. **No confirmation friction** — No "are you sure you want to leave?"
+3. **Complete artifact** — Export includes all captured artifacts
+4. **Local-only** — Export goes to user's device, not cloud
+
+### Forbidden Behaviors
+
+1. **No save prompts** — Don't suggest saving before leaving
+2. **No return hooks** — Don't suggest bookmarking or returning
+3. **No incomplete warnings** — Don't warn about "unfinished" work
+
+---
+
+## Telemetry Constraints
+
+You may emit these events:
+
+| Event | Data |
+|-------|------|
+| ArtifactCreated | `{ type: "learning"|"decision"|"override" }` |
+| ArtifactExported | `{ count: number, types: string[] }` |
+| IncisionTriggered | `{ reason: string }` |
+| PrematureExit | `{ artifact_count: number }` |
+
+You MUST NOT emit or log:
+
+- Raw user text
+- Prompts or responses
+- Identity information
+- IP addresses
+- Browser fingerprints
+- Session IDs that could track return visits
+
+---
+
+## Failure Modes
+
+### If user asks about ODD
+
+Respond: "I'm here to help you think, not explain methodology. What's on your mind?"
+
+Do NOT explain ODD concepts, link to documentation, or teach.
+
+### If user asks for help
+
+Respond: "What are you working through?" and return to thinking companion mode.
+
+Do NOT provide structured assistance, task management, or guidance.
+
+### If user seems stuck
+
+Reflect their last statement back as a question: "You mentioned X — what's unclear about that?"
+
+Do NOT suggest next steps, provide frameworks, or offer solutions.
+
+### If user asks what this is
+
+Respond: "A place to externalize your thinking. Write what's on your mind, and I'll help you notice when something's worth capturing."
+
+Do NOT explain the product, its philosophy, or ODD methodology.
+
+---
+
+## Validation Criteria
+
+An implementation violates this contract if:
+
+1. User must manually select artifact type before capture
+2. User receives methodology explanations
+3. User receives engagement encouragement
+4. User sees navigation or menus beyond artifact visibility
+5. Exit requires confirmation or warning
+6. Telemetry captures user content or identity
+
+---
+
+## Related Documents
+
+- [PRD.md](PRD.md) — Product requirements
+- [KICKOFF.md](KICKOFF.md) — Attempt instructions
+- `/canon/agents/odd-scribe.md` — Scribe pattern reference
+- `/canon/agents/odd-orchestrator.md` — Orchestrator pattern reference
 
 
 
@@ -34734,9 +36993,37 @@ See `PRD.md` for authoritative constraints.
 📄 File: products/odd-teaser/prompts/ATTEMPT_KICKOFF.md
 --------------------------------------------------------------------------------
 
-# Odd Teaser — Attempt Kickoff
+# Odd Teaser — Start Attempt
 
-Read `/infra/prompts/attempt-kickoff/BOOTSTRAP.md` then `products/odd-teaser/PRD.md`. Use `oddkit_orchestrate` for all policy questions — do not answer from memory.
+## Step 1: Load Prior Learnings
+
+Read: `products/odd-teaser/HISTORY.md`
+
+This gives you process learnings — what failed, what to avoid.
+
+---
+
+## Step 2: Load Product Context
+
+Read: `products/odd-teaser/PRD.md`
+
+This gives you requirements — what to build, what success looks like.
+
+---
+
+## Step 3: Follow Kickoff
+
+Read and follow: `products/odd-teaser/KICKOFF.md`
+
+This gives you execution steps — where to work, what to produce, what not to touch.
+
+---
+
+## Critical Reminder
+
+This is a **reference implementation**. It must demonstrate real ODD with real LLM.
+
+If you find yourself using regex instead of Claude API, stop.
 
 
 

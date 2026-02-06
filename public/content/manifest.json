@@ -144,6 +144,23 @@
       ]
     },
     {
+      "uri": "klappy://canon/constraints/boundary-transitions-require-deceleration",
+      "path": "/canon/constraints/boundary-transitions-require-deceleration.md",
+      "title": "Boundary Transitions Require Deceleration",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 1,
+      "voice": "first_person",
+      "stability": "stable",
+      "tags": [
+        "canon",
+        "constraints",
+        "boundaries",
+        "deceleration"
+      ]
+    },
+    {
       "uri": "klappy://projects/repo-as-a-system/build-prompt-phase1",
       "path": "/projects/repo-as-a-system/BUILD_PROMPT_PHASE1.md",
       "title": "Build Prompt — Phase 1",
@@ -234,6 +251,24 @@
         "cognition",
         "scaling",
         "decision-load"
+      ]
+    },
+    {
+      "uri": "klappy://canon/definitions/cognitive-saturation-threshold",
+      "path": "/canon/definitions/cognitive-saturation-threshold.md",
+      "title": "Cognitive Saturation Threshold (CST)",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 1,
+      "voice": "first_person",
+      "stability": "stable",
+      "tags": [
+        "canon",
+        "definition",
+        "cst",
+        "closure",
+        "limits"
       ]
     },
     {
@@ -393,6 +428,23 @@
       "voice": "neutral",
       "stability": "semi_stable",
       "tags": []
+    },
+    {
+      "uri": "klappy://canon/constraints/encode-epistemic-decisions",
+      "path": "/canon/constraints/encode-epistemic-decisions.md",
+      "title": "Encode Epistemic Decisions",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 1,
+      "voice": "first_person",
+      "stability": "stable",
+      "tags": [
+        "canon",
+        "constraints",
+        "durability",
+        "decisions"
+      ]
     },
     {
       "uri": "klappy://canon/meta/epistemic-architecture",
@@ -672,6 +724,126 @@
       ]
     },
     {
+      "uri": "klappy://canon/methods/boundary-transition-review",
+      "path": "/canon/methods/boundary-transition-review.md",
+      "title": "Method: Boundary Transition Review",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "first_person",
+      "stability": "draft",
+      "tags": [
+        "canon",
+        "methods",
+        "boundaries",
+        "review"
+      ]
+    },
+    {
+      "uri": "klappy://canon/methods/choosing-the-right-narrative-container",
+      "path": "/canon/methods/choosing-the-right-narrative-container.md",
+      "title": "Method: Choosing the Right Narrative Container",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "first_person",
+      "stability": "stable",
+      "tags": [
+        "canon",
+        "methods",
+        "writing",
+        "structure"
+      ]
+    },
+    {
+      "uri": "klappy://canon/methods/exploration-exhaust",
+      "path": "/canon/methods/exploration-exhaust.md",
+      "title": "Method: Exploration Exhaust",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "first_person",
+      "stability": "draft",
+      "tags": [
+        "canon",
+        "methods",
+        "exploration",
+        "durability"
+      ]
+    },
+    {
+      "uri": "klappy://canon/methods/extreme-exploration-for-limit-discovery",
+      "path": "/canon/methods/extreme-exploration-for-limit-discovery.md",
+      "title": "Method: Extreme Exploration for Limit Discovery",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "first_person",
+      "stability": "stable",
+      "tags": [
+        "canon",
+        "methods",
+        "exploration",
+        "limits",
+        "cst"
+      ]
+    },
+    {
+      "uri": "klappy://canon/methods/using-ease-and-resistance-as-signals",
+      "path": "/canon/methods/using-ease-and-resistance-as-signals.md",
+      "title": "Method: Using Ease and Resistance as Signals",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "first_person",
+      "stability": "stable",
+      "tags": [
+        "canon",
+        "methods",
+        "writing",
+        "signals"
+      ]
+    },
+    {
+      "uri": "klappy://canon/methods/writing-apocrypha-fragments",
+      "path": "/canon/methods/writing-apocrypha-fragments.md",
+      "title": "Method: Writing Apocrypha Fragments",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "first_person",
+      "stability": "stable",
+      "tags": [
+        "canon",
+        "methods",
+        "apocrypha",
+        "writing"
+      ]
+    },
+    {
+      "uri": "klappy://canon/methods",
+      "path": "/canon/methods/README.md",
+      "title": "Methods",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 1,
+      "voice": "first_person",
+      "stability": "stable",
+      "tags": [
+        "canon",
+        "methods",
+        "practice",
+        "application"
+      ]
+    },
+    {
       "uri": "klappy://canon/decisions/models-do-not-mutate-canon",
       "path": "/canon/decisions/models-do-not-mutate-canon.md",
       "title": "Models Do Not Mutate Canon",
@@ -827,6 +999,24 @@
         "maintenance",
         "registry",
         "patch-plan"
+      ]
+    },
+    {
+      "uri": "klappy://canon/constraints/odd-is-epistemic-os-not-values",
+      "path": "/canon/constraints/odd-is-epistemic-os-not-values.md",
+      "title": "ODD Is an Epistemic OS, Not a Value System",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 1,
+      "voice": "first_person",
+      "stability": "stable",
+      "tags": [
+        "canon",
+        "constraints",
+        "odd",
+        "authority",
+        "values"
       ]
     },
     {
@@ -1166,6 +1356,23 @@
       "tags": [
         "self-audit",
         "verification"
+      ]
+    },
+    {
+      "uri": "klappy://canon/constraints/single-agent-integrity-precedes-collaboration",
+      "path": "/canon/constraints/single-agent-integrity-precedes-collaboration.md",
+      "title": "Single-Agent Integrity Precedes Collaboration",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 1,
+      "voice": "first_person",
+      "stability": "stable",
+      "tags": [
+        "canon",
+        "constraints",
+        "integrity",
+        "collaboration"
       ]
     },
     {
