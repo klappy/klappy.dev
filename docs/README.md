@@ -68,11 +68,11 @@ tags: ["docs", "implementation", "reference", "index"]
 
 | File | Purpose |
 |------|---------|
-| [ATTEMPTS.md](./ATTEMPTS.md) | Attempt lifecycle, CLI commands, artifact locations |
-| [ATTEMPT_KICKOFF.md](./ATTEMPT_KICKOFF.md) | Human workflow for starting attempts |
-| [AGENT_KICKOFF.md](./AGENT_KICKOFF.md) | Canonical agent entry point |
-| [PREVIEW.md](./PREVIEW.md) | Local and Cloudflare preview guide |
-| [CLOUDFLARE_CONFIG.md](./CLOUDFLARE_CONFIG.md) | Deploy configuration |
+| [appendices/ATTEMPTS.md](./appendices/ATTEMPTS.md) | Attempt lifecycle, CLI commands, artifact locations |
+| [appendices/ATTEMPT_KICKOFF.md](./appendices/ATTEMPT_KICKOFF.md) | Human workflow for starting attempts |
+| [agents/AGENT_KICKOFF.md](./agents/AGENT_KICKOFF.md) | Canonical agent entry point |
+| [infra/PREVIEW.md](./infra/PREVIEW.md) | Local and Cloudflare preview guide |
+| [infra/CLOUDFLARE_CONFIG.md](./infra/CLOUDFLARE_CONFIG.md) | Deploy configuration |
 
 ### Reference Documents
 
@@ -80,8 +80,8 @@ tags: ["docs", "implementation", "reference", "index"]
 |------|---------|
 | [TRUTH_MAP.md](./TRUTH_MAP.md) | Authoritative source for each domain |
 | [PRD.md](./PRD.md) | PRD orientation and routing |
-| [WHAT_THIS_REPO_IS_NOT.md](./WHAT_THIS_REPO_IS_NOT.md) | Scope boundaries |
-| [context-packs-and-projection-detail.md](./context-packs-and-projection-detail.md) | Detail levels for context pack projection (full, medium, low) |
+| [appendices/WHAT_THIS_REPO_IS_NOT.md](./appendices/WHAT_THIS_REPO_IS_NOT.md) | Scope boundaries |
+| [appendices/context-packs-and-projection-detail.md](./appendices/context-packs-and-projection-detail.md) | Detail levels for context pack projection (full, medium, low) |
 
 ### Templates
 
@@ -98,14 +98,19 @@ tags: ["docs", "implementation", "reference", "index"]
 |--------|---------|-------|
 | [_incoming/](./_incoming/) | Temporary intake for unclassified documents (Epoch 4 migration) | — |
 | [agent-architecture/](./agent-architecture/) | Agent system design patterns | 1 file |
-| [appendices/](./appendices/) | Implementation-specific appendices | 17 files |
-| [audits/](./audits/) | Epistemic drift checks, reviews, evaluations | — |
-| [decisions/](./decisions/) | Implementation decision records (ADRs) | 14 files |
+| [agents/](./agents/) | Agent role definitions and guidance | 20 files |
+| [appendices/](./appendices/) | Implementation-specific appendices | 22 files |
+| [audits/](./audits/) | Epistemic drift checks, reviews, evaluations | 3 files |
+| [decisions/](./decisions/) | Implementation decision records (ADRs) | 15 files |
 | [examples/](./examples/) | Case studies and examples | 1 file |
-| [history/](./history/) | What happened, with evidence | — |
-| [infra/](./infra/) | Infrastructure documentation | 1 file |
+| [history/](./history/) | What happened, with evidence | 2 files |
+| [infra/](./infra/) | Infrastructure documentation | 3 files |
+| [klappy-dev/](./klappy-dev/) | Project-specific documentation | 3 files |
 | [migrations/](./migrations/) | How we change the system | 2 files |
-| [plans/](./plans/) | Forward-looking design & planning | — |
+| [oddkit/](./oddkit/) | Oddkit subsystem documentation | 7 files |
+| [orchestrator/](./orchestrator/) | Orchestrator reference guides | 5 files |
+| [plans/](./plans/) | Forward-looking design & planning | 1 file |
+| [promotions/](./promotions/) | Canon promotion process | 3 files |
 | [PRD/](./PRD/) | Lane PRDs and template | 3 files |
 
 ---
@@ -126,9 +131,9 @@ tags: ["docs", "implementation", "reference", "index"]
 ┌─────────────────────────────────────────────────┐
 │  Canon (/canon/)                                │
 │  Program constraints                            │
-│  - constraints.md                               │
-│  - definition-of-done.md                        │
-│  - decision-rules.md                            │
+│  - constraints/README.md                        │
+│  - constraints/definition-of-done.md            │
+│  - constraints/decision-rules.md                │
 └─────────────────────────────────────────────────┘
           │
           │ implements
@@ -136,7 +141,7 @@ tags: ["docs", "implementation", "reference", "index"]
 ┌─────────────────────────────────────────────────┐
 │  Docs (/docs/)  ← YOU ARE HERE                  │
 │  Implementation details                         │
-│  - ATTEMPTS.md (CLI procedures)                 │
+│  - appendices/ATTEMPTS.md (CLI procedures)      │
 │  - appendices/epochs.md (E0001-E0003)           │
 │  - decisions/D0001-*.md (klappy.dev choices)    │
 └─────────────────────────────────────────────────┘
