@@ -1,5 +1,5 @@
 ---
-uri: klappy://apocrypha/fragments-of-the-canon/fragment-03
+uri: klappy://canon/apocrypha/fragments-of-the-canon/fragment-03
 title: "Fragment III: Nothing Exceeded the Threshold"
 audience: apocrypha
 exposure: nav

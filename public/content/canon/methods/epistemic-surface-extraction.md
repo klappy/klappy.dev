@@ -218,4 +218,4 @@ Surfaces can inform canon edits, but:
 
 ## Provenance
 
-Promoted from `/apocrypha/artifacts/SURFACE-EXTRACTION.md` to Canon.
+Promoted from `/canon/apocrypha/artifacts/SURFACE-EXTRACTION.md` to Canon.

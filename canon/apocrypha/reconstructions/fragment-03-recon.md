@@ -1,5 +1,5 @@
 ---
-uri: klappy://apocrypha/reconstructions/fragment-03
+uri: klappy://canon/apocrypha/reconstructions/fragment-03
 title: "Nothing Exceeded the Threshold (Reconstruction)"
 audience: apocrypha
 exposure: hidden

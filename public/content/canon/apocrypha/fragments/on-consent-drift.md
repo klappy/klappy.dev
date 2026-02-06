@@ -1,5 +1,5 @@
 ---
-uri: klappy://apocrypha/on-consent-drift
+uri: klappy://canon/apocrypha/fragments/on-consent-drift
 recovered: true
 voice: system_first_person
 stability: fragment

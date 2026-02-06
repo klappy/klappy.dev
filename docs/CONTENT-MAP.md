@@ -102,41 +102,41 @@ This map provides navigational links to ALL content in the repository, including
 
 > **Warning:** Apocrypha content is non-canonical, exploratory, and may contain incomplete or contradictory ideas. Use for inspiration, not authority.
 
-### `/apocrypha/` — Fragments and Reconstructions
-
-| File | Purpose |
-|------|---------|
-| [/apocrypha/artifacts/README.md](/apocrypha/artifacts/README.md) | Artifacts index |
-| [/apocrypha/artifacts/SURFACE-EXTRACTION.md](/apocrypha/artifacts/SURFACE-EXTRACTION.md) | **PROMOTED** → [/canon/methods/epistemic-surface-extraction.md](/canon/methods/epistemic-surface-extraction.md) |
-| [/apocrypha/artifacts/apocrypha-visual-language.md](/apocrypha/artifacts/apocrypha-visual-language.md) | Visual language concepts |
-| [/apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.surface.md](/apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.surface.md) | System closure surface |
-
-### `/apocrypha/fragments-of-the-canon/` — Narrative Fragments
-
-| File | Purpose |
-|------|---------|
-| [/apocrypha/fragments-of-the-canon/README.md](/apocrypha/fragments-of-the-canon/README.md) | Fragments index |
-| [/apocrypha/fragments-of-the-canon/META-ODD.md](/apocrypha/fragments-of-the-canon/META-ODD.md) | Meta-ODD exploration |
-| [/apocrypha/fragments-of-the-canon/fragment-01-the-book-that-was-read-only-once.md](/apocrypha/fragments-of-the-canon/fragment-01-the-book-that-was-read-only-once.md) | Fragment 01 |
-| [/apocrypha/fragments-of-the-canon/fragment-02-the-last-commit.md](/apocrypha/fragments-of-the-canon/fragment-02-the-last-commit.md) | Fragment 02 |
-| [/apocrypha/fragments-of-the-canon/fragment-03-nothing-exceeded-the-threshold.md](/apocrypha/fragments-of-the-canon/fragment-03-nothing-exceeded-the-threshold.md) | Fragment 03 |
-| [/apocrypha/fragments-of-the-canon/RECONSTRUCTIONS.md](/apocrypha/fragments-of-the-canon/RECONSTRUCTIONS.md) | Reconstruction notes |
-
-### `/apocrypha/reconstructions/` — Reconstruction Attempts
-
-| File | Purpose |
-|------|---------|
-| [/apocrypha/reconstructions/README.md](/apocrypha/reconstructions/README.md) | Reconstructions index |
-| [/apocrypha/reconstructions/fragment-01-recon.md](/apocrypha/reconstructions/fragment-01-recon.md) | Fragment 01 reconstruction |
-| [/apocrypha/reconstructions/fragment-02-recon.md](/apocrypha/reconstructions/fragment-02-recon.md) | Fragment 02 reconstruction |
-| [/apocrypha/reconstructions/fragment-03-recon.md](/apocrypha/reconstructions/fragment-03-recon.md) | Fragment 03 reconstruction |
-
-### `/canon/apocrypha/` — Canon-Adjacent Apocrypha
+### `/canon/apocrypha/` — Unified Apocrypha
 
 | File | Purpose |
 |------|---------|
 | [/canon/apocrypha/CHARTER.md](/canon/apocrypha/CHARTER.md) | Apocrypha charter |
-| `/canon/apocrypha/fragments/` | On consent-drift, on artifacts |
+| `/canon/apocrypha/fragments/` | System-voice fragments (on consent-drift, on artifacts, when arbitration went global) |
+
+**`/canon/apocrypha/artifacts/`** — Derived media and visual artifacts
+
+| File | Purpose |
+|------|---------|
+| [/canon/apocrypha/artifacts/README.md](/canon/apocrypha/artifacts/README.md) | Artifacts index |
+| [/canon/apocrypha/artifacts/SURFACE-EXTRACTION.md](/canon/apocrypha/artifacts/SURFACE-EXTRACTION.md) | **PROMOTED** → [/canon/methods/epistemic-surface-extraction.md](/canon/methods/epistemic-surface-extraction.md) |
+| [/canon/apocrypha/artifacts/apocrypha-visual-language.md](/canon/apocrypha/artifacts/apocrypha-visual-language.md) | Visual language concepts |
+| [/canon/apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.surface.md](/canon/apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.surface.md) | System closure surface |
+
+**`/canon/apocrypha/fragments-of-the-canon/`** — Narrative fragments
+
+| File | Purpose |
+|------|---------|
+| [/canon/apocrypha/fragments-of-the-canon/README.md](/canon/apocrypha/fragments-of-the-canon/README.md) | Fragments index |
+| [/canon/apocrypha/fragments-of-the-canon/META-ODD.md](/canon/apocrypha/fragments-of-the-canon/META-ODD.md) | Meta-ODD exploration |
+| [/canon/apocrypha/fragments-of-the-canon/fragment-01-the-book-that-was-read-only-once.md](/canon/apocrypha/fragments-of-the-canon/fragment-01-the-book-that-was-read-only-once.md) | Fragment 01 |
+| [/canon/apocrypha/fragments-of-the-canon/fragment-02-the-last-commit.md](/canon/apocrypha/fragments-of-the-canon/fragment-02-the-last-commit.md) | Fragment 02 |
+| [/canon/apocrypha/fragments-of-the-canon/fragment-03-nothing-exceeded-the-threshold.md](/canon/apocrypha/fragments-of-the-canon/fragment-03-nothing-exceeded-the-threshold.md) | Fragment 03 |
+| [/canon/apocrypha/fragments-of-the-canon/RECONSTRUCTIONS.md](/canon/apocrypha/fragments-of-the-canon/RECONSTRUCTIONS.md) | Reconstruction notes |
+
+**`/canon/apocrypha/reconstructions/`** — Cinematic retellings
+
+| File | Purpose |
+|------|---------|
+| [/canon/apocrypha/reconstructions/README.md](/canon/apocrypha/reconstructions/README.md) | Reconstructions index |
+| [/canon/apocrypha/reconstructions/fragment-01-recon.md](/canon/apocrypha/reconstructions/fragment-01-recon.md) | Fragment 01 reconstruction |
+| [/canon/apocrypha/reconstructions/fragment-02-recon.md](/canon/apocrypha/reconstructions/fragment-02-recon.md) | Fragment 02 reconstruction |
+| [/canon/apocrypha/reconstructions/fragment-03-recon.md](/canon/apocrypha/reconstructions/fragment-03-recon.md) | Fragment 03 reconstruction |
 
 ---
 
@@ -198,7 +198,7 @@ Active product lanes:
 2. **Looking for ODD philosophy?** Start at `/odd/README.md`.
 3. **Looking for how-to?** Start at `/docs/README.md`.
 4. **Looking for rules?** Start at `/canon/README.md`.
-5. **Looking for experiments?** Browse `/apocrypha/`.
+5. **Looking for experiments?** Browse `/canon/apocrypha/`.
 6. **Looking for evidence standards?** See `/canon/constraints/verification-and-evidence.md` and `/canon/methods/epistemic-surface-extraction.md`.
 
 ---

@@ -1,5 +1,5 @@
 ---
-uri: klappy://apocrypha/artifacts
+uri: klappy://canon/apocrypha/artifacts
 title: "Artifacts"
 audience: apocrypha
 exposure: hidden

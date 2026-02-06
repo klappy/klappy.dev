@@ -129,6 +129,41 @@
       ]
     },
     {
+      "uri": "klappy://canon/apocrypha/artifacts/apocrypha-visual-language",
+      "path": "/canon/apocrypha/artifacts/apocrypha-visual-language.md",
+      "title": "Apocrypha Visual Language",
+      "type": "text/markdown",
+      "audience": "apocrypha",
+      "exposure": "hidden",
+      "tier": 2,
+      "voice": "neutral",
+      "stability": "evolving",
+      "tags": [
+        "apocrypha",
+        "visual-language",
+        "video",
+        "artifacts",
+        "ese"
+      ]
+    },
+    {
+      "uri": "klappy://canon/apocrypha/artifacts",
+      "path": "/canon/apocrypha/artifacts/README.md",
+      "title": "Artifacts",
+      "type": "text/markdown",
+      "audience": "apocrypha",
+      "exposure": "hidden",
+      "tier": 2,
+      "voice": "neutral",
+      "stability": "evolving",
+      "tags": [
+        "apocrypha",
+        "artifacts",
+        "surface",
+        "ese"
+      ]
+    },
+    {
       "uri": "klappy://about/bio",
       "path": "/about/bio.md",
       "title": "Bio",
@@ -573,6 +608,27 @@
       ]
     },
     {
+      "uri": "klappy://canon/apocrypha/artifacts/surface-extraction",
+      "path": "/canon/apocrypha/artifacts/SURFACE-EXTRACTION.md",
+      "title": "Epistemic Surface Extraction (PROMOTED)",
+      "type": "text/markdown",
+      "audience": "apocrypha",
+      "exposure": "hidden",
+      "tier": 2,
+      "voice": "neutral",
+      "stability": "archived",
+      "tags": [
+        "apocrypha",
+        "artifacts",
+        "ese",
+        "surface",
+        "ocr",
+        "asr",
+        "video",
+        "promoted"
+      ]
+    },
+    {
       "uri": "klappy://canon/defaults/evidence-intake",
       "path": "/canon/defaults/evidence-intake.md",
       "title": "Evidence Intake",
@@ -647,6 +703,24 @@
       "tags": [
         "about",
         "faq"
+      ]
+    },
+    {
+      "uri": "klappy://canon/apocrypha/fragments-of-the-canon/fragment-03",
+      "path": "/canon/apocrypha/fragments-of-the-canon/fragment-03-nothing-exceeded-the-threshold.md",
+      "title": "Fragment III: Nothing Exceeded the Threshold",
+      "type": "text/markdown",
+      "audience": "apocrypha",
+      "exposure": "nav",
+      "tier": 1,
+      "voice": "neutral",
+      "stability": "stable",
+      "tags": [
+        "fragment",
+        "metrics",
+        "thresholds",
+        "optimization",
+        "governance"
       ]
     },
     {
@@ -859,6 +933,23 @@
         "models",
         "mutation",
         "governance"
+      ]
+    },
+    {
+      "uri": "klappy://canon/apocrypha/reconstructions/fragment-03",
+      "path": "/canon/apocrypha/reconstructions/fragment-03-recon.md",
+      "title": "Nothing Exceeded the Threshold (Reconstruction)",
+      "type": "text/markdown",
+      "audience": "apocrypha",
+      "exposure": "hidden",
+      "tier": 2,
+      "voice": "narrative",
+      "stability": "evolving",
+      "tags": [
+        "fragment-03",
+        "reconstruction",
+        "metrics",
+        "dashboards"
       ]
     },
     {
@@ -1135,6 +1226,22 @@
       ]
     },
     {
+      "uri": "klappy://canon/apocrypha/fragments-of-the-canon/reconstructions",
+      "path": "/canon/apocrypha/fragments-of-the-canon/RECONSTRUCTIONS.md",
+      "title": "Reconstructions",
+      "type": "text/markdown",
+      "audience": "apocrypha",
+      "exposure": "hidden",
+      "tier": 2,
+      "voice": "neutral",
+      "stability": "stable",
+      "tags": [
+        "fragments-of-the-canon",
+        "reconstructions",
+        "apocrypha"
+      ]
+    },
+    {
       "uri": "klappy://projects/repo-as-a-system",
       "path": "/projects/repo-as-a-system/README.md",
       "title": "Repo-as-a-System",
@@ -1280,6 +1387,38 @@
         "convergence",
         "constraints",
         "decision-making"
+      ]
+    },
+    {
+      "uri": "klappy://canon/apocrypha/reconstructions/fragments-of-the-canon/fragment-01-recon",
+      "path": "/canon/apocrypha/reconstructions/fragment-01-recon.md",
+      "title": "The Book That Was Read Only Once (Reconstruction)",
+      "type": "text/markdown",
+      "audience": "apocrypha",
+      "exposure": "hidden",
+      "tier": 2,
+      "voice": "narrative",
+      "stability": "evolving",
+      "tags": [
+        "fragments-of-the-canon",
+        "reconstruction",
+        "cinematic"
+      ]
+    },
+    {
+      "uri": "klappy://canon/apocrypha/reconstructions/fragments-of-the-canon/fragment-02-recon",
+      "path": "/canon/apocrypha/reconstructions/fragment-02-recon.md",
+      "title": "The Last Commit (Reconstruction)",
+      "type": "text/markdown",
+      "audience": "apocrypha",
+      "exposure": "hidden",
+      "tier": 2,
+      "voice": "narrative",
+      "stability": "evolving",
+      "tags": [
+        "fragments-of-the-canon",
+        "reconstruction",
+        "cinematic"
       ]
     },
     {

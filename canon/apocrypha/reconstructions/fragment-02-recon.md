@@ -1,9 +1,9 @@
 ---
-uri: klappy://apocrypha/reconstructions/fragments-of-the-canon/fragment-02-recon
+uri: klappy://canon/apocrypha/reconstructions/fragments-of-the-canon/fragment-02-recon
 title: "The Last Commit (Reconstruction)"
 series: "Fragments of the Canon"
 fragment: 2
-source_canon: "apocrypha/fragments-of-the-canon/fragment-02-the-last-commit.md"
+source_canon: "canon/apocrypha/fragments-of-the-canon/fragment-02-the-last-commit.md"
 audience: apocrypha
 exposure: hidden
 tier: 2

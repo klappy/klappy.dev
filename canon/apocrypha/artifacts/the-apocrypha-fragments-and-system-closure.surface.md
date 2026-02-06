@@ -3,7 +3,7 @@ surface_version: 1.0.0
 artifact:
   title: "The Apocrypha: Fragments and System Closure"
   format: "pdf"
-  source_path: "apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.pdf"
+  source_path: "canon/apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.pdf"
   generator: "NotebookLM"
   intent: "interpretive"
   canonical_status: "non-canonical"
@@ -56,7 +56,7 @@ A visually stylized, recovered-artifact presentation defining the role of Apocry
 - Distressed archival typography.
 
 **Cross-references**
-- Illustrates: `klappy://apocrypha/fragments-of-the-canon`
+- Illustrates: `klappy://canon/apocrypha/fragments-of-the-canon`
 
 ---
 

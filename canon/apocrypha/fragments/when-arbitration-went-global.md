@@ -1,5 +1,5 @@
 ---
-uri: klappy://apocrypha/fragments/when-arbitration-went-global
+uri: klappy://canon/apocrypha/fragments/when-arbitration-went-global
 voice: system_first_person
 stability: fragment
 confidence: unknown

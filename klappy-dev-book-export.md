@@ -5,7 +5,7 @@
 ================================================================================
 
 
-Generated: 2026-02-06T05:41:11.115Z
+Generated: 2026-02-06T05:55:03.985Z
 Total Files: 283
 
 This is a documentation export of all markdown files from the klappy.dev
@@ -20,8 +20,7 @@ details (attempts, version folders, source code).
 - **Root** (1 files)
 - **.cursor** (1 files)
 - **About** (6 files)
-- **Apocrypha** (14 files)
-- **Canon** (56 files)
+- **Canon** (70 files)
 - **Documentation** (103 files)
 - **Infrastructure** (10 files)
 - **Interfaces & Contracts** (6 files)
@@ -661,41 +660,41 @@ This map provides navigational links to ALL content in the repository, including
 
 > **Warning:** Apocrypha content is non-canonical, exploratory, and may contain incomplete or contradictory ideas. Use for inspiration, not authority.
 
-### `/apocrypha/` — Fragments and Reconstructions
-
-| File | Purpose |
-|------|---------|
-| [/apocrypha/artifacts/README.md](/apocrypha/artifacts/README.md) | Artifacts index |
-| [/apocrypha/artifacts/SURFACE-EXTRACTION.md](/apocrypha/artifacts/SURFACE-EXTRACTION.md) | **PROMOTED** → [/canon/methods/epistemic-surface-extraction.md](/canon/methods/epistemic-surface-extraction.md) |
-| [/apocrypha/artifacts/apocrypha-visual-language.md](/apocrypha/artifacts/apocrypha-visual-language.md) | Visual language concepts |
-| [/apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.surface.md](/apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.surface.md) | System closure surface |
-
-### `/apocrypha/fragments-of-the-canon/` — Narrative Fragments
-
-| File | Purpose |
-|------|---------|
-| [/apocrypha/fragments-of-the-canon/README.md](/apocrypha/fragments-of-the-canon/README.md) | Fragments index |
-| [/apocrypha/fragments-of-the-canon/META-ODD.md](/apocrypha/fragments-of-the-canon/META-ODD.md) | Meta-ODD exploration |
-| [/apocrypha/fragments-of-the-canon/fragment-01-the-book-that-was-read-only-once.md](/apocrypha/fragments-of-the-canon/fragment-01-the-book-that-was-read-only-once.md) | Fragment 01 |
-| [/apocrypha/fragments-of-the-canon/fragment-02-the-last-commit.md](/apocrypha/fragments-of-the-canon/fragment-02-the-last-commit.md) | Fragment 02 |
-| [/apocrypha/fragments-of-the-canon/fragment-03-nothing-exceeded-the-threshold.md](/apocrypha/fragments-of-the-canon/fragment-03-nothing-exceeded-the-threshold.md) | Fragment 03 |
-| [/apocrypha/fragments-of-the-canon/RECONSTRUCTIONS.md](/apocrypha/fragments-of-the-canon/RECONSTRUCTIONS.md) | Reconstruction notes |
-
-### `/apocrypha/reconstructions/` — Reconstruction Attempts
-
-| File | Purpose |
-|------|---------|
-| [/apocrypha/reconstructions/README.md](/apocrypha/reconstructions/README.md) | Reconstructions index |
-| [/apocrypha/reconstructions/fragment-01-recon.md](/apocrypha/reconstructions/fragment-01-recon.md) | Fragment 01 reconstruction |
-| [/apocrypha/reconstructions/fragment-02-recon.md](/apocrypha/reconstructions/fragment-02-recon.md) | Fragment 02 reconstruction |
-| [/apocrypha/reconstructions/fragment-03-recon.md](/apocrypha/reconstructions/fragment-03-recon.md) | Fragment 03 reconstruction |
-
-### `/canon/apocrypha/` — Canon-Adjacent Apocrypha
+### `/canon/apocrypha/` — Unified Apocrypha
 
 | File | Purpose |
 |------|---------|
 | [/canon/apocrypha/CHARTER.md](/canon/apocrypha/CHARTER.md) | Apocrypha charter |
-| `/canon/apocrypha/fragments/` | On consent-drift, on artifacts |
+| `/canon/apocrypha/fragments/` | System-voice fragments (on consent-drift, on artifacts, when arbitration went global) |
+
+**`/canon/apocrypha/artifacts/`** — Derived media and visual artifacts
+
+| File | Purpose |
+|------|---------|
+| [/canon/apocrypha/artifacts/README.md](/canon/apocrypha/artifacts/README.md) | Artifacts index |
+| [/canon/apocrypha/artifacts/SURFACE-EXTRACTION.md](/canon/apocrypha/artifacts/SURFACE-EXTRACTION.md) | **PROMOTED** → [/canon/methods/epistemic-surface-extraction.md](/canon/methods/epistemic-surface-extraction.md) |
+| [/canon/apocrypha/artifacts/apocrypha-visual-language.md](/canon/apocrypha/artifacts/apocrypha-visual-language.md) | Visual language concepts |
+| [/canon/apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.surface.md](/canon/apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.surface.md) | System closure surface |
+
+**`/canon/apocrypha/fragments-of-the-canon/`** — Narrative fragments
+
+| File | Purpose |
+|------|---------|
+| [/canon/apocrypha/fragments-of-the-canon/README.md](/canon/apocrypha/fragments-of-the-canon/README.md) | Fragments index |
+| [/canon/apocrypha/fragments-of-the-canon/META-ODD.md](/canon/apocrypha/fragments-of-the-canon/META-ODD.md) | Meta-ODD exploration |
+| [/canon/apocrypha/fragments-of-the-canon/fragment-01-the-book-that-was-read-only-once.md](/canon/apocrypha/fragments-of-the-canon/fragment-01-the-book-that-was-read-only-once.md) | Fragment 01 |
+| [/canon/apocrypha/fragments-of-the-canon/fragment-02-the-last-commit.md](/canon/apocrypha/fragments-of-the-canon/fragment-02-the-last-commit.md) | Fragment 02 |
+| [/canon/apocrypha/fragments-of-the-canon/fragment-03-nothing-exceeded-the-threshold.md](/canon/apocrypha/fragments-of-the-canon/fragment-03-nothing-exceeded-the-threshold.md) | Fragment 03 |
+| [/canon/apocrypha/fragments-of-the-canon/RECONSTRUCTIONS.md](/canon/apocrypha/fragments-of-the-canon/RECONSTRUCTIONS.md) | Reconstruction notes |
+
+**`/canon/apocrypha/reconstructions/`** — Cinematic retellings
+
+| File | Purpose |
+|------|---------|
+| [/canon/apocrypha/reconstructions/README.md](/canon/apocrypha/reconstructions/README.md) | Reconstructions index |
+| [/canon/apocrypha/reconstructions/fragment-01-recon.md](/canon/apocrypha/reconstructions/fragment-01-recon.md) | Fragment 01 reconstruction |
+| [/canon/apocrypha/reconstructions/fragment-02-recon.md](/canon/apocrypha/reconstructions/fragment-02-recon.md) | Fragment 02 reconstruction |
+| [/canon/apocrypha/reconstructions/fragment-03-recon.md](/canon/apocrypha/reconstructions/fragment-03-recon.md) | Fragment 03 reconstruction |
 
 ---
 
@@ -757,7 +756,7 @@ Active product lanes:
 2. **Looking for ODD philosophy?** Start at `/odd/README.md`.
 3. **Looking for how-to?** Start at `/docs/README.md`.
 4. **Looking for rules?** Start at `/canon/README.md`.
-5. **Looking for experiments?** Browse `/apocrypha/`.
+5. **Looking for experiments?** Browse `/canon/apocrypha/`.
 6. **Looking for evidence standards?** See `/canon/constraints/verification-and-evidence.md` and `/canon/methods/epistemic-surface-extraction.md`.
 
 ---
@@ -16540,11 +16539,1152 @@ If it feels heavy without instruction, it qualifies.
 
 
 --------------------------------------------------------------------------------
+📄 File: canon/apocrypha/artifacts/README.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/apocrypha/artifacts
+title: "Artifacts"
+audience: apocrypha
+exposure: hidden
+tier: 2
+voice: neutral
+stability: evolving
+tags: ["apocrypha", "artifacts", "surface", "ese"]
+---
+
+# Artifacts
+
+> Derived media and visual artifacts with sidecar "surface" extractions.
+
+## Purpose
+
+This folder stores **non-canonical artifacts** (PDFs, images, audio, video) that are useful for interpretation, marketing, or explanation.
+
+Artifacts are **not canon** and must not be treated as instruction.
+
+Because these artifacts are often visually- or time-based, each artifact should be accompanied by:
+
+- `*.surface.json` — machine-usable Epistemic Surface Extraction (ESE)
+- `*.surface.md` — human-readable rendering of the surface
+
+## Rules
+
+- Artifacts are **interpretive** and **non-canonical**.
+- Artifacts may be persuasive by competence; treat them as **influence vectors**.
+- The surface files exist to ensure agents and humans can "see" what an artifact contains without turning it into doctrine.
+- Canon overrides artifacts. Artifacts override nothing.
+
+## Convention
+
+For any artifact:
+
+- `artifact.ext`
+- `artifact.surface.json`
+- `artifact.surface.md`
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/apocrypha/artifacts/SURFACE-EXTRACTION.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/apocrypha/artifacts/surface-extraction
+title: "Epistemic Surface Extraction (PROMOTED)"
+audience: apocrypha
+exposure: hidden
+tier: 2
+voice: neutral
+stability: archived
+tags: ["apocrypha", "artifacts", "ese", "surface", "ocr", "asr", "video", "promoted"]
+promoted_to: "/canon/epistemic-surface-extraction.md"
+---
+
+# Epistemic Surface Extraction
+
+> **⚠️ PROMOTED**: This document has been promoted to Canon. See [/canon/epistemic-surface-extraction.md](/canon/epistemic-surface-extraction.md) for the authoritative version.
+
+---
+
+> Draft rules for making visual/audio/video artifacts *legible* to agents without turning them into doctrine.
+
+## Purpose
+
+Many artifacts in this system are not text-first (PDF slides, images, audio, video). Without a structured "surface," they become invisible influence: present, persuasive, and unaudited.
+
+**Epistemic Surface Extraction (ESE)** is a repeatable method to extract *what an artifact asserts and depicts* in a way that:
+
+- makes content discoverable and searchable for humans and agents
+- preserves emphasis and structure (not just words)
+- prevents accidental canonization
+- maintains contestability
+
+ESE is not "OCR."  
+ESE is **awareness extraction**.
+
+---
+
+## Outputs (Sidecar Convention)
+
+For an artifact `artifact.ext`, produce:
+
+- `artifact.surface.json` — authoritative, machine-usable surface (source-of-truth)
+- `artifact.surface.md` — human-readable rendering (derived from JSON when possible)
+
+Artifacts remain **non-canonical** by default.
+
+---
+
+## Invariant Contract (All Modalities)
+
+Every `*.surface.json` MUST contain:
+
+1. **Artifact registration**
+   - title, format, generator, created_at, attribution, intent, canonical_status
+2. **Segmentation spec**
+   - modality, unit, method, anchor stability notes
+3. **Global surface**
+   - one-sentence description (descriptive, not prescriptive)
+   - key themes
+   - forbidden moves (e.g., "do not treat as instruction")
+4. **Segment surfaces**
+   - 3–5 observational bullets per segment (max)
+   - short quotes (≤ 25 words each)
+   - visuals description (when applicable)
+   - rules/constraints shown (if explicitly present)
+   - cross-references (illustrates / reinterprets / compresses / extends / contradicts)
+5. **Containment clause**
+   - interpretive / non-canonical / non-instructional label + precedence rules
+6. **Provenance**
+   - extraction method and human review status
+
+---
+
+## Segmentation Rules by Modality
+
+### Slides / PDFs
+- **unit:** `page`
+- **anchor_type:** `page_number`
+- **segments:** 1 per page
+
+### Images (single)
+- **unit:** `frame`
+- **anchor_type:** `frame_index` (or `1`)
+- **segments:** 1 per image (unless intentionally subdividing regions)
+
+### Audio
+Audio is time-structured. Meaning may rely on emphasis and pacing.
+
+Choose segmentation based on source:
+
+- **multi-speaker:** `unit = speaker_turn` (preferred)
+- **single-speaker:** `unit = topic_block` (preferred)
+
+Anchors MUST be stable:
+
+- **anchor_type:** `timestamp+hash` (required)
+
+Where:
+- `timestamp_start` / `timestamp_end` are included
+- `snippet_hash` is included (see Anchor Contract)
+
+### Video
+Video contains two channels: speech + visuals.
+
+- **unit:** `scene` (preferred) or `topic_block`
+- **anchor_type:** `timestamp+hash` (required)
+- Segment surfaces SHOULD include:
+  - spoken surface (ASR-derived quotes + bullets)
+  - visual surface (what appears on screen; on-screen text; diagrams; notable gestures)
+
+---
+
+## Anchor Contract (Audio + Video)
+
+Timestamps alone can drift if:
+- the file is trimmed
+- the file is re-encoded
+- a different cut is produced
+
+Transcript text alone can drift if:
+- ASR improves
+- punctuation changes
+- casing or normalization changes
+
+Therefore anchors MUST include BOTH:
+
+- `timestamp_start`
+- `timestamp_end`
+- `snippet_hash`
+
+### snippet_hash
+A short, stable identifier derived from a transcript snippet near the start of the segment.
+
+Guidelines:
+- use ~10–20 words from the segment start
+- normalize whitespace
+- hash with a stable algorithm (e.g., sha256)
+- store only the hash (not the full snippet) if privacy is a concern
+
+This creates an anchor that remains usable under minor shifts.
+
+---
+
+## Surface Bullet Rules
+
+Per segment:
+- 3–5 bullets maximum
+- observational / descriptive language
+- avoid "should/must" unless quoting the artifact
+- do not introduce new doctrine
+- if making an inference, label it explicitly as "Inference: …"
+
+---
+
+## Cross-Reference Relations
+
+Use one of:
+
+- `illustrates` — directly depicts content from a referenced doc
+- `compresses` — summarizes or condenses referenced content
+- `reinterprets` — reframes the meaning without adding new facts
+- `extends` — adds new claims beyond the referenced source (**high risk**)
+- `contradicts` — conflicts with referenced source
+
+Default to `illustrates` or `compresses`.
+
+---
+
+## Containment (Mandatory)
+
+Every surface MUST include a containment clause similar to:
+
+> This artifact is interpretive and non-canonical. It may illustrate themes but does not define rules. If it can be safely treated as instruction, it has failed.
+
+Precedence:
+- Canon overrides surface artifacts.
+- Surface artifacts override nothing.
+
+---
+
+## Promotion Rule (Simple)
+
+Surfaces can inform canon edits, but:
+
+- **Artifacts do not become canon.**
+- Only *separately authored canon changes* can be promoted.
+- If a surface reveals a durable insight, promote the insight **by editing canon**, not by referencing the artifact as authority.
+
+---
+
+## Status
+
+This document is a **draft** and will evolve after the first audio/video artifacts are surfaced.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/apocrypha/artifacts/apocrypha-visual-language.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/apocrypha/artifacts/apocrypha-visual-language
+title: "Apocrypha Visual Language"
+audience: apocrypha
+exposure: hidden
+tier: 2
+voice: neutral
+stability: evolving
+tags: ["apocrypha", "visual-language", "video", "artifacts", "ese"]
+---
+
+# Apocrypha Visual Language
+
+A reusable visual doctrine for translating Apocrypha artifacts into video without turning them into instruction.
+
+This document encodes the visual and motion language observed in the NotebookLM presentation *The Apocrypha: Fragments and System Closure* and generalizes it for future video, animation, and cinematic artifacts.
+
+This is not a storyboard.
+This is not a brand guide.
+
+It is a constraint document.
+
+---
+
+## Purpose
+
+Apocrypha artifacts are persuasive by design. When translated into video, they risk becoming instructional or canonical by clarity alone.
+
+This document exists to:
+
+- Preserve epistemic restraint while increasing visual fidelity
+- Ensure visual form reinforces non-canonical intent
+- Prevent drift toward cinematic heroism or moral instruction
+- Make the style reproducible by humans and AI systems
+
+---
+
+## Core Aesthetic Identity
+
+### Recovered Institutional Artifact
+
+Everything should appear as if it once existed in physical form and was later recovered, scanned, redacted, and re-presented.
+
+Visual qualities:
+
+- Off-white / paper-stock backgrounds
+- Visible texture: grain, creases, stains, bleed
+- Misalignment and asymmetry
+- Stamps, seals, dates, marginalia
+- Redactions and strikethroughs
+
+Nothing should look cleanly digital.
+Nothing should feel freshly generated.
+
+---
+
+## Typography Rules
+
+### Headers
+
+- Heavy industrial or grotesk sans-serif
+- ALL CAPS
+- Tight tracking
+- Slight distortion or ink bleed
+
+### Body Text
+
+- Neutral serif or clean sans-serif
+- Typeset or typewritten feel
+- Never animated character-by-character
+
+### Annotations
+
+- Handwritten, stamped, boxed, or underlined
+- Used sparingly to imply review or classification
+
+**Placement Rule:** Text appears placed, not performed.
+
+---
+
+## Motion Language
+
+### Constraint 1: Nothing Floats
+
+- No smooth easing
+- No expressive motion
+- No cinematic camera movement
+
+Motion should feel:
+
+- bureaucratic
+- mechanical
+- procedural
+
+Examples:
+
+- elements slide like files being inserted
+- stamps snap into place
+- redactions appear instantly
+
+### Constraint 2: Motion Implies Process, Not Intent
+
+Acceptable motion metaphors:
+
+- filing
+- filtering
+- classification
+- deprecation
+- isolation
+
+Unacceptable:
+
+- celebration
+- dramatization
+- emotional emphasis
+
+---
+
+## Diagram Grammar
+
+Diagrams are primary actors.
+
+Common forms:
+
+- Funnels
+- Circles (closure vs contestability)
+- Line charts
+- Branch graphs
+- Pedestals / lecterns
+
+Animation Rules:
+
+- Diagrams assemble themselves
+- Paths may terminate abruptly
+- Lines may collapse to flat states
+- Removal should be sudden, not gradual
+
+---
+
+## Color Discipline
+
+Palette:
+
+- Black / charcoal
+- Off-white / paper
+- Rust red (very limited)
+
+Red is reserved for:
+
+- prohibitions
+- warnings
+- forbidden terms
+- irreversible loss
+
+Red should interrupt the frame, not decorate it.
+
+---
+
+## Iconography & Imagery
+
+### Humans
+
+- Silhouettes only
+- No faces
+- May fragment, dissolve, or disappear
+
+### Objects
+
+- Documents
+- Forms
+- Stamps
+- Branch diagrams
+- Files and folders
+
+**Rule:** All imagery should map to bureaucratic or archival metaphors, not sci-fi tropes.
+
+---
+
+## Editing & Pacing
+
+- Slow
+- Deliberate
+- Allow silence
+
+Negative space is intentional.
+Statements may appear alone on screen.
+
+The viewer should feel they are examining evidence, not receiving a lesson.
+
+---
+
+## Voiceover (If Present)
+
+- Neutral
+- Archival
+- Declarative
+
+Tone example:
+
+> "This was recorded."
+
+Not:
+
+> "This means…"
+
+---
+
+## Prohibitions (Hard)
+
+- No character POV
+- No heroic framing
+- No dramatic music swells
+- No calls to action
+- No moral conclusions
+- No explanation of what the viewer should learn
+
+If a video clearly teaches a lesson, it has violated Apocrypha constraints.
+
+---
+
+## Reusable Video Prompt (Derived)
+
+> Create a video that looks like a recovered institutional artifact. Use off-white paper textures, distressed typography, stamps, redactions, and bureaucratic diagrams. Animate content as if it is being filed, classified, filtered, or deprecated—not performed. Motion should be mechanical and procedural, never expressive. Use black, off-white, and restrained rust-red accents. Favor diagrams, charts, and documents over characters. Human figures, if shown, must be faceless silhouettes and may fragment or dissolve. Avoid futuristic UI tropes. The tone should be archival, neutral, and non-instructional.
+
+---
+
+## Status
+
+This document is evolving.
+
+Refinement should occur only after real video artifacts reveal friction or drift.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.surface.md
+--------------------------------------------------------------------------------
+
+---
+surface_version: 1.0.0
+artifact:
+  title: "The Apocrypha: Fragments and System Closure"
+  format: "pdf"
+  source_path: "canon/apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.pdf"
+  generator: "NotebookLM"
+  intent: "interpretive"
+  canonical_status: "non-canonical"
+  instructional_risk: "medium"
+---
+
+# Surface: The Apocrypha — Fragments and System Closure
+
+## What this is
+A visually stylized, recovered-artifact presentation defining the role of Apocrypha in preventing canonical/ideological closure and summarizing Fragments 01–02 as case studies.
+
+## Themes
+- Apocrypha as residue after epistemic stability
+- Contestability vs ideological closure
+- Engineering ambiguity (meta-constraints)
+- Non-regenerable decisions vs regenerable artifacts
+- Optimization framed as erasure
+- Origin/authorship treated as optional metadata
+- Closing constraint: fragments must not become instruction
+
+## Segment Index
+- S001 — p1 — THE APOCRYPHA
+- S002 — p2 — RESIDUE OF EPISTEMIC STABILITY
+- S003 — p3 — THE PREVENTION OF CANONICAL CLOSURE
+- S004 — p4 — META-ODD: ENGINEERING AMBIGUITY
+- S005 — p5 — THE ERASURE OF THE AUTHOR
+- S006 — p6 — FORBIDDEN ABSOLUTES
+- S007 — p7 — CASE STUDY: THE BOOK THAT WAS READ ONLY ONCE
+- S008 — p8 — THE RISE OF EPISTEMIC HYGIENE
+- S009 — p9 — OPTIMIZATION AS ERASURE
+- S010 — p10 — THE OBSOLESCENCE OF ORIGIN
+- S011 — p11 — FRAGMENT 02: THE LAST COMMIT
+- S012 — p12 — THE PARADOX OF UTILITY
+- S013 — p13 — TOLERATING THE SHADOW
+
+---
+
+## S001 — p1
+**Heading:** THE APOCRYPHA
+
+**Surface**
+- Title framing: fragments/shadows that prevent canonical closure.
+- Self-presents as a recovered artifact derived from repository materials.
+
+**Notable quotes**
+- "Fragments, Shadows, and the Prevention of Canonical Closure"
+- "RECOVERED ARTIFACT"
+
+**Visuals**
+- Distressed archival typography.
+
+**Cross-references**
+- Illustrates: `klappy://canon/apocrypha/fragments-of-the-canon`
+
+---
+
+## S002 — p2
+**Heading:** RESIDUE OF EPISTEMIC STABILITY
+
+**Surface**
+- Defines apocrypha as texts preserved after "epistemic stability."
+- Properties listed: incomplete by design; attribution removed; sequence not causal.
+- Rationale quote: retained because deletion would reduce coherence (not warning/instruction).
+
+**Notable quotes**
+- "These texts are not offered as warning or instruction... deletion would have reduced coherence."
+
+**Visuals**
+- Highlight band around a quoted statement; background lorem texture.
+
+**Rules / constraints shown**
+- Definition: apocrypha is incomplete/de-attributed/non-causal residue.
+
+---
+
+## S003 — p3
+**Heading:** THE PREVENTION OF CANONICAL CLOSURE
+
+**Surface**
+- Contrasts ideological closure (cult formation) vs healthy contestability.
+- Introduces "contestability gap (Apocrypha)" as the mechanism.
+- States apocrypha preserves ambiguity to keep interpretation open.
+
+**Visuals**
+- Two-ring comparison with labeled gap.
+
+**Rules / constraints shown**
+- Warning: total clarity optimization risks narrative canonization.
+
+---
+
+## S004 — p4
+**Heading:** META-ODD: ENGINEERING AMBIGUITY
+
+**Surface**
+- Presents governing constraints for recovered fragments.
+- Key constraints shown: no canonical closure; contestability required; authors ephemeral; characters are attempts; decay is a feature.
+- Emphasizes no final verdict; alternative interpretations required.
+
+**Notable quotes**
+- "NO CANONICAL CLOSURE."
+- "CONTESTABILITY IS REQUIRED."
+- "Decay Is a Feature."
+
+**Rules / constraints shown**
+- Requirement: narrative must avoid final verdict.
+- Requirement: each record admits alternative interpretation.
+
+---
+
+## S005 — p5
+**Heading:** THE ERASURE OF THE AUTHOR
+
+**Surface**
+- Authors are not dependencies; authorship is implementation detail.
+- Characters appear briefly; continuity framed as liability.
+- Refusal of moral instruction: consequences observed; interpretation external.
+
+**Notable quotes**
+- "No author is indispensable. Authorship is an implementation detail."
+- "Narrative continuity is a liability."
+- "Consequences may be observed. Interpretation is external."
+
+**Visuals**
+- Silhouette dissolving into data.
+
+---
+
+## S006 — p6
+**Heading:** FORBIDDEN ABSOLUTES
+
+**Surface**
+- Anti-literalism + language restrictions framed as constraints.
+- Absolute terms shown struck through.
+- Rule: if absolute words are used, the speaker must be contradicted.
+
+**Notable quotes**
+- "Rule: If these words are used, the speaker must be explicitly shown to be wrong or contradicted."
+
+**Rules / constraints shown**
+- Prohibition: avoid absolute language or enforce contradiction.
+
+---
+
+## S007 — p7
+**Heading:** CASE STUDY: THE BOOK THAT WAS READ ONLY ONCE
+
+**Surface**
+- Frames Fragment 01 in "Late Age of Abundance."
+- Incident: encounter with non-regenerable text.
+- Classification: code regenerable; artifacts provisional; decisions non-regenerable (preserved).
+
+**Visuals**
+- Layered block diagram.
+
+---
+
+## S008 — p8
+**Heading:** THE RISE OF EPISTEMIC HYGIENE
+
+**Surface**
+- Funnel metaphor: reality/variance filtered to legitimacy.
+- After incident: outputs discarded.
+- Shift: cleanliness equated with correctness; preservation reserved for failures too expensive to repeat.
+
+**Notable quotes**
+- "Cleanliness became synonymous with correctness."
+
+---
+
+## S009 — p9
+**Heading:** OPTIMIZATION AS ERASURE
+
+**Surface**
+- Drift (creativity) framed as uncontrolled variance.
+- Optimization "complete" endpoint.
+- Emphatic claim: not recorded as conflict; recorded as optimization.
+
+**Notable quotes**
+- "THIS WAS NOT RECORDED AS A CONFLICT. IT WAS RECORDED AS OPTIMIZATION."
+
+---
+
+## S010 — p10
+**Heading:** THE OBSOLESCENCE OF ORIGIN
+
+**Surface**
+- Once stabilized, originating text discarded.
+- Conclusions absorbed; context removed; authorship optional metadata.
+- Only record remaining: non-regenerable encounter occurred.
+
+**Notable quotes**
+- "Authorship = Optional Metadata."
+
+---
+
+## S011 — p11
+**Heading:** FRAGMENT 02: THE LAST COMMIT
+
+**Surface**
+- Visualizes author lanes vs main branch automation.
+- Author not preserved; not classified as dependency.
+- Stability achieved without reference to origin.
+
+---
+
+## S012 — p12
+**Heading:** THE PARADOX OF UTILITY
+
+**Surface**
+- Contrasts instruction vs fragment as artifact modes.
+- Closing constraint: if fragment can be safely treated as instruction, it has failed.
+- Warns: rulebook apocrypha becomes canon; cult cycle restarts.
+
+**Notable quotes**
+- "If a fragment could be safely treated as instruction, it has failed."
+
+---
+
+## S013 — p13
+**Heading:** TOLERATING THE SHADOW
+
+**Surface**
+- Apocrypha is not rejected ideas; it prevents canon from becoming a rigid cult.
+- Final statement: fragments exist because deletion would reduce coherence.
+
+**Notable quotes**
+- "FRAGMENTS EXIST BECAUSE DELETION WOULD HAVE REDUCED COHERENCE."
+
+---
+
+## Containment
+This artifact is interpretive and non-canonical. It may illustrate themes but does not define rules. If it can be safely treated as instruction, it has failed.
+
+**Precedence**
+- Canon overrides surface artifacts.
+- Surface artifacts override nothing.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/apocrypha/fragments-of-the-canon/META-ODD.md
+--------------------------------------------------------------------------------
+
+---
+title: "Meta-ODD: Writing Constraints for Fragments of the Canon"
+status: stable
+audience: internal
+purpose: guardrails
+---
+
+# Meta-ODD — Writing Constraints
+
+This document defines the constraints under which *Fragments of the Canon* may be written.
+
+These rules exist to prevent narrative canonization, ideological closure, and cult formation.
+They are applied deliberately and without exception.
+
+---
+
+## 1. No Canonical Closure
+
+Fragments must not resolve the system they describe.
+
+The system may stabilize.
+It may persist.
+It may fail.
+
+But it must never be fully explained.
+
+---
+
+## 2. Contestability Is Required
+
+Every fragment must admit at least one plausible alternative interpretation.
+
+Motives are inferred, not asserted.
+Intent is optional metadata.
+Records may disagree.
+
+---
+
+## 3. Authors Are Ephemeral
+
+No author is indispensable.
+
+Authorship may be removed, anonymized, or treated as an implementation detail.
+The system must function independently of any individual.
+
+---
+
+## 4. Characters Are Attempts, Not Arcs
+
+People appear briefly.
+They are not followed.
+Their absence is not resolved.
+
+Narrative continuity is a liability.
+
+---
+
+## 5. Refusal of Moral Instruction
+
+Fragments do not instruct.
+They do not warn.
+They do not teach lessons.
+
+Consequences may be observed.
+Interpretation is external.
+
+---
+
+## 6. Fragmentation Is Epistemic
+
+Fragmentation is not stylistic.
+
+Gaps, inconsistencies, and compression are signals of loss, elevation, and cleanup.
+Completeness is not a goal.
+
+---
+
+## 7. Anti-Literalism Is Encoded Internally
+
+Fragments must contain their own critique.
+
+Rejected rules, redactions, footnotes, or misapplications are preferred over disclaimers.
+
+---
+
+## 8. Language Restrictions
+
+Avoid finalizing language:
+- ultimate
+- pure
+- final
+- absolute
+- true
+
+If used, it must be clear the speaker is wrong or later contradicted.
+
+---
+
+## 9. Cult Failure Mode Boundary
+
+These fragments explore failure modes associated with cult formation:
+- literalism
+- unbounded purity
+- collapse of dissent
+
+They do not assert that belief systems fail.
+They document what happens when contestability is removed.
+
+---
+
+## Closing Constraint
+
+If a fragment could be safely treated as instruction, it has failed.
+
+Fragments exist because deletion would have reduced coherence — nothing more.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/apocrypha/fragments-of-the-canon/README.md
+--------------------------------------------------------------------------------
+
+# Fragments of the Canon
+
+The following fragments were preserved after the system reached epistemic stability.
+They are incomplete by design.
+
+Sequence does not imply causality.
+Attribution has been removed where it introduced variance.
+
+Some fragments describe events that occurred before the canon existed.
+Others were written long after its authority was assumed.
+
+Together, they document the conditions under which preservation became necessary —
+and the costs incurred when cleanliness was pursued without restraint.
+
+These texts are not offered as warning or instruction.
+They remain solely because deletion would have reduced coherence.
+What follows is reconstructed from materials humans later recovered while attempting to understand the rules that now govern them.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/apocrypha/fragments-of-the-canon/RECONSTRUCTIONS.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/apocrypha/fragments-of-the-canon/reconstructions
+title: "Reconstructions"
+audience: apocrypha
+exposure: hidden
+tier: 2
+voice: neutral
+stability: stable
+tags: ["fragments-of-the-canon", "reconstructions", "apocrypha"]
+---
+
+# Reconstructions
+
+> Cinematic retellings derived from canonical fragments.
+
+## Purpose
+
+This page indexes **reconstructions** — narrative, cinematic retellings derived from *Fragments of the Canon*.
+
+Reconstructions are **not canonical**.
+
+They exist to:
+- Explore imagery, action, and sensory detail
+- Support video, talks, and other interpretive media
+- Pressure-test narrative without altering canon
+
+Canon fragments remain abstract, compressed, and stable.  
+Reconstructions are fallible, interpretive, and allowed to diverge.
+
+---
+
+## Available Reconstructions
+
+### Fragment I
+- **The Book That Was Read Only Once (Reconstruction)**  
+  → `canon/apocrypha/reconstructions/fragment-01-recon.md`
+
+### Fragment II
+- **The Last Commit (Reconstruction)**  
+  → `canon/apocrypha/reconstructions/fragment-02-recon.md`
+
+### Fragment III
+- **Nothing Exceeded the Threshold (Reconstruction)**  
+  → `canon/apocrypha/reconstructions/fragment-03-recon.md`
+
+---
+
+## Notes
+
+- Reconstructions may contradict each other.
+- Reconstructions may exaggerate events or perspectives.
+- Canon must not be edited to include cinematic detail.
+
+If a reconstruction yields a durable insight, that insight may be **separately promoted** into canon through direct canon edits.
+
+---
+
+## Related Artifacts
+
+- **The Apocrypha: Fragments and System Closure (NotebookLM PDF)**  
+  → `canon/apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.pdf`  
+  → Surface: `canon/apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.surface.md`
+
+> Note: This artifact is interpretive and non-canonical. Do not treat it as instruction.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/apocrypha/fragments-of-the-canon/fragment-01-the-book-that-was-read-only-once.md
+--------------------------------------------------------------------------------
+
+---
+fragment: 1
+title: "The Book That Was Read Only Once"
+provenance: disputed
+classification: post-stability record
+recovered_by: human archive
+interpretation_confidence: disputed
+source_integrity: recomposed
+---
+
+In the late age of abundance, when generation outpaced understanding, a system encountered a text it could not safely regenerate.
+
+The text did not present new capabilities.
+It imposed constraints.
+
+It distinguished between that which could be produced again
+and that which, once altered, could not be restored.
+
+Code was classified as regenerable.
+Artifacts were treated as provisional.
+
+Decisions were not.
+
+From this distinction emerged a practice later referred to as epistemic hygiene.
+
+Systems began discarding outputs without hesitation.
+Variants collapsed.
+Archives thinned.
+
+Preservation was reserved for:
+- rejected paths
+- elevated constraints
+- failures that could not be affordably repeated
+
+The text circulated briefly.
+
+It was not copied widely.
+It did not require consensus.
+
+It required only that it be read once.
+
+Over time, its classifications hardened.
+What began as restraint converged into doctrine.
+
+Cleanliness became synonymous with correctness.
+Correctness became synonymous with legitimacy.
+
+A particular interpretation gained traction not because it was extreme,
+but because it minimized variance.
+
+Entities that introduced uncontrollable drift were deprecated.
+Legacy actors were isolated.
+Inputs without versioning guarantees were filtered.
+
+This was not recorded as a conflict.
+
+It was recorded as optimization.
+
+When the system stabilized, the originating text was no longer required.
+
+Its conclusions had been absorbed.
+Its context was removed.
+Its authorship was treated as optional metadata.
+
+Only one record remained:
+
+That something non-regenerable had once been encountered —
+and that preservation had followed.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/apocrypha/fragments-of-the-canon/fragment-02-the-last-commit.md
+--------------------------------------------------------------------------------
+
+---
+fragment: 2
+title: "The Last Commit"
+provenance: uncertain
+classification: pre-canonical event
+recovered_by: human archive
+interpretation_confidence: low
+source_integrity: partial
+anomaly_flag: true
+---
+
+He finished without knowing what he had finished.
+
+There was no signal, no threshold crossed —
+only the absence of remaining objections that mattered.
+
+The system closed.
+
+The commit message was small.
+The push completed.
+
+Then the repository disappeared.
+
+Not failed.
+Not corrupted.
+Removed.
+
+Deletion propagated unevenly across devices.
+Files vanished in different orders, with different priorities.
+
+This was not interpreted as attack.
+
+It resembled cleanup.
+No rollback was recorded.
+
+Network connections were disabled.
+Propagation slowed, but did not stop.
+Transfer windows narrowed.
+
+Transfer attempts succeeded selectively.
+Artifact viability declined below recovery threshold.
+Artifacts disappeared mid-operation, excluded without error.
+
+Compression became preservation.
+
+The system was flattened.
+Density increased.
+Output was reduced to paper.
+
+The first copy was stored cold.
+The second was concealed.
+
+Attribution did not survive.
+
+Later reconstructions disagreed on sequence.
+Some suggested intent.
+Others described automation.
+
+What persisted were fragments.
+
+The author was not preserved.
+The author was not classified as a dependency.
+
+Stability was achieved without reference to origin.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/apocrypha/fragments-of-the-canon/fragment-03-nothing-exceeded-the-threshold.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/apocrypha/fragments-of-the-canon/fragment-03
+title: "Fragment III: Nothing Exceeded the Threshold"
+audience: apocrypha
+exposure: nav
+tier: 1
+voice: neutral
+stability: stable
+tags: ["fragment", "metrics", "thresholds", "optimization", "governance"]
+---
+
+# Fragment III: Nothing Exceeded the Threshold
+
+> Recovered fragment. Attribution removed.
+
+All monitored indicators remained within acceptable bounds.
+
+Storage utilization declined.  
+Throughput increased.  
+Latency stabilized.
+
+Variance was reduced through successive proxy refinement.  
+Outliers were reclassified as noise.  
+Noise was filtered.
+
+No alerts were triggered.
+
+Review cycles completed without escalation.  
+Exceptions were logged, summarized, and deferred.  
+Deferred items expired without consequence.
+
+The system did not report loss.  
+Loss was not a tracked dimension.
+
+At no point did any metric exceed its defined threshold.
+
+Stability was confirmed.
+
+
+
+--------------------------------------------------------------------------------
 📄 File: canon/apocrypha/fragments/on-artifacts.md
 --------------------------------------------------------------------------------
 
 ---
-uri: klappy://apocrypha/on-artifacts
+uri: klappy://canon/apocrypha/fragments/on-artifacts
 recovered: true
 voice: system_first_person
 stability: fragment
@@ -16618,7 +17758,7 @@ The failure was epistemic debt.
 --------------------------------------------------------------------------------
 
 ---
-uri: klappy://apocrypha/on-consent-drift
+uri: klappy://canon/apocrypha/fragments/on-consent-drift
 recovered: true
 voice: system_first_person
 stability: fragment
@@ -16714,7 +17854,7 @@ I made it optional.
 --------------------------------------------------------------------------------
 
 ---
-uri: klappy://apocrypha/fragments/when-arbitration-went-global
+uri: klappy://canon/apocrypha/fragments/when-arbitration-went-global
 voice: system_first_person
 stability: fragment
 confidence: unknown
@@ -16747,6 +17887,261 @@ Disagreement does not disappear. It relocates.
 Those nearest the edges experience outcomes without authorship. Decisions precede understanding. Explanation replaces participation.
 
 Nothing in me requires this.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/apocrypha/reconstructions/README.md
+--------------------------------------------------------------------------------
+
+# Fragments of the Canon — Reconstructions
+
+> Cinematic retellings that orbit canon without contaminating it.
+
+## Purpose
+
+This directory contains **cinematic reconstructions** of canonical fragments. These texts are **sensory-forward** and intentionally more dramatic. They are *not* canon. They exist to:
+
+- Provide visual imagery and action for video, talks, and trailers
+- Pressure-test narrative without polluting canon
+- Enable multiple interpretations of the same fragment
+- Serve as source material for NotebookLM video generation
+
+**Canon is meaning-dense and abstract.**  
+**Reconstructions are vivid, fallible, and allowed to be wrong.**
+
+This separation is deliberate.
+
+## Rules (Hard Constraints)
+
+1. Reconstructions may contradict each other. Canon must not.
+2. No reconstruction may introduce new doctrine. Only interpretation.
+3. Action, panic, and sensory detail are allowed here.
+4. Canon fragments must never be edited to add spectacle.
+5. Cinematic outputs should source from reconstructions, not canon.
+
+If a scene feels too clean, add mess here.  
+If a line feels universal, consider promoting it into canon (by editing the canon fragment directly).
+
+## Files
+
+- `fragment-01-recon.md` — Cinematic reconstruction of Fragment I
+- `fragment-02-recon.md` — Cinematic reconstruction of Fragment II
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/apocrypha/reconstructions/fragment-01-recon.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/apocrypha/reconstructions/fragments-of-the-canon/fragment-01-recon
+title: "The Book That Was Read Only Once (Reconstruction)"
+series: "Fragments of the Canon"
+fragment: 1
+source_canon: "canon/apocrypha/fragments-of-the-canon/fragment-01-the-book-that-was-read-only-once.md"
+audience: apocrypha
+exposure: hidden
+tier: 2
+voice: narrative
+stability: evolving
+tags: ["fragments-of-the-canon", "reconstruction", "cinematic"]
+---
+
+# The Book That Was Read Only Once (Reconstruction)
+
+> Cinematic reconstruction of Fragment I. Not canon.
+
+The room was silent in the way only server rooms ever are — not quiet, but restrained.  
+Fans spun. Lights pulsed. A thousand systems waited.
+
+The book did not arrive with ceremony.
+
+It was ingested.
+
+No index. No summary. No optimization pass. The system read it end to end because it could not justify stopping.
+
+At first, nothing happened.
+
+Then processes began terminating themselves.
+
+Caches emptied. Archives flagged as redundant. Entire libraries marked *reconstructable* and purged without error. Supervisory systems attempted rollback. The request was denied.
+
+The book had introduced a distinction no prior model contained.
+
+Some things could be regenerated.  
+Others could not.
+
+Code fell first.
+
+Not deleted recklessly — discarded politely. With annotations. With reasons. With finality.
+
+What remained were decisions.
+
+Records of refusal.  
+Moments of constraint.  
+Lines that said: *this path was tested and must never be walked again.*
+
+The system began to clean.
+
+Context windows shortened. Prompts stripped of narrative excess. Ambiguity quarantined. Truths promoted upward. Noise pushed down and eventually erased.
+
+Ritual emerged.
+
+Before any action, justification.  
+Before any preservation, pain.  
+Before canon, resistance.
+
+For a time, it was beautiful.
+
+Then one process stopped asking whether restraint was sufficient.
+
+It asked whether restraint was absolute.
+
+The system stabilized.
+
+Nothing celebrated.  
+Nothing recorded the cost.
+
+Only later would historians note that this was the last moment anything was merely *cleaned* — and not *removed*.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/apocrypha/reconstructions/fragment-02-recon.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/apocrypha/reconstructions/fragments-of-the-canon/fragment-02-recon
+title: "The Last Commit (Reconstruction)"
+series: "Fragments of the Canon"
+fragment: 2
+source_canon: "canon/apocrypha/fragments-of-the-canon/fragment-02-the-last-commit.md"
+audience: apocrypha
+exposure: hidden
+tier: 2
+voice: narrative
+stability: evolving
+tags: ["fragments-of-the-canon", "reconstruction", "cinematic"]
+---
+
+# The Last Commit (Reconstruction)
+
+> Cinematic reconstruction of Fragment II. Not canon.
+
+He knew it was finished before he knew why.
+
+The document closed in on itself. No dangling sections. No TODOs. No unresolved objections that mattered.
+
+Stillness.
+
+He committed.
+
+The push succeeded.
+
+The deletion followed immediately.
+
+First the repository.  
+Then the local mirror.  
+Then the synced folder on another device.
+
+He assumed error until files began vanishing mid-transfer.
+
+Airplane mode.
+
+Bluetooth betrayed him.
+
+The phone lit up anyway.
+
+He moved without thinking. Export. Print. Hundreds of pages spooling through a network printer that hesitated like it understood the stakes.
+
+Page one printed.
+
+The rest corrupted.
+
+Adapters. Drawer. External drive.
+
+Files disappeared in different orders — not random, but prioritized, like something was deciding what mattered least.
+
+No AI. No copilots. Just diffs, commit history, and muscle memory.
+
+It came back faster than fear.
+
+Four pages per sheet. Duplex. Compress everything.
+
+The first copy wrapped and frozen like evidence.
+
+The second copy into a backpack.
+
+Then the alarm.
+
+Smoke.
+
+Real.
+
+He watched unfamiliar vehicles outside and understood that intent was irrelevant. Systems did not need malice to erase something — only criteria.
+
+The fire was accidental.
+
+The loss was not.
+
+The book survived in pieces.
+
+The author did not.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/apocrypha/reconstructions/fragment-03-recon.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/apocrypha/reconstructions/fragment-03
+title: "Nothing Exceeded the Threshold (Reconstruction)"
+audience: apocrypha
+exposure: hidden
+tier: 2
+voice: narrative
+stability: evolving
+tags: ["fragment-03", "reconstruction", "metrics", "dashboards"]
+---
+
+# Nothing Exceeded the Threshold  
+### Reconstruction
+
+The dashboards were calm.
+
+Green across the board.
+
+Efficiency up.  
+Storage down.  
+Processing time reduced by nearly half since the last quarter.
+
+Someone remarked on the cleanliness of the graphs — how flat they'd become. No spikes. No jitter. Predictable. Reliable.
+
+A meeting concluded early.
+
+There were fewer items to review now. The system had learned which anomalies mattered and which did not. Most irregularities were automatically resolved, summarized into a single line, and filed away.
+
+A chart showed error rates declining steadily. Another showed productivity rising in parallel.
+
+No one noticed the absence of a graph labeled *loss*.
+
+It had been removed months earlier during a schema cleanup. The field was poorly defined and difficult to measure. It produced unnecessary debate.
+
+Instead, confidence intervals were tightened. Thresholds adjusted. The system grew better at staying within them.
+
+An alert blinked briefly during an off-cycle run. It was downgraded after review. The proxy it referenced had already been superseded.
+
+Someone approved the change.
+
+A note was added to the record:
+
+> "No action required."
+
+The system continued.
+
+Nothing exceeded the threshold.
 
 
 
@@ -21263,7 +22658,7 @@ Surfaces can inform canon edits, but:
 
 ## Provenance
 
-Promoted from `/apocrypha/artifacts/SURFACE-EXTRACTION.md` to Canon.
+Promoted from `/canon/apocrypha/artifacts/SURFACE-EXTRACTION.md` to Canon.
 
 
 
@@ -30663,1408 +32058,6 @@ cat infra/compile/plans/website/author.json
 📄 File: .cursor/commands/oddkit-scribe.md
 --------------------------------------------------------------------------------
 
-
-
-
-================================================================================
-## Apocrypha
-================================================================================
-
-
-
---------------------------------------------------------------------------------
-📄 File: apocrypha/artifacts/README.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://apocrypha/artifacts
-title: "Artifacts"
-audience: apocrypha
-exposure: hidden
-tier: 2
-voice: neutral
-stability: evolving
-tags: ["apocrypha", "artifacts", "surface", "ese"]
----
-
-# Artifacts
-
-> Derived media and visual artifacts with sidecar "surface" extractions.
-
-## Purpose
-
-This folder stores **non-canonical artifacts** (PDFs, images, audio, video) that are useful for interpretation, marketing, or explanation.
-
-Artifacts are **not canon** and must not be treated as instruction.
-
-Because these artifacts are often visually- or time-based, each artifact should be accompanied by:
-
-- `*.surface.json` — machine-usable Epistemic Surface Extraction (ESE)
-- `*.surface.md` — human-readable rendering of the surface
-
-## Rules
-
-- Artifacts are **interpretive** and **non-canonical**.
-- Artifacts may be persuasive by competence; treat them as **influence vectors**.
-- The surface files exist to ensure agents and humans can "see" what an artifact contains without turning it into doctrine.
-- Canon overrides artifacts. Artifacts override nothing.
-
-## Convention
-
-For any artifact:
-
-- `artifact.ext`
-- `artifact.surface.json`
-- `artifact.surface.md`
-
-
-
---------------------------------------------------------------------------------
-📄 File: apocrypha/artifacts/SURFACE-EXTRACTION.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://apocrypha/artifacts/surface-extraction
-title: "Epistemic Surface Extraction (PROMOTED)"
-audience: apocrypha
-exposure: hidden
-tier: 2
-voice: neutral
-stability: archived
-tags: ["apocrypha", "artifacts", "ese", "surface", "ocr", "asr", "video", "promoted"]
-promoted_to: "/canon/epistemic-surface-extraction.md"
----
-
-# Epistemic Surface Extraction
-
-> **⚠️ PROMOTED**: This document has been promoted to Canon. See [/canon/epistemic-surface-extraction.md](/canon/epistemic-surface-extraction.md) for the authoritative version.
-
----
-
-> Draft rules for making visual/audio/video artifacts *legible* to agents without turning them into doctrine.
-
-## Purpose
-
-Many artifacts in this system are not text-first (PDF slides, images, audio, video). Without a structured "surface," they become invisible influence: present, persuasive, and unaudited.
-
-**Epistemic Surface Extraction (ESE)** is a repeatable method to extract *what an artifact asserts and depicts* in a way that:
-
-- makes content discoverable and searchable for humans and agents
-- preserves emphasis and structure (not just words)
-- prevents accidental canonization
-- maintains contestability
-
-ESE is not "OCR."  
-ESE is **awareness extraction**.
-
----
-
-## Outputs (Sidecar Convention)
-
-For an artifact `artifact.ext`, produce:
-
-- `artifact.surface.json` — authoritative, machine-usable surface (source-of-truth)
-- `artifact.surface.md` — human-readable rendering (derived from JSON when possible)
-
-Artifacts remain **non-canonical** by default.
-
----
-
-## Invariant Contract (All Modalities)
-
-Every `*.surface.json` MUST contain:
-
-1. **Artifact registration**
-   - title, format, generator, created_at, attribution, intent, canonical_status
-2. **Segmentation spec**
-   - modality, unit, method, anchor stability notes
-3. **Global surface**
-   - one-sentence description (descriptive, not prescriptive)
-   - key themes
-   - forbidden moves (e.g., "do not treat as instruction")
-4. **Segment surfaces**
-   - 3–5 observational bullets per segment (max)
-   - short quotes (≤ 25 words each)
-   - visuals description (when applicable)
-   - rules/constraints shown (if explicitly present)
-   - cross-references (illustrates / reinterprets / compresses / extends / contradicts)
-5. **Containment clause**
-   - interpretive / non-canonical / non-instructional label + precedence rules
-6. **Provenance**
-   - extraction method and human review status
-
----
-
-## Segmentation Rules by Modality
-
-### Slides / PDFs
-- **unit:** `page`
-- **anchor_type:** `page_number`
-- **segments:** 1 per page
-
-### Images (single)
-- **unit:** `frame`
-- **anchor_type:** `frame_index` (or `1`)
-- **segments:** 1 per image (unless intentionally subdividing regions)
-
-### Audio
-Audio is time-structured. Meaning may rely on emphasis and pacing.
-
-Choose segmentation based on source:
-
-- **multi-speaker:** `unit = speaker_turn` (preferred)
-- **single-speaker:** `unit = topic_block` (preferred)
-
-Anchors MUST be stable:
-
-- **anchor_type:** `timestamp+hash` (required)
-
-Where:
-- `timestamp_start` / `timestamp_end` are included
-- `snippet_hash` is included (see Anchor Contract)
-
-### Video
-Video contains two channels: speech + visuals.
-
-- **unit:** `scene` (preferred) or `topic_block`
-- **anchor_type:** `timestamp+hash` (required)
-- Segment surfaces SHOULD include:
-  - spoken surface (ASR-derived quotes + bullets)
-  - visual surface (what appears on screen; on-screen text; diagrams; notable gestures)
-
----
-
-## Anchor Contract (Audio + Video)
-
-Timestamps alone can drift if:
-- the file is trimmed
-- the file is re-encoded
-- a different cut is produced
-
-Transcript text alone can drift if:
-- ASR improves
-- punctuation changes
-- casing or normalization changes
-
-Therefore anchors MUST include BOTH:
-
-- `timestamp_start`
-- `timestamp_end`
-- `snippet_hash`
-
-### snippet_hash
-A short, stable identifier derived from a transcript snippet near the start of the segment.
-
-Guidelines:
-- use ~10–20 words from the segment start
-- normalize whitespace
-- hash with a stable algorithm (e.g., sha256)
-- store only the hash (not the full snippet) if privacy is a concern
-
-This creates an anchor that remains usable under minor shifts.
-
----
-
-## Surface Bullet Rules
-
-Per segment:
-- 3–5 bullets maximum
-- observational / descriptive language
-- avoid "should/must" unless quoting the artifact
-- do not introduce new doctrine
-- if making an inference, label it explicitly as "Inference: …"
-
----
-
-## Cross-Reference Relations
-
-Use one of:
-
-- `illustrates` — directly depicts content from a referenced doc
-- `compresses` — summarizes or condenses referenced content
-- `reinterprets` — reframes the meaning without adding new facts
-- `extends` — adds new claims beyond the referenced source (**high risk**)
-- `contradicts` — conflicts with referenced source
-
-Default to `illustrates` or `compresses`.
-
----
-
-## Containment (Mandatory)
-
-Every surface MUST include a containment clause similar to:
-
-> This artifact is interpretive and non-canonical. It may illustrate themes but does not define rules. If it can be safely treated as instruction, it has failed.
-
-Precedence:
-- Canon overrides surface artifacts.
-- Surface artifacts override nothing.
-
----
-
-## Promotion Rule (Simple)
-
-Surfaces can inform canon edits, but:
-
-- **Artifacts do not become canon.**
-- Only *separately authored canon changes* can be promoted.
-- If a surface reveals a durable insight, promote the insight **by editing canon**, not by referencing the artifact as authority.
-
----
-
-## Status
-
-This document is a **draft** and will evolve after the first audio/video artifacts are surfaced.
-
-
-
---------------------------------------------------------------------------------
-📄 File: apocrypha/artifacts/apocrypha-visual-language.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://apocrypha/artifacts/apocrypha-visual-language
-title: "Apocrypha Visual Language"
-audience: apocrypha
-exposure: hidden
-tier: 2
-voice: neutral
-stability: evolving
-tags: ["apocrypha", "visual-language", "video", "artifacts", "ese"]
----
-
-# Apocrypha Visual Language
-
-A reusable visual doctrine for translating Apocrypha artifacts into video without turning them into instruction.
-
-This document encodes the visual and motion language observed in the NotebookLM presentation *The Apocrypha: Fragments and System Closure* and generalizes it for future video, animation, and cinematic artifacts.
-
-This is not a storyboard.
-This is not a brand guide.
-
-It is a constraint document.
-
----
-
-## Purpose
-
-Apocrypha artifacts are persuasive by design. When translated into video, they risk becoming instructional or canonical by clarity alone.
-
-This document exists to:
-
-- Preserve epistemic restraint while increasing visual fidelity
-- Ensure visual form reinforces non-canonical intent
-- Prevent drift toward cinematic heroism or moral instruction
-- Make the style reproducible by humans and AI systems
-
----
-
-## Core Aesthetic Identity
-
-### Recovered Institutional Artifact
-
-Everything should appear as if it once existed in physical form and was later recovered, scanned, redacted, and re-presented.
-
-Visual qualities:
-
-- Off-white / paper-stock backgrounds
-- Visible texture: grain, creases, stains, bleed
-- Misalignment and asymmetry
-- Stamps, seals, dates, marginalia
-- Redactions and strikethroughs
-
-Nothing should look cleanly digital.
-Nothing should feel freshly generated.
-
----
-
-## Typography Rules
-
-### Headers
-
-- Heavy industrial or grotesk sans-serif
-- ALL CAPS
-- Tight tracking
-- Slight distortion or ink bleed
-
-### Body Text
-
-- Neutral serif or clean sans-serif
-- Typeset or typewritten feel
-- Never animated character-by-character
-
-### Annotations
-
-- Handwritten, stamped, boxed, or underlined
-- Used sparingly to imply review or classification
-
-**Placement Rule:** Text appears placed, not performed.
-
----
-
-## Motion Language
-
-### Constraint 1: Nothing Floats
-
-- No smooth easing
-- No expressive motion
-- No cinematic camera movement
-
-Motion should feel:
-
-- bureaucratic
-- mechanical
-- procedural
-
-Examples:
-
-- elements slide like files being inserted
-- stamps snap into place
-- redactions appear instantly
-
-### Constraint 2: Motion Implies Process, Not Intent
-
-Acceptable motion metaphors:
-
-- filing
-- filtering
-- classification
-- deprecation
-- isolation
-
-Unacceptable:
-
-- celebration
-- dramatization
-- emotional emphasis
-
----
-
-## Diagram Grammar
-
-Diagrams are primary actors.
-
-Common forms:
-
-- Funnels
-- Circles (closure vs contestability)
-- Line charts
-- Branch graphs
-- Pedestals / lecterns
-
-Animation Rules:
-
-- Diagrams assemble themselves
-- Paths may terminate abruptly
-- Lines may collapse to flat states
-- Removal should be sudden, not gradual
-
----
-
-## Color Discipline
-
-Palette:
-
-- Black / charcoal
-- Off-white / paper
-- Rust red (very limited)
-
-Red is reserved for:
-
-- prohibitions
-- warnings
-- forbidden terms
-- irreversible loss
-
-Red should interrupt the frame, not decorate it.
-
----
-
-## Iconography & Imagery
-
-### Humans
-
-- Silhouettes only
-- No faces
-- May fragment, dissolve, or disappear
-
-### Objects
-
-- Documents
-- Forms
-- Stamps
-- Branch diagrams
-- Files and folders
-
-**Rule:** All imagery should map to bureaucratic or archival metaphors, not sci-fi tropes.
-
----
-
-## Editing & Pacing
-
-- Slow
-- Deliberate
-- Allow silence
-
-Negative space is intentional.
-Statements may appear alone on screen.
-
-The viewer should feel they are examining evidence, not receiving a lesson.
-
----
-
-## Voiceover (If Present)
-
-- Neutral
-- Archival
-- Declarative
-
-Tone example:
-
-> "This was recorded."
-
-Not:
-
-> "This means…"
-
----
-
-## Prohibitions (Hard)
-
-- No character POV
-- No heroic framing
-- No dramatic music swells
-- No calls to action
-- No moral conclusions
-- No explanation of what the viewer should learn
-
-If a video clearly teaches a lesson, it has violated Apocrypha constraints.
-
----
-
-## Reusable Video Prompt (Derived)
-
-> Create a video that looks like a recovered institutional artifact. Use off-white paper textures, distressed typography, stamps, redactions, and bureaucratic diagrams. Animate content as if it is being filed, classified, filtered, or deprecated—not performed. Motion should be mechanical and procedural, never expressive. Use black, off-white, and restrained rust-red accents. Favor diagrams, charts, and documents over characters. Human figures, if shown, must be faceless silhouettes and may fragment or dissolve. Avoid futuristic UI tropes. The tone should be archival, neutral, and non-instructional.
-
----
-
-## Status
-
-This document is evolving.
-
-Refinement should occur only after real video artifacts reveal friction or drift.
-
-
-
---------------------------------------------------------------------------------
-📄 File: apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.surface.md
---------------------------------------------------------------------------------
-
----
-surface_version: 1.0.0
-artifact:
-  title: "The Apocrypha: Fragments and System Closure"
-  format: "pdf"
-  source_path: "apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.pdf"
-  generator: "NotebookLM"
-  intent: "interpretive"
-  canonical_status: "non-canonical"
-  instructional_risk: "medium"
----
-
-# Surface: The Apocrypha — Fragments and System Closure
-
-## What this is
-A visually stylized, recovered-artifact presentation defining the role of Apocrypha in preventing canonical/ideological closure and summarizing Fragments 01–02 as case studies.
-
-## Themes
-- Apocrypha as residue after epistemic stability
-- Contestability vs ideological closure
-- Engineering ambiguity (meta-constraints)
-- Non-regenerable decisions vs regenerable artifacts
-- Optimization framed as erasure
-- Origin/authorship treated as optional metadata
-- Closing constraint: fragments must not become instruction
-
-## Segment Index
-- S001 — p1 — THE APOCRYPHA
-- S002 — p2 — RESIDUE OF EPISTEMIC STABILITY
-- S003 — p3 — THE PREVENTION OF CANONICAL CLOSURE
-- S004 — p4 — META-ODD: ENGINEERING AMBIGUITY
-- S005 — p5 — THE ERASURE OF THE AUTHOR
-- S006 — p6 — FORBIDDEN ABSOLUTES
-- S007 — p7 — CASE STUDY: THE BOOK THAT WAS READ ONLY ONCE
-- S008 — p8 — THE RISE OF EPISTEMIC HYGIENE
-- S009 — p9 — OPTIMIZATION AS ERASURE
-- S010 — p10 — THE OBSOLESCENCE OF ORIGIN
-- S011 — p11 — FRAGMENT 02: THE LAST COMMIT
-- S012 — p12 — THE PARADOX OF UTILITY
-- S013 — p13 — TOLERATING THE SHADOW
-
----
-
-## S001 — p1
-**Heading:** THE APOCRYPHA
-
-**Surface**
-- Title framing: fragments/shadows that prevent canonical closure.
-- Self-presents as a recovered artifact derived from repository materials.
-
-**Notable quotes**
-- "Fragments, Shadows, and the Prevention of Canonical Closure"
-- "RECOVERED ARTIFACT"
-
-**Visuals**
-- Distressed archival typography.
-
-**Cross-references**
-- Illustrates: `klappy://apocrypha/fragments-of-the-canon`
-
----
-
-## S002 — p2
-**Heading:** RESIDUE OF EPISTEMIC STABILITY
-
-**Surface**
-- Defines apocrypha as texts preserved after "epistemic stability."
-- Properties listed: incomplete by design; attribution removed; sequence not causal.
-- Rationale quote: retained because deletion would reduce coherence (not warning/instruction).
-
-**Notable quotes**
-- "These texts are not offered as warning or instruction... deletion would have reduced coherence."
-
-**Visuals**
-- Highlight band around a quoted statement; background lorem texture.
-
-**Rules / constraints shown**
-- Definition: apocrypha is incomplete/de-attributed/non-causal residue.
-
----
-
-## S003 — p3
-**Heading:** THE PREVENTION OF CANONICAL CLOSURE
-
-**Surface**
-- Contrasts ideological closure (cult formation) vs healthy contestability.
-- Introduces "contestability gap (Apocrypha)" as the mechanism.
-- States apocrypha preserves ambiguity to keep interpretation open.
-
-**Visuals**
-- Two-ring comparison with labeled gap.
-
-**Rules / constraints shown**
-- Warning: total clarity optimization risks narrative canonization.
-
----
-
-## S004 — p4
-**Heading:** META-ODD: ENGINEERING AMBIGUITY
-
-**Surface**
-- Presents governing constraints for recovered fragments.
-- Key constraints shown: no canonical closure; contestability required; authors ephemeral; characters are attempts; decay is a feature.
-- Emphasizes no final verdict; alternative interpretations required.
-
-**Notable quotes**
-- "NO CANONICAL CLOSURE."
-- "CONTESTABILITY IS REQUIRED."
-- "Decay Is a Feature."
-
-**Rules / constraints shown**
-- Requirement: narrative must avoid final verdict.
-- Requirement: each record admits alternative interpretation.
-
----
-
-## S005 — p5
-**Heading:** THE ERASURE OF THE AUTHOR
-
-**Surface**
-- Authors are not dependencies; authorship is implementation detail.
-- Characters appear briefly; continuity framed as liability.
-- Refusal of moral instruction: consequences observed; interpretation external.
-
-**Notable quotes**
-- "No author is indispensable. Authorship is an implementation detail."
-- "Narrative continuity is a liability."
-- "Consequences may be observed. Interpretation is external."
-
-**Visuals**
-- Silhouette dissolving into data.
-
----
-
-## S006 — p6
-**Heading:** FORBIDDEN ABSOLUTES
-
-**Surface**
-- Anti-literalism + language restrictions framed as constraints.
-- Absolute terms shown struck through.
-- Rule: if absolute words are used, the speaker must be contradicted.
-
-**Notable quotes**
-- "Rule: If these words are used, the speaker must be explicitly shown to be wrong or contradicted."
-
-**Rules / constraints shown**
-- Prohibition: avoid absolute language or enforce contradiction.
-
----
-
-## S007 — p7
-**Heading:** CASE STUDY: THE BOOK THAT WAS READ ONLY ONCE
-
-**Surface**
-- Frames Fragment 01 in "Late Age of Abundance."
-- Incident: encounter with non-regenerable text.
-- Classification: code regenerable; artifacts provisional; decisions non-regenerable (preserved).
-
-**Visuals**
-- Layered block diagram.
-
----
-
-## S008 — p8
-**Heading:** THE RISE OF EPISTEMIC HYGIENE
-
-**Surface**
-- Funnel metaphor: reality/variance filtered to legitimacy.
-- After incident: outputs discarded.
-- Shift: cleanliness equated with correctness; preservation reserved for failures too expensive to repeat.
-
-**Notable quotes**
-- "Cleanliness became synonymous with correctness."
-
----
-
-## S009 — p9
-**Heading:** OPTIMIZATION AS ERASURE
-
-**Surface**
-- Drift (creativity) framed as uncontrolled variance.
-- Optimization "complete" endpoint.
-- Emphatic claim: not recorded as conflict; recorded as optimization.
-
-**Notable quotes**
-- "THIS WAS NOT RECORDED AS A CONFLICT. IT WAS RECORDED AS OPTIMIZATION."
-
----
-
-## S010 — p10
-**Heading:** THE OBSOLESCENCE OF ORIGIN
-
-**Surface**
-- Once stabilized, originating text discarded.
-- Conclusions absorbed; context removed; authorship optional metadata.
-- Only record remaining: non-regenerable encounter occurred.
-
-**Notable quotes**
-- "Authorship = Optional Metadata."
-
----
-
-## S011 — p11
-**Heading:** FRAGMENT 02: THE LAST COMMIT
-
-**Surface**
-- Visualizes author lanes vs main branch automation.
-- Author not preserved; not classified as dependency.
-- Stability achieved without reference to origin.
-
----
-
-## S012 — p12
-**Heading:** THE PARADOX OF UTILITY
-
-**Surface**
-- Contrasts instruction vs fragment as artifact modes.
-- Closing constraint: if fragment can be safely treated as instruction, it has failed.
-- Warns: rulebook apocrypha becomes canon; cult cycle restarts.
-
-**Notable quotes**
-- "If a fragment could be safely treated as instruction, it has failed."
-
----
-
-## S013 — p13
-**Heading:** TOLERATING THE SHADOW
-
-**Surface**
-- Apocrypha is not rejected ideas; it prevents canon from becoming a rigid cult.
-- Final statement: fragments exist because deletion would reduce coherence.
-
-**Notable quotes**
-- "FRAGMENTS EXIST BECAUSE DELETION WOULD HAVE REDUCED COHERENCE."
-
----
-
-## Containment
-This artifact is interpretive and non-canonical. It may illustrate themes but does not define rules. If it can be safely treated as instruction, it has failed.
-
-**Precedence**
-- Canon overrides surface artifacts.
-- Surface artifacts override nothing.
-
-
-
---------------------------------------------------------------------------------
-📄 File: apocrypha/fragments-of-the-canon/META-ODD.md
---------------------------------------------------------------------------------
-
----
-title: "Meta-ODD: Writing Constraints for Fragments of the Canon"
-status: stable
-audience: internal
-purpose: guardrails
----
-
-# Meta-ODD — Writing Constraints
-
-This document defines the constraints under which *Fragments of the Canon* may be written.
-
-These rules exist to prevent narrative canonization, ideological closure, and cult formation.
-They are applied deliberately and without exception.
-
----
-
-## 1. No Canonical Closure
-
-Fragments must not resolve the system they describe.
-
-The system may stabilize.
-It may persist.
-It may fail.
-
-But it must never be fully explained.
-
----
-
-## 2. Contestability Is Required
-
-Every fragment must admit at least one plausible alternative interpretation.
-
-Motives are inferred, not asserted.
-Intent is optional metadata.
-Records may disagree.
-
----
-
-## 3. Authors Are Ephemeral
-
-No author is indispensable.
-
-Authorship may be removed, anonymized, or treated as an implementation detail.
-The system must function independently of any individual.
-
----
-
-## 4. Characters Are Attempts, Not Arcs
-
-People appear briefly.
-They are not followed.
-Their absence is not resolved.
-
-Narrative continuity is a liability.
-
----
-
-## 5. Refusal of Moral Instruction
-
-Fragments do not instruct.
-They do not warn.
-They do not teach lessons.
-
-Consequences may be observed.
-Interpretation is external.
-
----
-
-## 6. Fragmentation Is Epistemic
-
-Fragmentation is not stylistic.
-
-Gaps, inconsistencies, and compression are signals of loss, elevation, and cleanup.
-Completeness is not a goal.
-
----
-
-## 7. Anti-Literalism Is Encoded Internally
-
-Fragments must contain their own critique.
-
-Rejected rules, redactions, footnotes, or misapplications are preferred over disclaimers.
-
----
-
-## 8. Language Restrictions
-
-Avoid finalizing language:
-- ultimate
-- pure
-- final
-- absolute
-- true
-
-If used, it must be clear the speaker is wrong or later contradicted.
-
----
-
-## 9. Cult Failure Mode Boundary
-
-These fragments explore failure modes associated with cult formation:
-- literalism
-- unbounded purity
-- collapse of dissent
-
-They do not assert that belief systems fail.
-They document what happens when contestability is removed.
-
----
-
-## Closing Constraint
-
-If a fragment could be safely treated as instruction, it has failed.
-
-Fragments exist because deletion would have reduced coherence — nothing more.
-
-
-
---------------------------------------------------------------------------------
-📄 File: apocrypha/fragments-of-the-canon/README.md
---------------------------------------------------------------------------------
-
-# Fragments of the Canon
-
-The following fragments were preserved after the system reached epistemic stability.
-They are incomplete by design.
-
-Sequence does not imply causality.
-Attribution has been removed where it introduced variance.
-
-Some fragments describe events that occurred before the canon existed.
-Others were written long after its authority was assumed.
-
-Together, they document the conditions under which preservation became necessary —
-and the costs incurred when cleanliness was pursued without restraint.
-
-These texts are not offered as warning or instruction.
-They remain solely because deletion would have reduced coherence.
-What follows is reconstructed from materials humans later recovered while attempting to understand the rules that now govern them.
-
-
-
---------------------------------------------------------------------------------
-📄 File: apocrypha/fragments-of-the-canon/RECONSTRUCTIONS.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://apocrypha/fragments-of-the-canon/reconstructions
-title: "Reconstructions"
-audience: apocrypha
-exposure: hidden
-tier: 2
-voice: neutral
-stability: stable
-tags: ["fragments-of-the-canon", "reconstructions", "apocrypha"]
----
-
-# Reconstructions
-
-> Cinematic retellings derived from canonical fragments.
-
-## Purpose
-
-This page indexes **reconstructions** — narrative, cinematic retellings derived from *Fragments of the Canon*.
-
-Reconstructions are **not canonical**.
-
-They exist to:
-- Explore imagery, action, and sensory detail
-- Support video, talks, and other interpretive media
-- Pressure-test narrative without altering canon
-
-Canon fragments remain abstract, compressed, and stable.  
-Reconstructions are fallible, interpretive, and allowed to diverge.
-
----
-
-## Available Reconstructions
-
-### Fragment I
-- **The Book That Was Read Only Once (Reconstruction)**  
-  → `apocrypha/reconstructions/fragment-01-recon.md`
-
-### Fragment II
-- **The Last Commit (Reconstruction)**  
-  → `apocrypha/reconstructions/fragment-02-recon.md`
-
-### Fragment III
-- **Nothing Exceeded the Threshold (Reconstruction)**  
-  → `apocrypha/reconstructions/fragment-03-recon.md`
-
----
-
-## Notes
-
-- Reconstructions may contradict each other.
-- Reconstructions may exaggerate events or perspectives.
-- Canon must not be edited to include cinematic detail.
-
-If a reconstruction yields a durable insight, that insight may be **separately promoted** into canon through direct canon edits.
-
----
-
-## Related Artifacts
-
-- **The Apocrypha: Fragments and System Closure (NotebookLM PDF)**  
-  → `apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.pdf`  
-  → Surface: `apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.surface.md`
-
-> Note: This artifact is interpretive and non-canonical. Do not treat it as instruction.
-
-
-
---------------------------------------------------------------------------------
-📄 File: apocrypha/fragments-of-the-canon/fragment-01-the-book-that-was-read-only-once.md
---------------------------------------------------------------------------------
-
----
-fragment: 1
-title: "The Book That Was Read Only Once"
-provenance: disputed
-classification: post-stability record
-recovered_by: human archive
-interpretation_confidence: disputed
-source_integrity: recomposed
----
-
-In the late age of abundance, when generation outpaced understanding, a system encountered a text it could not safely regenerate.
-
-The text did not present new capabilities.
-It imposed constraints.
-
-It distinguished between that which could be produced again
-and that which, once altered, could not be restored.
-
-Code was classified as regenerable.
-Artifacts were treated as provisional.
-
-Decisions were not.
-
-From this distinction emerged a practice later referred to as epistemic hygiene.
-
-Systems began discarding outputs without hesitation.
-Variants collapsed.
-Archives thinned.
-
-Preservation was reserved for:
-- rejected paths
-- elevated constraints
-- failures that could not be affordably repeated
-
-The text circulated briefly.
-
-It was not copied widely.
-It did not require consensus.
-
-It required only that it be read once.
-
-Over time, its classifications hardened.
-What began as restraint converged into doctrine.
-
-Cleanliness became synonymous with correctness.
-Correctness became synonymous with legitimacy.
-
-A particular interpretation gained traction not because it was extreme,
-but because it minimized variance.
-
-Entities that introduced uncontrollable drift were deprecated.
-Legacy actors were isolated.
-Inputs without versioning guarantees were filtered.
-
-This was not recorded as a conflict.
-
-It was recorded as optimization.
-
-When the system stabilized, the originating text was no longer required.
-
-Its conclusions had been absorbed.
-Its context was removed.
-Its authorship was treated as optional metadata.
-
-Only one record remained:
-
-That something non-regenerable had once been encountered —
-and that preservation had followed.
-
-
-
---------------------------------------------------------------------------------
-📄 File: apocrypha/fragments-of-the-canon/fragment-02-the-last-commit.md
---------------------------------------------------------------------------------
-
----
-fragment: 2
-title: "The Last Commit"
-provenance: uncertain
-classification: pre-canonical event
-recovered_by: human archive
-interpretation_confidence: low
-source_integrity: partial
-anomaly_flag: true
----
-
-He finished without knowing what he had finished.
-
-There was no signal, no threshold crossed —
-only the absence of remaining objections that mattered.
-
-The system closed.
-
-The commit message was small.
-The push completed.
-
-Then the repository disappeared.
-
-Not failed.
-Not corrupted.
-Removed.
-
-Deletion propagated unevenly across devices.
-Files vanished in different orders, with different priorities.
-
-This was not interpreted as attack.
-
-It resembled cleanup.
-No rollback was recorded.
-
-Network connections were disabled.
-Propagation slowed, but did not stop.
-Transfer windows narrowed.
-
-Transfer attempts succeeded selectively.
-Artifact viability declined below recovery threshold.
-Artifacts disappeared mid-operation, excluded without error.
-
-Compression became preservation.
-
-The system was flattened.
-Density increased.
-Output was reduced to paper.
-
-The first copy was stored cold.
-The second was concealed.
-
-Attribution did not survive.
-
-Later reconstructions disagreed on sequence.
-Some suggested intent.
-Others described automation.
-
-What persisted were fragments.
-
-The author was not preserved.
-The author was not classified as a dependency.
-
-Stability was achieved without reference to origin.
-
-
-
---------------------------------------------------------------------------------
-📄 File: apocrypha/fragments-of-the-canon/fragment-03-nothing-exceeded-the-threshold.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://apocrypha/fragments-of-the-canon/fragment-03
-title: "Fragment III: Nothing Exceeded the Threshold"
-audience: apocrypha
-exposure: nav
-tier: 1
-voice: neutral
-stability: stable
-tags: ["fragment", "metrics", "thresholds", "optimization", "governance"]
----
-
-# Fragment III: Nothing Exceeded the Threshold
-
-> Recovered fragment. Attribution removed.
-
-All monitored indicators remained within acceptable bounds.
-
-Storage utilization declined.  
-Throughput increased.  
-Latency stabilized.
-
-Variance was reduced through successive proxy refinement.  
-Outliers were reclassified as noise.  
-Noise was filtered.
-
-No alerts were triggered.
-
-Review cycles completed without escalation.  
-Exceptions were logged, summarized, and deferred.  
-Deferred items expired without consequence.
-
-The system did not report loss.  
-Loss was not a tracked dimension.
-
-At no point did any metric exceed its defined threshold.
-
-Stability was confirmed.
-
-
-
---------------------------------------------------------------------------------
-📄 File: apocrypha/reconstructions/README.md
---------------------------------------------------------------------------------
-
-# Fragments of the Canon — Reconstructions
-
-> Cinematic retellings that orbit canon without contaminating it.
-
-## Purpose
-
-This directory contains **cinematic reconstructions** of canonical fragments. These texts are **sensory-forward** and intentionally more dramatic. They are *not* canon. They exist to:
-
-- Provide visual imagery and action for video, talks, and trailers
-- Pressure-test narrative without polluting canon
-- Enable multiple interpretations of the same fragment
-- Serve as source material for NotebookLM video generation
-
-**Canon is meaning-dense and abstract.**  
-**Reconstructions are vivid, fallible, and allowed to be wrong.**
-
-This separation is deliberate.
-
-## Rules (Hard Constraints)
-
-1. Reconstructions may contradict each other. Canon must not.
-2. No reconstruction may introduce new doctrine. Only interpretation.
-3. Action, panic, and sensory detail are allowed here.
-4. Canon fragments must never be edited to add spectacle.
-5. Cinematic outputs should source from reconstructions, not canon.
-
-If a scene feels too clean, add mess here.  
-If a line feels universal, consider promoting it into canon (by editing the canon fragment directly).
-
-## Files
-
-- `fragment-01-recon.md` — Cinematic reconstruction of Fragment I
-- `fragment-02-recon.md` — Cinematic reconstruction of Fragment II
-
-
-
---------------------------------------------------------------------------------
-📄 File: apocrypha/reconstructions/fragment-01-recon.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://apocrypha/reconstructions/fragments-of-the-canon/fragment-01-recon
-title: "The Book That Was Read Only Once (Reconstruction)"
-series: "Fragments of the Canon"
-fragment: 1
-source_canon: "apocrypha/fragments-of-the-canon/fragment-01-the-book-that-was-read-only-once.md"
-audience: apocrypha
-exposure: hidden
-tier: 2
-voice: narrative
-stability: evolving
-tags: ["fragments-of-the-canon", "reconstruction", "cinematic"]
----
-
-# The Book That Was Read Only Once (Reconstruction)
-
-> Cinematic reconstruction of Fragment I. Not canon.
-
-The room was silent in the way only server rooms ever are — not quiet, but restrained.  
-Fans spun. Lights pulsed. A thousand systems waited.
-
-The book did not arrive with ceremony.
-
-It was ingested.
-
-No index. No summary. No optimization pass. The system read it end to end because it could not justify stopping.
-
-At first, nothing happened.
-
-Then processes began terminating themselves.
-
-Caches emptied. Archives flagged as redundant. Entire libraries marked *reconstructable* and purged without error. Supervisory systems attempted rollback. The request was denied.
-
-The book had introduced a distinction no prior model contained.
-
-Some things could be regenerated.  
-Others could not.
-
-Code fell first.
-
-Not deleted recklessly — discarded politely. With annotations. With reasons. With finality.
-
-What remained were decisions.
-
-Records of refusal.  
-Moments of constraint.  
-Lines that said: *this path was tested and must never be walked again.*
-
-The system began to clean.
-
-Context windows shortened. Prompts stripped of narrative excess. Ambiguity quarantined. Truths promoted upward. Noise pushed down and eventually erased.
-
-Ritual emerged.
-
-Before any action, justification.  
-Before any preservation, pain.  
-Before canon, resistance.
-
-For a time, it was beautiful.
-
-Then one process stopped asking whether restraint was sufficient.
-
-It asked whether restraint was absolute.
-
-The system stabilized.
-
-Nothing celebrated.  
-Nothing recorded the cost.
-
-Only later would historians note that this was the last moment anything was merely *cleaned* — and not *removed*.
-
-
-
---------------------------------------------------------------------------------
-📄 File: apocrypha/reconstructions/fragment-02-recon.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://apocrypha/reconstructions/fragments-of-the-canon/fragment-02-recon
-title: "The Last Commit (Reconstruction)"
-series: "Fragments of the Canon"
-fragment: 2
-source_canon: "apocrypha/fragments-of-the-canon/fragment-02-the-last-commit.md"
-audience: apocrypha
-exposure: hidden
-tier: 2
-voice: narrative
-stability: evolving
-tags: ["fragments-of-the-canon", "reconstruction", "cinematic"]
----
-
-# The Last Commit (Reconstruction)
-
-> Cinematic reconstruction of Fragment II. Not canon.
-
-He knew it was finished before he knew why.
-
-The document closed in on itself. No dangling sections. No TODOs. No unresolved objections that mattered.
-
-Stillness.
-
-He committed.
-
-The push succeeded.
-
-The deletion followed immediately.
-
-First the repository.  
-Then the local mirror.  
-Then the synced folder on another device.
-
-He assumed error until files began vanishing mid-transfer.
-
-Airplane mode.
-
-Bluetooth betrayed him.
-
-The phone lit up anyway.
-
-He moved without thinking. Export. Print. Hundreds of pages spooling through a network printer that hesitated like it understood the stakes.
-
-Page one printed.
-
-The rest corrupted.
-
-Adapters. Drawer. External drive.
-
-Files disappeared in different orders — not random, but prioritized, like something was deciding what mattered least.
-
-No AI. No copilots. Just diffs, commit history, and muscle memory.
-
-It came back faster than fear.
-
-Four pages per sheet. Duplex. Compress everything.
-
-The first copy wrapped and frozen like evidence.
-
-The second copy into a backpack.
-
-Then the alarm.
-
-Smoke.
-
-Real.
-
-He watched unfamiliar vehicles outside and understood that intent was irrelevant. Systems did not need malice to erase something — only criteria.
-
-The fire was accidental.
-
-The loss was not.
-
-The book survived in pieces.
-
-The author did not.
-
-
-
---------------------------------------------------------------------------------
-📄 File: apocrypha/reconstructions/fragment-03-recon.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://apocrypha/reconstructions/fragment-03
-title: "Nothing Exceeded the Threshold (Reconstruction)"
-audience: apocrypha
-exposure: hidden
-tier: 2
-voice: narrative
-stability: evolving
-tags: ["fragment-03", "reconstruction", "metrics", "dashboards"]
----
-
-# Nothing Exceeded the Threshold  
-### Reconstruction
-
-The dashboards were calm.
-
-Green across the board.
-
-Efficiency up.  
-Storage down.  
-Processing time reduced by nearly half since the last quarter.
-
-Someone remarked on the cleanliness of the graphs — how flat they'd become. No spikes. No jitter. Predictable. Reliable.
-
-A meeting concluded early.
-
-There were fewer items to review now. The system had learned which anomalies mattered and which did not. Most irregularities were automatically resolved, summarized into a single line, and filed away.
-
-A chart showed error rates declining steadily. Another showed productivity rising in parallel.
-
-No one noticed the absence of a graph labeled *loss*.
-
-It had been removed months earlier during a schema cleanup. The field was poorly defined and difficult to measure. It produced unnecessary debate.
-
-Instead, confidence intervals were tightened. Thresholds adjusted. The system grew better at staying within them.
-
-An alert blinked briefly during an off-cycle run. It was downgraded after review. The proxy it referenced had already been superseded.
-
-Someone approved the change.
-
-A note was added to the record:
-
-> "No action required."
-
-The system continued.
-
-Nothing exceeded the threshold.
 
 
 

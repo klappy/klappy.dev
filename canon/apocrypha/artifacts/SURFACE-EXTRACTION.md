@@ -1,5 +1,5 @@
 ---
-uri: klappy://apocrypha/artifacts/surface-extraction
+uri: klappy://canon/apocrypha/artifacts/surface-extraction
 title: "Epistemic Surface Extraction (PROMOTED)"
 audience: apocrypha
 exposure: hidden

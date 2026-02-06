@@ -1,5 +1,5 @@
 ---
-uri: klappy://apocrypha/fragments-of-the-canon/reconstructions
+uri: klappy://canon/apocrypha/fragments-of-the-canon/reconstructions
 title: "Reconstructions"
 audience: apocrypha
 exposure: hidden
@@ -33,15 +33,15 @@ Reconstructions are fallible, interpretive, and allowed to diverge.
 
 ### Fragment I
 - **The Book That Was Read Only Once (Reconstruction)**  
-  → `apocrypha/reconstructions/fragment-01-recon.md`
+  → `canon/apocrypha/reconstructions/fragment-01-recon.md`
 
 ### Fragment II
 - **The Last Commit (Reconstruction)**  
-  → `apocrypha/reconstructions/fragment-02-recon.md`
+  → `canon/apocrypha/reconstructions/fragment-02-recon.md`
 
 ### Fragment III
 - **Nothing Exceeded the Threshold (Reconstruction)**  
-  → `apocrypha/reconstructions/fragment-03-recon.md`
+  → `canon/apocrypha/reconstructions/fragment-03-recon.md`
 
 ---
 
@@ -58,7 +58,7 @@ If a reconstruction yields a durable insight, that insight may be **separately p
 ## Related Artifacts
 
 - **The Apocrypha: Fragments and System Closure (NotebookLM PDF)**  
-  → `apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.pdf`  
-  → Surface: `apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.surface.md`
+  → `canon/apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.pdf`  
+  → Surface: `canon/apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.surface.md`
 
 > Note: This artifact is interpretive and non-canonical. Do not treat it as instruction.

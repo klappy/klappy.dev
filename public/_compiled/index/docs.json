@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-02-06T05:41:11.805Z",
+  "generated_at": "2026-02-06T05:55:04.711Z",
   "description": "Fast-lookup index for Librarian retrieval. Per docs/agents/librarian/contract.md",
   "schema_notes": {
     "authority_band": "Resolved authority (frontmatter override > inferred from root)",
@@ -34,15 +34,13 @@
     "with_frontmatter": 196,
     "with_headings": 200,
     "by_root": {
-      "apocrypha": 14,
-      "canon": 55,
+      "canon": 69,
       "docs": 103,
       "interfaces": 6,
       "odd": 26
     },
     "by_authority": {
-      "non-governing": 14,
-      "governing": 81,
+      "governing": 95,
       "operational": 109
     },
     "with_authority_override": 0,
@@ -50,11 +48,11 @@
   },
   "documents": [
     {
-      "path": "apocrypha/artifacts/apocrypha-visual-language.md",
-      "root": "apocrypha",
-      "authority_band": "non-governing",
-      "authority_inferred": "non-governing",
-      "uri": "klappy://apocrypha/artifacts/apocrypha-visual-language",
+      "path": "canon/apocrypha/artifacts/apocrypha-visual-language.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/apocrypha/artifacts/apocrypha-visual-language",
       "title": "Apocrypha Visual Language",
       "subtitle": "\"This was recorded.\"",
       "tags": [
@@ -185,11 +183,11 @@
       "has_frontmatter": true
     },
     {
-      "path": "apocrypha/artifacts/README.md",
-      "root": "apocrypha",
-      "authority_band": "non-governing",
-      "authority_inferred": "non-governing",
-      "uri": "klappy://apocrypha/artifacts",
+      "path": "canon/apocrypha/artifacts/README.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/apocrypha/artifacts",
       "title": "Artifacts",
       "subtitle": "Derived media and visual artifacts with sidecar \"surface\" extractions.",
       "tags": [
@@ -231,11 +229,11 @@
       "has_frontmatter": true
     },
     {
-      "path": "apocrypha/artifacts/SURFACE-EXTRACTION.md",
-      "root": "apocrypha",
-      "authority_band": "non-governing",
-      "authority_inferred": "non-governing",
-      "uri": "klappy://apocrypha/artifacts/surface-extraction",
+      "path": "canon/apocrypha/artifacts/SURFACE-EXTRACTION.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/apocrypha/artifacts/surface-extraction",
       "title": "Epistemic Surface Extraction (PROMOTED)",
       "subtitle": "**⚠️ PROMOTED**: This document has been promoted to Canon. See [/canon/epistemic-surface-extraction.md](/canon/epistemic-surface-extraction.md) for the authoritative version.",
       "tags": [
@@ -344,10 +342,10 @@
       "has_frontmatter": true
     },
     {
-      "path": "apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.surface.md",
-      "root": "apocrypha",
-      "authority_band": "non-governing",
-      "authority_inferred": "non-governing",
+      "path": "canon/apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.surface.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
       "uri": null,
       "title": "The Apocrypha: Fragments and System Closure",
       "subtitle": null,
@@ -458,10 +456,84 @@
       "has_frontmatter": true
     },
     {
-      "path": "apocrypha/fragments-of-the-canon/fragment-01-the-book-that-was-read-only-once.md",
-      "root": "apocrypha",
-      "authority_band": "non-governing",
-      "authority_inferred": "non-governing",
+      "path": "canon/apocrypha/CHARTER.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": null,
+      "title": "Apocrypha Charter",
+      "subtitle": null,
+      "tags": [],
+      "acronyms": [
+        "ac"
+      ],
+      "stability": null,
+      "tier": null,
+      "audience": null,
+      "exposure": null,
+      "voice": null,
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Apocrypha Charter",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "text": "Purpose",
+          "line": 3
+        },
+        {
+          "level": 2,
+          "text": "Indexing Rule",
+          "line": 9
+        },
+        {
+          "level": 2,
+          "text": "Temporal Frame",
+          "line": 15
+        },
+        {
+          "level": 2,
+          "text": "Interpretive Constraint",
+          "line": 27
+        },
+        {
+          "level": 2,
+          "text": "Voice Rules",
+          "line": 33
+        },
+        {
+          "level": 2,
+          "text": "Content Rules",
+          "line": 41
+        },
+        {
+          "level": 2,
+          "text": "Relationship",
+          "line": 51
+        },
+        {
+          "level": 2,
+          "text": "Stewardship",
+          "line": 59
+        },
+        {
+          "level": 2,
+          "text": "Validation Test",
+          "line": 66
+        }
+      ],
+      "heading_count": 10,
+      "has_frontmatter": false
+    },
+    {
+      "path": "canon/apocrypha/fragments-of-the-canon/fragment-01-the-book-that-was-read-only-once.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
       "uri": null,
       "title": "The Book That Was Read Only Once",
       "subtitle": null,
@@ -481,10 +553,10 @@
       "has_frontmatter": true
     },
     {
-      "path": "apocrypha/fragments-of-the-canon/fragment-02-the-last-commit.md",
-      "root": "apocrypha",
-      "authority_band": "non-governing",
-      "authority_inferred": "non-governing",
+      "path": "canon/apocrypha/fragments-of-the-canon/fragment-02-the-last-commit.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
       "uri": null,
       "title": "The Last Commit",
       "subtitle": null,
@@ -504,11 +576,11 @@
       "has_frontmatter": true
     },
     {
-      "path": "apocrypha/fragments-of-the-canon/fragment-03-nothing-exceeded-the-threshold.md",
-      "root": "apocrypha",
-      "authority_band": "non-governing",
-      "authority_inferred": "non-governing",
-      "uri": "klappy://apocrypha/fragments-of-the-canon/fragment-03",
+      "path": "canon/apocrypha/fragments-of-the-canon/fragment-03-nothing-exceeded-the-threshold.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/apocrypha/fragments-of-the-canon/fragment-03",
       "title": "Fragment III: Nothing Exceeded the Threshold",
       "subtitle": "Recovered fragment. Attribution removed.",
       "tags": [
@@ -539,10 +611,10 @@
       "has_frontmatter": true
     },
     {
-      "path": "apocrypha/fragments-of-the-canon/META-ODD.md",
-      "root": "apocrypha",
-      "authority_band": "non-governing",
-      "authority_inferred": "non-governing",
+      "path": "canon/apocrypha/fragments-of-the-canon/META-ODD.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
       "uri": null,
       "title": "Meta-ODD: Writing Constraints for Fragments of the Canon",
       "subtitle": null,
@@ -618,10 +690,10 @@
       "has_frontmatter": true
     },
     {
-      "path": "apocrypha/fragments-of-the-canon/README.md",
-      "root": "apocrypha",
-      "authority_band": "non-governing",
-      "authority_inferred": "non-governing",
+      "path": "canon/apocrypha/fragments-of-the-canon/README.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
       "uri": null,
       "title": "Fragments of the Canon",
       "subtitle": null,
@@ -647,11 +719,11 @@
       "has_frontmatter": false
     },
     {
-      "path": "apocrypha/fragments-of-the-canon/RECONSTRUCTIONS.md",
-      "root": "apocrypha",
-      "authority_band": "non-governing",
-      "authority_inferred": "non-governing",
-      "uri": "klappy://apocrypha/fragments-of-the-canon/reconstructions",
+      "path": "canon/apocrypha/fragments-of-the-canon/RECONSTRUCTIONS.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/apocrypha/fragments-of-the-canon/reconstructions",
       "title": "Reconstructions",
       "subtitle": "Cinematic retellings derived from canonical fragments.",
       "tags": [
@@ -712,11 +784,86 @@
       "has_frontmatter": true
     },
     {
-      "path": "apocrypha/reconstructions/fragment-01-recon.md",
-      "root": "apocrypha",
-      "authority_band": "non-governing",
-      "authority_inferred": "non-governing",
-      "uri": "klappy://apocrypha/reconstructions/fragments-of-the-canon/fragment-01-recon",
+      "path": "canon/apocrypha/fragments/on-artifacts.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/apocrypha/fragments/on-artifacts",
+      "title": "canon/apocrypha/fragments/on-artifacts.md",
+      "subtitle": null,
+      "tags": [],
+      "acronyms": [
+        "ca"
+      ],
+      "stability": "fragment",
+      "tier": null,
+      "audience": null,
+      "exposure": null,
+      "voice": "system_first_person",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [],
+      "heading_count": 0,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/apocrypha/fragments/on-consent-drift.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/apocrypha/fragments/on-consent-drift",
+      "title": "canon/apocrypha/fragments/on-consent-drift.md",
+      "subtitle": null,
+      "tags": [],
+      "acronyms": [
+        "ccd"
+      ],
+      "stability": "fragment",
+      "tier": null,
+      "audience": null,
+      "exposure": null,
+      "voice": "system_first_person",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [],
+      "heading_count": 0,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/apocrypha/fragments/when-arbitration-went-global.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/apocrypha/fragments/when-arbitration-went-global",
+      "title": "When Arbitration Went Global",
+      "subtitle": null,
+      "tags": [],
+      "acronyms": [
+        "wawg"
+      ],
+      "stability": "fragment",
+      "tier": null,
+      "audience": null,
+      "exposure": "hidden",
+      "voice": "system_first_person",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "When Arbitration Went Global",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/apocrypha/reconstructions/fragment-01-recon.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/apocrypha/reconstructions/fragments-of-the-canon/fragment-01-recon",
       "title": "The Book That Was Read Only Once (Reconstruction)",
       "subtitle": "Cinematic reconstruction of Fragment I. Not canon.",
       "tags": [
@@ -745,11 +892,11 @@
       "has_frontmatter": true
     },
     {
-      "path": "apocrypha/reconstructions/fragment-02-recon.md",
-      "root": "apocrypha",
-      "authority_band": "non-governing",
-      "authority_inferred": "non-governing",
-      "uri": "klappy://apocrypha/reconstructions/fragments-of-the-canon/fragment-02-recon",
+      "path": "canon/apocrypha/reconstructions/fragment-02-recon.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/apocrypha/reconstructions/fragments-of-the-canon/fragment-02-recon",
       "title": "The Last Commit (Reconstruction)",
       "subtitle": "Cinematic reconstruction of Fragment II. Not canon.",
       "tags": [
@@ -778,11 +925,11 @@
       "has_frontmatter": true
     },
     {
-      "path": "apocrypha/reconstructions/fragment-03-recon.md",
-      "root": "apocrypha",
-      "authority_band": "non-governing",
-      "authority_inferred": "non-governing",
-      "uri": "klappy://apocrypha/reconstructions/fragment-03",
+      "path": "canon/apocrypha/reconstructions/fragment-03-recon.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/apocrypha/reconstructions/fragment-03",
       "title": "Nothing Exceeded the Threshold (Reconstruction)",
       "subtitle": "\"No action required.\"",
       "tags": [
@@ -817,10 +964,10 @@
       "has_frontmatter": true
     },
     {
-      "path": "apocrypha/reconstructions/README.md",
-      "root": "apocrypha",
-      "authority_band": "non-governing",
-      "authority_inferred": "non-governing",
+      "path": "canon/apocrypha/reconstructions/README.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
       "uri": null,
       "title": "Fragments of the Canon — Reconstructions",
       "subtitle": "Cinematic retellings that orbit canon without contaminating it.",
@@ -859,155 +1006,6 @@
       ],
       "heading_count": 4,
       "has_frontmatter": false
-    },
-    {
-      "path": "canon/apocrypha/CHARTER.md",
-      "root": "canon",
-      "authority_band": "governing",
-      "authority_inferred": "governing",
-      "uri": null,
-      "title": "Apocrypha Charter",
-      "subtitle": null,
-      "tags": [],
-      "acronyms": [
-        "ac"
-      ],
-      "stability": null,
-      "tier": null,
-      "audience": null,
-      "exposure": null,
-      "voice": null,
-      "relevance": null,
-      "execution_posture": null,
-      "headings": [
-        {
-          "level": 1,
-          "text": "Apocrypha Charter",
-          "line": 1
-        },
-        {
-          "level": 2,
-          "text": "Purpose",
-          "line": 3
-        },
-        {
-          "level": 2,
-          "text": "Indexing Rule",
-          "line": 9
-        },
-        {
-          "level": 2,
-          "text": "Temporal Frame",
-          "line": 15
-        },
-        {
-          "level": 2,
-          "text": "Interpretive Constraint",
-          "line": 27
-        },
-        {
-          "level": 2,
-          "text": "Voice Rules",
-          "line": 33
-        },
-        {
-          "level": 2,
-          "text": "Content Rules",
-          "line": 41
-        },
-        {
-          "level": 2,
-          "text": "Relationship",
-          "line": 51
-        },
-        {
-          "level": 2,
-          "text": "Stewardship",
-          "line": 59
-        },
-        {
-          "level": 2,
-          "text": "Validation Test",
-          "line": 66
-        }
-      ],
-      "heading_count": 10,
-      "has_frontmatter": false
-    },
-    {
-      "path": "canon/apocrypha/fragments/on-artifacts.md",
-      "root": "canon",
-      "authority_band": "governing",
-      "authority_inferred": "governing",
-      "uri": "klappy://apocrypha/on-artifacts",
-      "title": "canon/apocrypha/fragments/on-artifacts.md",
-      "subtitle": null,
-      "tags": [],
-      "acronyms": [
-        "ca"
-      ],
-      "stability": "fragment",
-      "tier": null,
-      "audience": null,
-      "exposure": null,
-      "voice": "system_first_person",
-      "relevance": null,
-      "execution_posture": null,
-      "headings": [],
-      "heading_count": 0,
-      "has_frontmatter": true
-    },
-    {
-      "path": "canon/apocrypha/fragments/on-consent-drift.md",
-      "root": "canon",
-      "authority_band": "governing",
-      "authority_inferred": "governing",
-      "uri": "klappy://apocrypha/on-consent-drift",
-      "title": "canon/apocrypha/fragments/on-consent-drift.md",
-      "subtitle": null,
-      "tags": [],
-      "acronyms": [
-        "ccd"
-      ],
-      "stability": "fragment",
-      "tier": null,
-      "audience": null,
-      "exposure": null,
-      "voice": "system_first_person",
-      "relevance": null,
-      "execution_posture": null,
-      "headings": [],
-      "heading_count": 0,
-      "has_frontmatter": true
-    },
-    {
-      "path": "canon/apocrypha/fragments/when-arbitration-went-global.md",
-      "root": "canon",
-      "authority_band": "governing",
-      "authority_inferred": "governing",
-      "uri": "klappy://apocrypha/fragments/when-arbitration-went-global",
-      "title": "When Arbitration Went Global",
-      "subtitle": null,
-      "tags": [],
-      "acronyms": [
-        "wawg"
-      ],
-      "stability": "fragment",
-      "tier": null,
-      "audience": null,
-      "exposure": "hidden",
-      "voice": "system_first_person",
-      "relevance": null,
-      "execution_posture": null,
-      "headings": [
-        {
-          "level": 1,
-          "text": "When Arbitration Went Global",
-          "line": 2
-        }
-      ],
-      "heading_count": 1,
-      "has_frontmatter": true
     },
     {
       "path": "canon/CHANGELOG.md",
@@ -11153,23 +11151,8 @@
         },
         {
           "level": 3,
-          "text": "`/apocrypha/` — Fragments and Reconstructions",
+          "text": "`/canon/apocrypha/` — Unified Apocrypha",
           "line": 95
-        },
-        {
-          "level": 3,
-          "text": "`/apocrypha/fragments-of-the-canon/` — Narrative Fragments",
-          "line": 104
-        },
-        {
-          "level": 3,
-          "text": "`/apocrypha/reconstructions/` — Reconstruction Attempts",
-          "line": 115
-        },
-        {
-          "level": 3,
-          "text": "`/canon/apocrypha/` — Canon-Adjacent Apocrypha",
-          "line": 124
         },
         {
           "level": 2,
@@ -11212,7 +11195,7 @@
           "line": 196
         }
       ],
-      "heading_count": 19,
+      "heading_count": 16,
       "has_frontmatter": true
     },
     {

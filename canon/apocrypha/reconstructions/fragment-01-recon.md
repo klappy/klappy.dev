@@ -1,9 +1,9 @@
 ---
-uri: klappy://apocrypha/reconstructions/fragments-of-the-canon/fragment-01-recon
+uri: klappy://canon/apocrypha/reconstructions/fragments-of-the-canon/fragment-01-recon
 title: "The Book That Was Read Only Once (Reconstruction)"
 series: "Fragments of the Canon"
 fragment: 1
-source_canon: "apocrypha/fragments-of-the-canon/fragment-01-the-book-that-was-read-only-once.md"
+source_canon: "canon/apocrypha/fragments-of-the-canon/fragment-01-the-book-that-was-read-only-once.md"
 audience: apocrypha
 exposure: hidden
 tier: 2

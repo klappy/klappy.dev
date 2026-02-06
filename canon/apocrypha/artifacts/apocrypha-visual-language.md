@@ -1,5 +1,5 @@
 ---
-uri: klappy://apocrypha/artifacts/apocrypha-visual-language
+uri: klappy://canon/apocrypha/artifacts/apocrypha-visual-language
 title: "Apocrypha Visual Language"
 audience: apocrypha
 exposure: hidden
