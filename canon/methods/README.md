@@ -74,7 +74,7 @@ Do not add a method when:
 
 ## See Also
 
-- [Constraints](/canon/constraints.md)
-- [Decision Rules](/canon/decision-rules.md)
-- [Epistemic Hygiene](/canon/epistemic-hygiene.md)
-- [Definition of Done](/canon/definition-of-done.md)
+- [Constraints](/canon/constraints/README.md)
+- [Decision Rules](/canon/constraints/decision-rules.md)
+- [Epistemic Hygiene](/canon/diagnostics/epistemic-hygiene.md)
+- [Definition of Done](/canon/constraints/definition-of-done.md)

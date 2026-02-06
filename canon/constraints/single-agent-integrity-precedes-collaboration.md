@@ -64,7 +64,7 @@ Integrity means:
 
 ## See Also
 
-- [Constraints](/canon/constraints.md)
-- [Epistemic Hygiene](/canon/epistemic-hygiene.md)
-- [Verification and Evidence](/canon/verification-and-evidence.md)
-- [Epistemic Challenge](/canon/epistemic-challenge.md)
+- [Constraints](/canon/constraints/README.md)
+- [Epistemic Hygiene](/canon/diagnostics/epistemic-hygiene.md)
+- [Verification and Evidence](/canon/constraints/verification-and-evidence.md)
+- [Epistemic Challenge](/canon/constraints/epistemic-challenge.md)

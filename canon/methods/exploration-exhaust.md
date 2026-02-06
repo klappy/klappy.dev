@@ -56,4 +56,4 @@ If [CST](/canon/definitions/cognitive-saturation-threshold.md) is reached, the e
 ## See Also
 
 - [Encode Epistemic Decisions](/canon/constraints/encode-epistemic-decisions.md)
-- [Epistemic Hygiene](/canon/epistemic-hygiene.md)
+- [Epistemic Hygiene](/canon/diagnostics/epistemic-hygiene.md)

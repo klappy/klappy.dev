@@ -69,7 +69,7 @@ This is where handbooks, skeptics, feedback loops, and process checks belong—n
 
 ## See Also
 
-- [Definition of Done](/canon/definition-of-done.md)
-- [Epistemic Hygiene](/canon/epistemic-hygiene.md)
-- [Epistemic Modes](/canon/epistemic-modes.md)
-- [Self-Audit](/canon/self-audit.md)
+- [Definition of Done](/canon/constraints/definition-of-done.md)
+- [Epistemic Hygiene](/canon/diagnostics/epistemic-hygiene.md)
+- [Epistemic Modes](/canon/definitions/epistemic-modes.md)
+- [Self-Audit](/canon/methods/self-audit.md)

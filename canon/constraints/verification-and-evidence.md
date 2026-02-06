@@ -164,7 +164,7 @@ Lane rules are **instantiations**, not exceptions.
 
 ## See Also
 
-- [Epistemic Surface Extraction (ESE)](/canon/epistemic-surface-extraction.md) — Making screenshots, recordings, and video evidence legible
-- [Visual Proof Standards](/canon/visual-proof.md)
-- [Definition of Done](/canon/definition-of-done.md)
-- [Constraints](/canon/constraints.md)
+- [Epistemic Surface Extraction (ESE)](/canon/methods/epistemic-surface-extraction.md) — Making screenshots, recordings, and video evidence legible
+- [Visual Proof Standards](/canon/constraints/visual-proof.md)
+- [Definition of Done](/canon/constraints/definition-of-done.md)
+- [Constraints](/canon/constraints/README.md)
