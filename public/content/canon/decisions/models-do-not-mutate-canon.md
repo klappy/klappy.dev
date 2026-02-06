@@ -143,5 +143,5 @@ Allowing models to directly mutate Canon would erode the trust boundary that mak
 
 ## See Also
 
-- [Epistemic Obligation and Document Tiers](/canon/epistemic-obligation-and-document-tiers.md)
-- [Constraints](/canon/constraints.md) — AI as Accelerator, Not Authority
+- [Epistemic Obligation and Document Tiers](/canon/definitions/epistemic-obligation-and-document-tiers.md)
+- [Constraints](/canon/constraints/README.md) — AI as Accelerator, Not Authority

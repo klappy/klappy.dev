@@ -1,5 +1,5 @@
 ---
-uri: klappy://canon/documentation/slice-contract-sml
+uri: klappy://canon/meta/slice-contract-sml
 title: "Slice Contract: S / M / L"
 audience: canon
 exposure: nav

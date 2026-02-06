@@ -210,9 +210,9 @@ Surfaces can inform canon edits, but:
 
 ## See Also
 
-- [Verification & Evidence](/canon/verification-and-evidence.md)
-- [Visual Proof Standards](/canon/visual-proof.md)
-- [Definition of Done](/canon/definition-of-done.md)
+- [Verification & Evidence](/canon/constraints/verification-and-evidence.md)
+- [Visual Proof Standards](/canon/constraints/visual-proof.md)
+- [Definition of Done](/canon/constraints/definition-of-done.md)
 
 ---
 

@@ -69,6 +69,6 @@ A decision record must include at least:
 ## See Also
 
 - [Decision Record Standard](/canon/decisions/decision-record-standard.md)
-- [Definition of Done](/canon/definition-of-done.md)
-- [Epistemic Modes](/canon/epistemic-modes.md)
-- [Verification and Evidence](/canon/verification-and-evidence.md)
+- [Definition of Done](/canon/constraints/definition-of-done.md)
+- [Epistemic Modes](/canon/definitions/epistemic-modes.md)
+- [Verification and Evidence](/canon/constraints/verification-and-evidence.md)

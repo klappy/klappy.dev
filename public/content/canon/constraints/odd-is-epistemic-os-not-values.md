@@ -67,5 +67,5 @@ It is not a value system. It must not be used to launder moral authority, enforc
 
 - [Epistemic Posture](/canon/defaults/epistemic-posture.md)
 - [Models Do Not Mutate Canon](/canon/decisions/models-do-not-mutate-canon.md)
-- [Epistemic Hygiene](/canon/epistemic-hygiene.md)
-- [Weighted Relevance and Arbitration](/canon/weighted-relevance-and-arbitration.md)
+- [Epistemic Hygiene](/canon/diagnostics/epistemic-hygiene.md)
+- [Weighted Relevance and Arbitration](/canon/methods/weighted-relevance-and-arbitration.md)

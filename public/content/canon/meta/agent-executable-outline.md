@@ -1,5 +1,5 @@
 ---
-uri: klappy://canon/documentation/agent-executable-outline
+uri: klappy://canon/meta/agent-executable-outline
 title: "Agent-Executable Documentation Outline"
 audience: canon
 exposure: nav

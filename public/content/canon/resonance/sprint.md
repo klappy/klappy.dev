@@ -71,5 +71,5 @@ ODD absorbs Sprint's constraint discipline while rejecting its event-centric mod
 ## Related Canon
 
 - [ODD Manifesto](/odd/manifesto.md)
-- [Attempts](/docs/ATTEMPTS.md)
+- [Attempts](/docs/appendices/ATTEMPTS.md)
 - [Decision Records](/docs/decisions/README.md)

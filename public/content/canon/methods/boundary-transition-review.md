@@ -51,4 +51,4 @@ This method exists to make boundary transitions safe without turning them into r
 ## See Also
 
 - [Boundary Transitions Require Deceleration](/canon/constraints/boundary-transitions-require-deceleration.md)
-- [Definition of Done](/canon/definition-of-done.md)
+- [Definition of Done](/canon/constraints/definition-of-done.md)

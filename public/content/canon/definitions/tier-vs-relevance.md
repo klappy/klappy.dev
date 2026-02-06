@@ -1,5 +1,5 @@
 ---
-uri: klappy://canon/documentation/tier-vs-relevance
+uri: klappy://canon/definitions/tier-vs-relevance
 title: "Tier vs Relevance"
 audience: canon
 exposure: nav

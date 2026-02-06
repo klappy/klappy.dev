@@ -25,14 +25,16 @@ The Canon exists so that reasoning does not have to be repeated.
 
 | File | Title | Summary | Answers |
 |------|-------|---------|---------|
-| `epistemic-obligation-and-document-tiers.md` | Epistemic Obligation and Document Tiers | Tiers define epistemic obligation (foundational, shared, awareness), not importance. Orthogonal to folders. | How much must I internalize this? |
-| `constraints.md` | Constraints | Baseline assumptions and non-negotiables that shape every decision. | What must be true for this work to make sense? |
+| `constraints/README.md` | Constraints | Baseline assumptions and non-negotiables that shape every decision. | What must be true for this work to make sense? |
+| `constraints/definition-of-done.md` | Definition of Done | What qualifies as completed work and what evidence is required. | When can work honestly be called done? |
+| `constraints/decision-rules.md` | Decision Rules | Default heuristics used when multiple valid options exist. | How do choices tend to be made? |
+| `constraints/verification-and-evidence.md` | Verification & Evidence | Evidence standards for claims and assertions. | What counts as proof? |
+| `constraints/visual-proof.md` | Visual Proof Standards | What qualifies as acceptable visual evidence. | What does "prove it visually" mean? |
+| `constraints/epistemic-challenge.md` | Epistemic Challenge | Governance behavior for challenging claims. | How are claims tested? |
+| `definitions/epistemic-obligation-and-document-tiers.md` | Epistemic Obligation and Document Tiers | Tiers define epistemic obligation (foundational, shared, awareness), not importance. Orthogonal to folders. | How much must I internalize this? |
+| `definitions/epistemic-modes.md` | Epistemic Modes | Three operational modes for epistemic reasoning. | What modes of reasoning exist? |
 | `methods/README.md` | Methods | Durable application patterns that help humans and agents apply principles and satisfy constraints without re-deriving safe practice each time. | How do I apply ODD safely in practice? |
-| `decision-rules.md` | Decision Rules | Default heuristics used when multiple valid options exist. | How do choices tend to be made? |
-| `definition-of-done.md` | Definition of Done | What qualifies as completed work and what evidence is required. | When can work honestly be called done? |
-| `self-audit.md` | Self-Audit Checklist | Review checklist before declaring completion. | What should be reviewed before claiming success? |
-| `visual-proof.md` | Visual Proof Standards | What qualifies as acceptable visual evidence. | What does "prove it visually" mean? |
-| `completion-report-template.md` | Completion Report Template | Standard format for reporting completed work. | How should completion be communicated? |
+| `methods/self-audit.md` | Self-Audit Checklist | Review checklist before declaring completion. | What should be reviewed before claiming success? |
 | `CHANGELOG.md` | Canon Changelog | Version history of canon changes. | What changed and when? |
 
 ### Principles
@@ -46,14 +48,17 @@ The Canon exists so that reasoning does not have to be repeated.
 
 | Folder | Purpose |
 |--------|---------|
-| `definitions/` | Shared vocabulary — formal definitions of load-bearing concepts (e.g., CST). |
+| `constraints/` | Load-bearing constraints, non-negotiables, and governance rules. |
+| `definitions/` | Shared vocabulary — formal definitions of load-bearing concepts. |
+| `diagnostics/` | System health signals and decay detection. |
 | `methods/` | Durable application patterns for applying constraints and principles in practice. |
 | `principles/` | Canon-level principle articulations grounded in lived evidence. |
 | `decisions/` | Canon-level decision records (governance, model boundaries). |
+| `defaults/` | Default operational postures. |
 | `resonance/` | External works that converge with ODD — and where ODD explicitly diverges. |
-| `meta/` | Metadata and pack configuration. |
+| `meta/` | Metadata, templates, and architecture. |
+| `apocrypha/` | Deprecated fragments and system-voice reflections. |
 | `_compiled/` | Compiled outputs (derived, wipeable). |
-| `odd/appendices/` | ODD-derived patterns and invariants. |
 
 ### Resonance (External Alignment & Divergence)
 
@@ -67,18 +72,12 @@ The Canon exists so that reasoning does not have to be repeated.
 > **Canon Rule:** Every cited work must include at least one explicit divergence.
 > If no divergence exists, the citation does not belong.
 
-### ODD Appendices (Patterns)
-
-| File | Title | Summary |
-|------|-------|---------|
-| `odd/appendices/tool-specialization.md` | Tool Specialization | Preserve reliability as tool availability increases by isolating tool usage behind narrowly scoped reasoning units. |
-
 ---
 
 ## 🚀 Start Here
 
-1. **`constraints.md`** — What must be true for this work to make sense?
-2. **`definition-of-done.md`** — When can work honestly be called done?
+1. **`constraints/README.md`** — What must be true for this work to make sense?
+2. **`constraints/definition-of-done.md`** — When can work honestly be called done?
 3. **`/odd/manifesto.md`** — Why this approach exists.
 
 These three documents anchor everything else.

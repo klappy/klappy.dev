@@ -42,8 +42,8 @@
       ]
     },
     {
-      "uri": "klappy://canon/documentation/agent-executable-outline",
-      "path": "/canon/documentation/agent-executable-outline.md",
+      "uri": "klappy://canon/meta/agent-executable-outline",
+      "path": "/canon/meta/agent-executable-outline.md",
       "title": "Agent-Executable Documentation Outline",
       "type": "text/markdown",
       "audience": "canon",
@@ -207,7 +207,7 @@
     },
     {
       "uri": "klappy://canon/template",
-      "path": "/canon/TEMPLATE.md",
+      "path": "/canon/meta/TEMPLATE.md",
       "title": "Canon Article Template",
       "type": "text/markdown",
       "audience": "canon",
@@ -290,7 +290,7 @@
     },
     {
       "uri": "klappy://canon/completion-report-template",
-      "path": "/canon/completion-report-template.md",
+      "path": "/canon/meta/completion-report-template.md",
       "title": "Completion Report Template",
       "type": "text/markdown",
       "audience": "canon",
@@ -323,7 +323,7 @@
     },
     {
       "uri": "klappy://canon/constraints",
-      "path": "/canon/constraints.md",
+      "path": "/canon/constraints/README.md",
       "title": "Constraints",
       "type": "text/markdown",
       "audience": "canon",
@@ -372,7 +372,7 @@
     },
     {
       "uri": "klappy://canon/decision-rules",
-      "path": "/canon/decision-rules.md",
+      "path": "/canon/constraints/decision-rules.md",
       "title": "Decision Rules",
       "type": "text/markdown",
       "audience": "canon",
@@ -387,7 +387,7 @@
     },
     {
       "uri": "klappy://canon/definition-of-done",
-      "path": "/canon/definition-of-done.md",
+      "path": "/canon/constraints/definition-of-done.md",
       "title": "Definition of Done & Evidence Policy",
       "type": "text/markdown",
       "audience": "canon",
@@ -460,7 +460,7 @@
     },
     {
       "uri": "klappy://canon/epistemic-challenge",
-      "path": "/canon/epistemic-challenge.md",
+      "path": "/canon/constraints/epistemic-challenge.md",
       "title": "Epistemic Challenge",
       "type": "text/markdown",
       "audience": "canon",
@@ -490,7 +490,7 @@
     },
     {
       "uri": "klappy://canon/epistemic-hygiene",
-      "path": "/canon/epistemic-hygiene.md",
+      "path": "/canon/diagnostics/epistemic-hygiene.md",
       "title": "Epistemic Hygiene",
       "type": "text/markdown",
       "audience": "canon",
@@ -507,7 +507,7 @@
     },
     {
       "uri": "klappy://canon/epistemic-modes",
-      "path": "/canon/epistemic-modes.md",
+      "path": "/canon/definitions/epistemic-modes.md",
       "title": "Epistemic Modes",
       "type": "text/markdown",
       "audience": "canon",
@@ -523,7 +523,7 @@
     },
     {
       "uri": "klappy://canon/epistemic-obligation-and-document-tiers",
-      "path": "/canon/epistemic-obligation-and-document-tiers.md",
+      "path": "/canon/definitions/epistemic-obligation-and-document-tiers.md",
       "title": "Epistemic Obligation and Document Tiers",
       "type": "text/markdown",
       "audience": "canon",
@@ -552,7 +552,7 @@
     },
     {
       "uri": "klappy://canon/epistemic-surface-extraction",
-      "path": "/canon/epistemic-surface-extraction.md",
+      "path": "/canon/methods/epistemic-surface-extraction.md",
       "title": "Epistemic Surface Extraction (ESE)",
       "type": "text/markdown",
       "audience": "canon",
@@ -602,8 +602,8 @@
       ]
     },
     {
-      "uri": "klappy://canon/documentation/execution-posture",
-      "path": "/canon/documentation/execution-posture.md",
+      "uri": "klappy://canon/definitions/execution-posture",
+      "path": "/canon/definitions/execution-posture.md",
       "title": "Execution Posture",
       "type": "text/markdown",
       "audience": "canon",
@@ -945,63 +945,6 @@
       ]
     },
     {
-      "uri": "klappy://canon/agents/odd-epistemic-guide",
-      "path": "/canon/agents/odd-epistemic-guide.md",
-      "title": "ODD Epistemic Guide",
-      "type": "agent-role",
-      "audience": "canon",
-      "exposure": "nav",
-      "tier": 2,
-      "voice": "neutral",
-      "stability": "evolving",
-      "tags": [
-        "odd",
-        "agents",
-        "epistemics",
-        "governance",
-        "phase",
-        "validation"
-      ]
-    },
-    {
-      "uri": "klappy://canon/agents/odd-implementation-guide",
-      "path": "/canon/agents/odd-implementation-guide.md",
-      "title": "ODD Implementation Guide",
-      "type": "agent-role",
-      "audience": "canon",
-      "exposure": "nav",
-      "tier": 2,
-      "voice": "neutral",
-      "stability": "evolving",
-      "tags": [
-        "odd",
-        "agents",
-        "implementation",
-        "constraints",
-        "source-citing",
-        "no-bypass"
-      ]
-    },
-    {
-      "uri": "klappy://canon/agents/odd-instruction-sync",
-      "path": "/canon/agents/odd-instruction-sync.md",
-      "title": "ODD Instruction Sync Interpreter",
-      "type": "agent-role",
-      "audience": "canon",
-      "exposure": "nav",
-      "tier": 2,
-      "voice": "neutral",
-      "stability": "evolving",
-      "tags": [
-        "odd",
-        "agents",
-        "instruction-sync",
-        "maintenance",
-        "registry",
-        "patch-plan"
-      ]
-    },
-    {
       "uri": "klappy://canon/constraints/odd-is-epistemic-os-not-values",
       "path": "/canon/constraints/odd-is-epistemic-os-not-values.md",
       "title": "ODD Is an Epistemic OS, Not a Value System",
@@ -1039,25 +982,6 @@
       ]
     },
     {
-      "uri": "klappy://canon/agents/odd-map-navigator",
-      "path": "/canon/agents/odd-map-navigator.md",
-      "title": "ODD Map Navigator",
-      "type": "agent-role",
-      "audience": "canon",
-      "exposure": "nav",
-      "tier": 2,
-      "voice": "neutral",
-      "stability": "evolving",
-      "tags": [
-        "odd",
-        "agents",
-        "navigation",
-        "map",
-        "discovery",
-        "progressive-reading"
-      ]
-    },
-    {
       "uri": "klappy://odd/misuse-patterns",
       "path": "/odd/misuse-patterns.md",
       "title": "ODD Misuse Patterns",
@@ -1071,56 +995,6 @@
         "odd",
         "misuse",
         "failure-modes"
-      ]
-    },
-    {
-      "uri": "klappy://canon/agents/odd-mode-selector",
-      "path": "/canon/agents/odd-mode-selector.md",
-      "title": "ODD Mode Selector",
-      "type": "agent-role",
-      "audience": "canon",
-      "exposure": "nav",
-      "tier": 2,
-      "voice": "neutral",
-      "stability": "evolving",
-      "tags": [
-        "odd",
-        "agents",
-        "mode-selection",
-        "routing",
-        "confidence",
-        "mcp"
-      ]
-    },
-    {
-      "uri": "klappy://canon/agents/odd-orchestrator",
-      "path": "/canon/agents/odd-orchestrator.md",
-      "title": "ODD Orchestrator",
-      "type": "text/markdown",
-      "audience": "agents",
-      "exposure": "nav",
-      "tier": 2,
-      "voice": "neutral",
-      "stability": "evolving",
-      "tags": []
-    },
-    {
-      "uri": "klappy://canon/agents/odd-scribe",
-      "path": "/canon/agents/odd-scribe.md",
-      "title": "ODD Scribe",
-      "type": "agent-role",
-      "audience": "canon",
-      "exposure": "nav",
-      "tier": 2,
-      "voice": "neutral",
-      "stability": "evolving",
-      "tags": [
-        "odd",
-        "scribe",
-        "documentation",
-        "epistemics",
-        "decisions",
-        "ledger"
       ]
     },
     {
@@ -1345,7 +1219,7 @@
     },
     {
       "uri": "klappy://canon/self-audit",
-      "path": "/canon/self-audit.md",
+      "path": "/canon/methods/self-audit.md",
       "title": "Self-Audit Checklist",
       "type": "text/markdown",
       "audience": "canon",
@@ -1376,8 +1250,8 @@
       ]
     },
     {
-      "uri": "klappy://canon/documentation/slice-contract-sml",
-      "path": "/canon/documentation/slice-contract-sml.md",
+      "uri": "klappy://canon/meta/slice-contract-sml",
+      "path": "/canon/meta/slice-contract-sml.md",
       "title": "Slice Contract: S / M / L",
       "type": "text/markdown",
       "audience": "canon",
@@ -1444,8 +1318,8 @@
       ]
     },
     {
-      "uri": "klappy://canon/documentation/tier-vs-relevance",
-      "path": "/canon/documentation/tier-vs-relevance.md",
+      "uri": "klappy://canon/definitions/tier-vs-relevance",
+      "path": "/canon/definitions/tier-vs-relevance.md",
       "title": "Tier vs Relevance",
       "type": "text/markdown",
       "audience": "canon",
@@ -1461,7 +1335,7 @@
     },
     {
       "uri": "klappy://canon/odd/tool-specialization",
-      "path": "/canon/odd/appendices/tool-specialization.md",
+      "path": "/canon/methods/tool-specialization.md",
       "title": "Tool Specialization",
       "type": "text/markdown",
       "audience": "canon",
@@ -1495,7 +1369,7 @@
     },
     {
       "uri": "klappy://canon/verification-and-evidence",
-      "path": "/canon/verification-and-evidence.md",
+      "path": "/canon/constraints/verification-and-evidence.md",
       "title": "Verification & Evidence",
       "type": "text/markdown",
       "audience": "canon",
@@ -1530,7 +1404,7 @@
     },
     {
       "uri": "klappy://canon/visual-proof",
-      "path": "/canon/visual-proof.md",
+      "path": "/canon/constraints/visual-proof.md",
       "title": "Visual Proof Standards",
       "type": "text/markdown",
       "audience": "canon",
@@ -1545,7 +1419,7 @@
     },
     {
       "uri": "klappy://canon/weighted-relevance-and-arbitration",
-      "path": "/canon/weighted-relevance-and-arbitration.md",
+      "path": "/canon/methods/weighted-relevance-and-arbitration.md",
       "title": "Weighted Relevance & Arbitration",
       "type": "text/markdown",
       "audience": "canon",

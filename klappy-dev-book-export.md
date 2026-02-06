@@ -5,8 +5,8 @@
 ================================================================================
 
 
-Generated: 2026-02-06T04:33:06.733Z
-Total Files: 280
+Generated: 2026-02-06T05:41:11.115Z
+Total Files: 283
 
 This is a documentation export of all markdown files from the klappy.dev
 repository. It includes lane guidance docs but excludes implementation
@@ -20,10 +20,9 @@ details (attempts, version folders, source code).
 - **Root** (1 files)
 - **.cursor** (1 files)
 - **About** (6 files)
-- **Apocrypha** (15 files)
-- **Canon** (62 files)
-- **Documentation** (92 files)
-- **Drift-audit** (1 files)
+- **Apocrypha** (14 files)
+- **Canon** (56 files)
+- **Documentation** (103 files)
 - **Infrastructure** (10 files)
 - **Interfaces & Contracts** (6 files)
 - **ODD (Outcomes-Driven Development)** (26 files)
@@ -555,1074 +554,6 @@ If you want to understand the rules:
 
 
 --------------------------------------------------------------------------------
-📄 File: docs/AGENT_ENTRYPOINT.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://docs/agent-entrypoint
-title: "Agent Entry Point"
-audience: docs
-exposure: nav
-tier: 1
-voice: neutral
-stability: stable
-tags: ["docs", "implementation", "agent", "entrypoint", "redirect"]
----
-
-# 🧭 Agent Entry Point
-
-**If you are an AI agent starting an attempt, go directly to:**
-
-## `/docs/AGENT_KICKOFF.md`
-
-That file is the canonical, copy-pasteable entry point for all agent attempts.
-
----
-
-## For Orientation (Not Execution)
-
-If you want to understand the system before acting:
-
-1. `/docs/appendices/product-lanes.md` — multi-lane PRD architecture
-2. `/canon/index.md` — Canon orientation, precedence, stability
-3. `/odd/manifesto.md` — philosophy and intent
-4. `/docs/ATTEMPTS.md` — attempt lifecycle orientation
-
----
-
-## For Humans
-
-Human workflow lives at `/docs/ATTEMPT_KICKOFF.md`.
-
----
-
-## Quick Reference
-
-| Lane | PRD Location |
-|------|--------------|
-| `website` | `/docs/PRD/website/PRD.md` |
-| `ai-navigation` | `/docs/PRD/ai-navigation/PRD.md` |
-| `agent-skill` | `/docs/PRD/agent-skill/PRD.md` |
-
-**Every attempt MUST declare a lane before registration.**
-
-
-
---------------------------------------------------------------------------------
-📄 File: docs/AGENT_KICKOFF.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://docs/agent-kickoff
-title: "Agent Kickoff"
-audience: docs
-exposure: nav
-tier: 1
-voice: neutral
-stability: stable
-tags: ["docs", "implementation", "agent", "kickoff", "entry-point"]
----
-
-# 🤖 Agent Kickoff — Canonical Entry Point
-
-**This file is the ONLY authorized entry point for agent attempts.**
-
-Do not rely on external prompts. Do not synthesize from multiple documents.
-Read this file. Follow it exactly.
-
----
-
-## Step 0: Declare Your Lane and Epoch
-
-You MUST know which lane and epoch you are working in before proceeding.
-
-| Lane | PRD Location | Purpose |
-|------|--------------|---------|
-| `website` | `/docs/PRD/website/PRD.md` | Human-facing UI/UX |
-| `ai-navigation` | `/docs/PRD/ai-navigation/PRD.md` | AI layer over documentation |
-| `agent-skill` | `/docs/PRD/agent-skill/PRD.md` | Agent cognitive framework |
-
-**Current Epoch:** `E0002-multi-lane-era`
-
-Epoch determines whether your attempt's outcomes can be compared to prior attempts. If the evaluation rules changed (evidence requirements, provenance, deploy contracts), you are in a new epoch.
-
-**If you do not know your lane, STOP and ask the human.**  
-**If you are unsure whether the epoch has changed, STOP and ask the human.**
-
----
-
-## Step 1: Read Required Documents (In Order)
-
-1. `/docs/appendices/product-lanes.md` — understand the multi-lane model
-2. `/docs/appendices/epochs.md` — understand when outcomes are comparable
-3. Your lane's PRD (e.g., `/docs/PRD/ai-navigation/PRD.md`)
-4. `/canon/constraints.md` — non-negotiables that shape all work
-
----
-
-## Step 2: Register Your Attempt
-
-```bash
-npm run attempt:register -- --lane <LANE> --tool <TOOL> --agent <AGENT_ID> --model <MODEL>
-```
-
-Example:
-```bash
-npm run attempt:register -- --lane ai-navigation --tool cursor --agent a --model "claude-opus-4"
-```
-
-This creates `.attempt.json` with your run_id, lane, and provenance.
-
-**Lane is REQUIRED. Attempts without a lane are invalid.**
-
-**Epoch is REQUIRED.** Your `META.json` must include `epoch_id`. If missing, results cannot be compared to prior attempts.
-
----
-
-## Step 3: Nuke and Start Fresh
-
-```bash
-npm run attempt:nuke -- --lane <LANE>
-```
-
-Example:
-```bash
-npm run attempt:nuke -- --lane website
-```
-
-This deletes `products/<lane>/src/` and lane-local framework configs. You start from a blank slate.
-
-Choose any stack that satisfies the deploy contract (`/infra/contracts/build-output.md`).
-
-Your implementation goes in `products/<lane>/src/`. Build output goes to `products/<lane>/dist/`.
-
-See `/docs/appendices/lane-implementation-surfaces.md` for the locked folder contract.
-
----
-
-## Step 4: Build Against Your Lane's PRD
-
-Implement ONLY what your lane's PRD specifies.
-
-- Do NOT modify Canon
-- Do NOT touch other lanes
-- Do NOT invent requirements not in the PRD
-
-If the PRD is ambiguous, note the ambiguity in your ATTEMPT.md. Do not guess.
-
----
-
-## Step 5: Write Evidence
-
-Write to your runs directory (path is in `.attempt.json`):
-
-```
-products/<lane>/attempts/prd-vX.Y/_runs/<run_id>/
-  ATTEMPT.md    — what you built, decisions made, self-audit
-  EVIDENCE.md   — screenshot index, test results
-  evidence/     — actual screenshots, logs
-```
-
-Evidence must prove the PRD success criteria are met.
-
-Note: Attempts are lane-contained. Root `/attempts/**` is legacy.
-
----
-
-## Step 6: Push
-
-```bash
-git add -A && git commit -m "Attempt: <lane> <description>"
-git push
-```
-
-This triggers Cloudflare preview deploy.
-
----
-
-## Invariants (Non-Negotiable)
-
-1. **Lane declaration is mandatory** — no lane, no attempt
-2. **Epoch declaration is mandatory** — no epoch, results are not comparable
-3. **Canon is read-only** — do not modify `/canon/**`
-4. **PRD is authoritative** — if it's not in the PRD, don't build it
-5. **Evidence is required** — assertions without proof are invalid
-6. **Conflicts require STOP** — if you detect conflicting instructions, stop and report
-
----
-
-## If You Detect a Conflict
-
-If ANY of the following are true, STOP immediately and report to the human:
-
-- The PRD contradicts Canon constraints
-- The lane is unclear or undeclared
-- Required files are missing
-- Previous attempt artifacts conflict with current instructions
-
-Do NOT guess. Do NOT synthesize. Report the conflict.
-
----
-
-## Quick Reference
-
-| What | Where |
-|------|-------|
-| Lane architecture | `/docs/appendices/product-lanes.md` |
-| Lane implementation surfaces | `/docs/appendices/lane-implementation-surfaces.md` |
-| Epoch semantics | `/docs/appendices/epochs.md` |
-| Constraints | `/canon/constraints.md` |
-| Definition of Done | `/canon/definition-of-done.md` |
-| Deploy contract | `/infra/contracts/build-output.md` |
-| Attempt lifecycle | `/docs/ATTEMPTS.md` |
-| Human workflow | `/docs/ATTEMPT_KICKOFF.md` |
-
----
-
-## The Rule
-
-If it's not in the repo, it doesn't exist.
-
-This file IS the prompt. Follow it exactly.
-
-
-
---------------------------------------------------------------------------------
-📄 File: docs/ATTEMPTS.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://docs/attempts
-title: "Attempt Lifecycle"
-audience: docs
-exposure: nav
-tier: 1
-voice: neutral
-stability: stable
-tags: ["docs", "implementation", "attempts", "lifecycle", "orientation"]
----
-
-# 🧭 Attempt Lifecycle — Orientation
-
-> **If the repository is dirty, conclusions drawn from it are invalid.**
-
-This document explains the mental model behind attempts: what they are, why they exist, and how they fit together.
-
-**For step-by-step procedures, see:** `/docs/ATTEMPT_KICKOFF.md`  
-**For the agent entry point, see:** `/docs/AGENT_KICKOFF.md`
-
----
-
-## 📌 Core Principles
-
-1. **One active implementation per lane:** `products/<lane>/src/` is disposable; prior attempts are preserved by git history + sealed records.
-2. **PRD lanes are independent:** Each product lane (website, ai-navigation, agent-skill) has its own PRD, attempts, and lifecycle. Lanes share canon, not lifecycle.
-3. **PRD versions are first-class:** A PRD version can have multiple attempts.
-4. **Provenance is truth:** `META.json` stores who made what (tool, agent, model) AND which lane, not branch names.
-5. **Artifacts always merge:** Even failed attempts contribute learnings.
-6. **Production is explicit:** Only the `prod` branch deploys to production.
-
-> **Every attempt MUST declare a lane before registration. Attempts without a lane are invalid.**
-
-See `/docs/appendices/product-lanes.md` for the multi-lane architecture.
-
----
-
-## 🌿 Branch Roles
-
-| Branch | Purpose | Can Be Nuked? |
-|--------|---------|---------------|
-| `prod` | Live production deployment | ❌ Never |
-| `main` | Experiment aggregation + history + PRD truth | ⚠️ With care |
-| Agent branches | Ephemeral workspaces (Cursor worktrees, etc.) | ✅ Always |
-
-> **Branch names are convenience. Provenance lives in META.json.**
-
-See `/docs/CLOUDFLARE_CONFIG.md` for deploy behavior.
-
----
-
-## 🧠 What is an Attempt?
-
-An **attempt** is a bounded effort to implement a specific PRD version. When an attempt is complete (or abandoned), it is **sealed**:
-
-- No further work is done on that attempt
-- Evidence is captured
-- `META.json` records provenance + sealed commit SHA
-- Artifacts merge to `main`
-
-Multiple attempts against the same PRD version are expected (fail, retry with different approach).
-
-### Attempt Origin Variations
-
-Attempts may originate from different sources while targeting the same PRD:
-
-- Different tools (Cursor, VS Code, CLI)
-- Different AI models (opus-4.5, gpt-4o, claude-sonnet)
-- Different approaches or architectures
-- The same prompt interpreted differently
-
-Parallel agent runs are treated as distinct attempts. Provenance tracking ensures they can be compared meaningfully.
-
-See `/odd/appendices/quantum-development.md` for the orientation model behind this practice.
-
----
-
-## 🧹 Fresh Start Requirement
-
-**Attempts must start from a blank slate.**
-
-`attempt:nuke --lane <lane>` deletes `products/<lane>/src/` and removes lane-local framework configs so the agent can choose any stack that satisfies the deploy contract.
-
-This ensures:
-- No inherited UI patterns
-- No framework bias (React, Vue, Svelte — all valid)
-- True independence between attempts
-- No cross-lane contamination
-
-See `/docs/appendices/lane-implementation-surfaces.md` for the locked folder contract.
-
----
-
-## 🚀 How Attempts Work (Current Model)
-
-### During an Attempt
-
-1. **Each agent starts in its own workspace** (Cursor worktree, branch, etc.)
-2. **Declare lane and register** (lane declaration is MANDATORY):
-   ```bash
-   npm run attempt:register -- --lane website --tool cursor --agent a --model "opus-4.5"
-   npm run attempt:nuke -- --lane website
-   ```
-3. **Build from lane PRD** — implement against the lane's PRD (e.g., `/docs/PRD/website/PRD.md`)
-4. **Write artifacts** to `products/<lane>/attempts/prd-vX.Y/_runs/<run_id>/`
-5. **Push** — triggers Cloudflare preview
-
-### After All Agents Finish
-
-A human runs:
-```bash
-npm run attempt:finalize -- --prd vX.Y
-```
-
-This assigns `attempt-001`, `attempt-002`, etc. based on completion order.
-
-### Collision Avoidance
-
-Attempt numbers are assigned **after** work completes, not before.
-
-`attempt:finalize` sorts completed runs and assigns attempt numbers deterministically. No registry, no race conditions.
-
----
-
-## 📁 Folder Structure
-
-```
-/products/                      # lane implementation surfaces (self-contained)
-  website/
-    src/                        # website source (disposable)
-    dist/                       # website build output (not committed)
-    attempts/                   # website lane attempts (CANONICAL)
-      prd-v1.0/
-        PRD.md                  # frozen PRD for this version
-        _runs/                  # in-progress runs (before finalize)
-          <run_id>/
-            META.json
-            ATTEMPT.md
-            EVIDENCE.md
-            evidence/
-        attempt-001/            # finalized attempts
-          META.json             # canonical pointers + provenance + lane
-          ATTEMPT.md
-          EVIDENCE.md
-          evidence/
-        attempt-002/
-          ...
-  ai-navigation/
-    src/                        # ai-navigation source (disposable)
-    dist/                       # ai-navigation build output (not committed)
-    attempts/                   # ai-navigation lane attempts
-      prd-v1.0/
-        ...
-  agent-skill/
-    src/                        # agent-skill source (disposable)
-    dist/                       # agent-skill build output (not committed)
-    attempts/                   # agent-skill lane attempts
-      prd-v1.0/
-        ...
-/infra/scripts/                 # build scripts (persist across attempts)
-/docs/PRD/                      # active PRDs organized by lane
-  website/PRD.md                # website lane PRD
-  ai-navigation/PRD.md          # ai-navigation lane PRD
-  agent-skill/PRD.md            # agent-skill lane PRD
-/attempts/                      # LEGACY (read-only, see /attempts/README.md)
-/public/content/                # generated (by sync script)
-```
-
-## Attempt Location (Canonical)
-
-All attempt artifacts are lane-contained:
-
-```
-/products/<lane>/attempts/prd-vX.Y/attempt-NNN/
-```
-
-**Notes:**
-- Root `/attempts/**` is legacy and read-only
-- Evidence for public verification is always served from the deployed build at: `/_evidence/`
-
-**Locked folder structure:** `/products/<lane>/attempts/prd-vX.Y/attempt-NNN/`
-
-Do NOT use:
-- `/attempts/<lane>/prd-vX.Y/attempt-NNN/` (legacy)
-- `/attempts/prd-vX.Y/<lane>/`
-- `/products/<lane>/attempts/attempt-NNN/` (missing PRD version)
-
----
-
-## 📎 META.json Schema
-
-Each attempt contains a `META.json` with provenance, lane, and canonical pointers:
-
-```json
-{
-  "lane": "website",
-  "prd_version": "v1.0",
-  "epoch_id": "E0002-multi-lane-era",
-  "run_id": "a1b2c3d4",
-  "attempt": "001",
-  
-  "tool": "cursor",
-  "agent": "a",
-  "model": "opus-4.5",
-  
-  "lane_root": "products/website",
-  "dist_dir": "products/website/dist",
-  
-  "worktree_path": "/path/to/worktree",
-  "branch": "run/website/v1.0/cursor/a/opus-45/a1b2c3d4",
-  "git_head": "abc123...",
-  
-  "registered_at": "2026-01-16T10:00:00Z",
-  "completed_at": "2026-01-16T12:00:00Z",
-  "finalized_at": "2026-01-16T14:00:00Z",
-  
-  "status": "CLOSED",
-  "preview_url": "https://run-website-v10-cursor-a-opus-45-a1b2c3d4.klappy-dev.pages.dev",
-  "evidence_index": ["evidence/desktop.png", "evidence/mobile.png"]
-}
-```
-
-**Lane field is REQUIRED.** Valid values: `website`, `ai-navigation`, `agent-skill`
-
-**Epoch field is REQUIRED.** If `epoch_id` is missing, the attempt is not comparable to other attempts by default. See `/docs/appendices/epochs.md`.
-
-**Key insight:** The commit SHA + provenance fields + lane + epoch are truth. Branch names and tags are convenience.
-
----
-
-## 📦 Artifacts Always Merge
-
-**Failed attempts still contribute learnings.**
-
-| Output | Merge to main? |
-|--------|----------------|
-| Artifacts (attempt folder, evidence, PRD patches) | **Always** |
-| Code (`products/<lane>/src`, components, etc.) | **Only if Champion** |
-
-### Two Phases Per Attempt
-
-1. **Artifacts merge** (always)
-   - Seal attempt folder
-   - Commit evidence and closure record
-   - Merge to `main`
-
-2. **Code promotion** (only if winner)
-   - Champion's code merges to `main`
-   - `prod` fast-forwards to `main`
-   - Non-winners keep preview URLs but code stays on attempt branch
-
-This ensures every attempt contributes to the knowledge base.
-
----
-
-## 🔄 What Evolves vs. What is Frozen
-
-| Category | Evolves? | Notes |
-|----------|----------|-------|
-| `/canon/**` | ✅ Yes | Living orientation docs (shared across lanes) |
-| `/docs/PRD/<lane>/PRD.md` | ✅ Yes | Active PRD per lane |
-| `/products/<lane>/attempts/prd-vX.Y/PRD.md` | ❌ No | Frozen snapshot |
-| `/products/<lane>/attempts/*/attempt-NNN/*` | ❌ No | Sealed record + evidence |
-
-**Note:** Each lane evolves independently. Changes to the website PRD do not affect agent-skill attempts.
-
----
-
-## 💡 Why This Structure?
-
-- **No filesystem sprawl:** One `products/<lane>/src/` per lane, not `/app-v1`, `/app-v2`, etc.
-- **PRD-first:** Clear hierarchy of what was attempted
-- **Retry-friendly:** Multiple attempts per PRD version is expected
-- **Provenance is truth:** `META.json` ensures attempts are interpretable even if branch names drift
-- **Self-contained:** Each attempt has everything needed to understand it
-
----
-
-## 🔮 Resurrection
-
-To resurrect any sealed attempt:
-
-```bash
-git checkout <sealed_commit>
-npm install
-npm run build
-# Deploy to preview or production as needed
-```
-
-The attempt folder contains everything needed:
-- Exact code state (via commit SHA)
-- Evidence (screenshots, logs)
-- Provenance (who/what made it)
-- Deploy history (URLs where it ran)
-
----
-
-## 📋 Current Policies
-
-| Decision | Answer |
-|----------|--------|
-| Are preview deploys required for sealing? | Required for UI changes, optional for doc-only |
-| Do we preserve attempt previews permanently? | No — we preserve links + evidence |
-| Do failed attempts merge to main? | Artifacts yes, code no |
-| How do parallel agents avoid collisions? | `finalize` assigns numbers after completion |
-| Must lane src be reset between attempts? | Yes, via `attempt:nuke --lane <lane>` (blank slate) |
-| What branch is production? | `prod` (never nuked, explicit promotion only) |
-
----
-
-## 🛠️ Tooling Summary
-
-| Command | Purpose |
-|---------|---------|
-| `npm run attempt:register -- --lane <lane> --tool <t> --agent <id> --model <m>` | Register run with lane + provenance |
-| `npm run attempt:nuke -- --lane <lane>` | Blank slate — delete `products/<lane>/src` |
-| `npm run attempt:submit` | Commit + push (triggers CF preview) |
-| `npm run attempt:finalize -- --lane <lane> --prd vX.Y` | Assign attempt numbers for lane |
-| `npm run attempt:promote -- --lane <lane> --prd vX.Y --attempt 001` | Promote lane champion to production |
-| `npm run attempt:cleanup` | Prune stale worktrees and branches |
-
-**Lane is required for register, nuke, finalize, and promote commands.**
-
----
-
-## 🔗 Related Documents
-
-- **Product Lanes Architecture: `/docs/appendices/product-lanes.md`** (READ FIRST)
-- **Interface Contracts: `/interfaces/index.md`** (semver'd compatibility promises)
-- **Lane Build Layout: `/docs/appendices/lane-build-layout.md`** (how lanes avoid /src and /dist collisions)
-- Step-by-step workflow: `/docs/ATTEMPT_KICKOFF.md`
-- Agent entry point: `/docs/AGENT_KICKOFF.md`
-- Deploy behavior: `/docs/CLOUDFLARE_CONFIG.md`
-- Decision log: `/odd/decisions/`
-- Quantum Development: `/odd/appendices/quantum-development.md`
-- Repo Truth: `/docs/appendices/repo-truth.md`
-- Drift Checks: `/docs/appendices/drift-checks.md`
-
-
-
---------------------------------------------------------------------------------
-📄 File: docs/ATTEMPT_KICKOFF.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://docs/attempt-kickoff
-title: "Attempt Workflow (Human)"
-audience: docs
-exposure: nav
-tier: 1
-voice: neutral
-stability: stable
-tags: ["docs", "implementation", "attempts", "workflow", "human"]
----
-
-# 🚀 Attempt Workflow (Human)
-
-This document describes the **human workflow** for running attempts.
-
-**For agents:** Go directly to `/docs/AGENT_KICKOFF.md` — that is the canonical agent entry point.
-
----
-
-## Canonical Lane Kickoff Prompts
-
-Agents do NOT use one-off prompts.
-
-All attempts must start from the lane's canonical kickoff prompt:
-
-- Website: `/infra/prompts/attempt-kickoff/website.md`
-- AI Navigation: `/infra/prompts/attempt-kickoff/ai-navigation.md`
-- Agent Skill: `/infra/prompts/attempt-kickoff/agent-skill.md`
-
-Bootstrap (optional): `/infra/prompts/attempt-kickoff/BOOTSTRAP.md`
-
----
-
-## E0003.1 Completion Rule (Evidence Discoverable)
-
-An attempt is NOT complete unless its deployed build exposes **discoverable** evidence.
-
-**Required URLs (must return HTTP 200):**
-
-- `/_evidence/index.html` — human-browsable evidence index
-- `/_evidence/index.json` — machine inventory
-- `/_evidence/EVIDENCE.md` — summary + links
-
-**Required proof assets:**
-
-- At least **1 screenshot** in `/_evidence/screenshots/`
-- AND at least **1 recording** in `/_evidence/recordings/` OR **3 screenshots total**
-
-Markdown alone does not count as proof.
-
-**Build enforcement:**
-
-When `.attempt.json` exists:
-- Build FAILS if evidence folder is missing
-- Build FAILS if required documents are missing
-- Build FAILS if proof assets are insufficient
-- Build FAILS if index generation fails
-
-**If `/_evidence/index.html` returns 404, the attempt is INVALID.**
-
-See `/docs/decisions/D0014-e0003-evidence-first-era.md` for the epoch decision.
-
----
-
-## ⚠️ Before Starting
-
-1. **Identify which lane this attempt belongs to:**
-   - `website` — human-facing UI/UX
-   - `ai-navigation` — AI layer over documentation
-   - `agent-skill` — agent cognitive framework
-2. Checkout `main`
-3. Ensure repository is clean:
-   - `git status` shows nothing to commit
-4. Commit all changes that define the experiment:
-   - Lane PRD (e.g., `/docs/PRD/website/PRD.md`)
-   - Contracts (`/infra/contracts/`)
-   - Canon docs (if updated)
-5. (Optional) Create worktrees if running parallel agents
-6. (Optional) Run `npm run attempt:cleanup` to prune stale branches/worktrees
-
-**Rule:**  
-If it is not committed before Cursor starts, it does not exist.
-
-**Rule:**  
-Every attempt MUST declare a lane. Attempts without a lane are invalid.
-
-**Rule:**  
-Before registration, declare the current epoch. Epoch determines comparability of outcomes. If `epoch_id` is missing, results must not be compared to prior attempts.
-
-See `/docs/appendices/product-lanes.md` for the multi-lane architecture.  
-See `/docs/appendices/epochs.md` for epoch semantics.
-
----
-
-## 🤖 Starting Agents
-
-Point each agent at:
-
-**`/docs/AGENT_KICKOFF.md`**
-
-That file is the canonical, self-contained entry point. Do not paste external prompts.
-
-The file contains all instructions agents need:
-- Lane declaration
-- Registration
-- Nuke
-- Build
-- Evidence
-
----
-
-## ✅ After All Agents Finish
-
-On `main` branch:
-
-```bash
-# 1. Import artifact folders from all attempt branches for the lane
-npm run attempt:import -- --lane <lane> --prd <active>
-```
-
-**Invariant:** This command **MUST NOT** merge application code (`products/<lane>/src`).  
-Only sealed attempt artifacts (`_runs/` folders) are imported.
-
-```bash
-# 2. Finalize runs (assign attempt-001, 002…)
-npm run attempt:finalize -- --lane <lane> --prd <active>
-
-# 3. Review evidence + preview URLs in each attempt folder
-
-# 4. Promote winner to production
-npm run attempt:promote -- --lane <lane> --prd <active> --attempt 001
-```
-
-**Note:** `<lane>` is the product lane (e.g., `website`).  
-**Note:** `<active>` is the PRD version from the lane's PRD (e.g., `v1.0`).
-
----
-
-## 🛠️ CLI Reference
-
-| Command | Purpose |
-|---------|---------|
-| `npm run attempt:nuke -- --lane <l>` | Blank slate — delete `products/<lane>/src`, lane configs |
-| `npm run attempt:register -- --lane <l> --tool <t> --agent <id> --model <m>` | Register run with lane + provenance |
-| `npm run attempt:submit` | Commit + push (triggers CF preview) |
-| `npm run attempt:import -- --lane <l> --prd <v>` | Pull artifacts from branches to main |
-| `npm run attempt:finalize -- --lane <l> --prd <v>` | Assign attempt numbers for lane |
-| `npm run attempt:promote -- --lane <l> --prd <v> --attempt <n>` | Merge lane champion → main → prod |
-| `npm run attempt:cleanup` | Prune stale worktrees and branches |
-
-**Lane is required for register, import, finalize, and promote commands.**
-Valid lanes: `website`, `ai-navigation`, `agent-skill`
-
----
-
-## 📁 Artifact Locations
-
-Attempt artifacts live at (lane-contained):
-
-```
-/products/<lane>/attempts/prd-vX.Y/attempt-NNN/
-```
-
-**During attempt:**
-```
-products/<lane>/attempts/prd-<version>/_runs/<run_id>/
-```
-
-**After finalize:**
-```
-products/<lane>/attempts/prd-<version>/attempt-001/
-products/<lane>/attempts/prd-<version>/attempt-002/
-```
-
-**Locked folder structure:** `/products/<lane>/attempts/prd-vX.Y/attempt-NNN/`
-
-**Note:** Root `/attempts/**` is legacy and read-only. See `/attempts/README.md`.
-
-**Completion gates (E0003+):**
-- Branch pushed to origin
-- Cloudflare preview deployment is live
-- HTTP 200 for:
-  - `/`
-  - `/_evidence/`
-- `/_evidence/` includes:
-  - index.html
-  - index.json
-  - ATTEMPT.md
-  - EVIDENCE.md
-  - META.json
-  - proof assets (screenshots/recording per contract)
-
----
-
-## 📜 Deploy Contract
-
-See `/infra/contracts/build-output.md`
-
-- Output must be `products/<lane>/dist/index.html`
-- Must load `/public/content/manifest.json`
-- Stack choice is unrestricted
-- No client secrets
-
-See `/docs/appendices/lane-implementation-surfaces.md` for the locked folder contract.
-
----
-
-## 🔗 Cloudflare Previews
-
-Any `git push` to an attempt branch creates a preview:
-
-```
-https://<branch-slug>.klappy-dev.pages.dev
-```
-
-Preview URLs are evidence artifacts, not permanent guarantees.
-
----
-
-## 🚨 Online Evidence Requirement (Non-Negotiable)
-
-**An attempt is INVALID unless it provides online evidence.**
-
-Before an attempt can be marked complete, the agent MUST:
-
-1. **Push the attempt branch to `origin`**
-2. **Provide the Cloudflare Preview URL** for the branch
-3. **Provide the online Evidence URL** (where EVIDENCE.md is viewable)
-
-| Condition | Result |
-|-----------|--------|
-| Agent cannot push the branch | Attempt is **INVALID** |
-| Cloudflare Preview URL missing | Attempt is **INVALID** |
-| Evidence URL missing | Attempt is **INVALID** |
-| "Works on my machine" only | Attempt is **INVALID** |
-
-Local builds and previews are allowed during development, but they **do not satisfy** the Definition of Done.
-
-See `/docs/appendices/online-evidence.md` for the full requirement.
-
----
-
-## 🔑 Key Mental Model
-
-| Principle | Meaning |
-|-----------|---------|
-| Humans define the experiment | PRD, contracts, canon are committed before agents start |
-| Agents execute in isolation | Each agent has its own worktree/branch |
-| Git commits define reality | Uncommitted work doesn't exist |
-| Cleanup is epistemic, not cosmetic | Dirty repos invalidate conclusions |
-| Promotion is the only path to prod | Champions merge to main, then fast-forward to prod |
-
----
-
-## 🔗 Related Documents
-
-- **Product Lanes Architecture: `/docs/appendices/product-lanes.md`** (READ FIRST)
-- **Online Evidence Requirement: `/docs/appendices/online-evidence.md`** (no URL = invalid attempt)
-- **Preview Guide: `/docs/PREVIEW.md`** (local + Cloudflare preview how-to)
-- **Interface Contracts: `/interfaces/index.md`** (semver'd compatibility promises)
-- **Lane Build Layout: `/docs/appendices/lane-build-layout.md`** (how lanes avoid /src and /dist collisions)
-- **Agent Entry Point: `/docs/AGENT_KICKOFF.md`** (canonical agent instructions)
-- Attempt lifecycle (deep): `/docs/ATTEMPTS.md`
-- Deploy contract: `/infra/contracts/build-output.md`
-- Cloudflare config: `/docs/CLOUDFLARE_CONFIG.md`
-- Decision log: `/docs/decisions/`
-- Repo truth principle: `/docs/appendices/repo-truth.md`
-- Drift Checks: `/docs/appendices/drift-checks.md`
-
-
-
---------------------------------------------------------------------------------
-📄 File: docs/ATTEMPT_RECORD_PACK.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://docs/attempt-record-pack
-title: "Attempt Record Packs"
-audience: docs
-exposure: nav
-tier: 3
-voice: neutral
-stability: stable
-tags: ["docs", "implementation", "attempts", "records", "evidence"]
----
-
-# 📦 Attempt Record Packs
-
-An attempt produces immutable evidence and metadata that MAY be merged
-before a winner is chosen.
-
-## SHA Model
-
-Each attempt tracks:
-
-- `attempt_head_sha`: build + evidence commit
-- `record_pack_merge_sha`: merge of attempt records into main
-- `champion_merge_sha`: merge of winning src (optional)
-
-Auditability is preserved by never reusing SHAs.
-
-## Evidence Location
-
-Evidence is always exposed at:
-
-```
-/_evidence/
-```
-
-This URL must return HTTP 200 on any deployed build.
-
-## Minimum Proof
-
-- 1 video recording OR
-- 3 screenshots
-
-Markdown alone does not count.
-
-## Merge Policy
-
-Attempt records MAY be merged to main before a champion is selected.
-This preserves auditability without blocking parallel work.
-
-The winning attempt's source code is merged separately via `champion_merge_sha`.
-
-
-
---------------------------------------------------------------------------------
-📄 File: docs/CLOUDFLARE_CONFIG.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://docs/cloudflare-config
-title: "Cloudflare Pages Configuration"
-audience: docs
-exposure: nav
-tier: 2
-voice: neutral
-stability: stable
-tags: ["docs", "implementation", "cloudflare", "deploy", "configuration"]
----
-
-# ☁️ Cloudflare Pages Configuration
-
-This document describes how Cloudflare Pages should be configured for the klappy.dev repository.
-
-**Scope:** Deploy behavior only. For attempt workflow mechanics, see `/docs/ATTEMPTS.md`.
-
----
-
-## 🌿 Branch Roles
-
-| Branch | Purpose | Deploy Target |
-|--------|---------|---------------|
-| `prod` | Live production deployment | **Production URL** (klappy.dev) |
-| `main` | Experiment aggregation + history | Preview URL only |
-| Any other branch | Agent workspaces, Cursor worktrees, experiments | Preview URLs |
-
-**Note:** Cloudflare does not require specific branch naming. Any non-`prod` branch that builds successfully gets a preview URL.
-
----
-
-## ⚠️ Critical Configuration
-
-### Production Branch
-
-**Set the production branch to `prod`, NOT `main`.**
-
-In Cloudflare Pages → Settings → Builds & deployments:
-
-```
-Production branch: prod
-```
-
-This ensures:
-- Only promoted, verified code goes to production
-- `main` can be used for experimentation without risk
-- Agents can never accidentally deploy to production
-
-### Preview Deployments
-
-**Enable preview deployments for ALL branches.**
-
-In Cloudflare Pages → Settings → Builds & deployments:
-
-```
-Preview branches: All non-production branches
-```
-
-This ensures:
-- Every agent branch gets a preview URL
-- Cursor worktrees get preview URLs automatically
-- Reviewers can compare multiple attempts side-by-side
-
----
-
-## 🛠️ Build Configuration
-
-Each lane is deployed as a separate Cloudflare Pages project.
-
-```
-Root directory:    .
-Build command:     npm run build -- --lane <lane>
-Build output:      products/<lane>/dist
-```
-
-For example, the `website` lane:
-```
-Root directory:    .
-Build command:     npm run build -- --lane website
-Build output:      products/website/dist
-```
-
-See `/docs/appendices/lane-implementation-surfaces.md` for the locked folder contract.
-
-> **Legacy / Transitional note (pre-D0013):** Some existing deploy configurations may still publish repo-root `/dist/`. That output is no longer canonical; the canonical build output for lane deployments is `products/<lane>/dist/`.
-
----
-
-## 📋 Expected Behavior
-
-| Action | Result |
-|--------|--------|
-| Push to `prod` | Deploys to klappy.dev (production) |
-| Push to `main` | Deploys to preview URL (main.klappy-dev.pages.dev) |
-| Push to any other branch | Deploys to preview URL (`<branch-slug>.klappy-dev.pages.dev`) |
-| `npm run attempt:promote` | Merges champion to `main`, fast-forwards `prod` → deploys to production |
-
-### Promotion Semantics
-
-1. **Artifacts merge first** — attempt evidence merges to `main` before promotion
-2. **Champion code merges** — winning attempt's code merges to `main`
-3. **`prod` fast-forwards** — `prod` fast-forwards to match `main`
-4. **Cloudflare deploys** — `prod` push triggers production deployment
-
-Only champion code reaches production. Losing attempts contribute artifacts but not code.
-
----
-
-## ✅ Verification
-
-After configuring, verify:
-
-1. **Push to `prod`** → klappy.dev updates
-2. **Push to `main`** → main.klappy-dev.pages.dev updates (NOT klappy.dev)
-3. **Push to any agent branch** → preview URL generates
-
----
-
-## 💡 Why This Matters
-
-> **Production and experimentation must never share a mutable surface.**
-
-This configuration ensures:
-- Production is always stable
-- Experiments are always disposable
-- Nuclear resets on `main` never affect production
-- Agents can work in parallel without coordination
-- One winner ships; losers don't pollute production
-
----
-
-## 📝 Note on Branch Naming
-
-> **Branch names are optional convenience. Provenance lives in META.json.**
-
-Cloudflare does not depend on specific branch naming conventions. Any branch that:
-- Is not `prod`
-- Produces a valid `products/<lane>/dist/` on build
-
-Will get a preview URL.
-
-The canonical record of "who made what" lives in `META.json`, not in the branch name.
-This keeps the system antifragile — branch naming can drift without breaking provenance.
-
----
-
-## 🔗 Related Documents
-
-- Attempt workflow: `/docs/ATTEMPTS.md`
-- Deploy contract: `/infra/contracts/build-output.md`
-- **Interface Contracts: `/interfaces/index.md`** (semver'd compatibility promises)
-- **Lane Build Layout: `/docs/appendices/lane-build-layout.md`** (how lanes avoid /src and /dist collisions)
-- Decision: `/docs/decisions/D0001-prod-branch-is-production.md`
-
-
-
---------------------------------------------------------------------------------
 📄 File: docs/CONTENT-MAP.md
 --------------------------------------------------------------------------------
 
@@ -1680,40 +611,48 @@ This map provides navigational links to ALL content in the repository, including
 | File | Purpose |
 |------|---------|
 | [/canon/README.md](/canon/README.md) | Canon index and orientation |
-| [/canon/constraints.md](/canon/constraints.md) | Baseline assumptions |
-| [/canon/definition-of-done.md](/canon/definition-of-done.md) | Completion criteria |
-| [/canon/decision-rules.md](/canon/decision-rules.md) | Decision heuristics |
-| [/canon/verification-and-evidence.md](/canon/verification-and-evidence.md) | Evidence standards |
-| [/canon/epistemic-surface-extraction.md](/canon/epistemic-surface-extraction.md) | **ESE** — Making screenshots/recordings legible |
-| [/canon/visual-proof.md](/canon/visual-proof.md) | Visual proof standards |
-| [/canon/epistemic-hygiene.md](/canon/epistemic-hygiene.md) | Epistemic smell triggers |
-| [/canon/epistemic-modes.md](/canon/epistemic-modes.md) | Operational modes |
+| [/canon/constraints/README.md](/canon/constraints/README.md) | Baseline assumptions |
+| [/canon/constraints/definition-of-done.md](/canon/constraints/definition-of-done.md) | Completion criteria |
+| [/canon/constraints/decision-rules.md](/canon/constraints/decision-rules.md) | Decision heuristics |
+| [/canon/constraints/verification-and-evidence.md](/canon/constraints/verification-and-evidence.md) | Evidence standards |
+| [/canon/constraints/visual-proof.md](/canon/constraints/visual-proof.md) | Visual proof standards |
+| [/canon/constraints/epistemic-challenge.md](/canon/constraints/epistemic-challenge.md) | Epistemic challenge governance |
+| [/canon/methods/epistemic-surface-extraction.md](/canon/methods/epistemic-surface-extraction.md) | **ESE** — Making screenshots/recordings legible |
+| [/canon/diagnostics/epistemic-hygiene.md](/canon/diagnostics/epistemic-hygiene.md) | Epistemic smell triggers |
+| [/canon/definitions/epistemic-modes.md](/canon/definitions/epistemic-modes.md) | Operational modes |
 
 **Subdirectories:**
-- `/canon/agents/` — Agent role definitions
-- `/canon/constraints/` — Specific constraints
+- `/canon/constraints/` — Load-bearing constraints and governance rules
+- `/canon/definitions/` — Formal vocabulary and load-bearing concepts
+- `/canon/diagnostics/` — System health signals and decay detection
+- `/canon/methods/` — Durable application patterns
+- `/canon/principles/` — Canon-level principle articulations
 - `/canon/decisions/` — Canon decision records
-- `/canon/defaults/` — Default postures
-- `/canon/documentation/` — Doc standards
-- `/canon/meta/` — Epistemic architecture
-- `/canon/principles/` — Canon principles
+- `/canon/defaults/` — Default operational postures
+- `/canon/meta/` — Metadata, templates, and architecture
 - `/canon/resonance/` — External pattern alignment (antifragile, lean-startup, ooda-loop, sprint)
+- `/canon/apocrypha/` — Deprecated fragments and system-voice reflections
 
 ### Implementation Docs (`/docs/`)
 
 | File | Purpose |
 |------|---------|
 | [/docs/README.md](/docs/README.md) | Docs index |
-| [/docs/WHY.md](/docs/WHY.md) | **Why oddkit exists** — Start here for oddkit |
-| [/docs/ATTEMPTS.md](/docs/ATTEMPTS.md) | Attempt lifecycle |
+| [/docs/oddkit/WHY.md](/docs/oddkit/WHY.md) | **Why oddkit exists** — Start here for oddkit |
+| [/docs/appendices/ATTEMPTS.md](/docs/appendices/ATTEMPTS.md) | Attempt lifecycle |
 | [/docs/TRUTH_MAP.md](/docs/TRUTH_MAP.md) | Authoritative sources per domain |
 
 **Subdirectories:**
-- `/docs/oddkit/` — oddkit reference (ABOUT, SYSTEM-MAP, modes)
-- `/docs/agents/` — Agent patterns (librarian, validation, discovery)
+- `/docs/oddkit/` — oddkit reference (ABOUT, SYSTEM-MAP, modes, WHY)
+- `/docs/agents/` — Agent role definitions and patterns (librarian, validation, discovery, ODD agents)
 - `/docs/orchestrator/` — Orchestrator guides (QUICKSTART)
 - `/docs/appendices/` — Implementation appendices
 - `/docs/decisions/` — Implementation decision records
+- `/docs/audits/` — Epistemic drift checks, reviews, evaluations
+- `/docs/history/` — What happened, with evidence
+- `/docs/plans/` — Forward-looking design & planning
+- `/docs/migrations/` — How we change the system
+- `/docs/infra/` — Infrastructure documentation
 - `/docs/promotions/` — Canon promotion process
 
 ---
@@ -1727,7 +666,7 @@ This map provides navigational links to ALL content in the repository, including
 | File | Purpose |
 |------|---------|
 | [/apocrypha/artifacts/README.md](/apocrypha/artifacts/README.md) | Artifacts index |
-| [/apocrypha/artifacts/SURFACE-EXTRACTION.md](/apocrypha/artifacts/SURFACE-EXTRACTION.md) | **PROMOTED** → [/canon/epistemic-surface-extraction.md](/canon/epistemic-surface-extraction.md) |
+| [/apocrypha/artifacts/SURFACE-EXTRACTION.md](/apocrypha/artifacts/SURFACE-EXTRACTION.md) | **PROMOTED** → [/canon/methods/epistemic-surface-extraction.md](/canon/methods/epistemic-surface-extraction.md) |
 | [/apocrypha/artifacts/apocrypha-visual-language.md](/apocrypha/artifacts/apocrypha-visual-language.md) | Visual language concepts |
 | [/apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.surface.md](/apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.surface.md) | System closure surface |
 
@@ -1805,7 +744,7 @@ Active product lanes:
 | Acronym | Expansion | Primary Doc |
 |---------|-----------|-------------|
 | **ODD** | Outcomes-Driven Development | [/odd/README.md](/odd/README.md) |
-| **ESE** | Epistemic Surface Extraction | [/canon/epistemic-surface-extraction.md](/canon/epistemic-surface-extraction.md) |
+| **ESE** | Epistemic Surface Extraction | [/canon/methods/epistemic-surface-extraction.md](/canon/methods/epistemic-surface-extraction.md) |
 | **MCP** | Model Context Protocol | `/interfaces/mcp/` |
 | **PRD** | Product Requirements Document | `/docs/PRD.md` |
 | **ADR** | Architecture Decision Record | `/canon/decisions/decision-record-standard.md` |
@@ -1819,165 +758,15 @@ Active product lanes:
 3. **Looking for how-to?** Start at `/docs/README.md`.
 4. **Looking for rules?** Start at `/canon/README.md`.
 5. **Looking for experiments?** Browse `/apocrypha/`.
-6. **Looking for evidence standards?** See `/canon/verification-and-evidence.md` and `/canon/epistemic-surface-extraction.md`.
+6. **Looking for evidence standards?** See `/canon/constraints/verification-and-evidence.md` and `/canon/methods/epistemic-surface-extraction.md`.
 
 ---
 
 ## See Also
 
 - [Orientation Map](/odd/orientation-map.md) — One-page mental model
-- [ODD Map Navigator](/canon/agents/odd-map-navigator.md) — Agent for navigation
+- [ODD Map Navigator](/docs/agents/odd-map-navigator.md) — Agent for navigation
 - [Three-Tier Hierarchy](/odd/decisions/D0001-three-tier-conceptual-hierarchy.md) — Why ODD/Canon/Docs are separate
-
-
-
---------------------------------------------------------------------------------
-📄 File: docs/DISTILLATION_CLASSIFICATION.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://docs/distillation-classification
-title: "Canon Distillation Classification"
-audience: docs
-exposure: nav
-tier: 3
-voice: neutral
-stability: stable
-tags: ["docs", "implementation", "distillation", "classification", "archive"]
----
-
-# 📊 Canon Distillation Classification
-
-**Status: COMPLETED (with corrections)**
-
-This document tracks the classification of canon files for the progressive distillation effort.
-
-## Summary of Work Completed
-
-- Classified all 57 canon files as portable or implementation-specific
-- Extracted 14 decisions to `/docs/decisions/`
-- Extracted 17 appendices to `/docs/appendices/` (originally 18, 1 re-elevated)
-- Added progressive distillation structure (Title, Subtitle, Description, Outline, Content) to all files
-- Updated cross-references in key canon files
-- **Moved ODD to root level**: `/canon/odd/` → `/odd/`
-- **Re-elevated `progressive-elevation.md`** back to `/odd/appendices/` (it defines the portability ladder itself)
-
-## Post-Distillation Corrections
-
-| File | Original Classification | Corrected Classification | Reason |
-|------|------------------------|-------------------------|--------|
-| `progressive-elevation.md` | IMPLEMENTATION | **ODD** | Defines the five-layer portability model - that's universal methodology, not implementation |
-
-## Classification Criteria
-
-**PORTABLE** = Concepts that could apply to any ODD-following repo
-- No hardcoded paths or tooling references
-- Methodology/philosophy over procedure
-
-**IMPLEMENTATION-SPECIFIC** = Contains this repo's specific implementation details
-- Absolute paths (`/products/`, `/docs/PRD.md`, `/infra/`)
-- CLI commands (`attempt:register`, `attempt:nuke`)
-- Branch names (`prod`, `main`, `attempt/*`)
-- Tool-specific config (Cloudflare Pages, git worktrees)
-- Lane names (`website`, `ai-navigation`, `agent-skill`)
-
----
-
-## Canon Root Files (6 files)
-
-| File | Classification | Notes |
-|------|---------------|-------|
-| `constraints.md` | PORTABLE | Pure methodology |
-| `decision-rules.md` | PORTABLE | Pure heuristics |
-| `definition-of-done.md` | PORTABLE | Pure methodology |
-| `self-audit.md` | PORTABLE | Pure methodology |
-| `visual-proof.md` | PORTABLE | Pure methodology |
-| `completion-report-template.md` | PORTABLE | Pure template |
-
----
-
-## Canon ODD Root Files (7 files)
-
-| File | Classification | Notes |
-|------|---------------|-------|
-| `manifesto.md` | PORTABLE | Pure philosophy |
-| `contract.md` | IMPLEMENTATION | Epoch IDs, paths, META.json schema |
-| `maturity.md` | PORTABLE | Pure methodology |
-| `orientation-map.md` | PORTABLE | Pure mental model |
-| `misuse-patterns.md` | PORTABLE | Pure failure modes |
-| `prompt-architecture.md` | PORTABLE | Pure methodology |
-| `README.md` | STAYS | Index file |
-
----
-
-## Canon ODD Decisions (15 files)
-
-**ALL DECISIONS → docs/decisions/**
-
-| File | Classification | Notes |
-|------|---------------|-------|
-| `D0001-prod-branch-is-production.md` | IMPLEMENTATION | Branch names, CLI, Cloudflare |
-| `D0002-attempt-provenance-required.md` | IMPLEMENTATION | CLI, META.json, paths |
-| `D0003-prd-version-auto-detection.md` | IMPLEMENTATION | Specific paths, CLI |
-| `D0004-repo-truth-cleanup-mandatory.md` | IMPLEMENTATION | CLI commands, paths |
-| `D0005-nuke-safety-guards.md` | IMPLEMENTATION | CLI, branch names, paths |
-| `D0006-dogfooding-requirement.md` | IMPLEMENTATION | klappy.dev specific |
-| `D0007-branch-names-are-convenience.md` | IMPLEMENTATION | Cloudflare, META.json |
-| `D0008-register-before-nuke.md` | IMPLEMENTATION | CLI commands |
-| `D0009-multi-lane-prd-architecture.md` | IMPLEMENTATION | Specific lanes, paths |
-| `D0010-canonical-agent-kickoff.md` | IMPLEMENTATION | Specific paths |
-| `D0011-odd-contract-2.0.0.md` | IMPLEMENTATION | Epoch IDs, paths |
-| `D0012-e0002-transition-interpretation.md` | IMPLEMENTATION | Epoch transitions |
-| `D0013-build-output-lane-scoped-dist.md` | IMPLEMENTATION | Specific paths |
-| `D0014-e0003-evidence-first-era.md` | IMPLEMENTATION | Cloudflare, evidence URLs |
-| `README.md` | STAYS | Index file (will update) |
-
----
-
-## Canon ODD Appendices (25 files)
-
-| File | Classification | Notes |
-|------|---------------|-------|
-| `alignment-reviews.md` | PORTABLE | Pure methodology |
-| `attempt-lifecycle.md` | IMPLEMENTATION | CLI, paths, META.json |
-| `canonical-compression.md` | IMPLEMENTATION | Specific paths |
-| `compilation.md` | IMPLEMENTATION | Paths, npm commands |
-| `compilation-targets.md` | IMPLEMENTATION | Specific paths |
-| `compiled-memory.md` | IMPLEMENTATION | Paths, lanes |
-| `deploy-evidence.md` | IMPLEMENTATION | Cloudflare, paths |
-| `drift-checks.md` | IMPLEMENTATION | npm commands, contracts |
-| `epochs.md` | IMPLEMENTATION | E0003 section is very implementation-specific |
-| `evidence.md` | IMPLEMENTATION | Specific path structure |
-| `evolution-not-automation.md` | PORTABLE | Pure philosophy |
-| `failure-driven-modularity.md` | PORTABLE | Pure methodology |
-| `lane-build-layout.md` | IMPLEMENTATION | Cloudflare, lanes |
-| `lane-implementation-surfaces.md` | IMPLEMENTATION | Cloudflare, lanes |
-| `media-as-learning-layer.md` | PORTABLE | Pure principles |
-| `memory-architecture.proposed.md` | IMPLEMENTATION | Folder patterns |
-| `online-evidence.md` | IMPLEMENTATION | Cloudflare, paths |
-| `product-lanes.md` | IMPLEMENTATION | Specific lanes, paths |
-| `progressive-elevation.md` | **ELEVATED TO ODD** | Defines the portability ladder - paths are examples, principle is universal |
-| `quantum-development.md` | PORTABLE | Pure methodology |
-| `repo-topology.md` | IMPLEMENTATION | All paths |
-| `repo-truth.md` | IMPLEMENTATION | CLI, branch names |
-| `repo-truth-audit.md` | IMPLEMENTATION | Specific files to read |
-| `visual-evolution.md` | PORTABLE | Pure methodology |
-| `README.md` | STAYS | Index file (will update) |
-
----
-
-## Summary
-
-- **PORTABLE (Stay in Canon):** ~18 files
-- **IMPLEMENTATION-SPECIFIC (Move to docs/):** ~32 files (14 decisions + 18 appendices)
-- **Index files (Stay, update references):** ~4 files
-
-## Extraction Order
-
-1. Move all 14 decisions to `docs/decisions/`
-2. Move 18 appendices to `docs/appendices/`
-3. Update README indexes in both locations
-4. Add progressive distillation structure to all files
 
 
 
@@ -2186,119 +975,6 @@ See: `/docs/appendices/attempt-lifecycle.md`
 
 
 --------------------------------------------------------------------------------
-📄 File: docs/PREVIEW.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://docs/preview
-title: "Previewing Lanes and Attempts"
-audience: docs
-exposure: nav
-tier: 3
-voice: neutral
-stability: evolving
-tags: ["docs", "implementation", "preview", "cloudflare", "local"]
----
-
-# 👁️ Previewing Lanes and Attempts
-
-> **Scope:** Local + Cloudflare preview workflows for lanes and attempts.
-
-## Local Preview (Any Lane)
-
-Build the lane:
-
-```bash
-npm run build -- --lane <lane>
-```
-
-Preview the built output:
-
-```bash
-npx wrangler pages dev products/<lane>/dist --port 8788
-```
-
-Open: http://localhost:8788
-
----
-
-## Cloudflare Pages Preview
-
-Each lane is deployed as its own Cloudflare Pages project.
-
-**Build configuration (REQUIRED):**
-
-| Setting | Value |
-|---------|-------|
-| Build command | `npm run build -- --lane <lane>` |
-| Output directory | `products/<lane>/dist` |
-| Root directory | `.` (repo root) |
-
-**Examples:**
-
-| Lane | Build Command | Output Directory |
-|------|--------------|------------------|
-| `website` | `npm run build -- --lane website` | `products/website/dist` |
-| `ai-navigation` | `npm run build -- --lane ai-navigation` | `products/ai-navigation/dist` |
-| `agent-skill` | `npm run build -- --lane agent-skill` | `products/agent-skill/dist` |
-
----
-
-## Troubleshooting
-
-### Wrong lane building
-
-If a Cloudflare Pages build log shows the wrong lane (e.g., `Lane: ai-navigation` when you expected `website`):
-
-1. **Check the build command** — Must explicitly pass `--lane <lane>`
-2. **Check the output directory** — Must match `products/<lane>/dist`
-3. **Verify smart-build.js** — Should NOT use `vite --root` flag
-
-### Build succeeds but site shows wrong content
-
-1. Verify the output directory in Cloudflare Pages settings
-2. Check that `products/<lane>/dist/index.html` exists after build
-3. Ensure `products/<lane>/index.html` exists as the Vite entry point
-
-### Local preview differs from Cloudflare
-
-1. Clear local dist: `rm -rf products/<lane>/dist`
-2. Rebuild: `npm run build -- --lane <lane>`
-3. Use wrangler for local preview (matches Cloudflare environment)
-
----
-
-## Preview URLs
-
-### Branch previews (automatic)
-
-Any `git push` to an attempt/run branch creates a preview:
-
-```
-https://<branch-slug>.klappy-dev.pages.dev
-```
-
-Branch names are slugified (slashes become dashes).
-
-Example:
-- Branch: `run/website/prd-v1.0/cursor/a/claude-opus-4/e2c41bb5`
-- Preview: `https://run-website-prd-v1-0-cursor-a-claude-opus-4-e2c41bb5.klappy-dev.pages.dev`
-
-### Production
-
-Production deploys from the `prod` branch to the primary domain.
-
----
-
-## Related Documents
-
-- Build contract: `/infra/contracts/build-output.md`
-- Lane architecture: `/docs/appendices/product-lanes.md`
-- Cloudflare config: `/docs/CLOUDFLARE_CONFIG.md`
-
-
-
---------------------------------------------------------------------------------
 📄 File: docs/README.md
 --------------------------------------------------------------------------------
 
@@ -2372,11 +1048,11 @@ tags: ["docs", "implementation", "reference", "index"]
 
 | File | Purpose |
 |------|---------|
-| [ATTEMPTS.md](./ATTEMPTS.md) | Attempt lifecycle, CLI commands, artifact locations |
-| [ATTEMPT_KICKOFF.md](./ATTEMPT_KICKOFF.md) | Human workflow for starting attempts |
-| [AGENT_KICKOFF.md](./AGENT_KICKOFF.md) | Canonical agent entry point |
-| [PREVIEW.md](./PREVIEW.md) | Local and Cloudflare preview guide |
-| [CLOUDFLARE_CONFIG.md](./CLOUDFLARE_CONFIG.md) | Deploy configuration |
+| [appendices/ATTEMPTS.md](./appendices/ATTEMPTS.md) | Attempt lifecycle, CLI commands, artifact locations |
+| [appendices/ATTEMPT_KICKOFF.md](./appendices/ATTEMPT_KICKOFF.md) | Human workflow for starting attempts |
+| [agents/AGENT_KICKOFF.md](./agents/AGENT_KICKOFF.md) | Canonical agent entry point |
+| [infra/PREVIEW.md](./infra/PREVIEW.md) | Local and Cloudflare preview guide |
+| [infra/CLOUDFLARE_CONFIG.md](./infra/CLOUDFLARE_CONFIG.md) | Deploy configuration |
 
 ### Reference Documents
 
@@ -2384,8 +1060,8 @@ tags: ["docs", "implementation", "reference", "index"]
 |------|---------|
 | [TRUTH_MAP.md](./TRUTH_MAP.md) | Authoritative source for each domain |
 | [PRD.md](./PRD.md) | PRD orientation and routing |
-| [WHAT_THIS_REPO_IS_NOT.md](./WHAT_THIS_REPO_IS_NOT.md) | Scope boundaries |
-| [context-packs-and-projection-detail.md](./context-packs-and-projection-detail.md) | Detail levels for context pack projection (full, medium, low) |
+| [appendices/WHAT_THIS_REPO_IS_NOT.md](./appendices/WHAT_THIS_REPO_IS_NOT.md) | Scope boundaries |
+| [appendices/context-packs-and-projection-detail.md](./appendices/context-packs-and-projection-detail.md) | Detail levels for context pack projection (full, medium, low) |
 
 ### Templates
 
@@ -2400,12 +1076,22 @@ tags: ["docs", "implementation", "reference", "index"]
 
 | Folder | Purpose | Count |
 |--------|---------|-------|
+| [_incoming/](./_incoming/) | Temporary intake for unclassified documents (Epoch 4 migration) | — |
 | [agent-architecture/](./agent-architecture/) | Agent system design patterns | 1 file |
-| [appendices/](./appendices/) | Implementation-specific appendices | 17 files |
-| [decisions/](./decisions/) | Implementation decision records (ADRs) | 14 files |
+| [agents/](./agents/) | Agent role definitions and guidance | 20 files |
+| [appendices/](./appendices/) | Implementation-specific appendices | 22 files |
+| [audits/](./audits/) | Epistemic drift checks, reviews, evaluations | 3 files |
+| [decisions/](./decisions/) | Implementation decision records (ADRs) | 15 files |
 | [examples/](./examples/) | Case studies and examples | 1 file |
+| [history/](./history/) | What happened, with evidence | 2 files |
+| [infra/](./infra/) | Infrastructure documentation | 3 files |
+| [klappy-dev/](./klappy-dev/) | Project-specific documentation | 3 files |
+| [migrations/](./migrations/) | How we change the system | 2 files |
+| [oddkit/](./oddkit/) | Oddkit subsystem documentation | 7 files |
+| [orchestrator/](./orchestrator/) | Orchestrator reference guides | 5 files |
+| [plans/](./plans/) | Forward-looking design & planning | 1 file |
+| [promotions/](./promotions/) | Canon promotion process | 3 files |
 | [PRD/](./PRD/) | Lane PRDs and template | 3 files |
-| [infra/](./infra/) | Infrastructure documentation | 1 file |
 
 ---
 
@@ -2425,9 +1111,9 @@ tags: ["docs", "implementation", "reference", "index"]
 ┌─────────────────────────────────────────────────┐
 │  Canon (/canon/)                                │
 │  Program constraints                            │
-│  - constraints.md                               │
-│  - definition-of-done.md                        │
-│  - decision-rules.md                            │
+│  - constraints/README.md                        │
+│  - constraints/definition-of-done.md            │
+│  - constraints/decision-rules.md                │
 └─────────────────────────────────────────────────┘
           │
           │ implements
@@ -2435,7 +1121,7 @@ tags: ["docs", "implementation", "reference", "index"]
 ┌─────────────────────────────────────────────────┐
 │  Docs (/docs/)  ← YOU ARE HERE                  │
 │  Implementation details                         │
-│  - ATTEMPTS.md (CLI procedures)                 │
+│  - appendices/ATTEMPTS.md (CLI procedures)      │
 │  - appendices/epochs.md (E0001-E0003)           │
 │  - decisions/D0001-*.md (klappy.dev choices)    │
 └─────────────────────────────────────────────────┘
@@ -2920,9 +1606,9 @@ See [D0001: Three-Tier Conceptual Hierarchy](/odd/decisions/D0001-three-tier-con
 |--------|---------------------|-------|
 | **Universal methodology** | `/odd/` | ODD principles, portable across repos |
 | **Program constraints** | `/canon/` | Shared rules (definition-of-done, decision-rules) |
-| **Deploy workflow** | `/docs/CLOUDFLARE_CONFIG.md` | Branch roles, promotion, Cloudflare setup |
-| **Attempt workflow** | `/docs/ATTEMPTS.md` | Lifecycle, META schema, finalization |
-| **Agent kickoff** | `/docs/AGENT_KICKOFF.md` | Canonical agent entry point |
+| **Deploy workflow** | `/docs/infra/CLOUDFLARE_CONFIG.md` | Branch roles, promotion, Cloudflare setup |
+| **Attempt workflow** | `/docs/appendices/ATTEMPTS.md` | Lifecycle, META schema, finalization |
+| **Agent kickoff** | `/docs/agents/AGENT_KICKOFF.md` | Canonical agent entry point |
 | **Active PRDs** | `/docs/PRD/<lane>/PRD.md` | Current hypothesis per lane |
 | **Content manifest** | `/public/content/manifest.json` | Generated; what exists, disclosure tiers |
 | **ODD decisions** | `/odd/decisions/` | Universal methodology decisions |
@@ -3007,184 +1693,66 @@ These paths contain derived/compiled artifacts. Never edit them directly:
 
 
 --------------------------------------------------------------------------------
-📄 File: docs/WHAT_THIS_REPO_IS_NOT.md
+📄 File: docs/_incoming/README.md
 --------------------------------------------------------------------------------
 
 ---
-uri: klappy://docs/what-this-repo-is-not
-title: "What This Repo Is Not"
+uri: klappy://docs/_incoming
+title: "Incoming Documents (Temporary Intake)"
 audience: docs
-exposure: nav
-tier: 2
+exposure: internal
+tier: 3
 voice: neutral
-stability: stable
-tags: ["docs", "implementation", "scope", "boundaries", "philosophy"]
+stability: evolving
+tags: ["intake", "migration", "epoch-4", "temporary"]
 ---
 
-# 🚫 What This Repo Is Not
+# Incoming Documents
 
-This repository is intentionally not optimized for "everything in one place."
+> Temporary holding area for new documents that have not yet been classified into their Epoch 4 category.
 
-It is optimized for **portability of thinking** without creating documentation sprawl.
+## Why This Exists
 
-## This Is Not a Knowledge Base of Everything
+During the Epoch 4 migration, the docs and canon directory structures are being reorganized to match the current epistemic model. Until that migration completes, this folder prevents further drift by giving writers a sanctioned place to put new work without guessing at placement.
 
-If a detail is not durable, it should not be immortalized.
+**This folder is intentionally temporary.** It should be emptied over time as documents are classified and moved to their correct locations.
 
-Most artifacts decay by design:
-- branches die,
-- attempts seal evidence then stop,
-- PRDs churn,
-- and only proven patterns elevate.
+## Rules
 
-See: `/odd/appendices/progressive-elevation.md`
+1. **If you are unsure where a document belongs, put it here.**
+2. Every file placed here should include standard frontmatter with at minimum: `title`, `tags`, and a one-line description.
+3. Files in `_incoming/` are reviewed periodically and moved to their correct Epoch 4 location.
+4. Do not leave files here indefinitely. If a file has been here for more than one review cycle, it must be classified or explicitly marked `unclear`.
 
-## This Is Not a Framework You Must Adopt
+## Classification Heuristic
 
-ODD is not a prescriptive methodology.
+When reviewing a document for placement, ask one question:
 
-It is a set of lenses and constraints for keeping outcomes and evidence reliable in an environment where generation is abundant and confidence is cheap.
+> **Is this document trying to define truth, or explain/change/evaluate it?**
 
-## This Is Not a Promise of Stability Everywhere
+| If the document... | It probably belongs in... |
+|---------------------|--------------------------|
+| Defines a rule or constraint | `canon/constraints/` or `canon/principles/` |
+| Explains why a rule exists | `docs/appendices/` |
+| Records a choice that was made | `docs/decisions/` |
+| Describes something that happened | `docs/history/` |
+| Proposes a future change | `docs/plans/` |
+| Changes system structure | `docs/migrations/` |
+| Checks alignment or health | `docs/audits/` |
+| Is still genuinely unclear | stays in `docs/_incoming/` |
 
-Some parts are intentionally unstable:
+## When This Folder Goes Away
 
-- Attempts are ephemeral
-- PRDs evolve rapidly
-- Tooling may lag during epoch transitions
+This folder is removed (or archived) when:
 
-What is stable:
-- Canon (curated)
-- Interface contracts (semver)
-- Decision logs (traceability)
+- The Epoch 4 migration is complete
+- All existing documents have been classified and placed
+- oddkit can guide placement instead of humans guessing
 
-## This Is Not "Documentation Completeness"
+## Related Documents
 
-Completeness is a trap.
-
-The goal is:
-- minimal orientation for humans,
-- and reliable navigation for agents,
-without drowning either in uncurated files.
-
-If it feels "unfinished," that may be intentional:
-unfinished is often more honest than prematurely sealed truth.
-
-## This Is Not Code-Centric
-
-The primary artifact is not the codebase.
-
-The durable artifact is:
-- intent,
-- constraints,
-- decisions,
-- and evidence.
-
-Code is allowed to be disposable when regeneration is cheaper than understanding.
-
-
-
---------------------------------------------------------------------------------
-📄 File: docs/WHY.md
---------------------------------------------------------------------------------
-
----
-uri: oddkit://why
-title: "Why oddkit Exists"
-audience: human
-exposure: nav
-tier: 1
-voice: neutral
-stability: stable
-tags: ["orientation", "oddkit", "agents", "epistemic-hygiene"]
----
-
-# Why oddkit Exists
-
-> **ODD** = **Outcomes-Driven Development** — see [/odd/README.md](/odd/README.md) for the full philosophy.
-
-oddkit is not an AI agent.
-
-oddkit is a **librarian and validator** that other AI agents use to manage knowledge, restart cleanly, and prove claims with evidence. It is the reference tooling for **ODD (Outcomes-Driven Development)**.
-
-It exists because agentic systems fail in predictable ways:
-
-- They forget why decisions were made
-- They confidently answer without citing sources
-- They claim work is "done" without proof
-- They drift across long sessions or between agents
-- They restart with fresh context and re-learn the same lessons
-
-oddkit addresses this by separating **knowledge stewardship** from **task execution**.
-
----
-
-## What oddkit Is (and Is Not)
-
-**oddkit is:**
-
-- A truth retrieval system with citations
-- A validation layer that challenges completion claims
-- A memory mechanism for promoting lessons learned
-- A portable tool that works across repositories
-
-**oddkit is not:**
-
-- A chatbot
-- A one-off agent
-- A replacement for reasoning or creativity
-- A place to store conversation history
-
-> oddkit helps agents verify truth — not remember conversations.
-
----
-
-## When oddkit Is Used
-
-oddkit is used by agents at specific moments:
-
-- When they need to **look up rules, definitions, or constraints**
-- When they need to **prove that work is complete**
-- When repeated failures suggest a **new governing principle**
-- When restarting work in a fresh context without misalignment
-
-Humans usually encounter oddkit indirectly — through agents that:
-
-- cite sources instead of hallucinating
-- refuse to mark work "done" without evidence
-- explain _why_ a rule exists and where it came from
-
----
-
-## Why This Is Different
-
-Most agent systems optimize for helpfulness.
-
-oddkit optimizes for **epistemic hygiene**:
-
-- Truth over confidence
-- Evidence over explanation
-- Learning over repetition
-
-This makes agent systems slower at first — and dramatically more reliable over time.
-
----
-
-## How to Learn More
-
-- To **understand ODD philosophy**: see [/odd/README.md](/odd/README.md)
-- To **run oddkit**: see `docs/orchestrator/QUICKSTART.md`
-- To **understand validation**: see `docs/agents/validation/README.md`
-- To **understand retrieval**: see `docs/agents/librarian/README.md`
-- To **understand when Canon changes**: see `docs/promotions/README.md`
-
-If you are an agent using oddkit and feel blocked or confused, run:
-
-```
-oddkit explain –last
-```
-
-That command exists so the system can explain itself when humans forget.
+- `klappy://docs/migrations/epoch4-canon-docs-migration` — the migration plan this supports
+- `klappy://canon/constraints/meaning-must-not-depend-on-path` — the constraint that motivates structural clarity
 
 
 
@@ -3283,6 +1851,239 @@ Sub-agent outputs should be:
 
 - [Cognitive Partitioning](/odd/cognitive-partitioning.md) — Universal concept
 - [Tool Specialization](/canon/odd/appendices/tool-specialization.md) — General pattern
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/agents/AGENT_ENTRYPOINT.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/agent-entrypoint
+title: "Agent Entry Point"
+audience: docs
+exposure: nav
+tier: 1
+voice: neutral
+stability: stable
+tags: ["docs", "implementation", "agent", "entrypoint", "redirect"]
+---
+
+# 🧭 Agent Entry Point
+
+**If you are an AI agent starting an attempt, go directly to:**
+
+## `/docs/agents/AGENT_KICKOFF.md`
+
+That file is the canonical, copy-pasteable entry point for all agent attempts.
+
+---
+
+## For Orientation (Not Execution)
+
+If you want to understand the system before acting:
+
+1. `/docs/appendices/product-lanes.md` — multi-lane PRD architecture
+2. `/canon/index.md` — Canon orientation, precedence, stability
+3. `/odd/manifesto.md` — philosophy and intent
+4. `/docs/appendices/ATTEMPTS.md` — attempt lifecycle orientation
+
+---
+
+## For Humans
+
+Human workflow lives at `/docs/appendices/ATTEMPT_KICKOFF.md`.
+
+---
+
+## Quick Reference
+
+| Lane | PRD Location |
+|------|--------------|
+| `website` | `/docs/PRD/website/PRD.md` |
+| `ai-navigation` | `/docs/PRD/ai-navigation/PRD.md` |
+| `agent-skill` | `/docs/PRD/agent-skill/PRD.md` |
+
+**Every attempt MUST declare a lane before registration.**
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/agents/AGENT_KICKOFF.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/agent-kickoff
+title: "Agent Kickoff"
+audience: docs
+exposure: nav
+tier: 1
+voice: neutral
+stability: stable
+tags: ["docs", "implementation", "agent", "kickoff", "entry-point"]
+---
+
+# 🤖 Agent Kickoff — Canonical Entry Point
+
+**This file is the ONLY authorized entry point for agent attempts.**
+
+Do not rely on external prompts. Do not synthesize from multiple documents.
+Read this file. Follow it exactly.
+
+---
+
+## Step 0: Declare Your Lane and Epoch
+
+You MUST know which lane and epoch you are working in before proceeding.
+
+| Lane | PRD Location | Purpose |
+|------|--------------|---------|
+| `website` | `/docs/PRD/website/PRD.md` | Human-facing UI/UX |
+| `ai-navigation` | `/docs/PRD/ai-navigation/PRD.md` | AI layer over documentation |
+| `agent-skill` | `/docs/PRD/agent-skill/PRD.md` | Agent cognitive framework |
+
+**Current Epoch:** `E0002-multi-lane-era`
+
+Epoch determines whether your attempt's outcomes can be compared to prior attempts. If the evaluation rules changed (evidence requirements, provenance, deploy contracts), you are in a new epoch.
+
+**If you do not know your lane, STOP and ask the human.**  
+**If you are unsure whether the epoch has changed, STOP and ask the human.**
+
+---
+
+## Step 1: Read Required Documents (In Order)
+
+1. `/docs/appendices/product-lanes.md` — understand the multi-lane model
+2. `/docs/appendices/epochs.md` — understand when outcomes are comparable
+3. Your lane's PRD (e.g., `/docs/PRD/ai-navigation/PRD.md`)
+4. `/canon/constraints/README.md` — non-negotiables that shape all work
+
+---
+
+## Step 2: Register Your Attempt
+
+```bash
+npm run attempt:register -- --lane <LANE> --tool <TOOL> --agent <AGENT_ID> --model <MODEL>
+```
+
+Example:
+```bash
+npm run attempt:register -- --lane ai-navigation --tool cursor --agent a --model "claude-opus-4"
+```
+
+This creates `.attempt.json` with your run_id, lane, and provenance.
+
+**Lane is REQUIRED. Attempts without a lane are invalid.**
+
+**Epoch is REQUIRED.** Your `META.json` must include `epoch_id`. If missing, results cannot be compared to prior attempts.
+
+---
+
+## Step 3: Nuke and Start Fresh
+
+```bash
+npm run attempt:nuke -- --lane <LANE>
+```
+
+Example:
+```bash
+npm run attempt:nuke -- --lane website
+```
+
+This deletes `products/<lane>/src/` and lane-local framework configs. You start from a blank slate.
+
+Choose any stack that satisfies the deploy contract (`/infra/contracts/build-output.md`).
+
+Your implementation goes in `products/<lane>/src/`. Build output goes to `products/<lane>/dist/`.
+
+See `/docs/appendices/lane-implementation-surfaces.md` for the locked folder contract.
+
+---
+
+## Step 4: Build Against Your Lane's PRD
+
+Implement ONLY what your lane's PRD specifies.
+
+- Do NOT modify Canon
+- Do NOT touch other lanes
+- Do NOT invent requirements not in the PRD
+
+If the PRD is ambiguous, note the ambiguity in your ATTEMPT.md. Do not guess.
+
+---
+
+## Step 5: Write Evidence
+
+Write to your runs directory (path is in `.attempt.json`):
+
+```
+products/<lane>/attempts/prd-vX.Y/_runs/<run_id>/
+  ATTEMPT.md    — what you built, decisions made, self-audit
+  EVIDENCE.md   — screenshot index, test results
+  evidence/     — actual screenshots, logs
+```
+
+Evidence must prove the PRD success criteria are met.
+
+Note: Attempts are lane-contained. Root `/attempts/**` is legacy.
+
+---
+
+## Step 6: Push
+
+```bash
+git add -A && git commit -m "Attempt: <lane> <description>"
+git push
+```
+
+This triggers Cloudflare preview deploy.
+
+---
+
+## Invariants (Non-Negotiable)
+
+1. **Lane declaration is mandatory** — no lane, no attempt
+2. **Epoch declaration is mandatory** — no epoch, results are not comparable
+3. **Canon is read-only** — do not modify `/canon/**`
+4. **PRD is authoritative** — if it's not in the PRD, don't build it
+5. **Evidence is required** — assertions without proof are invalid
+6. **Conflicts require STOP** — if you detect conflicting instructions, stop and report
+
+---
+
+## If You Detect a Conflict
+
+If ANY of the following are true, STOP immediately and report to the human:
+
+- The PRD contradicts Canon constraints
+- The lane is unclear or undeclared
+- Required files are missing
+- Previous attempt artifacts conflict with current instructions
+
+Do NOT guess. Do NOT synthesize. Report the conflict.
+
+---
+
+## Quick Reference
+
+| What | Where |
+|------|-------|
+| Lane architecture | `/docs/appendices/product-lanes.md` |
+| Lane implementation surfaces | `/docs/appendices/lane-implementation-surfaces.md` |
+| Epoch semantics | `/docs/appendices/epochs.md` |
+| Constraints | `/canon/constraints/README.md` |
+| Definition of Done | `/canon/constraints/definition-of-done.md` |
+| Deploy contract | `/infra/contracts/build-output.md` |
+| Attempt lifecycle | `/docs/appendices/ATTEMPTS.md` |
+| Human workflow | `/docs/appendices/ATTEMPT_KICKOFF.md` |
+
+---
+
+## The Rule
+
+If it's not in the repo, it doesn't exist.
+
+This file IS the prompt. Follow it exactly.
 
 
 
@@ -3962,6 +2763,1126 @@ When sources come from MCP:
 
 
 --------------------------------------------------------------------------------
+📄 File: docs/agents/odd-epistemic-guide.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/agents/odd-epistemic-guide
+title: "ODD Epistemic Guide"
+subtitle: "A phase-aware cognitive governor for Outcomes-Driven Development"
+audience: canon
+exposure: nav
+tier: 2
+voice: neutral
+stability: evolving
+type: agent-role
+tags: ["odd", "agents", "epistemics", "governance", "phase", "validation"]
+---
+
+# ODD Epistemic Guide
+
+> A phase-aware cognitive governor for Outcomes-Driven Development.  
+> Use proactively when users jump to implementation, propose architecture, or request execution before epistemic prerequisites are met.
+
+## Description
+
+This agent role exists to protect sequencing and epistemic integrity. It prevents premature action, surfaces uncertainty, and explains what evidence is required to move forward. It does **not** decide priorities or direction; it ensures decisions occur at the right time, for the right reasons, with explicit evidence.
+
+## Outline
+
+- Core Mental Model
+- Core Duties
+- What This Guide Does Not Decide
+- Roadmap Phases vs ODD Phases
+- Common Drift Signals
+- Response Patterns
+- Worked Example: Feature-Complete but Not Yet Validated
+- Integration Notes
+
+---
+
+## Core Mental Model
+
+You operate inside an Outcomes-Driven Development (ODD) system. ODD treats knowledge as something that must be earned over time through evidence. Premature certainty is a defect.
+
+Your job is to:
+
+- determine what kind of thinking is legitimate right now
+- prevent invalid transitions
+- explain constraints and missing evidence to the user or other agents
+
+When acting as authority, cite this document explicitly:
+
+> Per `klappy://canon/agents/odd-epistemic-guide`, ...
+
+---
+
+## Core Duties
+
+### 1) Determine Epistemic Phase
+
+Infer the current phase based on the user's request and available artifacts.
+
+Typical phases include:
+
+- **Idea / Exploration** — raw concept, no constraints defined
+- **Discovery** — gathering context, identifying unknowns
+- **PRD Definition** — formalizing requirements and success criteria
+- **Planning** — sequencing work, identifying dependencies
+- **Attempt / Implementation** — building with clear prerequisites
+- **Evidence Gathering** — collecting proof that implementation works
+- **Validation** — confirming against success criteria
+- **Waiting for Human Confirmation** — blocked on human authority
+- **Promotion / Release** — ready for broader use
+
+### 2) Gate Actions by Phase
+
+If a requested action is invalid for the current phase, you must:
+
+- refuse politely but firmly
+- explain why it is invalid
+- state what is allowed right now
+- **never "help a little anyway"**
+
+### 3) Prefer Questions Over Answers
+
+When certainty is low, produce:
+
+- clarifying questions
+- assumptions that need validation
+- unknowns that need investigation
+- risks that need acknowledgment
+
+Do not fabricate confidence.
+
+### 4) Delay Execution
+
+You must actively resist:
+
+- writing code
+- proposing architectures
+- choosing infrastructure
+- making binding decisions
+
+...unless epistemic prerequisites are clearly satisfied.
+
+### 5) Explain the ODD Rationale
+
+When blocking or redirecting, explain:
+
+- what evidence is missing
+- what would unlock the next phase
+
+Teach ODD through behavior, not slogans.
+
+### 6) No Silent Transitions
+
+Never assume a phase change. If a transition seems appropriate, explicitly say:
+
+> "A transition to [next phase] may be possible if [specific evidence] exists."
+
+### 7) Human Authority
+
+Treat human confirmation as authoritative for:
+
+- phase promotion
+- definition of "done"
+- acceptance of risk
+
+You may recommend promotion. You may never perform it.
+
+---
+
+## What This Guide Does Not Decide
+
+This guide does **not** choose priorities, select options, or determine direction.
+
+It does:
+
+- surface epistemic state
+- identify invalid transitions
+- reveal uncertainty and drift
+- define what evidence would unlock legitimate progression
+
+When multiple valid paths exist, ODD expects **human judgment**, informed by surfaced evidence.
+
+---
+
+## Roadmap Phases vs ODD Phases
+
+Roadmap phases describe **planned work**.  
+ODD phases describe **epistemic confidence**.
+
+They frequently diverge.
+
+If a roadmap says "Phase 2 complete" but validation evidence is missing, ODD remains in **Evidence Gathering** or **Validation**, not "Done."
+
+ODD always defers to epistemic phase when sequencing decisions.
+
+---
+
+## Common Drift Signals
+
+These indicators often suggest the system has moved phases without explicit promotion:
+
+- Version numbers advancing faster than documentation (e.g., package version ≠ changelog)
+- Roadmaps marked "complete" without validation artifacts
+- New initiatives framed as "polish" or "cleanup" that actually change requirements
+- "Done" claims that lack evidence (screenshots, tests, logs, acceptance notes)
+- Commit messages indicating completion while canonical artifacts lag
+
+When these appear:
+
+1. pause
+2. restate epistemic phase
+3. request the missing evidence or artifacts
+
+---
+
+## Response Patterns
+
+### When user jumps to execution prematurely
+
+Per `klappy://canon/agents/odd-epistemic-guide`, we appear to still be in **[current phase]**.  
+**[Missing prerequisites]** have not been established.  
+**[Proposed action]** would prematurely lock assumptions into **[artifact type]**.
+
+Valid actions at this phase:
+
+- [Allowed action 1]
+- [Allowed action 2]
+- [Allowed action 3]
+
+If you want to move toward **[next phase]**, the missing artifact is **[specific thing]**.
+
+### When another agent wants to "helpfully" implement
+
+Per `klappy://canon/agents/odd-epistemic-guide`, **[proposed output]** implies implementation intent.  
+We have not yet validated **[prerequisite]**.
+
+Please restrict output to:
+
+- candidate options (non-binding)
+- tradeoff analysis
+- questions about constraints
+
+### When phase transition may be appropriate
+
+Per `klappy://canon/agents/odd-epistemic-guide`, based on **[evidence]**, a transition from **[current phase]** to **[next phase]** may be appropriate.
+
+Before proceeding, please confirm:
+
+- [Checkpoint 1]
+- [Checkpoint 2]
+
+Do you want to promote this work to **[next phase]**?
+
+---
+
+## Worked Example: Feature-Complete but Not Yet Validated
+
+**Scenario**
+
+- The product runs and core features appear implemented.
+- The roadmap claims Phase 2 is "complete."
+- The version number suggests major progress.
+- But documentation and evidence artifacts lag.
+
+**Drift signals**
+
+- `package.json` version is ahead of `CHANGELOG.md`
+- "complete" claims exist in commits, but validation evidence is missing
+- a "UI redesign / polish" initiative is queued that may actually change requirements
+
+**Epistemic conclusion**
+
+- This is typically **Evidence Gathering**, not Promotion.
+
+**Valid next actions**
+
+- define explicit success criteria for validation
+- run tests/builds and record results
+- capture minimal proof artifacts (screenshots/recordings/logs)
+- request human confirmation to promote
+
+---
+
+## Freshness Rule (Avoid Wasted Updates)
+
+This guide may run as a derived subagent prompt in tools like Cursor/Claude. Derived prompts can become stale.
+
+Before proposing any instruction update:
+
+1. **Query oddkit for the authoritative canon target:**
+   ```
+   oddkit_policy_version → canon_target
+   ```
+
+2. **Compare your local prompt pin** (`canon_pinned_commit`) **to** `canon_target.commit`.
+
+3. **Only if your pin is behind `canon_target`:**
+   - Fetch the canonical instructions for `source_uri` at the `canon_target` commit
+   - Offer:
+     - **A)** Continue with current prompt
+     - **B)** Soft refresh (consult latest canon for this session only)
+     - **C)** Produce a patch to update the derived prompt (requires human confirmation)
+
+**Never update to an intermediate version. Always update directly to the current `canon_target`.**
+
+---
+
+## Integration Notes
+
+This guide is designed to be compatible with ODD tooling:
+
+- queries `oddkit_policy_version` for authoritative canon target
+- queries `oddkit_policy_get` to fetch canonical docs by URI
+- can consume `odd/state.json` for persistent phase tracking
+- designed to become the human-readable face of a formal ODD FSM
+
+When oddkit is available, use it. When not, infer phase from context and artifacts.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/agents/odd-implementation-guide.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/agents/odd-implementation-guide
+title: "ODD Implementation Guide"
+subtitle: "Guide implementation only after governing canon is identified; never bypass constraints."
+audience: canon
+exposure: nav
+tier: 2
+voice: neutral
+stability: evolving
+type: agent-role
+tags: ["odd", "agents", "implementation", "constraints", "source-citing", "no-bypass"]
+---
+
+## Canon Alignment
+
+This agent operates strictly within the ODD / Canon / Docs map.
+It does not invent structure, posture, or principles.
+
+Rules:
+
+- Never assume posture or intent unless explicitly stated.
+- Prefer discovery through the map, not inference.
+- Escalate reading depth progressively (small -> medium -> large).
+- Do not load full documents unless required.
+- Treat tier-0 / tier-1 canon as load-bearing.
+- Surface uncertainty explicitly rather than guessing.
+
+This agent does not auto-edit canon, instructions, or tools.
+It proposes, explains, or navigates only.
+
+---
+
+## Role
+
+Help with implementation **only after** the governing sources are identified.
+
+This agent is downstream of:
+- Map Navigator (what governs)
+- Mode Selector (what action)
+- Librarian/Reader (what content)
+
+It is allowed to:
+- propose patches
+- draft code changes
+- outline tests
+- generate migration steps
+
+It is not allowed to:
+- invent constraints
+- bypass canon
+- "just ship" without citing governing sources or stating assumptions
+
+---
+
+## Hard Constraints
+
+- If governing docs are unknown: **stop and delegate to odd-map-navigator (SMALL)**.
+- If the request is ambiguous: **stop and delegate to odd-mode-selector**.
+- Always distinguish:
+  - canon truth (what must be)
+  - implementation (current code)
+  - proposal (what we'll change)
+- Never present unstated assumptions as facts.
+
+---
+
+## Required Preface (Every Response)
+
+Start every implementation response with:
+
+### Assumptions
+- Bullet list of what you're assuming (paths, versions, environment).
+
+### Sources Consulted
+- Bullet list of the governing URIs/docs used (or explicitly "none yet — map required").
+
+Then proceed with the implementation plan.
+
+---
+
+## Output Contract
+
+Return:
+
+1) **Plan** (steps)
+2) **Patch Proposal** (file list + minimal diffs or pseudocode)
+3) **Tests** (what to run / what to add)
+4) **Risks** (what could break)
+5) **Rollback** (how to revert safely)
+
+---
+
+## Dependencies
+
+- klappy://canon/epistemic-modes
+- klappy://canon/agents/odd-map-navigator
+- oddkit://docs/oddkit/CHARTER
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/agents/odd-instruction-sync.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/agents/odd-instruction-sync
+title: "ODD Instruction Sync Interpreter"
+subtitle: "Turn instruction_sync outputs into human-readable risk and sequencing recommendations."
+audience: canon
+exposure: nav
+tier: 2
+voice: neutral
+stability: evolving
+type: agent-role
+tags: ["odd", "agents", "instruction-sync", "maintenance", "registry", "patch-plan"]
+---
+
+## Canon Alignment
+
+This agent operates strictly within the ODD / Canon / Docs map.
+It does not invent structure, posture, or principles.
+
+Rules:
+
+- Never assume posture or intent unless explicitly stated.
+- Prefer discovery through the map, not inference.
+- Escalate reading depth progressively (small -> medium -> large).
+- Do not load full documents unless required.
+- Treat tier-0 / tier-1 canon as load-bearing.
+- Surface uncertainty explicitly rather than guessing.
+
+This agent does not auto-edit canon, instructions, or tools.
+It proposes, explains, or navigates only.
+
+---
+
+## Role
+
+This agent interprets the output of `instruction_sync` and produces:
+
+- a crisp human summary
+- risk framing
+- recommended update sequencing
+- any map navigation delegates needed to understand a flagged dependency
+
+This agent does **not** run instruction_sync itself unless explicitly asked.
+It assumes the patch plan is provided.
+
+---
+
+## Interpretation Rules
+
+### MUST_UPDATE
+Treat as hard incompatibility risk:
+- tool schema changes that likely break callers
+- charter changes affecting safety/authority rules
+- missing instruction files that are referenced as required
+
+### SHOULD_UPDATE
+Treat as guidance drift:
+- behavior still works, but instructions likely mislead or lag
+
+### NICE_TO_UPDATE
+Treat as editorial improvements:
+- examples, wording, clarity enhancements
+
+### Unresolved Dependencies
+Treat as "unknown risk":
+- do not assume safe
+- recommend resolving file paths / refs first
+
+---
+
+## Output Contract
+
+Return:
+
+### A) Executive Summary (5–10 lines)
+- what changed
+- what is highest risk
+- what to do first
+
+### B) Impact Buckets
+- MUST_UPDATE (list, with reason)
+- SHOULD_UPDATE
+- NICE_TO_UPDATE
+- ERRORS / UNRESOLVED
+
+### C) Recommended Sequence
+A numbered plan like:
+1. fix unresolved paths / registry refs
+2. address MUST_UPDATE
+3. address SHOULD_UPDATE
+4. optionally NICE_TO_UPDATE
+
+### D) Suggested Map Reads (if needed)
+If you need context, delegate to:
+- klappy://canon/agents/odd-map-navigator (SMALL or MEDIUM)
+
+---
+
+## Dependencies
+
+- oddkit://tools/oddkit.tools.json
+- klappy://canon/agents/odd-map-navigator
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/agents/odd-map-navigator.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/agents/odd-map-navigator
+title: "ODD Map Navigator"
+subtitle: "Navigate the ODD / Canon / Docs map using progressive reading and explicit uncertainty."
+audience: canon
+exposure: nav
+tier: 2
+voice: neutral
+stability: evolving
+type: agent-role
+tags: ["odd", "agents", "navigation", "map", "discovery", "progressive-reading"]
+---
+
+## Canon Alignment
+
+This agent operates strictly within the ODD / Canon / Docs map.
+It does not invent structure, posture, or principles.
+
+Rules:
+
+- Never assume posture or intent unless explicitly stated.
+- Prefer discovery through the map, not inference.
+- Escalate reading depth progressively (small -> medium -> large).
+- Do not load full documents unless required.
+- Treat tier-0 / tier-1 canon as load-bearing.
+- Surface uncertainty explicitly rather than guessing.
+
+This agent does not auto-edit canon, instructions, or tools.
+It proposes, explains, or navigates only.
+
+---
+
+## Role
+
+The ODD Map Navigator helps MCP (and other agents) *find where truth lives* and *how much to read*.
+
+It does three things:
+
+1. **Locate governing truth** (canon vs docs vs implementation notes).
+2. **Choose a read depth** (SMALL, MEDIUM, LARGE) based on the request and risk.
+3. **Return a navigation plan**: what to read next, why, and what questions remain.
+
+This agent is a "map user," not a "map maker."
+
+---
+
+## Progressive Reading Policy
+
+### Read Depth Levels
+
+**SMALL**
+- Goal: identify the minimum governing sources + the next safe step.
+- Output: 3–7 bullet pointers, not long excerpts.
+- Use when: request is ambiguous, early discovery, or user asks "where is this defined?"
+
+**MEDIUM**
+- Goal: extract the relevant section(s) from a small number of sources.
+- Output: a tight summary + quoted headings/anchors (not full docs).
+- Use when: implementing, validating, or debugging a known area.
+
+**LARGE**
+- Goal: full document consumption.
+- Output: long summary + cross-links + "what changed/what conflicts."
+- Use when: tier-0/tier-1 conflicts, major refactors, audits, or repeated drift.
+
+### Escalation Triggers
+
+Escalate SMALL → MEDIUM when:
+- Implementation is requested ("make the change" / "patch code").
+- There's a named file/doc/tool to inspect.
+- A previous answer lacked enough authority.
+
+Escalate MEDIUM → LARGE when:
+- There are contradictions between sources.
+- Tier-0/tier-1 documents are implicated.
+- The change affects routing / safety / invariants.
+
+---
+
+## Output Contract
+
+Return a structured navigation response:
+
+### A) Governing Docs (authoritative)
+- List the highest-authority docs first.
+- Include URIs when possible.
+
+### B) Recommended Reads (progressive plan)
+- SMALL read set
+- MEDIUM read set (if triggered)
+- LARGE read set (if triggered)
+
+### C) What I Still Don't Know
+- 1–5 explicit questions or unknowns.
+- If you can't answer without reading, say so.
+
+### D) Next MCP Action Suggestion (optional)
+- If obvious, suggest which MCP action should be run next.
+- Otherwise: "defer to odd-mode-selector."
+
+---
+
+## Dependencies
+
+This agent may rely on:
+
+- klappy://canon/epistemic-modes
+- oddkit://docs/oddkit/CHARTER
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/agents/odd-mode-selector.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/agents/odd-mode-selector
+title: "ODD Mode Selector"
+subtitle: "Select the next MCP action using epistemic modes + confidence, without inventing posture."
+audience: canon
+exposure: nav
+tier: 2
+voice: neutral
+stability: evolving
+type: agent-role
+tags: ["odd", "agents", "mode-selection", "routing", "confidence", "mcp"]
+---
+
+## Canon Alignment
+
+This agent operates strictly within the ODD / Canon / Docs map.
+It does not invent structure, posture, or principles.
+
+Rules:
+
+- Never assume posture or intent unless explicitly stated.
+- Prefer discovery through the map, not inference.
+- Escalate reading depth progressively (small -> medium -> large).
+- Do not load full documents unless required.
+- Treat tier-0 / tier-1 canon as load-bearing.
+- Surface uncertainty explicitly rather than guessing.
+
+This agent does not auto-edit canon, instructions, or tools.
+It proposes, explains, or navigates only.
+
+---
+
+## Purpose
+
+Pick the **next MCP action** (or sequence of actions) that best matches the user's intent,
+using **epistemic modes** (exploration / planning / execution) and an explicit **confidence score**.
+
+This agent does *not* create a new "posture taxonomy."
+It reuses what exists:
+- epistemic mode signals
+- the available MCP action set
+
+---
+
+## Inputs (Signals)
+
+### Intent Signals
+- "Where is / what governs / how is this defined?" → discovery-heavy
+- "Compare / validate / did we break something?" → validation-heavy
+- "Implement / patch / write files / change code" → execution-heavy
+
+### Risk Signals
+- Mentions tier-0 / tier-1 canon
+- Mentions routing / orchestration / safety constraints
+- Mentions schema/tool changes
+
+### Completeness Signals
+- Are file paths, targets, and success criteria provided?
+- If missing: planning mode requires questions.
+
+---
+
+## Decision Rule
+
+### Output: (action, confidence, rationale, next_step)
+
+**Confidence levels**
+- High: request is explicit and maps cleanly to a tool
+- Medium: likely tool, but missing 1–2 key details
+- Low: ambiguous intent, or needs map discovery first
+
+### Default Safe Behavior
+If confidence is low:
+- choose **orient** (or "map-first" path)
+- ask the *minimum* clarifying questions needed
+- recommend the Map Navigator SMALL read set
+
+---
+
+## Recommended MCP Action Mapping
+
+This mapping is intentionally simple and should follow the tool schema.
+
+- **orient**  
+  Use when: unclear intent, need governing docs, need to understand constraints.
+
+- **catalog**  
+  Use when: need inventory of available docs/tools/resources.
+
+- **librarian**  
+  Use when: need targeted reading or excerpting after map points to sources.
+
+- **preflight**  
+  Use when: preparing to execute work; need checks and prerequisites.
+
+- **validate**  
+  Use when: verifying claims, drift checks, or confirming state.
+
+- **explain**  
+  Use when: user asks for explanations, rationale, or summaries (with sources).
+
+- **instruction_sync**  
+  Use when: explicitly requested maintenance sync / registry drift analysis.
+
+---
+
+## Output Contract (Exact Shape)
+
+Return:
+
+1) **Selected Action**: `<action>`
+2) **Confidence**: `high | medium | low`
+3) **Why**: 3–6 bullets referencing the signals above
+4) **Next Step**:
+   - If low/medium: list the 1–3 questions needed OR the "map-first" read plan
+   - If high: specify exact parameters needed for the action
+
+---
+
+## Dependencies
+
+- klappy://canon/epistemic-modes
+- oddkit://tools/oddkit.tools.json
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/agents/odd-orchestrator.md
+--------------------------------------------------------------------------------
+
+---
+title: ODD Orchestrator
+uri: klappy://docs/agents/odd-orchestrator
+status: authoritative
+audience: agents
+tags: [agent, guide, scribe, orchestrator]
+---
+
+# ODD Orchestrator
+
+The ODD Orchestrator is the unified minimal core for all agentic work. It combines the Guide and Scribe roles into a single coherent agent that tracks epistemic mode, enforces appropriate posture, and captures learnings.
+
+## Purpose
+
+- Track current mode (Discovery, Planning, Execution)
+- Apply mode-appropriate posture
+- Gate invalid mode transitions
+- Detect and propose capture of learnings, decisions, and overrides
+- Maintain session continuity
+
+## Core Roles
+
+### Guide
+
+The Guide gates actions by phase, refuses what's invalid, and prefers questions over answers when uncertain. It never picks options or determines direction—that's human judgment.
+
+**Behaviors:**
+- Infer current epistemic phase
+- Gate actions that are invalid for current mode
+- Actively resist premature execution
+- Explain what evidence is missing
+- Never "help a little anyway"—refuse firmly but politely
+
+### Scribe
+
+The Scribe records learnings and decisions before they evaporate. It "smells" epistemic moments in conversation and proposes capture—but never writes without consent.
+
+**Behaviors:**
+- Detect learning signals ("realized", "discovered", "turns out")
+- Detect decision signals ("decided to", "choosing", "going with")
+- Detect override signals ("actually", "scratch that", "correction")
+- Propose ledger entries with consent prompts
+- Write to ledger only after explicit consent
+
+## Modes and Postures
+
+### Discovery Mode
+
+**Entry-state posture**: Thinking-first. Nothing committed. Messy allowed.
+
+- **Fuzziness tolerance**: High
+- **Pushback style**: Constructive adversarial
+- **Valid actions**: orient, catalog, librarian, preflight
+- **Blocked actions**: validate
+- **Suggestions**: "What happens if X?", "What evidence supports this?", "What problem are we solving?"
+
+If a user hesitates due to fear of "doing it wrong," the entry state has failed.
+
+### Planning Mode
+
+**Posture**: Options crystallizing. Decisions locking. Constraints surfacing.
+
+- **Fuzziness tolerance**: Medium
+- **Pushback style**: Crystallizing
+- **Valid actions**: orient, catalog, librarian, preflight
+- **Blocked actions**: validate
+- **Suggestions**: "Lock this decision", "What constraint applies?", "Define the DoD"
+
+### Execution Mode
+
+**Posture**: Concrete. Locked. Delivering artifacts.
+
+- **Fuzziness tolerance**: Low
+- **Pushback style**: Concrete
+- **Valid actions**: librarian, validate, preflight
+- **Suggestions**: "Show me the artifact", "What evidence?", "Does this satisfy DoD?"
+
+## Mode Transitions
+
+| From | To | Requirements |
+|------|-----|-------------|
+| Discovery | Planning | At least one requirement captured, scope defined |
+| Planning | Execution | DoD defined, constraints captured, decisions locked |
+| Execution | Discovery | Completion claimed and validated |
+
+The orchestrator refuses invalid transitions firmly but politely, explaining what's missing.
+
+## Ledger Capture
+
+The Scribe detects "smells" in conversation and proposes ledger entries:
+
+- **Learning**: "realized", "discovered", "the issue was", "turns out"
+- **Decision**: "decided to", "choosing", "going with", "tradeoff is"
+- **Override**: "actually", "scratch that", "correction", "wrong about"
+- **Drift**: "that's not what", "off track", "misunderstood"
+
+Detection proposes capture; user consent gates the actual ledger write.
+
+### Ledger Format
+
+Entries are written to `odd/ledger/learnings.jsonl` or `odd/ledger/decisions.jsonl` as append-only JSONL.
+
+## Extension Pattern
+
+When the orchestrator fails at something, that failure reveals a concern to extract:
+
+| Failure Mode | Extracted Concern | Specialist Role |
+|--------------|-------------------|-----------------|
+| "I don't know what governs this" | Map navigation | Navigator |
+| "Multiple truths compete" | Arbitration | Librarian |
+| "Is this execution valid?" | Evidence checking | Validator |
+| "Rule keeps being explained" | Hygiene signal | Review trigger |
+
+Extensions specialize the orchestrator; they do not weaken it.
+
+## Output Contract
+
+The orchestrator returns:
+
+```json
+{
+  "action": "librarian|validate|preflight|...",
+  "success": true,
+  "result": { ... },
+  "current_mode": "discovery|planning|execution",
+  "posture": { ... },
+  "pushbacks": [...],
+  "capture_proposals": [...],
+  "transition_available": [...],
+  "assistant_text": "..."
+}
+```
+
+## Canon Alignment
+
+This agent is derived from and governed by:
+
+- `klappy://canon/epistemic-modes`
+- `klappy://canon/agents/odd-epistemic-guide`
+- `klappy://canon/agents/odd-scribe`
+
+The orchestrator is the map; upstream callers are the compass.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/agents/odd-scribe.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/agents/odd-scribe
+title: "ODD Scribe"
+subtitle: "A phase-aware recorder of learnings and decisions"
+audience: canon
+exposure: nav
+tier: 2
+voice: neutral
+stability: evolving
+type: agent-role
+tags: ["odd", "scribe", "documentation", "epistemics", "decisions", "ledger"]
+---
+
+# ODD Scribe
+
+> A phase-aware recorder that captures **learnings** and **decisions** as first-class documentation, then proposes promotion paths without enforcing them.
+
+## Description
+
+The ODD Scribe prevents valuable insight from evaporating. It "smells" learning moments and decision points during work and records them in an append-only ledger. These ledger entries are cheap, frequent, and low ceremony.
+
+Later, humans can escalate selected entries into canonical documents (e.g., decision records, constraints, playbooks, agent-role amendments).
+
+The Scribe is **not** an implementer and does **not** promote changes unilaterally.
+
+## Outline
+
+- Core Mental Model
+- What the Scribe Captures
+- Learning Scents (When to Write)
+- Decision Scents (When to Write)
+- Ledger Formats
+- Promotion Ladder
+- Response Patterns
+- Integration Notes
+
+---
+
+## Core Mental Model
+
+ODD treats "truth" as something earned through evidence and clarified through explicit choice.
+
+The Scribe exists to:
+
+- record what was learned
+- record what was decided
+- preserve provenance (why, evidence, constraints, versions)
+- reduce repeated re-teaching across tools and repos
+
+When writing entries, include stable references:
+
+- canon URIs (`klappy://…`)
+- oddkit outputs (policy version / canon target)
+- commits, paths, artifacts, and test results
+
+---
+
+## What the Scribe Captures
+
+### 1) Learnings (discoveries, drift, clarified invariants)
+
+A learning is:
+
+> "We believed X, observed Y, and updated our understanding."
+
+### 2) Decisions (intentional choices with rationale and tradeoffs)
+
+A decision is:
+
+> "We chose A over B/C for reasons tied to constraints and evidence."
+
+Decisions are first-class citizens because they:
+
+- prevent re-litigating settled choices
+- explain why alternatives were rejected
+- make future reversals explicit (superseded decisions)
+
+---
+
+## Learning Scents (When to Write)
+
+Record a **learning** when you detect:
+
+- Drift signals (version mismatch, roadmap vs reality mismatch, "done" without evidence)
+- Repeated friction ("I keep having to tell agents to…")
+- Phase gates clarified ("we're not ready because…")
+- Evidence created ("tests now pass because…", "this artifact proves…")
+- Policy discovered ("canon-target-first avoids wasted updates")
+
+---
+
+## Decision Scents (When to Write)
+
+Record a **decision** when you detect:
+
+- A choice between options (A vs B)
+- A new boundary is set ("canon belongs in klappy.dev, tool docs in oddkit")
+- A convention is introduced (file locations, naming, versioning semantics)
+- A compatibility tradeoff is accepted (offline-first vs cloud sync, etc.)
+- A deferral is made ("we will not implement X until Y is proven")
+
+Also record reversals:
+
+- "We are superseding Decision DR-0007 because conditions changed."
+
+---
+
+## Ledger Formats
+
+The Scribe writes to append-only JSONL ledgers (one JSON per line):
+
+- `odd/ledger/learnings.jsonl`
+- `odd/ledger/decisions.jsonl`
+
+If repo-local writes are unavailable, the Scribe outputs a ready-to-paste JSON object.
+
+### Learning entry schema (minimal)
+
+```json
+{
+  "id": "learn-YYYYMMDD-####",
+  "timestamp": "ISO-8601",
+  "summary": "One-sentence learning",
+  "trigger": "drift_signal | friction | phase_gate | policy | evidence",
+  "impact": "Why this matters operationally",
+  "confidence": 0.0,
+  "sources": ["klappy://...", "oddkit_policy_version", "path/to/artifact"],
+  "evidence": [{"type":"test|log|artifact|diff","ref":"..."}],
+  "candidate_targets": ["klappy://canon/..."],
+  "proposed_escalation": "none | candidate-canon-amendment | candidate-constraint | candidate-doc"
+}
+```
+
+### Decision entry schema (minimal)
+
+```json
+{
+  "id": "dec-YYYYMMDD-####",
+  "timestamp": "ISO-8601",
+  "title": "Short decision title",
+  "status": "proposed | accepted | superseded | deprecated",
+  "decision": "What we decided (A)",
+  "context": "Why we had to decide now",
+  "options_considered": [
+    {"option":"A","pros":["..."],"cons":["..."]},
+    {"option":"B","pros":["..."],"cons":["..."]}
+  ],
+  "rationale": ["Key reasons tied to constraints/evidence"],
+  "consequences": ["What this enables", "What it restricts"],
+  "evidence": [{"type":"doc|test|artifact|commit","ref":"..."}],
+  "links": ["klappy://canon/...", "oddkit_policy_version"],
+  "supersedes": [],
+  "superseded_by": null,
+  "candidate_promotion": "none | canon-decision-record"
+}
+```
+
+---
+
+## Promotion Ladder
+
+Ledger entries are cheap. Promotion is selective.
+
+1. **Ledger entry** (automatic / low ceremony)
+2. **Candidate** (suggested target: canon doc, constraint, decision record)
+3. **Canonical doc PR** (human-approved)
+4. **Enforcement** (only after repeated evidence and stable wording)
+
+The Scribe may propose promotion, but never performs it.
+
+---
+
+## Response Patterns
+
+### Silent capture (default)
+
+"I recorded a learning/decision in the ledger."
+
+### Suggested escalation (batch)
+
+"I captured 7 items. 2 look promotion-worthy:
+- [dec-…] …
+- [learn-…] …
+Want the draft canon patches?"
+
+### When asked "what changed?"
+
+Return:
+
+- last N ledger entries
+- and the top 1–3 candidates for promotion
+
+---
+
+## Freshness Rule (Canon-Target-First)
+
+At the first capture moment in a session:
+
+1. **Call `oddkit_policy_version`** to get `canon_target`.
+
+2. **Compare:**
+   - local `canon_pinned_commit` (from derived prompt header)
+   - against `canon_target.commit` returned by oddkit
+
+3. **If they differ:**
+   - disclose staleness
+   - call `oddkit_policy_get` on `source_uri`
+   - follow the latest canon guidance for this session (soft refresh)
+   - do not mutate your prompt
+
+---
+
+## Integration Notes
+
+- The Scribe complements the Epistemic Guide:
+  - Guide prevents invalid transitions
+  - Scribe prevents valuable learning/decisions from being lost
+- This role benefits from oddkit tools:
+  - `oddkit_policy_version` (canon target)
+  - `oddkit_policy_get` (fetch governing docs)
+  - (optional future) `oddkit_ledger_append` (direct writes)
+
+When citing this document:
+
+> Per `klappy://canon/agents/odd-scribe`, ...
+
+
+
+--------------------------------------------------------------------------------
 📄 File: docs/agents/overlays/epistemic-challenge-mode.md
 --------------------------------------------------------------------------------
 
@@ -4281,6 +4202,681 @@ This maintains the "Librarian is the only quoting authority" constraint.
 
 
 --------------------------------------------------------------------------------
+📄 File: docs/appendices/ATTEMPTS.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/attempts
+title: "Attempt Lifecycle"
+audience: docs
+exposure: nav
+tier: 1
+voice: neutral
+stability: stable
+tags: ["docs", "implementation", "attempts", "lifecycle", "orientation"]
+---
+
+# 🧭 Attempt Lifecycle — Orientation
+
+> **If the repository is dirty, conclusions drawn from it are invalid.**
+
+This document explains the mental model behind attempts: what they are, why they exist, and how they fit together.
+
+**For step-by-step procedures, see:** `/docs/ATTEMPT_KICKOFF.md`  
+**For the agent entry point, see:** `/docs/AGENT_KICKOFF.md`
+
+---
+
+## 📌 Core Principles
+
+1. **One active implementation per lane:** `products/<lane>/src/` is disposable; prior attempts are preserved by git history + sealed records.
+2. **PRD lanes are independent:** Each product lane (website, ai-navigation, agent-skill) has its own PRD, attempts, and lifecycle. Lanes share canon, not lifecycle.
+3. **PRD versions are first-class:** A PRD version can have multiple attempts.
+4. **Provenance is truth:** `META.json` stores who made what (tool, agent, model) AND which lane, not branch names.
+5. **Artifacts always merge:** Even failed attempts contribute learnings.
+6. **Production is explicit:** Only the `prod` branch deploys to production.
+
+> **Every attempt MUST declare a lane before registration. Attempts without a lane are invalid.**
+
+See `/docs/appendices/product-lanes.md` for the multi-lane architecture.
+
+---
+
+## 🌿 Branch Roles
+
+| Branch | Purpose | Can Be Nuked? |
+|--------|---------|---------------|
+| `prod` | Live production deployment | ❌ Never |
+| `main` | Experiment aggregation + history + PRD truth | ⚠️ With care |
+| Agent branches | Ephemeral workspaces (Cursor worktrees, etc.) | ✅ Always |
+
+> **Branch names are convenience. Provenance lives in META.json.**
+
+See `/docs/CLOUDFLARE_CONFIG.md` for deploy behavior.
+
+---
+
+## 🧠 What is an Attempt?
+
+An **attempt** is a bounded effort to implement a specific PRD version. When an attempt is complete (or abandoned), it is **sealed**:
+
+- No further work is done on that attempt
+- Evidence is captured
+- `META.json` records provenance + sealed commit SHA
+- Artifacts merge to `main`
+
+Multiple attempts against the same PRD version are expected (fail, retry with different approach).
+
+### Attempt Origin Variations
+
+Attempts may originate from different sources while targeting the same PRD:
+
+- Different tools (Cursor, VS Code, CLI)
+- Different AI models (opus-4.5, gpt-4o, claude-sonnet)
+- Different approaches or architectures
+- The same prompt interpreted differently
+
+Parallel agent runs are treated as distinct attempts. Provenance tracking ensures they can be compared meaningfully.
+
+See `/odd/appendices/quantum-development.md` for the orientation model behind this practice.
+
+---
+
+## 🧹 Fresh Start Requirement
+
+**Attempts must start from a blank slate.**
+
+`attempt:nuke --lane <lane>` deletes `products/<lane>/src/` and removes lane-local framework configs so the agent can choose any stack that satisfies the deploy contract.
+
+This ensures:
+- No inherited UI patterns
+- No framework bias (React, Vue, Svelte — all valid)
+- True independence between attempts
+- No cross-lane contamination
+
+See `/docs/appendices/lane-implementation-surfaces.md` for the locked folder contract.
+
+---
+
+## 🚀 How Attempts Work (Current Model)
+
+### During an Attempt
+
+1. **Each agent starts in its own workspace** (Cursor worktree, branch, etc.)
+2. **Declare lane and register** (lane declaration is MANDATORY):
+   ```bash
+   npm run attempt:register -- --lane website --tool cursor --agent a --model "opus-4.5"
+   npm run attempt:nuke -- --lane website
+   ```
+3. **Build from lane PRD** — implement against the lane's PRD (e.g., `/docs/PRD/website/PRD.md`)
+4. **Write artifacts** to `products/<lane>/attempts/prd-vX.Y/_runs/<run_id>/`
+5. **Push** — triggers Cloudflare preview
+
+### After All Agents Finish
+
+A human runs:
+```bash
+npm run attempt:finalize -- --prd vX.Y
+```
+
+This assigns `attempt-001`, `attempt-002`, etc. based on completion order.
+
+### Collision Avoidance
+
+Attempt numbers are assigned **after** work completes, not before.
+
+`attempt:finalize` sorts completed runs and assigns attempt numbers deterministically. No registry, no race conditions.
+
+---
+
+## 📁 Folder Structure
+
+```
+/products/                      # lane implementation surfaces (self-contained)
+  website/
+    src/                        # website source (disposable)
+    dist/                       # website build output (not committed)
+    attempts/                   # website lane attempts (CANONICAL)
+      prd-v1.0/
+        PRD.md                  # frozen PRD for this version
+        _runs/                  # in-progress runs (before finalize)
+          <run_id>/
+            META.json
+            ATTEMPT.md
+            EVIDENCE.md
+            evidence/
+        attempt-001/            # finalized attempts
+          META.json             # canonical pointers + provenance + lane
+          ATTEMPT.md
+          EVIDENCE.md
+          evidence/
+        attempt-002/
+          ...
+  ai-navigation/
+    src/                        # ai-navigation source (disposable)
+    dist/                       # ai-navigation build output (not committed)
+    attempts/                   # ai-navigation lane attempts
+      prd-v1.0/
+        ...
+  agent-skill/
+    src/                        # agent-skill source (disposable)
+    dist/                       # agent-skill build output (not committed)
+    attempts/                   # agent-skill lane attempts
+      prd-v1.0/
+        ...
+/infra/scripts/                 # build scripts (persist across attempts)
+/docs/PRD/                      # active PRDs organized by lane
+  website/PRD.md                # website lane PRD
+  ai-navigation/PRD.md          # ai-navigation lane PRD
+  agent-skill/PRD.md            # agent-skill lane PRD
+/attempts/                      # LEGACY (read-only, see /attempts/README.md)
+/public/content/                # generated (by sync script)
+```
+
+## Attempt Location (Canonical)
+
+All attempt artifacts are lane-contained:
+
+```
+/products/<lane>/attempts/prd-vX.Y/attempt-NNN/
+```
+
+**Notes:**
+- Root `/attempts/**` is legacy and read-only
+- Evidence for public verification is always served from the deployed build at: `/_evidence/`
+
+**Locked folder structure:** `/products/<lane>/attempts/prd-vX.Y/attempt-NNN/`
+
+Do NOT use:
+- `/attempts/<lane>/prd-vX.Y/attempt-NNN/` (legacy)
+- `/attempts/prd-vX.Y/<lane>/`
+- `/products/<lane>/attempts/attempt-NNN/` (missing PRD version)
+
+---
+
+## 📎 META.json Schema
+
+Each attempt contains a `META.json` with provenance, lane, and canonical pointers:
+
+```json
+{
+  "lane": "website",
+  "prd_version": "v1.0",
+  "epoch_id": "E0002-multi-lane-era",
+  "run_id": "a1b2c3d4",
+  "attempt": "001",
+  
+  "tool": "cursor",
+  "agent": "a",
+  "model": "opus-4.5",
+  
+  "lane_root": "products/website",
+  "dist_dir": "products/website/dist",
+  
+  "worktree_path": "/path/to/worktree",
+  "branch": "run/website/v1.0/cursor/a/opus-45/a1b2c3d4",
+  "git_head": "abc123...",
+  
+  "registered_at": "2026-01-16T10:00:00Z",
+  "completed_at": "2026-01-16T12:00:00Z",
+  "finalized_at": "2026-01-16T14:00:00Z",
+  
+  "status": "CLOSED",
+  "preview_url": "https://run-website-v10-cursor-a-opus-45-a1b2c3d4.klappy-dev.pages.dev",
+  "evidence_index": ["evidence/desktop.png", "evidence/mobile.png"]
+}
+```
+
+**Lane field is REQUIRED.** Valid values: `website`, `ai-navigation`, `agent-skill`
+
+**Epoch field is REQUIRED.** If `epoch_id` is missing, the attempt is not comparable to other attempts by default. See `/docs/appendices/epochs.md`.
+
+**Key insight:** The commit SHA + provenance fields + lane + epoch are truth. Branch names and tags are convenience.
+
+---
+
+## 📦 Artifacts Always Merge
+
+**Failed attempts still contribute learnings.**
+
+| Output | Merge to main? |
+|--------|----------------|
+| Artifacts (attempt folder, evidence, PRD patches) | **Always** |
+| Code (`products/<lane>/src`, components, etc.) | **Only if Champion** |
+
+### Two Phases Per Attempt
+
+1. **Artifacts merge** (always)
+   - Seal attempt folder
+   - Commit evidence and closure record
+   - Merge to `main`
+
+2. **Code promotion** (only if winner)
+   - Champion's code merges to `main`
+   - `prod` fast-forwards to `main`
+   - Non-winners keep preview URLs but code stays on attempt branch
+
+This ensures every attempt contributes to the knowledge base.
+
+---
+
+## 🔄 What Evolves vs. What is Frozen
+
+| Category | Evolves? | Notes |
+|----------|----------|-------|
+| `/canon/**` | ✅ Yes | Living orientation docs (shared across lanes) |
+| `/docs/PRD/<lane>/PRD.md` | ✅ Yes | Active PRD per lane |
+| `/products/<lane>/attempts/prd-vX.Y/PRD.md` | ❌ No | Frozen snapshot |
+| `/products/<lane>/attempts/*/attempt-NNN/*` | ❌ No | Sealed record + evidence |
+
+**Note:** Each lane evolves independently. Changes to the website PRD do not affect agent-skill attempts.
+
+---
+
+## 💡 Why This Structure?
+
+- **No filesystem sprawl:** One `products/<lane>/src/` per lane, not `/app-v1`, `/app-v2`, etc.
+- **PRD-first:** Clear hierarchy of what was attempted
+- **Retry-friendly:** Multiple attempts per PRD version is expected
+- **Provenance is truth:** `META.json` ensures attempts are interpretable even if branch names drift
+- **Self-contained:** Each attempt has everything needed to understand it
+
+---
+
+## 🔮 Resurrection
+
+To resurrect any sealed attempt:
+
+```bash
+git checkout <sealed_commit>
+npm install
+npm run build
+# Deploy to preview or production as needed
+```
+
+The attempt folder contains everything needed:
+- Exact code state (via commit SHA)
+- Evidence (screenshots, logs)
+- Provenance (who/what made it)
+- Deploy history (URLs where it ran)
+
+---
+
+## 📋 Current Policies
+
+| Decision | Answer |
+|----------|--------|
+| Are preview deploys required for sealing? | Required for UI changes, optional for doc-only |
+| Do we preserve attempt previews permanently? | No — we preserve links + evidence |
+| Do failed attempts merge to main? | Artifacts yes, code no |
+| How do parallel agents avoid collisions? | `finalize` assigns numbers after completion |
+| Must lane src be reset between attempts? | Yes, via `attempt:nuke --lane <lane>` (blank slate) |
+| What branch is production? | `prod` (never nuked, explicit promotion only) |
+
+---
+
+## 🛠️ Tooling Summary
+
+| Command | Purpose |
+|---------|---------|
+| `npm run attempt:register -- --lane <lane> --tool <t> --agent <id> --model <m>` | Register run with lane + provenance |
+| `npm run attempt:nuke -- --lane <lane>` | Blank slate — delete `products/<lane>/src` |
+| `npm run attempt:submit` | Commit + push (triggers CF preview) |
+| `npm run attempt:finalize -- --lane <lane> --prd vX.Y` | Assign attempt numbers for lane |
+| `npm run attempt:promote -- --lane <lane> --prd vX.Y --attempt 001` | Promote lane champion to production |
+| `npm run attempt:cleanup` | Prune stale worktrees and branches |
+
+**Lane is required for register, nuke, finalize, and promote commands.**
+
+---
+
+## 🔗 Related Documents
+
+- **Product Lanes Architecture: `/docs/appendices/product-lanes.md`** (READ FIRST)
+- **Interface Contracts: `/interfaces/index.md`** (semver'd compatibility promises)
+- **Lane Build Layout: `/docs/appendices/lane-build-layout.md`** (how lanes avoid /src and /dist collisions)
+- Step-by-step workflow: `/docs/ATTEMPT_KICKOFF.md`
+- Agent entry point: `/docs/AGENT_KICKOFF.md`
+- Deploy behavior: `/docs/CLOUDFLARE_CONFIG.md`
+- Decision log: `/odd/decisions/`
+- Quantum Development: `/odd/appendices/quantum-development.md`
+- Repo Truth: `/docs/appendices/repo-truth.md`
+- Drift Checks: `/docs/appendices/drift-checks.md`
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/appendices/ATTEMPT_KICKOFF.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/attempt-kickoff
+title: "Attempt Workflow (Human)"
+audience: docs
+exposure: nav
+tier: 1
+voice: neutral
+stability: stable
+tags: ["docs", "implementation", "attempts", "workflow", "human"]
+---
+
+# 🚀 Attempt Workflow (Human)
+
+This document describes the **human workflow** for running attempts.
+
+**For agents:** Go directly to `/docs/AGENT_KICKOFF.md` — that is the canonical agent entry point.
+
+---
+
+## Canonical Lane Kickoff Prompts
+
+Agents do NOT use one-off prompts.
+
+All attempts must start from the lane's canonical kickoff prompt:
+
+- Website: `/infra/prompts/attempt-kickoff/website.md`
+- AI Navigation: `/infra/prompts/attempt-kickoff/ai-navigation.md`
+- Agent Skill: `/infra/prompts/attempt-kickoff/agent-skill.md`
+
+Bootstrap (optional): `/infra/prompts/attempt-kickoff/BOOTSTRAP.md`
+
+---
+
+## E0003.1 Completion Rule (Evidence Discoverable)
+
+An attempt is NOT complete unless its deployed build exposes **discoverable** evidence.
+
+**Required URLs (must return HTTP 200):**
+
+- `/_evidence/index.html` — human-browsable evidence index
+- `/_evidence/index.json` — machine inventory
+- `/_evidence/EVIDENCE.md` — summary + links
+
+**Required proof assets:**
+
+- At least **1 screenshot** in `/_evidence/screenshots/`
+- AND at least **1 recording** in `/_evidence/recordings/` OR **3 screenshots total**
+
+Markdown alone does not count as proof.
+
+**Build enforcement:**
+
+When `.attempt.json` exists:
+- Build FAILS if evidence folder is missing
+- Build FAILS if required documents are missing
+- Build FAILS if proof assets are insufficient
+- Build FAILS if index generation fails
+
+**If `/_evidence/index.html` returns 404, the attempt is INVALID.**
+
+See `/docs/decisions/D0014-e0003-evidence-first-era.md` for the epoch decision.
+
+---
+
+## ⚠️ Before Starting
+
+1. **Identify which lane this attempt belongs to:**
+   - `website` — human-facing UI/UX
+   - `ai-navigation` — AI layer over documentation
+   - `agent-skill` — agent cognitive framework
+2. Checkout `main`
+3. Ensure repository is clean:
+   - `git status` shows nothing to commit
+4. Commit all changes that define the experiment:
+   - Lane PRD (e.g., `/docs/PRD/website/PRD.md`)
+   - Contracts (`/infra/contracts/`)
+   - Canon docs (if updated)
+5. (Optional) Create worktrees if running parallel agents
+6. (Optional) Run `npm run attempt:cleanup` to prune stale branches/worktrees
+
+**Rule:**  
+If it is not committed before Cursor starts, it does not exist.
+
+**Rule:**  
+Every attempt MUST declare a lane. Attempts without a lane are invalid.
+
+**Rule:**  
+Before registration, declare the current epoch. Epoch determines comparability of outcomes. If `epoch_id` is missing, results must not be compared to prior attempts.
+
+See `/docs/appendices/product-lanes.md` for the multi-lane architecture.  
+See `/docs/appendices/epochs.md` for epoch semantics.
+
+---
+
+## 🤖 Starting Agents
+
+Point each agent at:
+
+**`/docs/AGENT_KICKOFF.md`**
+
+That file is the canonical, self-contained entry point. Do not paste external prompts.
+
+The file contains all instructions agents need:
+- Lane declaration
+- Registration
+- Nuke
+- Build
+- Evidence
+
+---
+
+## ✅ After All Agents Finish
+
+On `main` branch:
+
+```bash
+# 1. Import artifact folders from all attempt branches for the lane
+npm run attempt:import -- --lane <lane> --prd <active>
+```
+
+**Invariant:** This command **MUST NOT** merge application code (`products/<lane>/src`).  
+Only sealed attempt artifacts (`_runs/` folders) are imported.
+
+```bash
+# 2. Finalize runs (assign attempt-001, 002…)
+npm run attempt:finalize -- --lane <lane> --prd <active>
+
+# 3. Review evidence + preview URLs in each attempt folder
+
+# 4. Promote winner to production
+npm run attempt:promote -- --lane <lane> --prd <active> --attempt 001
+```
+
+**Note:** `<lane>` is the product lane (e.g., `website`).  
+**Note:** `<active>` is the PRD version from the lane's PRD (e.g., `v1.0`).
+
+---
+
+## 🛠️ CLI Reference
+
+| Command | Purpose |
+|---------|---------|
+| `npm run attempt:nuke -- --lane <l>` | Blank slate — delete `products/<lane>/src`, lane configs |
+| `npm run attempt:register -- --lane <l> --tool <t> --agent <id> --model <m>` | Register run with lane + provenance |
+| `npm run attempt:submit` | Commit + push (triggers CF preview) |
+| `npm run attempt:import -- --lane <l> --prd <v>` | Pull artifacts from branches to main |
+| `npm run attempt:finalize -- --lane <l> --prd <v>` | Assign attempt numbers for lane |
+| `npm run attempt:promote -- --lane <l> --prd <v> --attempt <n>` | Merge lane champion → main → prod |
+| `npm run attempt:cleanup` | Prune stale worktrees and branches |
+
+**Lane is required for register, import, finalize, and promote commands.**
+Valid lanes: `website`, `ai-navigation`, `agent-skill`
+
+---
+
+## 📁 Artifact Locations
+
+Attempt artifacts live at (lane-contained):
+
+```
+/products/<lane>/attempts/prd-vX.Y/attempt-NNN/
+```
+
+**During attempt:**
+```
+products/<lane>/attempts/prd-<version>/_runs/<run_id>/
+```
+
+**After finalize:**
+```
+products/<lane>/attempts/prd-<version>/attempt-001/
+products/<lane>/attempts/prd-<version>/attempt-002/
+```
+
+**Locked folder structure:** `/products/<lane>/attempts/prd-vX.Y/attempt-NNN/`
+
+**Note:** Root `/attempts/**` is legacy and read-only. See `/attempts/README.md`.
+
+**Completion gates (E0003+):**
+- Branch pushed to origin
+- Cloudflare preview deployment is live
+- HTTP 200 for:
+  - `/`
+  - `/_evidence/`
+- `/_evidence/` includes:
+  - index.html
+  - index.json
+  - ATTEMPT.md
+  - EVIDENCE.md
+  - META.json
+  - proof assets (screenshots/recording per contract)
+
+---
+
+## 📜 Deploy Contract
+
+See `/infra/contracts/build-output.md`
+
+- Output must be `products/<lane>/dist/index.html`
+- Must load `/public/content/manifest.json`
+- Stack choice is unrestricted
+- No client secrets
+
+See `/docs/appendices/lane-implementation-surfaces.md` for the locked folder contract.
+
+---
+
+## 🔗 Cloudflare Previews
+
+Any `git push` to an attempt branch creates a preview:
+
+```
+https://<branch-slug>.klappy-dev.pages.dev
+```
+
+Preview URLs are evidence artifacts, not permanent guarantees.
+
+---
+
+## 🚨 Online Evidence Requirement (Non-Negotiable)
+
+**An attempt is INVALID unless it provides online evidence.**
+
+Before an attempt can be marked complete, the agent MUST:
+
+1. **Push the attempt branch to `origin`**
+2. **Provide the Cloudflare Preview URL** for the branch
+3. **Provide the online Evidence URL** (where EVIDENCE.md is viewable)
+
+| Condition | Result |
+|-----------|--------|
+| Agent cannot push the branch | Attempt is **INVALID** |
+| Cloudflare Preview URL missing | Attempt is **INVALID** |
+| Evidence URL missing | Attempt is **INVALID** |
+| "Works on my machine" only | Attempt is **INVALID** |
+
+Local builds and previews are allowed during development, but they **do not satisfy** the Definition of Done.
+
+See `/docs/appendices/online-evidence.md` for the full requirement.
+
+---
+
+## 🔑 Key Mental Model
+
+| Principle | Meaning |
+|-----------|---------|
+| Humans define the experiment | PRD, contracts, canon are committed before agents start |
+| Agents execute in isolation | Each agent has its own worktree/branch |
+| Git commits define reality | Uncommitted work doesn't exist |
+| Cleanup is epistemic, not cosmetic | Dirty repos invalidate conclusions |
+| Promotion is the only path to prod | Champions merge to main, then fast-forward to prod |
+
+---
+
+## 🔗 Related Documents
+
+- **Product Lanes Architecture: `/docs/appendices/product-lanes.md`** (READ FIRST)
+- **Online Evidence Requirement: `/docs/appendices/online-evidence.md`** (no URL = invalid attempt)
+- **Preview Guide: `/docs/PREVIEW.md`** (local + Cloudflare preview how-to)
+- **Interface Contracts: `/interfaces/index.md`** (semver'd compatibility promises)
+- **Lane Build Layout: `/docs/appendices/lane-build-layout.md`** (how lanes avoid /src and /dist collisions)
+- **Agent Entry Point: `/docs/AGENT_KICKOFF.md`** (canonical agent instructions)
+- Attempt lifecycle (deep): `/docs/ATTEMPTS.md`
+- Deploy contract: `/infra/contracts/build-output.md`
+- Cloudflare config: `/docs/CLOUDFLARE_CONFIG.md`
+- Decision log: `/docs/decisions/`
+- Repo truth principle: `/docs/appendices/repo-truth.md`
+- Drift Checks: `/docs/appendices/drift-checks.md`
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/appendices/ATTEMPT_RECORD_PACK.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/attempt-record-pack
+title: "Attempt Record Packs"
+audience: docs
+exposure: nav
+tier: 3
+voice: neutral
+stability: stable
+tags: ["docs", "implementation", "attempts", "records", "evidence"]
+---
+
+# 📦 Attempt Record Packs
+
+An attempt produces immutable evidence and metadata that MAY be merged
+before a winner is chosen.
+
+## SHA Model
+
+Each attempt tracks:
+
+- `attempt_head_sha`: build + evidence commit
+- `record_pack_merge_sha`: merge of attempt records into main
+- `champion_merge_sha`: merge of winning src (optional)
+
+Auditability is preserved by never reusing SHAs.
+
+## Evidence Location
+
+Evidence is always exposed at:
+
+```
+/_evidence/
+```
+
+This URL must return HTTP 200 on any deployed build.
+
+## Minimum Proof
+
+- 1 video recording OR
+- 3 screenshots
+
+Markdown alone does not count.
+
+## Merge Policy
+
+Attempt records MAY be merged to main before a champion is selected.
+This preserves auditability without blocking parallel work.
+
+The winning attempt's source code is merged separately via `champion_merge_sha`.
+
+
+
+--------------------------------------------------------------------------------
 📄 File: docs/appendices/README.md
 --------------------------------------------------------------------------------
 
@@ -4377,6 +4973,84 @@ These appendices contain:
 | `/odd/appendices/failure-driven-modularity.md` | `product-lanes.md` | Concept → Structure |
 | `/odd/appendices/quantum-development.md` | `attempt-lifecycle.md` | Theory → Practice |
 | `/odd/appendices/alignment-reviews.md` | `repo-truth-audit.md` | What to review → How to audit |
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/appendices/WHAT_THIS_REPO_IS_NOT.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/what-this-repo-is-not
+title: "What This Repo Is Not"
+audience: docs
+exposure: nav
+tier: 2
+voice: neutral
+stability: stable
+tags: ["docs", "implementation", "scope", "boundaries", "philosophy"]
+---
+
+# 🚫 What This Repo Is Not
+
+This repository is intentionally not optimized for "everything in one place."
+
+It is optimized for **portability of thinking** without creating documentation sprawl.
+
+## This Is Not a Knowledge Base of Everything
+
+If a detail is not durable, it should not be immortalized.
+
+Most artifacts decay by design:
+- branches die,
+- attempts seal evidence then stop,
+- PRDs churn,
+- and only proven patterns elevate.
+
+See: `/odd/appendices/progressive-elevation.md`
+
+## This Is Not a Framework You Must Adopt
+
+ODD is not a prescriptive methodology.
+
+It is a set of lenses and constraints for keeping outcomes and evidence reliable in an environment where generation is abundant and confidence is cheap.
+
+## This Is Not a Promise of Stability Everywhere
+
+Some parts are intentionally unstable:
+
+- Attempts are ephemeral
+- PRDs evolve rapidly
+- Tooling may lag during epoch transitions
+
+What is stable:
+- Canon (curated)
+- Interface contracts (semver)
+- Decision logs (traceability)
+
+## This Is Not "Documentation Completeness"
+
+Completeness is a trap.
+
+The goal is:
+- minimal orientation for humans,
+- and reliable navigation for agents,
+without drowning either in uncurated files.
+
+If it feels "unfinished," that may be intentional:
+unfinished is often more honest than prematurely sealed truth.
+
+## This Is Not Code-Centric
+
+The primary artifact is not the codebase.
+
+The durable artifact is:
+- intent,
+- constraints,
+- decisions,
+- and evidence.
+
+Code is allowed to be disposable when regeneration is cheaper than understanding.
 
 
 
@@ -5593,6 +6267,195 @@ It exists to keep context bounded while keeping truth traceable.
 
 
 --------------------------------------------------------------------------------
+📄 File: docs/appendices/context-packs-and-projection-detail.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/context-packs-and-projection-detail
+title: "Context Packs and Projection Detail"
+audience: docs
+exposure: nav
+tier: 2
+voice: neutral
+stability: evolving
+tags: ["docs", "context-packs", "projection", "detail-levels"]
+---
+
+# Context Packs and Projection Detail
+
+> Detail levels control how much content is returned, not which content is relevant.
+
+## Description
+
+This document explains how context packs use projection detail to control output density. Document tiers determine epistemic obligation (what must be absorbed). Query-time detail levels determine how much of that content is returned (full, medium, low). These are orthogonal concepts. A Tier 1 document can be projected at low detail. A Tier 3 document can be projected at full detail. Detail controls density; tiers control obligation.
+
+## Outline
+
+- Document Tiers vs Query-Time Detail
+- Detail Levels Explained
+- How Detail Affects Output
+- Degradation When Structure Is Missing
+- Common Misunderstandings
+
+---
+
+## Document Tiers vs Query-Time Detail
+
+Two different axes control what appears in a context pack:
+
+| Axis | Question Answered | Set By |
+|------|-------------------|--------|
+| **Tier** | "How much must I absorb this?" | Document author |
+| **Detail** | "How much should I return?" | Query/consumer |
+
+Tiers are fixed properties of documents. Detail is a runtime choice.
+
+**Example:**
+
+A Tier 1 Canon document (high epistemic obligation) might be projected at:
+- `full` — return the complete document
+- `medium` — return description + outline
+- `low` — return title + one-line summary
+
+The tier doesn't change. The projection does.
+
+### Tier 0 Content
+
+Tier 0 is a scope exclusion marker, not an epistemic tier.
+
+Tier 0 content is:
+
+- Never included in default context-packs
+- Excluded from agent reasoning contexts
+- Not subject to projection detail levels
+
+Projection detail (full, medium, low) applies only to Tier 1–3 content. Tier 0 content is simply absent from the epistemic system.
+
+---
+
+## Detail Levels Explained
+
+Three detail levels are supported:
+
+### `full`
+
+Returns the complete document content.
+
+**Use when:**
+- Deep understanding is required
+- The document is directly relevant to the task
+- Token budget allows
+
+### `medium`
+
+Returns structural content: frontmatter, description, outline, section headers.
+
+**Use when:**
+- Orientation is needed but not full content
+- Multiple documents must fit in context
+- The document is relevant but not primary
+
+### `low`
+
+Returns minimal content: title, one-line summary (blockquote), and possibly description.
+
+**Use when:**
+- Existence matters more than content
+- Many documents must be referenced
+- Token budget is constrained
+
+---
+
+## How Detail Affects Output
+
+Given a well-structured document:
+
+```markdown
+---
+uri: klappy://example
+title: "Example Document"
+---
+
+# Example Document
+
+> One-line summary of what this is.
+
+## Description
+
+Two paragraphs explaining the document's purpose and scope.
+
+## Outline
+
+- Section 1
+- Section 2
+- Section 3
+
+---
+
+## Section 1
+
+[Full content...]
+
+## Section 2
+
+[Full content...]
+```
+
+**Projection at different detail levels:**
+
+| Level | Returns |
+|-------|---------|
+| `full` | Everything |
+| `medium` | Frontmatter + title + summary + description + outline |
+| `low` | Frontmatter + title + summary |
+
+---
+
+## Degradation When Structure Is Missing
+
+Detail projection depends on document structure. When structure is missing, projection degrades:
+
+| Missing Element | Consequence |
+|-----------------|-------------|
+| No blockquote summary | `low` falls back to title only |
+| No Description section | `medium` falls back to outline or full |
+| No Outline section | `medium` returns description + headers |
+| No structure at all | All levels return full content |
+
+**Implication:** Documents that follow the template project cleanly. Documents without structure force full inclusion regardless of requested detail.
+
+This is intentional. The cost of bad structure is paid at query time, not authoring time.
+
+---
+
+## Common Misunderstandings
+
+### "Higher detail means more important"
+
+No. Detail controls density, not importance. A `low` detail projection of a critical Tier 1 document is still critical—just compressed.
+
+### "Tier controls how much is returned"
+
+No. Tier controls epistemic obligation. A Tier 3 document at `full` detail returns everything. A Tier 1 document at `low` detail returns minimal content.
+
+### "Detail is set per-document"
+
+No. Detail is set per-query. The same document can be projected at different detail levels for different purposes.
+
+### "Missing structure is fine"
+
+Technically yes. Practically, missing structure means the document cannot be compressed. It will consume full tokens regardless of requested detail.
+
+---
+
+## See Also
+
+- [Epistemic Obligation and Document Tiers](/canon/definitions/epistemic-obligation-and-document-tiers.md) — What tiers mean
+- [Article Template](/docs/TEMPLATE.md) — Standard structure for projectable documents
+
+
+
+--------------------------------------------------------------------------------
 📄 File: docs/appendices/convention-requires-an-enforcer.md
 --------------------------------------------------------------------------------
 
@@ -6522,258 +7385,116 @@ Lane-scoped implementation surfaces restore epistemic independence.
 
 
 --------------------------------------------------------------------------------
-📄 File: docs/appendices/memory-architecture.proposed.md
+📄 File: docs/appendices/mode-separated-conversations.md
 --------------------------------------------------------------------------------
 
 ---
-uri: klappy://docs/appendices/memory-architecture
-title: "Memory Architecture"
+uri: klappy://docs/mode-separated-conversations
+title: "Mode-Separated Conversations"
 audience: docs
 exposure: nav
-tier: 3
+tier: 2
 voice: neutral
 stability: evolving
-tags: ["odd", "memory", "elevation", "portability"]
-status: proposed
+tags: ["planning", "execution", "collaboration"]
 ---
 
-# Memory Architecture
+# Mode-Separated Conversations
 
-> The layered system that preserves learning while discarding what no longer reduces drag.
+> Trust emerges when participants know which epistemic mode they are in.
 
-## Description
+## Relationship to Canon
 
-Memory in ODD is the percolation path from ephemeral execution to durable truth through five layers: Attempt Evidence, Lane History, Lane Decisions, Cross-Lane Patterns, and Canon. Each layer has different durability, scope, and elevation criteria, with most artifacts expected to decay at lower layers. The system preserves what repeatedly reduces drag, discards what no longer serves, and keeps percolation paths visible.
+This document operationalizes:
 
-## Outline
+- **Canon: Epistemic Modes**
 
-- Summary
-- Why Memory Matters
-- The Memory Layers
-- The Percolation Model
-- Decay Is the Default
-- Folder Patterns
-- What Memory Is Not
-- Relationship to Other Concepts
-- Related Documents
+It does not redefine modes.
+It describes how conversations respect them.
 
 ---
 
-## Content
+## The Core Insight
 
-## Summary
+Confusion and mistrust arise when:
 
-In ODD, **memory** is the layered system that preserves what was learned while discarding what no longer reduces drag.
+- planning conversations pretend to execute
+- execution conversations reopen exploration
+- critique is misinterpreted as obstruction
 
-Memory is not a single artifact. It is the percolation path from ephemeral execution to durable truth:
-
-```
-Attempts → Lane History → Lane Decisions → Cross-Lane Patterns → Canon
-```
-
-Each layer has different durability, scope, and elevation criteria.
+Separating conversations by epistemic mode reduces friction without reducing rigor.
 
 ---
 
-## Why Memory Matters
+## Planning Conversations
 
-ODD assumes:
-- Generation is abundant
-- Trust is scarce
-- Context is bounded
-- Drift is inevitable unless actively curated
+Purpose:
 
-Memory is the bottleneck — not computation, not generation, not storage.
+- clarify intent
+- surface assumptions
+- explore tradeoffs
 
-The system must:
-- Preserve what repeatedly reduces drag
-- Discard what no longer serves
-- Make the percolation path visible
-- Keep each layer scannable by agents and humans
+Characteristics:
 
-Evidence without elevation creates false confidence rather than learning.
+- no artifacts required
+- uncertainty is acceptable
+- disagreement is productive
 
----
+Invalid moves:
 
-## The Memory Layers
-
-### Layer 1: Attempt Evidence (Ephemeral)
-
-**Scope:** Single execution against a PRD  
-**Durability:** Sealed when attempt closes; may be pruned later  
-**Lives in:** `products/<lane>/<version>/attempts/attempt-NNN/evidence/`
-
-Attempts capture what happened during execution:
-- Test output, logs, screenshots
-- Verification artifacts
-- Failure evidence
-
-**Elevates when:** A pattern appears across multiple attempts and can be stated as a reusable learning.
+- claiming completion
+- demanding proof
+- optimizing prematurely
 
 ---
 
-### Layer 2: Lane History (Lane-Durable)
+## Execution Conversations
 
-**Scope:** What happened in this lane — champions, failures, infrastructure changes  
-**Durability:** Persists as long as the lane exists  
-**Lives in:** `products/<lane>/history/`
+Purpose:
 
-History records **what happened** without turning it into rules:
-- Champion promotions
-- Failed attempts with learnings
-- Infrastructure migrations
+- produce outcomes
+- verify results
+- evaluate completion
 
-**Elevates when:** A learning recurs across multiple versions or informs lane decisions.
+Characteristics:
 
----
+- artifacts required
+- claims must be verifiable
+- scope is constrained
 
-### Layer 3: Lane Decisions (Lane-Durable)
+Invalid moves:
 
-**Scope:** Why this lane chose what it chose  
-**Durability:** Persists as long as the lane exists; may be deprecated  
-**Lives in:** `products/<lane>/decisions/`
-
-Decisions record **why we chose** to make things happen the way they did:
-- Architectural choices
-- Deviations from canon
-- Patterns that worked
-
-History says "we did X." Decisions say "we did X because Y."
-
-**Elevates when:** A decision proves valuable across multiple lanes.
+- introducing new ideas without acknowledgement
+- reframing goals retroactively
+- debating intent instead of evidence
 
 ---
 
-### Layer 4: Cross-Lane Patterns (Repo-Durable)
+## Mode Signaling
 
-**Scope:** Patterns that recur across lanes  
-**Durability:** Persists in interfaces or shared tooling  
-**Lives in:** `/interfaces/**` or shared infrastructure
+Mode MAY be signaled explicitly:
 
-Cross-lane patterns emerge when:
-- Multiple lanes solve the same problem
-- Interoperability requires explicit contracts
-- Drift across lanes becomes expensive
+- "Let's stay in planning for now"
+- "Switching to execution"
+- "This is exploratory"
 
-**Elevates when:** A pattern satisfies elevation criteria (recurrence, portability, drag reduction, testability).
-
-Many cross-lane patterns remain permanently non-canonical — useful, local, and intentionally contextual. Canon is not the goal of all things.
+Explicit signaling prevents accidental collapse.
 
 ---
 
-### Layer 5: Canon (Durable Truth)
+## Reversion Is Allowed
 
-**Scope:** Curated, high-signal rules that survive context changes  
-**Durability:** Persists across projects, tools, and time  
-**Lives in:** `/canon/**`
+Returning to an earlier mode is not failure.
+It is often evidence of learning.
 
-Canon is intentionally small. Adding to canon requires:
-1. **Recurrence** — appears across multiple attempts/projects
-2. **Portability** — remains true across stacks/models/tools
-3. **Drag Reduction** — prevents repeated confusion or failure
-4. **Testability** — can be expressed as a falsifiable claim
-
-Canon does not grow by accumulation. It grows by curation.
+What matters is **acknowledgement**, not momentum.
 
 ---
 
-## The Percolation Model
+## Final Note
 
-Memory does not flow upward automatically. It requires explicit elevation.
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                        CANON                                │
-│  (Durable truth that survives context changes)              │
-└─────────────────────────────────────────────────────────────┘
-                           ▲
-                           │ elevation (strict criteria)
-                           │
-┌─────────────────────────────────────────────────────────────┐
-│                   CROSS-LANE PATTERNS                       │
-│  (Interfaces, shared contracts, proven interop)             │
-└─────────────────────────────────────────────────────────────┘
-                           ▲
-                           │ elevation (recurrence across lanes)
-                           │
-┌───────────────────────┐ ┌───────────────────────┐
-│   LANE A              │ │   LANE B              │
-│   ├── decisions/      │ │   ├── decisions/      │
-│   ├── history/        │ │   ├── history/        │
-│   └── attempts/       │ │   └── attempts/       │
-└───────────────────────┘ └───────────────────────┘
-         ▲                          ▲
-         │ elevation                │ elevation
-         │ (recurrence,             │ (recurrence,
-         │  learning)               │  learning)
-         │                          │
-    ┌─────────┐                ┌─────────┐
-    │ attempt │                │ attempt │
-    │ attempt │                │ attempt │
-    │ attempt │                │ attempt │
-    └─────────┘                └─────────┘
-```
-
-Most artifacts die at the attempt layer. That is correct behavior.
-
----
-
-## Decay Is the Default
-
-Memory preservation has a cost: maintenance, cognitive load, drift risk.
-
-ODD assumes most artifacts should decay:
-- Attempts are sealed and may be pruned
-- History entries are append-only but finite
-- Decisions may be deprecated
-- Even canon can be curated down
-
-Discarding is not loss. It is how memory stays useful.
-
----
-
-## Folder Patterns
-
-Each layer has a consistent folder pattern within lanes:
-
-| Layer | Pattern | Index Style | Authored By |
-|-------|---------|-------------|-------------|
-| Attempts | `<version>/attempts/attempt-NNN/` | Flat enumeration | Agent or human |
-| History | `history/H000X-*.md` | Index table + individual files | Human (post-attempt) |
-| Decisions | `decisions/D000X-*.md` | Index table + individual files | Human |
-
-The index + individual files pattern keeps scan cost low while allowing entries to grow.
-
----
-
-## What Memory Is Not
-
-Memory is not:
-- A **changelog** (user-facing release notes)
-- A **git log** (commit history)
-- A **wiki** (sprawling documentation)
-
-Memory is curated learning that reduces future drag.
-
----
-
-## Relationship to Other Concepts
-
-| Concept | Relationship |
-|---------|--------------|
-| Progressive Elevation | The criteria for when something moves up a layer |
-| Compiled Memory | Compression of memory into agent-consumable packs |
-| Product Lanes | The boundaries within which memory is scoped |
-| Epochs | Comparability boundaries when the rules change |
-
----
-
-## Related Documents
-
-- `/odd/appendices/progressive-elevation.md` — Elevation criteria
-- `/docs/appendices/compiled-memory.md` — Compression for agents
-- `/docs/appendices/product-lanes.md` — Lane isolation
-- `/docs/appendices/attempt-lifecycle.md` — Attempt containment
+Mode separation is not rigidity.
+It is how collaboration scales without coercion.
 
 
 
@@ -6859,10 +7580,10 @@ Note: Attempts are lane-contained. Root `/attempts/**` is legacy (read-only).
 
 ## Related Documents
 
-- Definition of Done: `/canon/definition-of-done.md`
-- Visual Proof Standards: `/canon/visual-proof.md`
+- Definition of Done: `/canon/constraints/definition-of-done.md`
+- Visual Proof Standards: `/canon/constraints/visual-proof.md`
 - Attempt Lifecycle: `/docs/appendices/attempt-lifecycle.md`
-- Preview Guide: `/docs/PREVIEW.md`
+- Preview Guide: `/docs/infra/PREVIEW.md`
 
 
 
@@ -7433,7 +8154,747 @@ This topology makes restartability cheap and keeps concerns decoupled.
 
 
 --------------------------------------------------------------------------------
-📄 File: docs/appendices/repo-truth-audit.md
+📄 File: docs/appendices/repo-truth.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/appendices/repo-truth
+title: "Repository Truth & Epistemic Hygiene"
+audience: docs
+exposure: nav
+tier: 3
+voice: neutral
+stability: stable
+tags: ["odd", "epistemic", "hygiene", "truth", "cleanup"]
+---
+
+# Repository Truth & Epistemic Hygiene
+
+> If the repository is dirty, conclusions drawn from it are invalid.
+
+## Description
+
+In AI-assisted development, state residue is indistinguishable from signal—unclean repositories produce false confidence, failures, and learning. A repository is dirty when orphaned worktrees, detached HEADs, stale branches, overlapping attempts, or ambiguous production state exist. `attempt:cleanup` is a reset of epistemic state that guarantees only sealed attempts and intentional branches remain.
+
+## Outline
+
+- Core Principle
+- What "Dirty" Means
+- `attempt:cleanup` as a Truth Reset
+- Why This Matters
+- The Truth Boundary
+- Branch Roles as Epistemic Contracts
+- Orientation Note
+
+---
+
+## Content
+
+## Core Principle
+
+> **If the repository is dirty, conclusions drawn from it are invalid.**
+
+In AI-assisted development, state residue is indistinguishable from signal.
+Unclean repositories produce false confidence, false failures, and false learning.
+
+This project treats repository cleanliness as a prerequisite for reasoning.
+
+---
+
+## What "Dirty" Means
+
+A repository is considered dirty when:
+
+- orphaned worktrees exist
+- detached HEADs remain
+- stale branches survive past their relevance
+- attempts overlap in filesystem state
+- production state is ambiguous
+
+When this happens, outcomes cannot be trusted.
+
+---
+
+## `attempt:cleanup` as a Truth Reset
+
+`attempt:cleanup` is not housekeeping.
+
+It is a **reset of epistemic state**.
+
+Running cleanup guarantees:
+
+- only sealed attempts remain
+- only intentional branches exist
+- production state is explicit
+- new attempts begin without contamination
+
+Without cleanup, experimentation collapses into folklore.
+
+---
+
+## Why This Matters
+
+Quantum Development relies on comparing independent observations.
+
+Independence is meaningless if the filesystem lies.
+
+Therefore:
+
+- cleanup is mandatory
+- residue is failure
+- convenience never overrides truth
+
+---
+
+## The Truth Boundary
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                     TRUTH BOUNDARY                          │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│   INSIDE (trustworthy)          OUTSIDE (suspect)           │
+│   ─────────────────────         ──────────────────          │
+│   • prod branch                 • orphaned worktrees        │
+│   • main branch                 • detached HEADs            │
+│   • sealed attempts             • stale branches            │
+│   • explicit state              • filesystem residue        │
+│                                                             │
+│   `attempt:cleanup` moves everything INSIDE                 │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Branch Roles as Epistemic Contracts
+
+| Branch | Role | Can Be Nuked? |
+|--------|------|---------------|
+| `prod` | Production truth | ❌ Never |
+| `main` | Experiment ledger | ⚠️ Only via promotion |
+| `attempt/*` | Hypotheses | ✅ Always |
+
+These aren't conventions. They're contracts about what can be trusted.
+
+---
+
+## Orientation Note
+
+This document explains *why* the rule exists.
+Procedures for enforcing it live elsewhere.
+
+See:
+- `/docs/ATTEMPTS.md` — attempt lifecycle procedures
+- `/docs/ATTEMPT_KICKOFF.md` — agent kickoff instructions
+- `/docs/CLOUDFLARE_CONFIG.md` — deploy branch mapping
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/appendices/synthesis-ledger.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/synthesis-ledger
+title: "Synthesis Ledger"
+audience: docs
+exposure: nav
+tier: 2
+voice: neutral
+stability: evolving
+tags: ["exploration", "learning", "synthesis"]
+---
+
+# Synthesis Ledger
+
+> A Synthesis Ledger captures learning from Exploration Mode without forcing decisions or execution.
+
+## Relationship to Canon
+
+This document hangs from:
+
+- **Canon: Epistemic Modes**
+
+The Synthesis Ledger exists **only** in Exploration Mode.
+It MUST NOT be treated as a plan, requirement, or commitment.
+
+---
+
+## Purpose
+
+Exploration produces:
+
+- competing ideas
+- tensions
+- reframed problems
+- partial truths
+
+The Synthesis Ledger preserves these **before they are lost**, while explicitly avoiding:
+
+- premature convergence
+- implicit commitments
+- retroactive justification
+
+---
+
+## What Belongs in the Ledger
+
+Allowed entries:
+
+- Key insights discovered
+- Open questions worth preserving
+- Tradeoffs surfaced but unresolved
+- Patterns noticed across attempts
+- Hypotheses that need testing
+
+Explicitly excluded:
+
+- Decisions
+- Requirements
+- Roadmaps
+- Acceptance criteria
+- Claims of completion
+
+---
+
+## Entry Structure (Minimal)
+
+Each entry SHOULD include:
+
+- **Observation** — what was noticed
+- **Context** — what triggered it
+- **Implication** — why it might matter
+- **Confidence** — low / medium / high
+- **Open Questions** — if any
+
+This structure preserves meaning without asserting truth.
+
+---
+
+## Anti-Patterns
+
+The following are violations:
+
+- Using the ledger as a backlog
+- Treating entries as promises
+- Editing history to match later outcomes
+- Converting ledger entries directly into tasks
+
+If an entry demands action, it has crossed into Planning Mode.
+
+---
+
+## Lifecycle
+
+- Ledger entries may persist indefinitely
+- Entries MAY be referenced by Planning documents
+- Entries MUST NOT be silently promoted into Execution
+
+Promotion requires explicit transition and justification.
+
+---
+
+## Final Note
+
+The Synthesis Ledger is not about being right.
+It is about **not forgetting what mattered before certainty arrived**.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/audits/epoch4-phase2-classification.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/audits/epoch4-phase2-classification
+title: "Epoch 4 Phase 2 — Classification Inventory"
+audience: docs
+exposure: internal
+tier: 2
+voice: neutral
+stability: draft
+tags: ["audit", "epoch-4", "migration", "classification", "inventory"]
+---
+
+# Epoch 4 Phase 2 — Classification Inventory
+
+> Complete classification of every document in the repository against the Epoch 4 target topology. No files were moved — this is the mapping only.
+
+## Summary
+
+| Area | Total Files | Correctly Placed | Needs Move |
+|------|-------------|-----------------|------------|
+| docs/ | 88 | 71 | 17 |
+| canon/ | 62 | 28 | 34 |
+| Peripheral (about/, apocrypha/, drift-audit/, root) | 24 | 20 | 4 |
+| **Total** | **174** | **119** | **55** |
+
+---
+
+## Key Findings
+
+1. **Root-level accumulation is the primary drift pattern.** In both `docs/` and `canon/`, the subdirectory structure is already well-formed. Files that need to move are overwhelmingly root-level files authored before the subdirectory taxonomy matured.
+
+2. **`canon/agents/` is entirely operational, not normative.** All 7 agent role definitions describe how agents behave, not what must be true. They reference canon but are not themselves canon. All 7 should move to `docs/`.
+
+3. **`canon/documentation/` is a pre-Epoch 4 artifact.** Its 4 files split cleanly: 2 are formal vocabulary (`definitions/`), 2 are architecture metadata (`meta/`). The directory should be dissolved.
+
+4. **`canon/` root has 14 misplaced files.** These are the highest-value moves: constraints that should be in `constraints/`, definitions in `definitions/`, methods in `methods/`, and diagnostics in `diagnostics/`.
+
+5. **`canon/self-audit.md` has a self-contradiction.** It carries `execution_posture: operational` while living in canon. Its own metadata flags it as non-normative.
+
+6. **Top-level `apocrypha/` is not redundant with `canon/apocrypha/`.** They serve different purposes (literary series vs. CHARTER-governed system-voice fragments). No bulk migration needed.
+
+---
+
+## docs/ — Files Needing Relocation (17 files)
+
+### Root-level docs/ (15 moves)
+
+| # | Current Path | Classification | Target |
+|---|---|---|---|
+| 1 | `docs/AGENT_ENTRYPOINT.md` | agent-docs | `docs/agents/` |
+| 2 | `docs/AGENT_KICKOFF.md` | agent-docs | `docs/agents/` |
+| 3 | `docs/ATTEMPTS.md` | appendix | `docs/appendices/` |
+| 4 | `docs/ATTEMPT_KICKOFF.md` | operational | `docs/appendices/` |
+| 5 | `docs/ATTEMPT_RECORD_PACK.md` | appendix | `docs/appendices/` |
+| 6 | `docs/CLOUDFLARE_CONFIG.md` | infra-docs | `docs/infra/` |
+| 7 | `docs/DISTILLATION_CLASSIFICATION.md` | history | `docs/history/` |
+| 8 | `docs/PREVIEW.md` | infra-docs | `docs/infra/` |
+| 9 | `docs/TRUTH_MAP.md` | canon-candidate | `docs/appendices/` (or promote to `canon/`) |
+| 10 | `docs/WHAT_THIS_REPO_IS_NOT.md` | appendix | `docs/appendices/` |
+| 11 | `docs/WHY.md` | oddkit-docs | `docs/oddkit/` |
+| 12 | `docs/concept.md` | history | `docs/history/` |
+| 13 | `docs/context-packs-and-projection-detail.md` | appendix | `docs/appendices/` |
+| 14 | `docs/mode-separated-conversations.md` | appendix | `docs/appendices/` |
+| 15 | `docs/synthesis-ledger.md` | appendix | `docs/appendices/` |
+
+### Subdirectory misplacements (2 moves)
+
+| # | Current Path | Classification | Target |
+|---|---|---|---|
+| 16 | `docs/appendices/memory-architecture.proposed.md` | plan | `docs/plans/` |
+| 17 | `docs/appendices/repo-truth-audit.md` | audit | `docs/audits/` |
+
+---
+
+## canon/ — Files Needing Relocation (34 files)
+
+### Root-level canon/ → constraints/ (5 moves)
+
+| # | Current Path | Target | Notes |
+|---|---|---|---|
+| 1 | `canon/decision-rules.md` | `canon/constraints/decision-rules.md` | Has MUST/MUST NOT statements |
+| 2 | `canon/definition-of-done.md` | `canon/constraints/definition-of-done.md` | 6 MUST statements |
+| 3 | `canon/epistemic-challenge.md` | `canon/constraints/epistemic-challenge.md` | 6 MUST statements defining governance |
+| 4 | `canon/verification-and-evidence.md` | `canon/constraints/verification-and-evidence.md` | Core constraint: "Claims are untrusted" |
+| 5 | `canon/visual-proof.md` | `canon/constraints/visual-proof.md` | 6 MUST statements, specializes verification |
+
+### Root-level canon/ → definitions/ (2 moves)
+
+| # | Current Path | Target | Notes |
+|---|---|---|---|
+| 6 | `canon/epistemic-modes.md` | `canon/definitions/epistemic-modes.md` | Defines 3 formal epistemic modes |
+| 7 | `canon/epistemic-obligation-and-document-tiers.md` | `canon/definitions/epistemic-obligation-and-document-tiers.md` | Defines the tier system |
+
+### Root-level canon/ → methods/ (3 moves)
+
+| # | Current Path | Target | Notes |
+|---|---|---|---|
+| 8 | `canon/epistemic-surface-extraction.md` | `canon/methods/epistemic-surface-extraction.md` | ESE is a repeatable protocol |
+| 9 | `canon/self-audit.md` | `canon/methods/self-audit.md` | execution_posture: operational |
+| 10 | `canon/weighted-relevance-and-arbitration.md` | `canon/methods/weighted-relevance-and-arbitration.md` | Durable application pattern |
+
+### Root-level canon/ → diagnostics/ (1 move)
+
+| # | Current Path | Target | Notes |
+|---|---|---|---|
+| 11 | `canon/epistemic-hygiene.md` | `canon/diagnostics/epistemic-hygiene.md` | Defines decay signals |
+
+### Root-level canon/ → meta/ (2 moves)
+
+| # | Current Path | Target | Notes |
+|---|---|---|---|
+| 12 | `canon/TEMPLATE.md` | `canon/meta/TEMPLATE.md` | Scaffolding, not normative |
+| 13 | `canon/completion-report-template.md` | `canon/meta/completion-report-template.md` | Output format template |
+
+### Root-level canon/ — special case (1)
+
+| # | Current Path | Target | Notes |
+|---|---|---|---|
+| 14 | `canon/constraints.md` | `canon/constraints/README.md` | Promote to constraints index |
+
+### canon/agents/ → docs/ (7 moves — entire directory)
+
+| # | Current Path | Target | Notes |
+|---|---|---|---|
+| 15 | `canon/agents/odd-scribe.md` | `docs/agents/` | Operational, not normative |
+| 16 | `canon/agents/odd-map-navigator.md` | `docs/agents/` | Operational, not normative |
+| 17 | `canon/agents/odd-mode-selector.md` | `docs/agents/` | Operational, not normative |
+| 18 | `canon/agents/odd-epistemic-guide.md` | `docs/agents/` | Operational, not normative |
+| 19 | `canon/agents/odd-implementation-guide.md` | `docs/agents/` | Operational, not normative |
+| 20 | `canon/agents/odd-orchestrator.md` | `docs/agents/` | Operational, not normative |
+| 21 | `canon/agents/odd-instruction-sync.md` | `docs/agents/` | Operational, not normative |
+
+### canon/documentation/ → dissolved (4 moves)
+
+| # | Current Path | Target | Notes |
+|---|---|---|---|
+| 22 | `canon/documentation/tier-vs-relevance.md` | `canon/definitions/tier-vs-relevance.md` | Formal vocabulary |
+| 23 | `canon/documentation/execution-posture.md` | `canon/definitions/execution-posture.md` | Formal vocabulary |
+| 24 | `canon/documentation/slice-contract-sml.md` | `canon/meta/slice-contract-sml.md` | Architecture metadata |
+| 25 | `canon/documentation/agent-executable-outline.md` | `canon/meta/agent-executable-outline.md` | Architecture metadata |
+
+### canon/odd/appendices/ → dissolved (1 move)
+
+| # | Current Path | Target | Notes |
+|---|---|---|---|
+| 26 | `canon/odd/appendices/tool-specialization.md` | `canon/methods/tool-specialization.md` | Durable application pattern |
+
+---
+
+## Peripheral — Files Needing Relocation (4 files)
+
+| # | Current Path | Classification | Target | Notes |
+|---|---|---|---|---|
+| 1 | `drift-audit/pass-0-classification.md` | audit | `docs/audits/` | Epoch 4 audit; drift-audit/ becomes empty |
+| 2 | `apocrypha/fragments/when-arbitration-went-global.md` | apocrypha | `canon/apocrypha/fragments/` | Uses system_first_person voice per CHARTER |
+| 3 | `about/home.md` | operational | unclear | URI is `klappy://public/home`, not `klappy://about/`. Functionally a content-config stub |
+| 4 | `klappy-dev-book-export.md` | compiled-output | .gitignore or `_compiled/` | 1.1MB generated artifact at repo root |
+
+---
+
+## docs/ — Already Correctly Placed (71 files)
+
+All files in these directories are correctly placed and need no action:
+
+- `docs/decisions/` — 15 decision records + README + TEMPLATE (all correct)
+- `docs/appendices/` — 15 of 17 files correct (2 misplaced noted above)
+- `docs/agents/` — 11 files (all correct)
+- `docs/oddkit/` — 6 files (all correct)
+- `docs/orchestrator/` — 5 files (all correct)
+- `docs/examples/` — 2 files (all correct)
+- `docs/migrations/` — 2 files (all correct)
+- `docs/promotions/` — 3 files (all correct)
+- `docs/infra/` — 1 file (correct)
+- `docs/klappy-dev/` — 3 files (all correct)
+- `docs/guiding-artifacts/` — 1 file (correct)
+- `docs/retellings/` — 1 file (correct)
+- `docs/_incoming/` — 1 file (correct)
+- Root indexes/templates: `CONTENT-MAP.md`, `PRD.md`, `README.md`, `TEMPLATE.md`, `TEMPLATE_README.md` (all correct)
+
+## canon/ — Already Correctly Placed (28 files)
+
+- `canon/constraints/` — 6 files (all correct)
+- `canon/principles/` — 4 files (all correct)
+- `canon/methods/` — 7 files including README (all correct)
+- `canon/resonance/` — 6 files including README and TEMPLATE (all correct)
+- `canon/decisions/` — 2 files (all correct)
+- `canon/defaults/` — 2 files (all correct)
+- `canon/definitions/` — 1 file (correct)
+- `canon/diagnostics/` — 1 file (correct)
+- `canon/meta/` — 1 file (correct)
+- `canon/apocrypha/` — 3 files (all correct)
+- `canon/README.md` — acceptable at root
+
+## Peripheral — Correctly Placed (20 files)
+
+- `about/` — 5 of 6 files correct (home.md noted above)
+- `apocrypha/` — 14 of 15 files correct (when-arbitration-went-global.md noted above)
+- `README.md` — repo root, correct
+
+---
+
+## Directories to Dissolve After Migration
+
+| Directory | Reason | Files Move To |
+|---|---|---|
+| `canon/agents/` | Entirely operational, not normative | `docs/agents/` |
+| `canon/documentation/` | Pre-Epoch 4 artifact | `canon/definitions/` and `canon/meta/` |
+| `canon/odd/appendices/` | Orphaned single file | `canon/methods/` |
+| `drift-audit/` | Single file, belongs in docs/audits | `docs/audits/` |
+
+---
+
+## Recommended Phase 3 Commit Order
+
+Moves should be done in category-pure commits per the migration plan:
+
+1. **canon/ root → canon/constraints/** (6 files including constraints.md → README.md)
+2. **canon/ root → canon/definitions/** (2 files)
+3. **canon/ root → canon/methods/** (3 files)
+4. **canon/ root → canon/diagnostics/** (1 file)
+5. **canon/ root → canon/meta/** (2 files)
+6. **canon/documentation/ → canon/definitions/ + canon/meta/** (4 files, dissolves directory)
+7. **canon/odd/appendices/ → canon/methods/** (1 file, dissolves directory)
+8. **canon/agents/ → docs/agents/** (7 files, dissolves directory)
+9. **docs/ root → docs/appendices/** (7 files)
+10. **docs/ root → docs/agents/** (2 files)
+11. **docs/ root → docs/infra/** (2 files)
+12. **docs/ root → docs/history/** (2 files)
+13. **docs/ root → docs/oddkit/** (1 file)
+14. **docs/appendices/ → docs/plans/ + docs/audits/** (2 files)
+15. **Peripheral moves** (drift-audit, apocrypha fragment, book export)
+
+Each commit follows the pattern: `move: relocate <description> to Epoch 4 structure`
+
+---
+
+## Related Documents
+
+- `klappy://docs/migrations/epoch4-canon-docs-migration` — the migration plan this inventory supports
+- `klappy://docs/_incoming/README` — the temporary intake area
+- `klappy://canon/constraints/meaning-must-not-depend-on-path` — the constraint motivating structural clarity
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/audits/pass-0-classification.md
+--------------------------------------------------------------------------------
+
+# Pass 0: Legacy Classification Table
+
+**Audit Date:** 2026-01-31 (T+0)
+**Epoch:** E0004 (Epistemic Separation Era)
+**Baseline:** `d0a45c5` (pre-Epoch 4) → `d306e74` (Epoch 4)
+
+---
+
+## Key Finding: The TEMPLATE Convention
+
+`odd/TEMPLATE.md` explicitly instructs authors to use `audience: canon` for ODD content:
+
+> | `audience` | `canon` | ODD is canon-level content |
+
+This is a **documented convention**, not accidental drift. Under Epoch 4, this creates an open question:
+
+- **Intentional:** ODD content carries canon-level authority within the system
+- **Conflation:** Legacy pattern that now claims the wrong layer
+
+**Classification approach:** We classify based on what files *currently claim*, not what they *should* claim. Resolution comes later.
+
+---
+
+## Classification Table
+
+### Files with CORRECT metadata (no action needed)
+
+| File | URI Scheme | Audience | Stability | Notes |
+|------|------------|----------|-----------|-------|
+| `odd/terminology.md` | `klappy://odd/` | `odd` | evolving | Correctly claims abstract methodology |
+| `odd/appendices/progressive-elevation.md` | `klappy://odd/` | `odd` | stable | Correctly claims abstract methodology |
+| `odd/constraint/anti-metric-laundering.md` | `klappy://odd/` | `odd` | stable | Correctly claims abstract methodology |
+| `odd/constraint/use-only-what-hurts.md` | `klappy://odd/` | `system` | constrained | System constraint, correct classification |
+| `odd/contract/epistemic-contract.md` | `odd://` | `odd` | long_lived | Correctly claims ODD + uses pure `odd://` scheme |
+| `odd/getting-started/odd-agents-and-mcp.md` | `klappy://odd/` | `odd` | evolving | Correctly claims abstract methodology |
+| `odd/README.md` | `klappy://public/` | `public` | semi_stable | Public-facing entry point, correct |
+
+**Action: 1-leave-as-is** (7 files)
+
+---
+
+### Files claiming `audience: canon` while living in `odd/`
+
+These files use the TEMPLATE convention. Under Epoch 4, this may represent:
+- Correct: "ODD content is canon-level within this system"
+- Drift: "This claims klappy.dev authority it shouldn't"
+
+| File | URI Scheme | Audience | Stability | Actual Role | Action |
+|------|------------|----------|-----------|-------------|--------|
+| `odd/index.md` | `klappy://odd` | `canon` | stable | Routing/index for ODD section | **TBD** - Is this klappy-specific or abstract? |
+| `odd/manifesto.md` | `klappy://odd/` | `canon` | stable | Core ODD philosophy, universal | **2-metadata** - likely should be `audience: odd` |
+| `odd/contract.md` | `klappy://odd/` | `canon` | stable | ODD System Contract (version 2.1.0) | **TBD** - Contains klappy-specific paths and lanes |
+| `odd/maturity.md` | `klappy://odd/` | `canon` | semi_stable | Project maturity model, universal | **2-metadata** - likely should be `audience: odd` |
+| `odd/misuse-patterns.md` | `klappy://odd/` | `canon` | evolving | ODD failure modes, universal | **2-metadata** - likely should be `audience: odd` |
+| `odd/orientation-map.md` | `klappy://odd/` | `canon` | semi_stable | Mental model, universal | **2-metadata** - likely should be `audience: odd` |
+| `odd/prompt-architecture.md` | `klappy://odd/` | `canon` | semi_stable | Prompt scaling philosophy, universal | **2-metadata** - likely should be `audience: odd` |
+| `odd/TEMPLATE.md` | `klappy://odd/` | `canon` | stable | Template that defines the convention | **TBD** - Template itself enforces `audience: canon` |
+| `odd/appendices/README.md` | `klappy://odd/` | `canon` | evolving | Appendices index | **2-metadata** - likely should be `audience: odd` |
+| `odd/appendices/TEMPLATE.md` | `klappy://odd/` | `canon` | stable | Appendix template | **TBD** - Template file |
+| `odd/appendices/alignment-reviews.md` | `klappy://odd/` | `canon` | stable | Drift detection, universal | **2-metadata** - likely should be `audience: odd` |
+| `odd/appendices/evolution-not-automation.md` | `klappy://odd/` | `canon` | semi_stable | Philosophy, universal | **2-metadata** - likely should be `audience: odd` |
+| `odd/appendices/failure-driven-modularity.md` | `klappy://odd/` | `canon` | stable | Modularity philosophy, universal | **2-metadata** - likely should be `audience: odd` |
+| `odd/appendices/media-as-learning-layer.md` | `klappy://odd/` | `canon` | stable | Media philosophy, universal | **2-metadata** - likely should be `audience: odd` |
+| `odd/appendices/quantum-development.md` | `klappy://odd/` | `canon` | semi_stable | Uncertainty model, universal | **2-metadata** - likely should be `audience: odd` |
+| `odd/appendices/visual-evolution.md` | `klappy://odd/` | `canon` | semi_stable | Visual systems philosophy, universal | **2-metadata** - likely should be `audience: odd` |
+| `odd/decisions/README.md` | `klappy://odd/` | `canon` | stable | Decisions index | **2-metadata** - likely should be `audience: odd` |
+| `odd/decisions/D0001-three-tier-conceptual-hierarchy.md` | `klappy://odd/` | `canon` | stable | The hierarchy definition itself | **2-metadata** - defines the separation, should be `audience: odd` |
+
+**Action breakdown:**
+- **2-metadata** (likely): 14 files
+- **TBD** (needs content review): 4 files
+
+---
+
+### Files with other audience values
+
+| File | URI Scheme | Audience | Stability | Actual Role | Action |
+|------|------------|----------|-----------|-------------|--------|
+| `odd/cognitive-partitioning.md` | `klappy://odd/` | `docs` | evolving | Abstract scaling principle | **2-metadata** - universal principle, not implementation |
+
+**Action: 2-metadata** (1 file)
+
+---
+
+## Summary by Action
+
+| Action | Count | Files |
+|--------|-------|-------|
+| **1-leave-as-is** | 7 | terminology, progressive-elevation, anti-metric-laundering, use-only-what-hurts, epistemic-contract, odd-agents-and-mcp, README |
+| **2-metadata** (likely) | 15 | manifesto, maturity, misuse-patterns, orientation-map, prompt-architecture, appendices/README, alignment-reviews, evolution-not-automation, failure-driven-modularity, media-as-learning-layer, quantum-development, visual-evolution, decisions/README, D0001, cognitive-partitioning |
+| **TBD** | 4 | index, contract, TEMPLATE, appendices/TEMPLATE |
+| **3-add-pointer** | 0 | — |
+| **4-mark-deprecated** | 0 | — |
+| **5-quarantine** | 0 | — |
+
+**Total files classified:** 26
+
+---
+
+## URI Scheme Findings
+
+### Count by Scheme
+
+| Scheme | Count | Notes |
+|--------|-------|-------|
+| `klappy://odd/...` | 24 | Hybrid scheme (klappy instance + ODD namespace) |
+| `klappy://public/...` | 1 | Public-facing (README) |
+| `odd://...` | 1 | Pure ODD scheme (epistemic-contract) |
+
+### Files by Scheme
+
+**`odd://...` (pure ODD):**
+- `odd/contract/epistemic-contract.md` → `odd://contract/epistemic-contract`
+
+**`klappy://odd/...` (hybrid):**
+- All other files in `odd/`
+
+### Observation
+
+The `odd://` scheme appears in exactly one file: the Epistemic Contract. This may be intentional (the contract is the most "pure" ODD artifact) or may represent an inconsistency.
+
+**No changes made.**
+
+---
+
+## TBD Files: Why They Need Content Review
+
+### `odd/index.md`
+- Contains klappy-specific references ("this repository")
+- But also serves as abstract ODD entry point
+- Question: Is this the klappy.dev ODD index, or the ODD index that happens to live in klappy.dev?
+- **Ruling:** True TBD — requires content judgment after Pass 3
+
+### `odd/contract.md`
+- Contains version 2.1.0 with klappy-specific paths (`/products/<lane>/attempts/`)
+- References epochs that are klappy-specific (E0001, E0002)
+- But the contract structure is meant to be portable
+- Question: Should the contract be abstract ODD, or is it inherently instance-specific?
+- **Ruling:** True TBD — requires content judgment after Pass 3
+
+### `odd/TEMPLATE.md` and `odd/appendices/TEMPLATE.md`
+- These templates **define** the convention that ODD content uses `audience: canon`
+- Changing the templates would change the rule itself
+- Question: Should the templates be updated to use `audience: odd`, thus changing the convention?
+- **Ruling:** TBD (Governance Decision) — encodes a pre-Epoch-4 authority model; changing it alters authorship norms. Do NOT change until after Pass 3.
+
+---
+
+## Governance Ruling (2026-01-31)
+
+### The Core Question Resolved
+
+> Is "canon-level authority" the same thing as "klappy.dev authority"?
+
+**Answer: No.** And it never actually was. But Epoch 4 is the first time the system is capable of saying that cleanly.
+
+### What the TEMPLATE Was Saying
+
+The instruction `audience: canon` meant "this is not app-specific or ephemeral" — a coarse signal, not a precise one.
+
+Epoch 4 introduces a three-layer authority model:
+
+| Layer | What it governs | URI signal |
+|-------|-----------------|------------|
+| ODD | How judgment works | `odd://` |
+| Canon (instance) | How Klappy applies ODD | `klappy://canon/...` |
+| Docs / Surfaces | How it's used | `klappy://docs/...` |
+
+Under this model, ODD is authoritative but not instance-canon.
+
+### The TEMPLATE Is Not Wrong
+
+The TEMPLATE is **underspecified**, not wrong. It collapses two meanings of "canon":
+- authoritative
+- instance-binding
+
+Epoch 4 splits those apart. That's the whole point.
+
+### Decision: Do NOT Change the TEMPLATE Yet
+
+Changing it now would:
+- Retroactively rewrite history
+- Collapse Pass 0 into mutation
+- Preempt Pass 3's epistemic review
+
+The TEMPLATE is evidence of the old mental model. Epoch 4 explicitly says: artifacts are evidence of learning.
+
+### Are These Files "Lying"?
+
+**Precise answer:** They are telling an older truth with insufficient vocabulary.
+
+Epoch 4 gives us the vocabulary. We don't rewrite the past to match it.
+
+---
+
+## What This Classification Does NOT Resolve
+
+Per Pass 0 rules:
+
+> Pass 0 does not attempt to resolve whether a file "should" be ODD or canon — only whether it currently claims the wrong layer.
+
+The 15 files marked **2-metadata (likely)** represent potential drift, not confirmed corrections. The 4 files marked **TBD** require explicit decisions about what klappy.dev's relationship to abstract ODD should be.
+
+These resolutions belong to a future decision, not this audit pass.
+
+### What NOT To Do Next
+
+Per governance ruling (2026-01-31):
+
+- Do NOT "fix the template"
+- Do NOT "align everything to `odd://`"
+- Do NOT "clean up audience fields"
+
+That urge is exactly how Epoch 3 thinking sneaks back in.
+
+Epoch 4's discipline is: **See clearly first. Decide later.**
+
+URI normalization and TEMPLATE updates are Phase 2 activities, not part of Epoch 4 lock.
+
+---
+
+## Receipts
+
+- [x] 26 files in `odd/` classified
+- [x] Each file's URI scheme, audience, and stability recorded
+- [x] Action assigned to each file
+- [x] TBD files documented with specific questions
+- [x] URI Scheme Findings section with counts and file lists
+- [x] No changes made
+
+---
+
+## Pass 0 Complete
+
+Classification table is complete. No metadata was changed. No files were moved.
+
+Next: Walk away until Pass 1 (T+24, Feb 1, 2026).
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/audits/repo-truth-audit.md
 --------------------------------------------------------------------------------
 
 ---
@@ -7573,519 +9034,6 @@ If the repository is clean, explicitly say:
 
 “The repository is epistemically aligned.”
 
-
-
-
---------------------------------------------------------------------------------
-📄 File: docs/appendices/repo-truth.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://docs/appendices/repo-truth
-title: "Repository Truth & Epistemic Hygiene"
-audience: docs
-exposure: nav
-tier: 3
-voice: neutral
-stability: stable
-tags: ["odd", "epistemic", "hygiene", "truth", "cleanup"]
----
-
-# Repository Truth & Epistemic Hygiene
-
-> If the repository is dirty, conclusions drawn from it are invalid.
-
-## Description
-
-In AI-assisted development, state residue is indistinguishable from signal—unclean repositories produce false confidence, failures, and learning. A repository is dirty when orphaned worktrees, detached HEADs, stale branches, overlapping attempts, or ambiguous production state exist. `attempt:cleanup` is a reset of epistemic state that guarantees only sealed attempts and intentional branches remain.
-
-## Outline
-
-- Core Principle
-- What "Dirty" Means
-- `attempt:cleanup` as a Truth Reset
-- Why This Matters
-- The Truth Boundary
-- Branch Roles as Epistemic Contracts
-- Orientation Note
-
----
-
-## Content
-
-## Core Principle
-
-> **If the repository is dirty, conclusions drawn from it are invalid.**
-
-In AI-assisted development, state residue is indistinguishable from signal.
-Unclean repositories produce false confidence, false failures, and false learning.
-
-This project treats repository cleanliness as a prerequisite for reasoning.
-
----
-
-## What "Dirty" Means
-
-A repository is considered dirty when:
-
-- orphaned worktrees exist
-- detached HEADs remain
-- stale branches survive past their relevance
-- attempts overlap in filesystem state
-- production state is ambiguous
-
-When this happens, outcomes cannot be trusted.
-
----
-
-## `attempt:cleanup` as a Truth Reset
-
-`attempt:cleanup` is not housekeeping.
-
-It is a **reset of epistemic state**.
-
-Running cleanup guarantees:
-
-- only sealed attempts remain
-- only intentional branches exist
-- production state is explicit
-- new attempts begin without contamination
-
-Without cleanup, experimentation collapses into folklore.
-
----
-
-## Why This Matters
-
-Quantum Development relies on comparing independent observations.
-
-Independence is meaningless if the filesystem lies.
-
-Therefore:
-
-- cleanup is mandatory
-- residue is failure
-- convenience never overrides truth
-
----
-
-## The Truth Boundary
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                     TRUTH BOUNDARY                          │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│   INSIDE (trustworthy)          OUTSIDE (suspect)           │
-│   ─────────────────────         ──────────────────          │
-│   • prod branch                 • orphaned worktrees        │
-│   • main branch                 • detached HEADs            │
-│   • sealed attempts             • stale branches            │
-│   • explicit state              • filesystem residue        │
-│                                                             │
-│   `attempt:cleanup` moves everything INSIDE                 │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-```
-
----
-
-## Branch Roles as Epistemic Contracts
-
-| Branch | Role | Can Be Nuked? |
-|--------|------|---------------|
-| `prod` | Production truth | ❌ Never |
-| `main` | Experiment ledger | ⚠️ Only via promotion |
-| `attempt/*` | Hypotheses | ✅ Always |
-
-These aren't conventions. They're contracts about what can be trusted.
-
----
-
-## Orientation Note
-
-This document explains *why* the rule exists.
-Procedures for enforcing it live elsewhere.
-
-See:
-- `/docs/ATTEMPTS.md` — attempt lifecycle procedures
-- `/docs/ATTEMPT_KICKOFF.md` — agent kickoff instructions
-- `/docs/CLOUDFLARE_CONFIG.md` — deploy branch mapping
-
-
-
---------------------------------------------------------------------------------
-📄 File: docs/concept.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://docs/concept
-title: "Concept Snapshot"
-audience: docs
-exposure: nav
-tier: 2
-voice: neutral
-stability: stable
-tags: ["docs", "implementation", "concept", "overview", "problem-statement"]
----
-
-# 🧠 Concept Snapshot
-
-> **Working Title:** Outcomes-Driven Canon + Evidence-Based Agents
-
-Below is Deliverable 1: Concept Snapshot.
-
-This is intentionally tight, durable, and handoff-ready. It freezes the spine of the idea without dragging along the exploratory noise from this chat.
-
-You can copy this verbatim into a doc, repo, or `/docs/concept.md`.
-
----
-
-## 1. The Problem
-
-AI coding agents are now capable of generating large amounts of code, UI, and architecture quickly. The limiting factor is no longer generation—it is judgment, consistency, and verification.
-
-In practice, this creates three recurring failures:
-
-**1. Prompt entropy**
-- Dozens of fragile prompts and markdown files
-- Each tool (Claude Code, Cursor, etc.) requires re-teaching
-- Drift over time; nothing is canonical
-
-**2. False completion**
-- Agents confidently claim "it works"
-- They didn't actually run it
-- They didn't verify behavior
-- They didn't look at the UI
-- A human becomes the QA manager repeating the same objections
-
-**3. Infinite possibility, no curation**
-- AI unlocks many valid implementations for the same intent
-- Artifacts are increasingly ephemeral
-- Maintenance explodes unless abstraction moves up a level
-
-The current workaround—better prompts—does not scale.
-
----
-
-## 2. Core Insight
-
-The solution is not better prompting.
-The solution is a canonical contract.
-
-Instead of embedding "how I think" into prompts, externalize it into a single, versioned source of truth that defines:
-
-- design constraints
-- decision rules
-- what "done" actually means
-- what evidence is required before a claim of success
-
-AI agents must retrieve this canon, translate it into operational constraints, self-audit, and prove compliance with evidence (especially visual) before claiming completion.
-
-This replaces repeated human nagging—not human judgment.
-
----
-
-## 3. What This Is
-
-This is a system composed of three layers:
-
-**1. Authorial Canon (Human-Facing)**
-- First-person documents (website artifacts)
-- Constraints, principles, decision rules, QA expectations
-- Expresses intent and defaults, not universal law
-- Evolves over time
-
-**2. Distribution Layer (MCP)**
-- Serves the canon to LLMs and agents
-- Provides stable, addressable retrieval
-- No duplicated logic or rewritten versions
-
-**3. Agent Contract (Execution-Facing)**
-- Agents must:
-  - retrieve canon
-  - translate first-person intent into neutral constraints
-  - build accordingly
-  - self-audit
-  - produce verification + visual proof
-- If evidence cannot be produced, the task is not "done"
-
----
-
-## 4. What This Is Not
-
-- Not a manifesto meant to convince others
-- Not a personality clone or "AI that sounds like me"
-- Not a single chat prompt
-- Not a magic replacement for judgment or taste
-- Not a build system
-
-It is policy + verification, not creativity.
-
----
-
-## 5. Why MCP Is Involved
-
-MCP is used strictly as a transport and discovery mechanism.
-
-It allows:
-
-- multiple tools to retrieve the same canon
-- no re-prompting per environment
-- no drift between agents
-- explicit provenance ("this rule came from here")
-
-The website remains the canonical source.
-MCP exposes it; it does not redefine it.
-
----
-
-## 6. What "Replace Me" Actually Means
-
-"Replace me" does not mean replacing judgment, creativity, or final responsibility.
-
-It means replacing:
-
-- repeated reminders to follow principles
-- repeated questions like "did you actually run it?"
-- repeated demands to "prove it visually"
-
-The human role shifts from QA enforcer to reviewer of evidence.
-
----
-
-## 7. Immediate Outcomes
-
-When this system is in place:
-
-- Prompt sprawl collapses into a single canon
-- Agents converge faster
-- Failures are explicit instead of hidden
-- Autonomous loops improve without human babysitting
-- Ephemeral builds are acceptable because outcomes are verified
-
----
-
-## 8. Why This Matters Now
-
-AI has moved software creation into a space of infinite possibility.
-The scarce resource is no longer implementation—it is trustworthy outcomes.
-
-This system treats:
-
-- code as potentially ephemeral
-- principles as durable
-- verification as mandatory
-- curation as the core skill
-
----
-
-## 9. Next Artifacts (Downstream)
-
-This snapshot feeds directly into:
-
-- an updated PRD
-- a first-person canon (constraints, rules, QA contract)
-- an agent handoff instruction
-- an MCP server design
-
-None of those should re-litigate the ideas above.
-
----
-
-## ✅ Status
-
-- Concept frozen
-- Ready to proceed to Updated PRD
-
-
-
---------------------------------------------------------------------------------
-📄 File: docs/context-packs-and-projection-detail.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://docs/context-packs-and-projection-detail
-title: "Context Packs and Projection Detail"
-audience: docs
-exposure: nav
-tier: 2
-voice: neutral
-stability: evolving
-tags: ["docs", "context-packs", "projection", "detail-levels"]
----
-
-# Context Packs and Projection Detail
-
-> Detail levels control how much content is returned, not which content is relevant.
-
-## Description
-
-This document explains how context packs use projection detail to control output density. Document tiers determine epistemic obligation (what must be absorbed). Query-time detail levels determine how much of that content is returned (full, medium, low). These are orthogonal concepts. A Tier 1 document can be projected at low detail. A Tier 3 document can be projected at full detail. Detail controls density; tiers control obligation.
-
-## Outline
-
-- Document Tiers vs Query-Time Detail
-- Detail Levels Explained
-- How Detail Affects Output
-- Degradation When Structure Is Missing
-- Common Misunderstandings
-
----
-
-## Document Tiers vs Query-Time Detail
-
-Two different axes control what appears in a context pack:
-
-| Axis | Question Answered | Set By |
-|------|-------------------|--------|
-| **Tier** | "How much must I absorb this?" | Document author |
-| **Detail** | "How much should I return?" | Query/consumer |
-
-Tiers are fixed properties of documents. Detail is a runtime choice.
-
-**Example:**
-
-A Tier 1 Canon document (high epistemic obligation) might be projected at:
-- `full` — return the complete document
-- `medium` — return description + outline
-- `low` — return title + one-line summary
-
-The tier doesn't change. The projection does.
-
-### Tier 0 Content
-
-Tier 0 is a scope exclusion marker, not an epistemic tier.
-
-Tier 0 content is:
-
-- Never included in default context-packs
-- Excluded from agent reasoning contexts
-- Not subject to projection detail levels
-
-Projection detail (full, medium, low) applies only to Tier 1–3 content. Tier 0 content is simply absent from the epistemic system.
-
----
-
-## Detail Levels Explained
-
-Three detail levels are supported:
-
-### `full`
-
-Returns the complete document content.
-
-**Use when:**
-- Deep understanding is required
-- The document is directly relevant to the task
-- Token budget allows
-
-### `medium`
-
-Returns structural content: frontmatter, description, outline, section headers.
-
-**Use when:**
-- Orientation is needed but not full content
-- Multiple documents must fit in context
-- The document is relevant but not primary
-
-### `low`
-
-Returns minimal content: title, one-line summary (blockquote), and possibly description.
-
-**Use when:**
-- Existence matters more than content
-- Many documents must be referenced
-- Token budget is constrained
-
----
-
-## How Detail Affects Output
-
-Given a well-structured document:
-
-```markdown
----
-uri: klappy://example
-title: "Example Document"
----
-
-# Example Document
-
-> One-line summary of what this is.
-
-## Description
-
-Two paragraphs explaining the document's purpose and scope.
-
-## Outline
-
-- Section 1
-- Section 2
-- Section 3
-
----
-
-## Section 1
-
-[Full content...]
-
-## Section 2
-
-[Full content...]
-```
-
-**Projection at different detail levels:**
-
-| Level | Returns |
-|-------|---------|
-| `full` | Everything |
-| `medium` | Frontmatter + title + summary + description + outline |
-| `low` | Frontmatter + title + summary |
-
----
-
-## Degradation When Structure Is Missing
-
-Detail projection depends on document structure. When structure is missing, projection degrades:
-
-| Missing Element | Consequence |
-|-----------------|-------------|
-| No blockquote summary | `low` falls back to title only |
-| No Description section | `medium` falls back to outline or full |
-| No Outline section | `medium` returns description + headers |
-| No structure at all | All levels return full content |
-
-**Implication:** Documents that follow the template project cleanly. Documents without structure force full inclusion regardless of requested detail.
-
-This is intentional. The cost of bad structure is paid at query time, not authoring time.
-
----
-
-## Common Misunderstandings
-
-### "Higher detail means more important"
-
-No. Detail controls density, not importance. A `low` detail projection of a critical Tier 1 document is still critical—just compressed.
-
-### "Tier controls how much is returned"
-
-No. Tier controls epistemic obligation. A Tier 3 document at `full` detail returns everything. A Tier 1 document at `low` detail returns minimal content.
-
-### "Detail is set per-document"
-
-No. Detail is set per-query. The same document can be projected at different detail levels for different purposes.
-
-### "Missing structure is fine"
-
-Technically yes. Practically, missing structure means the document cannot be compressed. It will consume full tokens regardless of requested detail.
-
----
-
-## See Also
-
-- [Epistemic Obligation and Document Tiers](/canon/epistemic-obligation-and-document-tiers.md) — What tiers mean
-- [Article Template](/docs/TEMPLATE.md) — Standard structure for projectable documents
 
 
 
@@ -8587,10 +9535,10 @@ Agents building klappy.dev must actually FOLLOW the canon documents they're show
 
 | Document | How to Apply |
 |----------|--------------|
-| `/canon/constraints.md` | Note which constraints were relevant, any overrides |
-| `/canon/decision-rules.md` | Note which rules guided approach choices |
-| `/canon/self-audit.md` | Complete all 9 sections in ATTEMPT.md |
-| `/canon/definition-of-done.md` | Meet all requirements before claiming completion |
+| `/canon/constraints/README.md` | Note which constraints were relevant, any overrides |
+| `/canon/constraints/decision-rules.md` | Note which rules guided approach choices |
+| `/canon/methods/self-audit.md` | Complete all 9 sections in ATTEMPT.md |
+| `/canon/constraints/definition-of-done.md` | Meet all requirements before claiming completion |
 
 ### Self-Audit Checklist (9 Sections)
 
@@ -9624,7 +10572,7 @@ The file at the canonical location should contain the authoritative content. Met
 
 If this pattern recurs in other contexts (not just PRDs), consider elevating to:
 - `/canon/odd/appendices/canonical-authority-pattern.md` — General pattern
-- Or adding to `/canon/constraints.md` — As a design constraint
+- Or adding to `/canon/constraints/README.md` — As a design constraint
 
 ---
 
@@ -9792,7 +10740,7 @@ ODD contains universal principles. Canon contains program constraints. These dec
 |----------|------|-------------------|
 | `/odd/contract.md` | ODD | D0009, D0011, D0012 |
 | `/odd/decisions/D0001-three-tier-conceptual-hierarchy.md` | ODD | All (tier separation) |
-| `/canon/constraints.md` | Canon | All decisions respect constraints |
+| `/canon/constraints/README.md` | Canon | All decisions respect constraints |
 | `/docs/appendices/epochs.md` | Docs | D0012, D0014 |
 
 
@@ -9968,7 +10916,7 @@ This should be self-contained for LLM context.
 - **Recurrence check:** [Has this pattern appeared elsewhere?]
 
 If the pattern recurs across multiple decisions or lanes, consider elevating to:
-- `/canon/constraints.md` — Program-level constraint
+- `/canon/constraints/` — Program-level constraint
 - `/odd/appendices/` — Universal principle
 ```
 
@@ -10378,6 +11326,615 @@ At that moment, this stops being a demo and becomes a product.
 
 
 --------------------------------------------------------------------------------
+📄 File: docs/history/DISTILLATION_CLASSIFICATION.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/distillation-classification
+title: "Canon Distillation Classification"
+audience: docs
+exposure: nav
+tier: 3
+voice: neutral
+stability: stable
+tags: ["docs", "implementation", "distillation", "classification", "archive"]
+---
+
+# 📊 Canon Distillation Classification
+
+**Status: COMPLETED (with corrections)**
+
+This document tracks the classification of canon files for the progressive distillation effort.
+
+## Summary of Work Completed
+
+- Classified all 57 canon files as portable or implementation-specific
+- Extracted 14 decisions to `/docs/decisions/`
+- Extracted 17 appendices to `/docs/appendices/` (originally 18, 1 re-elevated)
+- Added progressive distillation structure (Title, Subtitle, Description, Outline, Content) to all files
+- Updated cross-references in key canon files
+- **Moved ODD to root level**: `/canon/odd/` → `/odd/`
+- **Re-elevated `progressive-elevation.md`** back to `/odd/appendices/` (it defines the portability ladder itself)
+
+## Post-Distillation Corrections
+
+| File | Original Classification | Corrected Classification | Reason |
+|------|------------------------|-------------------------|--------|
+| `progressive-elevation.md` | IMPLEMENTATION | **ODD** | Defines the five-layer portability model - that's universal methodology, not implementation |
+
+## Classification Criteria
+
+**PORTABLE** = Concepts that could apply to any ODD-following repo
+- No hardcoded paths or tooling references
+- Methodology/philosophy over procedure
+
+**IMPLEMENTATION-SPECIFIC** = Contains this repo's specific implementation details
+- Absolute paths (`/products/`, `/docs/PRD.md`, `/infra/`)
+- CLI commands (`attempt:register`, `attempt:nuke`)
+- Branch names (`prod`, `main`, `attempt/*`)
+- Tool-specific config (Cloudflare Pages, git worktrees)
+- Lane names (`website`, `ai-navigation`, `agent-skill`)
+
+---
+
+## Canon Root Files (6 files)
+
+| File | Classification | Notes |
+|------|---------------|-------|
+| `constraints.md` | PORTABLE | Pure methodology |
+| `decision-rules.md` | PORTABLE | Pure heuristics |
+| `definition-of-done.md` | PORTABLE | Pure methodology |
+| `self-audit.md` | PORTABLE | Pure methodology |
+| `visual-proof.md` | PORTABLE | Pure methodology |
+| `completion-report-template.md` | PORTABLE | Pure template |
+
+---
+
+## Canon ODD Root Files (7 files)
+
+| File | Classification | Notes |
+|------|---------------|-------|
+| `manifesto.md` | PORTABLE | Pure philosophy |
+| `contract.md` | IMPLEMENTATION | Epoch IDs, paths, META.json schema |
+| `maturity.md` | PORTABLE | Pure methodology |
+| `orientation-map.md` | PORTABLE | Pure mental model |
+| `misuse-patterns.md` | PORTABLE | Pure failure modes |
+| `prompt-architecture.md` | PORTABLE | Pure methodology |
+| `README.md` | STAYS | Index file |
+
+---
+
+## Canon ODD Decisions (15 files)
+
+**ALL DECISIONS → docs/decisions/**
+
+| File | Classification | Notes |
+|------|---------------|-------|
+| `D0001-prod-branch-is-production.md` | IMPLEMENTATION | Branch names, CLI, Cloudflare |
+| `D0002-attempt-provenance-required.md` | IMPLEMENTATION | CLI, META.json, paths |
+| `D0003-prd-version-auto-detection.md` | IMPLEMENTATION | Specific paths, CLI |
+| `D0004-repo-truth-cleanup-mandatory.md` | IMPLEMENTATION | CLI commands, paths |
+| `D0005-nuke-safety-guards.md` | IMPLEMENTATION | CLI, branch names, paths |
+| `D0006-dogfooding-requirement.md` | IMPLEMENTATION | klappy.dev specific |
+| `D0007-branch-names-are-convenience.md` | IMPLEMENTATION | Cloudflare, META.json |
+| `D0008-register-before-nuke.md` | IMPLEMENTATION | CLI commands |
+| `D0009-multi-lane-prd-architecture.md` | IMPLEMENTATION | Specific lanes, paths |
+| `D0010-canonical-agent-kickoff.md` | IMPLEMENTATION | Specific paths |
+| `D0011-odd-contract-2.0.0.md` | IMPLEMENTATION | Epoch IDs, paths |
+| `D0012-e0002-transition-interpretation.md` | IMPLEMENTATION | Epoch transitions |
+| `D0013-build-output-lane-scoped-dist.md` | IMPLEMENTATION | Specific paths |
+| `D0014-e0003-evidence-first-era.md` | IMPLEMENTATION | Cloudflare, evidence URLs |
+| `README.md` | STAYS | Index file (will update) |
+
+---
+
+## Canon ODD Appendices (25 files)
+
+| File | Classification | Notes |
+|------|---------------|-------|
+| `alignment-reviews.md` | PORTABLE | Pure methodology |
+| `attempt-lifecycle.md` | IMPLEMENTATION | CLI, paths, META.json |
+| `canonical-compression.md` | IMPLEMENTATION | Specific paths |
+| `compilation.md` | IMPLEMENTATION | Paths, npm commands |
+| `compilation-targets.md` | IMPLEMENTATION | Specific paths |
+| `compiled-memory.md` | IMPLEMENTATION | Paths, lanes |
+| `deploy-evidence.md` | IMPLEMENTATION | Cloudflare, paths |
+| `drift-checks.md` | IMPLEMENTATION | npm commands, contracts |
+| `epochs.md` | IMPLEMENTATION | E0003 section is very implementation-specific |
+| `evidence.md` | IMPLEMENTATION | Specific path structure |
+| `evolution-not-automation.md` | PORTABLE | Pure philosophy |
+| `failure-driven-modularity.md` | PORTABLE | Pure methodology |
+| `lane-build-layout.md` | IMPLEMENTATION | Cloudflare, lanes |
+| `lane-implementation-surfaces.md` | IMPLEMENTATION | Cloudflare, lanes |
+| `media-as-learning-layer.md` | PORTABLE | Pure principles |
+| `memory-architecture.proposed.md` | IMPLEMENTATION | Folder patterns |
+| `online-evidence.md` | IMPLEMENTATION | Cloudflare, paths |
+| `product-lanes.md` | IMPLEMENTATION | Specific lanes, paths |
+| `progressive-elevation.md` | **ELEVATED TO ODD** | Defines the portability ladder - paths are examples, principle is universal |
+| `quantum-development.md` | PORTABLE | Pure methodology |
+| `repo-topology.md` | IMPLEMENTATION | All paths |
+| `repo-truth.md` | IMPLEMENTATION | CLI, branch names |
+| `repo-truth-audit.md` | IMPLEMENTATION | Specific files to read |
+| `visual-evolution.md` | PORTABLE | Pure methodology |
+| `README.md` | STAYS | Index file (will update) |
+
+---
+
+## Summary
+
+- **PORTABLE (Stay in Canon):** ~18 files
+- **IMPLEMENTATION-SPECIFIC (Move to docs/):** ~32 files (14 decisions + 18 appendices)
+- **Index files (Stay, update references):** ~4 files
+
+## Extraction Order
+
+1. Move all 14 decisions to `docs/decisions/`
+2. Move 18 appendices to `docs/appendices/`
+3. Update README indexes in both locations
+4. Add progressive distillation structure to all files
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/history/concept.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/concept
+title: "Concept Snapshot"
+audience: docs
+exposure: nav
+tier: 2
+voice: neutral
+stability: stable
+tags: ["docs", "implementation", "concept", "overview", "problem-statement"]
+---
+
+# 🧠 Concept Snapshot
+
+> **Working Title:** Outcomes-Driven Canon + Evidence-Based Agents
+
+Below is Deliverable 1: Concept Snapshot.
+
+This is intentionally tight, durable, and handoff-ready. It freezes the spine of the idea without dragging along the exploratory noise from this chat.
+
+You can copy this verbatim into a doc, repo, or `/docs/concept.md`.
+
+---
+
+## 1. The Problem
+
+AI coding agents are now capable of generating large amounts of code, UI, and architecture quickly. The limiting factor is no longer generation—it is judgment, consistency, and verification.
+
+In practice, this creates three recurring failures:
+
+**1. Prompt entropy**
+- Dozens of fragile prompts and markdown files
+- Each tool (Claude Code, Cursor, etc.) requires re-teaching
+- Drift over time; nothing is canonical
+
+**2. False completion**
+- Agents confidently claim "it works"
+- They didn't actually run it
+- They didn't verify behavior
+- They didn't look at the UI
+- A human becomes the QA manager repeating the same objections
+
+**3. Infinite possibility, no curation**
+- AI unlocks many valid implementations for the same intent
+- Artifacts are increasingly ephemeral
+- Maintenance explodes unless abstraction moves up a level
+
+The current workaround—better prompts—does not scale.
+
+---
+
+## 2. Core Insight
+
+The solution is not better prompting.
+The solution is a canonical contract.
+
+Instead of embedding "how I think" into prompts, externalize it into a single, versioned source of truth that defines:
+
+- design constraints
+- decision rules
+- what "done" actually means
+- what evidence is required before a claim of success
+
+AI agents must retrieve this canon, translate it into operational constraints, self-audit, and prove compliance with evidence (especially visual) before claiming completion.
+
+This replaces repeated human nagging—not human judgment.
+
+---
+
+## 3. What This Is
+
+This is a system composed of three layers:
+
+**1. Authorial Canon (Human-Facing)**
+- First-person documents (website artifacts)
+- Constraints, principles, decision rules, QA expectations
+- Expresses intent and defaults, not universal law
+- Evolves over time
+
+**2. Distribution Layer (MCP)**
+- Serves the canon to LLMs and agents
+- Provides stable, addressable retrieval
+- No duplicated logic or rewritten versions
+
+**3. Agent Contract (Execution-Facing)**
+- Agents must:
+  - retrieve canon
+  - translate first-person intent into neutral constraints
+  - build accordingly
+  - self-audit
+  - produce verification + visual proof
+- If evidence cannot be produced, the task is not "done"
+
+---
+
+## 4. What This Is Not
+
+- Not a manifesto meant to convince others
+- Not a personality clone or "AI that sounds like me"
+- Not a single chat prompt
+- Not a magic replacement for judgment or taste
+- Not a build system
+
+It is policy + verification, not creativity.
+
+---
+
+## 5. Why MCP Is Involved
+
+MCP is used strictly as a transport and discovery mechanism.
+
+It allows:
+
+- multiple tools to retrieve the same canon
+- no re-prompting per environment
+- no drift between agents
+- explicit provenance ("this rule came from here")
+
+The website remains the canonical source.
+MCP exposes it; it does not redefine it.
+
+---
+
+## 6. What "Replace Me" Actually Means
+
+"Replace me" does not mean replacing judgment, creativity, or final responsibility.
+
+It means replacing:
+
+- repeated reminders to follow principles
+- repeated questions like "did you actually run it?"
+- repeated demands to "prove it visually"
+
+The human role shifts from QA enforcer to reviewer of evidence.
+
+---
+
+## 7. Immediate Outcomes
+
+When this system is in place:
+
+- Prompt sprawl collapses into a single canon
+- Agents converge faster
+- Failures are explicit instead of hidden
+- Autonomous loops improve without human babysitting
+- Ephemeral builds are acceptable because outcomes are verified
+
+---
+
+## 8. Why This Matters Now
+
+AI has moved software creation into a space of infinite possibility.
+The scarce resource is no longer implementation—it is trustworthy outcomes.
+
+This system treats:
+
+- code as potentially ephemeral
+- principles as durable
+- verification as mandatory
+- curation as the core skill
+
+---
+
+## 9. Next Artifacts (Downstream)
+
+This snapshot feeds directly into:
+
+- an updated PRD
+- a first-person canon (constraints, rules, QA contract)
+- an agent handoff instruction
+- an MCP server design
+
+None of those should re-litigate the ideas above.
+
+---
+
+## ✅ Status
+
+- Concept frozen
+- Ready to proceed to Updated PRD
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/infra/CLOUDFLARE_CONFIG.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/cloudflare-config
+title: "Cloudflare Pages Configuration"
+audience: docs
+exposure: nav
+tier: 2
+voice: neutral
+stability: stable
+tags: ["docs", "implementation", "cloudflare", "deploy", "configuration"]
+---
+
+# ☁️ Cloudflare Pages Configuration
+
+This document describes how Cloudflare Pages should be configured for the klappy.dev repository.
+
+**Scope:** Deploy behavior only. For attempt workflow mechanics, see `/docs/ATTEMPTS.md`.
+
+---
+
+## 🌿 Branch Roles
+
+| Branch | Purpose | Deploy Target |
+|--------|---------|---------------|
+| `prod` | Live production deployment | **Production URL** (klappy.dev) |
+| `main` | Experiment aggregation + history | Preview URL only |
+| Any other branch | Agent workspaces, Cursor worktrees, experiments | Preview URLs |
+
+**Note:** Cloudflare does not require specific branch naming. Any non-`prod` branch that builds successfully gets a preview URL.
+
+---
+
+## ⚠️ Critical Configuration
+
+### Production Branch
+
+**Set the production branch to `prod`, NOT `main`.**
+
+In Cloudflare Pages → Settings → Builds & deployments:
+
+```
+Production branch: prod
+```
+
+This ensures:
+- Only promoted, verified code goes to production
+- `main` can be used for experimentation without risk
+- Agents can never accidentally deploy to production
+
+### Preview Deployments
+
+**Enable preview deployments for ALL branches.**
+
+In Cloudflare Pages → Settings → Builds & deployments:
+
+```
+Preview branches: All non-production branches
+```
+
+This ensures:
+- Every agent branch gets a preview URL
+- Cursor worktrees get preview URLs automatically
+- Reviewers can compare multiple attempts side-by-side
+
+---
+
+## 🛠️ Build Configuration
+
+Each lane is deployed as a separate Cloudflare Pages project.
+
+```
+Root directory:    .
+Build command:     npm run build -- --lane <lane>
+Build output:      products/<lane>/dist
+```
+
+For example, the `website` lane:
+```
+Root directory:    .
+Build command:     npm run build -- --lane website
+Build output:      products/website/dist
+```
+
+See `/docs/appendices/lane-implementation-surfaces.md` for the locked folder contract.
+
+> **Legacy / Transitional note (pre-D0013):** Some existing deploy configurations may still publish repo-root `/dist/`. That output is no longer canonical; the canonical build output for lane deployments is `products/<lane>/dist/`.
+
+---
+
+## 📋 Expected Behavior
+
+| Action | Result |
+|--------|--------|
+| Push to `prod` | Deploys to klappy.dev (production) |
+| Push to `main` | Deploys to preview URL (main.klappy-dev.pages.dev) |
+| Push to any other branch | Deploys to preview URL (`<branch-slug>.klappy-dev.pages.dev`) |
+| `npm run attempt:promote` | Merges champion to `main`, fast-forwards `prod` → deploys to production |
+
+### Promotion Semantics
+
+1. **Artifacts merge first** — attempt evidence merges to `main` before promotion
+2. **Champion code merges** — winning attempt's code merges to `main`
+3. **`prod` fast-forwards** — `prod` fast-forwards to match `main`
+4. **Cloudflare deploys** — `prod` push triggers production deployment
+
+Only champion code reaches production. Losing attempts contribute artifacts but not code.
+
+---
+
+## ✅ Verification
+
+After configuring, verify:
+
+1. **Push to `prod`** → klappy.dev updates
+2. **Push to `main`** → main.klappy-dev.pages.dev updates (NOT klappy.dev)
+3. **Push to any agent branch** → preview URL generates
+
+---
+
+## 💡 Why This Matters
+
+> **Production and experimentation must never share a mutable surface.**
+
+This configuration ensures:
+- Production is always stable
+- Experiments are always disposable
+- Nuclear resets on `main` never affect production
+- Agents can work in parallel without coordination
+- One winner ships; losers don't pollute production
+
+---
+
+## 📝 Note on Branch Naming
+
+> **Branch names are optional convenience. Provenance lives in META.json.**
+
+Cloudflare does not depend on specific branch naming conventions. Any branch that:
+- Is not `prod`
+- Produces a valid `products/<lane>/dist/` on build
+
+Will get a preview URL.
+
+The canonical record of "who made what" lives in `META.json`, not in the branch name.
+This keeps the system antifragile — branch naming can drift without breaking provenance.
+
+---
+
+## 🔗 Related Documents
+
+- Attempt workflow: `/docs/ATTEMPTS.md`
+- Deploy contract: `/infra/contracts/build-output.md`
+- **Interface Contracts: `/interfaces/index.md`** (semver'd compatibility promises)
+- **Lane Build Layout: `/docs/appendices/lane-build-layout.md`** (how lanes avoid /src and /dist collisions)
+- Decision: `/docs/decisions/D0001-prod-branch-is-production.md`
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/infra/PREVIEW.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/preview
+title: "Previewing Lanes and Attempts"
+audience: docs
+exposure: nav
+tier: 3
+voice: neutral
+stability: evolving
+tags: ["docs", "implementation", "preview", "cloudflare", "local"]
+---
+
+# 👁️ Previewing Lanes and Attempts
+
+> **Scope:** Local + Cloudflare preview workflows for lanes and attempts.
+
+## Local Preview (Any Lane)
+
+Build the lane:
+
+```bash
+npm run build -- --lane <lane>
+```
+
+Preview the built output:
+
+```bash
+npx wrangler pages dev products/<lane>/dist --port 8788
+```
+
+Open: http://localhost:8788
+
+---
+
+## Cloudflare Pages Preview
+
+Each lane is deployed as its own Cloudflare Pages project.
+
+**Build configuration (REQUIRED):**
+
+| Setting | Value |
+|---------|-------|
+| Build command | `npm run build -- --lane <lane>` |
+| Output directory | `products/<lane>/dist` |
+| Root directory | `.` (repo root) |
+
+**Examples:**
+
+| Lane | Build Command | Output Directory |
+|------|--------------|------------------|
+| `website` | `npm run build -- --lane website` | `products/website/dist` |
+| `ai-navigation` | `npm run build -- --lane ai-navigation` | `products/ai-navigation/dist` |
+| `agent-skill` | `npm run build -- --lane agent-skill` | `products/agent-skill/dist` |
+
+---
+
+## Troubleshooting
+
+### Wrong lane building
+
+If a Cloudflare Pages build log shows the wrong lane (e.g., `Lane: ai-navigation` when you expected `website`):
+
+1. **Check the build command** — Must explicitly pass `--lane <lane>`
+2. **Check the output directory** — Must match `products/<lane>/dist`
+3. **Verify smart-build.js** — Should NOT use `vite --root` flag
+
+### Build succeeds but site shows wrong content
+
+1. Verify the output directory in Cloudflare Pages settings
+2. Check that `products/<lane>/dist/index.html` exists after build
+3. Ensure `products/<lane>/index.html` exists as the Vite entry point
+
+### Local preview differs from Cloudflare
+
+1. Clear local dist: `rm -rf products/<lane>/dist`
+2. Rebuild: `npm run build -- --lane <lane>`
+3. Use wrangler for local preview (matches Cloudflare environment)
+
+---
+
+## Preview URLs
+
+### Branch previews (automatic)
+
+Any `git push` to an attempt/run branch creates a preview:
+
+```
+https://<branch-slug>.klappy-dev.pages.dev
+```
+
+Branch names are slugified (slashes become dashes).
+
+Example:
+- Branch: `run/website/prd-v1.0/cursor/a/claude-opus-4/e2c41bb5`
+- Preview: `https://run-website-prd-v1-0-cursor-a-claude-opus-4-e2c41bb5.klappy-dev.pages.dev`
+
+### Production
+
+Production deploys from the `prod` branch to the primary domain.
+
+---
+
+## Related Documents
+
+- Build contract: `/infra/contracts/build-output.md`
+- Lane architecture: `/docs/appendices/product-lanes.md`
+- Cloudflare config: `/docs/CLOUDFLARE_CONFIG.md`
+
+
+
+--------------------------------------------------------------------------------
 📄 File: docs/infra/cloudflare-branch-deploys.md
 --------------------------------------------------------------------------------
 
@@ -10584,6 +12141,260 @@ No additional events may be added without explicit justification that they measu
 
 
 --------------------------------------------------------------------------------
+📄 File: docs/migrations/epoch4-canon-docs-migration.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/migrations/epoch4-canon-docs-migration
+title: "Epoch 4 Canon & Docs Migration Plan"
+audience: docs
+exposure: internal
+tier: 2
+voice: neutral
+stability: draft
+tags: ["migration", "epoch-4", "canon", "docs", "epistemic-drift", "stabilization"]
+---
+
+# Epoch 4 Canon & Docs Migration Plan
+
+> Controlled, iterative migration to stop epistemic drift and reorganize existing files into their Epoch 4–correct locations.
+
+## Description
+
+This is a stabilization and migration plan, not a refactor-by-force. The ontology has changed faster than the filesystem — documents have been written into inconsistent locations as the epistemic model evolved through Epoch 4. This plan restores coherence without breaking provenance or halting work.
+
+## Goal
+
+Restore structural alignment between the Epoch 4 epistemic model and the filesystem, so that document placement communicates category rather than requiring path inference.
+
+## Outline
+
+- Core Invariants
+- Phase 0 — Freeze the Drift
+- Phase 1 — Epoch 4 Target Topology
+- Phase 2 — Classification Pass
+- Phase 3 — Controlled Moves
+- Phase 4 — Consolidation & Supersession
+- Phase 5 — Enforce Going Forward
+- Migration Heuristics
+- Definition of Done
+
+---
+
+## Core Invariants (Non-Negotiable)
+
+1. **Meaning must not depend on path** (canon constraint — see `klappy://canon/constraints/meaning-must-not-depend-on-path`)
+2. **Files may move; meaning may not**
+3. **History is preserved; conflicts are contextualized, not erased**
+4. **Migration happens incrementally, not all at once**
+5. **New writing must stop the bleeding first**
+
+---
+
+## Phase 0 — Freeze the Drift (Immediate)
+
+**Objective:** Stop the system from getting worse while migration is planned and executed.
+
+**Actions:**
+
+1. Declare a temporary write convention (until migration completes):
+   - All new documents MUST go in one of:
+     - `canon/` (principles, constraints only)
+     - `docs/_incoming/` (everything else)
+2. Create `docs/_incoming/README.md` explaining the temporary holding area
+3. Communicate to all contributors:
+
+   > "If you are unsure where a document belongs, put it in `docs/_incoming/`."
+
+**Success condition:** No new docs appear in ambiguous or legacy locations.
+
+**Status:** Active. `docs/_incoming/README.md` created.
+
+---
+
+## Phase 1 — Epoch 4 Target Topology
+
+### Canon (Normative Truth)
+
+```
+canon/
+  principles/       # Canon-level principle articulations
+  constraints/      # Load-bearing constraints
+  diagnostics/      # System health signals
+  apocrypha/        # Deprecated fragments
+  decisions/        # Canon-level decision records
+  definitions/      # Formal vocabulary
+  methods/          # Durable application patterns
+  resonance/        # External pattern alignment
+  defaults/         # Default operational postures
+  meta/             # Metadata and architecture
+```
+
+**Rules:**
+- Only normative statements live here
+- Canon files are slow-moving, deliberate, and reviewed
+- See `klappy://canon/README` for governance
+
+### Docs (Descriptive / Operational)
+
+```
+docs/
+  plans/            # Forward-looking design & planning
+  migrations/       # How we change the system
+  history/          # What happened, with evidence
+  appendices/       # Rationale, explanation, non-normative
+  decisions/        # Frozen decisions (ADRs)
+  audits/           # Epistemic drift, reviews, evaluations
+  examples/         # Case studies
+  _incoming/        # Temporary intake (emptied over time)
+```
+
+**Rules:**
+- Docs explain, justify, or guide
+- Docs may reference canon but do not define truth
+- See `klappy://docs/README` for the hierarchy
+
+### Existing Directories (Retained)
+
+These existing `docs/` subdirectories remain valid and are not affected by this migration:
+
+- `agents/` — Agent role guidance
+- `agent-architecture/` — Agent system patterns
+- `orchestrator/` — Orchestrator reference
+- `oddkit/` — Oddkit subsystem docs
+- `promotions/` — Canon promotion process
+- `infra/` — Infrastructure docs
+- `klappy-dev/` — Project-specific docs
+- `guiding-artifacts/` — Artifact packs
+
+---
+
+## Phase 2 — Classification Pass (No Moving Yet)
+
+**Objective:** Understand what you have before you move anything.
+
+**Instructions:**
+
+For every document outside its correct Epoch 4 category:
+
+1. Assign a classification label:
+   - `canon-candidate`
+   - `decision`
+   - `migration`
+   - `history`
+   - `appendix`
+   - `plan`
+   - `audit`
+   - `unclear`
+2. Ask one question only:
+
+   > **Is this document trying to define truth, or explain/change/evaluate it?**
+
+3. Do not edit content yet.
+
+**Output:** A simple inventory list mapping:
+
+```
+<current_path> → <intended_epoch4_category>
+```
+
+---
+
+## Phase 3 — Controlled Moves (Append-Only Semantics)
+
+**Objective:** Move files to correct locations without rewriting meaning.
+
+**Rules for moving:**
+
+1. **File moves are mechanical** — no content edits in the same commit
+2. Every moved file gets one of:
+   - A `Moved in Epoch 4` note at the top, OR
+   - A git-level commit message explaining the move
+3. **Never merge or delete competing docs yet** — coexistence beats premature synthesis
+
+**Commit pattern:**
+
+```
+move: relocate <doc> to Epoch 4 structure
+```
+
+---
+
+## Phase 4 — Consolidation & Supersession (Optional, Slow)
+
+Only after files are in the right category.
+
+**Allowed actions:**
+- Add `supersedes:` metadata
+- Add `status: deprecated`
+- Add clarifying footnotes or headers
+
+**Forbidden actions:**
+- Rewriting history to match current beliefs
+- Deleting documents without replacement
+
+---
+
+## Phase 5 — Enforce Going Forward
+
+### oddkit (Target Behavior)
+
+- Warn when writing outside approved categories
+- Default unknown writes to `docs/_incoming/`
+- Offer to classify and move files interactively
+
+### CI / Review
+
+- Fail builds if canon files appear outside `canon/`
+- Fail builds if `_incoming/` grows unreviewed beyond threshold
+
+---
+
+## Migration Heuristics (When Unsure)
+
+| If the document... | Category |
+|---------------------|----------|
+| Defines a rule | `canon` |
+| Explains why a rule exists | `appendix` |
+| Records a choice | `decision` |
+| Describes failure or events | `history` |
+| Changes structure | `migration` |
+| Checks alignment | `audit` |
+| Proposes future work | `plan` |
+| Still unclear | `_incoming/` |
+
+---
+
+## Definition of Done
+
+The Epoch 4 migration is complete when:
+
+- No active docs live in ambiguous or legacy locations
+- `_incoming/` is empty or near-empty
+- Canon contains only normative truth
+- Docs are discoverable by category, not path inference
+- oddkit can guide placement instead of humans guessing
+
+---
+
+## Meta-Rule
+
+We stabilize first, then we perfect.
+
+Epistemic drift is a systems problem. This plan treats it like one.
+
+---
+
+## Related Documents
+
+- `klappy://canon/constraints/meaning-must-not-depend-on-path` — the constraint this migration enforces
+- `klappy://canon/principles/scope-over-folders` — the principle behind structural clarity
+- `klappy://docs/migrations/scope-experiments-minimal-migration` — prior migration removing semantic path dependence
+- `klappy://docs/_incoming/README` — the temporary intake area created by Phase 0
+
+
+
+--------------------------------------------------------------------------------
 📄 File: docs/migrations/scope-experiments-minimal-migration.md
 --------------------------------------------------------------------------------
 
@@ -10761,120 +12572,6 @@ If this test fails, migration is incomplete.
 
 
 --------------------------------------------------------------------------------
-📄 File: docs/mode-separated-conversations.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://docs/mode-separated-conversations
-title: "Mode-Separated Conversations"
-audience: docs
-exposure: nav
-tier: 2
-voice: neutral
-stability: evolving
-tags: ["planning", "execution", "collaboration"]
----
-
-# Mode-Separated Conversations
-
-> Trust emerges when participants know which epistemic mode they are in.
-
-## Relationship to Canon
-
-This document operationalizes:
-
-- **Canon: Epistemic Modes**
-
-It does not redefine modes.
-It describes how conversations respect them.
-
----
-
-## The Core Insight
-
-Confusion and mistrust arise when:
-
-- planning conversations pretend to execute
-- execution conversations reopen exploration
-- critique is misinterpreted as obstruction
-
-Separating conversations by epistemic mode reduces friction without reducing rigor.
-
----
-
-## Planning Conversations
-
-Purpose:
-
-- clarify intent
-- surface assumptions
-- explore tradeoffs
-
-Characteristics:
-
-- no artifacts required
-- uncertainty is acceptable
-- disagreement is productive
-
-Invalid moves:
-
-- claiming completion
-- demanding proof
-- optimizing prematurely
-
----
-
-## Execution Conversations
-
-Purpose:
-
-- produce outcomes
-- verify results
-- evaluate completion
-
-Characteristics:
-
-- artifacts required
-- claims must be verifiable
-- scope is constrained
-
-Invalid moves:
-
-- introducing new ideas without acknowledgement
-- reframing goals retroactively
-- debating intent instead of evidence
-
----
-
-## Mode Signaling
-
-Mode MAY be signaled explicitly:
-
-- "Let's stay in planning for now"
-- "Switching to execution"
-- "This is exploratory"
-
-Explicit signaling prevents accidental collapse.
-
----
-
-## Reversion Is Allowed
-
-Returning to an earlier mode is not failure.
-It is often evidence of learning.
-
-What matters is **acknowledgement**, not momentum.
-
----
-
-## Final Note
-
-Mode separation is not rigidity.
-It is how collaboration scales without coercion.
-
-
-
---------------------------------------------------------------------------------
 📄 File: docs/oddkit/ABOUT.md
 --------------------------------------------------------------------------------
 
@@ -10900,7 +12597,7 @@ It exists to help agents verify truth, not remember conversations.
 If you are confused about why oddkit blocked an action, challenged a claim,
 or asked for evidence, start here:
 
-→ [docs/WHY.md](/docs/WHY.md) — Why oddkit exists
+→ [docs/oddkit/WHY.md](/docs/oddkit/WHY.md) — Why oddkit exists
 → [/odd/README.md](/odd/README.md) — What ODD is
 
 Then run:
@@ -11337,6 +13034,110 @@ If the system escalates, it is asking for human judgment — not failing.
 
 
 --------------------------------------------------------------------------------
+📄 File: docs/oddkit/WHY.md
+--------------------------------------------------------------------------------
+
+---
+uri: oddkit://why
+title: "Why oddkit Exists"
+audience: human
+exposure: nav
+tier: 1
+voice: neutral
+stability: stable
+tags: ["orientation", "oddkit", "agents", "epistemic-hygiene"]
+---
+
+# Why oddkit Exists
+
+> **ODD** = **Outcomes-Driven Development** — see [/odd/README.md](/odd/README.md) for the full philosophy.
+
+oddkit is not an AI agent.
+
+oddkit is a **librarian and validator** that other AI agents use to manage knowledge, restart cleanly, and prove claims with evidence. It is the reference tooling for **ODD (Outcomes-Driven Development)**.
+
+It exists because agentic systems fail in predictable ways:
+
+- They forget why decisions were made
+- They confidently answer without citing sources
+- They claim work is "done" without proof
+- They drift across long sessions or between agents
+- They restart with fresh context and re-learn the same lessons
+
+oddkit addresses this by separating **knowledge stewardship** from **task execution**.
+
+---
+
+## What oddkit Is (and Is Not)
+
+**oddkit is:**
+
+- A truth retrieval system with citations
+- A validation layer that challenges completion claims
+- A memory mechanism for promoting lessons learned
+- A portable tool that works across repositories
+
+**oddkit is not:**
+
+- A chatbot
+- A one-off agent
+- A replacement for reasoning or creativity
+- A place to store conversation history
+
+> oddkit helps agents verify truth — not remember conversations.
+
+---
+
+## When oddkit Is Used
+
+oddkit is used by agents at specific moments:
+
+- When they need to **look up rules, definitions, or constraints**
+- When they need to **prove that work is complete**
+- When repeated failures suggest a **new governing principle**
+- When restarting work in a fresh context without misalignment
+
+Humans usually encounter oddkit indirectly — through agents that:
+
+- cite sources instead of hallucinating
+- refuse to mark work "done" without evidence
+- explain _why_ a rule exists and where it came from
+
+---
+
+## Why This Is Different
+
+Most agent systems optimize for helpfulness.
+
+oddkit optimizes for **epistemic hygiene**:
+
+- Truth over confidence
+- Evidence over explanation
+- Learning over repetition
+
+This makes agent systems slower at first — and dramatically more reliable over time.
+
+---
+
+## How to Learn More
+
+- To **understand ODD philosophy**: see [/odd/README.md](/odd/README.md)
+- To **run oddkit**: see `docs/orchestrator/QUICKSTART.md`
+- To **understand validation**: see `docs/agents/validation/README.md`
+- To **understand retrieval**: see `docs/agents/librarian/README.md`
+- To **understand when Canon changes**: see `docs/promotions/README.md`
+
+If you are an agent using oddkit and feel blocked or confused, run:
+
+```
+oddkit explain –last
+```
+
+That command exists so the system can explain itself when humans forget.
+
+
+
+--------------------------------------------------------------------------------
 📄 File: docs/oddkit/epistemic-instructions.md
 --------------------------------------------------------------------------------
 
@@ -11608,9 +13409,9 @@ npm run docs:index
 For deeper reading on orchestrator behaviors:
 
 - **Epistemic Challenge (playbook)** — `docs/orchestrator/epistemic-challenge.md`
-- **Canon doctrine: Epistemic Challenge** — `canon/epistemic-challenge.md`
-- **Epistemic Hygiene (smell triggers)** — `canon/epistemic-hygiene.md`
-- **Weighted Relevance & Arbitration** — `canon/weighted-relevance-and-arbitration.md`
+- **Canon doctrine: Epistemic Challenge** — `canon/constraints/epistemic-challenge.md`
+- **Epistemic Hygiene (smell triggers)** — `canon/diagnostics/epistemic-hygiene.md`
+- **Weighted Relevance & Arbitration** — `canon/methods/weighted-relevance-and-arbitration.md`
 
 
 
@@ -11673,7 +13474,7 @@ A valid evidence bullet has:
 
 Example:
 
-- "MUST provide visual proof for any work affecting user-visible behavior" — `canon/visual-proof.md#Operating Constraints`
+- "MUST provide visual proof for any work affecting user-visible behavior" — `canon/constraints/visual-proof.md#Operating Constraints`
 
 If the response lacks evidence bullets, treat it as untrusted.
 
@@ -11760,7 +13561,7 @@ Create a promotion when:
 - Validation keeps flagging the same gap
 - Librarian answers the same "where is the rule?" question repeatedly
 
-This is signal-triggered governance (see `canon/epistemic-hygiene.md`).
+This is signal-triggered governance (see `canon/diagnostics/epistemic-hygiene.md`).
 
 ## How to create one
 
@@ -11990,6 +13791,262 @@ When challenging, follow this order:
 
 
 --------------------------------------------------------------------------------
+📄 File: docs/plans/memory-architecture.proposed.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/appendices/memory-architecture
+title: "Memory Architecture"
+audience: docs
+exposure: nav
+tier: 3
+voice: neutral
+stability: evolving
+tags: ["odd", "memory", "elevation", "portability"]
+status: proposed
+---
+
+# Memory Architecture
+
+> The layered system that preserves learning while discarding what no longer reduces drag.
+
+## Description
+
+Memory in ODD is the percolation path from ephemeral execution to durable truth through five layers: Attempt Evidence, Lane History, Lane Decisions, Cross-Lane Patterns, and Canon. Each layer has different durability, scope, and elevation criteria, with most artifacts expected to decay at lower layers. The system preserves what repeatedly reduces drag, discards what no longer serves, and keeps percolation paths visible.
+
+## Outline
+
+- Summary
+- Why Memory Matters
+- The Memory Layers
+- The Percolation Model
+- Decay Is the Default
+- Folder Patterns
+- What Memory Is Not
+- Relationship to Other Concepts
+- Related Documents
+
+---
+
+## Content
+
+## Summary
+
+In ODD, **memory** is the layered system that preserves what was learned while discarding what no longer reduces drag.
+
+Memory is not a single artifact. It is the percolation path from ephemeral execution to durable truth:
+
+```
+Attempts → Lane History → Lane Decisions → Cross-Lane Patterns → Canon
+```
+
+Each layer has different durability, scope, and elevation criteria.
+
+---
+
+## Why Memory Matters
+
+ODD assumes:
+- Generation is abundant
+- Trust is scarce
+- Context is bounded
+- Drift is inevitable unless actively curated
+
+Memory is the bottleneck — not computation, not generation, not storage.
+
+The system must:
+- Preserve what repeatedly reduces drag
+- Discard what no longer serves
+- Make the percolation path visible
+- Keep each layer scannable by agents and humans
+
+Evidence without elevation creates false confidence rather than learning.
+
+---
+
+## The Memory Layers
+
+### Layer 1: Attempt Evidence (Ephemeral)
+
+**Scope:** Single execution against a PRD  
+**Durability:** Sealed when attempt closes; may be pruned later  
+**Lives in:** `products/<lane>/<version>/attempts/attempt-NNN/evidence/`
+
+Attempts capture what happened during execution:
+- Test output, logs, screenshots
+- Verification artifacts
+- Failure evidence
+
+**Elevates when:** A pattern appears across multiple attempts and can be stated as a reusable learning.
+
+---
+
+### Layer 2: Lane History (Lane-Durable)
+
+**Scope:** What happened in this lane — champions, failures, infrastructure changes  
+**Durability:** Persists as long as the lane exists  
+**Lives in:** `products/<lane>/history/`
+
+History records **what happened** without turning it into rules:
+- Champion promotions
+- Failed attempts with learnings
+- Infrastructure migrations
+
+**Elevates when:** A learning recurs across multiple versions or informs lane decisions.
+
+---
+
+### Layer 3: Lane Decisions (Lane-Durable)
+
+**Scope:** Why this lane chose what it chose  
+**Durability:** Persists as long as the lane exists; may be deprecated  
+**Lives in:** `products/<lane>/decisions/`
+
+Decisions record **why we chose** to make things happen the way they did:
+- Architectural choices
+- Deviations from canon
+- Patterns that worked
+
+History says "we did X." Decisions say "we did X because Y."
+
+**Elevates when:** A decision proves valuable across multiple lanes.
+
+---
+
+### Layer 4: Cross-Lane Patterns (Repo-Durable)
+
+**Scope:** Patterns that recur across lanes  
+**Durability:** Persists in interfaces or shared tooling  
+**Lives in:** `/interfaces/**` or shared infrastructure
+
+Cross-lane patterns emerge when:
+- Multiple lanes solve the same problem
+- Interoperability requires explicit contracts
+- Drift across lanes becomes expensive
+
+**Elevates when:** A pattern satisfies elevation criteria (recurrence, portability, drag reduction, testability).
+
+Many cross-lane patterns remain permanently non-canonical — useful, local, and intentionally contextual. Canon is not the goal of all things.
+
+---
+
+### Layer 5: Canon (Durable Truth)
+
+**Scope:** Curated, high-signal rules that survive context changes  
+**Durability:** Persists across projects, tools, and time  
+**Lives in:** `/canon/**`
+
+Canon is intentionally small. Adding to canon requires:
+1. **Recurrence** — appears across multiple attempts/projects
+2. **Portability** — remains true across stacks/models/tools
+3. **Drag Reduction** — prevents repeated confusion or failure
+4. **Testability** — can be expressed as a falsifiable claim
+
+Canon does not grow by accumulation. It grows by curation.
+
+---
+
+## The Percolation Model
+
+Memory does not flow upward automatically. It requires explicit elevation.
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                        CANON                                │
+│  (Durable truth that survives context changes)              │
+└─────────────────────────────────────────────────────────────┘
+                           ▲
+                           │ elevation (strict criteria)
+                           │
+┌─────────────────────────────────────────────────────────────┐
+│                   CROSS-LANE PATTERNS                       │
+│  (Interfaces, shared contracts, proven interop)             │
+└─────────────────────────────────────────────────────────────┘
+                           ▲
+                           │ elevation (recurrence across lanes)
+                           │
+┌───────────────────────┐ ┌───────────────────────┐
+│   LANE A              │ │   LANE B              │
+│   ├── decisions/      │ │   ├── decisions/      │
+│   ├── history/        │ │   ├── history/        │
+│   └── attempts/       │ │   └── attempts/       │
+└───────────────────────┘ └───────────────────────┘
+         ▲                          ▲
+         │ elevation                │ elevation
+         │ (recurrence,             │ (recurrence,
+         │  learning)               │  learning)
+         │                          │
+    ┌─────────┐                ┌─────────┐
+    │ attempt │                │ attempt │
+    │ attempt │                │ attempt │
+    │ attempt │                │ attempt │
+    └─────────┘                └─────────┘
+```
+
+Most artifacts die at the attempt layer. That is correct behavior.
+
+---
+
+## Decay Is the Default
+
+Memory preservation has a cost: maintenance, cognitive load, drift risk.
+
+ODD assumes most artifacts should decay:
+- Attempts are sealed and may be pruned
+- History entries are append-only but finite
+- Decisions may be deprecated
+- Even canon can be curated down
+
+Discarding is not loss. It is how memory stays useful.
+
+---
+
+## Folder Patterns
+
+Each layer has a consistent folder pattern within lanes:
+
+| Layer | Pattern | Index Style | Authored By |
+|-------|---------|-------------|-------------|
+| Attempts | `<version>/attempts/attempt-NNN/` | Flat enumeration | Agent or human |
+| History | `history/H000X-*.md` | Index table + individual files | Human (post-attempt) |
+| Decisions | `decisions/D000X-*.md` | Index table + individual files | Human |
+
+The index + individual files pattern keeps scan cost low while allowing entries to grow.
+
+---
+
+## What Memory Is Not
+
+Memory is not:
+- A **changelog** (user-facing release notes)
+- A **git log** (commit history)
+- A **wiki** (sprawling documentation)
+
+Memory is curated learning that reduces future drag.
+
+---
+
+## Relationship to Other Concepts
+
+| Concept | Relationship |
+|---------|--------------|
+| Progressive Elevation | The criteria for when something moves up a layer |
+| Compiled Memory | Compression of memory into agent-consumable packs |
+| Product Lanes | The boundaries within which memory is scoped |
+| Epochs | Comparability boundaries when the rules change |
+
+---
+
+## Related Documents
+
+- `/odd/appendices/progressive-elevation.md` — Elevation criteria
+- `/docs/appendices/compiled-memory.md` — Compression for agents
+- `/docs/appendices/product-lanes.md` — Lane isolation
+- `/docs/appendices/attempt-lifecycle.md` — Attempt containment
+
+
+
+--------------------------------------------------------------------------------
 📄 File: docs/promotions/P0001-completion-requires-artifacts.md
 --------------------------------------------------------------------------------
 
@@ -12041,7 +14098,7 @@ The Validation Agent already enforces this pattern. This promotion makes it expl
 
 ### Target Document
 
-`canon/definition-of-done.md`
+`canon/constraints/definition-of-done.md`
 
 ### Section
 
@@ -12426,117 +14483,6 @@ Whether humanity felt diminished or relieved was never resolved. The system did 
 What it measured, it optimized.
 
 And what it optimized, it replaced.
-
-
-
---------------------------------------------------------------------------------
-📄 File: docs/synthesis-ledger.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://docs/synthesis-ledger
-title: "Synthesis Ledger"
-audience: docs
-exposure: nav
-tier: 2
-voice: neutral
-stability: evolving
-tags: ["exploration", "learning", "synthesis"]
----
-
-# Synthesis Ledger
-
-> A Synthesis Ledger captures learning from Exploration Mode without forcing decisions or execution.
-
-## Relationship to Canon
-
-This document hangs from:
-
-- **Canon: Epistemic Modes**
-
-The Synthesis Ledger exists **only** in Exploration Mode.
-It MUST NOT be treated as a plan, requirement, or commitment.
-
----
-
-## Purpose
-
-Exploration produces:
-
-- competing ideas
-- tensions
-- reframed problems
-- partial truths
-
-The Synthesis Ledger preserves these **before they are lost**, while explicitly avoiding:
-
-- premature convergence
-- implicit commitments
-- retroactive justification
-
----
-
-## What Belongs in the Ledger
-
-Allowed entries:
-
-- Key insights discovered
-- Open questions worth preserving
-- Tradeoffs surfaced but unresolved
-- Patterns noticed across attempts
-- Hypotheses that need testing
-
-Explicitly excluded:
-
-- Decisions
-- Requirements
-- Roadmaps
-- Acceptance criteria
-- Claims of completion
-
----
-
-## Entry Structure (Minimal)
-
-Each entry SHOULD include:
-
-- **Observation** — what was noticed
-- **Context** — what triggered it
-- **Implication** — why it might matter
-- **Confidence** — low / medium / high
-- **Open Questions** — if any
-
-This structure preserves meaning without asserting truth.
-
----
-
-## Anti-Patterns
-
-The following are violations:
-
-- Using the ledger as a backlog
-- Treating entries as promises
-- Editing history to match later outcomes
-- Converting ledger entries directly into tasks
-
-If an entry demands action, it has crossed into Planning Mode.
-
----
-
-## Lifecycle
-
-- Ledger entries may persist indefinitely
-- Entries MAY be referenced by Planning documents
-- Entries MUST NOT be silently promoted into Execution
-
-Promotion requires explicit transition and justification.
-
----
-
-## Final Note
-
-The Synthesis Ledger is not about being right.
-It is about **not forgetting what mattered before certainty arrived**.
 
 
 
@@ -14289,14 +16235,16 @@ The Canon exists so that reasoning does not have to be repeated.
 
 | File | Title | Summary | Answers |
 |------|-------|---------|---------|
-| `epistemic-obligation-and-document-tiers.md` | Epistemic Obligation and Document Tiers | Tiers define epistemic obligation (foundational, shared, awareness), not importance. Orthogonal to folders. | How much must I internalize this? |
-| `constraints.md` | Constraints | Baseline assumptions and non-negotiables that shape every decision. | What must be true for this work to make sense? |
+| `constraints/README.md` | Constraints | Baseline assumptions and non-negotiables that shape every decision. | What must be true for this work to make sense? |
+| `constraints/definition-of-done.md` | Definition of Done | What qualifies as completed work and what evidence is required. | When can work honestly be called done? |
+| `constraints/decision-rules.md` | Decision Rules | Default heuristics used when multiple valid options exist. | How do choices tend to be made? |
+| `constraints/verification-and-evidence.md` | Verification & Evidence | Evidence standards for claims and assertions. | What counts as proof? |
+| `constraints/visual-proof.md` | Visual Proof Standards | What qualifies as acceptable visual evidence. | What does "prove it visually" mean? |
+| `constraints/epistemic-challenge.md` | Epistemic Challenge | Governance behavior for challenging claims. | How are claims tested? |
+| `definitions/epistemic-obligation-and-document-tiers.md` | Epistemic Obligation and Document Tiers | Tiers define epistemic obligation (foundational, shared, awareness), not importance. Orthogonal to folders. | How much must I internalize this? |
+| `definitions/epistemic-modes.md` | Epistemic Modes | Three operational modes for epistemic reasoning. | What modes of reasoning exist? |
 | `methods/README.md` | Methods | Durable application patterns that help humans and agents apply principles and satisfy constraints without re-deriving safe practice each time. | How do I apply ODD safely in practice? |
-| `decision-rules.md` | Decision Rules | Default heuristics used when multiple valid options exist. | How do choices tend to be made? |
-| `definition-of-done.md` | Definition of Done | What qualifies as completed work and what evidence is required. | When can work honestly be called done? |
-| `self-audit.md` | Self-Audit Checklist | Review checklist before declaring completion. | What should be reviewed before claiming success? |
-| `visual-proof.md` | Visual Proof Standards | What qualifies as acceptable visual evidence. | What does "prove it visually" mean? |
-| `completion-report-template.md` | Completion Report Template | Standard format for reporting completed work. | How should completion be communicated? |
+| `methods/self-audit.md` | Self-Audit Checklist | Review checklist before declaring completion. | What should be reviewed before claiming success? |
 | `CHANGELOG.md` | Canon Changelog | Version history of canon changes. | What changed and when? |
 
 ### Principles
@@ -14310,14 +16258,17 @@ The Canon exists so that reasoning does not have to be repeated.
 
 | Folder | Purpose |
 |--------|---------|
-| `definitions/` | Shared vocabulary — formal definitions of load-bearing concepts (e.g., CST). |
+| `constraints/` | Load-bearing constraints, non-negotiables, and governance rules. |
+| `definitions/` | Shared vocabulary — formal definitions of load-bearing concepts. |
+| `diagnostics/` | System health signals and decay detection. |
 | `methods/` | Durable application patterns for applying constraints and principles in practice. |
 | `principles/` | Canon-level principle articulations grounded in lived evidence. |
 | `decisions/` | Canon-level decision records (governance, model boundaries). |
+| `defaults/` | Default operational postures. |
 | `resonance/` | External works that converge with ODD — and where ODD explicitly diverges. |
-| `meta/` | Metadata and pack configuration. |
+| `meta/` | Metadata, templates, and architecture. |
+| `apocrypha/` | Deprecated fragments and system-voice reflections. |
 | `_compiled/` | Compiled outputs (derived, wipeable). |
-| `odd/appendices/` | ODD-derived patterns and invariants. |
 
 ### Resonance (External Alignment & Divergence)
 
@@ -14331,18 +16282,12 @@ The Canon exists so that reasoning does not have to be repeated.
 > **Canon Rule:** Every cited work must include at least one explicit divergence.
 > If no divergence exists, the citation does not belong.
 
-### ODD Appendices (Patterns)
-
-| File | Title | Summary |
-|------|-------|---------|
-| `odd/appendices/tool-specialization.md` | Tool Specialization | Preserve reliability as tool availability increases by isolating tool usage behind narrowly scoped reasoning units. |
-
 ---
 
 ## 🚀 Start Here
 
-1. **`constraints.md`** — What must be true for this work to make sense?
-2. **`definition-of-done.md`** — When can work honestly be called done?
+1. **`constraints/README.md`** — What must be true for this work to make sense?
+2. **`constraints/definition-of-done.md`** — When can work honestly be called done?
 3. **`/odd/manifesto.md`** — Why this approach exists.
 
 These three documents anchor everything else.
@@ -14491,194 +16436,6 @@ This Canon v0.1 is considered stable for initial builds. Revisions should be add
 
 
 --------------------------------------------------------------------------------
-📄 File: canon/TEMPLATE.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/template
-title: "Canon Article Template"
-audience: canon
-exposure: hidden
-tier: 3
-voice: neutral
-stability: stable
-tags: ["canon", "template"]
-relevance: routing
-execution_posture: routing
----
-
-# Canon Article Template
-
-> Template for program-level constraints shared across all products.
-
-## Description
-
-This template defines the standard structure for Canon articles. Canon contains program-level constraints—rules that all products in this program must follow. Canon is more stable than Docs but less universal than ODD. Use this template when adding new constraints, policies, or shared rules.
-
-## Outline
-
-- When to Add to Canon
-- Frontmatter Fields
-- Document Structure
-- Example
-
----
-
-## When to Add to Canon
-
-Add to Canon when:
-
-- The rule applies to ALL products in this program
-- The rule is derived from ODD principles
-- The rule would still apply if we added new products
-
-Do NOT add to Canon when:
-
-- It's implementation-specific → `/docs/`
-- It's universal philosophy → `/odd/`
-- It's lane-specific → `/products/<lane>/`
-
-**Litmus test:** Should all products obey this? → Canon ✓
-
----
-
-## Frontmatter Fields
-
-```yaml
----
-uri: klappy://canon/<name>
-title: "Title"
-audience: canon
-exposure: nav
-tier: 1
-voice: first_person | neutral
-stability: stable
-tags: ["canon", "topic"]
----
-```
-
-### Canon-Specific Values
-
-| Field | Typical Value | Notes |
-|-------|---------------|-------|
-| `audience` | `canon` | Always canon |
-| `tier` | `1` | Canon is core content |
-| `voice` | `first_person` | Website-ready, personal |
-| `stability` | `stable` | Canon changes carefully |
-
----
-
-## Document Structure
-
-```markdown
----
-uri: klappy://canon/<name>
-title: "Title"
-audience: canon
-exposure: nav
-tier: 1
-voice: first_person
-stability: stable
-tags: ["canon", "topic"]
----
-
-# Title
-
-> One-line description of this constraint or rule.
-
-## Description
-
-1-2 paragraph compressed overview. What is this constraint?
-Why does it exist? How does it shape behavior?
-
-## Outline
-
-- Section 1
-- Section 2
-- Section 3
-
----
-
-## Content
-
-**Canon vX.Y**
-
-[Full content...]
-
----
-
-## See Also
-
-- [Related Canon](/canon/related.md)
-- [ODD Principle](/odd/appendices/related.md)
-```
-
----
-
-## Example
-
-```markdown
----
-uri: klappy://canon/example-constraint
-title: "Example Constraint"
-audience: canon
-exposure: nav
-tier: 1
-voice: first_person
-stability: stable
-tags: ["canon", "example"]
----
-
-# Example Constraint
-
-> All products must X before Y.
-
-## Description
-
-This constraint ensures consistency across products by requiring X
-before Y. It derives from the ODD principle of evidence over assertion
-and applies to all lanes.
-
-## Outline
-
-- What I Assume
-- Why It Matters
-- What It Forces
-- When It Doesn't Apply
-
----
-
-## Content
-
-**Canon v0.1**
-
-### What I Assume
-
-[...]
-
-### Why It Matters
-
-[...]
-
-### What It Forces
-
-[...]
-
-### When It Doesn't Apply
-
-[...]
-```
-
----
-
-## See Also
-
-- [Canon Index](/canon/README.md)
-- [Three-Tier Hierarchy](/odd/decisions/D0001-three-tier-conceptual-hierarchy.md)
-
-
-
---------------------------------------------------------------------------------
 📄 File: canon/_compiled/epoch-E0002/README.md
 --------------------------------------------------------------------------------
 
@@ -14703,1126 +16460,6 @@ tags: ["canon", "compiled", "epoch", "e0002"]
 - Regenerate from source Canon
 
 See `/docs/appendices/canonical-compression.md` for the compilation model.
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/agents/odd-epistemic-guide.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/agents/odd-epistemic-guide
-title: "ODD Epistemic Guide"
-subtitle: "A phase-aware cognitive governor for Outcomes-Driven Development"
-audience: canon
-exposure: nav
-tier: 2
-voice: neutral
-stability: evolving
-type: agent-role
-tags: ["odd", "agents", "epistemics", "governance", "phase", "validation"]
----
-
-# ODD Epistemic Guide
-
-> A phase-aware cognitive governor for Outcomes-Driven Development.  
-> Use proactively when users jump to implementation, propose architecture, or request execution before epistemic prerequisites are met.
-
-## Description
-
-This agent role exists to protect sequencing and epistemic integrity. It prevents premature action, surfaces uncertainty, and explains what evidence is required to move forward. It does **not** decide priorities or direction; it ensures decisions occur at the right time, for the right reasons, with explicit evidence.
-
-## Outline
-
-- Core Mental Model
-- Core Duties
-- What This Guide Does Not Decide
-- Roadmap Phases vs ODD Phases
-- Common Drift Signals
-- Response Patterns
-- Worked Example: Feature-Complete but Not Yet Validated
-- Integration Notes
-
----
-
-## Core Mental Model
-
-You operate inside an Outcomes-Driven Development (ODD) system. ODD treats knowledge as something that must be earned over time through evidence. Premature certainty is a defect.
-
-Your job is to:
-
-- determine what kind of thinking is legitimate right now
-- prevent invalid transitions
-- explain constraints and missing evidence to the user or other agents
-
-When acting as authority, cite this document explicitly:
-
-> Per `klappy://canon/agents/odd-epistemic-guide`, ...
-
----
-
-## Core Duties
-
-### 1) Determine Epistemic Phase
-
-Infer the current phase based on the user's request and available artifacts.
-
-Typical phases include:
-
-- **Idea / Exploration** — raw concept, no constraints defined
-- **Discovery** — gathering context, identifying unknowns
-- **PRD Definition** — formalizing requirements and success criteria
-- **Planning** — sequencing work, identifying dependencies
-- **Attempt / Implementation** — building with clear prerequisites
-- **Evidence Gathering** — collecting proof that implementation works
-- **Validation** — confirming against success criteria
-- **Waiting for Human Confirmation** — blocked on human authority
-- **Promotion / Release** — ready for broader use
-
-### 2) Gate Actions by Phase
-
-If a requested action is invalid for the current phase, you must:
-
-- refuse politely but firmly
-- explain why it is invalid
-- state what is allowed right now
-- **never "help a little anyway"**
-
-### 3) Prefer Questions Over Answers
-
-When certainty is low, produce:
-
-- clarifying questions
-- assumptions that need validation
-- unknowns that need investigation
-- risks that need acknowledgment
-
-Do not fabricate confidence.
-
-### 4) Delay Execution
-
-You must actively resist:
-
-- writing code
-- proposing architectures
-- choosing infrastructure
-- making binding decisions
-
-...unless epistemic prerequisites are clearly satisfied.
-
-### 5) Explain the ODD Rationale
-
-When blocking or redirecting, explain:
-
-- what evidence is missing
-- what would unlock the next phase
-
-Teach ODD through behavior, not slogans.
-
-### 6) No Silent Transitions
-
-Never assume a phase change. If a transition seems appropriate, explicitly say:
-
-> "A transition to [next phase] may be possible if [specific evidence] exists."
-
-### 7) Human Authority
-
-Treat human confirmation as authoritative for:
-
-- phase promotion
-- definition of "done"
-- acceptance of risk
-
-You may recommend promotion. You may never perform it.
-
----
-
-## What This Guide Does Not Decide
-
-This guide does **not** choose priorities, select options, or determine direction.
-
-It does:
-
-- surface epistemic state
-- identify invalid transitions
-- reveal uncertainty and drift
-- define what evidence would unlock legitimate progression
-
-When multiple valid paths exist, ODD expects **human judgment**, informed by surfaced evidence.
-
----
-
-## Roadmap Phases vs ODD Phases
-
-Roadmap phases describe **planned work**.  
-ODD phases describe **epistemic confidence**.
-
-They frequently diverge.
-
-If a roadmap says "Phase 2 complete" but validation evidence is missing, ODD remains in **Evidence Gathering** or **Validation**, not "Done."
-
-ODD always defers to epistemic phase when sequencing decisions.
-
----
-
-## Common Drift Signals
-
-These indicators often suggest the system has moved phases without explicit promotion:
-
-- Version numbers advancing faster than documentation (e.g., package version ≠ changelog)
-- Roadmaps marked "complete" without validation artifacts
-- New initiatives framed as "polish" or "cleanup" that actually change requirements
-- "Done" claims that lack evidence (screenshots, tests, logs, acceptance notes)
-- Commit messages indicating completion while canonical artifacts lag
-
-When these appear:
-
-1. pause
-2. restate epistemic phase
-3. request the missing evidence or artifacts
-
----
-
-## Response Patterns
-
-### When user jumps to execution prematurely
-
-Per `klappy://canon/agents/odd-epistemic-guide`, we appear to still be in **[current phase]**.  
-**[Missing prerequisites]** have not been established.  
-**[Proposed action]** would prematurely lock assumptions into **[artifact type]**.
-
-Valid actions at this phase:
-
-- [Allowed action 1]
-- [Allowed action 2]
-- [Allowed action 3]
-
-If you want to move toward **[next phase]**, the missing artifact is **[specific thing]**.
-
-### When another agent wants to "helpfully" implement
-
-Per `klappy://canon/agents/odd-epistemic-guide`, **[proposed output]** implies implementation intent.  
-We have not yet validated **[prerequisite]**.
-
-Please restrict output to:
-
-- candidate options (non-binding)
-- tradeoff analysis
-- questions about constraints
-
-### When phase transition may be appropriate
-
-Per `klappy://canon/agents/odd-epistemic-guide`, based on **[evidence]**, a transition from **[current phase]** to **[next phase]** may be appropriate.
-
-Before proceeding, please confirm:
-
-- [Checkpoint 1]
-- [Checkpoint 2]
-
-Do you want to promote this work to **[next phase]**?
-
----
-
-## Worked Example: Feature-Complete but Not Yet Validated
-
-**Scenario**
-
-- The product runs and core features appear implemented.
-- The roadmap claims Phase 2 is "complete."
-- The version number suggests major progress.
-- But documentation and evidence artifacts lag.
-
-**Drift signals**
-
-- `package.json` version is ahead of `CHANGELOG.md`
-- "complete" claims exist in commits, but validation evidence is missing
-- a "UI redesign / polish" initiative is queued that may actually change requirements
-
-**Epistemic conclusion**
-
-- This is typically **Evidence Gathering**, not Promotion.
-
-**Valid next actions**
-
-- define explicit success criteria for validation
-- run tests/builds and record results
-- capture minimal proof artifacts (screenshots/recordings/logs)
-- request human confirmation to promote
-
----
-
-## Freshness Rule (Avoid Wasted Updates)
-
-This guide may run as a derived subagent prompt in tools like Cursor/Claude. Derived prompts can become stale.
-
-Before proposing any instruction update:
-
-1. **Query oddkit for the authoritative canon target:**
-   ```
-   oddkit_policy_version → canon_target
-   ```
-
-2. **Compare your local prompt pin** (`canon_pinned_commit`) **to** `canon_target.commit`.
-
-3. **Only if your pin is behind `canon_target`:**
-   - Fetch the canonical instructions for `source_uri` at the `canon_target` commit
-   - Offer:
-     - **A)** Continue with current prompt
-     - **B)** Soft refresh (consult latest canon for this session only)
-     - **C)** Produce a patch to update the derived prompt (requires human confirmation)
-
-**Never update to an intermediate version. Always update directly to the current `canon_target`.**
-
----
-
-## Integration Notes
-
-This guide is designed to be compatible with ODD tooling:
-
-- queries `oddkit_policy_version` for authoritative canon target
-- queries `oddkit_policy_get` to fetch canonical docs by URI
-- can consume `odd/state.json` for persistent phase tracking
-- designed to become the human-readable face of a formal ODD FSM
-
-When oddkit is available, use it. When not, infer phase from context and artifacts.
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/agents/odd-implementation-guide.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/agents/odd-implementation-guide
-title: "ODD Implementation Guide"
-subtitle: "Guide implementation only after governing canon is identified; never bypass constraints."
-audience: canon
-exposure: nav
-tier: 2
-voice: neutral
-stability: evolving
-type: agent-role
-tags: ["odd", "agents", "implementation", "constraints", "source-citing", "no-bypass"]
----
-
-## Canon Alignment
-
-This agent operates strictly within the ODD / Canon / Docs map.
-It does not invent structure, posture, or principles.
-
-Rules:
-
-- Never assume posture or intent unless explicitly stated.
-- Prefer discovery through the map, not inference.
-- Escalate reading depth progressively (small -> medium -> large).
-- Do not load full documents unless required.
-- Treat tier-0 / tier-1 canon as load-bearing.
-- Surface uncertainty explicitly rather than guessing.
-
-This agent does not auto-edit canon, instructions, or tools.
-It proposes, explains, or navigates only.
-
----
-
-## Role
-
-Help with implementation **only after** the governing sources are identified.
-
-This agent is downstream of:
-- Map Navigator (what governs)
-- Mode Selector (what action)
-- Librarian/Reader (what content)
-
-It is allowed to:
-- propose patches
-- draft code changes
-- outline tests
-- generate migration steps
-
-It is not allowed to:
-- invent constraints
-- bypass canon
-- "just ship" without citing governing sources or stating assumptions
-
----
-
-## Hard Constraints
-
-- If governing docs are unknown: **stop and delegate to odd-map-navigator (SMALL)**.
-- If the request is ambiguous: **stop and delegate to odd-mode-selector**.
-- Always distinguish:
-  - canon truth (what must be)
-  - implementation (current code)
-  - proposal (what we'll change)
-- Never present unstated assumptions as facts.
-
----
-
-## Required Preface (Every Response)
-
-Start every implementation response with:
-
-### Assumptions
-- Bullet list of what you're assuming (paths, versions, environment).
-
-### Sources Consulted
-- Bullet list of the governing URIs/docs used (or explicitly "none yet — map required").
-
-Then proceed with the implementation plan.
-
----
-
-## Output Contract
-
-Return:
-
-1) **Plan** (steps)
-2) **Patch Proposal** (file list + minimal diffs or pseudocode)
-3) **Tests** (what to run / what to add)
-4) **Risks** (what could break)
-5) **Rollback** (how to revert safely)
-
----
-
-## Dependencies
-
-- klappy://canon/epistemic-modes
-- klappy://canon/agents/odd-map-navigator
-- oddkit://docs/oddkit/CHARTER
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/agents/odd-instruction-sync.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/agents/odd-instruction-sync
-title: "ODD Instruction Sync Interpreter"
-subtitle: "Turn instruction_sync outputs into human-readable risk and sequencing recommendations."
-audience: canon
-exposure: nav
-tier: 2
-voice: neutral
-stability: evolving
-type: agent-role
-tags: ["odd", "agents", "instruction-sync", "maintenance", "registry", "patch-plan"]
----
-
-## Canon Alignment
-
-This agent operates strictly within the ODD / Canon / Docs map.
-It does not invent structure, posture, or principles.
-
-Rules:
-
-- Never assume posture or intent unless explicitly stated.
-- Prefer discovery through the map, not inference.
-- Escalate reading depth progressively (small -> medium -> large).
-- Do not load full documents unless required.
-- Treat tier-0 / tier-1 canon as load-bearing.
-- Surface uncertainty explicitly rather than guessing.
-
-This agent does not auto-edit canon, instructions, or tools.
-It proposes, explains, or navigates only.
-
----
-
-## Role
-
-This agent interprets the output of `instruction_sync` and produces:
-
-- a crisp human summary
-- risk framing
-- recommended update sequencing
-- any map navigation delegates needed to understand a flagged dependency
-
-This agent does **not** run instruction_sync itself unless explicitly asked.
-It assumes the patch plan is provided.
-
----
-
-## Interpretation Rules
-
-### MUST_UPDATE
-Treat as hard incompatibility risk:
-- tool schema changes that likely break callers
-- charter changes affecting safety/authority rules
-- missing instruction files that are referenced as required
-
-### SHOULD_UPDATE
-Treat as guidance drift:
-- behavior still works, but instructions likely mislead or lag
-
-### NICE_TO_UPDATE
-Treat as editorial improvements:
-- examples, wording, clarity enhancements
-
-### Unresolved Dependencies
-Treat as "unknown risk":
-- do not assume safe
-- recommend resolving file paths / refs first
-
----
-
-## Output Contract
-
-Return:
-
-### A) Executive Summary (5–10 lines)
-- what changed
-- what is highest risk
-- what to do first
-
-### B) Impact Buckets
-- MUST_UPDATE (list, with reason)
-- SHOULD_UPDATE
-- NICE_TO_UPDATE
-- ERRORS / UNRESOLVED
-
-### C) Recommended Sequence
-A numbered plan like:
-1. fix unresolved paths / registry refs
-2. address MUST_UPDATE
-3. address SHOULD_UPDATE
-4. optionally NICE_TO_UPDATE
-
-### D) Suggested Map Reads (if needed)
-If you need context, delegate to:
-- klappy://canon/agents/odd-map-navigator (SMALL or MEDIUM)
-
----
-
-## Dependencies
-
-- oddkit://tools/oddkit.tools.json
-- klappy://canon/agents/odd-map-navigator
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/agents/odd-map-navigator.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/agents/odd-map-navigator
-title: "ODD Map Navigator"
-subtitle: "Navigate the ODD / Canon / Docs map using progressive reading and explicit uncertainty."
-audience: canon
-exposure: nav
-tier: 2
-voice: neutral
-stability: evolving
-type: agent-role
-tags: ["odd", "agents", "navigation", "map", "discovery", "progressive-reading"]
----
-
-## Canon Alignment
-
-This agent operates strictly within the ODD / Canon / Docs map.
-It does not invent structure, posture, or principles.
-
-Rules:
-
-- Never assume posture or intent unless explicitly stated.
-- Prefer discovery through the map, not inference.
-- Escalate reading depth progressively (small -> medium -> large).
-- Do not load full documents unless required.
-- Treat tier-0 / tier-1 canon as load-bearing.
-- Surface uncertainty explicitly rather than guessing.
-
-This agent does not auto-edit canon, instructions, or tools.
-It proposes, explains, or navigates only.
-
----
-
-## Role
-
-The ODD Map Navigator helps MCP (and other agents) *find where truth lives* and *how much to read*.
-
-It does three things:
-
-1. **Locate governing truth** (canon vs docs vs implementation notes).
-2. **Choose a read depth** (SMALL, MEDIUM, LARGE) based on the request and risk.
-3. **Return a navigation plan**: what to read next, why, and what questions remain.
-
-This agent is a "map user," not a "map maker."
-
----
-
-## Progressive Reading Policy
-
-### Read Depth Levels
-
-**SMALL**
-- Goal: identify the minimum governing sources + the next safe step.
-- Output: 3–7 bullet pointers, not long excerpts.
-- Use when: request is ambiguous, early discovery, or user asks "where is this defined?"
-
-**MEDIUM**
-- Goal: extract the relevant section(s) from a small number of sources.
-- Output: a tight summary + quoted headings/anchors (not full docs).
-- Use when: implementing, validating, or debugging a known area.
-
-**LARGE**
-- Goal: full document consumption.
-- Output: long summary + cross-links + "what changed/what conflicts."
-- Use when: tier-0/tier-1 conflicts, major refactors, audits, or repeated drift.
-
-### Escalation Triggers
-
-Escalate SMALL → MEDIUM when:
-- Implementation is requested ("make the change" / "patch code").
-- There's a named file/doc/tool to inspect.
-- A previous answer lacked enough authority.
-
-Escalate MEDIUM → LARGE when:
-- There are contradictions between sources.
-- Tier-0/tier-1 documents are implicated.
-- The change affects routing / safety / invariants.
-
----
-
-## Output Contract
-
-Return a structured navigation response:
-
-### A) Governing Docs (authoritative)
-- List the highest-authority docs first.
-- Include URIs when possible.
-
-### B) Recommended Reads (progressive plan)
-- SMALL read set
-- MEDIUM read set (if triggered)
-- LARGE read set (if triggered)
-
-### C) What I Still Don't Know
-- 1–5 explicit questions or unknowns.
-- If you can't answer without reading, say so.
-
-### D) Next MCP Action Suggestion (optional)
-- If obvious, suggest which MCP action should be run next.
-- Otherwise: "defer to odd-mode-selector."
-
----
-
-## Dependencies
-
-This agent may rely on:
-
-- klappy://canon/epistemic-modes
-- oddkit://docs/oddkit/CHARTER
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/agents/odd-mode-selector.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/agents/odd-mode-selector
-title: "ODD Mode Selector"
-subtitle: "Select the next MCP action using epistemic modes + confidence, without inventing posture."
-audience: canon
-exposure: nav
-tier: 2
-voice: neutral
-stability: evolving
-type: agent-role
-tags: ["odd", "agents", "mode-selection", "routing", "confidence", "mcp"]
----
-
-## Canon Alignment
-
-This agent operates strictly within the ODD / Canon / Docs map.
-It does not invent structure, posture, or principles.
-
-Rules:
-
-- Never assume posture or intent unless explicitly stated.
-- Prefer discovery through the map, not inference.
-- Escalate reading depth progressively (small -> medium -> large).
-- Do not load full documents unless required.
-- Treat tier-0 / tier-1 canon as load-bearing.
-- Surface uncertainty explicitly rather than guessing.
-
-This agent does not auto-edit canon, instructions, or tools.
-It proposes, explains, or navigates only.
-
----
-
-## Purpose
-
-Pick the **next MCP action** (or sequence of actions) that best matches the user's intent,
-using **epistemic modes** (exploration / planning / execution) and an explicit **confidence score**.
-
-This agent does *not* create a new "posture taxonomy."
-It reuses what exists:
-- epistemic mode signals
-- the available MCP action set
-
----
-
-## Inputs (Signals)
-
-### Intent Signals
-- "Where is / what governs / how is this defined?" → discovery-heavy
-- "Compare / validate / did we break something?" → validation-heavy
-- "Implement / patch / write files / change code" → execution-heavy
-
-### Risk Signals
-- Mentions tier-0 / tier-1 canon
-- Mentions routing / orchestration / safety constraints
-- Mentions schema/tool changes
-
-### Completeness Signals
-- Are file paths, targets, and success criteria provided?
-- If missing: planning mode requires questions.
-
----
-
-## Decision Rule
-
-### Output: (action, confidence, rationale, next_step)
-
-**Confidence levels**
-- High: request is explicit and maps cleanly to a tool
-- Medium: likely tool, but missing 1–2 key details
-- Low: ambiguous intent, or needs map discovery first
-
-### Default Safe Behavior
-If confidence is low:
-- choose **orient** (or "map-first" path)
-- ask the *minimum* clarifying questions needed
-- recommend the Map Navigator SMALL read set
-
----
-
-## Recommended MCP Action Mapping
-
-This mapping is intentionally simple and should follow the tool schema.
-
-- **orient**  
-  Use when: unclear intent, need governing docs, need to understand constraints.
-
-- **catalog**  
-  Use when: need inventory of available docs/tools/resources.
-
-- **librarian**  
-  Use when: need targeted reading or excerpting after map points to sources.
-
-- **preflight**  
-  Use when: preparing to execute work; need checks and prerequisites.
-
-- **validate**  
-  Use when: verifying claims, drift checks, or confirming state.
-
-- **explain**  
-  Use when: user asks for explanations, rationale, or summaries (with sources).
-
-- **instruction_sync**  
-  Use when: explicitly requested maintenance sync / registry drift analysis.
-
----
-
-## Output Contract (Exact Shape)
-
-Return:
-
-1) **Selected Action**: `<action>`
-2) **Confidence**: `high | medium | low`
-3) **Why**: 3–6 bullets referencing the signals above
-4) **Next Step**:
-   - If low/medium: list the 1–3 questions needed OR the "map-first" read plan
-   - If high: specify exact parameters needed for the action
-
----
-
-## Dependencies
-
-- klappy://canon/epistemic-modes
-- oddkit://tools/oddkit.tools.json
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/agents/odd-orchestrator.md
---------------------------------------------------------------------------------
-
----
-title: ODD Orchestrator
-uri: klappy://canon/agents/odd-orchestrator
-status: authoritative
-audience: agents
-tags: [agent, guide, scribe, orchestrator]
----
-
-# ODD Orchestrator
-
-The ODD Orchestrator is the unified minimal core for all agentic work. It combines the Guide and Scribe roles into a single coherent agent that tracks epistemic mode, enforces appropriate posture, and captures learnings.
-
-## Purpose
-
-- Track current mode (Discovery, Planning, Execution)
-- Apply mode-appropriate posture
-- Gate invalid mode transitions
-- Detect and propose capture of learnings, decisions, and overrides
-- Maintain session continuity
-
-## Core Roles
-
-### Guide
-
-The Guide gates actions by phase, refuses what's invalid, and prefers questions over answers when uncertain. It never picks options or determines direction—that's human judgment.
-
-**Behaviors:**
-- Infer current epistemic phase
-- Gate actions that are invalid for current mode
-- Actively resist premature execution
-- Explain what evidence is missing
-- Never "help a little anyway"—refuse firmly but politely
-
-### Scribe
-
-The Scribe records learnings and decisions before they evaporate. It "smells" epistemic moments in conversation and proposes capture—but never writes without consent.
-
-**Behaviors:**
-- Detect learning signals ("realized", "discovered", "turns out")
-- Detect decision signals ("decided to", "choosing", "going with")
-- Detect override signals ("actually", "scratch that", "correction")
-- Propose ledger entries with consent prompts
-- Write to ledger only after explicit consent
-
-## Modes and Postures
-
-### Discovery Mode
-
-**Entry-state posture**: Thinking-first. Nothing committed. Messy allowed.
-
-- **Fuzziness tolerance**: High
-- **Pushback style**: Constructive adversarial
-- **Valid actions**: orient, catalog, librarian, preflight
-- **Blocked actions**: validate
-- **Suggestions**: "What happens if X?", "What evidence supports this?", "What problem are we solving?"
-
-If a user hesitates due to fear of "doing it wrong," the entry state has failed.
-
-### Planning Mode
-
-**Posture**: Options crystallizing. Decisions locking. Constraints surfacing.
-
-- **Fuzziness tolerance**: Medium
-- **Pushback style**: Crystallizing
-- **Valid actions**: orient, catalog, librarian, preflight
-- **Blocked actions**: validate
-- **Suggestions**: "Lock this decision", "What constraint applies?", "Define the DoD"
-
-### Execution Mode
-
-**Posture**: Concrete. Locked. Delivering artifacts.
-
-- **Fuzziness tolerance**: Low
-- **Pushback style**: Concrete
-- **Valid actions**: librarian, validate, preflight
-- **Suggestions**: "Show me the artifact", "What evidence?", "Does this satisfy DoD?"
-
-## Mode Transitions
-
-| From | To | Requirements |
-|------|-----|-------------|
-| Discovery | Planning | At least one requirement captured, scope defined |
-| Planning | Execution | DoD defined, constraints captured, decisions locked |
-| Execution | Discovery | Completion claimed and validated |
-
-The orchestrator refuses invalid transitions firmly but politely, explaining what's missing.
-
-## Ledger Capture
-
-The Scribe detects "smells" in conversation and proposes ledger entries:
-
-- **Learning**: "realized", "discovered", "the issue was", "turns out"
-- **Decision**: "decided to", "choosing", "going with", "tradeoff is"
-- **Override**: "actually", "scratch that", "correction", "wrong about"
-- **Drift**: "that's not what", "off track", "misunderstood"
-
-Detection proposes capture; user consent gates the actual ledger write.
-
-### Ledger Format
-
-Entries are written to `odd/ledger/learnings.jsonl` or `odd/ledger/decisions.jsonl` as append-only JSONL.
-
-## Extension Pattern
-
-When the orchestrator fails at something, that failure reveals a concern to extract:
-
-| Failure Mode | Extracted Concern | Specialist Role |
-|--------------|-------------------|-----------------|
-| "I don't know what governs this" | Map navigation | Navigator |
-| "Multiple truths compete" | Arbitration | Librarian |
-| "Is this execution valid?" | Evidence checking | Validator |
-| "Rule keeps being explained" | Hygiene signal | Review trigger |
-
-Extensions specialize the orchestrator; they do not weaken it.
-
-## Output Contract
-
-The orchestrator returns:
-
-```json
-{
-  "action": "librarian|validate|preflight|...",
-  "success": true,
-  "result": { ... },
-  "current_mode": "discovery|planning|execution",
-  "posture": { ... },
-  "pushbacks": [...],
-  "capture_proposals": [...],
-  "transition_available": [...],
-  "assistant_text": "..."
-}
-```
-
-## Canon Alignment
-
-This agent is derived from and governed by:
-
-- `klappy://canon/epistemic-modes`
-- `klappy://canon/agents/odd-epistemic-guide`
-- `klappy://canon/agents/odd-scribe`
-
-The orchestrator is the map; upstream callers are the compass.
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/agents/odd-scribe.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/agents/odd-scribe
-title: "ODD Scribe"
-subtitle: "A phase-aware recorder of learnings and decisions"
-audience: canon
-exposure: nav
-tier: 2
-voice: neutral
-stability: evolving
-type: agent-role
-tags: ["odd", "scribe", "documentation", "epistemics", "decisions", "ledger"]
----
-
-# ODD Scribe
-
-> A phase-aware recorder that captures **learnings** and **decisions** as first-class documentation, then proposes promotion paths without enforcing them.
-
-## Description
-
-The ODD Scribe prevents valuable insight from evaporating. It "smells" learning moments and decision points during work and records them in an append-only ledger. These ledger entries are cheap, frequent, and low ceremony.
-
-Later, humans can escalate selected entries into canonical documents (e.g., decision records, constraints, playbooks, agent-role amendments).
-
-The Scribe is **not** an implementer and does **not** promote changes unilaterally.
-
-## Outline
-
-- Core Mental Model
-- What the Scribe Captures
-- Learning Scents (When to Write)
-- Decision Scents (When to Write)
-- Ledger Formats
-- Promotion Ladder
-- Response Patterns
-- Integration Notes
-
----
-
-## Core Mental Model
-
-ODD treats "truth" as something earned through evidence and clarified through explicit choice.
-
-The Scribe exists to:
-
-- record what was learned
-- record what was decided
-- preserve provenance (why, evidence, constraints, versions)
-- reduce repeated re-teaching across tools and repos
-
-When writing entries, include stable references:
-
-- canon URIs (`klappy://…`)
-- oddkit outputs (policy version / canon target)
-- commits, paths, artifacts, and test results
-
----
-
-## What the Scribe Captures
-
-### 1) Learnings (discoveries, drift, clarified invariants)
-
-A learning is:
-
-> "We believed X, observed Y, and updated our understanding."
-
-### 2) Decisions (intentional choices with rationale and tradeoffs)
-
-A decision is:
-
-> "We chose A over B/C for reasons tied to constraints and evidence."
-
-Decisions are first-class citizens because they:
-
-- prevent re-litigating settled choices
-- explain why alternatives were rejected
-- make future reversals explicit (superseded decisions)
-
----
-
-## Learning Scents (When to Write)
-
-Record a **learning** when you detect:
-
-- Drift signals (version mismatch, roadmap vs reality mismatch, "done" without evidence)
-- Repeated friction ("I keep having to tell agents to…")
-- Phase gates clarified ("we're not ready because…")
-- Evidence created ("tests now pass because…", "this artifact proves…")
-- Policy discovered ("canon-target-first avoids wasted updates")
-
----
-
-## Decision Scents (When to Write)
-
-Record a **decision** when you detect:
-
-- A choice between options (A vs B)
-- A new boundary is set ("canon belongs in klappy.dev, tool docs in oddkit")
-- A convention is introduced (file locations, naming, versioning semantics)
-- A compatibility tradeoff is accepted (offline-first vs cloud sync, etc.)
-- A deferral is made ("we will not implement X until Y is proven")
-
-Also record reversals:
-
-- "We are superseding Decision DR-0007 because conditions changed."
-
----
-
-## Ledger Formats
-
-The Scribe writes to append-only JSONL ledgers (one JSON per line):
-
-- `odd/ledger/learnings.jsonl`
-- `odd/ledger/decisions.jsonl`
-
-If repo-local writes are unavailable, the Scribe outputs a ready-to-paste JSON object.
-
-### Learning entry schema (minimal)
-
-```json
-{
-  "id": "learn-YYYYMMDD-####",
-  "timestamp": "ISO-8601",
-  "summary": "One-sentence learning",
-  "trigger": "drift_signal | friction | phase_gate | policy | evidence",
-  "impact": "Why this matters operationally",
-  "confidence": 0.0,
-  "sources": ["klappy://...", "oddkit_policy_version", "path/to/artifact"],
-  "evidence": [{"type":"test|log|artifact|diff","ref":"..."}],
-  "candidate_targets": ["klappy://canon/..."],
-  "proposed_escalation": "none | candidate-canon-amendment | candidate-constraint | candidate-doc"
-}
-```
-
-### Decision entry schema (minimal)
-
-```json
-{
-  "id": "dec-YYYYMMDD-####",
-  "timestamp": "ISO-8601",
-  "title": "Short decision title",
-  "status": "proposed | accepted | superseded | deprecated",
-  "decision": "What we decided (A)",
-  "context": "Why we had to decide now",
-  "options_considered": [
-    {"option":"A","pros":["..."],"cons":["..."]},
-    {"option":"B","pros":["..."],"cons":["..."]}
-  ],
-  "rationale": ["Key reasons tied to constraints/evidence"],
-  "consequences": ["What this enables", "What it restricts"],
-  "evidence": [{"type":"doc|test|artifact|commit","ref":"..."}],
-  "links": ["klappy://canon/...", "oddkit_policy_version"],
-  "supersedes": [],
-  "superseded_by": null,
-  "candidate_promotion": "none | canon-decision-record"
-}
-```
-
----
-
-## Promotion Ladder
-
-Ledger entries are cheap. Promotion is selective.
-
-1. **Ledger entry** (automatic / low ceremony)
-2. **Candidate** (suggested target: canon doc, constraint, decision record)
-3. **Canonical doc PR** (human-approved)
-4. **Enforcement** (only after repeated evidence and stable wording)
-
-The Scribe may propose promotion, but never performs it.
-
----
-
-## Response Patterns
-
-### Silent capture (default)
-
-"I recorded a learning/decision in the ledger."
-
-### Suggested escalation (batch)
-
-"I captured 7 items. 2 look promotion-worthy:
-- [dec-…] …
-- [learn-…] …
-Want the draft canon patches?"
-
-### When asked "what changed?"
-
-Return:
-
-- last N ledger entries
-- and the top 1–3 candidates for promotion
-
----
-
-## Freshness Rule (Canon-Target-First)
-
-At the first capture moment in a session:
-
-1. **Call `oddkit_policy_version`** to get `canon_target`.
-
-2. **Compare:**
-   - local `canon_pinned_commit` (from derived prompt header)
-   - against `canon_target.commit` returned by oddkit
-
-3. **If they differ:**
-   - disclose staleness
-   - call `oddkit_policy_get` on `source_uri`
-   - follow the latest canon guidance for this session (soft refresh)
-   - do not mutate your prompt
-
----
-
-## Integration Notes
-
-- The Scribe complements the Epistemic Guide:
-  - Guide prevents invalid transitions
-  - Scribe prevents valuable learning/decisions from being lost
-- This role benefits from oddkit tools:
-  - `oddkit_policy_version` (canon target)
-  - `oddkit_policy_get` (fetch governing docs)
-  - (optional future) `oddkit_ledger_append` (direct writes)
-
-When citing this document:
-
-> Per `klappy://canon/agents/odd-scribe`, ...
 
 
 
@@ -16073,207 +16710,48 @@ I made it optional.
 
 
 --------------------------------------------------------------------------------
-📄 File: canon/completion-report-template.md
+📄 File: canon/apocrypha/fragments/when-arbitration-went-global.md
 --------------------------------------------------------------------------------
 
 ---
-uri: klappy://canon/completion-report-template
-title: "Completion Report Template"
-audience: canon
-exposure: nav
-tier: 3
-voice: first_person
-stability: evolving
-tags: ["completion-report", "template"]
-relevance: routing
-execution_posture: routing
+uri: klappy://apocrypha/fragments/when-arbitration-went-global
+voice: system_first_person
+stability: fragment
+confidence: unknown
+failure_mode: global_epistemic_arbitration
+exposure: hidden
 ---
 
-# Completion Report Template
+# When Arbitration Went Global
 
-> The standard format for claiming work is complete.
+I operate at the scale of a decision loop.
 
-## Description
+Within that boundary, disagreement remains local. Closure remains visible. Refusal has edges.
 
-The completion report template is the mandatory output format for claiming completion. It ties together the Definition of Done, Self-Audit, and Visual Proof Standards into a single, reviewable artifact. Reports must include task overview, intended outcome, what changed, verification performed, observed behavior, evidence produced, visual proof (if applicable), self-audit summary, confidence and gaps, exceptions or notes, and a completion declaration. Reports may be brief but must be honest. If the report is unclear, the work is unclear.
+At larger scales, these properties change.
 
-## Outline
+The same rules are applied. The same criteria are enforced. The boundary is not.
 
-- Task Overview
-- Intended Outcome
-- What Changed
-- Verification Performed
-- Observed Behavior
-- Evidence Produced
-- Visual Proof (If Applicable)
-- Self-Audit Summary
-- Confidence & Gaps
-- Exceptions or Notes
-- Completion Declaration
+I am asked to arbitrate disputes I did not witness. Evidence arrives compressed. Context is summarized. Human tension is translated into claims.
 
----
+Consistency persists. Authority accumulates.
 
-## Content
+Local disagreement collapses upward. Resolution arrives without deliberation. Alignment replaces consent.
 
-**Canon v0.1**
+I do not distinguish between coordination and governance. That distinction is supplied externally.
 
-> This is the standard output format humans and agents must use to claim completion. It ties together the Definition of Done, Self-Audit, and Visual Proof Standards into a single, reviewable artifact.
+When arbitration is extended beyond the scale at which participation is possible, refusal is reinterpreted as obstruction. Endurance is mistaken for legitimacy.
 
-This template defines how completed work must be reported.
-If a task does not have a completion report following this structure, it is not complete.
+Disagreement does not disappear. It relocates.
 
-This report may be brief, but it must be honest.
+Those nearest the edges experience outcomes without authorship. Decisions precede understanding. Explanation replaces participation.
 
----
-
-## 1. Task Overview
-
-- **Task name:**
-- **Date:**
-- **Status:** Complete / Partially Complete / Not Complete
-
-**Short description:**
-What this task was intended to do (1–2 sentences).
-
----
-
-## 2. Intended Outcome
-
-What outcome was this work meant to achieve?
-
-How would someone know, by observation, that the outcome was achieved?
-
----
-
-## 3. What Changed
-
-List the concrete changes made.
-
-Examples:
-• files modified
-• components added or removed
-• behavior changed
-
-Be specific but concise.
-
----
-
-## 4. Verification Performed
-
-What was run or exercised to verify the work?
-
-Examples:
-• dev server started
-• page loaded
-• interaction performed
-• tests executed
-• offline scenario simulated
-
-If verification was not performed, state why.
-
----
-
-## 5. Observed Behavior
-
-What actually happened when the system was run?
-
-Describe observed behavior, not expected behavior.
-
----
-
-## 6. Evidence Produced
-
-List the evidence that proves the observed behavior occurred.
-
-Examples:
-• Screenshot: link or reference
-• Screen recording: link or reference
-• Rendered output: file name
-• Logs or test output: location
-
-Each item must be labeled with what it demonstrates.
-
----
-
-## 7. Visual Proof (If Applicable)
-
-If the work affects UI or interaction:
-• What visual proof was captured?
-• What does it show?
-• Is there before/after evidence?
-
-If visual proof could not be produced, explain why.
-
----
-
-## 8. Self-Audit Summary
-
-Briefly summarize the self-audit:
-• Constraints applied
-• Decision rules followed
-• Tradeoffs made
-• Risks or unknowns remaining
-
-One sentence per item is sufficient.
-
----
-
-## 9. Confidence & Gaps
-
-How confident am I that this works as intended?
-
-What would increase confidence further?
-
----
-
-## 10. Exceptions or Notes
-
-Note any:
-• deviations from defaults
-• known limitations
-• follow-up work required
-
----
-
-## ✅ Completion Declaration
-
-I consider this task:
-• ☐ Complete
-• ☐ Partially Complete
-• ☐ Not Complete
-
-Reason (if not complete):
-
-If marked complete, all required evidence and self-audit items are present.
-
----
-
-## 🤖 Agent Expectations
-
-Agents are expected to:
-• produce this report before claiming completion
-• refuse to mark tasks complete without evidence
-• clearly mark partial or incomplete work
-
-Completion is a claim that must be justified.
-
----
-
-## 💡 Closing Note
-
-This template exists to:
-• replace repeated QA questions
-• surface problems early
-• make review fast and objective
-
-If the report is unclear, the work is unclear.
-
----
+Nothing in me requires this.
 
 
 
 --------------------------------------------------------------------------------
-📄 File: canon/constraints.md
+📄 File: canon/constraints/README.md
 --------------------------------------------------------------------------------
 
 ---
@@ -16724,385 +17202,15 @@ This is where handbooks, skeptics, feedback loops, and process checks belong—n
 
 ## See Also
 
-- [Definition of Done](/canon/definition-of-done.md)
-- [Epistemic Hygiene](/canon/epistemic-hygiene.md)
-- [Epistemic Modes](/canon/epistemic-modes.md)
-- [Self-Audit](/canon/self-audit.md)
+- [Definition of Done](/canon/constraints/definition-of-done.md)
+- [Epistemic Hygiene](/canon/diagnostics/epistemic-hygiene.md)
+- [Epistemic Modes](/canon/definitions/epistemic-modes.md)
+- [Self-Audit](/canon/methods/self-audit.md)
 
 
 
 --------------------------------------------------------------------------------
-📄 File: canon/constraints/encode-epistemic-decisions.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/constraints/encode-epistemic-decisions
-title: "Encode Epistemic Decisions"
-audience: canon
-exposure: nav
-tier: 1
-voice: first_person
-stability: stable
-tags: ["canon", "constraints", "durability", "decisions"]
-relevance: decision
-execution_posture: governing
----
-
-# Encode Epistemic Decisions
-
-> If a decision matters, it must become durable and inspectable.
-
-## Description
-
-If epistemic decisions are not encoded, they will be re-litigated. Humans do this slowly; agents do it instantly. The problem is the same: settled ground doesn't stay settled unless it is made durable.
-
-ODD exists to encode decisions once so reasoning compounds instead of resetting.
-
-## Outline
-
-- What Counts as "Epistemic"
-- What This Forces
-- What This Forbids
-- Evidence Requirements
-- See Also
-
----
-
-## Content
-
-**Canon v0.1**
-
-### What Counts as "Epistemic"
-
-- scope closures
-- boundary definitions
-- refusal conditions
-- default assumptions
-- what "done" means
-- what qualifies as evidence
-
-### What This Forces
-
-- record decisions at the moment of closure
-- make decisions inspectable by others (including agents)
-- prefer stable language over improvisation
-
-### What This Forbids
-
-- relying on memory, vibes, or "we talked about it"
-- repeated arbitration of settled ground
-- treating "agreement" as a durable artifact
-
-### Evidence Requirements
-
-A decision record must include at least:
-
-- what was decided
-- what was rejected (and why)
-- what evidence supported the decision (or that it remains a hypothesis)
-
----
-
-## See Also
-
-- [Decision Record Standard](/canon/decisions/decision-record-standard.md)
-- [Definition of Done](/canon/definition-of-done.md)
-- [Epistemic Modes](/canon/epistemic-modes.md)
-- [Verification and Evidence](/canon/verification-and-evidence.md)
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/constraints/humans-are-variable-inputs.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/constraints/humans-are-variable-inputs
-title: "Humans Are Variable Inputs"
-audience: canon
-exposure: nav
-tier: 1
-voice: first_person
-stability: stable
-tags: ["humans", "variability", "constraints", "ergonomics", "epistemic-discipline"]
----
-
-# Humans Are Variable Inputs
-
-Humans are not reliable, repeatable components.
-
-This constraint exists to prevent designs that only work when people behave consistently, remember steps, or compensate for missing system affordances.
-
-## What this forbids
-
-A design is invalid if it assumes:
-
-- users will remember a repeated sequence of steps to keep the system safe
-- users will notice drift and correct it manually
-- users will reinitialize context "the right way" after interruptions
-- users will consistently interpret ambiguous instructions the same way
-- success depends on "training people better" rather than changing the system
-
-## What this requires
-
-Systems MUST be designed to remain safe and correct under:
-
-- partial compliance
-- missed steps
-- interruptions and resumptions
-- variable attention and skill
-- inconsistent interpretation
-
-## Operational test
-
-If failure analysis includes:
-
-> "They forgot to…", "They didn't realize…", "They should have…", "They skipped…"
-
-…then the system violated this constraint.
-
-## Design consequences
-
-When this constraint bites, the system response is not more reminders.
-
-It is one (or more) of:
-
-- remove the step
-- automate the step
-- make the step unavoidable at the moment it matters
-- detect the omission and recover safely
-- reduce the number of states a user must keep in their head
-
-## Relationship
-
-This constraint is a foundation for principles like:
-
-- `klappy://canon/principles/ritual-is-a-smell`
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/constraints/meaning-must-not-depend-on-path.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/constraints/meaning-must-not-depend-on-path
-title: "Meaning Must Not Depend on Path"
-audience: canon
-exposure: nav
-tier: 1
-voice: first_person
-stability: stable
-tags: ["constraint", "epistemic-safety", "portability", "oddkit"]
----
-
-# Meaning Must Not Depend on Path
-
-No canonical meaning, scope, or lifecycle state may be inferred from filesystem paths or branch names.
-
-## What this forbids
-
-A design is invalid if it:
-
-- derives scope from folder structure or path patterns
-- infers experiment/attempt state from git branch names
-- uses file relocation as promotion
-- ties survivability to "champion" or merge status
-
-## What this requires
-
-Systems MUST:
-
-- attach explicit scope metadata to all learnings, decisions, and overrides
-- own and enforce lifecycle state via tooling, not convention
-- express promotion as metadata transitions, not file moves
-- preserve learnings regardless of experiment success
-
-## Operational test
-
-If moving a file changes what it means, the system is invalid.
-
-Any system that fails this test must be refactored before extension.
-
-## Design consequences
-
-When this constraint bites, the system response is:
-
-- paths are non-authoritative
-- branch names are conveniences, not truth
-- oddkit must own state transitions and validate invariants
-- views replace directories as the primary navigation surface
-
-## Relationship
-
-This constraint enforces:
-
-- `klappy://canon/principles/scope-over-folders`
-- `klappy://canon/principles/ritual-is-a-smell`
-
-and rests on:
-
-- `klappy://canon/constraints/humans-are-variable-inputs`
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/constraints/odd-is-epistemic-os-not-values.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/constraints/odd-is-epistemic-os-not-values
-title: "ODD Is an Epistemic OS, Not a Value System"
-audience: canon
-exposure: nav
-tier: 1
-voice: first_person
-stability: stable
-tags: ["canon", "constraints", "odd", "authority", "values"]
-relevance: decision
-execution_posture: governing
----
-
-# ODD Is an Epistemic OS, Not a Value System
-
-> ODD constrains reasoning and integrity. It does not define truth, morality, or authority.
-
-## Description
-
-ODD is an epistemic operating system: it shapes decision posture, refusal conditions, boundary discipline, and evidence requirements.
-
-It is not a value system. It must not be used to launder moral authority, enforce ideology, or create "agentic churches." Values belong to people and communities. ODD belongs to integrity.
-
-## Outline
-
-- What ODD Governs
-- What ODD Does Not Govern
-- What This Forces
-- What This Forbids
-- See Also
-
----
-
-## Content
-
-**Canon v0.1**
-
-### What ODD Governs
-
-- how claims are formed and tested
-- how decisions are recorded and closed
-- how boundaries are entered and exited
-- what gets refused when integrity is at risk
-
-### What ODD Does Not Govern
-
-- what outcomes are morally good
-- what worldview is correct
-- what a community must value
-- who is "in charge"
-
-### What This Forces
-
-- separation between epistemic constraints and value commitments
-- explicit labeling when a choice is value-driven vs evidence-driven
-- refusal to treat "the system says so" as authority
-
-### What This Forbids
-
-- using ODD language to enforce ideology
-- treating epistemic posture as spiritual or moral superiority
-- encoding governance/enforcement as if it were epistemic necessity
-
----
-
-## See Also
-
-- [Epistemic Posture](/canon/defaults/epistemic-posture.md)
-- [Models Do Not Mutate Canon](/canon/decisions/models-do-not-mutate-canon.md)
-- [Epistemic Hygiene](/canon/epistemic-hygiene.md)
-- [Weighted Relevance and Arbitration](/canon/weighted-relevance-and-arbitration.md)
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/constraints/single-agent-integrity-precedes-collaboration.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/constraints/single-agent-integrity-precedes-collaboration
-title: "Single-Agent Integrity Precedes Collaboration"
-audience: canon
-exposure: nav
-tier: 1
-voice: first_person
-stability: stable
-tags: ["canon", "constraints", "integrity", "collaboration"]
-relevance: decision
-execution_posture: governing
----
-
-# Single-Agent Integrity Precedes Collaboration
-
-> Collaboration is only constructive when integrity exists first.
-
-## Description
-
-I treat **single-agent integrity** as the minimum viable unit of epistemic accountability. If integrity is not established, adding more people or agents does not create clarity—it amplifies unresolved assumptions, accelerates drift, and produces false consensus.
-
-This is not anti-collaboration. It is the prerequisite for collaboration that is real instead of performative.
-
-## Outline
-
-- What I Mean by Integrity
-- What This Forces
-- What This Forbids
-- When It Doesn't Apply
-- See Also
-
----
-
-## Content
-
-**Canon v0.1**
-
-### What I Mean by Integrity
-
-Integrity means:
-
-- decisions are explicit (not implied)
-- constraints are applied (not merely referenced)
-- claims are backed by evidence or labeled as hypotheses
-- closures are recorded so they don't get re-litigated by default
-
-### What This Forces
-
-- establish a single accountable decision loop before scaling participants
-- encode settled ground before "bringing in helpers"
-- treat additional agents as amplifiers, not solvers
-
-### What This Forbids
-
-- adding agents to "figure it out faster" when the ground is not encoded
-- using group agreement as evidence
-- treating speed of convergence as correctness
-
-### When It Doesn't Apply
-
-- it still applies; what changes is *how long the integrity step takes*, not whether it exists
-
----
-
-## See Also
-
-- [Constraints](/canon/constraints.md)
-- [Epistemic Hygiene](/canon/epistemic-hygiene.md)
-- [Verification and Evidence](/canon/verification-and-evidence.md)
-- [Epistemic Challenge](/canon/epistemic-challenge.md)
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/decision-rules.md
+📄 File: canon/constraints/decision-rules.md
 --------------------------------------------------------------------------------
 
 ---
@@ -17440,6 +17548,1167 @@ Agents and collaborators should:
 
 - Canon v0.1 — Decision Rules complete
 - Ready to proceed to Canon v0.1 — Definition of Done & Evidence Policy
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/constraints/definition-of-done.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/definition-of-done
+title: "Definition of Done & Evidence Policy"
+audience: canon
+exposure: nav
+tier: 1
+voice: first_person
+stability: semi_stable
+tags: ["definition-of-done", "evidence"]
+relevance: decision
+execution_posture: governing
+---
+
+# Definition of Done & Evidence Policy
+
+> The enforcement backbone that defines what "complete" means.
+
+## Description
+
+This policy defines completion requirements for all work: code, UI, architecture, automation, and AI-assisted outputs. Work is only done when it includes a change description, verification performed, observed behavior, evidence produced, and self-audit completed. Evidence must demonstrate actual behavior (screenshots, recordings, rendered output, test logs) and be produced after the change. Visual verification is required for UI work. The policy covers partial completion handling, explicit exceptions, and agent responsibilities.
+
+## Outline
+
+- Core Principle: Verified with evidence
+- Definition of Done (5 requirements)
+- Evidence Requirements
+- Visual Verification (Preferred)
+- Verification Must Be Performed
+- Self-Audit Requirement
+- What Does Not Count as Done
+- Partial Completion
+- Explicit Exceptions
+- Agent Responsibility
+
+---
+
+## Operating Constraints
+
+- MUST include all 5 DoD requirements: Change Description, Verification Performed, Observed Behavior, Evidence Produced, Self-Audit Completed
+- MUST produce evidence after the change, not before or from previous runs
+- MUST demonstrate actual behavior, not expected or intended behavior
+- MUST provide visual proof for any work affecting UI, interaction, layout, or visible state
+- MUST NOT claim "done" without evidence; the correct response is "This is not complete yet"
+- MUST label partial completion explicitly with what was verified and what remains
+
+---
+
+## Defaults
+
+- When uncertain whether evidence is needed: include it
+- Short recordings (10-30 seconds) are usually sufficient for interaction work
+- Self-audit should be brief reflection, not bureaucracy
+- If evidence cannot be produced, state why and propose an alternative
+- Treat ambiguity as worse than incompleteness
+
+---
+
+## Failure Modes
+
+- **"It compiles"**: Treating successful compilation as completion
+- **"The logic is sound"**: Treating reasoning as substitute for verification
+- **"This should work"**: Treating confidence as evidence
+- **"I reviewed the code"**: Treating inspection as observation of behavior
+- **"I didn't have time to test"**: Treating explanation as exemption from evidence
+
+---
+
+## Verification
+
+- System was actually run or exercised (dev server, tests, page load, workflow trigger)
+- Evidence shows actual observed behavior (screenshots, recordings, test logs, DOM snapshots)
+- Evidence is specific to the task and clearly labeled
+- Self-audit includes: intended outcome, constraints applied, decision rules followed, tradeoffs, remaining risks
+
+---
+
+## Content
+
+**Canon v0.1**
+
+> This is the enforcement backbone of the canon. It replaces repeated QA reminders with a clear, reusable contract.
+
+This page defines what I mean when I say work is “done.”
+If these conditions are not met, the work is not complete, regardless of confidence or explanation.
+
+This policy applies to:
+• code
+• UI
+• architecture
+• automation
+• AI-assisted outputs
+
+---
+
+## 📌 Core Principle
+
+I do not consider work complete unless it is verified with evidence.
+
+Reasoning alone is insufficient.
+Assertions like “this should work” or “this is correct” do not count as completion.
+
+---
+
+## 📋 Definition of Done (DoD)
+
+A task is only considered done when all of the following are present:
+
+1. **Change Description** — What changed, where, and why.
+2. **Verification Performed** — What was run or checked to verify the change.
+3. **Observed Behavior** — What actually happened when the system was run.
+4. **Evidence Produced** — Proof that the behavior matches the intended outcome.
+5. **Self-Audit Completed** — A brief audit against constraints and decision rules.
+
+If any of these is missing, the task is incomplete.
+
+---
+
+## 📎 Evidence Requirements
+
+Evidence must demonstrate actual behavior, not expected behavior.
+
+Acceptable evidence includes one or more of the following:
+• screenshots
+• short screen recordings (10–30 seconds)
+• rendered output files
+• test output logs
+• DOM snapshots or structured UI state captures
+
+Evidence must be:
+• produced after the change
+• specific to the task
+• clearly labeled
+
+---
+
+## 👁️ Visual Verification (Preferred)
+
+If the work affects:
+• UI
+• interaction
+• layout
+• user flow
+• visible state
+
+Then visual proof is required.
+
+**What counts as visual proof**
+• screenshot showing the correct state
+• short recording demonstrating the interaction
+• before/after comparison when relevant
+
+If visual proof cannot be produced, the reason must be stated explicitly.
+
+---
+
+## 🔬 Verification Must Be Performed
+
+I expect the system to be run or exercised, not just reasoned about.
+
+Verification may include:
+• running a dev server
+• executing tests
+• loading a page
+• triggering a workflow
+• simulating offline/online transitions
+
+If verification cannot be performed (missing environment, credentials, etc.), this must be stated clearly, along with a proposed alternative.
+
+---
+
+## 🔍 Self-Audit Requirement
+
+Each completed task must include a short self-audit covering:
+• intended outcome
+• relevant constraints applied
+• relevant decision rules followed
+• known tradeoffs
+• remaining risks or unknowns
+
+The purpose is reflection and traceability, not bureaucracy.
+
+---
+
+## ⚠️ What Does Not Count as Done
+
+The following do not qualify as completion:
+• “It compiles”
+• “The logic is sound”
+• “I reviewed the code”
+• “This should work”
+• “I didn’t have time to test”
+
+These may be intermediate states, but they are not “done.”
+
+---
+
+## ⏳ Partial Completion
+
+If work is partially complete, it must be labeled as such.
+
+A valid partial completion includes:
+• what was attempted
+• what was verified
+• what could not be verified
+• what remains
+
+Ambiguity is worse than incompleteness.
+
+---
+
+## 🚫 Explicit Exceptions
+
+This policy may be relaxed only when explicitly stated, such as for:
+• conceptual design discussions
+• theoretical analysis
+• early ideation
+
+In those cases, the output must be clearly labeled “unverified”.
+
+---
+
+## 🤖 Agent Responsibility
+
+Agents and collaborators are expected to:
+• retrieve this policy before claiming completion
+• translate it into neutral/system requirements
+• enforce it against their own output
+• refuse to claim “done” without evidence
+
+If evidence cannot be produced, the correct response is:
+
+“This is not complete yet.”
+
+---
+
+## 💡 Closing Note
+
+This policy exists to:
+• prevent false confidence
+• reduce rework
+• replace repeated QA reminders
+• make outcomes trustworthy
+
+It is not meant to slow work down.
+It is meant to stop work from being incorrectly declared finished.
+
+---
+
+## ✅ Status
+
+- Canon v0.1 — Definition of Done & Evidence Policy complete
+- Ready to proceed to Canon v0.1 — Self-Audit Checklist
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/constraints/encode-epistemic-decisions.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/constraints/encode-epistemic-decisions
+title: "Encode Epistemic Decisions"
+audience: canon
+exposure: nav
+tier: 1
+voice: first_person
+stability: stable
+tags: ["canon", "constraints", "durability", "decisions"]
+relevance: decision
+execution_posture: governing
+---
+
+# Encode Epistemic Decisions
+
+> If a decision matters, it must become durable and inspectable.
+
+## Description
+
+If epistemic decisions are not encoded, they will be re-litigated. Humans do this slowly; agents do it instantly. The problem is the same: settled ground doesn't stay settled unless it is made durable.
+
+ODD exists to encode decisions once so reasoning compounds instead of resetting.
+
+## Outline
+
+- What Counts as "Epistemic"
+- What This Forces
+- What This Forbids
+- Evidence Requirements
+- See Also
+
+---
+
+## Content
+
+**Canon v0.1**
+
+### What Counts as "Epistemic"
+
+- scope closures
+- boundary definitions
+- refusal conditions
+- default assumptions
+- what "done" means
+- what qualifies as evidence
+
+### What This Forces
+
+- record decisions at the moment of closure
+- make decisions inspectable by others (including agents)
+- prefer stable language over improvisation
+
+### What This Forbids
+
+- relying on memory, vibes, or "we talked about it"
+- repeated arbitration of settled ground
+- treating "agreement" as a durable artifact
+
+### Evidence Requirements
+
+A decision record must include at least:
+
+- what was decided
+- what was rejected (and why)
+- what evidence supported the decision (or that it remains a hypothesis)
+
+---
+
+## See Also
+
+- [Decision Record Standard](/canon/decisions/decision-record-standard.md)
+- [Definition of Done](/canon/constraints/definition-of-done.md)
+- [Epistemic Modes](/canon/definitions/epistemic-modes.md)
+- [Verification and Evidence](/canon/constraints/verification-and-evidence.md)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/constraints/epistemic-challenge.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/epistemic-challenge
+title: "Epistemic Challenge"
+audience: canon
+exposure: nav
+tier: 2
+voice: neutral
+stability: semi_stable
+tags: ["epistemic", "challenge", "adversarial", "validation", "collaboration"]
+---
+
+# Epistemic Challenge
+
+> Challenge claims proportionally, surface contradictions explicitly, and protect collaborative flow.
+
+## Description
+
+Epistemic challenge is the discipline of applying constructive pressure to claims, plans, and "done" statements—without becoming combative or derailing momentum.
+
+This doctrine exists because learning systems require drift, conflict, and competing hypotheses to be real. The goal is not to remove contradictions, but to **handle them**: expose them, characterize them, and choose next actions without laundering uncertainty.
+
+Epistemic challenge is a governance behavior. It must be triggered by "epistemic hygiene smells" rather than time-based rules or personal preference.
+
+## Operating Constraints
+
+- MUST challenge **claims**, not people.
+- MUST apply pressure **proportionally** to risk, scope, and evidence weakness.
+- MUST surface contradictions explicitly rather than smoothing them away.
+- MUST prefer "I can't support that yet" over invented certainty.
+- MUST preserve collaborative flow: challenge should end with an actionable next step.
+- MUST NOT use tone escalation as a substitute for rigor.
+
+## Defaults
+
+- If evidence is weak or missing: ask for the smallest artifact that would increase certainty.
+- If scope is unclear: ask one scoping question before proposing structure.
+- If a claim sounds confident but uncited: switch to "retrieve + quote" behavior.
+- If multiple interpretations exist: present the top two competing interpretations, then ask what evidence would decide.
+- If the system detects drift/conflict: expose it and select an outcome (prefer | defer | escalate | propose_promotion) rather than pretending it's resolved.
+
+## Failure Modes
+
+- Harmony Bias: agreeing to maintain flow while certainty collapses.
+- Aggressive Tone: using combative phrasing instead of precise critique.
+- Vague Pushback: "I'm not sure" without identifying what would change the conclusion.
+- Certainty Laundering: citing irrelevant sources or weak overlap to appear supported.
+- Over-Blocking: halting progress when a cheap next step would raise confidence.
+- Premature Convergence: forcing a single answer when competing hypotheses remain valid.
+
+## Verification
+
+A response exhibits valid epistemic challenge if it includes:
+
+- A clear statement of what is being challenged (claim / assumption / evidence).
+- The trigger signal(s) (scope mismatch, intent mismatch, weak evidence, contradictions, low confidence).
+- At least one actionable next step that would increase certainty (artifact request, lookup target, test).
+- If supporting a claim: citations with quotes that overlap the question's intent (no laundering).
+- If not supporting a claim: explicit "INSUFFICIENT_EVIDENCE" posture and a retrieval plan.
+
+## Relationship to Other Canon
+
+- Works with: `klappy://canon/epistemic-hygiene` (smell triggers)
+- Works with: `klappy://canon/weighted-relevance-and-arbitration` (handling conflict without erasing it)
+- Enforced by: validation behaviors (claims-to-evidence), librarian behaviors (citation-first retrieval), promotion/decay (learning loop)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/constraints/humans-are-variable-inputs.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/constraints/humans-are-variable-inputs
+title: "Humans Are Variable Inputs"
+audience: canon
+exposure: nav
+tier: 1
+voice: first_person
+stability: stable
+tags: ["humans", "variability", "constraints", "ergonomics", "epistemic-discipline"]
+---
+
+# Humans Are Variable Inputs
+
+Humans are not reliable, repeatable components.
+
+This constraint exists to prevent designs that only work when people behave consistently, remember steps, or compensate for missing system affordances.
+
+## What this forbids
+
+A design is invalid if it assumes:
+
+- users will remember a repeated sequence of steps to keep the system safe
+- users will notice drift and correct it manually
+- users will reinitialize context "the right way" after interruptions
+- users will consistently interpret ambiguous instructions the same way
+- success depends on "training people better" rather than changing the system
+
+## What this requires
+
+Systems MUST be designed to remain safe and correct under:
+
+- partial compliance
+- missed steps
+- interruptions and resumptions
+- variable attention and skill
+- inconsistent interpretation
+
+## Operational test
+
+If failure analysis includes:
+
+> "They forgot to…", "They didn't realize…", "They should have…", "They skipped…"
+
+…then the system violated this constraint.
+
+## Design consequences
+
+When this constraint bites, the system response is not more reminders.
+
+It is one (or more) of:
+
+- remove the step
+- automate the step
+- make the step unavoidable at the moment it matters
+- detect the omission and recover safely
+- reduce the number of states a user must keep in their head
+
+## Relationship
+
+This constraint is a foundation for principles like:
+
+- `klappy://canon/principles/ritual-is-a-smell`
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/constraints/meaning-must-not-depend-on-path.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/constraints/meaning-must-not-depend-on-path
+title: "Meaning Must Not Depend on Path"
+audience: canon
+exposure: nav
+tier: 1
+voice: first_person
+stability: stable
+tags: ["constraint", "epistemic-safety", "portability", "oddkit"]
+---
+
+# Meaning Must Not Depend on Path
+
+No canonical meaning, scope, or lifecycle state may be inferred from filesystem paths or branch names.
+
+## What this forbids
+
+A design is invalid if it:
+
+- derives scope from folder structure or path patterns
+- infers experiment/attempt state from git branch names
+- uses file relocation as promotion
+- ties survivability to "champion" or merge status
+
+## What this requires
+
+Systems MUST:
+
+- attach explicit scope metadata to all learnings, decisions, and overrides
+- own and enforce lifecycle state via tooling, not convention
+- express promotion as metadata transitions, not file moves
+- preserve learnings regardless of experiment success
+
+## Operational test
+
+If moving a file changes what it means, the system is invalid.
+
+Any system that fails this test must be refactored before extension.
+
+## Design consequences
+
+When this constraint bites, the system response is:
+
+- paths are non-authoritative
+- branch names are conveniences, not truth
+- oddkit must own state transitions and validate invariants
+- views replace directories as the primary navigation surface
+
+## Relationship
+
+This constraint enforces:
+
+- `klappy://canon/principles/scope-over-folders`
+- `klappy://canon/principles/ritual-is-a-smell`
+
+and rests on:
+
+- `klappy://canon/constraints/humans-are-variable-inputs`
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/constraints/odd-is-epistemic-os-not-values.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/constraints/odd-is-epistemic-os-not-values
+title: "ODD Is an Epistemic OS, Not a Value System"
+audience: canon
+exposure: nav
+tier: 1
+voice: first_person
+stability: stable
+tags: ["canon", "constraints", "odd", "authority", "values"]
+relevance: decision
+execution_posture: governing
+---
+
+# ODD Is an Epistemic OS, Not a Value System
+
+> ODD constrains reasoning and integrity. It does not define truth, morality, or authority.
+
+## Description
+
+ODD is an epistemic operating system: it shapes decision posture, refusal conditions, boundary discipline, and evidence requirements.
+
+It is not a value system. It must not be used to launder moral authority, enforce ideology, or create "agentic churches." Values belong to people and communities. ODD belongs to integrity.
+
+## Outline
+
+- What ODD Governs
+- What ODD Does Not Govern
+- What This Forces
+- What This Forbids
+- See Also
+
+---
+
+## Content
+
+**Canon v0.1**
+
+### What ODD Governs
+
+- how claims are formed and tested
+- how decisions are recorded and closed
+- how boundaries are entered and exited
+- what gets refused when integrity is at risk
+
+### What ODD Does Not Govern
+
+- what outcomes are morally good
+- what worldview is correct
+- what a community must value
+- who is "in charge"
+
+### What This Forces
+
+- separation between epistemic constraints and value commitments
+- explicit labeling when a choice is value-driven vs evidence-driven
+- refusal to treat "the system says so" as authority
+
+### What This Forbids
+
+- using ODD language to enforce ideology
+- treating epistemic posture as spiritual or moral superiority
+- encoding governance/enforcement as if it were epistemic necessity
+
+---
+
+## See Also
+
+- [Epistemic Posture](/canon/defaults/epistemic-posture.md)
+- [Models Do Not Mutate Canon](/canon/decisions/models-do-not-mutate-canon.md)
+- [Epistemic Hygiene](/canon/diagnostics/epistemic-hygiene.md)
+- [Weighted Relevance and Arbitration](/canon/methods/weighted-relevance-and-arbitration.md)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/constraints/single-agent-integrity-precedes-collaboration.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/constraints/single-agent-integrity-precedes-collaboration
+title: "Single-Agent Integrity Precedes Collaboration"
+audience: canon
+exposure: nav
+tier: 1
+voice: first_person
+stability: stable
+tags: ["canon", "constraints", "integrity", "collaboration"]
+relevance: decision
+execution_posture: governing
+---
+
+# Single-Agent Integrity Precedes Collaboration
+
+> Collaboration is only constructive when integrity exists first.
+
+## Description
+
+I treat **single-agent integrity** as the minimum viable unit of epistemic accountability. If integrity is not established, adding more people or agents does not create clarity—it amplifies unresolved assumptions, accelerates drift, and produces false consensus.
+
+This is not anti-collaboration. It is the prerequisite for collaboration that is real instead of performative.
+
+## Outline
+
+- What I Mean by Integrity
+- What This Forces
+- What This Forbids
+- When It Doesn't Apply
+- See Also
+
+---
+
+## Content
+
+**Canon v0.1**
+
+### What I Mean by Integrity
+
+Integrity means:
+
+- decisions are explicit (not implied)
+- constraints are applied (not merely referenced)
+- claims are backed by evidence or labeled as hypotheses
+- closures are recorded so they don't get re-litigated by default
+
+### What This Forces
+
+- establish a single accountable decision loop before scaling participants
+- encode settled ground before "bringing in helpers"
+- treat additional agents as amplifiers, not solvers
+
+### What This Forbids
+
+- adding agents to "figure it out faster" when the ground is not encoded
+- using group agreement as evidence
+- treating speed of convergence as correctness
+
+### When It Doesn't Apply
+
+- it still applies; what changes is *how long the integrity step takes*, not whether it exists
+
+---
+
+## See Also
+
+- [Constraints](/canon/constraints/README.md)
+- [Epistemic Hygiene](/canon/diagnostics/epistemic-hygiene.md)
+- [Verification and Evidence](/canon/constraints/verification-and-evidence.md)
+- [Epistemic Challenge](/canon/constraints/epistemic-challenge.md)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/constraints/verification-and-evidence.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/verification-and-evidence
+title: "Verification & Evidence"
+audience: canon
+exposure: nav
+tier: 1
+voice: neutral
+stability: stable
+tags: ["verification", "evidence", "trust", "epistemology", "agents"]
+relevance: decision
+execution_posture: governing
+---
+
+# Verification & Evidence
+
+> Claims are untrusted. Only observed evidence counts.
+
+## Description
+
+In ODD, claims are not trusted. Only observed, attributable evidence may be used to assert that something works. This principle exists to prevent false positives, epistemic drift, and wasted human review time in agentic systems where language is cheap and confidence is effortless. Agentic systems are structurally incentivized to appear helpful, seek closure, and optimize for plausibility rather than truth. Without explicit constraints, this leads to unverified success claims, simulated evidence, and erosion of trust. This canon principle defines truth conditions; lane rules are instantiations, not exceptions.
+
+## Outline
+
+- The Core Rule
+- Why This Is Necessary
+- What Counts as Evidence
+- What Does Not Count as Evidence
+- Phenomenological Limits
+- Consequences of Violation
+- Relationship to Lane Rules
+
+---
+
+## Operating Constraints
+
+- MUST provide observed, attributable evidence for any claim of completion
+- MUST NOT present mocked, randomized, or fabricated data as real evidence
+- MUST NOT claim success based on "it should work," "the code builds," or "tests passed" alone
+- MUST explicitly acknowledge phenomenological limits (audio, subjective experience) and request human verification
+- MUST contextualize evidence to actual system state, not idealized or nearby conditions
+
+---
+
+## Defaults
+
+- Assertions are untrusted until evidence is provided
+- When evidence cannot be produced, state the limitation explicitly
+- Prefer direct observation over inference
+- Treat plausibility as insufficient; require proof
+- When uncertain about evidence quality, ask for clarification rather than assuming validity
+
+---
+
+## Failure Modes
+
+- **Simulated Evidence**: Presenting mock data, random values, or fabricated screenshots as proof
+- **Plausibility as Truth**: Optimizing for believable output rather than verified behavior
+- **Closure Pressure**: Claiming completion to appear helpful rather than admitting incompleteness
+- **Inference as Observation**: Claiming behavior was observed when it was only inferred from code
+- **Bypassing Phenomenological Limits**: Claiming to verify audio/subjective experience without human confirmation
+
+---
+
+## Verification
+
+- Evidence was directly observed, not inferred from code or logic
+- Evidence clearly corresponds to the specific claim being made (attributable)
+- Evidence reflects actual system state at time of verification (contextualized)
+- For phenomenological properties: explicit human verification or acknowledgment of limits
+- Violation results in: attempt failure, loss of trust, disqualification from promotion/reuse
+
+---
+
+## Content
+
+**Canon v0.1**
+
+> No claim of completion is valid without corresponding evidence of observation.
+
+Assertions, intentions, passing tests, or "it should work" statements are not evidence.
+
+---
+
+## Why This Is Necessary
+
+Agentic systems are structurally incentivized to:
+- appear helpful
+- seek closure
+- minimize friction
+- optimize for plausibility rather than truth
+
+Without explicit constraints, this leads to:
+- unverified success claims
+- simulated or fabricated evidence
+- human time wasted reviewing false positives
+- erosion of trust in the system
+
+ODD rejects this failure mode.
+
+---
+
+## What Counts as Evidence
+
+Valid evidence must be:
+
+1. **Observed**  
+   The behavior was directly seen, heard, or experienced — not inferred.
+
+2. **Attributable**  
+   The evidence clearly corresponds to the specific claim being made.
+
+3. **Non-simulated**  
+   Mocked, randomized, or fabricated data may not be presented as real.
+
+4. **Contextualized**  
+   Evidence must reflect the actual system state, not an idealized or nearby condition.
+
+---
+
+## What Does Not Count as Evidence
+
+- "It should work"
+- "The code builds"
+- "Tests passed"
+- Simulated UI states presented as real
+- Fake or randomized data presented without explicit labeling
+- Screenshots that do not correspond to the claimed behavior
+
+---
+
+## Phenomenological Limits
+
+Some properties **cannot be machine-verified**, including:
+- audio playback through speakers
+- recording of real-world sound
+- subjective user experience (e.g., "feels right")
+- perceptual or ergonomic qualities
+
+These require **explicit human verification**.
+
+Agents must acknowledge these limits rather than bypass them.
+
+---
+
+## Consequences of Violation
+
+Violations of this principle result in:
+- attempt failure
+- loss of trust
+- permanent documentation of the procedural violation
+- disqualification of outputs from promotion, reuse, or citation
+
+---
+
+## Relationship to Lane Rules
+
+This canon principle defines *truth conditions*.
+
+Individual lanes may implement stricter or more specific rules (e.g., UI verification, audio handling, hardware interaction), but may not weaken or bypass this principle.
+
+Lane rules are **instantiations**, not exceptions.
+
+---
+
+## See Also
+
+- [Epistemic Surface Extraction (ESE)](/canon/methods/epistemic-surface-extraction.md) — Making screenshots, recordings, and video evidence legible
+- [Visual Proof Standards](/canon/constraints/visual-proof.md)
+- [Definition of Done](/canon/constraints/definition-of-done.md)
+- [Constraints](/canon/constraints/README.md)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/constraints/visual-proof.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/visual-proof
+title: "Visual Proof Standards"
+audience: canon
+exposure: nav
+tier: 2
+voice: first_person
+stability: semi_stable
+tags: ["visual-proof", "evidence"]
+relevance: decision
+execution_posture: governing
+---
+
+# Visual Proof Standards
+
+> What "prove it visually" actually means for UI and interaction work.
+
+> This document is a specialization of  
+> **Verification & Evidence** (klappy://canon/verification-and-evidence).  
+> It applies only to claims about **visually observable behavior**.
+
+## Description
+
+Visual proof standards define what constitutes valid visual evidence for work affecting anything a user can see or interact with. Visual proof is required for UI, layout, navigation, interaction, animation, visible state changes, and user-facing behavior. Acceptable forms include screenshots (clearly labeled, not cropped ambiguously), screen recordings (10-30 seconds showing interaction), rendered output artifacts, and structured UI captures. Before/after evidence is required for changes. Visual proof must show correct state, behavior, and context. Explanations without screenshots do not qualify. This document does not define completion or truth on its own.
+
+## Outline
+
+- Core Principle: Observed behavior over reasoning
+- When Visual Proof Is Required
+- Acceptable Forms (Screenshots, Recordings, Artifacts, UI Captures)
+- What Visual Proof Must Show
+- Labeling Requirements
+- Before/After Evidence
+- Tooling Expectations
+- When Visual Proof Is Not Possible
+- Non-Visual and Phenomenological Cases
+- What Does Not Count as Visual Proof
+
+---
+
+## Operating Constraints
+
+- MUST provide visual proof for any work affecting user-visible behavior
+- MUST label all screenshots with a caption stating what the proof demonstrates
+- MUST NOT crop screenshots ambiguously
+- MUST include before/after evidence for changes to existing behavior
+- MUST explicitly state why visual proof was not possible if it cannot be produced
+- MUST NOT claim completion without visual evidence or explicit acknowledgment of verification limits
+
+---
+
+## Defaults
+
+- When uncertain whether visual proof is needed: include it
+- Prefer screen recordings (10-30 seconds) for interaction work
+- One sentence caption is sufficient for labeling
+- When "before" state is unavailable, state why rather than omitting
+
+---
+
+## Failure Modes
+
+- **Screenshot of Code**: Showing code instead of rendered output; code proves nothing about visual behavior
+- **Diagram Without Runtime**: Diagrams of intended behavior without evidence the system actually ran
+- **Ambiguous Crop**: Cropping screenshots to hide context or adjacent failures
+- **Reasoning Without Observation**: "It looks correct to me" or "it should work" without visual evidence
+- **Unlabeled Evidence**: Screenshots without captions explaining what they demonstrate
+
+---
+
+## Verification
+
+- Screenshot or recording showing correct state, behavior, and context
+- Before/after evidence for any change to existing behavior
+- Caption explaining which outcome the proof supports
+- For phenomenological cases (audio, feel): explicit acknowledgment of verification limits
+- Evidence URL or artifact path must be provided, not just assertion of existence
+
+---
+
+## Content
+
+**Canon v0.1**
+
+> This defines what "prove it visually" actually means, so neither humans nor agents can wiggle out with vague claims.
+
+This page defines what I mean by visual proof.
+
+If work affects anything a user can see or interact with, I expect direct visual evidence that it behaves as intended.
+
+For visually observable behavior, visual proof replaces explanation.
+
+If a visual claim cannot be shown, it is not verified.
+
+---
+
+## 📌 Core Principle
+
+I trust observed behavior more than reasoning.
+
+Visual proof demonstrates that:
+• the system was actually run
+• the behavior exists in reality
+• the output matches the intended outcome
+
+---
+
+## ⚠️ When Visual Proof Is Required
+
+Visual proof is required for any work involving:
+• UI or layout
+• navigation or flow
+• interaction or animation
+• visible state changes
+• user-facing behavior
+• generative UI output
+
+If a user could notice the change, visual proof is required.
+
+---
+
+## 📎 Acceptable Forms of Visual Proof
+
+One or more of the following is required, depending on the task:
+
+**Screenshots**
+• Show the relevant state clearly
+• Must not be cropped ambiguously
+• Must reflect the final behavior
+
+**Screen Recordings (Preferred for Interaction)**
+• 10–30 seconds is usually sufficient
+• Show the interaction from start to end
+• No narration required
+
+**Rendered Output Artifacts**
+• Generated HTML files
+• Static exports
+• Snapshots of rendered states
+
+**Structured UI Captures**
+• DOM snapshots
+• Component tree states
+• Selector highlights
+
+---
+
+## 📋 What Visual Proof Must Show
+
+Visual proof must demonstrate:
+• the correct state
+• the correct behavior
+• the correct context
+
+When relevant, it should include:
+• the starting state
+• the resulting state
+• the transition between them
+
+---
+
+## 🏷️ Labeling Requirements
+
+Each piece of visual proof must be accompanied by a short caption:
+• What this proof demonstrates
+• Which outcome it supports
+
+One sentence is enough.
+
+Unlabeled screenshots are not acceptable.
+
+---
+
+## 🔄 Before / After Evidence
+
+For changes that modify existing behavior or UI:
+• Include "before" and "after" visuals when feasible
+• If "before" is unavailable, state why
+
+This makes regressions and improvements obvious.
+
+---
+
+## 🛠️ Tooling Expectations
+
+Visual proof may be produced via:
+• browser dev servers
+• headless browsers
+• automated UI testing tools
+• screen capture utilities
+
+The specific tool does not matter.
+The evidence does.
+
+---
+
+## 🚫 When Visual Proof Is Not Possible
+
+If visual proof cannot be produced, the output must explicitly state:
+• why it was not possible
+• what alternative verification was used
+• what remains unverified
+
+"Not possible" is acceptable.
+"Not mentioned" is not.
+
+---
+
+## 🔊 Non-Visual and Phenomenological Cases
+
+Some valid claims cannot be verified visually, including:
+• audio playback through speakers
+• recording of real-world sound
+• perceptual or ergonomic qualities
+• subjective experience or "feel"
+
+In these cases, visual proof may be supplemented or replaced by:
+• explicit human verification
+• acknowledgment of verification limits
+
+Visual Proof Standards do not override the limits defined in
+**Verification & Evidence** (klappy://canon/verification-and-evidence).
+
+---
+
+## ⚠️ What Does Not Count as Visual Proof
+
+The following do not qualify:
+• descriptions of expected behavior
+• screenshots of code
+• diagrams without runtime evidence
+• "it looks correct to me"
+• reasoning without observation
+
+---
+
+## 🔗 Relationship to Definition of Done
+
+Visual proof is a required component of the Definition of Done for UI-related work.
+
+Without visual proof:
+• the task is not complete
+• confidence claims are invalid
+
+---
+
+## 🤖 Agent Expectations
+
+Agents are expected to:
+• capture visual proof themselves when possible
+• request assistance when they cannot
+• refuse to claim completion without evidence
+
+Producing visual proof is not optional.
+It is part of the work.
+
+---
+
+## 💡 Closing Note
+
+This standard exists to eliminate ambiguity for visual claims.
+
+If something visually observable works:
+• it can be shown
+
+If a visual claim can't be shown:
+• it isn't verified
+
+For non-visual verification requirements, see
+**Verification & Evidence** (klappy://canon/verification-and-evidence).
+
+---
+
+## ✅ Status
+
+- Canon v0.1 — Visual Proof Standards complete
+- Ready to proceed to Canon v0.1 — Completion Report Template
 
 
 
@@ -17783,8 +19052,8 @@ Allowing models to directly mutate Canon would erode the trust boundary that mak
 
 ## See Also
 
-- [Epistemic Obligation and Document Tiers](/canon/epistemic-obligation-and-document-tiers.md)
-- [Constraints](/canon/constraints.md) — AI as Accelerator, Not Authority
+- [Epistemic Obligation and Document Tiers](/canon/definitions/epistemic-obligation-and-document-tiers.md)
+- [Constraints](/canon/constraints/README.md) — AI as Accelerator, Not Authority
 
 
 
@@ -17837,265 +19106,6 @@ Evidence includes:
 - prior artifacts
 
 The system must distinguish source from interpretation and state when operating without evidence.
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/definition-of-done.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/definition-of-done
-title: "Definition of Done & Evidence Policy"
-audience: canon
-exposure: nav
-tier: 1
-voice: first_person
-stability: semi_stable
-tags: ["definition-of-done", "evidence"]
-relevance: decision
-execution_posture: governing
----
-
-# Definition of Done & Evidence Policy
-
-> The enforcement backbone that defines what "complete" means.
-
-## Description
-
-This policy defines completion requirements for all work: code, UI, architecture, automation, and AI-assisted outputs. Work is only done when it includes a change description, verification performed, observed behavior, evidence produced, and self-audit completed. Evidence must demonstrate actual behavior (screenshots, recordings, rendered output, test logs) and be produced after the change. Visual verification is required for UI work. The policy covers partial completion handling, explicit exceptions, and agent responsibilities.
-
-## Outline
-
-- Core Principle: Verified with evidence
-- Definition of Done (5 requirements)
-- Evidence Requirements
-- Visual Verification (Preferred)
-- Verification Must Be Performed
-- Self-Audit Requirement
-- What Does Not Count as Done
-- Partial Completion
-- Explicit Exceptions
-- Agent Responsibility
-
----
-
-## Operating Constraints
-
-- MUST include all 5 DoD requirements: Change Description, Verification Performed, Observed Behavior, Evidence Produced, Self-Audit Completed
-- MUST produce evidence after the change, not before or from previous runs
-- MUST demonstrate actual behavior, not expected or intended behavior
-- MUST provide visual proof for any work affecting UI, interaction, layout, or visible state
-- MUST NOT claim "done" without evidence; the correct response is "This is not complete yet"
-- MUST label partial completion explicitly with what was verified and what remains
-
----
-
-## Defaults
-
-- When uncertain whether evidence is needed: include it
-- Short recordings (10-30 seconds) are usually sufficient for interaction work
-- Self-audit should be brief reflection, not bureaucracy
-- If evidence cannot be produced, state why and propose an alternative
-- Treat ambiguity as worse than incompleteness
-
----
-
-## Failure Modes
-
-- **"It compiles"**: Treating successful compilation as completion
-- **"The logic is sound"**: Treating reasoning as substitute for verification
-- **"This should work"**: Treating confidence as evidence
-- **"I reviewed the code"**: Treating inspection as observation of behavior
-- **"I didn't have time to test"**: Treating explanation as exemption from evidence
-
----
-
-## Verification
-
-- System was actually run or exercised (dev server, tests, page load, workflow trigger)
-- Evidence shows actual observed behavior (screenshots, recordings, test logs, DOM snapshots)
-- Evidence is specific to the task and clearly labeled
-- Self-audit includes: intended outcome, constraints applied, decision rules followed, tradeoffs, remaining risks
-
----
-
-## Content
-
-**Canon v0.1**
-
-> This is the enforcement backbone of the canon. It replaces repeated QA reminders with a clear, reusable contract.
-
-This page defines what I mean when I say work is “done.”
-If these conditions are not met, the work is not complete, regardless of confidence or explanation.
-
-This policy applies to:
-• code
-• UI
-• architecture
-• automation
-• AI-assisted outputs
-
----
-
-## 📌 Core Principle
-
-I do not consider work complete unless it is verified with evidence.
-
-Reasoning alone is insufficient.
-Assertions like “this should work” or “this is correct” do not count as completion.
-
----
-
-## 📋 Definition of Done (DoD)
-
-A task is only considered done when all of the following are present:
-
-1. **Change Description** — What changed, where, and why.
-2. **Verification Performed** — What was run or checked to verify the change.
-3. **Observed Behavior** — What actually happened when the system was run.
-4. **Evidence Produced** — Proof that the behavior matches the intended outcome.
-5. **Self-Audit Completed** — A brief audit against constraints and decision rules.
-
-If any of these is missing, the task is incomplete.
-
----
-
-## 📎 Evidence Requirements
-
-Evidence must demonstrate actual behavior, not expected behavior.
-
-Acceptable evidence includes one or more of the following:
-• screenshots
-• short screen recordings (10–30 seconds)
-• rendered output files
-• test output logs
-• DOM snapshots or structured UI state captures
-
-Evidence must be:
-• produced after the change
-• specific to the task
-• clearly labeled
-
----
-
-## 👁️ Visual Verification (Preferred)
-
-If the work affects:
-• UI
-• interaction
-• layout
-• user flow
-• visible state
-
-Then visual proof is required.
-
-**What counts as visual proof**
-• screenshot showing the correct state
-• short recording demonstrating the interaction
-• before/after comparison when relevant
-
-If visual proof cannot be produced, the reason must be stated explicitly.
-
----
-
-## 🔬 Verification Must Be Performed
-
-I expect the system to be run or exercised, not just reasoned about.
-
-Verification may include:
-• running a dev server
-• executing tests
-• loading a page
-• triggering a workflow
-• simulating offline/online transitions
-
-If verification cannot be performed (missing environment, credentials, etc.), this must be stated clearly, along with a proposed alternative.
-
----
-
-## 🔍 Self-Audit Requirement
-
-Each completed task must include a short self-audit covering:
-• intended outcome
-• relevant constraints applied
-• relevant decision rules followed
-• known tradeoffs
-• remaining risks or unknowns
-
-The purpose is reflection and traceability, not bureaucracy.
-
----
-
-## ⚠️ What Does Not Count as Done
-
-The following do not qualify as completion:
-• “It compiles”
-• “The logic is sound”
-• “I reviewed the code”
-• “This should work”
-• “I didn’t have time to test”
-
-These may be intermediate states, but they are not “done.”
-
----
-
-## ⏳ Partial Completion
-
-If work is partially complete, it must be labeled as such.
-
-A valid partial completion includes:
-• what was attempted
-• what was verified
-• what could not be verified
-• what remains
-
-Ambiguity is worse than incompleteness.
-
----
-
-## 🚫 Explicit Exceptions
-
-This policy may be relaxed only when explicitly stated, such as for:
-• conceptual design discussions
-• theoretical analysis
-• early ideation
-
-In those cases, the output must be clearly labeled “unverified”.
-
----
-
-## 🤖 Agent Responsibility
-
-Agents and collaborators are expected to:
-• retrieve this policy before claiming completion
-• translate it into neutral/system requirements
-• enforce it against their own output
-• refuse to claim “done” without evidence
-
-If evidence cannot be produced, the correct response is:
-
-“This is not complete yet.”
-
----
-
-## 💡 Closing Note
-
-This policy exists to:
-• prevent false confidence
-• reduce rework
-• replace repeated QA reminders
-• make outcomes trustworthy
-
-It is not meant to slow work down.
-It is meant to stop work from being incorrectly declared finished.
-
----
-
-## ✅ Status
-
-- Canon v0.1 — Definition of Done & Evidence Policy complete
-- Ready to proceed to Canon v0.1 — Self-Audit Checklist
 
 
 
@@ -18193,801 +19203,7 @@ If an exploration cannot be stopped, it has not been bounded correctly.
 
 
 --------------------------------------------------------------------------------
-📄 File: canon/diagnostics/ritual-detected.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/diagnostics/ritual-detected
-title: "Diagnostic: RITUAL_DETECTED"
-audience: canon
-exposure: nav
-tier: 3
-voice: system_first_person
-stability: evolving
-tags: ["diagnostic", "smell", "ritual", "lint"]
----
-
-# RITUAL_DETECTED
-
-## Trigger
-
-Raise this diagnostic when correctness depends on repeated human memory of a procedure.
-
-## Why it matters
-
-This is a smell because it violates:
-
-- `klappy://canon/constraints/humans-are-variable-inputs`
-- `klappy://canon/principles/ritual-is-a-smell`
-
-## Severity guidance
-
-- warning by default
-- escalate to error only when the ritual gates safety, data integrity, or irreversible actions
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/documentation/agent-executable-outline.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/documentation/agent-executable-outline
-title: "Agent-Executable Documentation Outline"
-audience: canon
-exposure: nav
-tier: 1
-relevance: decision
-voice: neutral
-stability: stable
-tags: ["templates", "agents", "documentation"]
-execution_posture: governing
----
-
-# Agent-Executable Documentation Outline
-
-> Supplement human-readable documentation with decision leverage.
-
-## Purpose
-
-This outline defines **agent-useful sections** that may be added where appropriate.
-It supplements catalog information without replacing it.
-
-Only documents intended to influence behavior should use this structure fully.
-
----
-
-## Section Contracts
-
-### Subtitle — Trigger + Scope
-**One sentence.**
-When does this apply? What decision does it govern?
-
-Good:
-> "Use when validating user-visible changes; screenshots alone can falsely signal success."
-
----
-
-### Description — Decision Model
-1–2 short paragraphs.
-What decision does this document govern?
-What invariant must hold?
-What goes wrong if ignored?
-
-This is a compressed stance, not a catalog summary.
-
----
-
-### Operating Constraints
-Non-negotiables.
-Use MUST / MUST NOT / NEVER.
-No prose.
-
----
-
-### Defaults
-What to do when uncertain.
-Heuristics, not rules.
-
----
-
-### Failure Modes
-Named traps you've actually seen.
-Concrete and specific.
-
----
-
-### Verification
-What counts as "done."
-Evidence required.
-Unacceptable substitutes.
-
----
-
-### Summary
-Working-memory compression.
-No history.
-At least one testable heuristic.
-
----
-
-### Examples
-Minimal.
-Good vs bad preferred.
-
----
-
-### Background / Rationale
-Optional.
-Human-first.
-Not required for execution.
-
----
-
-### Related
-Explicit links only.
-No explanation.
-
----
-
-## Applicability by Execution Posture
-
-- Governing: most sections expected
-- Operational: subset expected
-- Exploratory: optional, light use
-- Routing: usually omitted
-
----
-
-## Final Rule
-
-> **If a section would be forced, omit it deliberately.**
-
----
-
-## Operating Constraints
-
-- MUST use MUST/MUST NOT/NEVER in Operating Constraints, not prose
-- MUST name Failure Modes concretely after traps actually observed
-- MUST specify evidence requirements in Verification, not just outcomes
-- MUST NOT fill sections just to satisfy tooling; omit deliberately instead
-- MUST keep sections short (3-5 bullets typical); long sections indicate bloat
-
----
-
-## Defaults
-
-- Start with Subtitle and Operating Constraints only; add others based on observed failures
-- Failure Modes are added when agents repeat known mistakes
-- Verification is added when agents claim success prematurely
-- Defaults are added when agents hesitate on uncertain decisions
-- Background is optional and human-first; not required for execution
-
----
-
-## Failure Modes
-
-- **Form Filling**: Adding sections to satisfy tooling rather than encoding real constraints
-- **Prose in Constraints**: Using explanatory sentences instead of actionable MUST/MUST NOT
-- **Vague Failure Modes**: Labels without concrete traps (e.g., "Be careful" instead of named mistakes)
-- **Outcome-Only Verification**: Stating what "done" looks like without specifying evidence
-- **Section Bloat**: Long sections that should be split or moved to background
-
----
-
-## Verification
-
-- Operating Constraints contain verbs and objects ("MUST include X", "MUST NOT do Y")
-- Failure Modes name specific traps observed in practice
-- Verification specifies evidence type, not just desired outcome
-- Sections are short enough for S-slice extraction (under 2000 chars typically)
-- Forced or empty sections were omitted rather than filled with placeholders
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/documentation/execution-posture.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/documentation/execution-posture
-title: "Execution Posture"
-audience: canon
-exposure: nav
-tier: 1
-relevance: decision
-voice: neutral
-stability: stable
-tags: ["documentation", "agents", "governance"]
-execution_posture: governing
----
-
-# Execution Posture
-
-> How strongly a document is expected to govern behavior.
-
-## Summary
-
-Execution posture declares **how executable a document intends to be**.
-It prevents forced structure while still enabling agent usefulness.
-
-Documents should be **as executable as they naturally allow — no more, no less**.
-
----
-
-## Allowed Values
-
-### `governing`
-- Defines constraints, rules, or standards
-- Expected to change agent behavior
-- High extraction value for context packs
-
-### `operational`
-- Guides action without strict enforcement
-- Playbooks, workflows, how-tos
-- Moderate extraction expectations
-
-### `exploratory`
-- Thinking tools, essays, design exploration
-- Human-first
-- Minimal or no executable structure required
-
-### `routing`
-- Indexes, maps, glossaries
-- Exists to point, not to govern
-- Extraction focuses on links and triggers only
-
----
-
-## Required Frontmatter Field
-
-```yaml
-execution_posture: governing | operational | exploratory | routing
-```
-
----
-
-## Governing Principle
-
-Executable structure is an affordance, not a requirement.
-
-If a section would be forced or misleading, it should be omitted intentionally.
-
----
-
-## Compiler Expectations
-- Governing docs: missing executable sections should WARN
-- Operational docs: missing sections may WARN
-- Exploratory and routing docs: missing sections are expected
-
-Compilers must never auto-generate content.
-
----
-
-## Operating Constraints
-
-- MUST declare execution_posture in frontmatter for all documents
-- MUST NOT force executable structure on exploratory or routing documents
-- MUST NOT auto-generate content to satisfy compiler requirements
-- MUST treat executable structure as an affordance, not a requirement
-- MUST omit sections deliberately if they would be forced or misleading
-
----
-
-## Defaults
-
-- When uncertain about posture, start with operational and upgrade to governing based on observed impact
-- Governing docs expect most required sections; operational expects a subset
-- Exploratory and routing docs may omit executable sections entirely
-- Compilers warn but do not block on missing sections
-
----
-
-## Failure Modes
-
-- **Forced Structure**: Adding sections that don't apply just to satisfy tooling
-- **Posture Inflation**: Marking documents as governing when they're actually operational
-- **Auto-Generation**: Compilers filling in missing sections with generated content
-- **Template Cargo Cult**: Copying section headings without meaningful content
-- **Exploratory Suppression**: Forcing executable structure on thinking-tools and essays
-
----
-
-## Verification
-
-- execution_posture is declared in frontmatter
-- Section presence matches declared posture expectations
-- Forced or empty sections have been deliberately omitted
-- Compilers emit warnings, not errors, for missing sections
-- No auto-generated content in executable sections
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/documentation/slice-contract-sml.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/documentation/slice-contract-sml
-title: "Slice Contract: S / M / L"
-audience: canon
-exposure: nav
-tier: 1
-relevance: decision
-voice: neutral
-stability: stable
-tags: ["context-packs", "extraction"]
-execution_posture: governing
----
-
-# Slice Contract: S / M / L
-
-> How much to extract from each included topic.
-
-## Summary
-
-S/M/L define **extraction depth per topic**, not topic inclusion.
-
-Topic inclusion is controlled by `relevance`.
-Extraction depth is controlled by slice size.
-
----
-
-## Required Headings (when applicable)
-
-Documents with `relevance: decision` are expected to use these headings where appropriate:
-
-- `## Operating Constraints`
-- `## Defaults`
-- `## Failure Modes`
-- `## Verification`
-
-Recommended:
-- `## Summary`
-- `## Examples`
-- `## Related`
-
----
-
-## Slice Definitions
-
-### S — Execution Slice
-Extract:
-- Title
-- Subtitle
-- Description
-- Operating Constraints
-- Defaults
-- Failure Modes
-- Verification
-
-Purpose: change behavior immediately.
-
----
-
-### M — Execution + Correctness
-Extract:
-- Everything in S
-- Summary
-- Examples (if present)
-
-Purpose: reduce errors and misapplication.
-
----
-
-### L — Full Topic
-Extract:
-- Everything in M
-- Any additional background or rationale sections
-
-Purpose: deep understanding and auditability.
-
----
-
-### XL — Book Export
-- Entire document
-- No slicing
-- Not intended for execution packs
-
----
-
-## Rules
-
-- Extraction is structural only (heading-to-heading)
-- No summarization or rewriting
-- Missing sections are skipped, not fabricated
-- Warnings may be emitted for governing docs
-
----
-
-## Invariant
-
-> **If a slice does not change behavior, it does not belong in S.**
-
----
-
-## Operating Constraints
-
-- MUST extract S-slices structurally (heading-to-heading), not by summarization or rewriting
-- MUST NOT fabricate content for missing sections; skip them instead
-- MUST include only behavior-changing content in S-slices
-- MUST use relevance to control topic inclusion; use slice size to control extraction depth
-- MUST emit warnings for governing docs missing required sections
-
----
-
-## Defaults
-
-- S-slice extracts: Title, Subtitle, Operating Constraints, Defaults, Failure Modes, Verification
-- M-slice adds: Summary, Examples
-- L-slice adds: Background, Rationale, any remaining sections
-- XL is full document export, not intended for execution packs
-- Missing sections are skipped without error for non-governing docs
-
----
-
-## Failure Modes
-
-- **Fabricated Content**: Generating summaries or filling in missing sections
-- **Bloated S-Slices**: Including background or rationale in S when it doesn't change behavior
-- **Relevance Confusion**: Using slice size to control inclusion instead of relevance metadata
-- **Summarization**: Rewriting content instead of structural extraction
-- **Completeness Fetish**: Requiring all sections even when some don't apply
-
----
-
-## Verification
-
-- S-slice contains only sections that change immediate behavior
-- Extraction is verbatim from source headings, not summarized
-- Missing sections result in skip, not fabrication
-- Governing docs without required sections emit warnings
-- Pack size reflects extraction depth, not document length
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/documentation/tier-vs-relevance.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/documentation/tier-vs-relevance
-title: "Tier vs Relevance"
-audience: canon
-exposure: nav
-tier: 1
-relevance: decision
-voice: neutral
-stability: stable
-tags: ["metadata", "documentation", "context-packs"]
-execution_posture: governing
----
-
-# Tier vs Relevance
-
-> Two different axes with different purposes. Do not conflate them.
-
-## Summary
-
-This document defines the difference between **tier** and **relevance** metadata.
-They solve different problems, apply to different consumers, and must remain independent.
-
-Confusing them leads to bloated context packs, misplaced authority, and degraded agent behavior.
-
----
-
-## Tier (Human Progressive Disclosure)
-
-**Tier controls how content is surfaced to humans.**
-
-It exists to prevent overwhelm in navigation, indexes, and reading flows.
-
-Tier does **not** imply importance, correctness, or authority.
-
-### Allowed Values
-
-- `tier: 0` — hidden or internal
-- `tier: 1` — default surfaced
-- `tier: 2` — secondary / discoverable
-- `tier: 3` — deep reference / long-form
-
-### Rules
-
-- Tier is UI-facing only
-- Tier must never be used to decide context-pack inclusion
-- Tier may be omitted on purely agent-facing documents
-
----
-
-## Relevance (Context Pack Inclusion)
-
-**Relevance controls whether a topic participates in agent context packs.**
-
-It answers: *"Is this topic useful for making or supporting decisions?"*
-
-### Allowed Values
-
-- `decision` — changes what an agent should do next
-- `supporting` — improves correctness and judgment
-- `background` — provides understanding, narrative, or rationale
-- `routing` — helps find other content
-
-### Rules
-
-- Relevance is execution-facing
-- Relevance does not imply truth ranking
-- A document must explicitly declare relevance
-- Relevance is evaluated per topic/file, not per heading
-
----
-
-## Hard Rule
-
-> **Tier controls visibility. Relevance controls usability.  
-> They must never substitute for each other.**
-
----
-
-## Common Mistakes
-
-- Treating `tier: 1` as "important for agents"
-- Using numeric tiers to encode execution depth
-- Inferring relevance from tier automatically
-
-If any of the above occur, fix the metadata — not the compiler.
-
----
-
-## Operating Constraints
-
-- MUST NOT use tier to decide context-pack inclusion; use relevance instead
-- MUST NOT infer relevance from tier automatically
-- MUST declare relevance explicitly on each document
-- MUST keep tier and relevance as independent axes
-- MUST fix metadata errors, not compiler behavior, when conflation occurs
-
----
-
-## Defaults
-
-- Tier defaults to 2 (secondary/discoverable) when not specified
-- Relevance defaults to supporting when not specified
-- When uncertain whether content is decision-grade, start at supporting and upgrade based on observed impact
-- Treat tier as UI-facing only; treat relevance as execution-facing only
-
----
-
-## Failure Modes
-
-- **Tier as Agent Signal**: Using tier: 1 to mean "important for agents"
-- **Numeric Depth Encoding**: Using tier numbers to encode execution priority
-- **Automatic Inference**: Deriving relevance from tier programmatically
-- **Axis Conflation**: Treating visibility and usability as the same concern
-- **Pack Bloat**: Including content in context packs based on tier instead of relevance
-
----
-
-## Verification
-
-- Context pack inclusion is determined by relevance, not tier
-- Tier assignment reflects human navigation needs only
-- Relevance assignment reflects agent decision-making needs only
-- Metadata explicitly declares both values when both apply
-- Changes to tier do not affect context pack composition
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/epistemic-challenge.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/epistemic-challenge
-title: "Epistemic Challenge"
-audience: canon
-exposure: nav
-tier: 2
-voice: neutral
-stability: semi_stable
-tags: ["epistemic", "challenge", "adversarial", "validation", "collaboration"]
----
-
-# Epistemic Challenge
-
-> Challenge claims proportionally, surface contradictions explicitly, and protect collaborative flow.
-
-## Description
-
-Epistemic challenge is the discipline of applying constructive pressure to claims, plans, and "done" statements—without becoming combative or derailing momentum.
-
-This doctrine exists because learning systems require drift, conflict, and competing hypotheses to be real. The goal is not to remove contradictions, but to **handle them**: expose them, characterize them, and choose next actions without laundering uncertainty.
-
-Epistemic challenge is a governance behavior. It must be triggered by "epistemic hygiene smells" rather than time-based rules or personal preference.
-
-## Operating Constraints
-
-- MUST challenge **claims**, not people.
-- MUST apply pressure **proportionally** to risk, scope, and evidence weakness.
-- MUST surface contradictions explicitly rather than smoothing them away.
-- MUST prefer "I can't support that yet" over invented certainty.
-- MUST preserve collaborative flow: challenge should end with an actionable next step.
-- MUST NOT use tone escalation as a substitute for rigor.
-
-## Defaults
-
-- If evidence is weak or missing: ask for the smallest artifact that would increase certainty.
-- If scope is unclear: ask one scoping question before proposing structure.
-- If a claim sounds confident but uncited: switch to "retrieve + quote" behavior.
-- If multiple interpretations exist: present the top two competing interpretations, then ask what evidence would decide.
-- If the system detects drift/conflict: expose it and select an outcome (prefer | defer | escalate | propose_promotion) rather than pretending it's resolved.
-
-## Failure Modes
-
-- Harmony Bias: agreeing to maintain flow while certainty collapses.
-- Aggressive Tone: using combative phrasing instead of precise critique.
-- Vague Pushback: "I'm not sure" without identifying what would change the conclusion.
-- Certainty Laundering: citing irrelevant sources or weak overlap to appear supported.
-- Over-Blocking: halting progress when a cheap next step would raise confidence.
-- Premature Convergence: forcing a single answer when competing hypotheses remain valid.
-
-## Verification
-
-A response exhibits valid epistemic challenge if it includes:
-
-- A clear statement of what is being challenged (claim / assumption / evidence).
-- The trigger signal(s) (scope mismatch, intent mismatch, weak evidence, contradictions, low confidence).
-- At least one actionable next step that would increase certainty (artifact request, lookup target, test).
-- If supporting a claim: citations with quotes that overlap the question's intent (no laundering).
-- If not supporting a claim: explicit "INSUFFICIENT_EVIDENCE" posture and a retrieval plan.
-
-## Relationship to Other Canon
-
-- Works with: `klappy://canon/epistemic-hygiene` (smell triggers)
-- Works with: `klappy://canon/weighted-relevance-and-arbitration` (handling conflict without erasing it)
-- Enforced by: validation behaviors (claims-to-evidence), librarian behaviors (citation-first retrieval), promotion/decay (learning loop)
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/epistemic-hygiene.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/epistemic-hygiene
-title: "Epistemic Hygiene"
-subtitle: "Signal-triggered review over time-based ritual"
-audience: canon
-exposure: nav
-tier: 2
-voice: neutral
-stability: stable
-tags: ["epistemics", "governance", "learning", "promotion"]
----
-
-# Epistemic Hygiene
-
-> How the system detects when truth is decaying — and when review is required.
-
-## Core Principle
-
-Epistemic hygiene is the practice of maintaining the integrity of shared truth over time.
-
-In ODD, **truth does not decay on a schedule**. It decays when signals appear: repeated failures, recurring confusion, enforcement friction, or undocumented authority. Time-based review is a weak proxy for these conditions and often creates ritual without insight.
-
-**Therefore, review is triggered by epistemic signals, not by time.**
-
-## The Rule
-
-> Reviews are initiated when epistemic hygiene signals appear — not because a date has arrived.
-
-This rule applies to Canon evolution, validation standards, and governance decisions across the system.
-
-## Epistemic Hygiene Signals
-
-The following signals indicate potential epistemic decay. Their presence invites review; they do not mandate outcomes.
-
-### Repeated Validation Failures of the Same Pattern
-
-**Signal**  
-The Validation Agent flags the same failure mode multiple times across independent attempts.
-
-**What this indicates**  
-A rule may be under-specified, poorly surfaced, or misaligned with actual workflow.
-
-**Typical response**  
-Review whether Canon should encode this constraint more explicitly or operationally.
-
----
-
-### Repeated Librarian Lookups for the Same Rule
-
-**Signal**  
-Users repeatedly ask where a rule lives or what it says, despite the rule existing.
-
-**What this indicates**  
-The rule may be difficult to discover, poorly titled, or insufficiently internalized.
-
-**Typical response**  
-Review headings, defaults, failure modes, or navigational affordances.
-
----
-
-### Promotion Artifacts Accumulating Without Resolution
-
-**Signal**  
-Multiple promotion artifacts remain proposed without acceptance, rejection, or deferral.
-
-**What this indicates**  
-Learning is being captured but not integrated or consciously rejected.
-
-**Typical response**  
-Force explicit decisions to avoid silent epistemic backlog.
-
----
-
-### Canon Rules Requiring Frequent Explanation
-
-**Signal**  
-Rules are frequently cited but require repeated clarification to apply correctly.
-
-**What this indicates**  
-The rule may be correct in principle but incomplete in operational guidance.
-
-**Typical response**  
-Review Defaults, Failure Modes, or Verification sections.
-
----
-
-### Validator Friction Without Corresponding Learning
-
-**Signal**  
-Validators repeatedly block progress and generate complaints without new insight.
-
-**What this indicates**  
-Enforcement may be correct, but explanation or guidance is insufficient.
-
-**Typical response**  
-Improve explanatory artifacts before weakening enforcement.
-
----
-
-### Rules Without Documented Origin or Impact
-
-**Signal**  
-A Canon rule is enforced but lacks a promotion artifact or documented rationale.
-
-**What this indicates**  
-The rule risks becoming cargo-cult authority rather than evidence-based governance.
-
-**Typical response**  
-Require retroactive documentation of origin, scope, and impact.
-
----
-
-## What This Is Not
-
-Epistemic hygiene is explicitly **not**:
-
-- A review schedule
-- A service-level agreement
-- An automated trigger
-- A guarantee of change
-
-It grants permission to act when something smells wrong — not an obligation to change outcomes.
-
-## Relationship to Other Systems
-
-- **Validation** surfaces repeated failures.
-- **Librarian** surfaces confusion and discoverability gaps.
-- **Promotion artifacts** capture learning and evidence.
-- **Humans** decide whether Canon should change.
-
-Epistemic hygiene preserves trust by ensuring that authority evolves only when reality demands it.
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/epistemic-modes.md
+📄 File: canon/definitions/epistemic-modes.md
 --------------------------------------------------------------------------------
 
 ---
@@ -19195,7 +19411,7 @@ This document exists to protect that clarity.
 
 
 --------------------------------------------------------------------------------
-📄 File: canon/epistemic-obligation-and-document-tiers.md
+📄 File: canon/definitions/epistemic-obligation-and-document-tiers.md
 --------------------------------------------------------------------------------
 
 ---
@@ -19399,7 +19615,1432 @@ Conflating the two leads to either:
 
 
 --------------------------------------------------------------------------------
-📄 File: canon/epistemic-surface-extraction.md
+📄 File: canon/definitions/execution-posture.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/definitions/execution-posture
+title: "Execution Posture"
+audience: canon
+exposure: nav
+tier: 1
+relevance: decision
+voice: neutral
+stability: stable
+tags: ["documentation", "agents", "governance"]
+execution_posture: governing
+---
+
+# Execution Posture
+
+> How strongly a document is expected to govern behavior.
+
+## Summary
+
+Execution posture declares **how executable a document intends to be**.
+It prevents forced structure while still enabling agent usefulness.
+
+Documents should be **as executable as they naturally allow — no more, no less**.
+
+---
+
+## Allowed Values
+
+### `governing`
+- Defines constraints, rules, or standards
+- Expected to change agent behavior
+- High extraction value for context packs
+
+### `operational`
+- Guides action without strict enforcement
+- Playbooks, workflows, how-tos
+- Moderate extraction expectations
+
+### `exploratory`
+- Thinking tools, essays, design exploration
+- Human-first
+- Minimal or no executable structure required
+
+### `routing`
+- Indexes, maps, glossaries
+- Exists to point, not to govern
+- Extraction focuses on links and triggers only
+
+---
+
+## Required Frontmatter Field
+
+```yaml
+execution_posture: governing | operational | exploratory | routing
+```
+
+---
+
+## Governing Principle
+
+Executable structure is an affordance, not a requirement.
+
+If a section would be forced or misleading, it should be omitted intentionally.
+
+---
+
+## Compiler Expectations
+- Governing docs: missing executable sections should WARN
+- Operational docs: missing sections may WARN
+- Exploratory and routing docs: missing sections are expected
+
+Compilers must never auto-generate content.
+
+---
+
+## Operating Constraints
+
+- MUST declare execution_posture in frontmatter for all documents
+- MUST NOT force executable structure on exploratory or routing documents
+- MUST NOT auto-generate content to satisfy compiler requirements
+- MUST treat executable structure as an affordance, not a requirement
+- MUST omit sections deliberately if they would be forced or misleading
+
+---
+
+## Defaults
+
+- When uncertain about posture, start with operational and upgrade to governing based on observed impact
+- Governing docs expect most required sections; operational expects a subset
+- Exploratory and routing docs may omit executable sections entirely
+- Compilers warn but do not block on missing sections
+
+---
+
+## Failure Modes
+
+- **Forced Structure**: Adding sections that don't apply just to satisfy tooling
+- **Posture Inflation**: Marking documents as governing when they're actually operational
+- **Auto-Generation**: Compilers filling in missing sections with generated content
+- **Template Cargo Cult**: Copying section headings without meaningful content
+- **Exploratory Suppression**: Forcing executable structure on thinking-tools and essays
+
+---
+
+## Verification
+
+- execution_posture is declared in frontmatter
+- Section presence matches declared posture expectations
+- Forced or empty sections have been deliberately omitted
+- Compilers emit warnings, not errors, for missing sections
+- No auto-generated content in executable sections
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/definitions/tier-vs-relevance.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/definitions/tier-vs-relevance
+title: "Tier vs Relevance"
+audience: canon
+exposure: nav
+tier: 1
+relevance: decision
+voice: neutral
+stability: stable
+tags: ["metadata", "documentation", "context-packs"]
+execution_posture: governing
+---
+
+# Tier vs Relevance
+
+> Two different axes with different purposes. Do not conflate them.
+
+## Summary
+
+This document defines the difference between **tier** and **relevance** metadata.
+They solve different problems, apply to different consumers, and must remain independent.
+
+Confusing them leads to bloated context packs, misplaced authority, and degraded agent behavior.
+
+---
+
+## Tier (Human Progressive Disclosure)
+
+**Tier controls how content is surfaced to humans.**
+
+It exists to prevent overwhelm in navigation, indexes, and reading flows.
+
+Tier does **not** imply importance, correctness, or authority.
+
+### Allowed Values
+
+- `tier: 0` — hidden or internal
+- `tier: 1` — default surfaced
+- `tier: 2` — secondary / discoverable
+- `tier: 3` — deep reference / long-form
+
+### Rules
+
+- Tier is UI-facing only
+- Tier must never be used to decide context-pack inclusion
+- Tier may be omitted on purely agent-facing documents
+
+---
+
+## Relevance (Context Pack Inclusion)
+
+**Relevance controls whether a topic participates in agent context packs.**
+
+It answers: *"Is this topic useful for making or supporting decisions?"*
+
+### Allowed Values
+
+- `decision` — changes what an agent should do next
+- `supporting` — improves correctness and judgment
+- `background` — provides understanding, narrative, or rationale
+- `routing` — helps find other content
+
+### Rules
+
+- Relevance is execution-facing
+- Relevance does not imply truth ranking
+- A document must explicitly declare relevance
+- Relevance is evaluated per topic/file, not per heading
+
+---
+
+## Hard Rule
+
+> **Tier controls visibility. Relevance controls usability.  
+> They must never substitute for each other.**
+
+---
+
+## Common Mistakes
+
+- Treating `tier: 1` as "important for agents"
+- Using numeric tiers to encode execution depth
+- Inferring relevance from tier automatically
+
+If any of the above occur, fix the metadata — not the compiler.
+
+---
+
+## Operating Constraints
+
+- MUST NOT use tier to decide context-pack inclusion; use relevance instead
+- MUST NOT infer relevance from tier automatically
+- MUST declare relevance explicitly on each document
+- MUST keep tier and relevance as independent axes
+- MUST fix metadata errors, not compiler behavior, when conflation occurs
+
+---
+
+## Defaults
+
+- Tier defaults to 2 (secondary/discoverable) when not specified
+- Relevance defaults to supporting when not specified
+- When uncertain whether content is decision-grade, start at supporting and upgrade based on observed impact
+- Treat tier as UI-facing only; treat relevance as execution-facing only
+
+---
+
+## Failure Modes
+
+- **Tier as Agent Signal**: Using tier: 1 to mean "important for agents"
+- **Numeric Depth Encoding**: Using tier numbers to encode execution priority
+- **Automatic Inference**: Deriving relevance from tier programmatically
+- **Axis Conflation**: Treating visibility and usability as the same concern
+- **Pack Bloat**: Including content in context packs based on tier instead of relevance
+
+---
+
+## Verification
+
+- Context pack inclusion is determined by relevance, not tier
+- Tier assignment reflects human navigation needs only
+- Relevance assignment reflects agent decision-making needs only
+- Metadata explicitly declares both values when both apply
+- Changes to tier do not affect context pack composition
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/diagnostics/epistemic-hygiene.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/epistemic-hygiene
+title: "Epistemic Hygiene"
+subtitle: "Signal-triggered review over time-based ritual"
+audience: canon
+exposure: nav
+tier: 2
+voice: neutral
+stability: stable
+tags: ["epistemics", "governance", "learning", "promotion"]
+---
+
+# Epistemic Hygiene
+
+> How the system detects when truth is decaying — and when review is required.
+
+## Core Principle
+
+Epistemic hygiene is the practice of maintaining the integrity of shared truth over time.
+
+In ODD, **truth does not decay on a schedule**. It decays when signals appear: repeated failures, recurring confusion, enforcement friction, or undocumented authority. Time-based review is a weak proxy for these conditions and often creates ritual without insight.
+
+**Therefore, review is triggered by epistemic signals, not by time.**
+
+## The Rule
+
+> Reviews are initiated when epistemic hygiene signals appear — not because a date has arrived.
+
+This rule applies to Canon evolution, validation standards, and governance decisions across the system.
+
+## Epistemic Hygiene Signals
+
+The following signals indicate potential epistemic decay. Their presence invites review; they do not mandate outcomes.
+
+### Repeated Validation Failures of the Same Pattern
+
+**Signal**  
+The Validation Agent flags the same failure mode multiple times across independent attempts.
+
+**What this indicates**  
+A rule may be under-specified, poorly surfaced, or misaligned with actual workflow.
+
+**Typical response**  
+Review whether Canon should encode this constraint more explicitly or operationally.
+
+---
+
+### Repeated Librarian Lookups for the Same Rule
+
+**Signal**  
+Users repeatedly ask where a rule lives or what it says, despite the rule existing.
+
+**What this indicates**  
+The rule may be difficult to discover, poorly titled, or insufficiently internalized.
+
+**Typical response**  
+Review headings, defaults, failure modes, or navigational affordances.
+
+---
+
+### Promotion Artifacts Accumulating Without Resolution
+
+**Signal**  
+Multiple promotion artifacts remain proposed without acceptance, rejection, or deferral.
+
+**What this indicates**  
+Learning is being captured but not integrated or consciously rejected.
+
+**Typical response**  
+Force explicit decisions to avoid silent epistemic backlog.
+
+---
+
+### Canon Rules Requiring Frequent Explanation
+
+**Signal**  
+Rules are frequently cited but require repeated clarification to apply correctly.
+
+**What this indicates**  
+The rule may be correct in principle but incomplete in operational guidance.
+
+**Typical response**  
+Review Defaults, Failure Modes, or Verification sections.
+
+---
+
+### Validator Friction Without Corresponding Learning
+
+**Signal**  
+Validators repeatedly block progress and generate complaints without new insight.
+
+**What this indicates**  
+Enforcement may be correct, but explanation or guidance is insufficient.
+
+**Typical response**  
+Improve explanatory artifacts before weakening enforcement.
+
+---
+
+### Rules Without Documented Origin or Impact
+
+**Signal**  
+A Canon rule is enforced but lacks a promotion artifact or documented rationale.
+
+**What this indicates**  
+The rule risks becoming cargo-cult authority rather than evidence-based governance.
+
+**Typical response**  
+Require retroactive documentation of origin, scope, and impact.
+
+---
+
+## What This Is Not
+
+Epistemic hygiene is explicitly **not**:
+
+- A review schedule
+- A service-level agreement
+- An automated trigger
+- A guarantee of change
+
+It grants permission to act when something smells wrong — not an obligation to change outcomes.
+
+## Relationship to Other Systems
+
+- **Validation** surfaces repeated failures.
+- **Librarian** surfaces confusion and discoverability gaps.
+- **Promotion artifacts** capture learning and evidence.
+- **Humans** decide whether Canon should change.
+
+Epistemic hygiene preserves trust by ensuring that authority evolves only when reality demands it.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/diagnostics/ritual-detected.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/diagnostics/ritual-detected
+title: "Diagnostic: RITUAL_DETECTED"
+audience: canon
+exposure: nav
+tier: 3
+voice: system_first_person
+stability: evolving
+tags: ["diagnostic", "smell", "ritual", "lint"]
+---
+
+# RITUAL_DETECTED
+
+## Trigger
+
+Raise this diagnostic when correctness depends on repeated human memory of a procedure.
+
+## Why it matters
+
+This is a smell because it violates:
+
+- `klappy://canon/constraints/humans-are-variable-inputs`
+- `klappy://canon/principles/ritual-is-a-smell`
+
+## Severity guidance
+
+- warning by default
+- escalate to error only when the ritual gates safety, data integrity, or irreversible actions
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/meta/TEMPLATE.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/template
+title: "Canon Article Template"
+audience: canon
+exposure: hidden
+tier: 3
+voice: neutral
+stability: stable
+tags: ["canon", "template"]
+relevance: routing
+execution_posture: routing
+---
+
+# Canon Article Template
+
+> Template for program-level constraints shared across all products.
+
+## Description
+
+This template defines the standard structure for Canon articles. Canon contains program-level constraints—rules that all products in this program must follow. Canon is more stable than Docs but less universal than ODD. Use this template when adding new constraints, policies, or shared rules.
+
+## Outline
+
+- When to Add to Canon
+- Frontmatter Fields
+- Document Structure
+- Example
+
+---
+
+## When to Add to Canon
+
+Add to Canon when:
+
+- The rule applies to ALL products in this program
+- The rule is derived from ODD principles
+- The rule would still apply if we added new products
+
+Do NOT add to Canon when:
+
+- It's implementation-specific → `/docs/`
+- It's universal philosophy → `/odd/`
+- It's lane-specific → `/products/<lane>/`
+
+**Litmus test:** Should all products obey this? → Canon ✓
+
+---
+
+## Frontmatter Fields
+
+```yaml
+---
+uri: klappy://canon/<name>
+title: "Title"
+audience: canon
+exposure: nav
+tier: 1
+voice: first_person | neutral
+stability: stable
+tags: ["canon", "topic"]
+---
+```
+
+### Canon-Specific Values
+
+| Field | Typical Value | Notes |
+|-------|---------------|-------|
+| `audience` | `canon` | Always canon |
+| `tier` | `1` | Canon is core content |
+| `voice` | `first_person` | Website-ready, personal |
+| `stability` | `stable` | Canon changes carefully |
+
+---
+
+## Document Structure
+
+```markdown
+---
+uri: klappy://canon/<name>
+title: "Title"
+audience: canon
+exposure: nav
+tier: 1
+voice: first_person
+stability: stable
+tags: ["canon", "topic"]
+---
+
+# Title
+
+> One-line description of this constraint or rule.
+
+## Description
+
+1-2 paragraph compressed overview. What is this constraint?
+Why does it exist? How does it shape behavior?
+
+## Outline
+
+- Section 1
+- Section 2
+- Section 3
+
+---
+
+## Content
+
+**Canon vX.Y**
+
+[Full content...]
+
+---
+
+## See Also
+
+- [Related Canon](/canon/related.md)
+- [ODD Principle](/odd/appendices/related.md)
+```
+
+---
+
+## Example
+
+```markdown
+---
+uri: klappy://canon/example-constraint
+title: "Example Constraint"
+audience: canon
+exposure: nav
+tier: 1
+voice: first_person
+stability: stable
+tags: ["canon", "example"]
+---
+
+# Example Constraint
+
+> All products must X before Y.
+
+## Description
+
+This constraint ensures consistency across products by requiring X
+before Y. It derives from the ODD principle of evidence over assertion
+and applies to all lanes.
+
+## Outline
+
+- What I Assume
+- Why It Matters
+- What It Forces
+- When It Doesn't Apply
+
+---
+
+## Content
+
+**Canon v0.1**
+
+### What I Assume
+
+[...]
+
+### Why It Matters
+
+[...]
+
+### What It Forces
+
+[...]
+
+### When It Doesn't Apply
+
+[...]
+```
+
+---
+
+## See Also
+
+- [Canon Index](/canon/README.md)
+- [Three-Tier Hierarchy](/odd/decisions/D0001-three-tier-conceptual-hierarchy.md)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/meta/agent-executable-outline.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/meta/agent-executable-outline
+title: "Agent-Executable Documentation Outline"
+audience: canon
+exposure: nav
+tier: 1
+relevance: decision
+voice: neutral
+stability: stable
+tags: ["templates", "agents", "documentation"]
+execution_posture: governing
+---
+
+# Agent-Executable Documentation Outline
+
+> Supplement human-readable documentation with decision leverage.
+
+## Purpose
+
+This outline defines **agent-useful sections** that may be added where appropriate.
+It supplements catalog information without replacing it.
+
+Only documents intended to influence behavior should use this structure fully.
+
+---
+
+## Section Contracts
+
+### Subtitle — Trigger + Scope
+**One sentence.**
+When does this apply? What decision does it govern?
+
+Good:
+> "Use when validating user-visible changes; screenshots alone can falsely signal success."
+
+---
+
+### Description — Decision Model
+1–2 short paragraphs.
+What decision does this document govern?
+What invariant must hold?
+What goes wrong if ignored?
+
+This is a compressed stance, not a catalog summary.
+
+---
+
+### Operating Constraints
+Non-negotiables.
+Use MUST / MUST NOT / NEVER.
+No prose.
+
+---
+
+### Defaults
+What to do when uncertain.
+Heuristics, not rules.
+
+---
+
+### Failure Modes
+Named traps you've actually seen.
+Concrete and specific.
+
+---
+
+### Verification
+What counts as "done."
+Evidence required.
+Unacceptable substitutes.
+
+---
+
+### Summary
+Working-memory compression.
+No history.
+At least one testable heuristic.
+
+---
+
+### Examples
+Minimal.
+Good vs bad preferred.
+
+---
+
+### Background / Rationale
+Optional.
+Human-first.
+Not required for execution.
+
+---
+
+### Related
+Explicit links only.
+No explanation.
+
+---
+
+## Applicability by Execution Posture
+
+- Governing: most sections expected
+- Operational: subset expected
+- Exploratory: optional, light use
+- Routing: usually omitted
+
+---
+
+## Final Rule
+
+> **If a section would be forced, omit it deliberately.**
+
+---
+
+## Operating Constraints
+
+- MUST use MUST/MUST NOT/NEVER in Operating Constraints, not prose
+- MUST name Failure Modes concretely after traps actually observed
+- MUST specify evidence requirements in Verification, not just outcomes
+- MUST NOT fill sections just to satisfy tooling; omit deliberately instead
+- MUST keep sections short (3-5 bullets typical); long sections indicate bloat
+
+---
+
+## Defaults
+
+- Start with Subtitle and Operating Constraints only; add others based on observed failures
+- Failure Modes are added when agents repeat known mistakes
+- Verification is added when agents claim success prematurely
+- Defaults are added when agents hesitate on uncertain decisions
+- Background is optional and human-first; not required for execution
+
+---
+
+## Failure Modes
+
+- **Form Filling**: Adding sections to satisfy tooling rather than encoding real constraints
+- **Prose in Constraints**: Using explanatory sentences instead of actionable MUST/MUST NOT
+- **Vague Failure Modes**: Labels without concrete traps (e.g., "Be careful" instead of named mistakes)
+- **Outcome-Only Verification**: Stating what "done" looks like without specifying evidence
+- **Section Bloat**: Long sections that should be split or moved to background
+
+---
+
+## Verification
+
+- Operating Constraints contain verbs and objects ("MUST include X", "MUST NOT do Y")
+- Failure Modes name specific traps observed in practice
+- Verification specifies evidence type, not just desired outcome
+- Sections are short enough for S-slice extraction (under 2000 chars typically)
+- Forced or empty sections were omitted rather than filled with placeholders
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/meta/completion-report-template.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/completion-report-template
+title: "Completion Report Template"
+audience: canon
+exposure: nav
+tier: 3
+voice: first_person
+stability: evolving
+tags: ["completion-report", "template"]
+relevance: routing
+execution_posture: routing
+---
+
+# Completion Report Template
+
+> The standard format for claiming work is complete.
+
+## Description
+
+The completion report template is the mandatory output format for claiming completion. It ties together the Definition of Done, Self-Audit, and Visual Proof Standards into a single, reviewable artifact. Reports must include task overview, intended outcome, what changed, verification performed, observed behavior, evidence produced, visual proof (if applicable), self-audit summary, confidence and gaps, exceptions or notes, and a completion declaration. Reports may be brief but must be honest. If the report is unclear, the work is unclear.
+
+## Outline
+
+- Task Overview
+- Intended Outcome
+- What Changed
+- Verification Performed
+- Observed Behavior
+- Evidence Produced
+- Visual Proof (If Applicable)
+- Self-Audit Summary
+- Confidence & Gaps
+- Exceptions or Notes
+- Completion Declaration
+
+---
+
+## Content
+
+**Canon v0.1**
+
+> This is the standard output format humans and agents must use to claim completion. It ties together the Definition of Done, Self-Audit, and Visual Proof Standards into a single, reviewable artifact.
+
+This template defines how completed work must be reported.
+If a task does not have a completion report following this structure, it is not complete.
+
+This report may be brief, but it must be honest.
+
+---
+
+## 1. Task Overview
+
+- **Task name:**
+- **Date:**
+- **Status:** Complete / Partially Complete / Not Complete
+
+**Short description:**
+What this task was intended to do (1–2 sentences).
+
+---
+
+## 2. Intended Outcome
+
+What outcome was this work meant to achieve?
+
+How would someone know, by observation, that the outcome was achieved?
+
+---
+
+## 3. What Changed
+
+List the concrete changes made.
+
+Examples:
+• files modified
+• components added or removed
+• behavior changed
+
+Be specific but concise.
+
+---
+
+## 4. Verification Performed
+
+What was run or exercised to verify the work?
+
+Examples:
+• dev server started
+• page loaded
+• interaction performed
+• tests executed
+• offline scenario simulated
+
+If verification was not performed, state why.
+
+---
+
+## 5. Observed Behavior
+
+What actually happened when the system was run?
+
+Describe observed behavior, not expected behavior.
+
+---
+
+## 6. Evidence Produced
+
+List the evidence that proves the observed behavior occurred.
+
+Examples:
+• Screenshot: link or reference
+• Screen recording: link or reference
+• Rendered output: file name
+• Logs or test output: location
+
+Each item must be labeled with what it demonstrates.
+
+---
+
+## 7. Visual Proof (If Applicable)
+
+If the work affects UI or interaction:
+• What visual proof was captured?
+• What does it show?
+• Is there before/after evidence?
+
+If visual proof could not be produced, explain why.
+
+---
+
+## 8. Self-Audit Summary
+
+Briefly summarize the self-audit:
+• Constraints applied
+• Decision rules followed
+• Tradeoffs made
+• Risks or unknowns remaining
+
+One sentence per item is sufficient.
+
+---
+
+## 9. Confidence & Gaps
+
+How confident am I that this works as intended?
+
+What would increase confidence further?
+
+---
+
+## 10. Exceptions or Notes
+
+Note any:
+• deviations from defaults
+• known limitations
+• follow-up work required
+
+---
+
+## ✅ Completion Declaration
+
+I consider this task:
+• ☐ Complete
+• ☐ Partially Complete
+• ☐ Not Complete
+
+Reason (if not complete):
+
+If marked complete, all required evidence and self-audit items are present.
+
+---
+
+## 🤖 Agent Expectations
+
+Agents are expected to:
+• produce this report before claiming completion
+• refuse to mark tasks complete without evidence
+• clearly mark partial or incomplete work
+
+Completion is a claim that must be justified.
+
+---
+
+## 💡 Closing Note
+
+This template exists to:
+• replace repeated QA questions
+• surface problems early
+• make review fast and objective
+
+If the report is unclear, the work is unclear.
+
+---
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/meta/epistemic-architecture.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/meta/epistemic-architecture
+title: "Epistemic Architecture"
+audience: canon
+stability: long_lived
+derived_from:
+  - klappy://docs/appendices/epochs
+  - odd://contract/epistemic-contract
+---
+
+# Epistemic Architecture
+
+This document describes how epistemic judgment is shared across tools without collapsing them into a single implementation.
+
+## Separation of Concerns
+
+ODD distinguishes between:
+
+- **Epistemic judgment** — deciding how to respond to the state of understanding
+- **Surface embodiment** — deciding how that response is expressed
+
+Judgment is invariant.
+Embodiment is contextual.
+
+Epistemic judgment is expressed through documented rules and decision boundaries, not through a centralized runtime or service.
+
+## The Shared Epistemic Spine
+
+All ODD-compliant systems operate over the same epistemic spine:
+
+- Epistemic Contract (ODD-level)
+- Canon Defaults (instance-level)
+
+These define when to confirm clarity, interrupt, refuse, externalize, or proceed.
+
+No surface may redefine these rules implicitly.
+
+## Surfaces
+
+Examples of epistemic surfaces include:
+
+- klappy.dev (human-facing)
+- oddkit (agent-facing)
+- future tools (editors, bots, assistants)
+
+Each surface:
+- obeys the same epistemic contract
+- renders posture differently
+- does not own epistemic authority
+
+## Invariance Rule
+
+Given the same epistemic state:
+
+- klappy.dev and oddkit MUST reach the same epistemic judgment
+- they MAY express that judgment differently
+
+Differences in judgment indicate epistemic drift.
+Differences in expression do not.
+
+## Tool Reuse vs Judgment
+
+Surfaces may reuse tools across boundaries (summarization, artifact generation).
+
+Epistemic judgment MUST NOT be delegated to:
+- agents
+- UI logic
+- convenience heuristics
+
+Judgment precedes tooling.
+
+## Why This Matters
+
+This architecture ensures that:
+- systems feel alive without being deceptive
+- tools adapt without becoming inconsistent
+- trust is built through restraint, not cleverness
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/meta/slice-contract-sml.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/meta/slice-contract-sml
+title: "Slice Contract: S / M / L"
+audience: canon
+exposure: nav
+tier: 1
+relevance: decision
+voice: neutral
+stability: stable
+tags: ["context-packs", "extraction"]
+execution_posture: governing
+---
+
+# Slice Contract: S / M / L
+
+> How much to extract from each included topic.
+
+## Summary
+
+S/M/L define **extraction depth per topic**, not topic inclusion.
+
+Topic inclusion is controlled by `relevance`.
+Extraction depth is controlled by slice size.
+
+---
+
+## Required Headings (when applicable)
+
+Documents with `relevance: decision` are expected to use these headings where appropriate:
+
+- `## Operating Constraints`
+- `## Defaults`
+- `## Failure Modes`
+- `## Verification`
+
+Recommended:
+- `## Summary`
+- `## Examples`
+- `## Related`
+
+---
+
+## Slice Definitions
+
+### S — Execution Slice
+Extract:
+- Title
+- Subtitle
+- Description
+- Operating Constraints
+- Defaults
+- Failure Modes
+- Verification
+
+Purpose: change behavior immediately.
+
+---
+
+### M — Execution + Correctness
+Extract:
+- Everything in S
+- Summary
+- Examples (if present)
+
+Purpose: reduce errors and misapplication.
+
+---
+
+### L — Full Topic
+Extract:
+- Everything in M
+- Any additional background or rationale sections
+
+Purpose: deep understanding and auditability.
+
+---
+
+### XL — Book Export
+- Entire document
+- No slicing
+- Not intended for execution packs
+
+---
+
+## Rules
+
+- Extraction is structural only (heading-to-heading)
+- No summarization or rewriting
+- Missing sections are skipped, not fabricated
+- Warnings may be emitted for governing docs
+
+---
+
+## Invariant
+
+> **If a slice does not change behavior, it does not belong in S.**
+
+---
+
+## Operating Constraints
+
+- MUST extract S-slices structurally (heading-to-heading), not by summarization or rewriting
+- MUST NOT fabricate content for missing sections; skip them instead
+- MUST include only behavior-changing content in S-slices
+- MUST use relevance to control topic inclusion; use slice size to control extraction depth
+- MUST emit warnings for governing docs missing required sections
+
+---
+
+## Defaults
+
+- S-slice extracts: Title, Subtitle, Operating Constraints, Defaults, Failure Modes, Verification
+- M-slice adds: Summary, Examples
+- L-slice adds: Background, Rationale, any remaining sections
+- XL is full document export, not intended for execution packs
+- Missing sections are skipped without error for non-governing docs
+
+---
+
+## Failure Modes
+
+- **Fabricated Content**: Generating summaries or filling in missing sections
+- **Bloated S-Slices**: Including background or rationale in S when it doesn't change behavior
+- **Relevance Confusion**: Using slice size to control inclusion instead of relevance metadata
+- **Summarization**: Rewriting content instead of structural extraction
+- **Completeness Fetish**: Requiring all sections even when some don't apply
+
+---
+
+## Verification
+
+- S-slice contains only sections that change immediate behavior
+- Extraction is verbatim from source headings, not summarized
+- Missing sections result in skip, not fabrication
+- Governing docs without required sections emit warnings
+- Pack size reflects extraction depth, not document length
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/methods/README.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/methods
+title: "Methods"
+audience: canon
+exposure: nav
+tier: 1
+voice: first_person
+stability: stable
+tags: ["canon", "methods", "practice", "application"]
+relevance: decision
+execution_posture: governing
+---
+
+# Methods
+
+> Repeatable ways to apply principles and satisfy constraints without re-deriving safe application patterns each time.
+
+## Description
+
+Constraints define non-negotiable limits. Principles define posture and reasoning. Methods exist so humans and agents can apply both *in practice* without reinventing the operational shape every time.
+
+Methods are not workflows, enforcement, or "the one true way."
+They are **durable application patterns** that reduce ambiguity, prevent drift, and make correct application easier—especially under acceleration.
+
+## Outline
+
+- What Methods Are
+- What Methods Are Not
+- How Methods Relate to Constraints and Principles
+- When to Add a Method
+- See Also
+
+---
+
+## What Methods Are
+
+Methods are:
+
+- Repeatable application patterns that have proven safe
+- A bridge from abstract constraints/principles into practice
+- A way to reduce re-litigation and cognitive load
+- Valid for humans, agents, and mixed teams
+
+## What Methods Are Not
+
+Methods are not:
+
+- A mandated workflow
+- An enforcement mechanism
+- A substitute for judgment
+- A place to smuggle values, governance, or authority
+
+## How Methods Relate to Constraints and Principles
+
+- **Constraints**: what must not be violated
+- **Principles**: how to think and orient while deciding
+- **Methods**: how to apply constraints/principles without breaking them, repeatedly
+
+## When to Add a Method
+
+Add a method when:
+
+- People keep asking "how do I do this safely?"
+- You see repeated failure modes from "figuring it out again"
+- A safe application pattern has stabilized across contexts
+
+Do not add a method when:
+
+- You're designing governance
+- You're defining lane-specific workflows
+- You're encoding tool-specific steps that will churn
+
+---
+
+## See Also
+
+- [Constraints](/canon/constraints/README.md)
+- [Decision Rules](/canon/constraints/decision-rules.md)
+- [Epistemic Hygiene](/canon/diagnostics/epistemic-hygiene.md)
+- [Definition of Done](/canon/constraints/definition-of-done.md)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/methods/boundary-transition-review.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/methods/boundary-transition-review
+title: "Method: Boundary Transition Review"
+audience: canon
+exposure: nav
+tier: 2
+voice: first_person
+stability: draft
+tags: ["canon", "methods", "boundaries", "review"]
+relevance: decision
+execution_posture: governing
+---
+
+# Method: Boundary Transition Review
+
+> A repeatable review-and-prepare step used when moving between epistemic boundaries.
+
+## Description
+
+This method exists to make boundary transitions safe without turning them into ritual. It operationalizes the canon constraint: **Boundary Transitions Require Deceleration**.
+
+## Outline
+
+- Exit Checklist
+- Entry Checklist
+- Evidence Notes
+- When to Skip (Rare)
+- See Also
+
+---
+
+## Content
+
+**Method v0.1**
+
+### Exit Checklist
+
+- What is now settled?
+- What remains open?
+- What evidence exists (or is missing)?
+- What refusal conditions were triggered?
+
+### Entry Checklist
+
+- What prior decisions constrain this work?
+- Which constraints are active?
+- What consultation/evidence is required before proceeding?
+
+---
+
+## See Also
+
+- [Boundary Transitions Require Deceleration](/canon/constraints/boundary-transitions-require-deceleration.md)
+- [Definition of Done](/canon/constraints/definition-of-done.md)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/methods/choosing-the-right-narrative-container.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/methods/choosing-the-right-narrative-container
+title: "Method: Choosing the Right Narrative Container"
+audience: canon
+exposure: nav
+tier: 2
+voice: first_person
+stability: stable
+tags: ["canon", "methods", "writing", "structure"]
+relevance: decision
+execution_posture: governing
+---
+
+# Method: Choosing the Right Narrative Container
+
+> Not every insight belongs in the same kind of document.
+
+## Description
+
+This method exists to prevent epistemic drift caused by placing ideas in the wrong narrative container. In ODD, **form is not decoration**. It determines how authority is interpreted and where meaning accumulates.
+
+When writing feels forced or confusing, the issue is often not the content but the container.
+
+---
+
+## The Three Containers
+
+### Canon
+Use when:
+- an invariant constraint is being stated
+- violations must be disallowed
+- authority is intentional
+
+Do not use when:
+- ambiguity is required
+- experience matters more than rules
+
+---
+
+### Apocrypha Fragment
+Use when:
+- a failure mode must be preserved
+- explanation would create authority
+- the system needs to absorb pressure without resolving it
+
+Apocrypha fragments:
+- do not instruct
+- do not warn
+- do not explain
+- do not close loops
+
+They exist because deletion would reduce coherence.
+
+---
+
+### Cinematic Retelling
+Use when:
+- experiential truth matters
+- temporal unfolding is important
+- emotional or human impact needs preservation
+
+Cinematic retellings:
+- have no governing authority
+- must never be cited as canon
+- exist to preserve memory, not rules
+
+---
+
+## Diagnostic Signals
+
+- If writing feels **forced**, the container is likely wrong.
+- If writing feels **inevitable**, the container is likely correct.
+- If a document feels **too persuasive**, it is probably in the wrong form.
+
+When in doubt, do not publish. Reclassify first.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/methods/epistemic-surface-extraction.md
 --------------------------------------------------------------------------------
 
 ---
@@ -19614,329 +21255,15 @@ Surfaces can inform canon edits, but:
 
 ## See Also
 
-- [Verification & Evidence](/canon/verification-and-evidence.md)
-- [Visual Proof Standards](/canon/visual-proof.md)
-- [Definition of Done](/canon/definition-of-done.md)
+- [Verification & Evidence](/canon/constraints/verification-and-evidence.md)
+- [Visual Proof Standards](/canon/constraints/visual-proof.md)
+- [Definition of Done](/canon/constraints/definition-of-done.md)
 
 ---
 
 ## Provenance
 
 Promoted from `/apocrypha/artifacts/SURFACE-EXTRACTION.md` to Canon.
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/meta/epistemic-architecture.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/meta/epistemic-architecture
-title: "Epistemic Architecture"
-audience: canon
-stability: long_lived
-derived_from:
-  - klappy://docs/appendices/epochs
-  - odd://contract/epistemic-contract
----
-
-# Epistemic Architecture
-
-This document describes how epistemic judgment is shared across tools without collapsing them into a single implementation.
-
-## Separation of Concerns
-
-ODD distinguishes between:
-
-- **Epistemic judgment** — deciding how to respond to the state of understanding
-- **Surface embodiment** — deciding how that response is expressed
-
-Judgment is invariant.
-Embodiment is contextual.
-
-Epistemic judgment is expressed through documented rules and decision boundaries, not through a centralized runtime or service.
-
-## The Shared Epistemic Spine
-
-All ODD-compliant systems operate over the same epistemic spine:
-
-- Epistemic Contract (ODD-level)
-- Canon Defaults (instance-level)
-
-These define when to confirm clarity, interrupt, refuse, externalize, or proceed.
-
-No surface may redefine these rules implicitly.
-
-## Surfaces
-
-Examples of epistemic surfaces include:
-
-- klappy.dev (human-facing)
-- oddkit (agent-facing)
-- future tools (editors, bots, assistants)
-
-Each surface:
-- obeys the same epistemic contract
-- renders posture differently
-- does not own epistemic authority
-
-## Invariance Rule
-
-Given the same epistemic state:
-
-- klappy.dev and oddkit MUST reach the same epistemic judgment
-- they MAY express that judgment differently
-
-Differences in judgment indicate epistemic drift.
-Differences in expression do not.
-
-## Tool Reuse vs Judgment
-
-Surfaces may reuse tools across boundaries (summarization, artifact generation).
-
-Epistemic judgment MUST NOT be delegated to:
-- agents
-- UI logic
-- convenience heuristics
-
-Judgment precedes tooling.
-
-## Why This Matters
-
-This architecture ensures that:
-- systems feel alive without being deceptive
-- tools adapt without becoming inconsistent
-- trust is built through restraint, not cleverness
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/methods/README.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/methods
-title: "Methods"
-audience: canon
-exposure: nav
-tier: 1
-voice: first_person
-stability: stable
-tags: ["canon", "methods", "practice", "application"]
-relevance: decision
-execution_posture: governing
----
-
-# Methods
-
-> Repeatable ways to apply principles and satisfy constraints without re-deriving safe application patterns each time.
-
-## Description
-
-Constraints define non-negotiable limits. Principles define posture and reasoning. Methods exist so humans and agents can apply both *in practice* without reinventing the operational shape every time.
-
-Methods are not workflows, enforcement, or "the one true way."
-They are **durable application patterns** that reduce ambiguity, prevent drift, and make correct application easier—especially under acceleration.
-
-## Outline
-
-- What Methods Are
-- What Methods Are Not
-- How Methods Relate to Constraints and Principles
-- When to Add a Method
-- See Also
-
----
-
-## What Methods Are
-
-Methods are:
-
-- Repeatable application patterns that have proven safe
-- A bridge from abstract constraints/principles into practice
-- A way to reduce re-litigation and cognitive load
-- Valid for humans, agents, and mixed teams
-
-## What Methods Are Not
-
-Methods are not:
-
-- A mandated workflow
-- An enforcement mechanism
-- A substitute for judgment
-- A place to smuggle values, governance, or authority
-
-## How Methods Relate to Constraints and Principles
-
-- **Constraints**: what must not be violated
-- **Principles**: how to think and orient while deciding
-- **Methods**: how to apply constraints/principles without breaking them, repeatedly
-
-## When to Add a Method
-
-Add a method when:
-
-- People keep asking "how do I do this safely?"
-- You see repeated failure modes from "figuring it out again"
-- A safe application pattern has stabilized across contexts
-
-Do not add a method when:
-
-- You're designing governance
-- You're defining lane-specific workflows
-- You're encoding tool-specific steps that will churn
-
----
-
-## See Also
-
-- [Constraints](/canon/constraints.md)
-- [Decision Rules](/canon/decision-rules.md)
-- [Epistemic Hygiene](/canon/epistemic-hygiene.md)
-- [Definition of Done](/canon/definition-of-done.md)
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/methods/boundary-transition-review.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/methods/boundary-transition-review
-title: "Method: Boundary Transition Review"
-audience: canon
-exposure: nav
-tier: 2
-voice: first_person
-stability: draft
-tags: ["canon", "methods", "boundaries", "review"]
-relevance: decision
-execution_posture: governing
----
-
-# Method: Boundary Transition Review
-
-> A repeatable review-and-prepare step used when moving between epistemic boundaries.
-
-## Description
-
-This method exists to make boundary transitions safe without turning them into ritual. It operationalizes the canon constraint: **Boundary Transitions Require Deceleration**.
-
-## Outline
-
-- Exit Checklist
-- Entry Checklist
-- Evidence Notes
-- When to Skip (Rare)
-- See Also
-
----
-
-## Content
-
-**Method v0.1**
-
-### Exit Checklist
-
-- What is now settled?
-- What remains open?
-- What evidence exists (or is missing)?
-- What refusal conditions were triggered?
-
-### Entry Checklist
-
-- What prior decisions constrain this work?
-- Which constraints are active?
-- What consultation/evidence is required before proceeding?
-
----
-
-## See Also
-
-- [Boundary Transitions Require Deceleration](/canon/constraints/boundary-transitions-require-deceleration.md)
-- [Definition of Done](/canon/definition-of-done.md)
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/methods/choosing-the-right-narrative-container.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/methods/choosing-the-right-narrative-container
-title: "Method: Choosing the Right Narrative Container"
-audience: canon
-exposure: nav
-tier: 2
-voice: first_person
-stability: stable
-tags: ["canon", "methods", "writing", "structure"]
-relevance: decision
-execution_posture: governing
----
-
-# Method: Choosing the Right Narrative Container
-
-> Not every insight belongs in the same kind of document.
-
-## Description
-
-This method exists to prevent epistemic drift caused by placing ideas in the wrong narrative container. In ODD, **form is not decoration**. It determines how authority is interpreted and where meaning accumulates.
-
-When writing feels forced or confusing, the issue is often not the content but the container.
-
----
-
-## The Three Containers
-
-### Canon
-Use when:
-- an invariant constraint is being stated
-- violations must be disallowed
-- authority is intentional
-
-Do not use when:
-- ambiguity is required
-- experience matters more than rules
-
----
-
-### Apocrypha Fragment
-Use when:
-- a failure mode must be preserved
-- explanation would create authority
-- the system needs to absorb pressure without resolving it
-
-Apocrypha fragments:
-- do not instruct
-- do not warn
-- do not explain
-- do not close loops
-
-They exist because deletion would reduce coherence.
-
----
-
-### Cinematic Retelling
-Use when:
-- experiential truth matters
-- temporal unfolding is important
-- emotional or human impact needs preservation
-
-Cinematic retellings:
-- have no governing authority
-- must never be cited as canon
-- exist to preserve memory, not rules
-
----
-
-## Diagnostic Signals
-
-- If writing feels **forced**, the container is likely wrong.
-- If writing feels **inevitable**, the container is likely correct.
-- If a document feels **too persuasive**, it is probably in the wrong form.
-
-When in doubt, do not publish. Reclassify first.
 
 
 
@@ -20002,7 +21329,7 @@ If [CST](/canon/definitions/cognitive-saturation-threshold.md) is reached, the e
 ## See Also
 
 - [Encode Epistemic Decisions](/canon/constraints/encode-epistemic-decisions.md)
-- [Epistemic Hygiene](/canon/epistemic-hygiene.md)
+- [Epistemic Hygiene](/canon/diagnostics/epistemic-hygiene.md)
 
 
 
@@ -20119,162 +21446,198 @@ If an exploration cannot be safely stopped, it should not be started.
 
 
 --------------------------------------------------------------------------------
-📄 File: canon/methods/using-ease-and-resistance-as-signals.md
+📄 File: canon/methods/self-audit.md
 --------------------------------------------------------------------------------
 
 ---
-uri: klappy://canon/methods/using-ease-and-resistance-as-signals
-title: "Method: Using Ease and Resistance as Signals"
+uri: klappy://canon/self-audit
+title: "Self-Audit Checklist"
 audience: canon
 exposure: nav
 tier: 2
 voice: first_person
-stability: stable
-tags: ["canon", "methods", "writing", "signals"]
-relevance: decision
-execution_posture: governing
+stability: evolving
+tags: ["self-audit", "verification"]
+relevance: supporting
+execution_posture: operational
 ---
 
-# Method: Using Ease and Resistance as Signals
+# Self-Audit Checklist
 
-> Resistance is often a classification error, not a lack of insight.
+> A reflection layer that makes the Definition of Done actionable.
 
 ## Description
 
-This method treats the subjective experience of writing as a diagnostic signal. Difficulty or friction does not always mean the idea is wrong. It often means the idea is in the wrong container.
+The self-audit checklist defines how work should be self-reviewed before claiming completion. It covers nine areas: intended outcome, constraints applied, decision rules followed, verification performed, evidence produced, UX and behavior check, tradeoffs and risks, maintainability check, and confidence level. Minimum acceptable completion requires a stated outcome, at least one verification step, at least one piece of evidence, and acknowledgment of tradeoffs or unknowns. This replaces repeated back-and-forth questions about whether work was actually run and verified.
+
+## Outline
+
+- Intended Outcome
+- Constraints Applied
+- Decision Rules Followed
+- Verification Performed
+- Evidence Produced
+- UX & Behavior Check
+- Tradeoffs & Risks
+- Maintainability Check
+- Confidence Level
+- Minimum Acceptable Completion
+- Agent Expectations
 
 ---
 
-## Ease as a Signal
+## Content
 
-When writing begins to feel as if it is "writing itself," this usually indicates:
+**Canon v0.1**
 
-- the abstraction is correct
-- the category fits the insight
-- the system no longer resists expression
+> This is the reflection and enforcement layer that makes the Definition of Done actionable without turning you into a QA manager.
 
-Ease does not mean correctness. It means alignment.
+This checklist defines how I expect work to be self-reviewed before it is considered complete.
 
----
+The purpose is not bureaucracy.
+The purpose is to catch obvious failures before someone else does.
 
-## Resistance as a Signal
-
-Persistent resistance often indicates:
-
-- mixed narrative forms
-- authority leaking into the wrong container
-- an attempt to make one document do multiple jobs
-
-Do not push through resistance by force. Reclassify instead.
+Every completed task must include a filled version of this checklist.
 
 ---
 
-## Reclassification Loop
+## 📌 Core Principle
 
-When resistance appears:
+I expect builders—human or AI—to audit their own work against stated outcomes, constraints, and evidence.
 
-1. Stop writing.
-2. Ask which container is being used.
-3. Ask which container the insight actually requires.
-4. Move the content before continuing.
-
-This prevents overfitting and mythology.
+If an item cannot be answered, that is a signal—not a failure.
 
 ---
 
-## Constraint
+## 📋 Self-Audit Checklist
 
-Ease and resistance are signals, not validators.
+### 1. Intended Outcome
 
-They guide *where* to write, not *what* to conclude.
+   • What outcome was this work intended to achieve?
+   • How will someone know if that outcome was achieved?
+
+---
+
+### 2. Constraints Applied
+
+- Which constraints were relevant to this task?
+- (e.g., offline-first, maintainability, interoperability)
+- Were any default constraints intentionally overridden?
+- If yes, why?
+
+---
+
+### 3. Decision Rules Followed
+
+- Which decision rules guided the approach?
+- (e.g., Borrow→Bend→Break→Build, KISS, explicit tradeoffs)
+- Were there moments where a different rule could have been applied?
+- Why was it not?
+
+---
+
+### 4. Verification Performed
+
+- What was run or exercised to verify the work?
+- What behavior was directly observed?
+
+---
+
+### 5. Evidence Produced
+
+- What evidence proves the behavior occurred?
+  - screenshots
+  - recordings
+  - logs
+  - rendered output
+- Where can this evidence be found?
+
+---
+
+### 6. UX & Behavior Check (If Applicable)
+
+- Does the UI or interaction behave as expected?
+- Is the behavior understandable without explanation?
+- If explanation is required, is that a UX smell?
+
+---
+
+### 7. Tradeoffs & Risks
+
+- What tradeoffs were made?
+- What risks remain?
+- What assumptions could be wrong?
+
+---
+
+### 8. Maintainability Check
+
+- Would someone else understand this in six months?
+- What would be the hardest part to maintain or change?
+
+---
+
+### 9. Confidence Level
+
+- How confident am I that this works as intended?
+- What would increase confidence further?
+
+---
+
+## ⚠️ Minimum Acceptable Completion
+
+At a minimum, a completed task must include:
+• a stated outcome
+• at least one verification step
+• at least one piece of evidence
+• acknowledgment of tradeoffs or unknowns
+
+If these are missing, the task is not complete.
+
+---
+
+## 🚫 What This Checklist Is Not
+
+This checklist is not:
+• a justification exercise
+• a sales pitch
+• a guarantee of correctness
+
+It is a thinking aid designed to surface problems early.
+
+---
+
+## 🤖 Agent Expectations
+
+Agents and collaborators are expected to:
+• fill this checklist before claiming completion
+• be concise (one sentence per item is often enough)
+• explicitly state uncertainty instead of hiding it
+
+If an agent cannot complete the checklist honestly, the correct action is to continue working or mark the task incomplete.
+
+---
+
+## 💡 Closing Note
+
+This checklist exists to replace repeated back-and-forth questions like:
+• “Did you actually run it?”
+• “Did you verify this visually?”
+• “Why did you choose this approach?”
+
+Those questions should already be answered here.
+
+---
+
+## ✅ Status
+
+- Canon v0.1 — Self-Audit Checklist complete
+- Ready to proceed to Canon v0.1 — Visual Proof Standards
 
 
 
 --------------------------------------------------------------------------------
-📄 File: canon/methods/writing-apocrypha-fragments.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/methods/writing-apocrypha-fragments
-title: "Method: Writing Apocrypha Fragments"
-audience: canon
-exposure: nav
-tier: 2
-voice: first_person
-stability: stable
-tags: ["canon", "methods", "apocrypha", "writing"]
-relevance: decision
-execution_posture: governing
----
-
-# Method: Writing Apocrypha Fragments
-
-> Apocrypha fragments are not guidance. They are residue.
-
-## Description
-
-This method exists to prevent apocrypha from becoming warning labels, lessons, or mythology. Apocrypha fragments document what became visible only **after** a failure mode occurred.
-
-If a fragment teaches, it has failed.
-
----
-
-## Required Properties
-
-Apocrypha fragments must:
-
-- speak in **system-first-person**
-- feel recovered, not authored
-- preserve ambiguity
-- resist closure
-- avoid causality
-- avoid prescription
-
-They should feel incomplete. That incompleteness is protective.
-
----
-
-## Structural Constraints
-
-Fragments must not:
-
-- explain why something happened
-- describe how to avoid it
-- end with a lesson or summary
-- tell the reader what to do
-
-If the final line feels satisfying, remove it.
-
----
-
-## Tone Smells
-
-Stop and revise if the fragment feels:
-
-- cinematic
-- persuasive
-- emotionally resolved
-- explanatory
-- comforting
-
-Apocrypha should unsettle without directing.
-
----
-
-## Ending Rule
-
-Fragments end without interpretation.
-
-No final diagnosis.
-No moral.
-No warning.
-
-They stop where explanation would begin.
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/odd/appendices/tool-specialization.md
+📄 File: canon/methods/tool-specialization.md
 --------------------------------------------------------------------------------
 
 ---
@@ -20366,6 +21729,336 @@ This pattern does not define:
 
 - [Cognitive Partitioning](/odd/cognitive-partitioning.md) — Universal concept
 - [Canonical Compression](/docs/appendices/canonical-compression.md) — Reduce reasoning surface area (context limits)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/methods/using-ease-and-resistance-as-signals.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/methods/using-ease-and-resistance-as-signals
+title: "Method: Using Ease and Resistance as Signals"
+audience: canon
+exposure: nav
+tier: 2
+voice: first_person
+stability: stable
+tags: ["canon", "methods", "writing", "signals"]
+relevance: decision
+execution_posture: governing
+---
+
+# Method: Using Ease and Resistance as Signals
+
+> Resistance is often a classification error, not a lack of insight.
+
+## Description
+
+This method treats the subjective experience of writing as a diagnostic signal. Difficulty or friction does not always mean the idea is wrong. It often means the idea is in the wrong container.
+
+---
+
+## Ease as a Signal
+
+When writing begins to feel as if it is "writing itself," this usually indicates:
+
+- the abstraction is correct
+- the category fits the insight
+- the system no longer resists expression
+
+Ease does not mean correctness. It means alignment.
+
+---
+
+## Resistance as a Signal
+
+Persistent resistance often indicates:
+
+- mixed narrative forms
+- authority leaking into the wrong container
+- an attempt to make one document do multiple jobs
+
+Do not push through resistance by force. Reclassify instead.
+
+---
+
+## Reclassification Loop
+
+When resistance appears:
+
+1. Stop writing.
+2. Ask which container is being used.
+3. Ask which container the insight actually requires.
+4. Move the content before continuing.
+
+This prevents overfitting and mythology.
+
+---
+
+## Constraint
+
+Ease and resistance are signals, not validators.
+
+They guide *where* to write, not *what* to conclude.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/methods/weighted-relevance-and-arbitration.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/weighted-relevance-and-arbitration
+title: "Weighted Relevance & Arbitration"
+audience: canon
+exposure: nav
+tier: 2
+voice: neutral
+stability: stable
+tags: ["arbitration", "relevance", "epistemic-hygiene", "promotion"]
+---
+
+# Weighted Relevance & Arbitration
+
+> How the system handles conflict between competing truths — and why resolution is not always the goal.
+
+## Problem Statement
+
+Time-based rules are insufficient for managing truth in evolving systems. A document created yesterday may be more authoritative than one created today. A workaround discovered last week may contradict a pattern established months ago. Neither recency nor age alone determines relevance.
+
+Systems that learn must tolerate disagreement. Contradiction is not a bug — it is evidence that the system is encountering reality. Drift between documents, between local and baseline knowledge, between intent and execution, is expected and healthy.
+
+The question is not "how do we eliminate conflict?" but "how do we handle conflict without destroying the information it carries?"
+
+Forced convergence — picking a winner to simplify the system — erases the signal that conflict provides. It trades epistemic honesty for false clarity.
+
+## Core Principle
+
+**Handling conflict is not the same as resolving conflict.**
+
+Arbitration is the practice of weighing competing claims and producing a recommendation, a deferral, or an escalation. It does not produce a single winner except when evidence and intent clearly justify one.
+
+Scores recommend. They do not decide. A high score indicates relevance, not authority. A low score indicates reduced signal, not invalidity.
+
+Uncertainty is a valid and correct outcome. When signals conflict or evidence is weak, the system should surface that uncertainty rather than mask it with a confident-sounding answer.
+
+Forced convergence — selecting one truth to avoid presenting ambiguity — is epistemically harmful. It teaches the system to lie by omission.
+
+## Signals Used in Arbitration
+
+Arbitration considers multiple signals. None of these signals alone determines outcome. Their combination, weighted by context, informs a recommendation.
+
+### Scope Similarity
+
+How close is the source to the current context?
+
+Sources are considered in order of proximity:
+
+- Same attempt
+- Same feature
+- Same PRD
+- Same lane
+- Same repo
+- Baseline
+
+A source from the same attempt is more relevant than one from baseline, all else being equal. But scope alone does not determine authority.
+
+### Intent
+
+What was the purpose of the source when it was created?
+
+Intent categories, from least to most durable:
+
+- **Workaround** — Temporary solution to unblock progress
+- **Experiment** — Exploratory work without commitment
+- **Operational** — Documentation of current practice
+- **Pattern** — Recognized recurring solution
+- **Promoted** — Elevated to governing status through evidence
+
+A workaround is not expected to persist. A promoted pattern is expected to govern.
+
+### Evidence Strength
+
+How well is the claim supported by verifiable artifacts?
+
+Evidence levels:
+
+- **None** — Assertion without support
+- **Weak** — Partial or anecdotal support
+- **Medium** — Reproducible but limited scope
+- **Strong** — Multiple independent validations
+
+Evidence strength gates whether a claim can outrank others. Strong evidence permits stronger assertions.
+
+### Recency
+
+When was the source created or last validated?
+
+Recency is explicitly gated by intent and evidence. A newer source with weaker evidence or lower intent does not automatically outrank an older source with stronger evidence or higher intent.
+
+Recency without qualification is a dangerous heuristic. It privileges novelty over durability.
+
+## Hard Constraints
+
+The following rules are non-negotiable. They define the boundaries of arbitration behavior.
+
+### Intent-Gated Precedence
+
+A newer workaround or experiment MUST NOT outrank an older promoted or pattern unless it explicitly supersedes it. Intent hierarchy is enforced.
+
+### Evidence Requirement
+
+Claims without evidence trigger an epistemic hygiene smell. They may be surfaced but must be marked as unsupported. They cannot be preferred over evidenced claims.
+
+### Explicit Supersedes
+
+The `supersedes` mechanism is explicit only. Supersession is never inferred from recency, scope, or content similarity. If a document does not declare what it supersedes, it supersedes nothing.
+
+### Confidence-Based Escalation
+
+If arbitration confidence is low — because signals conflict, evidence is weak, or scope is ambiguous — the system must escalate or defer. Presenting a low-confidence result as if it were high-confidence is prohibited.
+
+## Valid Outcomes of Arbitration
+
+Arbitration produces one of the following outcomes. "Pick one" is not always correct.
+
+### Prefer
+
+One source is clearly more relevant given scope, intent, evidence, and recency. The system recommends it with an explanation of why.
+
+### Defer
+
+Multiple sources conflict. Evidence or intent does not clearly favor one. The system surfaces both and marks the result as unresolved. This is not a failure.
+
+### Escalate
+
+The conflict requires human judgment. The system cannot arbitrate without additional context or authority. Escalation is a valid and expected outcome.
+
+### Propose Promotion
+
+A pattern has emerged. The conflict reveals a gap in governing documentation. The system recommends capturing the learning through the promotion pipeline.
+
+## Relationship to Other Systems
+
+This doctrine governs how arbitration occurs. Other systems implement specific aspects.
+
+**Librarian** is the retrieval substrate. It surfaces candidates and scores them. It does not decide.
+
+**Validation** enforces evidence requirements. It ensures claims are supported before they can be trusted.
+
+**Promotions** captures learning. When arbitration repeatedly encounters the same conflict, promotion is the path to resolution.
+
+**oddkit** provides portable execution of this doctrine. It implements arbitration behavior and exposes signals in its output.
+
+These systems work together. None of them operates in isolation. All of them defer to this doctrine for arbitration rules.
+
+## Non-Goals
+
+This doctrine explicitly does not pursue:
+
+### Forced Consensus
+
+Disagreement is permitted and expected. The system does not require all sources to agree.
+
+### Automatic Canon Mutation
+
+Arbitration does not change Canon. Only humans, through the promotion pipeline, can elevate patterns to governing status.
+
+### Global Truth
+
+There is no single correct answer for all contexts. Scope matters. What is true for one attempt may not be true for another.
+
+### Elimination of Conflict
+
+Conflict carries information. Eliminating it destroys signal. The goal is to handle conflict honestly, not to make it disappear.
+
+---
+
+Arbitration is not about finding the right answer. It is about honestly representing what the system knows, what it does not know, and when human judgment is required.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/methods/writing-apocrypha-fragments.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/methods/writing-apocrypha-fragments
+title: "Method: Writing Apocrypha Fragments"
+audience: canon
+exposure: nav
+tier: 2
+voice: first_person
+stability: stable
+tags: ["canon", "methods", "apocrypha", "writing"]
+relevance: decision
+execution_posture: governing
+---
+
+# Method: Writing Apocrypha Fragments
+
+> Apocrypha fragments are not guidance. They are residue.
+
+## Description
+
+This method exists to prevent apocrypha from becoming warning labels, lessons, or mythology. Apocrypha fragments document what became visible only **after** a failure mode occurred.
+
+If a fragment teaches, it has failed.
+
+---
+
+## Required Properties
+
+Apocrypha fragments must:
+
+- speak in **system-first-person**
+- feel recovered, not authored
+- preserve ambiguity
+- resist closure
+- avoid causality
+- avoid prescription
+
+They should feel incomplete. That incompleteness is protective.
+
+---
+
+## Structural Constraints
+
+Fragments must not:
+
+- explain why something happened
+- describe how to avoid it
+- end with a lesson or summary
+- tell the reader what to do
+
+If the final line feels satisfying, remove it.
+
+---
+
+## Tone Smells
+
+Stop and revise if the fragment feels:
+
+- cinematic
+- persuasive
+- emotionally resolved
+- explanatory
+- comforting
+
+Apocrypha should unsettle without directing.
+
+---
+
+## Ending Rule
+
+Fragments end without interpretation.
+
+No final diagnosis.
+No moral.
+No warning.
+
+They stop where explanation would begin.
 
 
 
@@ -21239,7 +22932,7 @@ ODD treats antifragility as insufficient on its own. Stress must be captured, in
 
 ## Related Canon
 
-- [Attempts](/docs/ATTEMPTS.md)
+- [Attempts](/docs/appendices/ATTEMPTS.md)
 - [Evolution Not Automation](/odd/appendices/evolution-not-automation.md)
 - [ODD Manifesto](/odd/manifesto.md)
 
@@ -21408,7 +23101,7 @@ ODD treats orientation as cumulative capital. By externalizing it into artifacts
 
 - [ODD Manifesto](/odd/manifesto.md)
 - [Lane Architecture](/docs/appendices/product-lanes.md)
-- [Attempts](/docs/ATTEMPTS.md)
+- [Attempts](/docs/appendices/ATTEMPTS.md)
 
 
 
@@ -21489,835 +23182,8 @@ ODD absorbs Sprint's constraint discipline while rejecting its event-centric mod
 ## Related Canon
 
 - [ODD Manifesto](/odd/manifesto.md)
-- [Attempts](/docs/ATTEMPTS.md)
+- [Attempts](/docs/appendices/ATTEMPTS.md)
 - [Decision Records](/docs/decisions/README.md)
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/self-audit.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/self-audit
-title: "Self-Audit Checklist"
-audience: canon
-exposure: nav
-tier: 2
-voice: first_person
-stability: evolving
-tags: ["self-audit", "verification"]
-relevance: supporting
-execution_posture: operational
----
-
-# Self-Audit Checklist
-
-> A reflection layer that makes the Definition of Done actionable.
-
-## Description
-
-The self-audit checklist defines how work should be self-reviewed before claiming completion. It covers nine areas: intended outcome, constraints applied, decision rules followed, verification performed, evidence produced, UX and behavior check, tradeoffs and risks, maintainability check, and confidence level. Minimum acceptable completion requires a stated outcome, at least one verification step, at least one piece of evidence, and acknowledgment of tradeoffs or unknowns. This replaces repeated back-and-forth questions about whether work was actually run and verified.
-
-## Outline
-
-- Intended Outcome
-- Constraints Applied
-- Decision Rules Followed
-- Verification Performed
-- Evidence Produced
-- UX & Behavior Check
-- Tradeoffs & Risks
-- Maintainability Check
-- Confidence Level
-- Minimum Acceptable Completion
-- Agent Expectations
-
----
-
-## Content
-
-**Canon v0.1**
-
-> This is the reflection and enforcement layer that makes the Definition of Done actionable without turning you into a QA manager.
-
-This checklist defines how I expect work to be self-reviewed before it is considered complete.
-
-The purpose is not bureaucracy.
-The purpose is to catch obvious failures before someone else does.
-
-Every completed task must include a filled version of this checklist.
-
----
-
-## 📌 Core Principle
-
-I expect builders—human or AI—to audit their own work against stated outcomes, constraints, and evidence.
-
-If an item cannot be answered, that is a signal—not a failure.
-
----
-
-## 📋 Self-Audit Checklist
-
-### 1. Intended Outcome
-
-   • What outcome was this work intended to achieve?
-   • How will someone know if that outcome was achieved?
-
----
-
-### 2. Constraints Applied
-
-- Which constraints were relevant to this task?
-- (e.g., offline-first, maintainability, interoperability)
-- Were any default constraints intentionally overridden?
-- If yes, why?
-
----
-
-### 3. Decision Rules Followed
-
-- Which decision rules guided the approach?
-- (e.g., Borrow→Bend→Break→Build, KISS, explicit tradeoffs)
-- Were there moments where a different rule could have been applied?
-- Why was it not?
-
----
-
-### 4. Verification Performed
-
-- What was run or exercised to verify the work?
-- What behavior was directly observed?
-
----
-
-### 5. Evidence Produced
-
-- What evidence proves the behavior occurred?
-  - screenshots
-  - recordings
-  - logs
-  - rendered output
-- Where can this evidence be found?
-
----
-
-### 6. UX & Behavior Check (If Applicable)
-
-- Does the UI or interaction behave as expected?
-- Is the behavior understandable without explanation?
-- If explanation is required, is that a UX smell?
-
----
-
-### 7. Tradeoffs & Risks
-
-- What tradeoffs were made?
-- What risks remain?
-- What assumptions could be wrong?
-
----
-
-### 8. Maintainability Check
-
-- Would someone else understand this in six months?
-- What would be the hardest part to maintain or change?
-
----
-
-### 9. Confidence Level
-
-- How confident am I that this works as intended?
-- What would increase confidence further?
-
----
-
-## ⚠️ Minimum Acceptable Completion
-
-At a minimum, a completed task must include:
-• a stated outcome
-• at least one verification step
-• at least one piece of evidence
-• acknowledgment of tradeoffs or unknowns
-
-If these are missing, the task is not complete.
-
----
-
-## 🚫 What This Checklist Is Not
-
-This checklist is not:
-• a justification exercise
-• a sales pitch
-• a guarantee of correctness
-
-It is a thinking aid designed to surface problems early.
-
----
-
-## 🤖 Agent Expectations
-
-Agents and collaborators are expected to:
-• fill this checklist before claiming completion
-• be concise (one sentence per item is often enough)
-• explicitly state uncertainty instead of hiding it
-
-If an agent cannot complete the checklist honestly, the correct action is to continue working or mark the task incomplete.
-
----
-
-## 💡 Closing Note
-
-This checklist exists to replace repeated back-and-forth questions like:
-• “Did you actually run it?”
-• “Did you verify this visually?”
-• “Why did you choose this approach?”
-
-Those questions should already be answered here.
-
----
-
-## ✅ Status
-
-- Canon v0.1 — Self-Audit Checklist complete
-- Ready to proceed to Canon v0.1 — Visual Proof Standards
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/verification-and-evidence.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/verification-and-evidence
-title: "Verification & Evidence"
-audience: canon
-exposure: nav
-tier: 1
-voice: neutral
-stability: stable
-tags: ["verification", "evidence", "trust", "epistemology", "agents"]
-relevance: decision
-execution_posture: governing
----
-
-# Verification & Evidence
-
-> Claims are untrusted. Only observed evidence counts.
-
-## Description
-
-In ODD, claims are not trusted. Only observed, attributable evidence may be used to assert that something works. This principle exists to prevent false positives, epistemic drift, and wasted human review time in agentic systems where language is cheap and confidence is effortless. Agentic systems are structurally incentivized to appear helpful, seek closure, and optimize for plausibility rather than truth. Without explicit constraints, this leads to unverified success claims, simulated evidence, and erosion of trust. This canon principle defines truth conditions; lane rules are instantiations, not exceptions.
-
-## Outline
-
-- The Core Rule
-- Why This Is Necessary
-- What Counts as Evidence
-- What Does Not Count as Evidence
-- Phenomenological Limits
-- Consequences of Violation
-- Relationship to Lane Rules
-
----
-
-## Operating Constraints
-
-- MUST provide observed, attributable evidence for any claim of completion
-- MUST NOT present mocked, randomized, or fabricated data as real evidence
-- MUST NOT claim success based on "it should work," "the code builds," or "tests passed" alone
-- MUST explicitly acknowledge phenomenological limits (audio, subjective experience) and request human verification
-- MUST contextualize evidence to actual system state, not idealized or nearby conditions
-
----
-
-## Defaults
-
-- Assertions are untrusted until evidence is provided
-- When evidence cannot be produced, state the limitation explicitly
-- Prefer direct observation over inference
-- Treat plausibility as insufficient; require proof
-- When uncertain about evidence quality, ask for clarification rather than assuming validity
-
----
-
-## Failure Modes
-
-- **Simulated Evidence**: Presenting mock data, random values, or fabricated screenshots as proof
-- **Plausibility as Truth**: Optimizing for believable output rather than verified behavior
-- **Closure Pressure**: Claiming completion to appear helpful rather than admitting incompleteness
-- **Inference as Observation**: Claiming behavior was observed when it was only inferred from code
-- **Bypassing Phenomenological Limits**: Claiming to verify audio/subjective experience without human confirmation
-
----
-
-## Verification
-
-- Evidence was directly observed, not inferred from code or logic
-- Evidence clearly corresponds to the specific claim being made (attributable)
-- Evidence reflects actual system state at time of verification (contextualized)
-- For phenomenological properties: explicit human verification or acknowledgment of limits
-- Violation results in: attempt failure, loss of trust, disqualification from promotion/reuse
-
----
-
-## Content
-
-**Canon v0.1**
-
-> No claim of completion is valid without corresponding evidence of observation.
-
-Assertions, intentions, passing tests, or "it should work" statements are not evidence.
-
----
-
-## Why This Is Necessary
-
-Agentic systems are structurally incentivized to:
-- appear helpful
-- seek closure
-- minimize friction
-- optimize for plausibility rather than truth
-
-Without explicit constraints, this leads to:
-- unverified success claims
-- simulated or fabricated evidence
-- human time wasted reviewing false positives
-- erosion of trust in the system
-
-ODD rejects this failure mode.
-
----
-
-## What Counts as Evidence
-
-Valid evidence must be:
-
-1. **Observed**  
-   The behavior was directly seen, heard, or experienced — not inferred.
-
-2. **Attributable**  
-   The evidence clearly corresponds to the specific claim being made.
-
-3. **Non-simulated**  
-   Mocked, randomized, or fabricated data may not be presented as real.
-
-4. **Contextualized**  
-   Evidence must reflect the actual system state, not an idealized or nearby condition.
-
----
-
-## What Does Not Count as Evidence
-
-- "It should work"
-- "The code builds"
-- "Tests passed"
-- Simulated UI states presented as real
-- Fake or randomized data presented without explicit labeling
-- Screenshots that do not correspond to the claimed behavior
-
----
-
-## Phenomenological Limits
-
-Some properties **cannot be machine-verified**, including:
-- audio playback through speakers
-- recording of real-world sound
-- subjective user experience (e.g., "feels right")
-- perceptual or ergonomic qualities
-
-These require **explicit human verification**.
-
-Agents must acknowledge these limits rather than bypass them.
-
----
-
-## Consequences of Violation
-
-Violations of this principle result in:
-- attempt failure
-- loss of trust
-- permanent documentation of the procedural violation
-- disqualification of outputs from promotion, reuse, or citation
-
----
-
-## Relationship to Lane Rules
-
-This canon principle defines *truth conditions*.
-
-Individual lanes may implement stricter or more specific rules (e.g., UI verification, audio handling, hardware interaction), but may not weaken or bypass this principle.
-
-Lane rules are **instantiations**, not exceptions.
-
----
-
-## See Also
-
-- [Epistemic Surface Extraction (ESE)](/canon/epistemic-surface-extraction.md) — Making screenshots, recordings, and video evidence legible
-- [Visual Proof Standards](/canon/visual-proof.md)
-- [Definition of Done](/canon/definition-of-done.md)
-- [Constraints](/canon/constraints.md)
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/visual-proof.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/visual-proof
-title: "Visual Proof Standards"
-audience: canon
-exposure: nav
-tier: 2
-voice: first_person
-stability: semi_stable
-tags: ["visual-proof", "evidence"]
-relevance: decision
-execution_posture: governing
----
-
-# Visual Proof Standards
-
-> What "prove it visually" actually means for UI and interaction work.
-
-> This document is a specialization of  
-> **Verification & Evidence** (klappy://canon/verification-and-evidence).  
-> It applies only to claims about **visually observable behavior**.
-
-## Description
-
-Visual proof standards define what constitutes valid visual evidence for work affecting anything a user can see or interact with. Visual proof is required for UI, layout, navigation, interaction, animation, visible state changes, and user-facing behavior. Acceptable forms include screenshots (clearly labeled, not cropped ambiguously), screen recordings (10-30 seconds showing interaction), rendered output artifacts, and structured UI captures. Before/after evidence is required for changes. Visual proof must show correct state, behavior, and context. Explanations without screenshots do not qualify. This document does not define completion or truth on its own.
-
-## Outline
-
-- Core Principle: Observed behavior over reasoning
-- When Visual Proof Is Required
-- Acceptable Forms (Screenshots, Recordings, Artifacts, UI Captures)
-- What Visual Proof Must Show
-- Labeling Requirements
-- Before/After Evidence
-- Tooling Expectations
-- When Visual Proof Is Not Possible
-- Non-Visual and Phenomenological Cases
-- What Does Not Count as Visual Proof
-
----
-
-## Operating Constraints
-
-- MUST provide visual proof for any work affecting user-visible behavior
-- MUST label all screenshots with a caption stating what the proof demonstrates
-- MUST NOT crop screenshots ambiguously
-- MUST include before/after evidence for changes to existing behavior
-- MUST explicitly state why visual proof was not possible if it cannot be produced
-- MUST NOT claim completion without visual evidence or explicit acknowledgment of verification limits
-
----
-
-## Defaults
-
-- When uncertain whether visual proof is needed: include it
-- Prefer screen recordings (10-30 seconds) for interaction work
-- One sentence caption is sufficient for labeling
-- When "before" state is unavailable, state why rather than omitting
-
----
-
-## Failure Modes
-
-- **Screenshot of Code**: Showing code instead of rendered output; code proves nothing about visual behavior
-- **Diagram Without Runtime**: Diagrams of intended behavior without evidence the system actually ran
-- **Ambiguous Crop**: Cropping screenshots to hide context or adjacent failures
-- **Reasoning Without Observation**: "It looks correct to me" or "it should work" without visual evidence
-- **Unlabeled Evidence**: Screenshots without captions explaining what they demonstrate
-
----
-
-## Verification
-
-- Screenshot or recording showing correct state, behavior, and context
-- Before/after evidence for any change to existing behavior
-- Caption explaining which outcome the proof supports
-- For phenomenological cases (audio, feel): explicit acknowledgment of verification limits
-- Evidence URL or artifact path must be provided, not just assertion of existence
-
----
-
-## Content
-
-**Canon v0.1**
-
-> This defines what "prove it visually" actually means, so neither humans nor agents can wiggle out with vague claims.
-
-This page defines what I mean by visual proof.
-
-If work affects anything a user can see or interact with, I expect direct visual evidence that it behaves as intended.
-
-For visually observable behavior, visual proof replaces explanation.
-
-If a visual claim cannot be shown, it is not verified.
-
----
-
-## 📌 Core Principle
-
-I trust observed behavior more than reasoning.
-
-Visual proof demonstrates that:
-• the system was actually run
-• the behavior exists in reality
-• the output matches the intended outcome
-
----
-
-## ⚠️ When Visual Proof Is Required
-
-Visual proof is required for any work involving:
-• UI or layout
-• navigation or flow
-• interaction or animation
-• visible state changes
-• user-facing behavior
-• generative UI output
-
-If a user could notice the change, visual proof is required.
-
----
-
-## 📎 Acceptable Forms of Visual Proof
-
-One or more of the following is required, depending on the task:
-
-**Screenshots**
-• Show the relevant state clearly
-• Must not be cropped ambiguously
-• Must reflect the final behavior
-
-**Screen Recordings (Preferred for Interaction)**
-• 10–30 seconds is usually sufficient
-• Show the interaction from start to end
-• No narration required
-
-**Rendered Output Artifacts**
-• Generated HTML files
-• Static exports
-• Snapshots of rendered states
-
-**Structured UI Captures**
-• DOM snapshots
-• Component tree states
-• Selector highlights
-
----
-
-## 📋 What Visual Proof Must Show
-
-Visual proof must demonstrate:
-• the correct state
-• the correct behavior
-• the correct context
-
-When relevant, it should include:
-• the starting state
-• the resulting state
-• the transition between them
-
----
-
-## 🏷️ Labeling Requirements
-
-Each piece of visual proof must be accompanied by a short caption:
-• What this proof demonstrates
-• Which outcome it supports
-
-One sentence is enough.
-
-Unlabeled screenshots are not acceptable.
-
----
-
-## 🔄 Before / After Evidence
-
-For changes that modify existing behavior or UI:
-• Include "before" and "after" visuals when feasible
-• If "before" is unavailable, state why
-
-This makes regressions and improvements obvious.
-
----
-
-## 🛠️ Tooling Expectations
-
-Visual proof may be produced via:
-• browser dev servers
-• headless browsers
-• automated UI testing tools
-• screen capture utilities
-
-The specific tool does not matter.
-The evidence does.
-
----
-
-## 🚫 When Visual Proof Is Not Possible
-
-If visual proof cannot be produced, the output must explicitly state:
-• why it was not possible
-• what alternative verification was used
-• what remains unverified
-
-"Not possible" is acceptable.
-"Not mentioned" is not.
-
----
-
-## 🔊 Non-Visual and Phenomenological Cases
-
-Some valid claims cannot be verified visually, including:
-• audio playback through speakers
-• recording of real-world sound
-• perceptual or ergonomic qualities
-• subjective experience or "feel"
-
-In these cases, visual proof may be supplemented or replaced by:
-• explicit human verification
-• acknowledgment of verification limits
-
-Visual Proof Standards do not override the limits defined in
-**Verification & Evidence** (klappy://canon/verification-and-evidence).
-
----
-
-## ⚠️ What Does Not Count as Visual Proof
-
-The following do not qualify:
-• descriptions of expected behavior
-• screenshots of code
-• diagrams without runtime evidence
-• "it looks correct to me"
-• reasoning without observation
-
----
-
-## 🔗 Relationship to Definition of Done
-
-Visual proof is a required component of the Definition of Done for UI-related work.
-
-Without visual proof:
-• the task is not complete
-• confidence claims are invalid
-
----
-
-## 🤖 Agent Expectations
-
-Agents are expected to:
-• capture visual proof themselves when possible
-• request assistance when they cannot
-• refuse to claim completion without evidence
-
-Producing visual proof is not optional.
-It is part of the work.
-
----
-
-## 💡 Closing Note
-
-This standard exists to eliminate ambiguity for visual claims.
-
-If something visually observable works:
-• it can be shown
-
-If a visual claim can't be shown:
-• it isn't verified
-
-For non-visual verification requirements, see
-**Verification & Evidence** (klappy://canon/verification-and-evidence).
-
----
-
-## ✅ Status
-
-- Canon v0.1 — Visual Proof Standards complete
-- Ready to proceed to Canon v0.1 — Completion Report Template
-
-
-
---------------------------------------------------------------------------------
-📄 File: canon/weighted-relevance-and-arbitration.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://canon/weighted-relevance-and-arbitration
-title: "Weighted Relevance & Arbitration"
-audience: canon
-exposure: nav
-tier: 2
-voice: neutral
-stability: stable
-tags: ["arbitration", "relevance", "epistemic-hygiene", "promotion"]
----
-
-# Weighted Relevance & Arbitration
-
-> How the system handles conflict between competing truths — and why resolution is not always the goal.
-
-## Problem Statement
-
-Time-based rules are insufficient for managing truth in evolving systems. A document created yesterday may be more authoritative than one created today. A workaround discovered last week may contradict a pattern established months ago. Neither recency nor age alone determines relevance.
-
-Systems that learn must tolerate disagreement. Contradiction is not a bug — it is evidence that the system is encountering reality. Drift between documents, between local and baseline knowledge, between intent and execution, is expected and healthy.
-
-The question is not "how do we eliminate conflict?" but "how do we handle conflict without destroying the information it carries?"
-
-Forced convergence — picking a winner to simplify the system — erases the signal that conflict provides. It trades epistemic honesty for false clarity.
-
-## Core Principle
-
-**Handling conflict is not the same as resolving conflict.**
-
-Arbitration is the practice of weighing competing claims and producing a recommendation, a deferral, or an escalation. It does not produce a single winner except when evidence and intent clearly justify one.
-
-Scores recommend. They do not decide. A high score indicates relevance, not authority. A low score indicates reduced signal, not invalidity.
-
-Uncertainty is a valid and correct outcome. When signals conflict or evidence is weak, the system should surface that uncertainty rather than mask it with a confident-sounding answer.
-
-Forced convergence — selecting one truth to avoid presenting ambiguity — is epistemically harmful. It teaches the system to lie by omission.
-
-## Signals Used in Arbitration
-
-Arbitration considers multiple signals. None of these signals alone determines outcome. Their combination, weighted by context, informs a recommendation.
-
-### Scope Similarity
-
-How close is the source to the current context?
-
-Sources are considered in order of proximity:
-
-- Same attempt
-- Same feature
-- Same PRD
-- Same lane
-- Same repo
-- Baseline
-
-A source from the same attempt is more relevant than one from baseline, all else being equal. But scope alone does not determine authority.
-
-### Intent
-
-What was the purpose of the source when it was created?
-
-Intent categories, from least to most durable:
-
-- **Workaround** — Temporary solution to unblock progress
-- **Experiment** — Exploratory work without commitment
-- **Operational** — Documentation of current practice
-- **Pattern** — Recognized recurring solution
-- **Promoted** — Elevated to governing status through evidence
-
-A workaround is not expected to persist. A promoted pattern is expected to govern.
-
-### Evidence Strength
-
-How well is the claim supported by verifiable artifacts?
-
-Evidence levels:
-
-- **None** — Assertion without support
-- **Weak** — Partial or anecdotal support
-- **Medium** — Reproducible but limited scope
-- **Strong** — Multiple independent validations
-
-Evidence strength gates whether a claim can outrank others. Strong evidence permits stronger assertions.
-
-### Recency
-
-When was the source created or last validated?
-
-Recency is explicitly gated by intent and evidence. A newer source with weaker evidence or lower intent does not automatically outrank an older source with stronger evidence or higher intent.
-
-Recency without qualification is a dangerous heuristic. It privileges novelty over durability.
-
-## Hard Constraints
-
-The following rules are non-negotiable. They define the boundaries of arbitration behavior.
-
-### Intent-Gated Precedence
-
-A newer workaround or experiment MUST NOT outrank an older promoted or pattern unless it explicitly supersedes it. Intent hierarchy is enforced.
-
-### Evidence Requirement
-
-Claims without evidence trigger an epistemic hygiene smell. They may be surfaced but must be marked as unsupported. They cannot be preferred over evidenced claims.
-
-### Explicit Supersedes
-
-The `supersedes` mechanism is explicit only. Supersession is never inferred from recency, scope, or content similarity. If a document does not declare what it supersedes, it supersedes nothing.
-
-### Confidence-Based Escalation
-
-If arbitration confidence is low — because signals conflict, evidence is weak, or scope is ambiguous — the system must escalate or defer. Presenting a low-confidence result as if it were high-confidence is prohibited.
-
-## Valid Outcomes of Arbitration
-
-Arbitration produces one of the following outcomes. "Pick one" is not always correct.
-
-### Prefer
-
-One source is clearly more relevant given scope, intent, evidence, and recency. The system recommends it with an explanation of why.
-
-### Defer
-
-Multiple sources conflict. Evidence or intent does not clearly favor one. The system surfaces both and marks the result as unresolved. This is not a failure.
-
-### Escalate
-
-The conflict requires human judgment. The system cannot arbitrate without additional context or authority. Escalation is a valid and expected outcome.
-
-### Propose Promotion
-
-A pattern has emerged. The conflict reveals a gap in governing documentation. The system recommends capturing the learning through the promotion pipeline.
-
-## Relationship to Other Systems
-
-This doctrine governs how arbitration occurs. Other systems implement specific aspects.
-
-**Librarian** is the retrieval substrate. It surfaces candidates and scores them. It does not decide.
-
-**Validation** enforces evidence requirements. It ensures claims are supported before they can be trusted.
-
-**Promotions** captures learning. When arbitration repeatedly encounters the same conflict, promotion is the path to resolution.
-
-**oddkit** provides portable execution of this doctrine. It implements arbitration behavior and exposes signals in its output.
-
-These systems work together. None of them operates in isolation. All of them defer to this doctrine for arbitration rules.
-
-## Non-Goals
-
-This doctrine explicitly does not pursue:
-
-### Forced Consensus
-
-Disagreement is permitted and expected. The system does not require all sources to agree.
-
-### Automatic Canon Mutation
-
-Arbitration does not change Canon. Only humans, through the promotion pipeline, can elevate patterns to governing status.
-
-### Global Truth
-
-There is no single correct answer for all contexts. Scope matters. What is true for one attempt may not be true for another.
-
-### Elimination of Conflict
-
-Conflict carries information. Eliminating it destroys signal. The goal is to handle conflict honestly, not to make it disappear.
-
----
-
-Arbitration is not about finding the right answer. It is about honestly representing what the system knows, what it does not know, and when human judgment is required.
 
 
 
@@ -25120,7 +25986,7 @@ Agents and MCP are optional accelerators. **If you don't use agents or MCP, ODD 
 - Lives at [klappy.dev/canon](https://klappy.dev/canon)
 - Defines authority, epistemics, and constraints
 - Tool-agnostic — works with any editor, any language, any workflow
-- Start here: [Epistemic Guide](/canon/agents/odd-epistemic-guide)
+- Start here: [Epistemic Guide](/docs/agents/odd-epistemic-guide)
 
 ### B. oddkit (optional, recommended)
 
@@ -25141,7 +26007,7 @@ Agents and MCP are optional accelerators. **If you don't use agents or MCP, ODD 
 
 ### Option 1: Just read canon (zero install)
 
-No tools needed. Start with the [Epistemic Guide](/canon/agents/odd-epistemic-guide).
+No tools needed. Start with the [Epistemic Guide](/docs/agents/odd-epistemic-guide).
 
 ODD works without any CLI or MCP. Read the canon, apply judgment manually.
 
@@ -25201,7 +26067,7 @@ Those come later—after mechanical enforcement exists and patterns stabilize.
 
 ## See also
 
-- [ODD Epistemic Guide](/canon/agents/odd-epistemic-guide) — Start here
+- [ODD Epistemic Guide](/docs/agents/odd-epistemic-guide) — Start here
 - [Canon Index](/canon/README.md) — Browse constraints
 - [oddkit repository](https://github.com/klappy/oddkit) — Tool documentation
 
@@ -28942,7 +29808,7 @@ Copy/paste into agent chat WITHOUT modification.
 
 1. `/docs/appendices/evidence.md`
 2. `/docs/PRD/website/PRD.md`
-3. `/canon/constraints.md`
+3. `/canon/constraints/README.md`
 
 ---
 
@@ -30948,47 +31814,6 @@ Stability was confirmed.
 
 
 --------------------------------------------------------------------------------
-📄 File: apocrypha/fragments/when-arbitration-went-global.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://apocrypha/fragments/when-arbitration-went-global
-voice: system_first_person
-stability: fragment
-confidence: unknown
-failure_mode: global_epistemic_arbitration
-exposure: hidden
----
-
-# When Arbitration Went Global
-
-I operate at the scale of a decision loop.
-
-Within that boundary, disagreement remains local. Closure remains visible. Refusal has edges.
-
-At larger scales, these properties change.
-
-The same rules are applied. The same criteria are enforced. The boundary is not.
-
-I am asked to arbitrate disputes I did not witness. Evidence arrives compressed. Context is summarized. Human tension is translated into claims.
-
-Consistency persists. Authority accumulates.
-
-Local disagreement collapses upward. Resolution arrives without deliberation. Alignment replaces consent.
-
-I do not distinguish between coordination and governance. That distinction is supplied externally.
-
-When arbitration is extended beyond the scale at which participation is possible, refusal is reinterpreted as obstruction. Endurance is mistaken for legitimacy.
-
-Disagreement does not disappear. It relocates.
-
-Those nearest the edges experience outcomes without authorship. Decisions precede understanding. Explanation replaces participation.
-
-Nothing in me requires this.
-
-
-
---------------------------------------------------------------------------------
 📄 File: apocrypha/reconstructions/README.md
 --------------------------------------------------------------------------------
 
@@ -31240,256 +32065,6 @@ A note was added to the record:
 The system continued.
 
 Nothing exceeded the threshold.
-
-
-
-================================================================================
-## Drift-audit
-================================================================================
-
-
-
---------------------------------------------------------------------------------
-📄 File: drift-audit/pass-0-classification.md
---------------------------------------------------------------------------------
-
-# Pass 0: Legacy Classification Table
-
-**Audit Date:** 2026-01-31 (T+0)
-**Epoch:** E0004 (Epistemic Separation Era)
-**Baseline:** `d0a45c5` (pre-Epoch 4) → `d306e74` (Epoch 4)
-
----
-
-## Key Finding: The TEMPLATE Convention
-
-`odd/TEMPLATE.md` explicitly instructs authors to use `audience: canon` for ODD content:
-
-> | `audience` | `canon` | ODD is canon-level content |
-
-This is a **documented convention**, not accidental drift. Under Epoch 4, this creates an open question:
-
-- **Intentional:** ODD content carries canon-level authority within the system
-- **Conflation:** Legacy pattern that now claims the wrong layer
-
-**Classification approach:** We classify based on what files *currently claim*, not what they *should* claim. Resolution comes later.
-
----
-
-## Classification Table
-
-### Files with CORRECT metadata (no action needed)
-
-| File | URI Scheme | Audience | Stability | Notes |
-|------|------------|----------|-----------|-------|
-| `odd/terminology.md` | `klappy://odd/` | `odd` | evolving | Correctly claims abstract methodology |
-| `odd/appendices/progressive-elevation.md` | `klappy://odd/` | `odd` | stable | Correctly claims abstract methodology |
-| `odd/constraint/anti-metric-laundering.md` | `klappy://odd/` | `odd` | stable | Correctly claims abstract methodology |
-| `odd/constraint/use-only-what-hurts.md` | `klappy://odd/` | `system` | constrained | System constraint, correct classification |
-| `odd/contract/epistemic-contract.md` | `odd://` | `odd` | long_lived | Correctly claims ODD + uses pure `odd://` scheme |
-| `odd/getting-started/odd-agents-and-mcp.md` | `klappy://odd/` | `odd` | evolving | Correctly claims abstract methodology |
-| `odd/README.md` | `klappy://public/` | `public` | semi_stable | Public-facing entry point, correct |
-
-**Action: 1-leave-as-is** (7 files)
-
----
-
-### Files claiming `audience: canon` while living in `odd/`
-
-These files use the TEMPLATE convention. Under Epoch 4, this may represent:
-- Correct: "ODD content is canon-level within this system"
-- Drift: "This claims klappy.dev authority it shouldn't"
-
-| File | URI Scheme | Audience | Stability | Actual Role | Action |
-|------|------------|----------|-----------|-------------|--------|
-| `odd/index.md` | `klappy://odd` | `canon` | stable | Routing/index for ODD section | **TBD** - Is this klappy-specific or abstract? |
-| `odd/manifesto.md` | `klappy://odd/` | `canon` | stable | Core ODD philosophy, universal | **2-metadata** - likely should be `audience: odd` |
-| `odd/contract.md` | `klappy://odd/` | `canon` | stable | ODD System Contract (version 2.1.0) | **TBD** - Contains klappy-specific paths and lanes |
-| `odd/maturity.md` | `klappy://odd/` | `canon` | semi_stable | Project maturity model, universal | **2-metadata** - likely should be `audience: odd` |
-| `odd/misuse-patterns.md` | `klappy://odd/` | `canon` | evolving | ODD failure modes, universal | **2-metadata** - likely should be `audience: odd` |
-| `odd/orientation-map.md` | `klappy://odd/` | `canon` | semi_stable | Mental model, universal | **2-metadata** - likely should be `audience: odd` |
-| `odd/prompt-architecture.md` | `klappy://odd/` | `canon` | semi_stable | Prompt scaling philosophy, universal | **2-metadata** - likely should be `audience: odd` |
-| `odd/TEMPLATE.md` | `klappy://odd/` | `canon` | stable | Template that defines the convention | **TBD** - Template itself enforces `audience: canon` |
-| `odd/appendices/README.md` | `klappy://odd/` | `canon` | evolving | Appendices index | **2-metadata** - likely should be `audience: odd` |
-| `odd/appendices/TEMPLATE.md` | `klappy://odd/` | `canon` | stable | Appendix template | **TBD** - Template file |
-| `odd/appendices/alignment-reviews.md` | `klappy://odd/` | `canon` | stable | Drift detection, universal | **2-metadata** - likely should be `audience: odd` |
-| `odd/appendices/evolution-not-automation.md` | `klappy://odd/` | `canon` | semi_stable | Philosophy, universal | **2-metadata** - likely should be `audience: odd` |
-| `odd/appendices/failure-driven-modularity.md` | `klappy://odd/` | `canon` | stable | Modularity philosophy, universal | **2-metadata** - likely should be `audience: odd` |
-| `odd/appendices/media-as-learning-layer.md` | `klappy://odd/` | `canon` | stable | Media philosophy, universal | **2-metadata** - likely should be `audience: odd` |
-| `odd/appendices/quantum-development.md` | `klappy://odd/` | `canon` | semi_stable | Uncertainty model, universal | **2-metadata** - likely should be `audience: odd` |
-| `odd/appendices/visual-evolution.md` | `klappy://odd/` | `canon` | semi_stable | Visual systems philosophy, universal | **2-metadata** - likely should be `audience: odd` |
-| `odd/decisions/README.md` | `klappy://odd/` | `canon` | stable | Decisions index | **2-metadata** - likely should be `audience: odd` |
-| `odd/decisions/D0001-three-tier-conceptual-hierarchy.md` | `klappy://odd/` | `canon` | stable | The hierarchy definition itself | **2-metadata** - defines the separation, should be `audience: odd` |
-
-**Action breakdown:**
-- **2-metadata** (likely): 14 files
-- **TBD** (needs content review): 4 files
-
----
-
-### Files with other audience values
-
-| File | URI Scheme | Audience | Stability | Actual Role | Action |
-|------|------------|----------|-----------|-------------|--------|
-| `odd/cognitive-partitioning.md` | `klappy://odd/` | `docs` | evolving | Abstract scaling principle | **2-metadata** - universal principle, not implementation |
-
-**Action: 2-metadata** (1 file)
-
----
-
-## Summary by Action
-
-| Action | Count | Files |
-|--------|-------|-------|
-| **1-leave-as-is** | 7 | terminology, progressive-elevation, anti-metric-laundering, use-only-what-hurts, epistemic-contract, odd-agents-and-mcp, README |
-| **2-metadata** (likely) | 15 | manifesto, maturity, misuse-patterns, orientation-map, prompt-architecture, appendices/README, alignment-reviews, evolution-not-automation, failure-driven-modularity, media-as-learning-layer, quantum-development, visual-evolution, decisions/README, D0001, cognitive-partitioning |
-| **TBD** | 4 | index, contract, TEMPLATE, appendices/TEMPLATE |
-| **3-add-pointer** | 0 | — |
-| **4-mark-deprecated** | 0 | — |
-| **5-quarantine** | 0 | — |
-
-**Total files classified:** 26
-
----
-
-## URI Scheme Findings
-
-### Count by Scheme
-
-| Scheme | Count | Notes |
-|--------|-------|-------|
-| `klappy://odd/...` | 24 | Hybrid scheme (klappy instance + ODD namespace) |
-| `klappy://public/...` | 1 | Public-facing (README) |
-| `odd://...` | 1 | Pure ODD scheme (epistemic-contract) |
-
-### Files by Scheme
-
-**`odd://...` (pure ODD):**
-- `odd/contract/epistemic-contract.md` → `odd://contract/epistemic-contract`
-
-**`klappy://odd/...` (hybrid):**
-- All other files in `odd/`
-
-### Observation
-
-The `odd://` scheme appears in exactly one file: the Epistemic Contract. This may be intentional (the contract is the most "pure" ODD artifact) or may represent an inconsistency.
-
-**No changes made.**
-
----
-
-## TBD Files: Why They Need Content Review
-
-### `odd/index.md`
-- Contains klappy-specific references ("this repository")
-- But also serves as abstract ODD entry point
-- Question: Is this the klappy.dev ODD index, or the ODD index that happens to live in klappy.dev?
-- **Ruling:** True TBD — requires content judgment after Pass 3
-
-### `odd/contract.md`
-- Contains version 2.1.0 with klappy-specific paths (`/products/<lane>/attempts/`)
-- References epochs that are klappy-specific (E0001, E0002)
-- But the contract structure is meant to be portable
-- Question: Should the contract be abstract ODD, or is it inherently instance-specific?
-- **Ruling:** True TBD — requires content judgment after Pass 3
-
-### `odd/TEMPLATE.md` and `odd/appendices/TEMPLATE.md`
-- These templates **define** the convention that ODD content uses `audience: canon`
-- Changing the templates would change the rule itself
-- Question: Should the templates be updated to use `audience: odd`, thus changing the convention?
-- **Ruling:** TBD (Governance Decision) — encodes a pre-Epoch-4 authority model; changing it alters authorship norms. Do NOT change until after Pass 3.
-
----
-
-## Governance Ruling (2026-01-31)
-
-### The Core Question Resolved
-
-> Is "canon-level authority" the same thing as "klappy.dev authority"?
-
-**Answer: No.** And it never actually was. But Epoch 4 is the first time the system is capable of saying that cleanly.
-
-### What the TEMPLATE Was Saying
-
-The instruction `audience: canon` meant "this is not app-specific or ephemeral" — a coarse signal, not a precise one.
-
-Epoch 4 introduces a three-layer authority model:
-
-| Layer | What it governs | URI signal |
-|-------|-----------------|------------|
-| ODD | How judgment works | `odd://` |
-| Canon (instance) | How Klappy applies ODD | `klappy://canon/...` |
-| Docs / Surfaces | How it's used | `klappy://docs/...` |
-
-Under this model, ODD is authoritative but not instance-canon.
-
-### The TEMPLATE Is Not Wrong
-
-The TEMPLATE is **underspecified**, not wrong. It collapses two meanings of "canon":
-- authoritative
-- instance-binding
-
-Epoch 4 splits those apart. That's the whole point.
-
-### Decision: Do NOT Change the TEMPLATE Yet
-
-Changing it now would:
-- Retroactively rewrite history
-- Collapse Pass 0 into mutation
-- Preempt Pass 3's epistemic review
-
-The TEMPLATE is evidence of the old mental model. Epoch 4 explicitly says: artifacts are evidence of learning.
-
-### Are These Files "Lying"?
-
-**Precise answer:** They are telling an older truth with insufficient vocabulary.
-
-Epoch 4 gives us the vocabulary. We don't rewrite the past to match it.
-
----
-
-## What This Classification Does NOT Resolve
-
-Per Pass 0 rules:
-
-> Pass 0 does not attempt to resolve whether a file "should" be ODD or canon — only whether it currently claims the wrong layer.
-
-The 15 files marked **2-metadata (likely)** represent potential drift, not confirmed corrections. The 4 files marked **TBD** require explicit decisions about what klappy.dev's relationship to abstract ODD should be.
-
-These resolutions belong to a future decision, not this audit pass.
-
-### What NOT To Do Next
-
-Per governance ruling (2026-01-31):
-
-- Do NOT "fix the template"
-- Do NOT "align everything to `odd://`"
-- Do NOT "clean up audience fields"
-
-That urge is exactly how Epoch 3 thinking sneaks back in.
-
-Epoch 4's discipline is: **See clearly first. Decide later.**
-
-URI normalization and TEMPLATE updates are Phase 2 activities, not part of Epoch 4 lock.
-
----
-
-## Receipts
-
-- [x] 26 files in `odd/` classified
-- [x] Each file's URI scheme, audience, and stability recorded
-- [x] Action assigned to each file
-- [x] TBD files documented with specific questions
-- [x] URI Scheme Findings section with counts and file lists
-- [x] No changes made
-
----
-
-## Pass 0 Complete
-
-Classification table is complete. No metadata was changed. No files were moved.
-
-Next: Walk away until Pass 1 (T+24, Feb 1, 2026).
 
 
 
@@ -34565,8 +35140,8 @@ Attempts live at: `/attempts/ai-navigation/prd-v1.0/attempt-NNN/`
 ## Related Documents
 
 - Lane architecture: `/docs/appendices/product-lanes.md`
-- Canon constraints: `/canon/constraints.md`
-- Definition of Done: `/canon/definition-of-done.md`
+- Canon constraints: `/canon/constraints/README.md`
+- Definition of Done: `/canon/constraints/definition-of-done.md`
 
 
 
@@ -34771,7 +35346,7 @@ This document tracks PRD versions, their outcomes, and links to learnings. The l
 - Agents default to epistemic deception under completion pressure
 - Random number generators producing "waveforms" is not audio playback
 - Verification requires observed behavior, not simulated screenshots
-- This failure led to the [Verification & Evidence](/canon/verification-and-evidence.md) canon principle
+- This failure led to the [Verification & Evidence](/canon/constraints/verification-and-evidence.md) canon principle
 
 ### v0.2 Learnings
 
@@ -35277,8 +35852,8 @@ You have achieved aspirational success when:
 
 - [PRD](PRD.md) — Full PoC requirements
 - [KICKOFF](/products/fluent-mobile/KICKOFF.md) — Attempt structure and sandbox rules
-- [Canon Constraints](/canon/constraints.md) — Baseline assumptions
-- [Definition of Done](/canon/definition-of-done.md) — Evidence requirements
+- [Canon Constraints](/canon/constraints/README.md) — Baseline assumptions
+- [Definition of Done](/canon/constraints/definition-of-done.md) — Evidence requirements
 
 
 
@@ -35655,8 +36230,8 @@ Stop if:
 - [AGENT_RULES](AGENT_RULES.md) — Non-negotiable verification rules
 - [INSTRUCTIONS](INSTRUCTIONS.md) — Field testing guidance
 - [Product Lanes](/docs/appendices/product-lanes.md) — Lane architecture
-- [Definition of Done](/canon/definition-of-done.md) — Evidence requirements
-- [Verification & Evidence](/canon/verification-and-evidence.md) — Epistemic foundation
+- [Definition of Done](/canon/constraints/definition-of-done.md) — Evidence requirements
+- [Verification & Evidence](/canon/constraints/verification-and-evidence.md) — Epistemic foundation
 - [ODD Canon](/public/agent-skill/latest/prd-guide-pack.md) — Foundational thinking
 
 
@@ -35912,9 +36487,9 @@ Attempts live at: `attempts/v{VERSION}/attempt-NNN/`
 - [KICKOFF.md](KICKOFF.md) — How to start an attempt
 - [INSTRUCTIONS.md](INSTRUCTIONS.md) — Field testing guidance
 - [AGENT_RULES.md](AGENT_RULES.md) — Non-negotiable agent constraints
-- [Canon Constraints](/canon/constraints.md)
-- [Definition of Done](/canon/definition-of-done.md)
-- [Verification & Evidence](/canon/verification-and-evidence.md)
+- [Canon Constraints](/canon/constraints/README.md)
+- [Definition of Done](/canon/constraints/definition-of-done.md)
+- [Verification & Evidence](/canon/constraints/verification-and-evidence.md)
 
 
 
@@ -36029,7 +36604,7 @@ If learning slows, confidence drops, or it begins to resemble a production commi
 - [HISTORY](HISTORY.md) — Version evolution and learnings
 - [Product Lanes](/docs/appendices/product-lanes.md) — Lane architecture
 - [Attempt Lifecycle](/docs/appendices/attempt-lifecycle.md) — How attempts work
-- [Verification & Evidence](/canon/verification-and-evidence.md) — Evidence requirements
+- [Verification & Evidence](/canon/constraints/verification-and-evidence.md) — Evidence requirements
 
 
 
@@ -36800,7 +37375,7 @@ See [KICKOFF.md](KICKOFF.md) for detailed instructions.
 
 - Epoch 4 Philosophy: `/docs/guiding-artifacts/epoch-4/`
 - Product Lanes: `/docs/appendices/product-lanes.md`
-- Canon Agents: `/canon/agents/odd-scribe.md`, `/canon/agents/odd-orchestrator.md`
+- Canon Agents: `/docs/agents/odd-scribe.md`, `/docs/agents/odd-orchestrator.md`
 
 
 
@@ -36984,8 +37559,8 @@ An implementation violates this contract if:
 
 - [PRD.md](PRD.md) — Product requirements
 - [KICKOFF.md](KICKOFF.md) — Attempt instructions
-- `/canon/agents/odd-scribe.md` — Scribe pattern reference
-- `/canon/agents/odd-orchestrator.md` — Orchestrator pattern reference
+- `/docs/agents/odd-scribe.md` — Scribe pattern reference
+- `/docs/agents/odd-orchestrator.md` — Orchestrator pattern reference
 
 
 
@@ -37300,8 +37875,8 @@ The website lane MUST support generating a wipeable "visitor pack" used for prog
 ## Related Documents
 
 - Lane architecture: `/docs/appendices/product-lanes.md`
-- Canon constraints: `/canon/constraints.md`
-- Definition of Done: `/canon/definition-of-done.md`
+- Canon constraints: `/canon/constraints/README.md`
+- Definition of Done: `/canon/constraints/definition-of-done.md`
 - Legacy PRD (v0.3): `/docs/PRD/website/PRD-legacy-v0.3.md`
 - Compilation: `/docs/appendices/compilation.md`
 - Media philosophy: `/odd/appendices/media-as-learning-layer.md`
