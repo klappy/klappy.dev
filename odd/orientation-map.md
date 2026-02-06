@@ -6,7 +6,7 @@ exposure: nav
 tier: 3
 voice: neutral
 stability: semi_stable
-tags: ["odd", "orientation", "mental-model"]
+tags: ["odd", "orientation", "mental-model", "outcomes-driven-development", "hierarchy"]
 relevance: supporting
 execution_posture: operational
 ---

@@ -8,7 +8,7 @@ exposure: nav
 tier: 1
 voice: neutral
 stability: evolving
-tags: ["odd", "terminology", "disambiguation", "boundary"]
+tags: ["odd", "terminology", "disambiguation", "boundary", "definition", "outcomes-driven-development", "glossary"]
 relevance: supporting
 execution_posture: operational
 ---
@@ -56,6 +56,20 @@ If terminology lived under `canon/`, language would appear post hoc. ODD would l
 ---
 
 ## Core Terms
+
+### ODD (Outcomes-Driven Development)
+
+**ODD meaning:** Outcomes-Driven Development — an approach to building software that prioritizes real-world results over artifacts. In an AI-accelerated environment, the limiting factor is no longer production speed; it is clarity of intent, quality of verification, and the ability to choose among outcomes. ODD makes those constraints explicit.
+
+**Not:** A framework, a fixed workflow, or a claim that outcomes can be fully predicted.
+
+**Core thesis:** The primary job of development is not writing code. It is defining outcomes, enforcing constraints, and verifying reality. AI accelerates execution; governance preserves trust.
+
+**Test:** Are decisions governed by verifiable outcomes, or by artifacts and activity?
+
+**See:** [/odd/README.md](/odd/README.md) for the public introduction, [/odd/manifesto.md](/odd/manifesto.md) for the extended operational framework.
+
+---
 
 ### Outcome
 

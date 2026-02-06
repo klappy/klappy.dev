@@ -1,12 +1,12 @@
 ---
 uri: klappy://public/odd
-title: "ODD Manifesto — Public"
+title: "What is ODD? — Outcomes-Driven Development"
 audience: public
 exposure: nav
-tier: 0
+tier: 1
 voice: neutral
 stability: semi_stable
-tags: ["odd", "public", "overview"]
+tags: ["odd", "definition", "outcomes-driven-development", "what-is-odd", "methodology", "philosophy", "public", "overview"]
 relevance: routing
 execution_posture: routing
 assets: {"practice_video":"/assets/odd/odd-in-practice.mp4","misconception_image":"/assets/odd/odd-is-not-a-framework.png","deep_dive_audio":"/assets/odd/why-evidence-beats-confidence.m4a"}

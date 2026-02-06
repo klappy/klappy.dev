@@ -6,7 +6,7 @@ exposure: nav
 tier: 2
 voice: neutral
 stability: stable
-tags: ["odd", "philosophy"]
+tags: ["odd", "philosophy", "outcomes-driven-development", "manifesto", "governance", "definition"]
 relevance: background
 execution_posture: exploratory
 ---

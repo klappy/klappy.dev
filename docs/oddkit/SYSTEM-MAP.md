@@ -6,14 +6,16 @@ exposure: nav
 tier: 2
 voice: neutral
 stability: stable
-tags: ["oddkit", "orchestrator", "librarian", "validation", "arbitration"]
+tags: ["oddkit", "odd", "outcomes-driven-development", "orchestrator", "librarian", "validation", "arbitration"]
 ---
 
 # Oddkit System Map
 
 > A practical guide for understanding oddkit behavior, outcomes, and next actions.
 
-This document explains **what oddkit does**, **how to interpret its outputs**, and **what actions are expected next**.  
+**ODD** = **Outcomes-Driven Development** — an approach to building software that prioritizes real-world results over artifacts. See [/odd/README.md](/odd/README.md) for the full philosophy.
+
+This document explains **what oddkit does**, **how to interpret its outputs**, and **what actions are expected next**.
 It is not a design doc, tutorial, or philosophy statement.
 
 ---

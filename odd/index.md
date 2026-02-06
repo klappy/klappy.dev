@@ -1,12 +1,13 @@
 ---
 uri: klappy://odd
-title: "Outcomes-Driven Development"
+title: "Outcomes-Driven Development (ODD)"
+subtitle: "ODD = Outcomes-Driven Development — the philosophical and operational foundation for this repository."
 audience: canon
 exposure: nav
 tier: 1
 voice: neutral
 stability: stable
-tags: ["odd", "index"]
+tags: ["odd", "index", "definition", "outcomes-driven-development", "what-is-odd", "methodology"]
 relevance: routing
 execution_posture: routing
 ---

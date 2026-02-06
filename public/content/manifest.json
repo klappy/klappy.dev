@@ -1,8 +1,8 @@
 {
   "pack": {
     "name": "klappy-canon",
-    "version": "0.26.0",
-    "updated_at": "2026-01-31",
+    "version": "0.28.0",
+    "updated_at": "2026-02-05",
     "description": "Canonical orientation, constraints, decision rules, evidence policies, and ODD appendices used across klappy.dev.",
     "public_entrypoint": "klappy://public/odd",
     "canon_entrypoint": "klappy://meta/canon-index",
@@ -499,6 +499,28 @@
       "tags": []
     },
     {
+      "uri": "klappy://canon/epistemic-surface-extraction",
+      "path": "/canon/epistemic-surface-extraction.md",
+      "title": "Epistemic Surface Extraction (ESE)",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 1,
+      "voice": "neutral",
+      "stability": "evolving",
+      "tags": [
+        "evidence",
+        "verification",
+        "ese",
+        "surface",
+        "ocr",
+        "asr",
+        "video",
+        "screenshots",
+        "recordings"
+      ]
+    },
+    {
       "uri": "klappy://canon/defaults/evidence-intake",
       "path": "/canon/defaults/evidence-intake.md",
       "title": "Evidence Intake",
@@ -680,7 +702,9 @@
       "tags": [
         "odd",
         "orientation",
-        "mental-model"
+        "mental-model",
+        "outcomes-driven-development",
+        "hierarchy"
       ]
     },
     {
@@ -817,29 +841,12 @@
       "stability": "stable",
       "tags": [
         "odd",
-        "philosophy"
+        "philosophy",
+        "outcomes-driven-development",
+        "manifesto",
+        "governance",
+        "definition"
       ]
-    },
-    {
-      "uri": "klappy://public/odd",
-      "path": "/odd/README.md",
-      "title": "ODD Manifesto — Public",
-      "type": "text/markdown",
-      "audience": "public",
-      "exposure": "nav",
-      "tier": 0,
-      "voice": "neutral",
-      "stability": "semi_stable",
-      "tags": [
-        "odd",
-        "public",
-        "overview"
-      ],
-      "assets": {
-        "practice_video": "/assets/odd/odd-in-practice.mp4",
-        "misconception_image": "/assets/odd/odd-is-not-a-framework.png",
-        "deep_dive_audio": "/assets/odd/why-evidence-beats-confidence.m4a"
-      }
     },
     {
       "uri": "klappy://canon/agents/odd-map-navigator",
@@ -965,7 +972,7 @@
     {
       "uri": "klappy://odd",
       "path": "/odd/index.md",
-      "title": "Outcomes-Driven Development",
+      "title": "Outcomes-Driven Development (ODD)",
       "type": "text/markdown",
       "audience": "canon",
       "exposure": "nav",
@@ -974,7 +981,11 @@
       "stability": "stable",
       "tags": [
         "odd",
-        "index"
+        "index",
+        "definition",
+        "outcomes-driven-development",
+        "what-is-odd",
+        "methodology"
       ]
     },
     {
@@ -1341,6 +1352,32 @@
         "epistemic-hygiene",
         "promotion"
       ]
+    },
+    {
+      "uri": "klappy://public/odd",
+      "path": "/odd/README.md",
+      "title": "What is ODD? — Outcomes-Driven Development",
+      "type": "text/markdown",
+      "audience": "public",
+      "exposure": "nav",
+      "tier": 1,
+      "voice": "neutral",
+      "stability": "semi_stable",
+      "tags": [
+        "odd",
+        "definition",
+        "outcomes-driven-development",
+        "what-is-odd",
+        "methodology",
+        "philosophy",
+        "public",
+        "overview"
+      ],
+      "assets": {
+        "practice_video": "/assets/odd/odd-in-practice.mp4",
+        "misconception_image": "/assets/odd/odd-is-not-a-framework.png",
+        "deep_dive_audio": "/assets/odd/why-evidence-beats-confidence.m4a"
+      }
     },
     {
       "uri": "klappy://about/why-this-exists",

@@ -1,3 +1,14 @@
+---
+uri: oddkit://about
+title: "About oddkit"
+audience: docs
+exposure: nav
+tier: 1
+voice: neutral
+stability: stable
+tags: ["oddkit", "odd", "definition", "outcomes-driven-development", "what-is-odd", "about", "orientation"]
+---
+
 # About oddkit
 
 > **ODD** = **Outcomes-Driven Development** — see [/odd/README.md](/odd/README.md) for the full philosophy.
