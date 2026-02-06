@@ -456,5 +456,5 @@ You have achieved aspirational success when:
 
 - [PRD](PRD.md) — Full PoC requirements
 - [KICKOFF](/products/fluent-mobile/KICKOFF.md) — Attempt structure and sandbox rules
-- [Canon Constraints](/canon/constraints.md) — Baseline assumptions
-- [Definition of Done](/canon/definition-of-done.md) — Evidence requirements
+- [Canon Constraints](/canon/constraints/README.md) — Baseline assumptions
+- [Definition of Done](/canon/constraints/definition-of-done.md) — Evidence requirements

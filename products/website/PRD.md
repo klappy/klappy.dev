@@ -219,8 +219,8 @@ The website lane MUST support generating a wipeable "visitor pack" used for prog
 ## Related Documents
 
 - Lane architecture: `/docs/appendices/product-lanes.md`
-- Canon constraints: `/canon/constraints.md`
-- Definition of Done: `/canon/definition-of-done.md`
+- Canon constraints: `/canon/constraints/README.md`
+- Definition of Done: `/canon/constraints/definition-of-done.md`
 - Legacy PRD (v0.3): `/docs/PRD/website/PRD-legacy-v0.3.md`
 - Compilation: `/docs/appendices/compilation.md`
 - Media philosophy: `/odd/appendices/media-as-learning-layer.md`

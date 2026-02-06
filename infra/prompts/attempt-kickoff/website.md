@@ -17,7 +17,7 @@ Copy/paste into agent chat WITHOUT modification.
 
 1. `/docs/appendices/evidence.md`
 2. `/docs/PRD/website/PRD.md`
-3. `/canon/constraints.md`
+3. `/canon/constraints/README.md`
 
 ---
 

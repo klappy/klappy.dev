@@ -174,5 +174,5 @@ An implementation violates this contract if:
 
 - [PRD.md](PRD.md) — Product requirements
 - [KICKOFF.md](KICKOFF.md) — Attempt instructions
-- `/canon/agents/odd-scribe.md` — Scribe pattern reference
-- `/canon/agents/odd-orchestrator.md` — Orchestrator pattern reference
+- `/docs/agents/odd-scribe.md` — Scribe pattern reference
+- `/docs/agents/odd-orchestrator.md` — Orchestrator pattern reference

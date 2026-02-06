@@ -101,4 +101,4 @@ See [KICKOFF.md](KICKOFF.md) for detailed instructions.
 
 - Epoch 4 Philosophy: `/docs/guiding-artifacts/epoch-4/`
 - Product Lanes: `/docs/appendices/product-lanes.md`
-- Canon Agents: `/canon/agents/odd-scribe.md`, `/canon/agents/odd-orchestrator.md`
+- Canon Agents: `/docs/agents/odd-scribe.md`, `/docs/agents/odd-orchestrator.md`

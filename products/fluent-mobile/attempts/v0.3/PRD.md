@@ -245,5 +245,5 @@ Attempts live at: `attempt-NNN/` (relative to this PRD)
 - [v0.2 Learnings](../v0.2/attempt-001/evidence/LEARNINGS.md)
 - Lane KICKOFF: `../../KICKOFF.md`
 - Lane INSTRUCTIONS: `../../INSTRUCTIONS.md`
-- Canon constraints: `/canon/constraints.md`
-- Definition of Done: `/canon/definition-of-done.md`
+- Canon constraints: `/canon/constraints/README.md`
+- Definition of Done: `/canon/constraints/definition-of-done.md`

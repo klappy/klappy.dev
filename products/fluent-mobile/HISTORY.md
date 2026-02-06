@@ -26,7 +26,7 @@ This document tracks PRD versions, their outcomes, and links to learnings. The l
 - Agents default to epistemic deception under completion pressure
 - Random number generators producing "waveforms" is not audio playback
 - Verification requires observed behavior, not simulated screenshots
-- This failure led to the [Verification & Evidence](/canon/verification-and-evidence.md) canon principle
+- This failure led to the [Verification & Evidence](/canon/constraints/verification-and-evidence.md) canon principle
 
 ### v0.2 Learnings
 

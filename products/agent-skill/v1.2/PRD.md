@@ -225,8 +225,8 @@ Attempts live at: `v1.2/attempts/attempt-NNN/`
 ## Related Documents
 
 - Lane architecture: `/canon/odd/appendices/product-lanes.md`
-- Canon constraints: `/canon/constraints.md`
-- Definition of Done: `/canon/definition-of-done.md`
+- Canon constraints: `/canon/constraints/README.md`
+- Definition of Done: `/canon/constraints/definition-of-done.md`
 - Evolution philosophy: `/canon/odd/appendices/evolution-not-automation.md`
 - Compilation: `/canon/odd/appendices/compilation.md`
 - Compilation targets: `/canon/odd/appendices/compilation-targets.md`

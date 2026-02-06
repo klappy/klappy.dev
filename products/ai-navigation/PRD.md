@@ -128,5 +128,5 @@ Attempts live at: `/attempts/ai-navigation/prd-v1.0/attempt-NNN/`
 ## Related Documents
 
 - Lane architecture: `/docs/appendices/product-lanes.md`
-- Canon constraints: `/canon/constraints.md`
-- Definition of Done: `/canon/definition-of-done.md`
+- Canon constraints: `/canon/constraints/README.md`
+- Definition of Done: `/canon/constraints/definition-of-done.md`

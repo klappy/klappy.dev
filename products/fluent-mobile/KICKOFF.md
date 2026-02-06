@@ -367,6 +367,6 @@ Stop if:
 - [AGENT_RULES](AGENT_RULES.md) — Non-negotiable verification rules
 - [INSTRUCTIONS](INSTRUCTIONS.md) — Field testing guidance
 - [Product Lanes](/docs/appendices/product-lanes.md) — Lane architecture
-- [Definition of Done](/canon/definition-of-done.md) — Evidence requirements
-- [Verification & Evidence](/canon/verification-and-evidence.md) — Epistemic foundation
+- [Definition of Done](/canon/constraints/definition-of-done.md) — Evidence requirements
+- [Verification & Evidence](/canon/constraints/verification-and-evidence.md) — Epistemic foundation
 - [ODD Canon](/public/agent-skill/latest/prd-guide-pack.md) — Foundational thinking

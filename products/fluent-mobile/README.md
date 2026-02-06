@@ -105,4 +105,4 @@ If learning slows, confidence drops, or it begins to resemble a production commi
 - [HISTORY](HISTORY.md) — Version evolution and learnings
 - [Product Lanes](/docs/appendices/product-lanes.md) — Lane architecture
 - [Attempt Lifecycle](/docs/appendices/attempt-lifecycle.md) — How attempts work
-- [Verification & Evidence](/canon/verification-and-evidence.md) — Evidence requirements
+- [Verification & Evidence](/canon/constraints/verification-and-evidence.md) — Evidence requirements

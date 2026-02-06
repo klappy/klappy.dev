@@ -422,5 +422,5 @@ This PRD:
 - Prior PRD: `../v0.1/PRD.md`
 - Attempt 001 Learnings: `../v0.1/attempt-001/evidence/LEARNINGS.md`
 - Lane architecture: `/docs/appendices/product-lanes.md`
-- Canon constraints: `/canon/constraints.md`
-- Definition of Done: `/canon/definition-of-done.md`
+- Canon constraints: `/canon/constraints/README.md`
+- Definition of Done: `/canon/constraints/definition-of-done.md`

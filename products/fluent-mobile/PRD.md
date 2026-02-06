@@ -245,6 +245,6 @@ Attempts live at: `attempts/v{VERSION}/attempt-NNN/`
 - [KICKOFF.md](KICKOFF.md) — How to start an attempt
 - [INSTRUCTIONS.md](INSTRUCTIONS.md) — Field testing guidance
 - [AGENT_RULES.md](AGENT_RULES.md) — Non-negotiable agent constraints
-- [Canon Constraints](/canon/constraints.md)
-- [Definition of Done](/canon/definition-of-done.md)
-- [Verification & Evidence](/canon/verification-and-evidence.md)
+- [Canon Constraints](/canon/constraints/README.md)
+- [Definition of Done](/canon/constraints/definition-of-done.md)
+- [Verification & Evidence](/canon/constraints/verification-and-evidence.md)

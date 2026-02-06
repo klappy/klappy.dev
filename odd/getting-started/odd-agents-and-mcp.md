@@ -32,7 +32,7 @@ Agents and MCP are optional accelerators. **If you don't use agents or MCP, ODD 
 - Lives at [klappy.dev/canon](https://klappy.dev/canon)
 - Defines authority, epistemics, and constraints
 - Tool-agnostic — works with any editor, any language, any workflow
-- Start here: [Epistemic Guide](/canon/agents/odd-epistemic-guide)
+- Start here: [Epistemic Guide](/docs/agents/odd-epistemic-guide)
 
 ### B. oddkit (optional, recommended)
 
@@ -53,7 +53,7 @@ Agents and MCP are optional accelerators. **If you don't use agents or MCP, ODD 
 
 ### Option 1: Just read canon (zero install)
 
-No tools needed. Start with the [Epistemic Guide](/canon/agents/odd-epistemic-guide).
+No tools needed. Start with the [Epistemic Guide](/docs/agents/odd-epistemic-guide).
 
 ODD works without any CLI or MCP. Read the canon, apply judgment manually.
 
@@ -113,6 +113,6 @@ Those come later—after mechanical enforcement exists and patterns stabilize.
 
 ## See also
 
-- [ODD Epistemic Guide](/canon/agents/odd-epistemic-guide) — Start here
+- [ODD Epistemic Guide](/docs/agents/odd-epistemic-guide) — Start here
 - [Canon Index](/canon/README.md) — Browse constraints
 - [oddkit repository](https://github.com/klappy/oddkit) — Tool documentation
