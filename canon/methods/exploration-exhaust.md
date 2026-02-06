@@ -49,7 +49,7 @@ This method makes extreme exploration safe by requiring a faithful exhaust artif
 
 ### Closure Rule
 
-If CST is reached, the exploration is closed. Reopening requires explicit intent.
+If [CST](/canon/definitions/cognitive-saturation-threshold.md) is reached, the exploration is closed. Reopening requires explicit intent.
 
 ---
 

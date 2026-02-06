@@ -46,6 +46,7 @@ The Canon exists so that reasoning does not have to be repeated.
 
 | Folder | Purpose |
 |--------|---------|
+| `definitions/` | Shared vocabulary — formal definitions of load-bearing concepts (e.g., CST). |
 | `methods/` | Durable application patterns for applying constraints and principles in practice. |
 | `principles/` | Canon-level principle articulations grounded in lived evidence. |
 | `decisions/` | Canon-level decision records (governance, model boundaries). |
