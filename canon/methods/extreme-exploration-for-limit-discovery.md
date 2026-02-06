@@ -74,7 +74,7 @@ It is correctness.
 
 ## Relationship to CST
 
-Extreme exploration commonly concludes when [**Cognitive Saturation Threshold (CST)**](/canon/definitions/cognitive-saturation-threshold.md) is reached.
+Extreme exploration commonly concludes when [Cognitive Saturation Threshold (CST)](/canon/definitions/cognitive-saturation-threshold.md) is reached.
 
 At CST, the correct move is closure, not continuation.
 
