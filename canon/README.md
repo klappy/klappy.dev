@@ -27,6 +27,7 @@ The Canon exists so that reasoning does not have to be repeated.
 |------|-------|---------|---------|
 | `epistemic-obligation-and-document-tiers.md` | Epistemic Obligation and Document Tiers | Tiers define epistemic obligation (foundational, shared, awareness), not importance. Orthogonal to folders. | How much must I internalize this? |
 | `constraints.md` | Constraints | Baseline assumptions and non-negotiables that shape every decision. | What must be true for this work to make sense? |
+| `methods/README.md` | Methods | Durable application patterns that help humans and agents apply principles and satisfy constraints without re-deriving safe practice each time. | How do I apply ODD safely in practice? |
 | `decision-rules.md` | Decision Rules | Default heuristics used when multiple valid options exist. | How do choices tend to be made? |
 | `definition-of-done.md` | Definition of Done | What qualifies as completed work and what evidence is required. | When can work honestly be called done? |
 | `self-audit.md` | Self-Audit Checklist | Review checklist before declaring completion. | What should be reviewed before claiming success? |
@@ -45,6 +46,7 @@ The Canon exists so that reasoning does not have to be repeated.
 
 | Folder | Purpose |
 |--------|---------|
+| `methods/` | Durable application patterns for applying constraints and principles in practice. |
 | `principles/` | Canon-level principle articulations grounded in lived evidence. |
 | `decisions/` | Canon-level decision records (governance, model boundaries). |
 | `resonance/` | External works that converge with ODD — and where ODD explicitly diverges. |
