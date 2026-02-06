@@ -1,6 +1,6 @@
 ---
 title: ODD Orchestrator
-uri: klappy://canon/agents/odd-orchestrator
+uri: klappy://docs/agents/odd-orchestrator
 status: authoritative
 audience: agents
 tags: [agent, guide, scribe, orchestrator]

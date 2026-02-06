@@ -1,5 +1,5 @@
 ---
-uri: klappy://canon/agents/odd-instruction-sync
+uri: klappy://docs/agents/odd-instruction-sync
 title: "ODD Instruction Sync Interpreter"
 subtitle: "Turn instruction_sync outputs into human-readable risk and sequencing recommendations."
 audience: canon

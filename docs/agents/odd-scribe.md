@@ -1,5 +1,5 @@
 ---
-uri: klappy://canon/agents/odd-scribe
+uri: klappy://docs/agents/odd-scribe
 title: "ODD Scribe"
 subtitle: "A phase-aware recorder of learnings and decisions"
 audience: canon

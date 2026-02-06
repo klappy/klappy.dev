@@ -1,5 +1,5 @@
 ---
-uri: klappy://canon/agents/odd-map-navigator
+uri: klappy://docs/agents/odd-map-navigator
 title: "ODD Map Navigator"
 subtitle: "Navigate the ODD / Canon / Docs map using progressive reading and explicit uncertainty."
 audience: canon

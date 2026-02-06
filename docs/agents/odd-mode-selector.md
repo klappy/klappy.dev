@@ -1,5 +1,5 @@
 ---
-uri: klappy://canon/agents/odd-mode-selector
+uri: klappy://docs/agents/odd-mode-selector
 title: "ODD Mode Selector"
 subtitle: "Select the next MCP action using epistemic modes + confidence, without inventing posture."
 audience: canon

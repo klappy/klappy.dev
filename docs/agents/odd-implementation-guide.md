@@ -1,5 +1,5 @@
 ---
-uri: klappy://canon/agents/odd-implementation-guide
+uri: klappy://docs/agents/odd-implementation-guide
 title: "ODD Implementation Guide"
 subtitle: "Guide implementation only after governing canon is identified; never bypass constraints."
 audience: canon

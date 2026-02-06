@@ -1,5 +1,5 @@
 ---
-uri: klappy://canon/documentation/execution-posture
+uri: klappy://canon/definitions/execution-posture
 title: "Execution Posture"
 audience: canon
 exposure: nav

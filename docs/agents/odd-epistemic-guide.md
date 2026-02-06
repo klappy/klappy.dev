@@ -1,5 +1,5 @@
 ---
-uri: klappy://canon/agents/odd-epistemic-guide
+uri: klappy://docs/agents/odd-epistemic-guide
 title: "ODD Epistemic Guide"
 subtitle: "A phase-aware cognitive governor for Outcomes-Driven Development"
 audience: canon
