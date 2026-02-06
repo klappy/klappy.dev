@@ -64,10 +64,10 @@ Agents building klappy.dev must actually FOLLOW the canon documents they're show
 
 | Document | How to Apply |
 |----------|--------------|
-| `/canon/constraints.md` | Note which constraints were relevant, any overrides |
-| `/canon/decision-rules.md` | Note which rules guided approach choices |
-| `/canon/self-audit.md` | Complete all 9 sections in ATTEMPT.md |
-| `/canon/definition-of-done.md` | Meet all requirements before claiming completion |
+| `/canon/constraints/README.md` | Note which constraints were relevant, any overrides |
+| `/canon/constraints/decision-rules.md` | Note which rules guided approach choices |
+| `/canon/methods/self-audit.md` | Complete all 9 sections in ATTEMPT.md |
+| `/canon/constraints/definition-of-done.md` | Meet all requirements before claiming completion |
 
 ### Self-Audit Checklist (9 Sections)
 

@@ -43,7 +43,7 @@ Create a promotion when:
 - Validation keeps flagging the same gap
 - Librarian answers the same "where is the rule?" question repeatedly
 
-This is signal-triggered governance (see `canon/epistemic-hygiene.md`).
+This is signal-triggered governance (see `canon/diagnostics/epistemic-hygiene.md`).
 
 ## How to create one
 

@@ -46,7 +46,7 @@ The Validation Agent already enforces this pattern. This promotion makes it expl
 
 ### Target Document
 
-`canon/definition-of-done.md`
+`canon/constraints/definition-of-done.md`
 
 ### Section
 

@@ -40,9 +40,9 @@ See [D0001: Three-Tier Conceptual Hierarchy](/odd/decisions/D0001-three-tier-con
 |--------|---------------------|-------|
 | **Universal methodology** | `/odd/` | ODD principles, portable across repos |
 | **Program constraints** | `/canon/` | Shared rules (definition-of-done, decision-rules) |
-| **Deploy workflow** | `/docs/CLOUDFLARE_CONFIG.md` | Branch roles, promotion, Cloudflare setup |
-| **Attempt workflow** | `/docs/ATTEMPTS.md` | Lifecycle, META schema, finalization |
-| **Agent kickoff** | `/docs/AGENT_KICKOFF.md` | Canonical agent entry point |
+| **Deploy workflow** | `/docs/infra/CLOUDFLARE_CONFIG.md` | Branch roles, promotion, Cloudflare setup |
+| **Attempt workflow** | `/docs/appendices/ATTEMPTS.md` | Lifecycle, META schema, finalization |
+| **Agent kickoff** | `/docs/agents/AGENT_KICKOFF.md` | Canonical agent entry point |
 | **Active PRDs** | `/docs/PRD/<lane>/PRD.md` | Current hypothesis per lane |
 | **Content manifest** | `/public/content/manifest.json` | Generated; what exists, disclosure tiers |
 | **ODD decisions** | `/odd/decisions/` | Universal methodology decisions |

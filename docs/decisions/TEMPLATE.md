@@ -165,7 +165,7 @@ This should be self-contained for LLM context.
 - **Recurrence check:** [Has this pattern appeared elsewhere?]
 
 If the pattern recurs across multiple decisions or lanes, consider elevating to:
-- `/canon/constraints.md` — Program-level constraint
+- `/canon/constraints/` — Program-level constraint
 - `/odd/appendices/` — Universal principle
 ```
 

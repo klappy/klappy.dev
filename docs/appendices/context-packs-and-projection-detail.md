@@ -178,5 +178,5 @@ Technically yes. Practically, missing structure means the document cannot be com
 
 ## See Also
 
-- [Epistemic Obligation and Document Tiers](/canon/epistemic-obligation-and-document-tiers.md) — What tiers mean
+- [Epistemic Obligation and Document Tiers](/canon/definitions/epistemic-obligation-and-document-tiers.md) — What tiers mean
 - [Article Template](/docs/TEMPLATE.md) — Standard structure for projectable documents

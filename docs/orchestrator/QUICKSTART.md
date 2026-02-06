@@ -133,6 +133,6 @@ npm run docs:index
 For deeper reading on orchestrator behaviors:
 
 - **Epistemic Challenge (playbook)** — `docs/orchestrator/epistemic-challenge.md`
-- **Canon doctrine: Epistemic Challenge** — `canon/epistemic-challenge.md`
-- **Epistemic Hygiene (smell triggers)** — `canon/epistemic-hygiene.md`
-- **Weighted Relevance & Arbitration** — `canon/weighted-relevance-and-arbitration.md`
+- **Canon doctrine: Epistemic Challenge** — `canon/constraints/epistemic-challenge.md`
+- **Epistemic Hygiene (smell triggers)** — `canon/diagnostics/epistemic-hygiene.md`
+- **Weighted Relevance & Arbitration** — `canon/methods/weighted-relevance-and-arbitration.md`

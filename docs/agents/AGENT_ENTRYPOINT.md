@@ -13,7 +13,7 @@ tags: ["docs", "implementation", "agent", "entrypoint", "redirect"]
 
 **If you are an AI agent starting an attempt, go directly to:**
 
-## `/docs/AGENT_KICKOFF.md`
+## `/docs/agents/AGENT_KICKOFF.md`
 
 That file is the canonical, copy-pasteable entry point for all agent attempts.
 
@@ -26,13 +26,13 @@ If you want to understand the system before acting:
 1. `/docs/appendices/product-lanes.md` — multi-lane PRD architecture
 2. `/canon/index.md` — Canon orientation, precedence, stability
 3. `/odd/manifesto.md` — philosophy and intent
-4. `/docs/ATTEMPTS.md` — attempt lifecycle orientation
+4. `/docs/appendices/ATTEMPTS.md` — attempt lifecycle orientation
 
 ---
 
 ## For Humans
 
-Human workflow lives at `/docs/ATTEMPT_KICKOFF.md`.
+Human workflow lives at `/docs/appendices/ATTEMPT_KICKOFF.md`.
 
 ---
 

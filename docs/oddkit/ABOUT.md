@@ -20,7 +20,7 @@ It exists to help agents verify truth, not remember conversations.
 If you are confused about why oddkit blocked an action, challenged a claim,
 or asked for evidence, start here:
 
-→ [docs/WHY.md](/docs/WHY.md) — Why oddkit exists
+→ [docs/oddkit/WHY.md](/docs/oddkit/WHY.md) — Why oddkit exists
 → [/odd/README.md](/odd/README.md) — What ODD is
 
 Then run:

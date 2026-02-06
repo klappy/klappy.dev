@@ -53,7 +53,7 @@ A valid evidence bullet has:
 
 Example:
 
-- "MUST provide visual proof for any work affecting user-visible behavior" — `canon/visual-proof.md#Operating Constraints`
+- "MUST provide visual proof for any work affecting user-visible behavior" — `canon/constraints/visual-proof.md#Operating Constraints`
 
 If the response lacks evidence bullets, treat it as untrusted.
 

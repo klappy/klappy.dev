@@ -42,7 +42,7 @@ Epoch determines whether your attempt's outcomes can be compared to prior attemp
 1. `/docs/appendices/product-lanes.md` — understand the multi-lane model
 2. `/docs/appendices/epochs.md` — understand when outcomes are comparable
 3. Your lane's PRD (e.g., `/docs/PRD/ai-navigation/PRD.md`)
-4. `/canon/constraints.md` — non-negotiables that shape all work
+4. `/canon/constraints/README.md` — non-negotiables that shape all work
 
 ---
 
@@ -157,11 +157,11 @@ Do NOT guess. Do NOT synthesize. Report the conflict.
 | Lane architecture | `/docs/appendices/product-lanes.md` |
 | Lane implementation surfaces | `/docs/appendices/lane-implementation-surfaces.md` |
 | Epoch semantics | `/docs/appendices/epochs.md` |
-| Constraints | `/canon/constraints.md` |
-| Definition of Done | `/canon/definition-of-done.md` |
+| Constraints | `/canon/constraints/README.md` |
+| Definition of Done | `/canon/constraints/definition-of-done.md` |
 | Deploy contract | `/infra/contracts/build-output.md` |
-| Attempt lifecycle | `/docs/ATTEMPTS.md` |
-| Human workflow | `/docs/ATTEMPT_KICKOFF.md` |
+| Attempt lifecycle | `/docs/appendices/ATTEMPTS.md` |
+| Human workflow | `/docs/appendices/ATTEMPT_KICKOFF.md` |
 
 ---
 

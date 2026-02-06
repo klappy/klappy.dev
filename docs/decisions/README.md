@@ -129,5 +129,5 @@ ODD contains universal principles. Canon contains program constraints. These dec
 |----------|------|-------------------|
 | `/odd/contract.md` | ODD | D0009, D0011, D0012 |
 | `/odd/decisions/D0001-three-tier-conceptual-hierarchy.md` | ODD | All (tier separation) |
-| `/canon/constraints.md` | Canon | All decisions respect constraints |
+| `/canon/constraints/README.md` | Canon | All decisions respect constraints |
 | `/docs/appendices/epochs.md` | Docs | D0012, D0014 |

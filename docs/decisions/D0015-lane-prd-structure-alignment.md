@@ -143,7 +143,7 @@ The file at the canonical location should contain the authoritative content. Met
 
 If this pattern recurs in other contexts (not just PRDs), consider elevating to:
 - `/canon/odd/appendices/canonical-authority-pattern.md` — General pattern
-- Or adding to `/canon/constraints.md` — As a design constraint
+- Or adding to `/canon/constraints/README.md` — As a design constraint
 
 ---
 
