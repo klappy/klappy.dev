@@ -96,12 +96,17 @@ tags: ["docs", "implementation", "reference", "index"]
 
 | Folder | Purpose | Count |
 |--------|---------|-------|
+| [_incoming/](./_incoming/) | Temporary intake for unclassified documents (Epoch 4 migration) | — |
 | [agent-architecture/](./agent-architecture/) | Agent system design patterns | 1 file |
 | [appendices/](./appendices/) | Implementation-specific appendices | 17 files |
+| [audits/](./audits/) | Epistemic drift checks, reviews, evaluations | — |
 | [decisions/](./decisions/) | Implementation decision records (ADRs) | 14 files |
 | [examples/](./examples/) | Case studies and examples | 1 file |
-| [PRD/](./PRD/) | Lane PRDs and template | 3 files |
+| [history/](./history/) | What happened, with evidence | — |
 | [infra/](./infra/) | Infrastructure documentation | 1 file |
+| [migrations/](./migrations/) | How we change the system | 2 files |
+| [plans/](./plans/) | Forward-looking design & planning | — |
+| [PRD/](./PRD/) | Lane PRDs and template | 3 files |
 
 ---
 
