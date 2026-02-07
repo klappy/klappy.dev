@@ -5,7 +5,7 @@
 ================================================================================
 
 
-Generated: 2026-02-06T05:55:03.985Z
+Generated: 2026-02-07T04:12:07.424Z
 Total Files: 283
 
 This is a documentation export of all markdown files from the klappy.dev
@@ -17927,6 +17927,7 @@ If a line feels universal, consider promoting it into canon (by editing the cano
 
 - `fragment-01-recon.md` — Cinematic reconstruction of Fragment I
 - `fragment-02-recon.md` — Cinematic reconstruction of Fragment II
+- `fragment-03-recon.md` — Cinematic reconstruction of Fragment III
 
 
 

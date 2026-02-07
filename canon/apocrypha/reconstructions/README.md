@@ -31,3 +31,4 @@ If a line feels universal, consider promoting it into canon (by editing the cano
 
 - `fragment-01-recon.md` — Cinematic reconstruction of Fragment I
 - `fragment-02-recon.md` — Cinematic reconstruction of Fragment II
+- `fragment-03-recon.md` — Cinematic reconstruction of Fragment III
