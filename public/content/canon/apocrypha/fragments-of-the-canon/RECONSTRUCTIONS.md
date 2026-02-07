@@ -40,8 +40,17 @@ Reconstructions are fallible, interpretive, and allowed to diverge.
   → `canon/apocrypha/reconstructions/fragment-02-recon.md`
 
 ### Fragment III
-- **Nothing Exceeded the Threshold (Reconstruction)**  
+- **Nothing Exceeded the Threshold (Reconstruction)**
   → `canon/apocrypha/reconstructions/fragment-03-recon.md`
+
+### When Arbitration Went Global
+- **When Arbitration Went Global (Retelling)**
+  → `canon/apocrypha/reconstructions/when-arbitration-went-global-recon.md`
+  Source: `canon/apocrypha/fragments/when-arbitration-went-global.md`
+
+### Not Yet Written
+- **On Artifacts** — no reconstruction exists
+- **On Consent Drift** — no reconstruction exists
 
 ---
 

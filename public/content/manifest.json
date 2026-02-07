@@ -798,6 +798,18 @@
       ]
     },
     {
+      "uri": "klappy://canon/apocrypha/fragments-of-the-canon/meta-odd",
+      "path": "/canon/apocrypha/fragments-of-the-canon/META-ODD.md",
+      "title": "Meta-ODD: Writing Constraints for Fragments of the Canon",
+      "type": "text/markdown",
+      "audience": "internal",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "neutral",
+      "stability": "stable",
+      "tags": []
+    },
+    {
       "uri": "klappy://canon/methods/boundary-transition-review",
       "path": "/canon/methods/boundary-transition-review.md",
       "title": "Method: Boundary Transition Review",

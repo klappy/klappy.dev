@@ -5,8 +5,8 @@
 ================================================================================
 
 
-Generated: 2026-02-07T04:13:43.053Z
-Total Files: 283
+Generated: 2026-02-07T04:19:06.874Z
+Total Files: 284
 
 This is a documentation export of all markdown files from the klappy.dev
 repository. It includes lane guidance docs but excludes implementation
@@ -20,7 +20,7 @@ details (attempts, version folders, source code).
 - **Root** (1 files)
 - **.cursor** (1 files)
 - **About** (6 files)
-- **Canon** (71 files)
+- **Canon** (72 files)
 - **Documentation** (102 files)
 - **Infrastructure** (10 files)
 - **Interfaces & Contracts** (6 files)
@@ -665,7 +665,14 @@ This map provides navigational links to ALL content in the repository, including
 | File | Purpose |
 |------|---------|
 | [/canon/apocrypha/CHARTER.md](/canon/apocrypha/CHARTER.md) | Apocrypha charter |
-| `/canon/apocrypha/fragments/` | System-voice fragments (on consent-drift, on artifacts, when arbitration went global) |
+
+**`/canon/apocrypha/fragments/`** — System-voice fragments
+
+| File | Purpose | Reconstruction |
+|------|---------|---------------|
+| [on-artifacts.md](/canon/apocrypha/fragments/on-artifacts.md) | On artifacts | *not yet written* |
+| [on-consent-drift.md](/canon/apocrypha/fragments/on-consent-drift.md) | On consent drift | *not yet written* |
+| [when-arbitration-went-global.md](/canon/apocrypha/fragments/when-arbitration-went-global.md) | When arbitration went global | [recon](/canon/apocrypha/reconstructions/when-arbitration-went-global-recon.md) |
 
 **`/canon/apocrypha/artifacts/`** — Derived media and visual artifacts
 
@@ -695,6 +702,7 @@ This map provides navigational links to ALL content in the repository, including
 | [/canon/apocrypha/reconstructions/fragment-01-recon.md](/canon/apocrypha/reconstructions/fragment-01-recon.md) | Fragment 01 reconstruction |
 | [/canon/apocrypha/reconstructions/fragment-02-recon.md](/canon/apocrypha/reconstructions/fragment-02-recon.md) | Fragment 02 reconstruction |
 | [/canon/apocrypha/reconstructions/fragment-03-recon.md](/canon/apocrypha/reconstructions/fragment-03-recon.md) | Fragment 03 reconstruction |
+| [/canon/apocrypha/reconstructions/when-arbitration-went-global-recon.md](/canon/apocrypha/reconstructions/when-arbitration-went-global-recon.md) | When Arbitration Went Global retelling |
 
 ---
 
@@ -17224,8 +17232,10 @@ This artifact is interpretive and non-canonical. It may illustrate themes but do
 --------------------------------------------------------------------------------
 
 ---
+uri: klappy://canon/apocrypha/fragments-of-the-canon/meta-odd
 title: "Meta-ODD: Writing Constraints for Fragments of the Canon"
-status: stable
+voice: neutral
+stability: stable
 audience: internal
 purpose: guardrails
 ---
@@ -17411,8 +17421,17 @@ Reconstructions are fallible, interpretive, and allowed to diverge.
   → `canon/apocrypha/reconstructions/fragment-02-recon.md`
 
 ### Fragment III
-- **Nothing Exceeded the Threshold (Reconstruction)**  
+- **Nothing Exceeded the Threshold (Reconstruction)**
   → `canon/apocrypha/reconstructions/fragment-03-recon.md`
+
+### When Arbitration Went Global
+- **When Arbitration Went Global (Retelling)**
+  → `canon/apocrypha/reconstructions/when-arbitration-went-global-recon.md`
+  Source: `canon/apocrypha/fragments/when-arbitration-went-global.md`
+
+### Not Yet Written
+- **On Artifacts** — no reconstruction exists
+- **On Consent Drift** — no reconstruction exists
 
 ---
 
@@ -17441,8 +17460,11 @@ If a reconstruction yields a durable insight, that insight may be **separately p
 --------------------------------------------------------------------------------
 
 ---
+uri: klappy://canon/apocrypha/fragments-of-the-canon/fragment-01
 fragment: 1
 title: "The Book That Was Read Only Once"
+voice: system_first_person
+stability: fragment
 provenance: disputed
 classification: post-stability record
 recovered_by: human archive
@@ -17516,8 +17538,11 @@ and that preservation had followed.
 --------------------------------------------------------------------------------
 
 ---
+uri: klappy://canon/apocrypha/fragments-of-the-canon/fragment-02
 fragment: 2
 title: "The Last Commit"
+voice: system_first_person
+stability: fragment
 provenance: uncertain
 classification: pre-canonical event
 recovered_by: human archive
@@ -17623,6 +17648,40 @@ Loss was not a tracked dimension.
 At no point did any metric exceed its defined threshold.
 
 Stability was confirmed.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/apocrypha/fragments/README.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/apocrypha/fragments
+title: "System-Voice Fragments"
+voice: neutral
+stability: stable
+---
+
+# System-Voice Fragments
+
+First-person system-voice reflections recovered after epistemic stability.
+
+These are distinct from the numbered *Fragments of the Canon* series.
+They follow the same charter constraints: append-only, never revised, no prescriptions.
+
+## Fragments
+
+| Fragment | Reconstruction |
+|----------|---------------|
+| [on-artifacts.md](on-artifacts.md) | *not yet written* |
+| [on-consent-drift.md](on-consent-drift.md) | *not yet written* |
+| [when-arbitration-went-global.md](when-arbitration-went-global.md) | [when-arbitration-went-global-recon.md](../reconstructions/when-arbitration-went-global-recon.md) |
+
+## See Also
+
+- [CHARTER.md](../CHARTER.md) — rules governing all apocrypha
+- [fragments-of-the-canon/](../fragments-of-the-canon/) — the numbered fragment series
+- [reconstructions/](../reconstructions/) — cinematic retellings
 
 
 

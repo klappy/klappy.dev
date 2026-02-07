@@ -1,6 +1,9 @@
 ---
+uri: klappy://canon/apocrypha/fragments-of-the-canon/fragment-01
 fragment: 1
 title: "The Book That Was Read Only Once"
+voice: system_first_person
+stability: fragment
 provenance: disputed
 classification: post-stability record
 recovered_by: human archive

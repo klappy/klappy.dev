@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-02-07T04:13:43.657Z",
+  "generated_at": "2026-02-07T04:19:07.514Z",
   "description": "Fast-lookup index for Librarian retrieval. Per docs/agents/librarian/contract.md",
   "schema_notes": {
     "authority_band": "Resolved authority (frontmatter override > inferred from root)",
@@ -30,17 +30,17 @@
     }
   },
   "stats": {
-    "total_documents": 204,
-    "with_frontmatter": 196,
-    "with_headings": 200,
+    "total_documents": 205,
+    "with_frontmatter": 197,
+    "with_headings": 201,
     "by_root": {
-      "canon": 70,
+      "canon": 71,
       "docs": 102,
       "interfaces": 6,
       "odd": 26
     },
     "by_authority": {
-      "governing": 96,
+      "governing": 97,
       "operational": 108
     },
     "with_authority_override": 0,
@@ -534,18 +534,18 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
+      "uri": "klappy://canon/apocrypha/fragments-of-the-canon/fragment-01",
       "title": "The Book That Was Read Only Once",
       "subtitle": null,
       "tags": [],
       "acronyms": [
         "btroo"
       ],
-      "stability": null,
+      "stability": "fragment",
       "tier": null,
       "audience": null,
       "exposure": null,
-      "voice": null,
+      "voice": "system_first_person",
       "relevance": null,
       "execution_posture": null,
       "headings": [],
@@ -557,18 +557,18 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
+      "uri": "klappy://canon/apocrypha/fragments-of-the-canon/fragment-02",
       "title": "The Last Commit",
       "subtitle": null,
       "tags": [],
       "acronyms": [
         "lc"
       ],
-      "stability": null,
+      "stability": "fragment",
       "tier": null,
       "audience": null,
       "exposure": null,
-      "voice": null,
+      "voice": "system_first_person",
       "relevance": null,
       "execution_posture": null,
       "headings": [],
@@ -615,18 +615,18 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
+      "uri": "klappy://canon/apocrypha/fragments-of-the-canon/meta-odd",
       "title": "Meta-ODD: Writing Constraints for Fragments of the Canon",
       "subtitle": null,
       "tags": [],
       "acronyms": [
         "mowcfc"
       ],
-      "stability": null,
+      "stability": "stable",
       "tier": null,
       "audience": "internal",
       "exposure": null,
-      "voice": null,
+      "voice": "neutral",
       "relevance": null,
       "execution_posture": null,
       "headings": [
@@ -770,17 +770,27 @@
           "line": 32
         },
         {
+          "level": 3,
+          "text": "When Arbitration Went Global",
+          "line": 36
+        },
+        {
+          "level": 3,
+          "text": "Not Yet Written",
+          "line": 41
+        },
+        {
           "level": 2,
           "text": "Notes",
-          "line": 38
+          "line": 47
         },
         {
           "level": 2,
           "text": "Related Artifacts",
-          "line": 48
+          "line": 57
         }
       ],
-      "heading_count": 8,
+      "heading_count": 10,
       "has_frontmatter": true
     },
     {
@@ -827,6 +837,45 @@
       "execution_posture": null,
       "headings": [],
       "heading_count": 0,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/apocrypha/fragments/README.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/apocrypha/fragments",
+      "title": "System-Voice Fragments",
+      "subtitle": null,
+      "tags": [],
+      "acronyms": [
+        "svf"
+      ],
+      "stability": "stable",
+      "tier": null,
+      "audience": null,
+      "exposure": null,
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "System-Voice Fragments",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Fragments",
+          "line": 9
+        },
+        {
+          "level": 2,
+          "text": "See Also",
+          "line": 17
+        }
+      ],
+      "heading_count": 3,
       "has_frontmatter": true
     },
     {
@@ -11186,42 +11235,42 @@
         {
           "level": 2,
           "text": "Supporting Areas",
-          "line": 133
+          "line": 141
         },
         {
           "level": 3,
           "text": "About (`/about/`)",
-          "line": 135
+          "line": 143
         },
         {
           "level": 3,
           "text": "Projects (`/projects/`)",
-          "line": 144
+          "line": 152
         },
         {
           "level": 3,
           "text": "Products (`/products/`)",
-          "line": 153
+          "line": 161
         },
         {
           "level": 3,
           "text": "Infrastructure (`/infra/`)",
-          "line": 162
+          "line": 170
         },
         {
           "level": 2,
           "text": "Key Acronyms",
-          "line": 173
+          "line": 181
         },
         {
           "level": 2,
           "text": "Discovery Tips",
-          "line": 185
+          "line": 193
         },
         {
           "level": 2,
           "text": "See Also",
-          "line": 196
+          "line": 204
         }
       ],
       "heading_count": 16,

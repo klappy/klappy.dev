@@ -1,6 +1,9 @@
 ---
+uri: klappy://canon/apocrypha/fragments-of-the-canon/fragment-02
 fragment: 2
 title: "The Last Commit"
+voice: system_first_person
+stability: fragment
 provenance: uncertain
 classification: pre-canonical event
 recovered_by: human archive
