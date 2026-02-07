@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-02-07T04:12:08.024Z",
+  "generated_at": "2026-02-07T04:13:43.657Z",
   "description": "Fast-lookup index for Librarian retrieval. Per docs/agents/librarian/contract.md",
   "schema_notes": {
     "authority_band": "Resolved authority (frontmatter override > inferred from root)",
@@ -34,14 +34,14 @@
     "with_frontmatter": 196,
     "with_headings": 200,
     "by_root": {
-      "canon": 69,
-      "docs": 103,
+      "canon": 70,
+      "docs": 102,
       "interfaces": 6,
       "odd": 26
     },
     "by_authority": {
-      "governing": 95,
-      "operational": 109
+      "governing": 96,
+      "operational": 108
     },
     "with_authority_override": 0,
     "with_authority_warning": 0
@@ -1006,6 +1006,35 @@
       ],
       "heading_count": 4,
       "has_frontmatter": false
+    },
+    {
+      "path": "canon/apocrypha/reconstructions/when-arbitration-went-global-recon.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/apocrypha/reconstructions/when-arbitration-went-global-recon",
+      "title": "When Arbitration Went Global",
+      "subtitle": null,
+      "tags": [],
+      "acronyms": [
+        "wawg"
+      ],
+      "stability": "historical",
+      "tier": null,
+      "audience": null,
+      "exposure": "hidden",
+      "voice": "narrative_third_person",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "When Arbitration Went Global",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
+      "has_frontmatter": true
     },
     {
       "path": "canon/CHANGELOG.md",
@@ -15377,35 +15406,6 @@
         }
       ],
       "heading_count": 13,
-      "has_frontmatter": true
-    },
-    {
-      "path": "docs/retellings/when-arbitration-went-global.md",
-      "root": "docs",
-      "authority_band": "operational",
-      "authority_inferred": "operational",
-      "uri": "klappy://docs/retellings/when-arbitration-went-global",
-      "title": "When Arbitration Went Global",
-      "subtitle": null,
-      "tags": [],
-      "acronyms": [
-        "wawg"
-      ],
-      "stability": "historical",
-      "tier": null,
-      "audience": null,
-      "exposure": "docs",
-      "voice": "narrative_third_person",
-      "relevance": null,
-      "execution_posture": null,
-      "headings": [
-        {
-          "level": 1,
-          "text": "When Arbitration Went Global",
-          "line": 2
-        }
-      ],
-      "heading_count": 1,
       "has_frontmatter": true
     },
     {

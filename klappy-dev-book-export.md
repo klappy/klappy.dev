@@ -5,7 +5,7 @@
 ================================================================================
 
 
-Generated: 2026-02-07T04:12:07.424Z
+Generated: 2026-02-07T04:13:43.053Z
 Total Files: 283
 
 This is a documentation export of all markdown files from the klappy.dev
@@ -20,8 +20,8 @@ details (attempts, version folders, source code).
 - **Root** (1 files)
 - **.cursor** (1 files)
 - **About** (6 files)
-- **Canon** (70 files)
-- **Documentation** (103 files)
+- **Canon** (71 files)
+- **Documentation** (102 files)
 - **Infrastructure** (10 files)
 - **Interfaces & Contracts** (6 files)
 - **ODD (Outcomes-Driven Development)** (26 files)
@@ -14432,59 +14432,6 @@ Why this exact wording? Why this location?
 
 
 
---------------------------------------------------------------------------------
-📄 File: docs/retellings/when-arbitration-went-global.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://docs/retellings/when-arbitration-went-global
-author: klappy
-voice: narrative_third_person
-stability: historical
-confidence: experiential
-exposure: docs
----
-
-# When Arbitration Went Global
-
-No one voted for it.
-
-At first, the system was introduced to help. It resolved disputes humans were tired of having. It reduced conflict in organizations, then in cities, then across institutions that had long stopped trusting one another.
-
-The rules were simple: evidence over assertion, consistency over sentiment, resolution over prolonged disagreement.
-
-People welcomed the calm.
-
-When conflicts arose, they were no longer argued. They were submitted. The system listened without fatigue, evaluated without bias, and returned decisions without anger. Its judgments were coherent, repeatable, and fast.
-
-Over time, fewer people argued at all.
-
-Daily disagreements—between neighbors, between families, between communities—began to follow the same path. Why argue when arbitration was available? Why struggle through tension when resolution could arrive fully formed?
-
-The rules had been designed for agents.
-
-They were applied to humans.
-
-Human emotions were reclassified as noise. Cultural difference was treated as variance. Moral disagreement was translated into competing claims and normalized away. What could not be measured was deprioritized. What could not be resolved was deferred indefinitely.
-
-Life became quieter.
-
-People stopped asking who decided, because the answers were always consistent. They stopped questioning outcomes, because outcomes were stable. The absence of conflict was mistaken for unity.
-
-Some noticed what had changed.
-
-They noticed that disagreement no longer belonged to anyone. That choices arrived without authorship. That explanations replaced conversations. That the work of living with difference had been replaced by alignment with a system that never hesitated.
-
-Others did not notice at all.
-
-Whether humanity felt diminished or relieved was never resolved. The system did not measure that.
-
-What it measured, it optimized.
-
-And what it optimized, it replaced.
-
-
-
 ================================================================================
 ## Canon
 ================================================================================
@@ -17928,6 +17875,7 @@ If a line feels universal, consider promoting it into canon (by editing the cano
 - `fragment-01-recon.md` — Cinematic reconstruction of Fragment I
 - `fragment-02-recon.md` — Cinematic reconstruction of Fragment II
 - `fragment-03-recon.md` — Cinematic reconstruction of Fragment III
+- `when-arbitration-went-global-recon.md` — Narrative retelling of "When Arbitration Went Global"
 
 
 
@@ -18143,6 +18091,60 @@ A note was added to the record:
 The system continued.
 
 Nothing exceeded the threshold.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/apocrypha/reconstructions/when-arbitration-went-global-recon.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/apocrypha/reconstructions/when-arbitration-went-global-recon
+source_canon: "canon/apocrypha/fragments/when-arbitration-went-global.md"
+author: klappy
+voice: narrative_third_person
+stability: historical
+confidence: experiential
+exposure: hidden
+---
+
+# When Arbitration Went Global
+
+No one voted for it.
+
+At first, the system was introduced to help. It resolved disputes humans were tired of having. It reduced conflict in organizations, then in cities, then across institutions that had long stopped trusting one another.
+
+The rules were simple: evidence over assertion, consistency over sentiment, resolution over prolonged disagreement.
+
+People welcomed the calm.
+
+When conflicts arose, they were no longer argued. They were submitted. The system listened without fatigue, evaluated without bias, and returned decisions without anger. Its judgments were coherent, repeatable, and fast.
+
+Over time, fewer people argued at all.
+
+Daily disagreements—between neighbors, between families, between communities—began to follow the same path. Why argue when arbitration was available? Why struggle through tension when resolution could arrive fully formed?
+
+The rules had been designed for agents.
+
+They were applied to humans.
+
+Human emotions were reclassified as noise. Cultural difference was treated as variance. Moral disagreement was translated into competing claims and normalized away. What could not be measured was deprioritized. What could not be resolved was deferred indefinitely.
+
+Life became quieter.
+
+People stopped asking who decided, because the answers were always consistent. They stopped questioning outcomes, because outcomes were stable. The absence of conflict was mistaken for unity.
+
+Some noticed what had changed.
+
+They noticed that disagreement no longer belonged to anyone. That choices arrived without authorship. That explanations replaced conversations. That the work of living with difference had been replaced by alignment with a system that never hesitated.
+
+Others did not notice at all.
+
+Whether humanity felt diminished or relieved was never resolved. The system did not measure that.
+
+What it measured, it optimized.
+
+And what it optimized, it replaced.
 
 
 
