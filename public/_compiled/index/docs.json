@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-02-07T04:19:07.514Z",
+  "generated_at": "2026-02-08T16:54:09.679Z",
   "description": "Fast-lookup index for Librarian retrieval. Per docs/agents/librarian/contract.md",
   "schema_notes": {
     "authority_band": "Resolved authority (frontmatter override > inferred from root)",
@@ -30,17 +30,17 @@
     }
   },
   "stats": {
-    "total_documents": 205,
-    "with_frontmatter": 197,
-    "with_headings": 201,
+    "total_documents": 210,
+    "with_frontmatter": 202,
+    "with_headings": 206,
     "by_root": {
-      "canon": 71,
+      "canon": 76,
       "docs": 102,
       "interfaces": 6,
       "odd": 26
     },
     "by_authority": {
-      "governing": 97,
+      "governing": 102,
       "operational": 108
     },
     "with_authority_override": 0,
@@ -2875,6 +2875,62 @@
       "has_frontmatter": true
     },
     {
+      "path": "canon/constraints/no-irreversible-action-without-epistemic-justification.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/constraints/no-irreversible-action-without-epistemic-justification",
+      "title": "No Irreversible Action Without Epistemic Justification",
+      "subtitle": "Defer irreversibility until epistemic thresholds are met.",
+      "tags": [
+        "canon",
+        "constraints",
+        "irreversibility",
+        "epistemic-safety",
+        "commitment",
+        "enforcement"
+      ],
+      "acronyms": [
+        "niawej"
+      ],
+      "stability": "stable",
+      "tier": "1",
+      "audience": "canon",
+      "exposure": "nav",
+      "voice": "first_person",
+      "relevance": "decision",
+      "execution_posture": "governing",
+      "headings": [
+        {
+          "level": 1,
+          "text": "No Irreversible Action Without Epistemic Justification",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Constraint",
+          "line": 8
+        },
+        {
+          "level": 2,
+          "text": "What Qualifies as Epistemic Justification",
+          "line": 25
+        },
+        {
+          "level": 2,
+          "text": "What This Constraint Prevents",
+          "line": 37
+        },
+        {
+          "level": 2,
+          "text": "Enforcement",
+          "line": 46
+        }
+      ],
+      "heading_count": 5,
+      "has_frontmatter": true
+    },
+    {
       "path": "canon/constraints/odd-is-epistemic-os-not-values.md",
       "root": "canon",
       "authority_band": "governing",
@@ -2987,92 +3043,92 @@
         {
           "level": 2,
           "text": "Operating Constraints",
-          "line": 30
+          "line": 31
         },
         {
           "level": 2,
           "text": "Defaults",
-          "line": 45
+          "line": 46
         },
         {
           "level": 2,
           "text": "Failure Modes",
-          "line": 56
+          "line": 57
         },
         {
           "level": 2,
           "text": "Verification",
-          "line": 67
+          "line": 68
         },
         {
           "level": 2,
           "text": "Content",
-          "line": 77
+          "line": 78
         },
         {
           "level": 2,
           "text": "1. Offline-First (Default)",
-          "line": 98
+          "line": 99
         },
         {
           "level": 2,
           "text": "2. Long Timelines & Changing Ownership",
-          "line": 124
+          "line": 125
         },
         {
           "level": 2,
           "text": "3. Maintainability Over Cleverness",
-          "line": 149
+          "line": 150
         },
         {
           "level": 2,
           "text": "4. Interoperability Over Feature Completeness",
-          "line": 168
+          "line": 169
         },
         {
           "level": 2,
           "text": "5. Stateless or Low-State by Default",
-          "line": 192
+          "line": 193
         },
         {
           "level": 2,
           "text": "6. AI as Accelerator, Not Authority",
-          "line": 216
+          "line": 217
         },
         {
           "level": 2,
           "text": "7. Evidence Over Assertion",
-          "line": 239
+          "line": 240
         },
         {
           "level": 2,
           "text": "8. UX Is Contextual, Not Universal",
-          "line": 257
+          "line": 258
         },
         {
           "level": 2,
           "text": "9. Ephemeral Artifacts Are Acceptable",
-          "line": 281
+          "line": 282
         },
         {
           "level": 2,
           "text": "10. Explicit Tradeoffs",
-          "line": 301
+          "line": 302
         },
         {
           "level": 2,
           "text": "11. Lane Self-Containment",
-          "line": 319
+          "line": 320
         },
         {
           "level": 2,
           "text": "💡 Closing Note",
-          "line": 344
+          "line": 345
         },
         {
           "level": 2,
           "text": "✅ Status",
-          "line": 355
+          "line": 356
         }
       ],
       "heading_count": 21,
@@ -5813,6 +5869,121 @@
       "has_frontmatter": true
     },
     {
+      "path": "canon/principles/focus-is-exclusion.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/principles/focus-is-exclusion",
+      "title": "Focus Is Exclusion",
+      "subtitle": "Possibility is infinite. Capacity is not.",
+      "tags": [
+        "principles",
+        "capacity",
+        "exclusion",
+        "focus",
+        "delivery"
+      ],
+      "acronyms": [
+        "fe"
+      ],
+      "stability": "stable",
+      "tier": "1",
+      "audience": "canon",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Focus Is Exclusion",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Principle",
+          "line": 8
+        },
+        {
+          "level": 2,
+          "text": "Why This Is a Separate Invariant",
+          "line": 18
+        },
+        {
+          "level": 2,
+          "text": "What This Means in Practice",
+          "line": 31
+        },
+        {
+          "level": 2,
+          "text": "What This Does Not Mean",
+          "line": 41
+        },
+        {
+          "level": 2,
+          "text": "Cross-References",
+          "line": 49
+        }
+      ],
+      "heading_count": 6,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/principles/irreversibility-is-the-real-cost.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/principles/irreversibility-is-the-real-cost",
+      "title": "Irreversibility Is the Real Cost",
+      "subtitle": "Most work is cheap to think and expensive to undo.",
+      "tags": [
+        "principles",
+        "irreversibility",
+        "epistemic-cost",
+        "commitment",
+        "exploration"
+      ],
+      "acronyms": [
+        "irc"
+      ],
+      "stability": "stable",
+      "tier": "1",
+      "audience": "canon",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Irreversibility Is the Real Cost",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Principle",
+          "line": 8
+        },
+        {
+          "level": 2,
+          "text": "What This Means in Practice",
+          "line": 18
+        },
+        {
+          "level": 2,
+          "text": "What This Does Not Mean",
+          "line": 28
+        },
+        {
+          "level": 2,
+          "text": "Cross-References",
+          "line": 38
+        }
+      ],
+      "heading_count": 5,
+      "has_frontmatter": true
+    },
+    {
       "path": "canon/principles/odds-relationship-to-documentation.md",
       "root": "canon",
       "authority_band": "governing",
@@ -5859,6 +6030,40 @@
         }
       ],
       "heading_count": 5,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/principles/README.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/principles",
+      "title": "Principles",
+      "subtitle": null,
+      "tags": [
+        "principles",
+        "index"
+      ],
+      "stability": "stable",
+      "tier": "2",
+      "audience": "canon",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": "routing",
+      "execution_posture": "routing",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Principles",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Contents",
+          "line": 8
+        }
+      ],
+      "heading_count": 2,
       "has_frontmatter": true
     },
     {
@@ -6035,67 +6240,67 @@
         {
           "level": 3,
           "text": "Subfolders",
-          "line": 35
+          "line": 37
         },
         {
           "level": 3,
           "text": "Resonance (External Alignment & Divergence)",
-          "line": 51
+          "line": 53
         },
         {
           "level": 2,
           "text": "🚀 Start Here",
-          "line": 65
+          "line": 68
         },
         {
           "level": 2,
           "text": "📖 Precedence & Interpretation",
-          "line": 75
+          "line": 78
         },
         {
           "level": 2,
           "text": "🧠 What the Canon Is (and Is Not)",
-          "line": 89
+          "line": 92
         },
         {
           "level": 2,
           "text": "🔒 Public vs Internal Boundary",
-          "line": 106
+          "line": 109
         },
         {
           "level": 2,
           "text": "📋 Meta Rules",
-          "line": 115
+          "line": 118
         },
         {
           "level": 2,
           "text": "🔄 Stability & Change Philosophy",
-          "line": 136
+          "line": 139
         },
         {
           "level": 2,
           "text": "⚠️ Confidence & Drift Risk",
-          "line": 149
+          "line": 152
         },
         {
           "level": 2,
           "text": "🚫 What Is Intentionally Undefined",
-          "line": 175
+          "line": 178
         },
         {
           "level": 2,
           "text": "📦 For Pack Compilation",
-          "line": 187
+          "line": 190
         },
         {
           "level": 2,
           "text": "🔗 See Also",
-          "line": 198
+          "line": 201
         },
         {
           "level": 2,
           "text": "✅ Status",
-          "line": 206
+          "line": 209
         }
       ],
       "heading_count": 17,
@@ -6166,6 +6371,63 @@
         }
       ],
       "heading_count": 8,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/resonance/double-diamond.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/resonance/double-diamond",
+      "title": "The Double Diamond",
+      "subtitle": "Design Council, 2005 (revised 2019)",
+      "tags": [
+        "resonance",
+        "double-diamond",
+        "divergence",
+        "convergence",
+        "design-process",
+        "discovery",
+        "delivery"
+      ],
+      "acronyms": [
+        "dd"
+      ],
+      "stability": "stable",
+      "tier": "3",
+      "audience": "canon",
+      "exposure": null,
+      "voice": "neutral",
+      "relevance": "background",
+      "execution_posture": "exploratory",
+      "headings": [
+        {
+          "level": 1,
+          "text": "The Double Diamond",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Where ODD Echoes",
+          "line": 12
+        },
+        {
+          "level": 2,
+          "text": "Where ODD Diverges",
+          "line": 22
+        },
+        {
+          "level": 2,
+          "text": "The Mapping",
+          "line": 36
+        },
+        {
+          "level": 2,
+          "text": "Why This Resonance Matters",
+          "line": 47
+        }
+      ],
+      "heading_count": 5,
       "has_frontmatter": true
     },
     {
@@ -6371,12 +6633,12 @@
         {
           "level": 2,
           "text": "What Resonance Is Not",
-          "line": 82
+          "line": 83
         },
         {
           "level": 2,
           "text": "See Also",
-          "line": 97
+          "line": 98
         }
       ],
       "heading_count": 9,

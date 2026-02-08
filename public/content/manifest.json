@@ -706,6 +706,24 @@
       ]
     },
     {
+      "uri": "klappy://canon/principles/focus-is-exclusion",
+      "path": "/canon/principles/focus-is-exclusion.md",
+      "title": "Focus Is Exclusion",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 1,
+      "voice": "neutral",
+      "stability": "stable",
+      "tags": [
+        "principles",
+        "capacity",
+        "exclusion",
+        "focus",
+        "delivery"
+      ]
+    },
+    {
       "uri": "klappy://canon/apocrypha/fragments-of-the-canon/fragment-03",
       "path": "/canon/apocrypha/fragments-of-the-canon/fragment-03-nothing-exceeded-the-threshold.md",
       "title": "Fragment III: Nothing Exceeded the Threshold",
@@ -760,6 +778,24 @@
         "constraints",
         "ergonomics",
         "epistemic-discipline"
+      ]
+    },
+    {
+      "uri": "klappy://canon/principles/irreversibility-is-the-real-cost",
+      "path": "/canon/principles/irreversibility-is-the-real-cost.md",
+      "title": "Irreversibility Is the Real Cost",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 1,
+      "voice": "neutral",
+      "stability": "stable",
+      "tags": [
+        "principles",
+        "irreversibility",
+        "epistemic-cost",
+        "commitment",
+        "exploration"
       ]
     },
     {
@@ -945,6 +981,25 @@
         "models",
         "mutation",
         "governance"
+      ]
+    },
+    {
+      "uri": "klappy://canon/constraints/no-irreversible-action-without-epistemic-justification",
+      "path": "/canon/constraints/no-irreversible-action-without-epistemic-justification.md",
+      "title": "No Irreversible Action Without Epistemic Justification",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 1,
+      "voice": "first_person",
+      "stability": "stable",
+      "tags": [
+        "canon",
+        "constraints",
+        "irreversibility",
+        "epistemic-safety",
+        "commitment",
+        "enforcement"
       ]
     },
     {
@@ -1153,6 +1208,21 @@
         "outcomes-driven-development",
         "what-is-odd",
         "methodology"
+      ]
+    },
+    {
+      "uri": "klappy://canon/principles",
+      "path": "/canon/principles/README.md",
+      "title": "Principles",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "neutral",
+      "stability": "stable",
+      "tags": [
+        "principles",
+        "index"
       ]
     },
     {
@@ -1415,6 +1485,26 @@
         "fragments-of-the-canon",
         "reconstruction",
         "cinematic"
+      ]
+    },
+    {
+      "uri": "klappy://canon/resonance/double-diamond",
+      "path": "/canon/resonance/double-diamond.md",
+      "title": "The Double Diamond",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 3,
+      "voice": "neutral",
+      "stability": "stable",
+      "tags": [
+        "resonance",
+        "double-diamond",
+        "divergence",
+        "convergence",
+        "design-process",
+        "discovery",
+        "delivery"
       ]
     },
     {

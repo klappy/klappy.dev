@@ -5,8 +5,8 @@
 ================================================================================
 
 
-Generated: 2026-02-07T04:19:06.874Z
-Total Files: 284
+Generated: 2026-02-08T16:54:08.948Z
+Total Files: 289
 
 This is a documentation export of all markdown files from the klappy.dev
 repository. It includes lane guidance docs but excludes implementation
@@ -20,7 +20,7 @@ details (attempts, version folders, source code).
 - **Root** (1 files)
 - **.cursor** (1 files)
 - **About** (6 files)
-- **Canon** (72 files)
+- **Canon** (77 files)
 - **Documentation** (102 files)
 - **Infrastructure** (10 files)
 - **Interfaces & Contracts** (6 files)
@@ -16207,6 +16207,8 @@ The Canon exists so that reasoning does not have to be repeated.
 |------|-------|---------|
 | `principles/bulldoze-but-keep-the-blueprint.md` | Bulldoze the App, Keep the Blueprint | When code stops being the scarce resource. Documents the cost-model inversion caused by AI: code is disposable, blueprints (intent, constraints, decisions, evidence) are durable. |
 | `principles/odds-relationship-to-documentation.md` | Documentation Is the Lever, Not the Goal | Clarifies that documentation in ODD is epistemic infrastructure—a forcing function, not an end state. Distinguishes ODD from documentation-driven development. |
+| `principles/irreversibility-is-the-real-cost.md` | Irreversibility Is the Real Cost | Effort is not the scarce resource; irreversible action is. Treats commitment as the thing to be protected, not minimized. |
+| `principles/focus-is-exclusion.md` | Focus Is Exclusion | Possibility is infinite, capacity is not. Makes exclusion a first-class decision to prevent optionality from diluting delivery. |
 
 ### Subfolders
 
@@ -16232,6 +16234,7 @@ The Canon exists so that reasoning does not have to be repeated.
 | `resonance/lean-startup.md` | The Lean Startup | Epistemic Feedback Loops |
 | `resonance/ooda-loop.md` | OODA Loop | Orientation Dominates Action |
 | `resonance/sprint.md` | Sprint | Constrained Convergence Produces Clarity |
+| `resonance/double-diamond.md` | The Double Diamond | Governed Divergence and Convergence |
 
 > **Canon Rule:** Every cited work must include at least one explicit divergence.
 > If no divergence exists, the citation does not belong.
@@ -18249,6 +18252,7 @@ Constraints define the baseline assumptions and design defaults applied to most 
 - [Encode Epistemic Decisions](/canon/constraints/encode-epistemic-decisions.md)
 - [Boundary Transitions Require Deceleration](/canon/constraints/boundary-transitions-require-deceleration.md)
 - [ODD Is an Epistemic OS, Not a Value System](/canon/constraints/odd-is-epistemic-os-not-values.md)
+- [No Irreversible Action Without Epistemic Justification](/canon/constraints/no-irreversible-action-without-epistemic-justification.md)
 
 ---
 
@@ -19550,6 +19554,78 @@ This constraint enforces:
 and rests on:
 
 - `klappy://canon/constraints/humans-are-variable-inputs`
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/constraints/no-irreversible-action-without-epistemic-justification.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/constraints/no-irreversible-action-without-epistemic-justification
+title: "No Irreversible Action Without Epistemic Justification"
+audience: canon
+exposure: nav
+tier: 1
+voice: first_person
+stability: stable
+tags: ["canon", "constraints", "irreversibility", "epistemic-safety", "commitment", "enforcement"]
+relevance: decision
+execution_posture: governing
+---
+
+# No Irreversible Action Without Epistemic Justification
+
+> Defer irreversibility until epistemic thresholds are met.
+
+---
+
+## Constraint
+
+No action that resists reversal may be taken without documented epistemic justification.
+
+Irreversible actions include, but are not limited to:
+
+- Merging code into production branches
+- Mutating canon
+- Publishing or socializing decisions
+- Aligning teams around a direction
+- Deploying to production
+- Encoding a claim as settled
+
+Each of these narrows future options. None may proceed on momentum, consensus, or urgency alone.
+
+---
+
+## What Qualifies as Epistemic Justification
+
+The justification must demonstrate that the commitment is warranted — not merely that work was done. Specifically:
+
+1. The relevant exploration has been conducted, not skipped.
+2. The decision or artifact meets the Definition of Done.
+3. The epistemic mode transition (exploration → execution) was intentional, not accidental.
+
+If justification cannot be provided, the action remains in exploration or planning. It does not advance.
+
+---
+
+## What This Constraint Prevents
+
+- Premature convergence disguised as decisiveness
+- Social momentum overriding epistemic readiness
+- Urgency collapsing uncertainty into permanent commitments
+- Agents or automation encoding unjustified state changes
+
+---
+
+## Enforcement
+
+This constraint is enforced through existing mechanisms:
+
+- **Definition of Done** (`canon/constraints/definition-of-done.md`) — Gates completion claims.
+- **Boundary Transitions Require Deceleration** (`canon/constraints/boundary-transitions-require-deceleration.md`) — Requires intentional slowdown at mode boundaries.
+- **Models Do Not Mutate Canon** (`canon/decisions/models-do-not-mutate-canon.md`) — Prevents agents from making irreversible changes to governing documents.
+- **Encode Epistemic Decisions** (`canon/constraints/encode-epistemic-decisions.md`) — Ensures decisions that survive become durable and inspectable.
 
 
 
@@ -23520,6 +23596,42 @@ They stop where explanation would begin.
 
 
 --------------------------------------------------------------------------------
+📄 File: canon/principles/README.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/principles
+title: "Principles"
+audience: canon
+exposure: nav
+tier: 2
+voice: neutral
+stability: stable
+tags: ["principles", "index"]
+relevance: routing
+execution_posture: routing
+---
+
+# Principles
+
+Reasoning orientations that explain why constraints and mechanisms exist. Principles do not prescribe behavior — they make the system's design decisions feel inevitable.
+
+---
+
+## Contents
+
+| File | Title |
+|------|-------|
+| `bulldoze-but-keep-the-blueprint.md` | Bulldoze the App, Keep the Blueprint |
+| `focus-is-exclusion.md` | Focus Is Exclusion |
+| `irreversibility-is-the-real-cost.md` | Irreversibility Is the Real Cost |
+| `odds-relationship-to-documentation.md` | Documentation Is the Lever, Not the Goal |
+| `ritual-is-a-smell.md` | Ritual Is a Smell |
+| `scope-over-folders.md` | Scope Over Folders |
+
+
+
+--------------------------------------------------------------------------------
 📄 File: canon/principles/bulldoze-but-keep-the-blueprint.md
 --------------------------------------------------------------------------------
 
@@ -23777,6 +23889,136 @@ This is a claim about a growing class of AI-assisted systems where:
 The question that remains:
 
 > **What would change if we stopped protecting what we can regenerate—and started protecting what makes regeneration trustworthy?**
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/principles/focus-is-exclusion.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/principles/focus-is-exclusion
+title: "Focus Is Exclusion"
+audience: canon
+exposure: nav
+tier: 1
+voice: neutral
+stability: stable
+tags: ["principles", "capacity", "exclusion", "focus", "delivery"]
+---
+
+# Focus Is Exclusion
+
+> Possibility is infinite. Capacity is not.
+
+---
+
+## Principle
+
+The world offers limitless directions. The future contains unbounded optionality. But energy, attention, and time are finite — and they do not scale with ambition.
+
+Focus is not the act of choosing what to do. It is the act of naming what will not be done. Until exclusion is explicit, focus is an illusion — and everything competes with everything else for the same constrained capacity.
+
+A system that cannot say no to good ideas will deliver none of them well.
+
+---
+
+## Why This Is a Separate Invariant
+
+Irreversibility protects the future — it prevents premature commitment from creating damage that compounds.
+
+Finite capacity protects the present — it prevents infinite possibility from diluting delivery into incoherence.
+
+These are orthogonal concerns. One governs when you may collapse uncertainty. The other governs how wide you may open in the first place. Conflating them produces two common failures:
+
+- Treating exploration as waste (because it "isn't delivering"), when exploration is cheap and non-binding.
+- Treating scope expansion as harmless (because "nothing is committed yet"), when attention fragmentation degrades everything in progress.
+
+---
+
+## What This Means in Practice
+
+Non-goals are first-class decisions. What will not be built, pursued, or supported is as important as what will. Non-goals deserve documentation, not silence.
+
+Exclusion is not failure. Declining a direction because capacity is finite is a design decision, not a limitation to apologize for. The discipline is in choosing clearly, not in attempting everything at reduced quality.
+
+Saying "not now" is not the same as "never." Finite capacity is a constraint on the present, not a judgment on the idea. Deferred work remains available. But deferral must be explicit — otherwise it becomes invisible scope that erodes active commitments.
+
+---
+
+## What This Does Not Mean
+
+This is not minimalism for its own sake. The goal is not fewer things — it is coherent things. A focused system may still be large, complex, and ambitious. But every active commitment has space to reach completion.
+
+This is not a rejection of exploration. Exploration is cheap, disposable, and encouraged. This principle governs what crosses from exploration into active delivery — not the breadth of inquiry that precedes it.
+
+---
+
+## Cross-References
+
+- **Irreversibility Is the Real Cost** (`canon/principles/irreversibility-is-the-real-cost.md`) — The complementary invariant. Irreversibility governs convergence; finite capacity governs divergence.
+- **Epistemic Modes** (`canon/definitions/epistemic-modes.md`) — The mode system that separates exploration (where breadth is free) from execution (where capacity is finite).
+- **Synthesis Ledger** (`docs/appendices/synthesis-ledger.md`) — Where deferred ideas live without consuming delivery capacity.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/principles/irreversibility-is-the-real-cost.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/principles/irreversibility-is-the-real-cost
+title: "Irreversibility Is the Real Cost"
+audience: canon
+exposure: nav
+tier: 1
+voice: neutral
+stability: stable
+tags: ["principles", "irreversibility", "epistemic-cost", "commitment", "exploration"]
+---
+
+# Irreversibility Is the Real Cost
+
+> Most work is cheap to think and expensive to undo.
+
+---
+
+## Principle
+
+Effort is not the scarce resource. Irreversible action is.
+
+Code merged, canon mutated, decisions socialized, teams aligned, contracts signed — these are not steps in a process. They are state changes that resist correction. The cost of reversing a bad commitment grows nonlinearly with time and socialization.
+
+ODD treats irreversible action as the thing to be protected, not minimized. The goal is not to do less. The goal is to ensure that when something becomes permanent, it deserves to be.
+
+---
+
+## What This Means in Practice
+
+Exploration is cheap. Drafts, probes, thought experiments, and failed hypotheses cost almost nothing — as long as they remain non-binding. ODD encourages aggressive exploration precisely because it is disposable.
+
+Commitment is expensive. Merging code, encoding a decision, publishing a claim, aligning a team — these create obligations that compound. Each one narrows future options and creates downstream dependency.
+
+The boundary between them is the thing that matters. Not the volume of work on either side.
+
+---
+
+## What This Does Not Mean
+
+This is not a justification for inaction. ODD may produce more total thinking than systems that rush to execution — but far less irreversible action per unit of insight.
+
+This is not analysis paralysis. Exploration has its own tempo. Speed within a mode is fine. The discipline is at the transition between modes, not within them.
+
+This is not about efficiency. A system that optimizes for less work will sometimes ship prematurely. A system that optimizes for justified commitment will sometimes explore more than seems necessary — because that exploration absorbs uncertainty so the rest of the system doesn't have to.
+
+---
+
+## Cross-References
+
+- **Epistemic Modes** (`canon/definitions/epistemic-modes.md`) — Defines the separation between exploration, planning, and execution that makes this principle operational.
+- **Boundary Transitions Require Deceleration** (`canon/constraints/boundary-transitions-require-deceleration.md`) — Enforces the slowdown at the exact point where exploration could collapse into commitment.
+- **Extreme Exploration for Limit Discovery** (`canon/methods/extreme-exploration-for-limit-discovery.md`) — The method that depends on exploration being cheap and non-binding.
+- **Synthesis Ledger** (`docs/appendices/synthesis-ledger.md`) — The structural mechanism that absorbs uncertainty: cognition without commitment.
 
 
 
@@ -24119,6 +24361,7 @@ Each resonance page follows a consistent structure:
 | `lean-startup.md` | The Lean Startup | Epistemic Feedback Loops |
 | `ooda-loop.md` | OODA Loop | Orientation Dominates Action |
 | `sprint.md` | Sprint | Constrained Convergence Produces Clarity |
+| `double-diamond.md` | The Double Diamond | Governed Divergence and Convergence |
 
 ---
 
@@ -24392,6 +24635,76 @@ ODD treats antifragility as insufficient on its own. Stress must be captured, in
 - [Attempts](/docs/appendices/ATTEMPTS.md)
 - [Evolution Not Automation](/odd/appendices/evolution-not-automation.md)
 - [ODD Manifesto](/odd/manifesto.md)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: canon/resonance/double-diamond.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://canon/resonance/double-diamond
+title: "The Double Diamond"
+audience: canon
+tier: 3
+voice: neutral
+stability: stable
+tags: ["resonance", "double-diamond", "divergence", "convergence", "design-process", "discovery", "delivery"]
+relevance: background
+execution_posture: exploratory
+---
+
+# The Double Diamond
+
+> Design Council, 2005 (revised 2019)
+
+The Double Diamond describes a design process in two phases — Discovery and Delivery — each containing a divergent expansion followed by a convergent narrowing.
+
+ODD embodies the same motion but encodes the physics underneath it.
+
+---
+
+## Where ODD Echoes
+
+The Double Diamond's core insight is structural: creative work is not a linear funnel. It requires deliberate expansion before deliberate narrowing, and this pattern repeats at least twice — once to understand the problem, once to solve it.
+
+ODD's Epistemic Modes reflect this directly. Exploration is divergent. Planning begins convergence. Execution is the narrowest point. The mode boundaries enforce what the Double Diamond merely illustrates.
+
+The Synthesis Ledger functions as the artifact of the first diamond's convergence — insight stabilized without commitment, ready to inform the second diamond.
+
+---
+
+## Where ODD Diverges
+
+The Double Diamond is descriptive. It shows where a team is in the process. It does not enforce behavior at any point.
+
+ODD adds three things the Double Diamond cannot:
+
+**Convergence is governed, not intuitive.** The Double Diamond trusts teams to narrow at the right time. ODD enforces it: no irreversible action without epistemic justification. Convergence is not a phase you enter — it is a gate you must clear.
+
+**Divergence is bounded by capacity, not ambition.** The Double Diamond's divergent phases have no explicit limiter. ODD's finite capacity principle makes exclusion a first-class decision. Opening wide is encouraged in exploration. Opening wide in delivery without explicit exclusion produces incoherence.
+
+**The boundary between diamonds has mechanical enforcement.** In the Double Diamond, the transition from "discover" to "deliver" is a narrative shift. In ODD, crossing from exploration to execution triggers deceleration, requires justification, and is subject to the Definition of Done. The transition is not a story beat — it is a constraint.
+
+---
+
+## The Mapping
+
+| Double Diamond | ODD Mechanism | Governing Invariant |
+|---|---|---|
+| Diamond 1: Diverge (discover) | Exploration Mode | — (exploration is cheap and free) |
+| Diamond 1: Converge (define) | Synthesis Ledger, Boundary Deceleration | Irreversibility Is the Real Cost |
+| Diamond 2: Diverge (develop) | Planning Mode | Focus Is Exclusion |
+| Diamond 2: Converge (deliver) | Execution Mode, Definition of Done | Irreversibility Is the Real Cost |
+
+---
+
+## Why This Resonance Matters
+
+The Double Diamond is useful for teams encountering ODD for the first time. It provides a familiar visual anchor for motions that ODD controls mechanically. When someone asks "what does this process look like?", the Double Diamond is a reasonable starting picture — as long as it is understood that ODD encodes the rules the diagram cannot.
+
+The Double Diamond says where you are.
+ODD says what you may do there.
 
 
 

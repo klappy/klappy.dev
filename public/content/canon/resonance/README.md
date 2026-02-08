@@ -88,6 +88,7 @@ Each resonance page follows a consistent structure:
 | `lean-startup.md` | The Lean Startup | Epistemic Feedback Loops |
 | `ooda-loop.md` | OODA Loop | Orientation Dominates Action |
 | `sprint.md` | Sprint | Constrained Convergence Produces Clarity |
+| `double-diamond.md` | The Double Diamond | Governed Divergence and Convergence |
 
 ---
 
