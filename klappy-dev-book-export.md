@@ -5,7 +5,7 @@
 ================================================================================
 
 
-Generated: 2026-02-08T16:58:07.307Z
+Generated: 2026-02-08T16:59:59.511Z
 Total Files: 290
 
 This is a documentation export of all markdown files from the klappy.dev
@@ -1768,7 +1768,14 @@ This folder is removed (or archived) when:
 --------------------------------------------------------------------------------
 
 ---
+uri: klappy://docs/_incoming/agent-fault-assertion-without-verification
 title: "Agent Fault: Assertion Without Verification"
+description: "Observed agent failure pattern: asserting system state without inspecting it first."
+audience: docs
+exposure: internal
+tier: 3
+voice: neutral
+stability: evolving
 tags: ["oddkit", "agent-fault", "epistemic-hygiene", "verification", "failure-mode"]
 ---
 
