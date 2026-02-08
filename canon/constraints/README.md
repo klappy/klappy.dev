@@ -36,6 +36,7 @@ Constraints define the baseline assumptions and design defaults applied to most 
 - [Encode Epistemic Decisions](/canon/constraints/encode-epistemic-decisions.md)
 - [Boundary Transitions Require Deceleration](/canon/constraints/boundary-transitions-require-deceleration.md)
 - [ODD Is an Epistemic OS, Not a Value System](/canon/constraints/odd-is-epistemic-os-not-values.md)
+- [No Irreversible Action Without Epistemic Justification](/canon/constraints/no-irreversible-action-without-epistemic-justification.md)
 
 ---
 

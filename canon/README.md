@@ -43,6 +43,8 @@ The Canon exists so that reasoning does not have to be repeated.
 |------|-------|---------|
 | `principles/bulldoze-but-keep-the-blueprint.md` | Bulldoze the App, Keep the Blueprint | When code stops being the scarce resource. Documents the cost-model inversion caused by AI: code is disposable, blueprints (intent, constraints, decisions, evidence) are durable. |
 | `principles/odds-relationship-to-documentation.md` | Documentation Is the Lever, Not the Goal | Clarifies that documentation in ODD is epistemic infrastructure—a forcing function, not an end state. Distinguishes ODD from documentation-driven development. |
+| `principles/irreversibility-is-the-real-cost.md` | Irreversibility Is the Real Cost | Effort is not the scarce resource; irreversible action is. Treats commitment as the thing to be protected, not minimized. |
+| `principles/focus-is-exclusion.md` | Focus Is Exclusion | Possibility is infinite, capacity is not. Makes exclusion a first-class decision to prevent optionality from diluting delivery. |
 
 ### Subfolders
 
@@ -68,6 +70,7 @@ The Canon exists so that reasoning does not have to be repeated.
 | `resonance/lean-startup.md` | The Lean Startup | Epistemic Feedback Loops |
 | `resonance/ooda-loop.md` | OODA Loop | Orientation Dominates Action |
 | `resonance/sprint.md` | Sprint | Constrained Convergence Produces Clarity |
+| `resonance/double-diamond.md` | The Double Diamond | Governed Divergence and Convergence |
 
 > **Canon Rule:** Every cited work must include at least one explicit divergence.
 > If no divergence exists, the citation does not belong.
