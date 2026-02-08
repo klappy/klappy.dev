@@ -59,6 +59,18 @@ This incident validates existing ODD mechanisms:
 
 This rule would apply to all epistemic surfaces, not just oddkit.
 
+## Second Observed Fault: Pattern Blindness
+
+During the same session, the agent completed a canon addition (four files, five README updates) without updating `canon/CHANGELOG.md` or bumping the version. When asked whether it had followed changelog instructions, the agent checked for explicit instructions and found none — then reported it was "only a pattern."
+
+The changelog had 29 consecutive version entries. Every canon change in the repo's history had been logged. The pattern was unambiguous. The agent treated the absence of an explicit rule as permission to skip, rather than recognizing that 29/29 consistency constitutes an implicit obligation.
+
+This is a second instance of the same root fault: **substituting "I wasn't told to" for "I should have checked."** In the first case, the agent didn't look at files before asserting state. In the second, the agent didn't look at history before skipping a step.
+
+### Candidate Rule (Extended)
+
+> An agent MUST NOT skip a step that has been performed in every prior instance of the same operation, even if no explicit instruction mandates it. 29/29 consistency is not optional — it is undocumented doctrine. When in doubt, ask.
+
 ## Classification Note
 
-This document describes an observed failure and a candidate constraint. It has not been promoted to canon. Placement TBD during next review cycle.
+This document describes observed failures and candidate constraints. It has not been promoted to canon. Placement TBD during next review cycle.

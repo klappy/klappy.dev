@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-02-08T17:05:18.730Z",
+  "generated_at": "2026-02-08T17:07:29.398Z",
   "description": "Fast-lookup index for Librarian retrieval. Per docs/agents/librarian/contract.md",
   "schema_notes": {
     "authority_band": "Resolved authority (frontmatter override > inferred from root)",
@@ -6901,11 +6901,21 @@
         },
         {
           "level": 2,
-          "text": "Classification Note",
+          "text": "Second Observed Fault: Pattern Blindness",
           "line": 51
+        },
+        {
+          "level": 3,
+          "text": "Candidate Rule (Extended)",
+          "line": 59
+        },
+        {
+          "level": 2,
+          "text": "Classification Note",
+          "line": 63
         }
       ],
-      "heading_count": 7,
+      "heading_count": 9,
       "has_frontmatter": true
     },
     {
