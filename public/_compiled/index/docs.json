@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-02-08T16:54:09.679Z",
+  "generated_at": "2026-02-08T16:58:07.951Z",
   "description": "Fast-lookup index for Librarian retrieval. Per docs/agents/librarian/contract.md",
   "schema_notes": {
     "authority_band": "Resolved authority (frontmatter override > inferred from root)",
@@ -30,18 +30,18 @@
     }
   },
   "stats": {
-    "total_documents": 210,
-    "with_frontmatter": 202,
-    "with_headings": 206,
+    "total_documents": 211,
+    "with_frontmatter": 203,
+    "with_headings": 207,
     "by_root": {
       "canon": 76,
-      "docs": 102,
+      "docs": 103,
       "interfaces": 6,
       "odd": 26
     },
     "by_authority": {
       "governing": 102,
-      "operational": 108
+      "operational": 109
     },
     "with_authority_override": 0,
     "with_authority_warning": 0
@@ -6816,6 +6816,71 @@
         }
       ],
       "heading_count": 16,
+      "has_frontmatter": true
+    },
+    {
+      "path": "docs/_incoming/agent-fault-assertion-without-verification.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": null,
+      "title": "Agent Fault: Assertion Without Verification",
+      "subtitle": "Agents confidently assert factual claims about system state without checking first.",
+      "tags": [
+        "oddkit",
+        "agent-fault",
+        "epistemic-hygiene",
+        "verification",
+        "failure-mode"
+      ],
+      "acronyms": [
+        "afawv"
+      ],
+      "stability": null,
+      "tier": null,
+      "audience": null,
+      "exposure": null,
+      "voice": null,
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Agent Fault: Assertion Without Verification",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Observed Incident",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "The Fault Pattern",
+          "line": 16
+        },
+        {
+          "level": 2,
+          "text": "Why This Is Systemic",
+          "line": 29
+        },
+        {
+          "level": 2,
+          "text": "What This Validates",
+          "line": 37
+        },
+        {
+          "level": 2,
+          "text": "Candidate Rule",
+          "line": 45
+        },
+        {
+          "level": 2,
+          "text": "Classification Note",
+          "line": 51
+        }
+      ],
+      "heading_count": 7,
       "has_frontmatter": true
     },
     {
