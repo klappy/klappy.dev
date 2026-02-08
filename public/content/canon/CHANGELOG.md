@@ -18,6 +18,46 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
+## 0.29.0 — 2026-02-08
+
+**Irreversibility, Finite Capacity, and Double Diamond**
+
+This release encodes two previously implicit invariants as explicit canon principles, adds a constraint enforcing epistemic justification before irreversible action, and introduces a resonance page mapping the Double Diamond design model to ODD mechanisms.
+
+### Added
+
+- **Principle: Irreversibility Is the Real Cost** (`/canon/principles/irreversibility-is-the-real-cost.md`) — Tier 1 principle establishing that effort is not the scarce resource; irreversible action is. ODD protects commitment, not minimizes it. Exploration is cheap and disposable; the discipline is at the boundary where exploration could collapse into permanent state changes.
+
+- **Principle: Focus Is Exclusion** (`/canon/principles/focus-is-exclusion.md`) — Tier 1 principle establishing that possibility is infinite but capacity is not. Focus is the act of naming what will not be done. Non-goals are first-class decisions. Complementary to irreversibility: one governs convergence, the other governs divergence.
+
+- **Constraint: No Irreversible Action Without Epistemic Justification** (`/canon/constraints/no-irreversible-action-without-epistemic-justification.md`) — Tier 1 constraint forbidding irreversible actions (merging, canon mutation, publishing, deployment, team alignment) without documented epistemic justification. Enforced through existing mechanisms: Definition of Done, Boundary Deceleration, Models Do Not Mutate Canon, Encode Epistemic Decisions.
+
+- **Resonance: The Double Diamond** (`/canon/resonance/double-diamond.md`) — Design Council (2005, revised 2019). Maps ODD's epistemic modes to the Double Diamond's diverge/converge pattern. Explicit divergences: ODD governs convergence mechanically (not intuitively), bounds divergence by capacity (not ambition), and enforces the diamond boundary transition as a constraint (not a narrative shift).
+
+- **Principles Index** (`/canon/principles/README.md`) — New index listing all six principles (four existing + two new) in alphabetical order. Created following the pattern of `canon/constraints/README.md`.
+
+### Changed
+
+- **Canon README** — Added two principle entries and one resonance entry to contents tables.
+- **Constraints README** — Added linked entry for No Irreversible Action Without Epistemic Justification in outline section.
+- **Resonance README** — Added Double Diamond entry to contents table.
+
+### Philosophy
+
+- **Two orthogonal invariants now explicit** — Irreversibility protects the future (prevents premature commitment from compounding). Finite capacity protects the present (prevents infinite possibility from diluting delivery). Conflating them produces either premature shipping or scope paralysis.
+
+- **Convergence is governed, not intuitive** — The constraint makes the irreversibility principle enforceable: no action that resists reversal may proceed on momentum, consensus, or urgency alone.
+
+- **Resonance maps motion, ODD encodes rules** — The Double Diamond shows where you are in the process; ODD says what you may do there. The mapping table makes the structural correspondence explicit while preserving ODD's mechanical enforcement.
+
+### Notes
+
+- Cross-references are one-way (new files reference existing canon; existing files are not modified)
+- All `depends_on` paths from the original proposal were validated; all resolve to existing files
+- The principles README completes a gap — constraints, definitions, methods, and resonance all had indexes; principles did not
+
+---
+
 ## 0.28.0 — 2026-02-05
 
 **ODD Acronym Visibility + ESE Promotion + Content Discovery**
