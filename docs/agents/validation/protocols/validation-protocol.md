@@ -7,6 +7,7 @@ tier: 2
 voice: neutral
 stability: stable
 tags: ["agents", "validation", "protocol", "evidence", "dod"]
+derives_from: "canon/values/axioms.md (Axiom 4 — You Cannot Verify What You Did Not Observe)"
 ---
 
 # Validation Protocol

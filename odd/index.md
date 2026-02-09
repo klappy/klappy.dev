@@ -31,6 +31,13 @@ The philosophical and operational foundation for this repository. ODD treats out
 | `orientation-map.md` | Orientation Map | One-page mental model of ODD, Canon, Evidence, and Outcomes. |
 | `cognitive-partitioning.md` | Cognitive Partitioning | Why reasoning systems must divide under pressure as they scale. |
 
+### Values
+
+| File | Title | Summary |
+|------|-------|---------|
+| `../canon/values/axioms.md` | Foundational Axioms | Four values from which all ODD epistemic discipline is derived. Explicit, intentional, and forkable. |
+| `../canon/values/orientation.md` | Orientation | The creed — an identity statement agents carry into every task. Compresses all four axioms into a single posture. |
+
 ### Subfolders
 
 | Folder | Purpose |

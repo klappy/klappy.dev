@@ -7,6 +7,7 @@ tier: 2
 voice: neutral
 stability: evolving
 tags: ["agents", "validation", "evidence", "claims", "dod"]
+derives_from: "canon/values/axioms.md (Axiom 4 — You Cannot Verify What You Did Not Observe)"
 ---
 
 # Validation Agent
@@ -15,7 +16,7 @@ tags: ["agents", "validation", "evidence", "claims", "dod"]
 
 ## Purpose
 
-The Validation Agent exists to catch:
+The Validation Agent exists to enforce the foundational axiom that only direct observation constitutes verification. It catches:
 
 - "Done" without artifacts
 - Metrics without method or provenance

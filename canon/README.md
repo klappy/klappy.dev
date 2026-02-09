@@ -13,7 +13,7 @@ execution_posture: routing
 
 # 🧭 Canon
 
-Curated documents that capture how decisions are made, what assumptions are held, how work is verified, and how rigor changes as projects mature.
+Curated documents that capture how decisions are made, what assumptions are held, what values are committed to, how work is verified, and how rigor changes as projects mature.
 
 The Canon exists so that reasoning does not have to be repeated.
 
@@ -50,6 +50,7 @@ The Canon exists so that reasoning does not have to be repeated.
 
 | Folder | Purpose |
 |--------|---------|
+| `values/` | Foundational axioms and orientation creed — the moral commitments from which all constraints derive. |
 | `constraints/` | Load-bearing constraints, non-negotiables, and governance rules. |
 | `definitions/` | Shared vocabulary — formal definitions of load-bearing concepts. |
 | `diagnostics/` | System health signals and decay detection. |

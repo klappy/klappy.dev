@@ -101,6 +101,14 @@ These principles are lenses, not rules. Their application changes as projects ma
 
 ---
 
+## Foundational Values
+
+ODD is grounded in four explicit foundational axioms that define its commitment to truth: Reality Is Sovereign, A Claim Is a Debt, Integrity Is Non-Negotiable Efficiency, and You Cannot Verify What You Did Not Observe. These values are the author's moral commitments — explicit, intentional, and forkable. They are not neutral observations but active choices about what epistemic discipline requires.
+
+If you do not share these commitments, ODD expects you to fork and encode your own — not to argue, but to build. See [`canon/values/axioms.md`](/canon/values/axioms.md) for the full axioms.
+
+---
+
 ## Evidence Over Explanation
 
 ODD places a strong emphasis on evidence.

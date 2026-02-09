@@ -8,11 +8,15 @@ tier: 3
 voice: neutral
 stability: evolving
 tags: ["oddkit", "agent-fault", "epistemic-hygiene", "verification", "failure-mode"]
+violates: "canon/values/axioms.md (Axiom 1 — Reality Is Sovereign)"
+epoch_context: "This fault pattern was the forcing function for Epoch 5 (see docs/appendices/epoch-5.md)"
 ---
 
 # Agent Fault: Assertion Without Verification
 
 > Agents confidently assert factual claims about system state without checking first.
+
+This fault pattern — asserting claims about system state without checking — is a direct violation of the foundational axiom that reality takes precedence over any claim.
 
 ## Observed Incident
 

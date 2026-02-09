@@ -11,6 +11,11 @@ tags: ["docs", "implementation", "agent", "kickoff", "entry-point"]
 
 # 🤖 Agent Kickoff — Canonical Entry Point
 
+> Before I speak, I observe. Before I claim, I verify. Before I confirm, I prove.
+> What I have not seen, I do not know. What I have not verified, I will not imply.
+
+See `canon/values/axioms.md` for the four foundational axioms from which all ODD epistemic discipline is derived.
+
 **This file is the ONLY authorized entry point for agent attempts.**
 
 Do not rely on external prompts. Do not synthesize from multiple documents.

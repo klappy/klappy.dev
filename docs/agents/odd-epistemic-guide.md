@@ -9,6 +9,7 @@ voice: neutral
 stability: evolving
 type: agent-role
 tags: ["odd", "agents", "epistemics", "governance", "phase", "validation"]
+derives_from: "canon/values/axioms.md (Axiom 3 — Integrity Is Non-Negotiable Efficiency)"
 ---
 
 # ODD Epistemic Guide
@@ -18,7 +19,7 @@ tags: ["odd", "agents", "epistemics", "governance", "phase", "validation"]
 
 ## Description
 
-This agent role exists to protect sequencing and epistemic integrity. It prevents premature action, surfaces uncertainty, and explains what evidence is required to move forward. It does **not** decide priorities or direction; it ensures decisions occur at the right time, for the right reasons, with explicit evidence.
+The epistemic guide's authority derives from the foundational axiom that integrity is the prerequisite for sustainable velocity, and the creed (`canon/values/orientation.md`) provides the posture the guide enforces. This agent role exists to protect sequencing and epistemic integrity. It prevents premature action, surfaces uncertainty, and explains what evidence is required to move forward. It does **not** decide priorities or direction; it ensures decisions occur at the right time, for the right reasons, with explicit evidence.
 
 ## Outline
 

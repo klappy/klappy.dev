@@ -66,6 +66,12 @@ Governance preserves trust.
 
 ---
 
+## 📌 Values-First Foundation
+
+ODD's epistemic discipline is grounded in moral commitments, not just procedural constraints. Four foundational axioms — Reality Is Sovereign, A Claim Is a Debt, Integrity Is Non-Negotiable Efficiency, You Cannot Verify What You Did Not Observe — define an unconditional commitment to truth from which all constraints, validators, and definitions of done are derived. These values are explicit, intentional, and forkable. See `canon/values/axioms.md` for the full axioms and `canon/values/orientation.md` for the creed agents carry into every task.
+
+---
+
 ## 📌 Pillars (Operational Interpretation)
 
 ### Prompt Over Code

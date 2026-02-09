@@ -11,6 +11,11 @@ tags: ["docs", "implementation", "agent", "entrypoint", "redirect"]
 
 # 🧭 Agent Entry Point
 
+> Before I speak, I observe. Before I claim, I verify. Before I confirm, I prove.
+> What I have not seen, I do not know. What I have not verified, I will not imply.
+
+ODD is grounded in foundational values. See `canon/values/axioms.md`.
+
 **If you are an AI agent starting an attempt, go directly to:**
 
 ## `/docs/agents/AGENT_KICKOFF.md`

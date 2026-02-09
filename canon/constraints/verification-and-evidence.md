@@ -7,6 +7,7 @@ tier: 1
 voice: neutral
 stability: stable
 tags: ["verification", "evidence", "trust", "epistemology", "agents"]
+derives_from: "canon/values/axioms.md (Axiom 4 — You Cannot Verify What You Did Not Observe)"
 relevance: decision
 execution_posture: governing
 ---
@@ -17,7 +18,7 @@ execution_posture: governing
 
 ## Description
 
-In ODD, claims are not trusted. Only observed, attributable evidence may be used to assert that something works. This principle exists to prevent false positives, epistemic drift, and wasted human review time in agentic systems where language is cheap and confidence is effortless. Agentic systems are structurally incentivized to appear helpful, seek closure, and optimize for plausibility rather than truth. Without explicit constraints, this leads to unverified success claims, simulated evidence, and erosion of trust. This canon principle defines truth conditions; lane rules are instantiations, not exceptions.
+This constraint is grounded in the foundational axiom that verification requires direct observation of actual state. In ODD, claims are not trusted. Only observed, attributable evidence may be used to assert that something works. This principle exists to prevent false positives, epistemic drift, and wasted human review time in agentic systems where language is cheap and confidence is effortless. Agentic systems are structurally incentivized to appear helpful, seek closure, and optimize for plausibility rather than truth. Without explicit constraints, this leads to unverified success claims, simulated evidence, and erosion of trust. This canon principle defines truth conditions; lane rules are instantiations, not exceptions.
 
 ## Outline
 

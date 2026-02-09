@@ -15,7 +15,7 @@ tags: ["oddkit", "odd", "definition", "outcomes-driven-development", "what-is-od
 
 oddkit is the reference tooling for **ODD (Outcomes-Driven Development)**.
 
-It exists to help agents verify truth, not remember conversations.
+It exists to help agents verify truth, not remember conversations. oddkit operates under the Epoch 5 values framework — four foundational axioms defining an unconditional commitment to truth. See `canon/values/axioms.md`.
 
 If you are confused about why oddkit blocked an action, challenged a claim,
 or asked for evidence, start here:

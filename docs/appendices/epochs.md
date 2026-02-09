@@ -15,7 +15,7 @@ tags: ["odd", "epochs", "fitness-landscape", "comparability", "orientation"]
 
 ## Description
 
-An epoch is a named period where "success" meaning is stable enough to compare outcomes. Attempts are individuals, PRDs are fitness functions, Promotion is selection, Canon is inherited traits, and Epochs are shifts in the fitness landscape. An epoch defines evaluation reality: what "done" means, mandatory evidence, binding contracts, acceptable risks, and infrastructure stability. Epochs are not PRDs—they are the context in which PRDs are interpreted. klappy.dev defines E0001 (single-PRD era), E0002 (multi-lane era), E0003 (evidence-first era with Cloudflare deployment proof required), and E0004 (epistemic separation era with judgment/embodiment distinction).
+An epoch is a named period where "success" meaning is stable enough to compare outcomes. Attempts are individuals, PRDs are fitness functions, Promotion is selection, Canon is inherited traits, and Epochs are shifts in the fitness landscape. An epoch defines evaluation reality: what "done" means, mandatory evidence, binding contracts, acceptable risks, and infrastructure stability. Epochs are not PRDs—they are the context in which PRDs are interpreted. klappy.dev defines E0001 (single-PRD era), E0002 (multi-lane era), E0003 (evidence-first era with Cloudflare deployment proof required), E0004 (epistemic separation era with judgment/embodiment distinction), and E0005 (values-first epistemics with foundational axioms and orientation creed).
 
 ## Outline
 
@@ -24,11 +24,12 @@ An epoch is a named period where "success" meaning is stable enough to compare o
 - Relationship to Product Lanes
 - Relationship to PRDs and Attempts
 - When to Start a New Epoch
-- Naming Convention (E0001, E0002, E0003, E0004)
+- Naming Convention (E0001, E0002, E0003, E0004, E0005)
 - Minimal Epoch Metadata (META.json)
 - Anti-Patterns
 - E0003 — Evidence-First Era (klappy.dev specific)
 - E0004 — Epistemic Separation Era
+- E0005 — Values-First Epistemics
 
 ---
 
@@ -133,6 +134,7 @@ Examples:
 - `E0002-multi-lane-era`
 - `E0003-evidence-first-era`
 - `E0004-epistemic-separation-era`
+- `E0005-values-first-epistemics`
 
 The ID is the canonical reference. The name is a hint.
 
@@ -270,3 +272,32 @@ This change alters the repository's evaluation posture:
 - E0003 attempts remain valid within E0003.
 - E0003 attempts are not comparable to E0004 attempts by default.
 - E0004 is LOCKED. No further expansion without a new epoch.
+
+---
+
+## E0005 — Values-First Epistemics
+
+**Date:** 2026-02-09
+
+Rules are infinitely gameable without values. Epoch 5 encodes the moral commitments that were always implicit.
+
+See [`docs/appendices/epoch-5.md`](/docs/appendices/epoch-5.md) for the full epoch declaration.
+
+### What changed
+
+E0005 introduces four foundational axioms from which all epistemic discipline is derived, an orientation creed that agents carry as identity rather than checklist, and a writing guide ensuring progressive disclosure protects the axioms as canon grows. The prior constraint "ODD Is an Epistemic OS, Not a Value System" is revised to acknowledge that epistemic systems require value commitments.
+
+### Why this is a new epoch
+
+This change alters the repository's epistemic foundation:
+
+- Truth is grounded in axiomatic values, not just procedural constraints
+- Agents orient from identity (creed), not just rules
+- Existing constraints are reframed as derived from axioms rather than foundational in themselves
+- The guiding question shifts from "Am I following the rules?" to "Am I being faithful?"
+
+### Compatibility
+
+- E0004 attempts remain valid within E0004.
+- E0004 attempts are not comparable to E0005 attempts by default.
+- E0005 is the current epoch.
