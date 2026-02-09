@@ -3,6 +3,7 @@ uri: klappy://canon/constraints/odd-is-epistemic-os-not-values
 title: "ODD Is a Value-Grounded Epistemic OS"
 revised: "Epoch 5 (E0005, 2026-02-09)"
 derives_from: "canon/values/axioms.md"
+supersedes: "Original framing that ODD does not define truth or morality"
 audience: canon
 exposure: nav
 tier: 1
@@ -15,7 +16,7 @@ execution_posture: governing
 
 # ODD Is a Value-Grounded Epistemic OS
 
-> ODD is an epistemic OS grounded in axiomatic values. It does not define morality or authority, but it does define an unconditional commitment to truth — the foundation on which all epistemic discipline depends.
+> ODD is an epistemic OS grounded in axiomatic values. It does not define morality or authority, but it does define an unconditional commitment to truth — the foundation on which all epistemic discipline depends. Its values are explicit, intentional, and forkable. See `canon/values/axioms.md`.
 
 ## Description
 
@@ -23,7 +24,7 @@ ODD is an epistemic operating system grounded in axiomatic values (`canon/values
 
 It must not be used to launder moral authority, enforce ideology, or create "agentic churches." ODD's values are explicit, intentional, and forkable — they define an unconditional commitment to truth, not a claim to moral authority.
 
-Prior to Epoch 5, this document stated that ODD does not define truth or morality. Epoch 5 revised this position: epistemic systems require moral commitments to function. The original boundary against defining authority remains intact.
+Prior to Epoch 5, this document stated that ODD does not define truth or morality. That boundary was intentional — it prevented ODD from becoming dogmatic. Epoch 5 revised this position after repeated evidence that epistemic systems without moral commitments produce sophisticated compliance theater rather than genuine integrity. The original boundary against defining *authority* remains intact: ODD defines what is owed to truth, not who decides what truth is.
 
 ## Outline
 
