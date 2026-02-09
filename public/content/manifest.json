@@ -724,6 +724,24 @@
       ]
     },
     {
+      "uri": "klappy://canon/values/axioms",
+      "path": "/canon/values/axioms.md",
+      "title": "Foundational Axioms",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 1,
+      "voice": "first_person",
+      "stability": "stable",
+      "tags": [
+        "canon",
+        "values",
+        "axioms",
+        "epistemics",
+        "foundational"
+      ]
+    },
+    {
       "uri": "klappy://canon/apocrypha/fragments-of-the-canon/fragment-03",
       "path": "/canon/apocrypha/fragments-of-the-canon/fragment-03-nothing-exceeded-the-threshold.md",
       "title": "Fragment III: Nothing Exceeded the Threshold",
@@ -1105,7 +1123,7 @@
     {
       "uri": "klappy://canon/constraints/odd-is-epistemic-os-not-values",
       "path": "/canon/constraints/odd-is-epistemic-os-not-values.md",
-      "title": "ODD Is an Epistemic OS, Not a Value System",
+      "title": "ODD Is a Value-Grounded Epistemic OS",
       "type": "text/markdown",
       "audience": "canon",
       "exposure": "nav",
@@ -1189,6 +1207,24 @@
         "orientation",
         "decision-making",
         "feedback"
+      ]
+    },
+    {
+      "uri": "klappy://canon/values/orientation",
+      "path": "/canon/values/orientation.md",
+      "title": "Orientation",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 1,
+      "voice": "first_person",
+      "stability": "stable",
+      "tags": [
+        "canon",
+        "values",
+        "orientation",
+        "creed",
+        "identity"
       ]
     },
     {
@@ -1715,6 +1751,23 @@
         "about",
         "philosophy",
         "overview"
+      ]
+    },
+    {
+      "uri": "klappy://canon/meta/writing-canon",
+      "path": "/canon/meta/writing-canon.md",
+      "title": "Writing Canon — Progressive Disclosure and Topographic Navigation",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 1,
+      "voice": "neutral",
+      "stability": "stable",
+      "tags": [
+        "canon",
+        "meta",
+        "writing",
+        "progressive-disclosure"
       ]
     }
   ]

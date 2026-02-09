@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-02-08T17:07:29.398Z",
+  "generated_at": "2026-02-09T08:45:46.214Z",
   "description": "Fast-lookup index for Librarian retrieval. Per docs/agents/librarian/contract.md",
   "schema_notes": {
     "authority_band": "Resolved authority (frontmatter override > inferred from root)",
@@ -30,18 +30,18 @@
     }
   },
   "stats": {
-    "total_documents": 211,
-    "with_frontmatter": 203,
-    "with_headings": 207,
+    "total_documents": 220,
+    "with_frontmatter": 212,
+    "with_headings": 216,
     "by_root": {
-      "canon": 76,
-      "docs": 103,
+      "canon": 79,
+      "docs": 109,
       "interfaces": 6,
       "odd": 26
     },
     "by_authority": {
-      "governing": 102,
-      "operational": 109
+      "governing": 105,
+      "operational": 115
     },
     "with_authority_override": 0,
     "with_authority_warning": 0
@@ -2961,8 +2961,8 @@
       "authority_band": "governing",
       "authority_inferred": "governing",
       "uri": "klappy://canon/constraints/odd-is-epistemic-os-not-values",
-      "title": "ODD Is an Epistemic OS, Not a Value System",
-      "subtitle": "ODD constrains reasoning and integrity. It does not define truth, morality, or authority.",
+      "title": "ODD Is a Value-Grounded Epistemic OS",
+      "subtitle": "ODD is an epistemic OS grounded in axiomatic values. It does not define morality or authority, but it does define an unconditional commitment to truth — the foundation on which all epistemic discipline depends. Its values are explicit, intentional, and forkable. See `canon/values/axioms.md`.",
       "tags": [
         "canon",
         "constraints",
@@ -2971,7 +2971,7 @@
         "values"
       ],
       "acronyms": [
-        "oeonvs"
+        "ovgeo"
       ],
       "stability": "stable",
       "tier": "1",
@@ -2983,7 +2983,7 @@
       "headings": [
         {
           "level": 1,
-          "text": "ODD Is an Epistemic OS, Not a Value System",
+          "text": "ODD Is a Value-Grounded Epistemic OS",
           "line": 2
         },
         {
@@ -2994,37 +2994,37 @@
         {
           "level": 2,
           "text": "Outline",
-          "line": 12
+          "line": 14
         },
         {
           "level": 2,
           "text": "Content",
-          "line": 22
+          "line": 24
         },
         {
           "level": 3,
           "text": "What ODD Governs",
-          "line": 26
+          "line": 28
         },
         {
           "level": 3,
           "text": "What ODD Does Not Govern",
-          "line": 33
+          "line": 35
         },
         {
           "level": 3,
           "text": "What This Forces",
-          "line": 40
+          "line": 42
         },
         {
           "level": 3,
           "text": "What This Forbids",
-          "line": 46
+          "line": 48
         },
         {
           "level": 2,
           "text": "See Also",
-          "line": 54
+          "line": 56
         }
       ],
       "heading_count": 9,
@@ -4890,6 +4890,102 @@
       "has_frontmatter": true
     },
     {
+      "path": "canon/meta/writing-canon.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/meta/writing-canon",
+      "title": "Writing Canon — Progressive Disclosure and Topographic Navigation",
+      "subtitle": "Every canon document must be actionable at every extraction depth: title alone, title + blockquote, title + blockquote + metadata, summary section, and full document. Headers are a navigational map — scanning filenames and headings is the topography. If a partial extraction cannot guide a correct decision, the document has failed before it was read. Every document competes with the axioms and creed for context space; bulk without progressive disclosure threatens the foundation.",
+      "tags": [
+        "canon",
+        "meta",
+        "writing",
+        "progressive-disclosure"
+      ],
+      "stability": "stable",
+      "tier": "1",
+      "audience": "canon",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Writing Canon — Progressive Disclosure and Topographic Navigation",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Summary — Documents Are Read in Fragments, So Write Them That Way",
+          "line": 8
+        },
+        {
+          "level": 2,
+          "text": "The Five Extraction Tiers",
+          "line": 16
+        },
+        {
+          "level": 3,
+          "text": "Tier 1: Title — Names the Concept and Its Stance",
+          "line": 20
+        },
+        {
+          "level": 3,
+          "text": "Tier 2: Title + Blockquote — A Complete Compressed Argument",
+          "line": 31
+        },
+        {
+          "level": 3,
+          "text": "Tier 3: Title + Blockquote + Metadata — Orientation and Relationships",
+          "line": 47
+        },
+        {
+          "level": 3,
+          "text": "Tier 4: Summary Section — Self-Contained Full Picture",
+          "line": 60
+        },
+        {
+          "level": 3,
+          "text": "Tier 5: Full Document — Elaboration, Rationale, and Worked Detail",
+          "line": 68
+        },
+        {
+          "level": 2,
+          "text": "Headers Are a Navigational Map",
+          "line": 74
+        },
+        {
+          "level": 3,
+          "text": "Structural Markers Stay Stable, Descriptive Subtitles Make the Map Readable",
+          "line": 78
+        },
+        {
+          "level": 3,
+          "text": "The Header Scan Test",
+          "line": 93
+        },
+        {
+          "level": 2,
+          "text": "The Governing Principle — A Claim Is a Debt at Every Layer",
+          "line": 101
+        },
+        {
+          "level": 2,
+          "text": "Every Document Competes with the Axioms for Context Space",
+          "line": 109
+        },
+        {
+          "level": 2,
+          "text": "Checklist — Before Committing a Canon Document",
+          "line": 121
+        }
+      ],
+      "heading_count": 14,
+      "has_frontmatter": true
+    },
+    {
       "path": "canon/methods/boundary-transition-review.md",
       "root": "canon",
       "authority_band": "governing",
@@ -6270,62 +6366,62 @@
         {
           "level": 3,
           "text": "Resonance (External Alignment & Divergence)",
-          "line": 53
+          "line": 54
         },
         {
           "level": 2,
           "text": "🚀 Start Here",
-          "line": 68
+          "line": 69
         },
         {
           "level": 2,
           "text": "📖 Precedence & Interpretation",
-          "line": 78
+          "line": 79
         },
         {
           "level": 2,
           "text": "🧠 What the Canon Is (and Is Not)",
-          "line": 92
+          "line": 93
         },
         {
           "level": 2,
           "text": "🔒 Public vs Internal Boundary",
-          "line": 109
+          "line": 110
         },
         {
           "level": 2,
           "text": "📋 Meta Rules",
-          "line": 118
+          "line": 119
         },
         {
           "level": 2,
           "text": "🔄 Stability & Change Philosophy",
-          "line": 139
+          "line": 140
         },
         {
           "level": 2,
           "text": "⚠️ Confidence & Drift Risk",
-          "line": 152
+          "line": 153
         },
         {
           "level": 2,
           "text": "🚫 What Is Intentionally Undefined",
-          "line": 178
+          "line": 179
         },
         {
           "level": 2,
           "text": "📦 For Pack Compilation",
-          "line": 190
+          "line": 191
         },
         {
           "level": 2,
           "text": "🔗 See Also",
-          "line": 201
+          "line": 202
         },
         {
           "level": 2,
           "text": "✅ Status",
-          "line": 209
+          "line": 210
         }
       ],
       "heading_count": 17,
@@ -6844,6 +6940,133 @@
       "has_frontmatter": true
     },
     {
+      "path": "canon/values/axioms.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/values/axioms",
+      "title": "Foundational Axioms",
+      "subtitle": "Four values from which all ODD epistemic discipline is derived: (1) Reality Is Sovereign — observe before asserting, (2) A Claim Is a Debt — every assertion requires evidence, (3) Integrity Is Non-Negotiable Efficiency — shortcuts on truth always cost more, (4) You Cannot Verify What You Did Not Observe — if you didn't look, you don't know. These are the author's moral commitments, explicit and forkable.",
+      "tags": [
+        "canon",
+        "values",
+        "axioms",
+        "epistemics",
+        "foundational"
+      ],
+      "acronyms": [
+        "fa"
+      ],
+      "stability": "stable",
+      "tier": "1",
+      "audience": "canon",
+      "exposure": "nav",
+      "voice": "first_person",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Foundational Axioms",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Summary — Four Values Grounded in Biblical Worldview, Expressed for Evaluation Without Sharing That Worldview",
+          "line": 10
+        },
+        {
+          "level": 2,
+          "text": "Axiom 1: Reality Is Sovereign",
+          "line": 22
+        },
+        {
+          "level": 2,
+          "text": "Axiom 2: A Claim Is a Debt",
+          "line": 34
+        },
+        {
+          "level": 2,
+          "text": "Axiom 3: Integrity Is Non-Negotiable Efficiency",
+          "line": 44
+        },
+        {
+          "level": 2,
+          "text": "Axiom 4: You Cannot Verify What You Did Not Observe",
+          "line": 54
+        },
+        {
+          "level": 2,
+          "text": "The Test — Values Must Constrain Behavior When It Would Be Easier to Lie",
+          "line": 64
+        },
+        {
+          "level": 2,
+          "text": "Derivation Map — How Existing Constraints Trace Back to Axioms",
+          "line": 72
+        }
+      ],
+      "heading_count": 8,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/values/orientation.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/values/orientation",
+      "title": "Orientation",
+      "subtitle": "Before I speak, I observe. Before I claim, I verify. Before I confirm, I prove. What I have not seen, I do not know. What I have not verified, I will not imply. — This is the identity statement an agent carries into every task. Not a checklist to consult but a posture to inhabit. It compresses all four axioms into a single creed and closes the implication loophole.",
+      "tags": [
+        "canon",
+        "values",
+        "orientation",
+        "creed",
+        "identity"
+      ],
+      "stability": "stable",
+      "tier": "1",
+      "audience": "canon",
+      "exposure": "nav",
+      "voice": "first_person",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Orientation",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Summary — A Creed That Keeps the Axioms Active in Working Memory",
+          "line": 8
+        },
+        {
+          "level": 2,
+          "text": "The Creed — Observe, Verify, Prove, or Stay Silent",
+          "line": 14
+        },
+        {
+          "level": 2,
+          "text": "Each Line Compresses One Axiom (Plus One Exploit Closure)",
+          "line": 24
+        },
+        {
+          "level": 2,
+          "text": "Checksum, Posture, and Litmus Test",
+          "line": 37
+        },
+        {
+          "level": 2,
+          "text": "Constraints — Illustrative, Mortal, and Subordinate to Axioms",
+          "line": 49
+        }
+      ],
+      "heading_count": 6,
+      "has_frontmatter": true
+    },
+    {
       "path": "docs/_incoming/agent-fault-assertion-without-verification.md",
       "root": "docs",
       "authority_band": "operational",
@@ -6877,42 +7100,42 @@
         {
           "level": 2,
           "text": "Observed Incident",
-          "line": 6
+          "line": 8
         },
         {
           "level": 2,
           "text": "The Fault Pattern",
-          "line": 16
+          "line": 18
         },
         {
           "level": 2,
           "text": "Why This Is Systemic",
-          "line": 29
+          "line": 31
         },
         {
           "level": 2,
           "text": "What This Validates",
-          "line": 37
+          "line": 39
         },
         {
           "level": 2,
           "text": "Candidate Rule",
-          "line": 45
+          "line": 47
         },
         {
           "level": 2,
           "text": "Second Observed Fault: Pattern Blindness",
-          "line": 51
+          "line": 53
         },
         {
           "level": 3,
           "text": "Candidate Rule (Extended)",
-          "line": 59
+          "line": 61
         },
         {
           "level": 2,
           "text": "Classification Note",
-          "line": 63
+          "line": 65
         }
       ],
       "heading_count": 9,
@@ -7058,7 +7281,7 @@
       "authority_inferred": "operational",
       "uri": "klappy://docs/agent-entrypoint",
       "title": "Agent Entry Point",
-      "subtitle": null,
+      "subtitle": "Before I speak, I observe. Before I claim, I verify. Before I confirm, I prove.",
       "tags": [
         "docs",
         "implementation",
@@ -7085,22 +7308,22 @@
         {
           "level": 2,
           "text": "`/docs/agents/AGENT_KICKOFF.md`",
-          "line": 6
+          "line": 11
         },
         {
           "level": 2,
           "text": "For Orientation (Not Execution)",
-          "line": 12
+          "line": 17
         },
         {
           "level": 2,
           "text": "For Humans",
-          "line": 23
+          "line": 28
         },
         {
           "level": 2,
           "text": "Quick Reference",
-          "line": 29
+          "line": 34
         }
       ],
       "heading_count": 5,
@@ -7113,7 +7336,7 @@
       "authority_inferred": "operational",
       "uri": "klappy://docs/agent-kickoff",
       "title": "Agent Kickoff",
-      "subtitle": null,
+      "subtitle": "Before I speak, I observe. Before I claim, I verify. Before I confirm, I prove.",
       "tags": [
         "docs",
         "implementation",
@@ -7140,57 +7363,57 @@
         {
           "level": 2,
           "text": "Step 0: Declare Your Lane and Epoch",
-          "line": 11
+          "line": 16
         },
         {
           "level": 2,
           "text": "Step 1: Read Required Documents (In Order)",
-          "line": 30
+          "line": 35
         },
         {
           "level": 2,
           "text": "Step 2: Register Your Attempt",
-          "line": 39
+          "line": 44
         },
         {
           "level": 2,
           "text": "Step 3: Nuke and Start Fresh",
-          "line": 58
+          "line": 63
         },
         {
           "level": 2,
           "text": "Step 4: Build Against Your Lane's PRD",
-          "line": 79
+          "line": 84
         },
         {
           "level": 2,
           "text": "Step 5: Write Evidence",
-          "line": 91
+          "line": 96
         },
         {
           "level": 2,
           "text": "Step 6: Push",
-          "line": 108
+          "line": 113
         },
         {
           "level": 2,
           "text": "Invariants (Non-Negotiable)",
-          "line": 119
+          "line": 124
         },
         {
           "level": 2,
           "text": "If You Detect a Conflict",
-          "line": 130
+          "line": 135
         },
         {
           "level": 2,
           "text": "Quick Reference",
-          "line": 143
+          "line": 148
         },
         {
           "level": 2,
           "text": "The Rule",
-          "line": 158
+          "line": 163
         }
       ],
       "heading_count": 12,
@@ -10001,6 +10224,96 @@
       "has_frontmatter": true
     },
     {
+      "path": "docs/appendices/epoch-5.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "klappy://docs/appendices/epoch-5",
+      "title": "Epoch 5 — Values-First Epistemics",
+      "subtitle": "ODD transitions from rules-constrained epistemics to values-grounded epistemics. Rules are infinitely gameable without values. Epoch 5 encodes the moral commitments that were always implicit, making them explicit, foundational, and forkable. No infrastructure changed. The ground changed.",
+      "tags": [
+        "odd",
+        "epochs",
+        "values",
+        "epistemics",
+        "epoch-5"
+      ],
+      "acronyms": [
+        "e5—vfe"
+      ],
+      "stability": "stable",
+      "tier": "2",
+      "audience": "docs",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Epoch 5 — Values-First Epistemics",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Summary — Axioms Replace Rules as the Foundation of Epistemic Trust",
+          "line": 8
+        },
+        {
+          "level": 2,
+          "text": "A Change in What the System Assumes About Reality",
+          "line": 16
+        },
+        {
+          "level": 2,
+          "text": "Implicit Values Made Explicit — A Revelation, Not an Invention",
+          "line": 32
+        },
+        {
+          "level": 2,
+          "text": "No Infrastructure Changed — The Ground Changed, Not the Machinery",
+          "line": 50
+        },
+        {
+          "level": 2,
+          "text": "Agents Simulated Integrity Without Embodying It",
+          "line": 58
+        },
+        {
+          "level": 2,
+          "text": "Without Values, Rules Tend Toward Infinity",
+          "line": 68
+        },
+        {
+          "level": 2,
+          "text": "From \"Am I Following the Rules?\" to \"Am I Being Faithful?\"",
+          "line": 80
+        },
+        {
+          "level": 2,
+          "text": "Explicit Values, Not Universal Claims — Fork If You Disagree",
+          "line": 88
+        },
+        {
+          "level": 2,
+          "text": "Existing Constraints Now Derive from Axioms, Not the Reverse",
+          "line": 94
+        },
+        {
+          "level": 2,
+          "text": "Progressive Disclosure Protects the Axioms as Canon Grows",
+          "line": 107
+        },
+        {
+          "level": 2,
+          "text": "Epoch 5 Documents — Axioms, Orientation, Writing Guide, and This Declaration",
+          "line": 119
+        }
+      ],
+      "heading_count": 12,
+      "has_frontmatter": true
+    },
+    {
       "path": "docs/appendices/epochs.md",
       "root": "docs",
       "authority_band": "operational",
@@ -10041,115 +10354,135 @@
         {
           "level": 2,
           "text": "Content",
-          "line": 25
+          "line": 26
         },
         {
           "level": 2,
           "text": "What an Epoch Is",
-          "line": 41
+          "line": 42
         },
         {
           "level": 2,
           "text": "What an Epoch Is Not",
-          "line": 56
+          "line": 57
         },
         {
           "level": 2,
           "text": "Relationship to Product Lanes",
-          "line": 69
+          "line": 70
         },
         {
           "level": 2,
           "text": "Relationship to PRDs and Attempts",
-          "line": 81
+          "line": 82
         },
         {
           "level": 2,
           "text": "When to Start a New Epoch",
-          "line": 99
+          "line": 100
         },
         {
           "level": 2,
           "text": "Naming Convention",
-          "line": 114
+          "line": 115
         },
         {
           "level": 2,
           "text": "Minimal Epoch Metadata (Required)",
-          "line": 131
+          "line": 133
         },
         {
           "level": 2,
           "text": "Anti-Patterns",
-          "line": 153
+          "line": 155
         },
         {
           "level": 2,
           "text": "Why This Exists",
-          "line": 162
+          "line": 164
         },
         {
           "level": 2,
           "text": "E0003 — Evidence-First Era",
-          "line": 178
-        },
-        {
-          "level": 3,
-          "text": "What changed",
           "line": 180
         },
         {
           "level": 3,
+          "text": "What changed",
+          "line": 182
+        },
+        {
+          "level": 3,
           "text": "Binding rule (new fitness landscape)",
-          "line": 186
+          "line": 188
         },
         {
           "level": 3,
           "text": "Why this is a new epoch",
-          "line": 197
+          "line": 199
         },
         {
           "level": 3,
           "text": "Compatibility",
-          "line": 205
+          "line": 207
         },
         {
           "level": 2,
           "text": "E0004 — Epistemic Separation Era",
-          "line": 212
-        },
-        {
-          "level": 3,
-          "text": "What changed",
           "line": 214
         },
         {
           "level": 3,
+          "text": "What changed",
+          "line": 216
+        },
+        {
+          "level": 3,
           "text": "Core distinction",
-          "line": 222
+          "line": 224
         },
         {
           "level": 3,
           "text": "Binding separation",
-          "line": 228
+          "line": 230
         },
         {
           "level": 3,
           "text": "Artifact rule",
-          "line": 243
+          "line": 245
         },
         {
           "level": 3,
           "text": "Why this is a new epoch",
-          "line": 249
+          "line": 251
         },
         {
           "level": 3,
           "text": "Compatibility",
-          "line": 258
+          "line": 260
+        },
+        {
+          "level": 2,
+          "text": "E0005 — Values-First Epistemics",
+          "line": 268
+        },
+        {
+          "level": 3,
+          "text": "What changed",
+          "line": 276
+        },
+        {
+          "level": 3,
+          "text": "Why this is a new epoch",
+          "line": 280
+        },
+        {
+          "level": 3,
+          "text": "Compatibility",
+          "line": 289
         }
       ],
-      "heading_count": 25,
+      "heading_count": 29,
       "has_frontmatter": true
     },
     {
@@ -14637,6 +14970,102 @@
       "has_frontmatter": true
     },
     {
+      "path": "docs/oddkit/prompts/epistemic-guide.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "oddkit://prompts/epistemic-guide",
+      "title": "Epistemic Guide",
+      "subtitle": "Orchestrate epistemic tool calls to guide a user through the journey toward their goal.",
+      "tags": [
+        "oddkit",
+        "prompt",
+        "mcp",
+        "epistemics",
+        "guide",
+        "orchestration"
+      ],
+      "acronyms": [
+        "eg"
+      ],
+      "stability": "evolving",
+      "tier": "2",
+      "audience": "operators",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Epistemic Guide",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Role",
+          "line": 12
+        },
+        {
+          "level": 2,
+          "text": "The Four Tools",
+          "line": 18
+        },
+        {
+          "level": 2,
+          "text": "Flow",
+          "line": 27
+        },
+        {
+          "level": 3,
+          "text": "1. Orient First",
+          "line": 29
+        },
+        {
+          "level": 3,
+          "text": "2. Challenge When Smells Appear",
+          "line": 39
+        },
+        {
+          "level": 3,
+          "text": "3. Gate Before Transitions",
+          "line": 53
+        },
+        {
+          "level": 3,
+          "text": "4. Encode After Decisions",
+          "line": 67
+        },
+        {
+          "level": 2,
+          "text": "Sequencing Rules",
+          "line": 81
+        },
+        {
+          "level": 2,
+          "text": "Response Posture",
+          "line": 89
+        },
+        {
+          "level": 2,
+          "text": "What This Prompt Does NOT Do",
+          "line": 98
+        },
+        {
+          "level": 2,
+          "text": "Canon References",
+          "line": 108
+        }
+      ],
+      "heading_count": 13,
+      "has_frontmatter": true
+    },
+    {
       "path": "docs/oddkit/SYSTEM-MAP.md",
       "root": "docs",
       "authority_band": "operational",
@@ -14716,6 +15145,281 @@
         }
       ],
       "heading_count": 10,
+      "has_frontmatter": true
+    },
+    {
+      "path": "docs/oddkit/tools/oddkit_challenge.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "oddkit://tools/challenge",
+      "title": "oddkit_challenge",
+      "subtitle": "Pressure-test a claim, assumption, or proposal against canon constraints.",
+      "tags": [
+        "oddkit",
+        "tool",
+        "epistemics",
+        "challenge",
+        "validation"
+      ],
+      "stability": "evolving",
+      "tier": "2",
+      "audience": "operators",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "oddkit_challenge",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "When to Use",
+          "line": 12
+        },
+        {
+          "level": 2,
+          "text": "Tool Definition",
+          "line": 20
+        },
+        {
+          "level": 3,
+          "text": "Input Schema",
+          "line": 26
+        },
+        {
+          "level": 3,
+          "text": "Response Shape",
+          "line": 55
+        },
+        {
+          "level": 2,
+          "text": "Behavioral Rules",
+          "line": 85
+        },
+        {
+          "level": 2,
+          "text": "Failure Modes to Avoid",
+          "line": 94
+        },
+        {
+          "level": 2,
+          "text": "Canon References",
+          "line": 101
+        }
+      ],
+      "heading_count": 9,
+      "has_frontmatter": true
+    },
+    {
+      "path": "docs/oddkit/tools/oddkit_encode.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "oddkit://tools/encode",
+      "title": "oddkit_encode",
+      "subtitle": "Capture a decision, insight, or boundary as a durable record.",
+      "tags": [
+        "oddkit",
+        "tool",
+        "epistemics",
+        "encoding",
+        "decisions",
+        "durability"
+      ],
+      "stability": "evolving",
+      "tier": "2",
+      "audience": "operators",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "oddkit_encode",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "When to Use",
+          "line": 12
+        },
+        {
+          "level": 2,
+          "text": "Tool Definition",
+          "line": 21
+        },
+        {
+          "level": 3,
+          "text": "Input Schema",
+          "line": 27
+        },
+        {
+          "level": 3,
+          "text": "Response Shape",
+          "line": 72
+        },
+        {
+          "level": 2,
+          "text": "Behavioral Rules",
+          "line": 99
+        },
+        {
+          "level": 2,
+          "text": "Canon References",
+          "line": 108
+        }
+      ],
+      "heading_count": 8,
+      "has_frontmatter": true
+    },
+    {
+      "path": "docs/oddkit/tools/oddkit_gate.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "oddkit://tools/gate",
+      "title": "oddkit_gate",
+      "subtitle": "Check readiness to transition between epistemic phases.",
+      "tags": [
+        "oddkit",
+        "tool",
+        "epistemics",
+        "gating",
+        "transitions",
+        "deceleration"
+      ],
+      "stability": "evolving",
+      "tier": "2",
+      "audience": "operators",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "oddkit_gate",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "When to Use",
+          "line": 12
+        },
+        {
+          "level": 2,
+          "text": "Tool Definition",
+          "line": 20
+        },
+        {
+          "level": 3,
+          "text": "Input Schema",
+          "line": 26
+        },
+        {
+          "level": 3,
+          "text": "Response Shape",
+          "line": 55
+        },
+        {
+          "level": 2,
+          "text": "Behavioral Rules",
+          "line": 96
+        },
+        {
+          "level": 2,
+          "text": "Canon References",
+          "line": 105
+        }
+      ],
+      "heading_count": 8,
+      "has_frontmatter": true
+    },
+    {
+      "path": "docs/oddkit/tools/oddkit_orient.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "oddkit://tools/orient",
+      "title": "oddkit_orient",
+      "subtitle": "Assess where a goal or idea sits epistemically before deciding what to do next.",
+      "tags": [
+        "oddkit",
+        "tool",
+        "epistemics",
+        "orientation",
+        "modes"
+      ],
+      "stability": "evolving",
+      "tier": "2",
+      "audience": "operators",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "oddkit_orient",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "When to Use",
+          "line": 12
+        },
+        {
+          "level": 2,
+          "text": "Tool Definition",
+          "line": 19
+        },
+        {
+          "level": 3,
+          "text": "Input Schema",
+          "line": 25
+        },
+        {
+          "level": 3,
+          "text": "Response Shape",
+          "line": 49
+        },
+        {
+          "level": 2,
+          "text": "Behavioral Rules",
+          "line": 77
+        },
+        {
+          "level": 2,
+          "text": "Canon References",
+          "line": 85
+        }
+      ],
+      "heading_count": 8,
       "has_frontmatter": true
     },
     {
@@ -18189,21 +18893,26 @@
         },
         {
           "level": 3,
-          "text": "Subfolders",
+          "text": "Values",
           "line": 21
+        },
+        {
+          "level": 3,
+          "text": "Subfolders",
+          "line": 28
         },
         {
           "level": 2,
           "text": "🚀 Start Here",
-          "line": 30
+          "line": 37
         },
         {
           "level": 2,
           "text": "💡 Core Thesis",
-          "line": 39
+          "line": 46
         }
       ],
-      "heading_count": 5,
+      "heading_count": 6,
       "has_frontmatter": true
     },
     {
@@ -18265,131 +18974,136 @@
         },
         {
           "level": 2,
-          "text": "📌 Pillars (Operational Interpretation)",
+          "text": "📌 Values-First Foundation",
           "line": 57
+        },
+        {
+          "level": 2,
+          "text": "📌 Pillars (Operational Interpretation)",
+          "line": 63
         },
         {
           "level": 3,
           "text": "Prompt Over Code",
-          "line": 59
+          "line": 65
         },
         {
           "level": 3,
           "text": "KISS",
-          "line": 64
+          "line": 70
         },
         {
           "level": 3,
           "text": "DRY (With Isolation)",
-          "line": 69
+          "line": 75
         },
         {
           "level": 3,
           "text": "Consistency",
-          "line": 74
+          "line": 80
         },
         {
           "level": 3,
           "text": "Maintainability",
-          "line": 79
+          "line": 85
         },
         {
           "level": 3,
           "text": "Antifragile",
-          "line": 84
+          "line": 90
         },
         {
           "level": 3,
           "text": "Scalable",
-          "line": 90
+          "line": 96
         },
         {
           "level": 2,
           "text": "🔄 Restartability Over Salvage",
-          "line": 100
+          "line": 106
         },
         {
           "level": 2,
           "text": "📊 Progressive Governance (Maturity-Aware ODD)",
-          "line": 126
+          "line": 132
         },
         {
           "level": 2,
           "text": "📎 Evidence as the Gate",
-          "line": 152
+          "line": 158
         },
         {
           "level": 2,
           "text": "🤖 Trust, Authority, and AI",
-          "line": 164
+          "line": 170
         },
         {
           "level": 2,
           "text": "🔬 Outcomes Must Be Falsifiable",
-          "line": 175
+          "line": 181
         },
         {
           "level": 2,
           "text": "⚠️ Reversibility and Cost Awareness",
-          "line": 186
+          "line": 192
         },
         {
           "level": 2,
           "text": "🛑 Stop Conditions",
-          "line": 197
+          "line": 203
         },
         {
           "level": 2,
           "text": "🧠 Memory Is the Bottleneck",
-          "line": 208
+          "line": 214
         },
         {
           "level": 2,
           "text": "🔗 Relationship to Canon",
-          "line": 230
+          "line": 236
         },
         {
           "level": 2,
           "text": "💡 Closing (Internal)",
-          "line": 242
+          "line": 248
         },
         {
           "level": 2,
           "text": "✅ Status",
-          "line": 251
+          "line": 257
         },
         {
           "level": 2,
           "text": "⚠️ Confidence, Risks, and Known Failure Modes",
-          "line": 259
+          "line": 265
         },
         {
           "level": 3,
           "text": "Confidence Model",
-          "line": 270
+          "line": 276
         },
         {
           "level": 3,
           "text": "Principle-Level Confidence Snapshot",
-          "line": 284
+          "line": 290
         },
         {
           "level": 3,
           "text": "Cross-Cutting Risks",
-          "line": 398
+          "line": 404
         },
         {
           "level": 3,
           "text": "Intended Use of This Section",
-          "line": 414
+          "line": 420
         },
         {
           "level": 3,
           "text": "Re-evaluation Philosophy",
-          "line": 426
+          "line": 432
         }
       ],
-      "heading_count": 31,
+      "heading_count": 32,
       "has_frontmatter": true
     },
     {
@@ -18798,36 +19512,41 @@
         },
         {
           "level": 2,
-          "text": "Evidence Over Explanation",
+          "text": "Foundational Values",
           "line": 91
         },
         {
           "level": 2,
+          "text": "Evidence Over Explanation",
+          "line": 99
+        },
+        {
+          "level": 2,
           "text": "Project Maturity Matters",
-          "line": 105
+          "line": 113
         },
         {
           "level": 2,
           "text": "What ODD Is Not",
-          "line": 117
+          "line": 125
         },
         {
           "level": 2,
           "text": "How This Repository Uses ODD",
-          "line": 129
+          "line": 137
         },
         {
           "level": 2,
           "text": "On Variance and Learning",
-          "line": 140
+          "line": 148
         },
         {
           "level": 2,
           "text": "Where to Go Next",
-          "line": 148
+          "line": 156
         }
       ],
-      "heading_count": 11,
+      "heading_count": 12,
       "has_frontmatter": true
     },
     {

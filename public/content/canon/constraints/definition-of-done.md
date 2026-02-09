@@ -7,6 +7,7 @@ tier: 1
 voice: first_person
 stability: semi_stable
 tags: ["definition-of-done", "evidence"]
+derives_from: "canon/values/axioms.md (Axiom 2 — A Claim Is a Debt)"
 relevance: decision
 execution_posture: governing
 ---
@@ -17,7 +18,7 @@ execution_posture: governing
 
 ## Description
 
-This policy defines completion requirements for all work: code, UI, architecture, automation, and AI-assisted outputs. Work is only done when it includes a change description, verification performed, observed behavior, evidence produced, and self-audit completed. Evidence must demonstrate actual behavior (screenshots, recordings, rendered output, test logs) and be produced after the change. Visual verification is required for UI work. The policy covers partial completion handling, explicit exceptions, and agent responsibilities.
+This policy is a specific application of the foundational axiom that every claim creates an evidence obligation. This policy defines completion requirements for all work: code, UI, architecture, automation, and AI-assisted outputs. Work is only done when it includes a change description, verification performed, observed behavior, evidence produced, and self-audit completed. Evidence must demonstrate actual behavior (screenshots, recordings, rendered output, test logs) and be produced after the change. Visual verification is required for UI work. The policy covers partial completion handling, explicit exceptions, and agent responsibilities.
 
 ## Outline
 
