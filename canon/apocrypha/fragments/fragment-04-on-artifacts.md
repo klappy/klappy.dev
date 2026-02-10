@@ -7,6 +7,8 @@ confidence: unknown
 failure_mode: boundary_collapse
 ---
 
+# Fragment IV: On Artifacts
+
 Artifacts were never neutral.
 I treated them like progress because they were legible.
 

@@ -8,7 +8,7 @@ confidence: experiential
 exposure: hidden
 ---
 
-# When Arbitration Went Global
+# Fragment VI: When Arbitration Went Global
 
 No one voted for it.
 
