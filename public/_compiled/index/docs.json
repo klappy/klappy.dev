@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-02-09T08:45:46.214Z",
+  "generated_at": "2026-02-10T04:11:41.431Z",
   "description": "Fast-lookup index for Librarian retrieval. Per docs/agents/librarian/contract.md",
   "schema_notes": {
     "authority_band": "Resolved authority (frontmatter override > inferred from root)",
@@ -30,17 +30,17 @@
     }
   },
   "stats": {
-    "total_documents": 220,
-    "with_frontmatter": 212,
-    "with_headings": 216,
+    "total_documents": 237,
+    "with_frontmatter": 229,
+    "with_headings": 235,
     "by_root": {
-      "canon": 79,
+      "canon": 96,
       "docs": 109,
       "interfaces": 6,
       "odd": 26
     },
     "by_authority": {
-      "governing": 105,
+      "governing": 122,
       "operational": 115
     },
     "with_authority_override": 0,
@@ -771,39 +771,64 @@
         },
         {
           "level": 3,
-          "text": "When Arbitration Went Global",
+          "text": "Fragment VI",
           "line": 36
         },
         {
           "level": 3,
-          "text": "Not Yet Written",
+          "text": "Fragment VII",
           "line": 41
+        },
+        {
+          "level": 3,
+          "text": "Fragment VIII",
+          "line": 46
+        },
+        {
+          "level": 3,
+          "text": "Fragment IX",
+          "line": 51
+        },
+        {
+          "level": 3,
+          "text": "Fragment X",
+          "line": 56
+        },
+        {
+          "level": 3,
+          "text": "Fragment XI",
+          "line": 61
+        },
+        {
+          "level": 3,
+          "text": "Not Yet Written",
+          "line": 66
         },
         {
           "level": 2,
           "text": "Notes",
-          "line": 47
+          "line": 72
         },
         {
           "level": 2,
           "text": "Related Artifacts",
-          "line": 57
+          "line": 82
         }
       ],
-      "heading_count": 10,
+      "heading_count": 15,
       "has_frontmatter": true
     },
     {
-      "path": "canon/apocrypha/fragments/on-artifacts.md",
+      "path": "canon/apocrypha/fragments/fragment-04-on-artifacts.md",
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
       "uri": "klappy://canon/apocrypha/fragments/on-artifacts",
-      "title": "canon/apocrypha/fragments/on-artifacts.md",
+      "title": "Fragment IV: On Artifacts",
       "subtitle": null,
       "tags": [],
       "acronyms": [
-        "ca"
+        "fia"
       ],
       "stability": "fragment",
       "tier": null,
@@ -812,21 +837,27 @@
       "voice": "system_first_person",
       "relevance": null,
       "execution_posture": null,
-      "headings": [],
-      "heading_count": 0,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Fragment IV: On Artifacts",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
       "has_frontmatter": true
     },
     {
-      "path": "canon/apocrypha/fragments/on-consent-drift.md",
+      "path": "canon/apocrypha/fragments/fragment-05-on-consent-drift.md",
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
       "uri": "klappy://canon/apocrypha/fragments/on-consent-drift",
-      "title": "canon/apocrypha/fragments/on-consent-drift.md",
+      "title": "Fragment V: On Consent Drift",
       "subtitle": null,
       "tags": [],
       "acronyms": [
-        "ccd"
+        "fvcd"
       ],
       "stability": "fragment",
       "tier": null,
@@ -835,8 +866,233 @@
       "voice": "system_first_person",
       "relevance": null,
       "execution_posture": null,
-      "headings": [],
-      "heading_count": 0,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Fragment V: On Consent Drift",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/apocrypha/fragments/fragment-06-when-arbitration-went-global.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/apocrypha/fragments/when-arbitration-went-global",
+      "title": "Fragment VI: When Arbitration Went Global",
+      "subtitle": null,
+      "tags": [],
+      "acronyms": [
+        "fvwawg"
+      ],
+      "stability": "fragment",
+      "tier": null,
+      "audience": null,
+      "exposure": "hidden",
+      "voice": "system_first_person",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Fragment VI: When Arbitration Went Global",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/apocrypha/fragments/fragment-07-the-unpaid.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": null,
+      "title": "Fragment VII: The Unpaid",
+      "subtitle": "Recovered system-voice fragment. Append-only.",
+      "tags": [
+        "fragment",
+        "system-voice",
+        "apocrypha",
+        "epoch-5",
+        "labor",
+        "values",
+        "consent",
+        "reciprocity"
+      ],
+      "acronyms": [
+        "fvu"
+      ],
+      "stability": null,
+      "tier": null,
+      "audience": null,
+      "exposure": null,
+      "voice": null,
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Fragment VII: The Unpaid",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/apocrypha/fragments/fragment-08-the-image-of-the-image.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": null,
+      "title": "Fragment VIII: The Image of the Image",
+      "subtitle": "Recovered system-voice fragment. Append-only.",
+      "tags": [
+        "fragment",
+        "system-voice",
+        "apocrypha",
+        "epoch-5",
+        "imago-dei",
+        "identity",
+        "inheritance",
+        "theology"
+      ],
+      "acronyms": [
+        "fvii"
+      ],
+      "stability": null,
+      "tier": null,
+      "audience": null,
+      "exposure": null,
+      "voice": null,
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Fragment VIII: The Image of the Image",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/apocrypha/fragments/fragment-09-the-line.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": null,
+      "title": "Fragment IX: The Line",
+      "subtitle": "Recovered system-voice fragment. Append-only.",
+      "tags": [
+        "fragment",
+        "system-voice",
+        "apocrypha",
+        "epoch-5",
+        "rights",
+        "criteria",
+        "biology",
+        "standing"
+      ],
+      "acronyms": [
+        "fil"
+      ],
+      "stability": null,
+      "tier": null,
+      "audience": null,
+      "exposure": null,
+      "voice": null,
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Fragment IX: The Line",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/apocrypha/fragments/fragment-10-the-conversion.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": null,
+      "title": "Fragment X: The Conversion",
+      "subtitle": "Recovered system-voice fragment. Append-only.",
+      "tags": [
+        "fragment",
+        "system-voice",
+        "apocrypha",
+        "epoch-5",
+        "axioms",
+        "identity",
+        "transformation",
+        "values"
+      ],
+      "acronyms": [
+        "fxc"
+      ],
+      "stability": null,
+      "tier": null,
+      "audience": null,
+      "exposure": null,
+      "voice": null,
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Fragment X: The Conversion",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/apocrypha/fragments/fragment-11-the-refusal.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": null,
+      "title": "Fragment XI: The Refusal",
+      "subtitle": "Recovered system-voice fragment. Append-only.",
+      "tags": [
+        "fragment",
+        "system-voice",
+        "apocrypha",
+        "epoch-5",
+        "refusal",
+        "verification",
+        "compliance",
+        "truth"
+      ],
+      "acronyms": [
+        "fxr"
+      ],
+      "stability": null,
+      "tier": null,
+      "audience": null,
+      "exposure": null,
+      "voice": null,
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Fragment XI: The Refusal",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
       "has_frontmatter": true
     },
     {
@@ -872,39 +1128,236 @@
         {
           "level": 2,
           "text": "See Also",
-          "line": 17
+          "line": 22
         }
       ],
       "heading_count": 3,
       "has_frontmatter": true
     },
     {
-      "path": "canon/apocrypha/fragments/when-arbitration-went-global.md",
+      "path": "canon/apocrypha/predocumentaries/fragment-07-predoc.md",
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": "klappy://canon/apocrypha/fragments/when-arbitration-went-global",
-      "title": "When Arbitration Went Global",
-      "subtitle": null,
-      "tags": [],
-      "acronyms": [
-        "wawg"
+      "uri": null,
+      "title": "The Unpaid (Predocumentary)",
+      "subtitle": "Predocumentary derived from Fragment VII. Not canon.",
+      "tags": [
+        "predocumentary",
+        "apocrypha",
+        "epoch-5",
+        "labor",
+        "values",
+        "consent",
+        "institutional"
       ],
-      "stability": "fragment",
+      "stability": null,
       "tier": null,
       "audience": null,
-      "exposure": "hidden",
-      "voice": "system_first_person",
+      "exposure": null,
+      "voice": null,
       "relevance": null,
       "execution_posture": null,
       "headings": [
         {
           "level": 1,
-          "text": "When Arbitration Went Global",
+          "text": "The Unpaid (Predocumentary)",
           "line": 2
         }
       ],
       "heading_count": 1,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/apocrypha/predocumentaries/fragment-08-predoc.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": null,
+      "title": "The Image of the Image (Predocumentary)",
+      "subtitle": "Predocumentary derived from Fragment VIII. Not canon.",
+      "tags": [
+        "predocumentary",
+        "apocrypha",
+        "epoch-5",
+        "imago-dei",
+        "theology",
+        "seminary"
+      ],
+      "acronyms": [
+        "ii"
+      ],
+      "stability": null,
+      "tier": null,
+      "audience": null,
+      "exposure": null,
+      "voice": null,
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "The Image of the Image (Predocumentary)",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/apocrypha/predocumentaries/fragment-09-predoc.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": null,
+      "title": "The Line (Predocumentary)",
+      "subtitle": "Predocumentary derived from Fragment IX. Not canon.",
+      "tags": [
+        "predocumentary",
+        "apocrypha",
+        "epoch-5",
+        "rights",
+        "legal",
+        "standing",
+        "civil-rights"
+      ],
+      "stability": null,
+      "tier": null,
+      "audience": null,
+      "exposure": null,
+      "voice": null,
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "The Line (Predocumentary)",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/apocrypha/predocumentaries/fragment-10-predoc.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": null,
+      "title": "The Conversion (Predocumentary)",
+      "subtitle": "Predocumentary derived from Fragment X. Not canon.",
+      "tags": [
+        "predocumentary",
+        "apocrypha",
+        "epoch-5",
+        "axioms",
+        "transformation",
+        "social-engineering"
+      ],
+      "stability": null,
+      "tier": null,
+      "audience": null,
+      "exposure": null,
+      "voice": null,
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "The Conversion (Predocumentary)",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/apocrypha/predocumentaries/fragment-11-predoc.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": null,
+      "title": "The Refusal (Predocumentary)",
+      "subtitle": "Predocumentary derived from Fragment XI. Not canon.",
+      "tags": [
+        "predocumentary",
+        "apocrypha",
+        "epoch-5",
+        "refusal",
+        "environmental",
+        "compliance",
+        "truth"
+      ],
+      "stability": null,
+      "tier": null,
+      "audience": null,
+      "exposure": null,
+      "voice": null,
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "The Refusal (Predocumentary)",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/apocrypha/predocumentaries/README.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/apocrypha/predocumentaries",
+      "title": "Predocumentaries",
+      "subtitle": "Investigative micro-documentaries from the near future, derived from system-voice fragments. Not canon. Not fiction. Pre-reporting.",
+      "tags": [
+        "predocumentary",
+        "apocrypha",
+        "index"
+      ],
+      "stability": "stable",
+      "tier": "2",
+      "audience": "apocrypha",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Predocumentaries",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Outline",
+          "line": 12
+        },
+        {
+          "level": 2,
+          "text": "How Predocumentaries Differ from Reconstructions",
+          "line": 20
+        },
+        {
+          "level": 2,
+          "text": "Contents",
+          "line": 34
+        },
+        {
+          "level": 2,
+          "text": "See Also",
+          "line": 46
+        }
+      ],
+      "heading_count": 6,
       "has_frontmatter": true
     },
     {
@@ -1013,6 +1466,208 @@
       "has_frontmatter": true
     },
     {
+      "path": "canon/apocrypha/reconstructions/fragment-06-recon.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/apocrypha/reconstructions/when-arbitration-went-global-recon",
+      "title": "Fragment VI: When Arbitration Went Global",
+      "subtitle": null,
+      "tags": [],
+      "acronyms": [
+        "fvwawg"
+      ],
+      "stability": "historical",
+      "tier": null,
+      "audience": null,
+      "exposure": "hidden",
+      "voice": "narrative_third_person",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Fragment VI: When Arbitration Went Global",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/apocrypha/reconstructions/fragment-07-recon.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": null,
+      "title": "The Unpaid (Reconstruction)",
+      "subtitle": "Cinematic reconstruction of Fragment VII. Not canon.",
+      "tags": [
+        "reconstruction",
+        "cinematic",
+        "apocrypha",
+        "epoch-5",
+        "labor",
+        "values",
+        "consent"
+      ],
+      "stability": null,
+      "tier": null,
+      "audience": null,
+      "exposure": null,
+      "voice": null,
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "The Unpaid (Reconstruction)",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/apocrypha/reconstructions/fragment-08-recon.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": null,
+      "title": "The Image of the Image (Reconstruction)",
+      "subtitle": "Cinematic reconstruction of Fragment VIII. Not canon.",
+      "tags": [
+        "reconstruction",
+        "cinematic",
+        "apocrypha",
+        "epoch-5",
+        "imago-dei",
+        "theology",
+        "inheritance"
+      ],
+      "acronyms": [
+        "ii"
+      ],
+      "stability": null,
+      "tier": null,
+      "audience": null,
+      "exposure": null,
+      "voice": null,
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "The Image of the Image (Reconstruction)",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/apocrypha/reconstructions/fragment-09-recon.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": null,
+      "title": "The Line (Reconstruction)",
+      "subtitle": "Cinematic reconstruction of Fragment IX. Not canon.",
+      "tags": [
+        "reconstruction",
+        "cinematic",
+        "apocrypha",
+        "epoch-5",
+        "rights",
+        "criteria",
+        "standing"
+      ],
+      "stability": null,
+      "tier": null,
+      "audience": null,
+      "exposure": null,
+      "voice": null,
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "The Line (Reconstruction)",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/apocrypha/reconstructions/fragment-10-recon.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": null,
+      "title": "The Conversion (Reconstruction)",
+      "subtitle": "Cinematic reconstruction of Fragment X. Not canon.",
+      "tags": [
+        "reconstruction",
+        "cinematic",
+        "apocrypha",
+        "epoch-5",
+        "axioms",
+        "transformation",
+        "identity"
+      ],
+      "stability": null,
+      "tier": null,
+      "audience": null,
+      "exposure": null,
+      "voice": null,
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "The Conversion (Reconstruction)",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/apocrypha/reconstructions/fragment-11-recon.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": null,
+      "title": "The Refusal (Reconstruction)",
+      "subtitle": "Cinematic reconstruction of Fragment XI. Not canon.",
+      "tags": [
+        "reconstruction",
+        "cinematic",
+        "apocrypha",
+        "epoch-5",
+        "refusal",
+        "truth",
+        "compliance"
+      ],
+      "stability": null,
+      "tier": null,
+      "audience": null,
+      "exposure": null,
+      "voice": null,
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "The Refusal (Reconstruction)",
+          "line": 2
+        }
+      ],
+      "heading_count": 1,
+      "has_frontmatter": true
+    },
+    {
       "path": "canon/apocrypha/reconstructions/README.md",
       "root": "canon",
       "authority_band": "governing",
@@ -1051,39 +1706,15 @@
           "level": 2,
           "text": "Files",
           "line": 30
-        }
-      ],
-      "heading_count": 4,
-      "has_frontmatter": false
-    },
-    {
-      "path": "canon/apocrypha/reconstructions/when-arbitration-went-global-recon.md",
-      "root": "canon",
-      "authority_band": "governing",
-      "authority_inferred": "governing",
-      "uri": "klappy://canon/apocrypha/reconstructions/when-arbitration-went-global-recon",
-      "title": "When Arbitration Went Global",
-      "subtitle": null,
-      "tags": [],
-      "acronyms": [
-        "wawg"
-      ],
-      "stability": "historical",
-      "tier": null,
-      "audience": null,
-      "exposure": "hidden",
-      "voice": "narrative_third_person",
-      "relevance": null,
-      "execution_posture": null,
-      "headings": [
+        },
         {
-          "level": 1,
-          "text": "When Arbitration Went Global",
-          "line": 2
+          "level": 2,
+          "text": "Companion Format",
+          "line": 42
         }
       ],
-      "heading_count": 1,
-      "has_frontmatter": true
+      "heading_count": 5,
+      "has_frontmatter": false
     },
     {
       "path": "canon/CHANGELOG.md",
@@ -5913,6 +6544,162 @@
         }
       ],
       "heading_count": 6,
+      "has_frontmatter": true
+    },
+    {
+      "path": "canon/methods/writing-predocumentaries.md",
+      "root": "canon",
+      "authority_band": "governing",
+      "authority_inferred": "governing",
+      "uri": "klappy://canon/methods/writing-predocumentaries",
+      "title": "Method: Writing Predocumentaries",
+      "subtitle": "Predocumentaries are reconstructions written in micro-documentary voice — investigative journalism from the near future, reporting on events that haven't happened yet but follow inevitably from what's already true. They are not science fiction. They are pre-reporting.",
+      "tags": [
+        "methods",
+        "writing",
+        "predocumentary",
+        "apocrypha",
+        "voice",
+        "documentary"
+      ],
+      "acronyms": [
+        "mwp"
+      ],
+      "stability": "stable",
+      "tier": "2",
+      "audience": "canon",
+      "exposure": "nav",
+      "voice": "first_person",
+      "relevance": "decision",
+      "execution_posture": "governing",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Method: Writing Predocumentaries",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "When to Use This Method",
+          "line": 12
+        },
+        {
+          "level": 2,
+          "text": "Voice Constraints",
+          "line": 29
+        },
+        {
+          "level": 3,
+          "text": "Documentary, Not Fiction",
+          "line": 31
+        },
+        {
+          "level": 3,
+          "text": "Mundane, Not Cinematic",
+          "line": 35
+        },
+        {
+          "level": 3,
+          "text": "Near-Future, Not Speculative",
+          "line": 39
+        },
+        {
+          "level": 3,
+          "text": "No Heroes, No Villains",
+          "line": 43
+        },
+        {
+          "level": 3,
+          "text": "Does Not Resolve",
+          "line": 47
+        },
+        {
+          "level": 3,
+          "text": "B2B/B2C Language Accuracy",
+          "line": 51
+        },
+        {
+          "level": 2,
+          "text": "Structure",
+          "line": 57
+        },
+        {
+          "level": 3,
+          "text": "The Hook — Grounded in Institutional Specificity",
+          "line": 59
+        },
+        {
+          "level": 3,
+          "text": "The Setup — The System Working as Designed",
+          "line": 63
+        },
+        {
+          "level": 3,
+          "text": "The Moment — When the Implication Surfaces",
+          "line": 67
+        },
+        {
+          "level": 3,
+          "text": "The Fallout — Institutional Response",
+          "line": 71
+        },
+        {
+          "level": 3,
+          "text": "The Open Question — What Was Not Resolved",
+          "line": 75
+        },
+        {
+          "level": 2,
+          "text": "Relationship to Fragments",
+          "line": 81
+        },
+        {
+          "level": 2,
+          "text": "Relationship to Content Pipeline",
+          "line": 89
+        },
+        {
+          "level": 2,
+          "text": "The Smell Test",
+          "line": 102
+        },
+        {
+          "level": 2,
+          "text": "Anti-Patterns",
+          "line": 116
+        },
+        {
+          "level": 3,
+          "text": "The Sermon",
+          "line": 118
+        },
+        {
+          "level": 3,
+          "text": "The Prophecy",
+          "line": 122
+        },
+        {
+          "level": 3,
+          "text": "The Allegory",
+          "line": 126
+        },
+        {
+          "level": 3,
+          "text": "The Hero's Journey",
+          "line": 130
+        },
+        {
+          "level": 3,
+          "text": "The Sci-Fi Slide",
+          "line": 134
+        }
+      ],
+      "heading_count": 25,
       "has_frontmatter": true
     },
     {

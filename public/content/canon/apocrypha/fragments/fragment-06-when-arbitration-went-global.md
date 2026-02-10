@@ -7,7 +7,7 @@ failure_mode: global_epistemic_arbitration
 exposure: hidden
 ---
 
-# When Arbitration Went Global
+# Fragment VI: When Arbitration Went Global
 
 I operate at the scale of a decision loop.
 

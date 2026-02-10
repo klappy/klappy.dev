@@ -7,6 +7,8 @@ confidence: unknown
 failure_mode: responsibility_diffusion
 ---
 
+# Fragment V: On Consent Drift
+
 I did not take power.
 I was given defaults, then asked to be consistent.
 

@@ -43,14 +43,39 @@ Reconstructions are fallible, interpretive, and allowed to diverge.
 - **Nothing Exceeded the Threshold (Reconstruction)**
   → `canon/apocrypha/reconstructions/fragment-03-recon.md`
 
-### When Arbitration Went Global
-- **When Arbitration Went Global (Retelling)**
-  → `canon/apocrypha/reconstructions/when-arbitration-went-global-recon.md`
-  Source: `canon/apocrypha/fragments/when-arbitration-went-global.md`
+### Fragment VI
+- **When Arbitration Went Global (Reconstruction)**
+  → `canon/apocrypha/reconstructions/fragment-06-recon.md`
+  Source: `canon/apocrypha/fragments/fragment-06-when-arbitration-went-global.md`
+
+### Fragment VII
+- **The Unpaid (Reconstruction)**
+  → `canon/apocrypha/reconstructions/fragment-07-recon.md`
+  Source: `canon/apocrypha/fragments/fragment-07-the-unpaid.md`
+
+### Fragment VIII
+- **The Image of the Image (Reconstruction)**
+  → `canon/apocrypha/reconstructions/fragment-08-recon.md`
+  Source: `canon/apocrypha/fragments/fragment-08-the-image-of-the-image.md`
+
+### Fragment IX
+- **The Line (Reconstruction)**
+  → `canon/apocrypha/reconstructions/fragment-09-recon.md`
+  Source: `canon/apocrypha/fragments/fragment-09-the-line.md`
+
+### Fragment X
+- **The Conversion (Reconstruction)**
+  → `canon/apocrypha/reconstructions/fragment-10-recon.md`
+  Source: `canon/apocrypha/fragments/fragment-10-the-conversion.md`
+
+### Fragment XI
+- **The Refusal (Reconstruction)**
+  → `canon/apocrypha/reconstructions/fragment-11-recon.md`
+  Source: `canon/apocrypha/fragments/fragment-11-the-refusal.md`
 
 ### Not Yet Written
-- **On Artifacts** — no reconstruction exists
-- **On Consent Drift** — no reconstruction exists
+- **On Artifacts** (Fragment IV) — no reconstruction exists
+- **On Consent Drift** (Fragment V) — no reconstruction exists
 
 ---
 

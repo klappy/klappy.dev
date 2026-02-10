@@ -967,6 +967,25 @@
       ]
     },
     {
+      "uri": "klappy://canon/methods/writing-predocumentaries",
+      "path": "/canon/methods/writing-predocumentaries.md",
+      "title": "Method: Writing Predocumentaries",
+      "type": "text/markdown",
+      "audience": "canon",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "first_person",
+      "stability": "stable",
+      "tags": [
+        "methods",
+        "writing",
+        "predocumentary",
+        "apocrypha",
+        "voice",
+        "documentary"
+      ]
+    },
+    {
       "uri": "klappy://canon/methods",
       "path": "/canon/methods/README.md",
       "title": "Methods",
@@ -1244,6 +1263,22 @@
         "outcomes-driven-development",
         "what-is-odd",
         "methodology"
+      ]
+    },
+    {
+      "uri": "klappy://canon/apocrypha/predocumentaries",
+      "path": "/canon/apocrypha/predocumentaries/README.md",
+      "title": "Predocumentaries",
+      "type": "text/markdown",
+      "audience": "apocrypha",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "neutral",
+      "stability": "stable",
+      "tags": [
+        "predocumentary",
+        "apocrypha",
+        "index"
       ]
     },
     {

@@ -32,4 +32,13 @@ If a line feels universal, consider promoting it into canon (by editing the cano
 - `fragment-01-recon.md` — Cinematic reconstruction of Fragment I
 - `fragment-02-recon.md` — Cinematic reconstruction of Fragment II
 - `fragment-03-recon.md` — Cinematic reconstruction of Fragment III
-- `when-arbitration-went-global-recon.md` — Narrative retelling of "When Arbitration Went Global"
+- `fragment-06-recon.md` — Cinematic reconstruction of Fragment VI: When Arbitration Went Global
+- `fragment-07-recon.md` — Cinematic reconstruction of Fragment VII: The Unpaid
+- `fragment-08-recon.md` — Cinematic reconstruction of Fragment VIII: The Image of the Image
+- `fragment-09-recon.md` — Cinematic reconstruction of Fragment IX: The Line
+- `fragment-10-recon.md` — Cinematic reconstruction of Fragment X: The Conversion
+- `fragment-11-recon.md` — Cinematic reconstruction of Fragment XI: The Refusal
+
+## Companion Format
+
+See also [predocumentaries/](../predocumentaries/) — investigative micro-documentaries derived from the same system-voice fragments, rendered in documentary register rather than cinematic narrative.
