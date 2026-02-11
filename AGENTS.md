@@ -70,18 +70,13 @@ This repo is configured to use oddkit as an MCP server (see `.mcp.json`). oddkit
 2. **Search** returns: Answer with citations and quotes — use the evidence directly.
 3. **Validate** returns: VERIFIED or NEEDS_ARTIFACTS — if NEEDS_ARTIFACTS, provide the missing evidence before claiming done.
 
-### Epistemic Tool Reference
+### Tool Discovery
 
-| Tool | Purpose | When to Call |
-|------|---------|-------------|
-| `oddkit_orient` | Assess epistemic position | First. Always. Establishes mode and surfaces unresolved items. |
-| `oddkit_challenge` | Pressure-test claims | When a claim, assumption, or proposal needs scrutiny. |
-| `oddkit_gate` | Check transition readiness | Before any phase change (exploration -> planning -> execution). |
-| `oddkit_encode` | Record durable decisions | After a decision is reached. Captures what was decided and rejected. |
+oddkit tools are self-describing. Do not memorize tool names or parameters — the MCP server advertises its current API. The tools include orient, challenge, gate, encode, search, get, catalog, validate, preflight, version, and a unified router. Call `tools/list` or read the tool descriptions returned by the MCP server to see current capabilities.
 
-**Sequencing:** Orient -> Challenge -> Gate -> Encode. See `docs/oddkit/prompts/epistemic-guide.md` for full orchestration rules.
+**Epistemic sequencing:** Orient -> Challenge -> Gate -> Encode. See `docs/oddkit/prompts/epistemic-guide.md` for full orchestration rules.
 
-**Tool docs:** `docs/oddkit/tools/oddkit_*.md`
+**Canonical tool docs** (may lag behind live server): `docs/oddkit/tools/oddkit_*.md`
 
 ### Invariants
 
