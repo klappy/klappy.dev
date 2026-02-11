@@ -84,3 +84,25 @@ It does not justify operating beyond it.
 Once CST is reached, continuing exploration without explicit scope reopening is a violation of epistemic hygiene.
 
 If an exploration cannot be stopped, it has not been bounded correctly.
+
+---
+
+## After CST
+
+CST marks the point at which additional abstraction no longer increases clarity within the current scope.
+
+Reaching CST is not failure.
+
+At this point, there are three legitimate paths:
+
+1. Close scope.
+2. Transition to execution.
+3. Explicitly reopen scope and continue exploration with a revised question or constraint.
+
+Continuing automatically beyond CST increases noise and mythology.
+Continuing intentionally—by redefining scope—is disciplined exploration.
+
+See also:
+
+- `klappy://canon/principles/persistence-must-be-intentional`
+- `klappy://canon/diagnostics/camping-risk`
