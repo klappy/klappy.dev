@@ -18,6 +18,30 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
+## 0.30.0 — 2026-02-11
+
+**Camping System — Persistence, Diagnostics, Pivot Method, and Defaults**
+
+This release introduces the camping detection framework: a principle governing conscious persistence, two diagnostics for detecting plateau and arc inversion, a structured pivot method, a decision record constraining detection design, and iteration-bias defaults. CST is extended with an "After CST" section linking into the new system.
+
+### Added
+
+- **Principle: Persistence Must Be Intentional** (`/canon/principles/persistence-must-be-intentional.md`) — Tier 2 principle. When observable improvement flattens or inverts, continuing without reassessment is escalation, not discipline. Distinguishes unconscious persistence from conscious persistence. Includes acute execution boundary.
+
+- **Diagnostic: Camping Risk** (`/canon/diagnostics/camping-risk.md`) — Tier 2 diagnostic. Raised when iteration continues after improvement has flattened or inverted. Defines trigger indicators, severity levels (shallow plateau, flat plateau, negative slope), and links to pivot-on-inversion for recovery.
+
+- **Diagnostic: Generative Arc Curve** (`/canon/diagnostics/generative-arc-curve.md`) — Tier 3 diagnostic. Describes the common trajectory where generative artifact coherence peaks early and degrades under sustained local steering. Inversion is the signal; camping past inversion is the failure.
+
+- **Method: Pivot on Inversion** (`/canon/methods/pivot-on-inversion.md`) — Tier 2 method. Operationalizes persistence-must-be-intentional. Three-level escalation (soft awareness, strong recommendation, state marker). Structured recovery: pause, snapshot, extract invariants, regenerate cleanly.
+
+- **Decision Record: DR-20260211-0001 — Camping Detection Design Constraints** (`/canon/decisions/DR-20260211-0001-camping-detection-design-constraints.md`) — Evaluates six options for camping detection. Chooses heuristic NLX-driven detection over time-based tracking, hard counters, gamification, dashboards, and hard refusal. Lightweight, advisory with escalation, not coercive.
+
+- **Default: Iteration Bias** (`/canon/defaults/iteration-bias.md`) — Tier 3 default. Encodes operational preferences: regenerate over micro-refine, pivot early, accept discard cost, demand explicit pivot-vs-continue when degradation begins. Includes collaboration posture defaults.
+
+### Changed
+
+- **Definition: Cognitive Saturation Threshold** (`/canon/definitions/cognitive-saturation-threshold.md`) — Added "After CST" section defining three legitimate paths after reaching CST (close scope, transition to execution, explicitly reopen scope). Links to persistence-must-be-intentional and camping-risk.
+
 ## 0.29.0 — 2026-02-08
 
 **Irreversibility, Finite Capacity, and Double Diamond**
