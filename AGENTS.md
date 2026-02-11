@@ -47,9 +47,30 @@ All behavior derives from four axioms. See `canon/values/axioms.md` for derivati
 
 ---
 
-## oddkit MCP
+## oddkit MCP Integration
 
-This repo is configured to use oddkit as an MCP server (see `.mcp.json`). Four epistemic tools are available:
+This repo is configured to use oddkit as an MCP server (see `.mcp.json`). oddkit tools are available via MCP and are self-describing. Do not hardcode tool names or params — the MCP server advertises the current API.
+
+### Mandatory Checkpoints (every task)
+
+1. **ORIENT** — At task start, orient against the goal to assess epistemic mode.
+2. **PREFLIGHT** — Before implementing, preflight to get constraints, definition of done, and pitfalls. Read the suggested files before coding.
+3. **VALIDATE** — Before claiming done, validate with artifact references (test output, file paths, commands run). If NEEDS_ARTIFACTS: provide the missing evidence or flag it honestly. Do not assert done without validation.
+
+### Reactive (call when the situation demands)
+
+- Policy or rules questions — search oddkit, do not answer from memory.
+- Pressure-test a claim or assumption — challenge it via oddkit.
+- Check transition readiness — gate check before changing modes.
+- Record a decision or insight — encode it as a durable record.
+
+### How to Use Results
+
+1. **Preflight** returns: Start here / Constraints / DoD / Pitfalls — read the suggested files before implementing.
+2. **Search** returns: Answer with citations and quotes — use the evidence directly.
+3. **Validate** returns: VERIFIED or NEEDS_ARTIFACTS — if NEEDS_ARTIFACTS, provide the missing evidence before claiming done.
+
+### Epistemic Tool Reference
 
 | Tool | Purpose | When to Call |
 |------|---------|-------------|
@@ -62,15 +83,27 @@ This repo is configured to use oddkit as an MCP server (see `.mcp.json`). Four e
 
 **Tool docs:** `docs/oddkit/tools/oddkit_*.md`
 
+### Invariants
+
+1. **Never pre-inject large documents** — retrieve on-demand via oddkit.
+2. **Never answer policy questions from memory** — retrieve with citations.
+3. **Always validate completion claims** — do not just assert done.
+4. **Quote evidence** — when citing policy, include the source.
+
+---
+
 ## Canon
 
 Canon is read-only. Do not modify files under `canon/`.
 
+- **Axioms:** `canon/values/axioms.md`
 - **Constraints:** `canon/constraints/README.md`
 - **Principles:** `canon/principles/README.md`
 - **Epistemic Modes:** `canon/epistemic-modes.md`
 - **Definition of Done:** `canon/constraints/definition-of-done.md`
 - **Decision Rules:** `canon/decision-rules.md`
+
+---
 
 ## Required Reading for Attempts
 

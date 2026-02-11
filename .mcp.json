@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "oddkit": {
-      "type": "streamable-http",
-      "url": "http://localhost:3001/mcp"
+      "type": "http",
+      "url": "https://oddkit.klappy.dev/mcp"
     }
   }
 }
