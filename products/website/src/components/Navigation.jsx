@@ -70,6 +70,9 @@ export default function Navigation({ resources, currentPath, onNavigate }) {
       nav.push({ key: 'bio', label: 'About Me', path: bioEntry.path });
     }
 
+    // Browse all documents
+    nav.push({ key: 'browse', label: 'Browse', path: '/browse' });
+
     // Add FAQ (Tier 2 but useful)
     const faqEntry = resources.find(r => r.uri === 'klappy://about/faq');
     if (faqEntry && nav.length < 7) {
@@ -115,7 +118,7 @@ export default function Navigation({ resources, currentPath, onNavigate }) {
               <li key={item.key} className="nav-item">
                 <a
                   href={`#${item.path}`}
-                  className={`nav-link ${currentPath === item.path ? 'is-active' : ''}`}
+                  className={`nav-link ${currentPath === item.path || (item.key === 'browse' && currentPath.startsWith('/browse')) ? 'is-active' : ''}`}
                   onClick={(e) => handleNavClick(e, item.path)}
                 >
                   {item.label}

@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { marked } from 'marked';
 import MediaShelf from './MediaShelf';
+import { isApocrypha } from '../utils/filtering';
 
 /**
  * Content Page Component
- * 
- * PRD Requirements:
- * - Render markdown content
- * - Deep links work (URL represents resource + section)
- * - Mobile usable
+ *
+ * Renders markdown content with two paper stock modes:
+ * - Aged archival paper for apocrypha content
+ * - Clean engineering paper for everything else
  */
 export default function ContentPage({ resource }) {
   const [content, setContent] = useState('');
@@ -71,8 +71,10 @@ export default function ContentPage({ resource }) {
     );
   }
 
+  const apocryphaMode = isApocrypha(resource);
+
   return (
-    <div className="content-page">
+    <div className={`content-page ${apocryphaMode ? 'content-page--apocrypha' : ''}`}>
       <article className="content-article">
         {/* Metadata badge */}
         <div className="content-meta">
@@ -250,6 +252,44 @@ export default function ContentPage({ resource }) {
           border-radius: 4px;
         }
 
+        /* Apocrypha — aged archival paper stock */
+        .content-page--apocrypha {
+          background: #faf6f0;
+        }
+
+        .content-page--apocrypha .content-article {
+          font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        .content-page--apocrypha .content-body h1,
+        .content-page--apocrypha .content-body h2,
+        .content-page--apocrypha .content-body h3 {
+          font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        .content-page--apocrypha .content-body h1 {
+          border-bottom-color: #c4a882;
+        }
+
+        .content-page--apocrypha .content-body blockquote {
+          border-left-color: #8b7355;
+          background: rgba(196, 168, 130, 0.1);
+        }
+
+        .content-page--apocrypha .meta-badge {
+          background: rgba(196, 168, 130, 0.2);
+          color: #6b5a42;
+        }
+
+        .content-page--apocrypha .tag {
+          background: rgba(196, 168, 130, 0.2);
+          color: #6b5a42;
+        }
+
+        .content-page--apocrypha .content-body hr {
+          background: #c4a882;
+        }
+
         @media (max-width: 768px) {
           .content-page {
             padding: var(--space-4) var(--space-4) var(--space-8);
@@ -266,6 +306,34 @@ export default function ContentPage({ resource }) {
           .content-body table {
             display: block;
             overflow-x: auto;
+          }
+        }
+        @media (prefers-color-scheme: dark) {
+          .content-page--apocrypha {
+            background: #1a1710;
+          }
+
+          .content-page--apocrypha .content-body h1 {
+            border-bottom-color: #6b5a42;
+          }
+
+          .content-page--apocrypha .content-body blockquote {
+            border-left-color: #8b7355;
+            background: rgba(139, 115, 85, 0.15);
+          }
+
+          .content-page--apocrypha .meta-badge {
+            background: rgba(139, 115, 85, 0.25);
+            color: #a08060;
+          }
+
+          .content-page--apocrypha .tag {
+            background: rgba(139, 115, 85, 0.25);
+            color: #a08060;
+          }
+
+          .content-page--apocrypha .content-body hr {
+            background: #6b5a42;
           }
         }
       `}</style>
