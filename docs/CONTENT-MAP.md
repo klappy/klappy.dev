@@ -43,7 +43,7 @@ This map provides navigational links to ALL content in the repository, including
 
 **Subdirectories:**
 - `/odd/appendices/` — Patterns: progressive-elevation, quantum-development, visual-evolution
-- `/odd/constraint/` — Core constraints: use-only-what-hurts, anti-metric-laundering
+- `/odd/constraint/` — Core constraints: use-only-what-hurts, anti-metric-laundering, anti-cache-lying
 - `/odd/contract/` — Epistemic contracts
 - `/odd/decisions/` — ODD-level decision records
 
@@ -82,8 +82,10 @@ This map provides navigational links to ALL content in the repository, including
 | [/docs/oddkit/WHY.md](/docs/oddkit/WHY.md) | **Why oddkit exists** — Start here for oddkit |
 | [/docs/appendices/ATTEMPTS.md](/docs/appendices/ATTEMPTS.md) | Attempt lifecycle |
 | [/docs/TRUTH_MAP.md](/docs/TRUTH_MAP.md) | Authoritative sources per domain |
+| [/docs/incidents/README.md](/docs/incidents/README.md) | Incident records — failures that changed the canon |
 
 **Subdirectories:**
+- `/docs/incidents/` — Incident records documenting failures that led to canon changes
 - `/docs/oddkit/` — oddkit reference (ABOUT, SYSTEM-MAP, modes, WHY)
 - `/docs/agents/` — Agent role definitions and patterns (librarian, validation, discovery, ODD agents)
 - `/docs/orchestrator/` — Orchestrator guides (QUICKSTART)

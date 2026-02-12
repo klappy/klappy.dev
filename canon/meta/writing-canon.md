@@ -9,8 +9,9 @@ stability: stable
 tags: ["canon", "meta", "writing", "progressive-disclosure"]
 epoch: E0005
 date: 2026-02-09
-complements: "canon/meta/TEMPLATE.md, docs/TEMPLATE.md, canon/meta/agent-executable-outline.md"
+complements: "canon/meta/TEMPLATE.md, docs/TEMPLATE.md, canon/meta/agent-executable-outline.md, canon/constraints/definition-of-done.md, canon/methods/self-audit.md, docs/oddkit/IMPL-writing-canon-gate.md"
 derives_from: "canon/values/axioms.md (Axiom 2 — A Claim Is a Debt)"
+governs: "All documents in canon/, odd/, and docs/ directories"
 ---
 
 # Writing Canon — Progressive Disclosure and Topographic Navigation
@@ -141,3 +142,17 @@ The practical test: if your document were loaded alongside `canon/values/axioms.
 5. **Header scan test:** Do the headers tell the document's story when read in sequence? Do structural markers have descriptive subtitles?
 6. **No buried claims:** Is every key assertion present in compressed form at a higher tier? Does the body elaborate rather than introduce?
 7. **Axiom space test:** If loaded in a small context alongside the axioms and creed, does this document amplify the values or crowd them out?
+
+---
+
+## Enforcement — This Checklist Is Not Optional
+
+This checklist is not advice. It is a structural requirement integrated into the Definition of Done (`canon/constraints/definition-of-done.md`) and the Self-Audit Checklist (`canon/methods/self-audit.md`).
+
+If the deliverable is a document targeting `canon/`, `odd/`, or `docs/`, the progressive disclosure tiers are Definition of Done requirements. A document that exists but fails these tiers is not complete.
+
+OddKit's preflight and validate actions are being updated to surface this checklist automatically when the deliverable is a document — see `docs/oddkit/IMPL-writing-canon-gate.md`.
+
+This enforcement was proven necessary by the Progressive Disclosure Failure incident (February 2026), where an AI agent wrote and shipped three canon documents that violated every tier of this checklist. The documents were merged to main without validation. The agent had full access to this document but never checked its output against it. Access is not enforcement.
+
+See `docs/incidents/progressive-disclosure-failure-2026-02.md` for the full incident record.

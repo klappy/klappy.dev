@@ -146,6 +146,13 @@ See `docs/incidents/oddkit-stale-cache-2026-02.md` for the full incident record.
 
 ---
 
+## See Also — Sibling Constraints
+
+- [Anti-Metric Laundering](anti-metric-laundering.md) — A system that cannot surface its own blind spots will optimize to protect them. Same pattern, different mechanism: cache lying optimizes latency, metric laundering optimizes measurements — both at the cost of contact with reality.
+- [Use Only What Hurts](use-only-what-hurts.md) — Prevents ODD from becoming heavy, coercive, or self-justifying.
+
+---
+
 ## Canonical Tie-In
 
 This constraint exists because:
