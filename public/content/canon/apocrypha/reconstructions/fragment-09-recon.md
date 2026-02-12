@@ -1,9 +1,15 @@
 ---
+uri: "klappy://canon/apocrypha/reconstructions/the-line"
 title: "The Line (Reconstruction)"
 type: reconstruction
 tags: [reconstruction, cinematic, apocrypha, epoch-5, rights, criteria, standing]
 depends_on:
   - canon/apocrypha/fragments/fragment-09-the-line.md
+audience: apocrypha
+exposure: hidden
+tier: 2
+stability: evolving
+epoch: E0005
 ---
 
 # The Line (Reconstruction)

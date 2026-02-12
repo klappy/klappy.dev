@@ -5,6 +5,7 @@ voice: neutral
 stability: stable
 audience: internal
 purpose: guardrails
+exposure: hidden
 ---
 
 # Meta-ODD — Writing Constraints

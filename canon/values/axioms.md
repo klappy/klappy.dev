@@ -10,6 +10,9 @@ tags: ["canon", "values", "axioms", "epistemics", "foundational"]
 epoch: E0005
 date: 2026-02-09
 governs: "All epistemic constraints, validators, and definitions of done derive from these axioms"
+start_here: true
+start_here_order: 2
+start_here_label: Foundational Axioms
 ---
 
 # Foundational Axioms

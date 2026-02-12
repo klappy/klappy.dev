@@ -9,6 +9,9 @@ stability: stable
 tags: ["odd", "philosophy", "outcomes-driven-development", "manifesto", "governance", "definition"]
 relevance: background
 execution_posture: exploratory
+start_here: true
+start_here_order: 3
+start_here_label: The Manifesto
 ---
 
 # ODD Manifesto v1.1 (Extended)

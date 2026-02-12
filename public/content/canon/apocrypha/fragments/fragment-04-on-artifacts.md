@@ -1,10 +1,15 @@
 ---
+title: "Fragment IV: On Artifacts"
 uri: klappy://canon/apocrypha/fragments/on-artifacts
 recovered: true
 voice: system_first_person
 stability: fragment
 confidence: unknown
 failure_mode: boundary_collapse
+audience: apocrypha
+exposure: nav
+tier: 2
+epoch: E0004
 ---
 
 # Fragment IV: On Artifacts

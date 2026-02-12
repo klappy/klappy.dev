@@ -1,3 +1,13 @@
+---
+uri: "klappy://canon/apocrypha/charter"
+title: Apocrypha Charter
+audience: apocrypha
+exposure: nav
+tier: 2
+stability: stable
+tags: ["apocrypha", "charter", "constraints"]
+---
+
 # Apocrypha Charter
 
 ## Purpose

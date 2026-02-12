@@ -3,6 +3,8 @@ uri: odd://contract/epistemic-contract
 title: "Epistemic Contract"
 audience: odd
 stability: long_lived
+exposure: nav
+tier: 2
 ---
 
 # Epistemic Contract

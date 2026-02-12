@@ -8,6 +8,7 @@ stability: stable
 tags: ["resonance", "antifragile", "antifragility", "failure", "optionality"]
 relevance: background
 execution_posture: exploratory
+exposure: nav
 ---
 
 # Antifragile (Resonance)

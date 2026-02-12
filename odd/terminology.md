@@ -1,4 +1,5 @@
 ---
+title: ODD Terminology & Glossary
 uri: klappy://odd/terminology
 slug: odd-terminology
 version: 0.1

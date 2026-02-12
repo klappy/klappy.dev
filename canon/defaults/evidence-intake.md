@@ -3,6 +3,8 @@ uri: klappy://canon/defaults/evidence-intake
 title: "Evidence Intake"
 audience: canon
 stability: evolving
+exposure: nav
+tier: 2
 ---
 
 # Evidence Intake

@@ -1,4 +1,6 @@
 ---
+uri: "klappy://canon/apocrypha/artifacts/system-closure-surface"
+title: Apocrypha Fragments and System Closure (Surface)
 surface_version: 1.0.0
 artifact:
   title: "The Apocrypha: Fragments and System Closure"
@@ -8,6 +10,11 @@ artifact:
   intent: "interpretive"
   canonical_status: "non-canonical"
   instructional_risk: "medium"
+audience: apocrypha
+exposure: hidden
+tier: 3
+stability: evolving
+tags: ["apocrypha", "surface", "artifacts"]
 ---
 
 # Surface: The Apocrypha — Fragments and System Closure

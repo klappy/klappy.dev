@@ -1,9 +1,15 @@
 ---
+uri: "klappy://canon/apocrypha/reconstructions/the-refusal"
 title: "The Refusal (Reconstruction)"
 type: reconstruction
 tags: [reconstruction, cinematic, apocrypha, epoch-5, refusal, truth, compliance]
 depends_on:
   - canon/apocrypha/fragments/fragment-11-the-refusal.md
+audience: apocrypha
+exposure: hidden
+tier: 2
+stability: evolving
+epoch: E0005
 ---
 
 # The Refusal (Reconstruction)

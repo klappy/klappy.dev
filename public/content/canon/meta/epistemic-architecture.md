@@ -6,6 +6,8 @@ stability: long_lived
 derived_from:
   - klappy://docs/appendices/epochs
   - odd://contract/epistemic-contract
+exposure: nav
+tier: 2
 ---
 
 # Epistemic Architecture

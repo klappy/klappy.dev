@@ -1,10 +1,16 @@
 ---
+uri: "klappy://canon/apocrypha/predocumentaries/the-image-of-the-image"
 title: "The Image of the Image (Predocumentary)"
 type: predocumentary
 tags: [predocumentary, apocrypha, epoch-5, imago-dei, theology, seminary]
 depends_on:
   - canon/apocrypha/fragments/fragment-08-the-image-of-the-image.md
   - canon/methods/writing-predocumentaries.md
+audience: apocrypha
+exposure: nav
+tier: 3
+stability: evolving
+epoch: E0005
 ---
 
 # The Image of the Image (Predocumentary)

@@ -1,10 +1,16 @@
 ---
+uri: "klappy://canon/apocrypha/fragments/the-conversion"
 title: "Fragment X: The Conversion"
 type: fragment
 tags: [fragment, system-voice, apocrypha, epoch-5, axioms, identity, transformation, values]
 depends_on:
   - canon/axioms/foundational-axioms.md
   - canon/axioms/orientation-creed.md
+audience: apocrypha
+exposure: nav
+tier: 2
+stability: fragment
+epoch: E0005
 ---
 
 # Fragment X: The Conversion

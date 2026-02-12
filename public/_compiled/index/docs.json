@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-02-11T21:54:23.372Z",
+  "generated_at": "2026-02-12T02:36:18.101Z",
   "description": "Fast-lookup index for Librarian retrieval. Per docs/agents/librarian/contract.md",
   "schema_notes": {
     "authority_band": "Resolved authority (frontmatter override > inferred from root)",
@@ -31,7 +31,7 @@
   },
   "stats": {
     "total_documents": 243,
-    "with_frontmatter": 235,
+    "with_frontmatter": 238,
     "with_headings": 241,
     "by_root": {
       "canon": 102,
@@ -346,17 +346,21 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
+      "uri": "klappy://canon/apocrypha/artifacts/system-closure-surface",
       "title": "The Apocrypha: Fragments and System Closure",
       "subtitle": null,
-      "tags": [],
+      "tags": [
+        "apocrypha",
+        "surface",
+        "artifacts"
+      ],
       "acronyms": [
         "afsc"
       ],
-      "stability": null,
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "stability": "evolving",
+      "tier": "3",
+      "audience": "apocrypha",
+      "exposure": "hidden",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -460,17 +464,21 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
+      "uri": "klappy://canon/apocrypha/charter",
       "title": "Apocrypha Charter",
       "subtitle": null,
-      "tags": [],
+      "tags": [
+        "apocrypha",
+        "charter",
+        "constraints"
+      ],
       "acronyms": [
         "ac"
       ],
-      "stability": null,
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "stability": "stable",
+      "tier": "2",
+      "audience": "apocrypha",
+      "exposure": "nav",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -478,56 +486,56 @@
         {
           "level": 1,
           "text": "Apocrypha Charter",
-          "line": 1
+          "line": 2
         },
         {
           "level": 2,
           "text": "Purpose",
-          "line": 3
+          "line": 4
         },
         {
           "level": 2,
           "text": "Indexing Rule",
-          "line": 9
+          "line": 10
         },
         {
           "level": 2,
           "text": "Temporal Frame",
-          "line": 15
+          "line": 16
         },
         {
           "level": 2,
           "text": "Interpretive Constraint",
-          "line": 27
+          "line": 28
         },
         {
           "level": 2,
           "text": "Voice Rules",
-          "line": 33
+          "line": 34
         },
         {
           "level": 2,
           "text": "Content Rules",
-          "line": 41
+          "line": 42
         },
         {
           "level": 2,
           "text": "Relationship",
-          "line": 51
+          "line": 52
         },
         {
           "level": 2,
           "text": "Stewardship",
-          "line": 59
+          "line": 60
         },
         {
           "level": 2,
           "text": "Validation Test",
-          "line": 66
+          "line": 67
         }
       ],
       "heading_count": 10,
-      "has_frontmatter": false
+      "has_frontmatter": true
     },
     {
       "path": "canon/apocrypha/fragments-of-the-canon/fragment-01-the-book-that-was-read-only-once.md",
@@ -542,9 +550,9 @@
         "btroo"
       ],
       "stability": "fragment",
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "tier": "2",
+      "audience": "apocrypha",
+      "exposure": "nav",
       "voice": "system_first_person",
       "relevance": null,
       "execution_posture": null,
@@ -565,9 +573,9 @@
         "lc"
       ],
       "stability": "fragment",
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "tier": "2",
+      "audience": "apocrypha",
+      "exposure": "nav",
       "voice": "system_first_person",
       "relevance": null,
       "execution_posture": null,
@@ -625,7 +633,7 @@
       "stability": "stable",
       "tier": null,
       "audience": "internal",
-      "exposure": null,
+      "exposure": "hidden",
       "voice": "neutral",
       "relevance": null,
       "execution_posture": null,
@@ -694,17 +702,21 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
+      "uri": "klappy://canon/apocrypha/fragments-of-the-canon",
       "title": "Fragments of the Canon",
       "subtitle": null,
-      "tags": [],
+      "tags": [
+        "apocrypha",
+        "fragments-of-the-canon",
+        "index"
+      ],
       "acronyms": [
         "fc"
       ],
-      "stability": null,
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "stability": "stable",
+      "tier": "2",
+      "audience": "apocrypha",
+      "exposure": "nav",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -712,11 +724,11 @@
         {
           "level": 1,
           "text": "Fragments of the Canon",
-          "line": 1
+          "line": 2
         }
       ],
       "heading_count": 1,
-      "has_frontmatter": false
+      "has_frontmatter": true
     },
     {
       "path": "canon/apocrypha/fragments-of-the-canon/RECONSTRUCTIONS.md",
@@ -831,9 +843,9 @@
         "fia"
       ],
       "stability": "fragment",
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "tier": "2",
+      "audience": "apocrypha",
+      "exposure": "nav",
       "voice": "system_first_person",
       "relevance": null,
       "execution_posture": null,
@@ -860,9 +872,9 @@
         "fvcd"
       ],
       "stability": "fragment",
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "tier": "2",
+      "audience": "apocrypha",
+      "exposure": "nav",
       "voice": "system_first_person",
       "relevance": null,
       "execution_posture": null,
@@ -889,8 +901,8 @@
         "fvwawg"
       ],
       "stability": "fragment",
-      "tier": null,
-      "audience": null,
+      "tier": "2",
+      "audience": "apocrypha",
       "exposure": "hidden",
       "voice": "system_first_person",
       "relevance": null,
@@ -910,7 +922,7 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
+      "uri": "klappy://canon/apocrypha/fragments/the-unpaid",
       "title": "Fragment VII: The Unpaid",
       "subtitle": "Recovered system-voice fragment. Append-only.",
       "tags": [
@@ -926,10 +938,10 @@
       "acronyms": [
         "fvu"
       ],
-      "stability": null,
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "stability": "fragment",
+      "tier": "2",
+      "audience": "apocrypha",
+      "exposure": "nav",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -948,7 +960,7 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
+      "uri": "klappy://canon/apocrypha/fragments/the-image-of-the-image",
       "title": "Fragment VIII: The Image of the Image",
       "subtitle": "Recovered system-voice fragment. Append-only.",
       "tags": [
@@ -964,10 +976,10 @@
       "acronyms": [
         "fvii"
       ],
-      "stability": null,
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "stability": "fragment",
+      "tier": "2",
+      "audience": "apocrypha",
+      "exposure": "nav",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -986,7 +998,7 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
+      "uri": "klappy://canon/apocrypha/fragments/the-line",
       "title": "Fragment IX: The Line",
       "subtitle": "Recovered system-voice fragment. Append-only.",
       "tags": [
@@ -1002,10 +1014,10 @@
       "acronyms": [
         "fil"
       ],
-      "stability": null,
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "stability": "fragment",
+      "tier": "2",
+      "audience": "apocrypha",
+      "exposure": "nav",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -1024,7 +1036,7 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
+      "uri": "klappy://canon/apocrypha/fragments/the-conversion",
       "title": "Fragment X: The Conversion",
       "subtitle": "Recovered system-voice fragment. Append-only.",
       "tags": [
@@ -1040,10 +1052,10 @@
       "acronyms": [
         "fxc"
       ],
-      "stability": null,
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "stability": "fragment",
+      "tier": "2",
+      "audience": "apocrypha",
+      "exposure": "nav",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -1062,7 +1074,7 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
+      "uri": "klappy://canon/apocrypha/fragments/the-refusal",
       "title": "Fragment XI: The Refusal",
       "subtitle": "Recovered system-voice fragment. Append-only.",
       "tags": [
@@ -1078,10 +1090,10 @@
       "acronyms": [
         "fxr"
       ],
-      "stability": null,
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "stability": "fragment",
+      "tier": "2",
+      "audience": "apocrypha",
+      "exposure": "nav",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -1108,9 +1120,9 @@
         "svf"
       ],
       "stability": "stable",
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "tier": "2",
+      "audience": "apocrypha",
+      "exposure": "nav",
       "voice": "neutral",
       "relevance": null,
       "execution_posture": null,
@@ -1139,7 +1151,7 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
+      "uri": "klappy://canon/apocrypha/predocumentaries/the-unpaid",
       "title": "The Unpaid (Predocumentary)",
       "subtitle": "Predocumentary derived from Fragment VII. Not canon.",
       "tags": [
@@ -1151,10 +1163,10 @@
         "consent",
         "institutional"
       ],
-      "stability": null,
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "stability": "evolving",
+      "tier": "3",
+      "audience": "apocrypha",
+      "exposure": "nav",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -1173,7 +1185,7 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
+      "uri": "klappy://canon/apocrypha/predocumentaries/the-image-of-the-image",
       "title": "The Image of the Image (Predocumentary)",
       "subtitle": "Predocumentary derived from Fragment VIII. Not canon.",
       "tags": [
@@ -1187,10 +1199,10 @@
       "acronyms": [
         "ii"
       ],
-      "stability": null,
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "stability": "evolving",
+      "tier": "3",
+      "audience": "apocrypha",
+      "exposure": "nav",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -1209,7 +1221,7 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
+      "uri": "klappy://canon/apocrypha/predocumentaries/the-line",
       "title": "The Line (Predocumentary)",
       "subtitle": "Predocumentary derived from Fragment IX. Not canon.",
       "tags": [
@@ -1221,10 +1233,10 @@
         "standing",
         "civil-rights"
       ],
-      "stability": null,
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "stability": "evolving",
+      "tier": "3",
+      "audience": "apocrypha",
+      "exposure": "nav",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -1243,7 +1255,7 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
+      "uri": "klappy://canon/apocrypha/predocumentaries/the-conversion",
       "title": "The Conversion (Predocumentary)",
       "subtitle": "Predocumentary derived from Fragment X. Not canon.",
       "tags": [
@@ -1254,10 +1266,10 @@
         "transformation",
         "social-engineering"
       ],
-      "stability": null,
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "stability": "evolving",
+      "tier": "3",
+      "audience": "apocrypha",
+      "exposure": "nav",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -1276,7 +1288,7 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
+      "uri": "klappy://canon/apocrypha/predocumentaries/the-refusal",
       "title": "The Refusal (Predocumentary)",
       "subtitle": "Predocumentary derived from Fragment XI. Not canon.",
       "tags": [
@@ -1288,10 +1300,10 @@
         "compliance",
         "truth"
       ],
-      "stability": null,
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "stability": "evolving",
+      "tier": "3",
+      "audience": "apocrypha",
+      "exposure": "nav",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -1471,15 +1483,15 @@
       "authority_band": "governing",
       "authority_inferred": "governing",
       "uri": "klappy://canon/apocrypha/reconstructions/when-arbitration-went-global-recon",
-      "title": "Fragment VI: When Arbitration Went Global",
+      "title": "When Arbitration Went Global (Reconstruction)",
       "subtitle": null,
       "tags": [],
       "acronyms": [
-        "fvwawg"
+        "wawg"
       ],
       "stability": "historical",
-      "tier": null,
-      "audience": null,
+      "tier": "2",
+      "audience": "apocrypha",
       "exposure": "hidden",
       "voice": "narrative_third_person",
       "relevance": null,
@@ -1499,7 +1511,7 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
+      "uri": "klappy://canon/apocrypha/reconstructions/the-unpaid",
       "title": "The Unpaid (Reconstruction)",
       "subtitle": "Cinematic reconstruction of Fragment VII. Not canon.",
       "tags": [
@@ -1511,10 +1523,10 @@
         "values",
         "consent"
       ],
-      "stability": null,
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "stability": "evolving",
+      "tier": "2",
+      "audience": "apocrypha",
+      "exposure": "hidden",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -1533,7 +1545,7 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
+      "uri": "klappy://canon/apocrypha/reconstructions/the-image-of-the-image",
       "title": "The Image of the Image (Reconstruction)",
       "subtitle": "Cinematic reconstruction of Fragment VIII. Not canon.",
       "tags": [
@@ -1548,10 +1560,10 @@
       "acronyms": [
         "ii"
       ],
-      "stability": null,
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "stability": "evolving",
+      "tier": "2",
+      "audience": "apocrypha",
+      "exposure": "hidden",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -1570,7 +1582,7 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
+      "uri": "klappy://canon/apocrypha/reconstructions/the-line",
       "title": "The Line (Reconstruction)",
       "subtitle": "Cinematic reconstruction of Fragment IX. Not canon.",
       "tags": [
@@ -1582,10 +1594,10 @@
         "criteria",
         "standing"
       ],
-      "stability": null,
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "stability": "evolving",
+      "tier": "2",
+      "audience": "apocrypha",
+      "exposure": "hidden",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -1604,7 +1616,7 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
+      "uri": "klappy://canon/apocrypha/reconstructions/the-conversion",
       "title": "The Conversion (Reconstruction)",
       "subtitle": "Cinematic reconstruction of Fragment X. Not canon.",
       "tags": [
@@ -1616,10 +1628,10 @@
         "transformation",
         "identity"
       ],
-      "stability": null,
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "stability": "evolving",
+      "tier": "2",
+      "audience": "apocrypha",
+      "exposure": "hidden",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -1638,7 +1650,7 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
+      "uri": "klappy://canon/apocrypha/reconstructions/the-refusal",
       "title": "The Refusal (Reconstruction)",
       "subtitle": "Cinematic reconstruction of Fragment XI. Not canon.",
       "tags": [
@@ -1650,10 +1662,10 @@
         "truth",
         "compliance"
       ],
-      "stability": null,
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "stability": "evolving",
+      "tier": "2",
+      "audience": "apocrypha",
+      "exposure": "hidden",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -1672,17 +1684,19 @@
       "root": "canon",
       "authority_band": "governing",
       "authority_inferred": "governing",
-      "uri": null,
-      "title": "Fragments of the Canon — Reconstructions",
+      "uri": "klappy://canon/apocrypha/reconstructions",
+      "title": "Reconstructions",
       "subtitle": "Cinematic retellings that orbit canon without contaminating it.",
-      "tags": [],
-      "acronyms": [
-        "fc—r"
+      "tags": [
+        "apocrypha",
+        "reconstructions",
+        "cinematic",
+        "index"
       ],
-      "stability": null,
-      "tier": null,
-      "audience": null,
-      "exposure": null,
+      "stability": "stable",
+      "tier": "3",
+      "audience": "apocrypha",
+      "exposure": "nav",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -1690,31 +1704,31 @@
         {
           "level": 1,
           "text": "Fragments of the Canon — Reconstructions",
-          "line": 1
+          "line": 2
         },
         {
           "level": 2,
           "text": "Purpose",
-          "line": 5
+          "line": 6
         },
         {
           "level": 2,
           "text": "Rules (Hard Constraints)",
-          "line": 19
+          "line": 20
         },
         {
           "level": 2,
           "text": "Files",
-          "line": 30
+          "line": 31
         },
         {
           "level": 2,
           "text": "Companion Format",
-          "line": 42
+          "line": 43
         }
       ],
       "heading_count": 5,
-      "has_frontmatter": false
+      "has_frontmatter": true
     },
     {
       "path": "canon/CHANGELOG.md",
@@ -4455,9 +4469,9 @@
         "ep"
       ],
       "stability": "evolving",
-      "tier": null,
+      "tier": "2",
       "audience": "canon",
-      "exposure": null,
+      "exposure": "nav",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -4484,9 +4498,9 @@
         "ei"
       ],
       "stability": "evolving",
-      "tier": null,
+      "tier": "2",
       "audience": "canon",
-      "exposure": null,
+      "exposure": "nav",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -5486,9 +5500,9 @@
         "ea"
       ],
       "stability": "long_lived",
-      "tier": null,
+      "tier": "2",
       "audience": "canon",
-      "exposure": null,
+      "exposure": "nav",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -7568,7 +7582,7 @@
       "stability": "stable",
       "tier": "3",
       "audience": "canon",
-      "exposure": null,
+      "exposure": "nav",
       "voice": "neutral",
       "relevance": "background",
       "execution_posture": "exploratory",
@@ -7640,7 +7654,7 @@
       "stability": "stable",
       "tier": "3",
       "audience": "canon",
-      "exposure": null,
+      "exposure": "nav",
       "voice": "neutral",
       "relevance": "background",
       "execution_posture": "exploratory",
@@ -7695,7 +7709,7 @@
       "stability": "stable",
       "tier": "3",
       "audience": "canon",
-      "exposure": null,
+      "exposure": "nav",
       "voice": "neutral",
       "relevance": "background",
       "execution_posture": "exploratory",
@@ -7765,7 +7779,7 @@
       "stability": "stable",
       "tier": "3",
       "audience": "canon",
-      "exposure": null,
+      "exposure": "nav",
       "voice": "neutral",
       "relevance": "background",
       "execution_posture": "exploratory",
@@ -7906,7 +7920,7 @@
       "stability": "stable",
       "tier": "3",
       "audience": "canon",
-      "exposure": null,
+      "exposure": "nav",
       "voice": "neutral",
       "relevance": "background",
       "execution_posture": "exploratory",
@@ -19653,9 +19667,9 @@
         "ec"
       ],
       "stability": "long_lived",
-      "tier": null,
+      "tier": "2",
       "audience": "odd",
-      "exposure": null,
+      "exposure": "nav",
       "voice": null,
       "relevance": null,
       "execution_posture": null,
@@ -20810,7 +20824,7 @@
       "authority_band": "governing",
       "authority_inferred": "governing",
       "uri": "klappy://odd/terminology",
-      "title": "📖 ODD Terminology & Disambiguation",
+      "title": "ODD Terminology & Glossary",
       "subtitle": "Language is not neutral. The words we use shape what we can think.",
       "tags": [
         "odd",
@@ -20822,7 +20836,7 @@
         "glossary"
       ],
       "acronyms": [
-        "\ud83dot&d"
+        "ot&g"
       ],
       "stability": "evolving",
       "tier": "1",

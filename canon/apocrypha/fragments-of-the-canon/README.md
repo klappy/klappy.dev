@@ -1,3 +1,13 @@
+---
+uri: "klappy://canon/apocrypha/fragments-of-the-canon"
+title: Fragments of the Canon
+audience: apocrypha
+exposure: nav
+tier: 2
+stability: stable
+tags: ["apocrypha", "fragments-of-the-canon", "index"]
+---
+
 # Fragments of the Canon
 
 The following fragments were preserved after the system reached epistemic stability.

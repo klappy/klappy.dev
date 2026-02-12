@@ -1,3 +1,13 @@
+---
+uri: "klappy://canon/apocrypha/reconstructions"
+title: Reconstructions
+audience: apocrypha
+exposure: nav
+tier: 3
+stability: stable
+tags: ["apocrypha", "reconstructions", "cinematic", "index"]
+---
+
 # Fragments of the Canon — Reconstructions
 
 > Cinematic retellings that orbit canon without contaminating it.

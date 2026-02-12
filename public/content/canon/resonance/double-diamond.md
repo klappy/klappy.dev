@@ -8,6 +8,7 @@ stability: stable
 tags: ["resonance", "double-diamond", "divergence", "convergence", "design-process", "discovery", "delivery"]
 relevance: background
 execution_posture: exploratory
+exposure: nav
 ---
 
 # The Double Diamond

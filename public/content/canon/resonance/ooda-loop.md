@@ -8,6 +8,7 @@ stability: stable
 tags: ["resonance", "ooda-loop", "orientation", "decision-making", "feedback"]
 relevance: background
 execution_posture: exploratory
+exposure: nav
 ---
 
 # OODA Loop (Resonance)

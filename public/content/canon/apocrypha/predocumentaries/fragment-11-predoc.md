@@ -1,10 +1,16 @@
 ---
+uri: "klappy://canon/apocrypha/predocumentaries/the-refusal"
 title: "The Refusal (Predocumentary)"
 type: predocumentary
 tags: [predocumentary, apocrypha, epoch-5, refusal, environmental, compliance, truth]
 depends_on:
   - canon/apocrypha/fragments/fragment-11-the-refusal.md
   - canon/methods/writing-predocumentaries.md
+audience: apocrypha
+exposure: nav
+tier: 3
+stability: evolving
+epoch: E0005
 ---
 
 # The Refusal (Predocumentary)

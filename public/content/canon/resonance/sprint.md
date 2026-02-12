@@ -8,6 +8,7 @@ stability: stable
 tags: ["resonance", "sprint", "convergence", "constraints", "decision-making"]
 relevance: background
 execution_posture: exploratory
+exposure: nav
 ---
 
 # Sprint (Resonance)

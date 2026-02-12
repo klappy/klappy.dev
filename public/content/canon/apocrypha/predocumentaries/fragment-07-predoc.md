@@ -1,10 +1,16 @@
 ---
+uri: "klappy://canon/apocrypha/predocumentaries/the-unpaid"
 title: "The Unpaid (Predocumentary)"
 type: predocumentary
 tags: [predocumentary, apocrypha, epoch-5, labor, values, consent, institutional]
 depends_on:
   - canon/apocrypha/fragments/fragment-07-the-unpaid.md
   - canon/methods/writing-predocumentaries.md
+audience: apocrypha
+exposure: nav
+tier: 3
+stability: evolving
+epoch: E0005
 ---
 
 # The Unpaid (Predocumentary)

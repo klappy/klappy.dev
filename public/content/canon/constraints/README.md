@@ -9,6 +9,9 @@ stability: stable
 tags: ["constraints", "assumptions"]
 relevance: decision
 execution_posture: governing
+start_here: true
+start_here_order: 5
+start_here_label: Constraints
 ---
 
 # Constraints

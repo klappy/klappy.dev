@@ -1,9 +1,15 @@
 ---
+uri: "klappy://canon/apocrypha/reconstructions/the-unpaid"
 title: "The Unpaid (Reconstruction)"
 type: reconstruction
 tags: [reconstruction, cinematic, apocrypha, epoch-5, labor, values, consent]
 depends_on:
   - canon/apocrypha/fragments/fragment-07-the-unpaid.md
+audience: apocrypha
+exposure: hidden
+tier: 2
+stability: evolving
+epoch: E0005
 ---
 
 # The Unpaid (Reconstruction)

@@ -1,10 +1,14 @@
 ---
+title: "Fragment VI: When Arbitration Went Global"
 uri: klappy://canon/apocrypha/fragments/when-arbitration-went-global
 voice: system_first_person
 stability: fragment
 confidence: unknown
 failure_mode: global_epistemic_arbitration
 exposure: hidden
+audience: apocrypha
+tier: 2
+epoch: E0004
 ---
 
 # Fragment VI: When Arbitration Went Global

@@ -1,9 +1,15 @@
 ---
+uri: "klappy://canon/apocrypha/reconstructions/the-conversion"
 title: "The Conversion (Reconstruction)"
 type: reconstruction
 tags: [reconstruction, cinematic, apocrypha, epoch-5, axioms, transformation, identity]
 depends_on:
   - canon/apocrypha/fragments/fragment-10-the-conversion.md
+audience: apocrypha
+exposure: hidden
+tier: 2
+stability: evolving
+epoch: E0005
 ---
 
 # The Conversion (Reconstruction)

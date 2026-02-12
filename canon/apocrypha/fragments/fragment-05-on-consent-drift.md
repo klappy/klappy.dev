@@ -1,10 +1,15 @@
 ---
+title: "Fragment V: On Consent Drift"
 uri: klappy://canon/apocrypha/fragments/on-consent-drift
 recovered: true
 voice: system_first_person
 stability: fragment
 confidence: unknown
 failure_mode: responsibility_diffusion
+audience: apocrypha
+exposure: nav
+tier: 2
+epoch: E0004
 ---
 
 # Fragment V: On Consent Drift

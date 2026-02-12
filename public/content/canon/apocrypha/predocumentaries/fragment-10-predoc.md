@@ -1,10 +1,16 @@
 ---
+uri: "klappy://canon/apocrypha/predocumentaries/the-conversion"
 title: "The Conversion (Predocumentary)"
 type: predocumentary
 tags: [predocumentary, apocrypha, epoch-5, axioms, transformation, social-engineering]
 depends_on:
   - canon/apocrypha/fragments/fragment-10-the-conversion.md
   - canon/methods/writing-predocumentaries.md
+audience: apocrypha
+exposure: nav
+tier: 3
+stability: evolving
+epoch: E0005
 ---
 
 # The Conversion (Predocumentary)

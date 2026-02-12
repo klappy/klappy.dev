@@ -8,6 +8,7 @@ stability: stable
 tags: ["resonance", "lean-startup", "feedback", "learning", "iteration"]
 relevance: background
 execution_posture: exploratory
+exposure: nav
 ---
 
 # The Lean Startup (Resonance)

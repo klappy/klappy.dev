@@ -1,4 +1,5 @@
 ---
+title: When Arbitration Went Global (Reconstruction)
 uri: klappy://canon/apocrypha/reconstructions/when-arbitration-went-global-recon
 source_canon: "canon/apocrypha/fragments/when-arbitration-went-global.md"
 author: klappy
@@ -6,6 +7,9 @@ voice: narrative_third_person
 stability: historical
 confidence: experiential
 exposure: hidden
+audience: apocrypha
+tier: 2
+epoch: E0004
 ---
 
 # Fragment VI: When Arbitration Went Global

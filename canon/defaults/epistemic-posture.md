@@ -3,6 +3,8 @@ uri: klappy://canon/defaults/epistemic-posture
 title: "Epistemic Posture"
 audience: canon
 stability: evolving
+exposure: nav
+tier: 2
 ---
 
 # Epistemic Posture (Klappy.dev Defaults)

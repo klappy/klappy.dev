@@ -129,6 +129,22 @@
       ]
     },
     {
+      "uri": "klappy://canon/apocrypha/charter",
+      "path": "/canon/apocrypha/CHARTER.md",
+      "title": "Apocrypha Charter",
+      "type": "text/markdown",
+      "audience": "apocrypha",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "neutral",
+      "stability": "stable",
+      "tags": [
+        "apocrypha",
+        "charter",
+        "constraints"
+      ]
+    },
+    {
       "uri": "klappy://canon/apocrypha/artifacts/apocrypha-visual-language",
       "path": "/canon/apocrypha/artifacts/apocrypha-visual-language.md",
       "title": "Apocrypha Visual Language",
@@ -323,8 +339,8 @@
       "path": "/canon/_compiled/epoch-E0002/README.md",
       "title": "Compiled Canon Outputs (Epoch E0002)",
       "type": "text/markdown",
-      "audience": "canon",
-      "exposure": "nav",
+      "audience": "docs",
+      "exposure": "hidden",
       "tier": 3,
       "voice": "neutral",
       "stability": "evolving",
@@ -784,6 +800,118 @@
       ]
     },
     {
+      "uri": "klappy://canon/apocrypha/fragments/on-artifacts",
+      "path": "/canon/apocrypha/fragments/fragment-04-on-artifacts.md",
+      "title": "Fragment IV: On Artifacts",
+      "type": "text/markdown",
+      "audience": "apocrypha",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "system_first_person",
+      "stability": "fragment",
+      "tags": []
+    },
+    {
+      "uri": "klappy://canon/apocrypha/fragments/the-line",
+      "path": "/canon/apocrypha/fragments/fragment-09-the-line.md",
+      "title": "Fragment IX: The Line",
+      "type": "fragment",
+      "audience": "apocrypha",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "neutral",
+      "stability": "fragment",
+      "tags": []
+    },
+    {
+      "uri": "klappy://canon/apocrypha/fragments/on-consent-drift",
+      "path": "/canon/apocrypha/fragments/fragment-05-on-consent-drift.md",
+      "title": "Fragment V: On Consent Drift",
+      "type": "text/markdown",
+      "audience": "apocrypha",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "system_first_person",
+      "stability": "fragment",
+      "tags": []
+    },
+    {
+      "uri": "klappy://canon/apocrypha/fragments/when-arbitration-went-global",
+      "path": "/canon/apocrypha/fragments/fragment-06-when-arbitration-went-global.md",
+      "title": "Fragment VI: When Arbitration Went Global",
+      "type": "text/markdown",
+      "audience": "apocrypha",
+      "exposure": "hidden",
+      "tier": 2,
+      "voice": "system_first_person",
+      "stability": "fragment",
+      "tags": []
+    },
+    {
+      "uri": "klappy://canon/apocrypha/fragments/the-unpaid",
+      "path": "/canon/apocrypha/fragments/fragment-07-the-unpaid.md",
+      "title": "Fragment VII: The Unpaid",
+      "type": "fragment",
+      "audience": "apocrypha",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "neutral",
+      "stability": "fragment",
+      "tags": []
+    },
+    {
+      "uri": "klappy://canon/apocrypha/fragments/the-image-of-the-image",
+      "path": "/canon/apocrypha/fragments/fragment-08-the-image-of-the-image.md",
+      "title": "Fragment VIII: The Image of the Image",
+      "type": "fragment",
+      "audience": "apocrypha",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "neutral",
+      "stability": "fragment",
+      "tags": []
+    },
+    {
+      "uri": "klappy://canon/apocrypha/fragments/the-conversion",
+      "path": "/canon/apocrypha/fragments/fragment-10-the-conversion.md",
+      "title": "Fragment X: The Conversion",
+      "type": "fragment",
+      "audience": "apocrypha",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "neutral",
+      "stability": "fragment",
+      "tags": []
+    },
+    {
+      "uri": "klappy://canon/apocrypha/fragments/the-refusal",
+      "path": "/canon/apocrypha/fragments/fragment-11-the-refusal.md",
+      "title": "Fragment XI: The Refusal",
+      "type": "fragment",
+      "audience": "apocrypha",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "neutral",
+      "stability": "fragment",
+      "tags": []
+    },
+    {
+      "uri": "klappy://canon/apocrypha/fragments-of-the-canon",
+      "path": "/canon/apocrypha/fragments-of-the-canon/README.md",
+      "title": "Fragments of the Canon",
+      "type": "text/markdown",
+      "audience": "apocrypha",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "neutral",
+      "stability": "stable",
+      "tags": [
+        "apocrypha",
+        "fragments-of-the-canon",
+        "index"
+      ]
+    },
+    {
       "uri": "klappy://canon/diagnostics/generative-arc-curve",
       "path": "/canon/diagnostics/generative-arc-curve.md",
       "title": "Generative Arc Curve",
@@ -905,7 +1033,7 @@
       "title": "Meta-ODD: Writing Constraints for Fragments of the Canon",
       "type": "text/markdown",
       "audience": "internal",
-      "exposure": "nav",
+      "exposure": "hidden",
       "tier": 2,
       "voice": "neutral",
       "stability": "stable",
@@ -1259,6 +1387,26 @@
       ]
     },
     {
+      "uri": "klappy://odd/terminology",
+      "path": "/odd/terminology.md",
+      "title": "ODD Terminology & Glossary",
+      "type": "text/markdown",
+      "audience": "odd",
+      "exposure": "nav",
+      "tier": 1,
+      "voice": "neutral",
+      "stability": "evolving",
+      "tags": [
+        "odd",
+        "terminology",
+        "disambiguation",
+        "boundary",
+        "definition",
+        "outcomes-driven-development",
+        "glossary"
+      ]
+    },
+    {
       "uri": "klappy://canon/resonance/ooda-loop",
       "path": "/canon/resonance/ooda-loop.md",
       "title": "OODA Loop",
@@ -1467,6 +1615,23 @@
       ]
     },
     {
+      "uri": "klappy://canon/apocrypha/reconstructions",
+      "path": "/canon/apocrypha/reconstructions/README.md",
+      "title": "Reconstructions",
+      "type": "text/markdown",
+      "audience": "apocrypha",
+      "exposure": "nav",
+      "tier": 3,
+      "voice": "neutral",
+      "stability": "stable",
+      "tags": [
+        "apocrypha",
+        "reconstructions",
+        "cinematic",
+        "index"
+      ]
+    },
+    {
       "uri": "klappy://projects/repo-as-a-system",
       "path": "/projects/repo-as-a-system/README.md",
       "title": "Repo-as-a-System",
@@ -1615,6 +1780,46 @@
       ]
     },
     {
+      "uri": "klappy://canon/apocrypha/fragments",
+      "path": "/canon/apocrypha/fragments/README.md",
+      "title": "System-Voice Fragments",
+      "type": "text/markdown",
+      "audience": "apocrypha",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "neutral",
+      "stability": "stable",
+      "tags": []
+    },
+    {
+      "uri": "klappy://canon/apocrypha/artifacts/system-closure-surface",
+      "path": "/canon/apocrypha/artifacts/the-apocrypha-fragments-and-system-closure.surface.md",
+      "title": "The Apocrypha: Fragments and System Closure",
+      "type": "text/markdown",
+      "audience": "apocrypha",
+      "exposure": "hidden",
+      "tier": 3,
+      "voice": "neutral",
+      "stability": "evolving",
+      "tags": [
+        "apocrypha",
+        "surface",
+        "artifacts"
+      ]
+    },
+    {
+      "uri": "klappy://canon/apocrypha/fragments-of-the-canon/fragment-01",
+      "path": "/canon/apocrypha/fragments-of-the-canon/fragment-01-the-book-that-was-read-only-once.md",
+      "title": "The Book That Was Read Only Once",
+      "type": "text/markdown",
+      "audience": "apocrypha",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "system_first_person",
+      "stability": "fragment",
+      "tags": []
+    },
+    {
       "uri": "klappy://canon/apocrypha/reconstructions/fragments-of-the-canon/fragment-01-recon",
       "path": "/canon/apocrypha/reconstructions/fragment-01-recon.md",
       "title": "The Book That Was Read Only Once (Reconstruction)",
@@ -1629,6 +1834,30 @@
         "reconstruction",
         "cinematic"
       ]
+    },
+    {
+      "uri": "klappy://canon/apocrypha/predocumentaries/the-conversion",
+      "path": "/canon/apocrypha/predocumentaries/fragment-10-predoc.md",
+      "title": "The Conversion (Predocumentary)",
+      "type": "predocumentary",
+      "audience": "apocrypha",
+      "exposure": "nav",
+      "tier": 3,
+      "voice": "neutral",
+      "stability": "evolving",
+      "tags": []
+    },
+    {
+      "uri": "klappy://canon/apocrypha/reconstructions/the-conversion",
+      "path": "/canon/apocrypha/reconstructions/fragment-10-recon.md",
+      "title": "The Conversion (Reconstruction)",
+      "type": "reconstruction",
+      "audience": "apocrypha",
+      "exposure": "hidden",
+      "tier": 2,
+      "voice": "neutral",
+      "stability": "evolving",
+      "tags": []
     },
     {
       "uri": "klappy://canon/resonance/double-diamond",
@@ -1649,6 +1878,42 @@
         "discovery",
         "delivery"
       ]
+    },
+    {
+      "uri": "klappy://canon/apocrypha/predocumentaries/the-image-of-the-image",
+      "path": "/canon/apocrypha/predocumentaries/fragment-08-predoc.md",
+      "title": "The Image of the Image (Predocumentary)",
+      "type": "predocumentary",
+      "audience": "apocrypha",
+      "exposure": "nav",
+      "tier": 3,
+      "voice": "neutral",
+      "stability": "evolving",
+      "tags": []
+    },
+    {
+      "uri": "klappy://canon/apocrypha/reconstructions/the-image-of-the-image",
+      "path": "/canon/apocrypha/reconstructions/fragment-08-recon.md",
+      "title": "The Image of the Image (Reconstruction)",
+      "type": "reconstruction",
+      "audience": "apocrypha",
+      "exposure": "hidden",
+      "tier": 2,
+      "voice": "neutral",
+      "stability": "evolving",
+      "tags": []
+    },
+    {
+      "uri": "klappy://canon/apocrypha/fragments-of-the-canon/fragment-02",
+      "path": "/canon/apocrypha/fragments-of-the-canon/fragment-02-the-last-commit.md",
+      "title": "The Last Commit",
+      "type": "text/markdown",
+      "audience": "apocrypha",
+      "exposure": "nav",
+      "tier": 2,
+      "voice": "system_first_person",
+      "stability": "fragment",
+      "tags": []
     },
     {
       "uri": "klappy://canon/apocrypha/reconstructions/fragments-of-the-canon/fragment-02-recon",
@@ -1683,6 +1948,78 @@
         "learning",
         "iteration"
       ]
+    },
+    {
+      "uri": "klappy://canon/apocrypha/predocumentaries/the-line",
+      "path": "/canon/apocrypha/predocumentaries/fragment-09-predoc.md",
+      "title": "The Line (Predocumentary)",
+      "type": "predocumentary",
+      "audience": "apocrypha",
+      "exposure": "nav",
+      "tier": 3,
+      "voice": "neutral",
+      "stability": "evolving",
+      "tags": []
+    },
+    {
+      "uri": "klappy://canon/apocrypha/reconstructions/the-line",
+      "path": "/canon/apocrypha/reconstructions/fragment-09-recon.md",
+      "title": "The Line (Reconstruction)",
+      "type": "reconstruction",
+      "audience": "apocrypha",
+      "exposure": "hidden",
+      "tier": 2,
+      "voice": "neutral",
+      "stability": "evolving",
+      "tags": []
+    },
+    {
+      "uri": "klappy://canon/apocrypha/predocumentaries/the-refusal",
+      "path": "/canon/apocrypha/predocumentaries/fragment-11-predoc.md",
+      "title": "The Refusal (Predocumentary)",
+      "type": "predocumentary",
+      "audience": "apocrypha",
+      "exposure": "nav",
+      "tier": 3,
+      "voice": "neutral",
+      "stability": "evolving",
+      "tags": []
+    },
+    {
+      "uri": "klappy://canon/apocrypha/reconstructions/the-refusal",
+      "path": "/canon/apocrypha/reconstructions/fragment-11-recon.md",
+      "title": "The Refusal (Reconstruction)",
+      "type": "reconstruction",
+      "audience": "apocrypha",
+      "exposure": "hidden",
+      "tier": 2,
+      "voice": "neutral",
+      "stability": "evolving",
+      "tags": []
+    },
+    {
+      "uri": "klappy://canon/apocrypha/predocumentaries/the-unpaid",
+      "path": "/canon/apocrypha/predocumentaries/fragment-07-predoc.md",
+      "title": "The Unpaid (Predocumentary)",
+      "type": "predocumentary",
+      "audience": "apocrypha",
+      "exposure": "nav",
+      "tier": 3,
+      "voice": "neutral",
+      "stability": "evolving",
+      "tags": []
+    },
+    {
+      "uri": "klappy://canon/apocrypha/reconstructions/the-unpaid",
+      "path": "/canon/apocrypha/reconstructions/fragment-07-recon.md",
+      "title": "The Unpaid (Reconstruction)",
+      "type": "reconstruction",
+      "audience": "apocrypha",
+      "exposure": "hidden",
+      "tier": 2,
+      "voice": "neutral",
+      "stability": "evolving",
+      "tags": []
     },
     {
       "uri": "klappy://odd/decisions/D0001",
@@ -1843,6 +2180,18 @@
         "misconception_image": "/assets/odd/odd-is-not-a-framework.png",
         "deep_dive_audio": "/assets/odd/why-evidence-beats-confidence.m4a"
       }
+    },
+    {
+      "uri": "klappy://canon/apocrypha/reconstructions/when-arbitration-went-global-recon",
+      "path": "/canon/apocrypha/reconstructions/fragment-06-recon.md",
+      "title": "When Arbitration Went Global (Reconstruction)",
+      "type": "text/markdown",
+      "audience": "apocrypha",
+      "exposure": "hidden",
+      "tier": 2,
+      "voice": "narrative_third_person",
+      "stability": "historical",
+      "tags": []
     },
     {
       "uri": "klappy://about/why-this-exists",

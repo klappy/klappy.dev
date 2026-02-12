@@ -1,9 +1,15 @@
 ---
+uri: "klappy://canon/apocrypha/reconstructions/the-image-of-the-image"
 title: "The Image of the Image (Reconstruction)"
 type: reconstruction
 tags: [reconstruction, cinematic, apocrypha, epoch-5, imago-dei, theology, inheritance]
 depends_on:
   - canon/apocrypha/fragments/fragment-08-the-image-of-the-image.md
+audience: apocrypha
+exposure: hidden
+tier: 2
+stability: evolving
+epoch: E0005
 ---
 
 # The Image of the Image (Reconstruction)

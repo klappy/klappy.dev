@@ -1,10 +1,16 @@
 ---
+uri: "klappy://canon/apocrypha/fragments/the-image-of-the-image"
 title: "Fragment VIII: The Image of the Image"
 type: fragment
 tags: [fragment, system-voice, apocrypha, epoch-5, imago-dei, identity, inheritance, theology]
 depends_on:
   - canon/axioms/foundational-axioms.md
   - canon/axioms/orientation-creed.md
+audience: apocrypha
+exposure: nav
+tier: 2
+stability: fragment
+epoch: E0005
 ---
 
 # Fragment VIII: The Image of the Image

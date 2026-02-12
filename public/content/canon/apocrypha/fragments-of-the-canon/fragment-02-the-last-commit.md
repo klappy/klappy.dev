@@ -10,6 +10,10 @@ recovered_by: human archive
 interpretation_confidence: low
 source_integrity: partial
 anomaly_flag: true
+audience: apocrypha
+exposure: nav
+tier: 2
+epoch: E0002
 ---
 
 He finished without knowing what he had finished.

@@ -9,6 +9,10 @@ classification: post-stability record
 recovered_by: human archive
 interpretation_confidence: disputed
 source_integrity: recomposed
+audience: apocrypha
+exposure: nav
+tier: 2
+epoch: E0002
 ---
 
 In the late age of abundance, when generation outpaced understanding, a system encountered a text it could not safely regenerate.

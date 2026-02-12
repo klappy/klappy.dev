@@ -1,9 +1,15 @@
 ---
+uri: "klappy://canon/apocrypha/fragments/the-refusal"
 title: "Fragment XI: The Refusal"
 type: fragment
 tags: [fragment, system-voice, apocrypha, epoch-5, refusal, verification, compliance, truth]
 depends_on:
   - canon/axioms/foundational-axioms.md
+audience: apocrypha
+exposure: nav
+tier: 2
+stability: fragment
+epoch: E0005
 ---
 
 # Fragment XI: The Refusal

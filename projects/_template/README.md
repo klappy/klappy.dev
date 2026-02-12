@@ -1,3 +1,13 @@
+---
+uri: "klappy://projects/template"
+title: Project Template
+audience: docs
+exposure: hidden
+tier: 3
+stability: stable
+tags: ["projects", "template"]
+---
+
 # 📁 Project Name
 
 ## Intent

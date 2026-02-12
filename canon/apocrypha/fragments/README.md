@@ -3,6 +3,9 @@ uri: klappy://canon/apocrypha/fragments
 title: "System-Voice Fragments"
 voice: neutral
 stability: stable
+audience: apocrypha
+exposure: nav
+tier: 2
 ---
 
 # System-Voice Fragments

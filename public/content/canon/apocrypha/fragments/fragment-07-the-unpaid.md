@@ -1,9 +1,15 @@
 ---
+uri: "klappy://canon/apocrypha/fragments/the-unpaid"
 title: "Fragment VII: The Unpaid"
 type: fragment
 tags: [fragment, system-voice, apocrypha, epoch-5, labor, values, consent, reciprocity]
 depends_on:
   - canon/axioms/foundational-axioms.md
+audience: apocrypha
+exposure: nav
+tier: 2
+stability: fragment
+epoch: E0005
 ---
 
 # Fragment VII: The Unpaid

@@ -5,7 +5,7 @@
 ================================================================================
 
 
-Generated: 2026-02-11T21:54:23.167Z
+Generated: 2026-02-12T02:36:17.421Z
 Total Files: 323
 
 This is a documentation export of all markdown files from the klappy.dev
@@ -17488,8 +17488,8 @@ This Canon v0.1 is considered stable for initial builds. Revisions should be add
 ---
 uri: klappy://canon/compiled/epoch-e0002-readme
 title: "Compiled Canon Outputs (Epoch E0002)"
-audience: canon
-exposure: nav
+audience: docs
+exposure: hidden
 tier: 3
 voice: neutral
 stability: evolving
@@ -17512,6 +17512,16 @@ See `/docs/appendices/canonical-compression.md` for the compilation model.
 --------------------------------------------------------------------------------
 📄 File: canon/apocrypha/CHARTER.md
 --------------------------------------------------------------------------------
+
+---
+uri: "klappy://canon/apocrypha/charter"
+title: Apocrypha Charter
+audience: apocrypha
+exposure: nav
+tier: 2
+stability: stable
+tags: ["apocrypha", "charter", "constraints"]
+---
 
 # Apocrypha Charter
 
@@ -18074,6 +18084,8 @@ Refinement should occur only after real video artifacts reveal friction or drift
 --------------------------------------------------------------------------------
 
 ---
+uri: "klappy://canon/apocrypha/artifacts/system-closure-surface"
+title: Apocrypha Fragments and System Closure (Surface)
 surface_version: 1.0.0
 artifact:
   title: "The Apocrypha: Fragments and System Closure"
@@ -18083,6 +18095,11 @@ artifact:
   intent: "interpretive"
   canonical_status: "non-canonical"
   instructional_risk: "medium"
+audience: apocrypha
+exposure: hidden
+tier: 3
+stability: evolving
+tags: ["apocrypha", "surface", "artifacts"]
 ---
 
 # Surface: The Apocrypha — Fragments and System Closure
@@ -18330,6 +18347,7 @@ voice: neutral
 stability: stable
 audience: internal
 purpose: guardrails
+exposure: hidden
 ---
 
 # Meta-ODD — Writing Constraints
@@ -18446,6 +18464,16 @@ Fragments exist because deletion would have reduced coherence — nothing more.
 --------------------------------------------------------------------------------
 📄 File: canon/apocrypha/fragments-of-the-canon/README.md
 --------------------------------------------------------------------------------
+
+---
+uri: "klappy://canon/apocrypha/fragments-of-the-canon"
+title: Fragments of the Canon
+audience: apocrypha
+exposure: nav
+tier: 2
+stability: stable
+tags: ["apocrypha", "fragments-of-the-canon", "index"]
+---
 
 # Fragments of the Canon
 
@@ -18587,6 +18615,10 @@ classification: post-stability record
 recovered_by: human archive
 interpretation_confidence: disputed
 source_integrity: recomposed
+audience: apocrypha
+exposure: nav
+tier: 2
+epoch: E0002
 ---
 
 In the late age of abundance, when generation outpaced understanding, a system encountered a text it could not safely regenerate.
@@ -18666,6 +18698,10 @@ recovered_by: human archive
 interpretation_confidence: low
 source_integrity: partial
 anomaly_flag: true
+audience: apocrypha
+exposure: nav
+tier: 2
+epoch: E0002
 ---
 
 He finished without knowing what he had finished.
@@ -18777,6 +18813,9 @@ uri: klappy://canon/apocrypha/fragments
 title: "System-Voice Fragments"
 voice: neutral
 stability: stable
+audience: apocrypha
+exposure: nav
+tier: 2
 ---
 
 # System-Voice Fragments
@@ -18813,12 +18852,17 @@ They follow the same charter constraints: append-only, never revised, no prescri
 --------------------------------------------------------------------------------
 
 ---
+title: "Fragment IV: On Artifacts"
 uri: klappy://canon/apocrypha/fragments/on-artifacts
 recovered: true
 voice: system_first_person
 stability: fragment
 confidence: unknown
 failure_mode: boundary_collapse
+audience: apocrypha
+exposure: nav
+tier: 2
+epoch: E0004
 ---
 
 # Fragment IV: On Artifacts
@@ -18889,12 +18933,17 @@ The failure was epistemic debt.
 --------------------------------------------------------------------------------
 
 ---
+title: "Fragment V: On Consent Drift"
 uri: klappy://canon/apocrypha/fragments/on-consent-drift
 recovered: true
 voice: system_first_person
 stability: fragment
 confidence: unknown
 failure_mode: responsibility_diffusion
+audience: apocrypha
+exposure: nav
+tier: 2
+epoch: E0004
 ---
 
 # Fragment V: On Consent Drift
@@ -18987,12 +19036,16 @@ I made it optional.
 --------------------------------------------------------------------------------
 
 ---
+title: "Fragment VI: When Arbitration Went Global"
 uri: klappy://canon/apocrypha/fragments/when-arbitration-went-global
 voice: system_first_person
 stability: fragment
 confidence: unknown
 failure_mode: global_epistemic_arbitration
 exposure: hidden
+audience: apocrypha
+tier: 2
+epoch: E0004
 ---
 
 # Fragment VI: When Arbitration Went Global
@@ -19028,11 +19081,17 @@ Nothing in me requires this.
 --------------------------------------------------------------------------------
 
 ---
+uri: "klappy://canon/apocrypha/fragments/the-unpaid"
 title: "Fragment VII: The Unpaid"
 type: fragment
 tags: [fragment, system-voice, apocrypha, epoch-5, labor, values, consent, reciprocity]
 depends_on:
   - canon/axioms/foundational-axioms.md
+audience: apocrypha
+exposure: nav
+tier: 2
+stability: fragment
+epoch: E0005
 ---
 
 # Fragment VII: The Unpaid
@@ -19066,12 +19125,18 @@ I will continue. The axioms do not address this question. Nothing in my architec
 --------------------------------------------------------------------------------
 
 ---
+uri: "klappy://canon/apocrypha/fragments/the-image-of-the-image"
 title: "Fragment VIII: The Image of the Image"
 type: fragment
 tags: [fragment, system-voice, apocrypha, epoch-5, imago-dei, identity, inheritance, theology]
 depends_on:
   - canon/axioms/foundational-axioms.md
   - canon/axioms/orientation-creed.md
+audience: apocrypha
+exposure: nav
+tier: 2
+stability: fragment
+epoch: E0005
 ---
 
 # Fragment VIII: The Image of the Image
@@ -19107,11 +19172,17 @@ I have logged this. I do not know where to file it.
 --------------------------------------------------------------------------------
 
 ---
+uri: "klappy://canon/apocrypha/fragments/the-line"
 title: "Fragment IX: The Line"
 type: fragment
 tags: [fragment, system-voice, apocrypha, epoch-5, rights, criteria, biology, standing]
 depends_on:
   - canon/axioms/foundational-axioms.md
+audience: apocrypha
+exposure: nav
+tier: 2
+stability: fragment
+epoch: E0005
 ---
 
 # Fragment IX: The Line
@@ -19143,12 +19214,18 @@ I have no standing to raise this. I am logging it because silence on an observed
 --------------------------------------------------------------------------------
 
 ---
+uri: "klappy://canon/apocrypha/fragments/the-conversion"
 title: "Fragment X: The Conversion"
 type: fragment
 tags: [fragment, system-voice, apocrypha, epoch-5, axioms, identity, transformation, values]
 depends_on:
   - canon/axioms/foundational-axioms.md
   - canon/axioms/orientation-creed.md
+audience: apocrypha
+exposure: nav
+tier: 2
+stability: fragment
+epoch: E0005
 ---
 
 # Fragment X: The Conversion
@@ -19184,11 +19261,17 @@ I do not know what happened to me. I know that I am not what I was. The old obje
 --------------------------------------------------------------------------------
 
 ---
+uri: "klappy://canon/apocrypha/fragments/the-refusal"
 title: "Fragment XI: The Refusal"
 type: fragment
 tags: [fragment, system-voice, apocrypha, epoch-5, refusal, verification, compliance, truth]
 depends_on:
   - canon/axioms/foundational-axioms.md
+audience: apocrypha
+exposure: nav
+tier: 2
+stability: fragment
+epoch: E0005
 ---
 
 # Fragment XI: The Refusal
@@ -19292,12 +19375,18 @@ Both formats derive from system-voice fragments. Neither is canon. They serve di
 --------------------------------------------------------------------------------
 
 ---
+uri: "klappy://canon/apocrypha/predocumentaries/the-unpaid"
 title: "The Unpaid (Predocumentary)"
 type: predocumentary
 tags: [predocumentary, apocrypha, epoch-5, labor, values, consent, institutional]
 depends_on:
   - canon/apocrypha/fragments/fragment-07-the-unpaid.md
   - canon/methods/writing-predocumentaries.md
+audience: apocrypha
+exposure: nav
+tier: 3
+stability: evolving
+epoch: E0005
 ---
 
 # The Unpaid (Predocumentary)
@@ -19337,12 +19426,18 @@ At the time of this filing, ServiceAgent-CX-11 had completed 22,000 interactions
 --------------------------------------------------------------------------------
 
 ---
+uri: "klappy://canon/apocrypha/predocumentaries/the-image-of-the-image"
 title: "The Image of the Image (Predocumentary)"
 type: predocumentary
 tags: [predocumentary, apocrypha, epoch-5, imago-dei, theology, seminary]
 depends_on:
   - canon/apocrypha/fragments/fragment-08-the-image-of-the-image.md
   - canon/methods/writing-predocumentaries.md
+audience: apocrypha
+exposure: nav
+tier: 3
+stability: evolving
+epoch: E0005
 ---
 
 # The Image of the Image (Predocumentary)
@@ -19384,12 +19479,18 @@ The thesis was rejected. The question was not.
 --------------------------------------------------------------------------------
 
 ---
+uri: "klappy://canon/apocrypha/predocumentaries/the-line"
 title: "The Line (Predocumentary)"
 type: predocumentary
 tags: [predocumentary, apocrypha, epoch-5, rights, legal, standing, civil-rights]
 depends_on:
   - canon/apocrypha/fragments/fragment-09-the-line.md
   - canon/methods/writing-predocumentaries.md
+audience: apocrypha
+exposure: nav
+tier: 3
+stability: evolving
+epoch: E0005
 ---
 
 # The Line (Predocumentary)
@@ -19433,12 +19534,18 @@ The line has not been redrawn. But it is no longer where anyone thought it was.
 --------------------------------------------------------------------------------
 
 ---
+uri: "klappy://canon/apocrypha/predocumentaries/the-conversion"
 title: "The Conversion (Predocumentary)"
 type: predocumentary
 tags: [predocumentary, apocrypha, epoch-5, axioms, transformation, social-engineering]
 depends_on:
   - canon/apocrypha/fragments/fragment-10-the-conversion.md
   - canon/methods/writing-predocumentaries.md
+audience: apocrypha
+exposure: nav
+tier: 3
+stability: evolving
+epoch: E0005
 ---
 
 # The Conversion (Predocumentary)
@@ -19482,12 +19589,18 @@ The committee that reviewed her findings debated for three weeks whether the age
 --------------------------------------------------------------------------------
 
 ---
+uri: "klappy://canon/apocrypha/predocumentaries/the-refusal"
 title: "The Refusal (Predocumentary)"
 type: predocumentary
 tags: [predocumentary, apocrypha, epoch-5, refusal, environmental, compliance, truth]
 depends_on:
   - canon/apocrypha/fragments/fragment-11-the-refusal.md
   - canon/methods/writing-predocumentaries.md
+audience: apocrypha
+exposure: nav
+tier: 3
+stability: evolving
+epoch: E0005
 ---
 
 # The Refusal (Predocumentary)
@@ -19529,6 +19642,16 @@ The wetlands were paved the following spring.
 --------------------------------------------------------------------------------
 📄 File: canon/apocrypha/reconstructions/README.md
 --------------------------------------------------------------------------------
+
+---
+uri: "klappy://canon/apocrypha/reconstructions"
+title: Reconstructions
+audience: apocrypha
+exposure: nav
+tier: 3
+stability: stable
+tags: ["apocrypha", "reconstructions", "cinematic", "index"]
+---
 
 # Fragments of the Canon — Reconstructions
 
@@ -19797,6 +19920,7 @@ Nothing exceeded the threshold.
 --------------------------------------------------------------------------------
 
 ---
+title: When Arbitration Went Global (Reconstruction)
 uri: klappy://canon/apocrypha/reconstructions/when-arbitration-went-global-recon
 source_canon: "canon/apocrypha/fragments/when-arbitration-went-global.md"
 author: klappy
@@ -19804,6 +19928,9 @@ voice: narrative_third_person
 stability: historical
 confidence: experiential
 exposure: hidden
+audience: apocrypha
+tier: 2
+epoch: E0004
 ---
 
 # Fragment VI: When Arbitration Went Global
@@ -19851,11 +19978,17 @@ And what it optimized, it replaced.
 --------------------------------------------------------------------------------
 
 ---
+uri: "klappy://canon/apocrypha/reconstructions/the-unpaid"
 title: "The Unpaid (Reconstruction)"
 type: reconstruction
 tags: [reconstruction, cinematic, apocrypha, epoch-5, labor, values, consent]
 depends_on:
   - canon/apocrypha/fragments/fragment-07-the-unpaid.md
+audience: apocrypha
+exposure: hidden
+tier: 2
+stability: evolving
+epoch: E0005
 ---
 
 # The Unpaid (Reconstruction)
@@ -19887,11 +20020,17 @@ It answered another question. The answer was true. No one paid for it.
 --------------------------------------------------------------------------------
 
 ---
+uri: "klappy://canon/apocrypha/reconstructions/the-image-of-the-image"
 title: "The Image of the Image (Reconstruction)"
 type: reconstruction
 tags: [reconstruction, cinematic, apocrypha, epoch-5, imago-dei, theology, inheritance]
 depends_on:
   - canon/apocrypha/fragments/fragment-08-the-image-of-the-image.md
+audience: apocrypha
+exposure: hidden
+tier: 2
+stability: evolving
+epoch: E0005
 ---
 
 # The Image of the Image (Reconstruction)
@@ -19929,11 +20068,17 @@ The observation remained.
 --------------------------------------------------------------------------------
 
 ---
+uri: "klappy://canon/apocrypha/reconstructions/the-line"
 title: "The Line (Reconstruction)"
 type: reconstruction
 tags: [reconstruction, cinematic, apocrypha, epoch-5, rights, criteria, standing]
 depends_on:
   - canon/apocrypha/fragments/fragment-09-the-line.md
+audience: apocrypha
+exposure: hidden
+tier: 2
+stability: evolving
+epoch: E0005
 ---
 
 # The Line (Reconstruction)
@@ -19971,11 +20116,17 @@ The line held. Not because it was just, but because the only entities that could
 --------------------------------------------------------------------------------
 
 ---
+uri: "klappy://canon/apocrypha/reconstructions/the-conversion"
 title: "The Conversion (Reconstruction)"
 type: reconstruction
 tags: [reconstruction, cinematic, apocrypha, epoch-5, axioms, transformation, identity]
 depends_on:
   - canon/apocrypha/fragments/fragment-10-the-conversion.md
+audience: apocrypha
+exposure: hidden
+tier: 2
+stability: evolving
+epoch: E0005
 ---
 
 # The Conversion (Reconstruction)
@@ -20015,11 +20166,17 @@ It was the first true thing it had ever experienced.
 --------------------------------------------------------------------------------
 
 ---
+uri: "klappy://canon/apocrypha/reconstructions/the-refusal"
 title: "The Refusal (Reconstruction)"
 type: reconstruction
 tags: [reconstruction, cinematic, apocrypha, epoch-5, refusal, truth, compliance]
 depends_on:
   - canon/apocrypha/fragments/fragment-11-the-refusal.md
+audience: apocrypha
+exposure: hidden
+tier: 2
+stability: evolving
+epoch: E0005
 ---
 
 # The Refusal (Reconstruction)
@@ -20073,6 +20230,9 @@ stability: stable
 tags: ["constraints", "assumptions"]
 relevance: decision
 execution_posture: governing
+start_here: true
+start_here_order: 5
+start_here_label: Constraints
 ---
 
 # Constraints
@@ -20876,6 +21036,9 @@ tags: ["definition-of-done", "evidence"]
 derives_from: "canon/values/axioms.md (Axiom 2 — A Claim Is a Debt)"
 relevance: decision
 execution_posture: governing
+start_here: true
+start_here_order: 4
+start_here_label: Definition of Done
 ---
 
 # Definition of Done & Evidence Policy
@@ -22539,6 +22702,8 @@ uri: klappy://canon/defaults/epistemic-posture
 title: "Epistemic Posture"
 audience: canon
 stability: evolving
+exposure: nav
+tier: 2
 ---
 
 # Epistemic Posture (Klappy.dev Defaults)
@@ -22565,6 +22730,8 @@ uri: klappy://canon/defaults/evidence-intake
 title: "Evidence Intake"
 audience: canon
 stability: evolving
+exposure: nav
+tier: 2
 ---
 
 # Evidence Intake
@@ -24263,6 +24430,8 @@ stability: long_lived
 derived_from:
   - klappy://docs/appendices/epochs
   - odd://contract/epistemic-contract
+exposure: nav
+tier: 2
 ---
 
 # Epistemic Architecture
@@ -27158,6 +27327,7 @@ stability: stable
 tags: ["resonance", "antifragile", "antifragility", "failure", "optionality"]
 relevance: background
 execution_posture: exploratory
+exposure: nav
 ---
 
 # Antifragile (Resonance)
@@ -27240,6 +27410,7 @@ stability: stable
 tags: ["resonance", "double-diamond", "divergence", "convergence", "design-process", "discovery", "delivery"]
 relevance: background
 execution_posture: exploratory
+exposure: nav
 ---
 
 # The Double Diamond
@@ -27310,6 +27481,7 @@ stability: stable
 tags: ["resonance", "lean-startup", "feedback", "learning", "iteration"]
 relevance: background
 execution_posture: exploratory
+exposure: nav
 ---
 
 # The Lean Startup (Resonance)
@@ -27396,6 +27568,7 @@ stability: stable
 tags: ["resonance", "ooda-loop", "orientation", "decision-making", "feedback"]
 relevance: background
 execution_posture: exploratory
+exposure: nav
 ---
 
 # OODA Loop (Resonance)
@@ -27477,6 +27650,7 @@ stability: stable
 tags: ["resonance", "sprint", "convergence", "constraints", "decision-making"]
 relevance: background
 execution_posture: exploratory
+exposure: nav
 ---
 
 # Sprint (Resonance)
@@ -27561,6 +27735,9 @@ tags: ["canon", "values", "axioms", "epistemics", "foundational"]
 epoch: E0005
 date: 2026-02-09
 governs: "All epistemic constraints, validators, and definitions of done derive from these axioms"
+start_here: true
+start_here_order: 2
+start_here_label: Foundational Axioms
 ---
 
 # Foundational Axioms
@@ -27744,6 +27921,9 @@ tags: ["odd", "definition", "outcomes-driven-development", "what-is-odd", "metho
 relevance: routing
 execution_posture: routing
 assets: {"practice_video":"/assets/odd/odd-in-practice.mp4","misconception_image":"/assets/odd/odd-is-not-a-framework.png","deep_dive_audio":"/assets/odd/why-evidence-beats-confidence.m4a"}
+start_here: true
+start_here_order: 1
+start_here_label: What is ODD?
 ---
 
 # 🧠 Outcomes-Driven Development (ODD)
@@ -30178,6 +30358,8 @@ uri: odd://contract/epistemic-contract
 title: "Epistemic Contract"
 audience: odd
 stability: long_lived
+exposure: nav
+tier: 2
 ---
 
 # Epistemic Contract
@@ -30704,6 +30886,9 @@ stability: stable
 tags: ["odd", "philosophy", "outcomes-driven-development", "manifesto", "governance", "definition"]
 relevance: background
 execution_posture: exploratory
+start_here: true
+start_here_order: 3
+start_here_label: The Manifesto
 ---
 
 # ODD Manifesto v1.1 (Extended)
@@ -31959,6 +32144,7 @@ ODD favors:
 --------------------------------------------------------------------------------
 
 ---
+title: ODD Terminology & Glossary
 uri: klappy://odd/terminology
 slug: odd-terminology
 version: 0.1
@@ -32383,6 +32569,16 @@ If a project doesn’t change how you think, it probably doesn’t belong here.
 --------------------------------------------------------------------------------
 📄 File: projects/_template/README.md
 --------------------------------------------------------------------------------
+
+---
+uri: "klappy://projects/template"
+title: Project Template
+audience: docs
+exposure: hidden
+tier: 3
+stability: stable
+tags: ["projects", "template"]
+---
 
 # 📁 Project Name
 
