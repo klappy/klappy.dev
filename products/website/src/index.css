@@ -32,12 +32,6 @@
   /* Border Tokens */
   --color-border-primary: #e0e0e0;
   --color-border-secondary: #f0f0f0;
-
-  /* Apocrypha Paper Stock */
-  --color-apocrypha-bg: #faf6f0;
-  --color-apocrypha-border: #c4a882;
-  --color-apocrypha-accent: #8b7355;
-  --color-apocrypha-text: #6b5a42;
   
   /* === Typography v1.0.0 === */
   /* Font Families */
@@ -113,15 +107,6 @@
     
     --color-border-primary: #333333;
     --color-border-secondary: #262626;
-
-    /* Apocrypha Paper Stock (dark) */
-    --color-apocrypha-bg: #1a1710;
-    --color-apocrypha-bg-dark: #1f1b16;
-    --color-apocrypha-border: #6b5a42;
-    --color-apocrypha-border-dark: #6b5a42;
-    --color-apocrypha-accent: #a08060;
-    --color-apocrypha-accent-dark: #a08060;
-    --color-apocrypha-text: #a08060;
   }
 }
 

@@ -1,67 +1,35 @@
 import { useMemo } from 'react';
 import MediaShelf from './MediaShelf';
-import { HUMAN_START_HERE, isPublicFacing, getNavigableFolders, effectiveTier, isApocrypha } from '../utils/filtering';
 
 /**
  * Home Page Component
- *
- * Curated landing page with:
- * - 5 hardcoded human start-here documents
- * - Folder-based "notebooks on the desk" navigation
- * - Tier-based progressive disclosure
+ * 
+ * PRD Requirements:
+ * - Clear entry points ("Start here", "Go deeper")
+ * - Progressive disclosure UX
+ * - Visual calm
  */
 export default function Home({ manifest, resources, onNavigate }) {
+  // Find the home resource for media assets
   const homeResource = useMemo(() => {
     return resources.find(r => r.uri === 'klappy://public/home') || null;
   }, [resources]);
 
-  // Resolve start-here paths to actual resources
-  const startHereDocs = useMemo(() => {
-    return HUMAN_START_HERE
-      .map(entry => {
-        const resource = resources.find(r => r.path === entry.path);
-        if (!resource) return null;
-        return { ...entry, resource };
-      })
-      .filter(Boolean);
-  }, [resources]);
+  // Get featured content by tier
+  const featured = useMemo(() => {
+    // Tier 0: Entry points
+    const tier0 = resources
+      .filter(r => r.tier === 0 && r.exposure === 'nav')
+      .sort((a, b) => a.title.localeCompare(b.title));
 
-  // Build folder groups for browsing
-  const folderGroups = useMemo(() => {
-    return getNavigableFolders(resources);
-  }, [resources]);
+    // Tier 1: Core concepts
+    const tier1 = resources
+      .filter(r => r.tier === 1 && r.exposure === 'nav' && r.audience !== 'internal')
+      .sort((a, b) => a.title.localeCompare(b.title))
+      .slice(0, 4);
 
-  // Order folders for display — core ODD/canon first
-  const orderedFolders = useMemo(() => {
-    const order = [
-      '/odd',
-      '/canon/values',
-      '/canon/constraints',
-      '/canon/methods',
-      '/canon/principles',
-      '/canon/definitions',
-      '/canon/defaults',
-      '/canon/diagnostics',
-      '/canon/decisions',
-      '/canon/resonance',
-      '/canon/apocrypha',
-      '/canon/meta',
-      '/odd/appendices',
-      '/odd/getting-started',
-      '/odd/decisions',
-      '/about',
-      '/projects',
-    ];
-    const groups = Object.values(folderGroups);
-    groups.sort((a, b) => {
-      const ia = order.indexOf(a.key);
-      const ib = order.indexOf(b.key);
-      const sa = ia === -1 ? 999 : ia;
-      const sb = ib === -1 ? 999 : ib;
-      return sa - sb;
-    });
-    return groups;
-  }, [folderGroups]);
+    return { tier0, tier1 };
+  }, [resources]);
 
   const handleNavigate = (e, path) => {
     e.preventDefault();
@@ -77,15 +45,15 @@ export default function Home({ manifest, resources, onNavigate }) {
           A methodology for building with AI agents through evidence, constraints, and progressive disclosure.
         </p>
         <div className="hero-actions">
-          <a
-            href="#/odd/README.md"
+          <a 
+            href="#/odd/README.md" 
             className="button button-primary"
             onClick={(e) => handleNavigate(e, '/odd/README.md')}
           >
             What is ODD?
           </a>
-          <a
-            href="#/about/why-this-exists.md"
+          <a 
+            href="#/about/why-this-exists.md" 
             className="button button-secondary"
             onClick={(e) => handleNavigate(e, '/about/why-this-exists.md')}
           >
@@ -115,58 +83,49 @@ export default function Home({ manifest, resources, onNavigate }) {
         />
       )}
 
-      {/* Start Here — Curated Human Entry Points */}
+      {/* Start Here Section */}
       <section className="section">
         <h2>Start Here</h2>
         <p className="section-intro">
-          New to ODD? These five documents are the recommended reading order.
+          New to ODD? These are the best places to begin understanding the approach.
         </p>
-        <div className="start-here-list">
-          {startHereDocs.map((entry, i) => (
-            <a
-              key={entry.path}
-              href={`#${entry.path}`}
-              className="start-here-card"
-              onClick={(e) => handleNavigate(e, entry.path)}
+        <div className="card-grid">
+          {featured.tier0.slice(0, 3).map(resource => (
+            <a 
+              key={resource.uri}
+              href={`#${resource.path}`}
+              className="card"
+              onClick={(e) => handleNavigate(e, resource.path)}
             >
-              <span className="start-here-number">{i + 1}</span>
-              <div className="start-here-content">
-                <h3>{entry.label}</h3>
-                <p>{entry.description}</p>
-              </div>
+              <h3>{resource.title}</h3>
+              <p className="card-tags">
+                {resource.tags?.slice(0, 3).join(' · ')}
+              </p>
             </a>
           ))}
         </div>
       </section>
 
-      {/* Browse by Folder — Notebooks on the Desk */}
+      {/* Go Deeper Section */}
       <section className="section">
-        <h2>Browse</h2>
+        <h2>Go Deeper</h2>
         <p className="section-intro">
-          Explore documents by topic. Each folder contains related documents sorted by importance.
+          Ready to understand the foundations? Explore constraints, decision rules, and evidence policies.
         </p>
-        <div className="folder-grid">
-          {orderedFolders.map(group => {
-            const tier1Count = group.docs.filter(d => effectiveTier(d) <= 1).length;
-            const hasApocrypha = group.docs.some(isApocrypha);
-            return (
-              <a
-                key={group.key}
-                href={`#/browse${group.key}`}
-                className={`folder-card ${hasApocrypha ? 'folder-card--apocrypha' : ''}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  onNavigate(`/browse${group.key}`);
-                }}
-              >
-                <h3>{group.label}</h3>
-                <p className="folder-meta">
-                  {group.docs.length} document{group.docs.length !== 1 ? 's' : ''}
-                  {tier1Count > 0 && <span className="folder-essential"> · {tier1Count} essential</span>}
-                </p>
-              </a>
-            );
-          })}
+        <div className="card-grid">
+          {featured.tier1.map(resource => (
+            <a 
+              key={resource.uri}
+              href={`#${resource.path}`}
+              className="card"
+              onClick={(e) => handleNavigate(e, resource.path)}
+            >
+              <h3>{resource.title}</h3>
+              <p className="card-tags">
+                {resource.tags?.slice(0, 3).join(' · ')}
+              </p>
+            </a>
+          ))}
         </div>
       </section>
 
@@ -288,66 +247,13 @@ export default function Home({ manifest, resources, onNavigate }) {
           margin-right: auto;
         }
 
-        /* Start Here — numbered reading list */
-        .start-here-list {
-          display: flex;
-          flex-direction: column;
-          gap: var(--space-3);
-        }
-
-        .start-here-card {
-          display: flex;
-          align-items: flex-start;
-          gap: var(--space-4);
-          padding: var(--space-5);
-          background: var(--color-bg-secondary);
-          border: 1px solid var(--color-border-primary);
-          border-radius: 12px;
-          text-decoration: none;
-          transition: all 0.15s ease;
-        }
-
-        .start-here-card:hover {
-          border-color: var(--color-accent);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-          text-decoration: none;
-        }
-
-        .start-here-number {
-          flex-shrink: 0;
-          width: 32px;
-          height: 32px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: var(--color-bg-tertiary);
-          color: var(--color-text-secondary);
-          font-size: var(--font-size-sm);
-          font-weight: var(--font-weight-semibold);
-          border-radius: 50%;
-        }
-
-        .start-here-content h3 {
-          font-size: var(--font-size-lg);
-          color: var(--color-text-primary);
-          margin-bottom: var(--space-1);
-        }
-
-        .start-here-content p {
-          font-size: var(--font-size-sm);
-          color: var(--color-text-secondary);
-          margin: 0;
-          line-height: var(--line-height-normal);
-        }
-
-        /* Folder Grid — notebooks on the desk */
-        .folder-grid {
+        .card-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           gap: var(--space-4);
         }
 
-        .folder-card {
+        .card {
           display: block;
           padding: var(--space-5);
           background: var(--color-bg-secondary);
@@ -357,36 +263,22 @@ export default function Home({ manifest, resources, onNavigate }) {
           transition: all 0.15s ease;
         }
 
-        .folder-card:hover {
+        .card:hover {
           border-color: var(--color-accent);
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
           text-decoration: none;
         }
 
-        .folder-card--apocrypha {
-          border-color: var(--color-apocrypha-border, #c4a882);
-          background: var(--color-apocrypha-bg, #faf6f0);
-        }
-
-        .folder-card--apocrypha:hover {
-          border-color: var(--color-apocrypha-accent, #8b7355);
-        }
-
-        .folder-card h3 {
-          font-size: var(--font-size-base);
+        .card h3 {
+          font-size: var(--font-size-lg);
           color: var(--color-text-primary);
           margin-bottom: var(--space-2);
         }
 
-        .folder-meta {
-          font-size: var(--font-size-xs);
+        .card-tags {
+          font-size: var(--font-size-sm);
           color: var(--color-text-secondary);
           margin: 0;
-        }
-
-        .folder-essential {
-          color: var(--color-accent);
-          font-weight: var(--font-weight-medium);
         }
 
         .version-info {
@@ -402,17 +294,6 @@ export default function Home({ manifest, resources, onNavigate }) {
 
           .section {
             padding: var(--space-8) var(--space-4);
-          }
-        }
-
-        @media (prefers-color-scheme: dark) {
-          .folder-card--apocrypha {
-            border-color: var(--color-apocrypha-border-dark, #6b5a42);
-            background: var(--color-apocrypha-bg-dark, #1f1b16);
-          }
-
-          .folder-card--apocrypha:hover {
-            border-color: var(--color-apocrypha-accent-dark, #a08060);
           }
         }
       `}</style>

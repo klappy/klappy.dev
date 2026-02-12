@@ -2,8 +2,17 @@ import { useState, useEffect } from 'react';
 import Navigation from './components/Navigation';
 import ContentPage from './components/ContentPage';
 import Home from './components/Home';
-import Browse from './components/Browse';
 
+/**
+ * Main App Component
+ * 
+ * Implements PRD requirements:
+ * - Load /content/manifest.json
+ * - Render home page with ≤7 nav items
+ * - Render markdown content
+ * - Mobile-usable
+ * - Deep links work (URL represents resource)
+ */
 export default function App() {
   const [manifest, setManifest] = useState(null);
   const [resources, setResources] = useState([]);
@@ -66,52 +75,32 @@ export default function App() {
   // Find current resource
   const currentResource = resources.find(r => r.path === currentPath);
 
-  // Check if this is a browse route
-  const isBrowsePath = currentPath.startsWith('/browse');
-  const browseFolderPath = isBrowsePath ? currentPath.replace(/^\/browse/, '') || null : null;
-
-  // Determine what to render
-  let content;
-  if (currentPath === '/') {
-    content = (
-      <Home
-        manifest={manifest}
-        resources={resources}
-        onNavigate={navigateTo}
-      />
-    );
-  } else if (isBrowsePath) {
-    content = (
-      <Browse
-        resources={resources}
-        folderPath={browseFolderPath}
-        onNavigate={navigateTo}
-      />
-    );
-  } else if (currentResource) {
-    content = <ContentPage resource={currentResource} />;
-  } else {
-    content = (
-      <div className="not-found">
-        <h1>Page Not Found</h1>
-        <p>The requested page could not be found.</p>
-        <a href="#/" onClick={(e) => { e.preventDefault(); navigateTo('/'); }}>
-          Return home
-        </a>
-      </div>
-    );
-  }
-
   return (
     <div className="app">
-      <Navigation
-        resources={resources}
+      <Navigation 
+        resources={resources} 
         currentPath={currentPath}
         onNavigate={navigateTo}
       />
-
+      
       <main className="main-content">
-        {content}
+        {currentPath === '/' ? (
+          <Home 
+            manifest={manifest} 
+            resources={resources}
+            onNavigate={navigateTo}
+          />
+        ) : currentResource ? (
+          <ContentPage resource={currentResource} />
+        ) : (
+          <div className="not-found">
+            <h1>Page Not Found</h1>
+            <p>The requested page could not be found.</p>
+            <a href="#/" onClick={(e) => { e.preventDefault(); navigateTo('/'); }}>
+              Return home
+            </a>
+          </div>
+        )}
       </main>
 
       <style>{`
