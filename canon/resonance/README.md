@@ -112,3 +112,4 @@ Each resonance page follows a consistent structure:
 - [ODD Manifesto](/odd/manifesto.md)
 - [Canon Index](/canon/README.md)
 - [Three-Tier Hierarchy](/odd/decisions/D0001-three-tier-conceptual-hierarchy.md)
+- [ODD Compared](/odd/odd-compared.md) — How ODD relates to contemporary methodologies, governance frameworks, and agentic tooling. The practitioner-facing counterpart to this index.

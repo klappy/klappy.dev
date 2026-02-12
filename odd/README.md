@@ -15,13 +15,29 @@ start_here_order: 1
 start_here_label: What is ODD?
 ---
 
-# 🧠 Outcomes-Driven Development (ODD)
+# Outcomes-Driven Development (ODD)
 
-Outcomes-Driven Development (ODD) is an approach to building software that prioritizes real-world results over artifacts.
+Outcomes-Driven Development is an approach to building software that prioritizes real-world results over artifacts.
 
-In an environment where AI can generate code, interfaces, and entire applications quickly, the limiting factor is no longer production speed—it is clarity of intent, quality of verification, and the ability to choose among many possible outcomes.
+In an environment where AI can generate code, interfaces, and entire applications quickly, the limiting factor is no longer production speed — it is clarity of intent, quality of verification, and the ability to choose among many possible outcomes.
 
 ODD exists to make those constraints explicit.
+
+---
+
+## Why ODD Exists
+
+AI development has no shortage of tools, workflows, and governance frameworks. What it lacks is a shared discipline for answering the simplest question: *did this actually work?*
+
+**Spec-Driven Development** gives you structured specs so AI generates better code. **Evaluation-Driven Development** gives you metrics so you can measure model quality. **AI-native lifecycles** give you phases and gates so humans stay in the loop. **Governance frameworks** like NIST and the EU AI Act give you compliance requirements. **Agentic tooling** like LangGraph and CrewAI gives you orchestration infrastructure.
+
+ODD doesn't replace any of these. It asks the question none of them center on:
+
+**How do you know what's actually true?**
+
+AI agents produce fluent, confident output. That output may be correct, partially correct, or entirely fabricated — and it all looks the same. Specs don't solve this. Evals help but don't cover it. Compliance doesn't prevent it. ODD exists because the gap between *generated* and *verified* is where real damage happens.
+
+→ For a detailed comparison with SDD, EDD, AI-DLC, governance frameworks, and agentic tooling, see **[ODD Compared](/odd/odd-compared.md)**.
 
 ---
 
@@ -39,11 +55,7 @@ If a proposed pattern, principle, or addition conflicts with it, the proposal is
 
 ## The Core Idea
 
-Traditional software development often optimizes for outputs:
-
-- lines of code
-- shipped features
-- completed tickets
+Traditional software development often optimizes for outputs: lines of code, shipped features, completed tickets.
 
 ODD shifts the focus to outcomes:
 
@@ -59,17 +71,9 @@ Code is still written. Tools still matter. But they are means, not ends.
 
 AI changes the economics of software creation.
 
-When generation becomes cheap:
+When generation becomes cheap, variation explodes, artifacts become disposable, and maintenance becomes the real cost.
 
-- variation explodes
-- artifacts become disposable
-- maintenance becomes the real cost
-
-ODD responds by:
-
-- treating code as ephemeral
-- emphasizing verification over explanation
-- encouraging curation over accumulation
+ODD responds by treating code as ephemeral, emphasizing verification over explanation, and encouraging curation over accumulation.
 
 The goal is not to generate _more_ software, but to ship _better_ outcomes with less long-term drag.
 
@@ -79,26 +83,13 @@ The goal is not to generate _more_ software, but to ship _better_ outcomes with 
 
 ODD is guided by a small set of principles that recur across projects:
 
-- **Prompt over Code**
-  Natural language intent guides generation; code is an output, not the source of truth.
-
-- **Keep It Simple (KISS)**
-  Prefer the simplest solution that works and can be explained clearly.
-
-- **Don’t Repeat Yourself (DRY), with Isolation**
-  Reuse ideas and components where it helps, but avoid brittle global coupling.
-
-- **Consistency**
-  Similar problems should feel similar to users and maintainers.
-
-- **Maintainability**
-  Optimize for low-effort upkeep and clear handoff, not cleverness.
-
-- **Antifragility**
-  Systems should learn from stress and failure, not just survive them.
-
-- **Scalability**
-  Growth should increase capability without exploding complexity or cost.
+- **Prompt over Code** — Natural language intent guides generation; code is an output, not the source of truth.
+- **Keep It Simple (KISS)** — Prefer the simplest solution that works and can be explained clearly.
+- **Don't Repeat Yourself (DRY), with Isolation** — Reuse ideas and components where it helps, but avoid brittle global coupling.
+- **Consistency** — Similar problems should feel similar to users and maintainers.
+- **Maintainability** — Optimize for low-effort upkeep and clear handoff, not cleverness.
+- **Antifragility** — Systems should learn from stress and failure, not just survive them.
+- **Scalability** — Growth should increase capability without exploding complexity or cost.
 
 These principles are lenses, not rules. Their application changes as projects mature.
 
@@ -106,7 +97,14 @@ These principles are lenses, not rules. Their application changes as projects ma
 
 ## Foundational Values
 
-ODD is grounded in four explicit foundational axioms that define its commitment to truth: Reality Is Sovereign, A Claim Is a Debt, Integrity Is Non-Negotiable Efficiency, and You Cannot Verify What You Did Not Observe. These values are the author's moral commitments — explicit, intentional, and forkable. They are not neutral observations but active choices about what epistemic discipline requires.
+ODD is grounded in four axioms that define its commitment to truth:
+
+1. **Reality Is Sovereign** — The state of the world as it actually is always takes precedence over any claim, plan, or model.
+2. **A Claim Is a Debt** — Every assertion creates an obligation. If you say something is true, you owe evidence.
+3. **Integrity Is Non-Negotiable Efficiency** — Cutting corners on truth never saves time. A false "done" creates more work than an honest "I haven't checked."
+4. **You Cannot Verify What You Did Not Observe** — If you didn't look, you don't know.
+
+These values are the author's moral commitments — explicit, intentional, and forkable. They are not neutral observations but active choices about what epistemic discipline requires.
 
 If you do not share these commitments, ODD expects you to fork and encode your own — not to argue, but to build. See [`canon/values/axioms.md`](/canon/values/axioms.md) for the full axioms.
 
@@ -116,11 +114,7 @@ If you do not share these commitments, ODD expects you to fork and encode your o
 
 ODD places a strong emphasis on evidence.
 
-In practice, this means:
-
-- showing working systems
-- favoring visual or experiential proof
-- treating explanations as hypotheses until verified
+In practice, this means showing working systems, favoring visual or experiential proof, and treating explanations as hypotheses until verified.
 
 This is especially important in AI-assisted workflows, where fluent explanations are easy to produce but easy to trust incorrectly.
 
@@ -144,9 +138,12 @@ ODD is not:
 
 - a framework to install
 - a fixed workflow
+- a governance model to comply with
 - a claim that outcomes can be fully predicted
 
 It does not replace judgment. It exists to support it.
+
+If any part of ODD feels heavy, ceremonial, or joy-killing, it is being misapplied.
 
 ---
 
@@ -165,7 +162,7 @@ The Canon is designed for orientation, not enforcement.
 
 In AI-assisted development, outcomes are not deterministic. The same intent can produce different results depending on execution paths.
 
-This site reflects that reality. Ideas are tested, observed, and sometimes retried before conclusions are drawn. What you see here is not a straight line—it's a record of learning under uncertainty.
+This site reflects that reality. Ideas are tested, observed, and sometimes retried before conclusions are drawn. What you see here is not a straight line — it's a record of learning under uncertainty.
 
 ---
 
@@ -173,6 +170,7 @@ This site reflects that reality. Ideas are tested, observed, and sometimes retri
 
 If you want to explore further:
 
+- See how ODD relates to other approaches: **[ODD Compared](/odd/odd-compared.md)**
 - Read the **extended ODD Manifesto** in `/odd/manifesto.md`
 - See how rigor scales in **Project Maturity & Progressive Governance**
 - Browse the **Canon Index** to understand how decisions and verification are structured
