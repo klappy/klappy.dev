@@ -77,7 +77,7 @@
     {
       "uri": "klappy://odd/getting-started/agents-and-mcp",
       "path": "/odd/getting-started/odd-agents-and-mcp.md",
-      "title": "Agents & MCP (Experimental)",
+      "title": "Agents & MCP",
       "type": "text/markdown",
       "audience": "odd",
       "exposure": "nav",
@@ -88,8 +88,7 @@
         "agents",
         "mcp",
         "oddkit",
-        "getting-started",
-        "experimental"
+        "getting-started"
       ]
     },
     {

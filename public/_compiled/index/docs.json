@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-02-12T02:36:18.101Z",
+  "generated_at": "2026-02-12T02:54:33.463Z",
   "description": "Fast-lookup index for Librarian retrieval. Per docs/agents/librarian/contract.md",
   "schema_notes": {
     "authority_band": "Resolved authority (frontmatter override > inferred from root)",
@@ -19897,14 +19897,13 @@
       "authority_band": "governing",
       "authority_inferred": "governing",
       "uri": "klappy://odd/getting-started/agents-and-mcp",
-      "title": "Agents & MCP (Experimental)",
-      "subtitle": "⚠️ **Experimental** — This describes optional tooling around ODD. No stability guarantees. No \"best practice\" claims.",
+      "title": "Agents & MCP",
+      "subtitle": "oddkit v0.13.0 — Epistemic tooling for ODD-governed work.",
       "tags": [
         "agents",
         "mcp",
         "oddkit",
-        "getting-started",
-        "experimental"
+        "getting-started"
       ],
       "acronyms": [
         "a&m"
@@ -19919,7 +19918,7 @@
       "headings": [
         {
           "level": 1,
-          "text": "ODD Agents & MCP: Orientation",
+          "text": "ODD Agents & MCP: Getting Started",
           "line": 2
         },
         {
@@ -19929,66 +19928,196 @@
         },
         {
           "level": 2,
-          "text": "The three pieces",
-          "line": 18
-        },
-        {
-          "level": 3,
-          "text": "A. Canon (required conceptually)",
-          "line": 20
-        },
-        {
-          "level": 3,
-          "text": "B. oddkit (optional, recommended)",
-          "line": 27
-        },
-        {
-          "level": 3,
-          "text": "C. Subagents (optional, experimental)",
-          "line": 34
+          "text": "Three ways to use oddkit",
+          "line": 16
         },
         {
           "level": 2,
-          "text": "Minimal install paths",
+          "text": "Option 1: Just read canon (zero install)",
+          "line": 28
+        },
+        {
+          "level": 2,
+          "text": "Option 2: CLI (no MCP required)",
+          "line": 36
+        },
+        {
+          "level": 1,
+          "text": "Orient on a goal — where does this idea sit epistemically?",
+          "line": 39
+        },
+        {
+          "level": 1,
+          "text": "Search the canon",
           "line": 42
         },
         {
-          "level": 3,
-          "text": "Option 1: Just read canon (zero install)",
-          "line": 44
+          "level": 1,
+          "text": "Challenge an assumption",
+          "line": 45
         },
         {
-          "level": 3,
-          "text": "Option 2: oddkit CLI only",
-          "line": 50
+          "level": 1,
+          "text": "Check if you're ready to transition phases",
+          "line": 48
         },
         {
-          "level": 3,
-          "text": "Option 3: MCP server (advanced)",
-          "line": 58
+          "level": 1,
+          "text": "Pre-implementation check — constraints, pitfalls, relevant docs",
+          "line": 51
         },
         {
-          "level": 3,
-          "text": "Option 4: Cursor subagent (experimental)",
-          "line": 70
+          "level": 1,
+          "text": "Validate a completion claim",
+          "line": 54
+        },
+        {
+          "level": 1,
+          "text": "Encode a decision as a durable record",
+          "line": 57
+        },
+        {
+          "level": 1,
+          "text": "Fetch a specific canon document by URI",
+          "line": 60
+        },
+        {
+          "level": 1,
+          "text": "Browse available documentation",
+          "line": 63
+        },
+        {
+          "level": 1,
+          "text": "Check version and canon target",
+          "line": 66
+        },
+        {
+          "level": 1,
+          "text": "Force refresh cached baseline data",
+          "line": 69
         },
         {
           "level": 2,
-          "text": "What this doc does NOT cover",
-          "line": 78
+          "text": "Option 3: MCP for Cursor / Claude Code (local, stdio)",
+          "line": 77
+        },
+        {
+          "level": 3,
+          "text": "One-command setup",
+          "line": 79
+        },
+        {
+          "level": 1,
+          "text": "Claude Code",
+          "line": 82
+        },
+        {
+          "level": 1,
+          "text": "Cursor",
+          "line": 85
+        },
+        {
+          "level": 1,
+          "text": "Both at once",
+          "line": 88
+        },
+        {
+          "level": 3,
+          "text": "Manual config (if you prefer)",
+          "line": 94
+        },
+        {
+          "level": 3,
+          "text": "Verify",
+          "line": 112
+        },
+        {
+          "level": 2,
+          "text": "Option 4: MCP for Claude.ai / iOS / iPad (remote, HTTP)",
+          "line": 122
+        },
+        {
+          "level": 3,
+          "text": "Claude.ai setup",
+          "line": 126
+        },
+        {
+          "level": 3,
+          "text": "What you get",
+          "line": 134
+        },
+        {
+          "level": 2,
+          "text": "Available tools",
+          "line": 147
+        },
+        {
+          "level": 3,
+          "text": "Epistemic workflow tools",
+          "line": 151
+        },
+        {
+          "level": 3,
+          "text": "Knowledge tools",
+          "line": 160
+        },
+        {
+          "level": 3,
+          "text": "Validation & operations",
+          "line": 168
+        },
+        {
+          "level": 3,
+          "text": "Interface naming",
+          "line": 177
+        },
+        {
+          "level": 3,
+          "text": "The unified `oddkit` MCP tool",
+          "line": 188
+        },
+        {
+          "level": 2,
+          "text": "Typical workflow",
+          "line": 201
+        },
+        {
+          "level": 2,
+          "text": "Subagents (optional, experimental)",
+          "line": 217
+        },
+        {
+          "level": 2,
+          "text": "Baseline knowledge",
+          "line": 242
+        },
+        {
+          "level": 1,
+          "text": "Via environment variable",
+          "line": 247
+        },
+        {
+          "level": 1,
+          "text": "Via CLI flag",
+          "line": 250
+        },
+        {
+          "level": 1,
+          "text": "Pin to a specific branch/tag",
+          "line": 253
         },
         {
           "level": 2,
           "text": "Summary",
-          "line": 92
+          "line": 267
         },
         {
           "level": 2,
           "text": "See also",
-          "line": 104
+          "line": 281
         }
       ],
-      "heading_count": 14,
+      "heading_count": 40,
       "has_frontmatter": true
     },
     {
