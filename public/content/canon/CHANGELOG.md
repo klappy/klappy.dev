@@ -18,6 +18,32 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
+## 0.31.0 — 2026-02-12
+
+**Content Metadata Pass + Getting Started Rewrite**
+
+This release adds missing frontmatter metadata across 44 canon and ODD documents, ensuring all content files are discoverable via manifest. Also rewrites the ODD Agents & MCP getting-started guide with comprehensive oddkit documentation.
+
+### Added
+
+- **Start-here markers** — Five curated entry-point documents now carry `start_here: true`, `start_here_order`, and `start_here_label` frontmatter: ODD README (1), Foundational Axioms (2), The Manifesto (3), Definition of Done (4), Constraints Index (5).
+
+- **Frontmatter on bare files** — Added complete frontmatter (uri, title, audience, exposure, tier) to files that previously had none: `canon/apocrypha/CHARTER.md`, `canon/apocrypha/fragments-of-the-canon/README.md`, `canon/apocrypha/reconstructions/README.md`, `projects/_template/README.md`.
+
+- **Missing metadata fields** — Added `uri` and `title` to 22 files that had partial frontmatter, enabling inclusion in manifest. Added `exposure` and `tier` fields to files missing them across `canon/defaults/`, `canon/meta/`, `canon/resonance/`, `odd/contract/`.
+
+- **Apocrypha metadata** — Added `audience: apocrypha`, `exposure`, `tier`, `epoch`, and `stability` fields to fragments, predocumentaries, and reconstructions throughout `canon/apocrypha/`.
+
+### Changed
+
+- **`odd/getting-started/odd-agents-and-mcp.md`** — Complete rewrite. Replaces the experimental orientation stub with a comprehensive getting-started guide covering: CLI usage (all 11 commands), MCP local setup (Claude Code + Cursor), MCP remote setup (Claude.ai / iOS / iPad), full tools reference tables, the unified MCP tool, typical workflow, subagents, and baseline knowledge configuration. Title changed from "Agents & MCP (Experimental)" to "Agents & MCP". Removed "experimental" tag.
+
+- **`canon/_compiled/epoch-E0002/README.md`** — Changed `audience: canon` to `audience: docs` and `exposure: nav` to `exposure: hidden` to exclude compiled artifacts from public navigation.
+
+- **Manifest coverage** — Manifest grew from 113 to 140 resources with 0 orphan files (files with valid frontmatter but excluded from manifest).
+
+---
+
 ## 0.30.0 — 2026-02-11
 
 **Camping System — Persistence, Diagnostics, Pivot Method, and Defaults**
