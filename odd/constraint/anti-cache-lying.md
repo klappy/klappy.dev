@@ -10,34 +10,23 @@ tags: ["constraints", "caching", "truth", "governance", "agents", "tco"]
 derives_from: "canon/values/axioms.md"
 epoch: E0005
 date: 2026-02-12
+governs: "All caching decisions for derived or mutable content in ODD-aligned systems"
+complements: "odd/constraint/anti-metric-laundering.md, canon/constraints/decision-rules.md"
 ---
 
 # Constraint: Anti-Cache Lying
 
-## Problem
-
-When derived or mutable content is cached, the system serves a past observation as though it were current truth.
-
-This does not require malicious intent.
-
-It emerges through:
-- TTL-based staleness windows ("it's probably still valid")
-- incomplete flush mechanisms (clearing some artifacts but not others)
-- pre-optimization without TCO measurement
-- silent serving of stale state with no signal to the consumer
-- debugging masks that hide the gap between cache and reality
-
-The result is confidence without contact with reality.
+> Caching derived or mutable content violates the Foundational Axioms. A cache with a TTL serves a past observation as current truth — a polite lie that masks reality, blocks debugging, and compounds as epistemic debt. If you need a flush strategy, you have already admitted the cache can lie. The only acceptable caching is content-addressed: the key IS the identity of the content (commit SHA, content hash, immutable tag). No TTL, no staleness window, no flush for correctness. Speed must come from architecture, not from pretending yesterday's answer is today's answer.
 
 ---
 
-## Core Principle
+## Summary — Caches of Derived Content Are Polite Lies That Violate Reality Is Sovereign
 
-**A cache of derived content is a polite lie. If you need a flush strategy, you have already admitted the cache can lie.**
+When derived or mutable content is cached with TTL-based expiration, the system serves a past observation as though it were current truth. This violates Axiom 1 (Reality Is Sovereign), eliminates the observation signal that would prompt investigation (Axiom 4), and trades system-wide integrity for a local latency win (Axiom 3). Engineers pre-optimize for request latency without measuring Total Cost of Ownership — debugging hours, stale-state incidents, incomplete flush mechanisms, cognitive overhead, trust erosion. This is the named anti-pattern Local Maxima Optimization (The Cache Trap). The only acceptable caching is content-addressed storage where the key is the proof: a commit SHA, a content hash, an immutable tag. Content-addressed storage cannot lie because a key mismatch triggers a fresh fetch — no TTL, no flush, no staleness window. This constraint was proven necessary by the OddKit Stale-Cache Incident (February 2026), where OddKit itself served stale canon for days without detection.
 
 ---
 
-## Non-Negotiable Rules
+## Non-Negotiable Rules — What This Constraint Prohibits and Requires
 
 1. Derived or mutable content MUST NOT be cached with TTL-based expiration.
    If the content can change independently of its cache key, the cache can lie.
@@ -53,6 +42,19 @@ The result is confidence without contact with reality.
 
 5. Speed MUST come from architecture, not from pretending yesterday's answer is today's answer.
    If the fetch path is too slow, fix the fetch path. Do not mask the problem with a cache.
+
+---
+
+## How Cache Lying Emerges — Without Malicious Intent
+
+This does not require falsified data or bad actors. It emerges through:
+- TTL-based staleness windows ("it's probably still valid")
+- incomplete flush mechanisms (clearing some artifacts but not others)
+- pre-optimization without TCO measurement
+- silent serving of stale state with no signal to the consumer
+- debugging masks that hide the gap between cache and reality
+
+The result is confidence without contact with reality.
 
 ---
 
@@ -72,9 +74,9 @@ None of these costs appear in latency benchmarks. All of them compound.
 
 ---
 
-## Required Warnings
+## Warning Phrases That Signal Cache Lying
 
-The following phrases indicate potential cache lying:
+The following phrases indicate the caching strategy has failed:
 
 - "Have you tried clearing the cache?"
 - "It works after a fresh deploy."
@@ -87,7 +89,7 @@ These are not reassurances. They are signals to investigate whether the caching 
 
 ---
 
-## The Content-Addressed Alternative
+## The Content-Addressed Alternative — Cache Keys That Cannot Lie
 
 Content-addressed caching is not lying because the key IS the identity of the content:
 
@@ -101,7 +103,7 @@ No TTL. No staleness window. No flush button. The cache key is the proof.
 
 ---
 
-## Agent Instruction
+## Agent Instruction — How Agents Must Handle Caching Decisions
 
 Agents must not:
 - introduce TTL-based caching of derived or mutable content
@@ -127,7 +129,7 @@ Per Axiom 3 (Integrity Is Non-Negotiable Efficiency): the fastest system is the 
 
 ---
 
-## Case Study: The OddKit Stale-Cache Incident
+## Case Study — The OddKit Stale-Cache Incident Proved This Constraint Necessary
 
 OddKit — the tool whose purpose is to enforce ODD epistemic discipline — cached its baseline canon documents with a staleness window. For days, it served stale canon content without detection. When the `invalidate_cache` action was invoked, it only cleared `.zip` files, leaving other stale derived content in place.
 
@@ -139,6 +141,8 @@ This violated:
 - **Axiom 3 (Integrity Is Non-Negotiable Efficiency)** — the "speed" of caching was purchased with days of silent lies
 
 Nobody noticed. That is the point.
+
+See `docs/incidents/oddkit-stale-cache-2026-02.md` for the full incident record.
 
 ---
 

@@ -17,7 +17,7 @@ execution_posture: operational
 
 ## Description
 
-The self-audit checklist defines how work should be self-reviewed before claiming completion. It covers nine areas: intended outcome, constraints applied, decision rules followed, verification performed, evidence produced, UX and behavior check, tradeoffs and risks, maintainability check, and confidence level. Minimum acceptable completion requires a stated outcome, at least one verification step, at least one piece of evidence, and acknowledgment of tradeoffs or unknowns. This replaces repeated back-and-forth questions about whether work was actually run and verified.
+The self-audit checklist defines how work should be self-reviewed before claiming completion. It covers ten areas: intended outcome, constraints applied, decision rules followed, verification performed, evidence produced, document structure validation, UX and behavior check, tradeoffs and risks, maintainability check, and confidence level. Minimum acceptable completion requires a stated outcome, at least one verification step, at least one piece of evidence, and acknowledgment of tradeoffs or unknowns. This replaces repeated back-and-forth questions about whether work was actually run and verified.
 
 ## Outline
 
@@ -26,6 +26,7 @@ The self-audit checklist defines how work should be self-reviewed before claimin
 - Decision Rules Followed
 - Verification Performed
 - Evidence Produced
+- Document Structure Check
 - UX & Behavior Check
 - Tradeoffs & Risks
 - Maintainability Check
@@ -100,6 +101,18 @@ If an item cannot be answered, that is a signal—not a failure.
   - logs
   - rendered output
 - Where can this evidence be found?
+
+---
+
+### 5b. Document Structure Check (If Applicable)
+
+If the deliverable is a document targeting `canon/`, `odd/`, or `docs/`:
+
+   • Does it pass the Writing Canon checklist (`canon/meta/writing-canon.md`)?
+   • Does the blockquote contain the full compressed argument?
+   • Is the Summary section self-contained?
+   • Do headers tell the story when read in sequence?
+   • Could an agent act on title + blockquote alone?
 
 ---
 
