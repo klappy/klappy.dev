@@ -11,19 +11,11 @@ tags: ["agents", "mcp", "oddkit", "getting-started"]
 
 # ODD Agents & MCP: Getting Started
 
-> oddkit v0.13.0 — Epistemic tooling for ODD-governed work.
+oddkit is the CLI and MCP server for ODD. It lets tools — terminals, IDEs, and Claude — query the ODD canon and get back citations, constraints, and epistemic guidance. It supports judgment; it does not automate decisions.
 
------
+ODD itself is a thinking system, not a framework. You can use it without any tooling at all — start with the [Epistemic Guide](/docs/agents/odd-epistemic-guide) and apply it manually. oddkit exists for people who want machine-assisted access to that same canon.
 
-## What this is
-
-ODD is a thinking system, not a framework. It defines how to reason about completeness, evidence, and authority in software work.
-
-oddkit is a CLI and MCP server that helps tools query the ODD canon. It supports judgment — it does not automate decisions. If your agent calls oddkit, it gets citations and constraints. What the agent does with them is still up to you.
-
------
-
-## Three ways to use oddkit
+All three interfaces expose the same 11 tools with the same names and behavior. One core, two wrappers:
 
 |Method          |Transport|Use Case                 |Setup                                     |
 |----------------|---------|-------------------------|------------------------------------------|
@@ -31,28 +23,20 @@ oddkit is a CLI and MCP server that helps tools query the ODD canon. It supports
 |**MCP (local)** |stdio    |Cursor, Claude Code      |`npx oddkit init --claude` or `--cursor`  |
 |**MCP (remote)**|HTTP     |Claude.ai, iOS, iPad, web|Connect `https://oddkit.klappy.dev/mcp`   |
 
-All three interfaces expose the same 11 tools with the same names and behavior. One core, two wrappers.
-
 -----
 
-## Option 1: Just read canon (zero install)
+## CLI quickstart
 
-No tools needed. Start with the [Epistemic Guide](/canon/agents/odd-epistemic-guide).
-
-ODD works without any CLI or MCP. Read the canon, apply judgment manually.
-
------
-
-## Option 2: CLI (no MCP required)
+The CLI requires no installation beyond npx. Every command follows the same pattern: a tool name, an `-i` flag for input, and an optional `-f` flag for output format (json, md, or tooljson). You start by orienting on your goal — oddkit tells you what epistemic phase you're in and what questions need answering before you proceed:
 
 ```bash
 # Orient on a goal — where does this idea sit epistemically?
 oddkit orient -i "Build a notification system"
 
-# Search the canon
+# Search the canon for constraints and prior decisions
 oddkit search -i "definition of done"
 
-# Challenge an assumption
+# Pressure-test a proposal against canon
 oddkit challenge -i "We should use a NoSQL database"
 
 # Check if you're ready to transition phases
@@ -61,16 +45,16 @@ oddkit gate -i "Ready to start implementation"
 # Pre-implementation check — constraints, pitfalls, relevant docs
 oddkit preflight -i "Implement QR login flow"
 
-# Validate a completion claim
+# Validate a completion claim against required evidence
 oddkit validate -i "Done with the UI update. Screenshot: ui.png"
 
-# Encode a decision as a durable record
+# Capture a decision as a durable record
 oddkit encode -i "We chose PostgreSQL over MongoDB for ACID compliance"
 
 # Fetch a specific canon document by URI
 oddkit get -i "klappy://canon/definition-of-done"
 
-# Browse available documentation
+# Browse all available documentation
 oddkit catalog
 
 # Check version and canon target
@@ -80,30 +64,21 @@ oddkit version
 oddkit invalidate-cache
 ```
 
-Run via npx without install: `npx github:klappy/oddkit orient -i "..."`
+Run any command via npx without a global install: `npx github:klappy/oddkit orient -i "..."`.
 
 -----
 
-## Option 3: MCP for Cursor / Claude Code (local, stdio)
+## MCP for Cursor and Claude Code
 
-### One-command setup
+Local MCP gives your IDE direct access to all 11 oddkit tools. Setup is one command — it writes the config and you restart:
 
 ```bash
-# Claude Code
-npx oddkit init --claude
-
-# Cursor
-npx oddkit init --cursor
-
-# Both at once
-npx oddkit init --all
+npx oddkit init --claude    # for Claude Code → writes ~/.claude.json
+npx oddkit init --cursor    # for Cursor → writes ~/.cursor/mcp.json
+npx oddkit init --all       # both at once
 ```
 
-This writes MCP config to the appropriate location (`~/.claude.json` or `~/.cursor/mcp.json`). Restart your IDE after running.
-
-### Manual config (if you prefer)
-
-Add to your MCP config:
+If you prefer manual config, add this to your MCP configuration:
 
 ```json
 {
@@ -119,148 +94,104 @@ Add to your MCP config:
 }
 ```
 
-### Verify
-
-After restart, your IDE should show oddkit tools. Test with:
-
-```bash
-oddkit search -i "What is epistemic challenge?"
-```
+After restart, verify with `oddkit search -i "What is epistemic challenge?"` — you should see citations from canon.
 
 -----
 
-## Option 4: MCP for Claude.ai / iOS / iPad (remote, HTTP)
+## MCP for Claude.ai, iOS, and iPad
 
-oddkit runs as a Cloudflare Worker at `https://oddkit.klappy.dev/mcp`. No local install needed.
+The remote MCP server runs on Cloudflare at `https://oddkit.klappy.dev/mcp`. No local install required. In Claude.ai, go to Settings → Connected Apps / MCP Servers, add a new server with that URL, name it "oddkit", and allow the tools when prompted.
 
-### Claude.ai setup
-
-1. Go to **Settings → Connected Apps / MCP Servers** (or the integrations menu)
-1. Add a new MCP server
-1. Enter the URL: `https://oddkit.klappy.dev/mcp`
-1. Name it `oddkit`
-1. Allow the tools when prompted
-
-### What you get
-
-Once connected, Claude.ai has access to all 11 oddkit tools natively. You can say things like:
-
-- "Orient me on this idea"
-- "Challenge the assumption that we need a database"
-- "Am I ready to start building?"
-- "Search the canon for definition of done"
-
-Claude calls the appropriate oddkit tool automatically.
+Once connected, you can talk to Claude naturally — say "orient me on this idea" and Claude calls orient, "challenge the assumption that we need a database" and Claude calls challenge, "am I ready to start building?" and Claude calls gate. The tools work identically to CLI and local MCP because they share the same core.
 
 -----
 
-## Available tools
+## The 11 tools
 
-oddkit exposes 11 tools. The CLI and MCP share one core implementation — same names, same behavior, same output shapes.
+oddkit exposes 11 tools across all interfaces. The CLI uses a space separator (`oddkit orient`), MCP uses an underscore (`oddkit_orient`). Everything else — arguments, behavior, output shape — is identical.
 
-### Epistemic workflow tools
+### Epistemic workflow
 
 |Tool       |What it does                                                                         |
 |-----------|-------------------------------------------------------------------------------------|
-|`orient`   |Assess where a goal or idea sits epistemically. Entry point for guidance.            |
+|`orient`   |Assess where a goal or idea sits epistemically. Entry point — call this first.       |
 |`challenge`|Pressure-test a claim, assumption, or proposal against canon constraints.            |
 |`gate`     |Check readiness to transition between epistemic phases. Blocks premature convergence.|
 |`encode`   |Capture a decision, insight, or boundary as a durable record.                        |
 
-### Knowledge tools
+### Knowledge
 
-|Tool     |What it does                                                                         |
-|---------|-------------------------------------------------------------------------------------|
-|`search` |Search canon and baseline docs by natural language query or tags.                    |
-|`get`    |Fetch a specific canonical document by `klappy://` URI.                              |
-|`catalog`|List all available documentation with categories, counts, and start-here suggestions.|
+|Tool     |What it does                                                                |
+|---------|----------------------------------------------------------------------------|
+|`search` |Search canon and baseline docs by natural language query or tags.           |
+|`get`    |Fetch a specific canonical document by `klappy://` URI.                     |
+|`catalog`|List all available documentation with categories and start-here suggestions.|
 
-### Validation & operations
+### Validation and operations
 
-|Tool              |What it does                                                                                   |
-|------------------|-----------------------------------------------------------------------------------------------|
-|`validate`        |Validate completion claims against required artifacts. Returns VERIFIED or NEEDS_ARTIFACTS.    |
-|`preflight`       |Pre-implementation check. Returns relevant docs, constraints, definition of done, and pitfalls.|
-|`version`         |Returns oddkit version and the authoritative canon target.                                     |
-|`invalidate-cache`|Force refresh of cached baseline/canon data.                                                   |
+|Tool              |What it does                                                                            |
+|------------------|----------------------------------------------------------------------------------------|
+|`validate`        |Check completion claims against required artifacts. Returns VERIFIED or NEEDS_ARTIFACTS.|
+|`preflight`       |Pre-implementation check. Returns constraints, definition of done, and pitfalls.        |
+|`version`         |Returns oddkit version and the authoritative canon target.                              |
+|`invalidate-cache`|Force refresh of cached baseline/canon data.                                            |
 
-### Interface naming
-
-|CLI              |MCP              |Cloudflare Worker|
-|-----------------|-----------------|-----------------|
-|`oddkit orient`  |`oddkit_orient`  |`oddkit_orient`  |
-|`oddkit search`  |`oddkit_search`  |`oddkit_search`  |
-|`oddkit validate`|`oddkit_validate`|`oddkit_validate`|
-|…                |…                |…                |
-
-The only difference is the separator: CLI uses a space, MCP uses an underscore. Everything else — arguments, behavior, output shape — is identical because all three call the same `handleUnifiedAction` core.
-
-### The unified `oddkit` MCP tool
-
-In MCP, a single `oddkit` tool accepts an `action` parameter and routes to any action. This is the recommended MCP entrypoint:
+In MCP, a unified `oddkit` tool also accepts an `action` parameter and routes to any action. This is the recommended MCP entrypoint — agents use a single tool for all epistemic operations:
 
 ```
 oddkit({ action: "orient", input: "Build a notification system" })
 oddkit({ action: "challenge", input: "We should use a NoSQL database" })
 oddkit({ action: "gate", input: "Ready to start implementation" })
-oddkit({ action: "search", input: "definition of done" })
 ```
 
 -----
 
 ## Typical workflow
 
-A natural oddkit-assisted workflow follows this pattern:
+A natural oddkit-assisted workflow follows this progression:
 
 1. **Orient** — "What phase is this idea in?" → surfaces unresolved items and assumptions
 1. **Search / Get** — Retrieve relevant canon constraints and prior decisions
 1. **Challenge** — Pressure-test proposals before committing
-1. **Gate** — Verify readiness before transitioning (e.g., from planning to execution)
+1. **Gate** — Verify readiness before transitioning (e.g., planning → execution)
 1. **Preflight** — Before implementation, get constraints, relevant files, and pitfalls
 1. **Encode** — Capture key decisions as durable records
 1. **Validate** — Verify completion claims have required artifacts
 
-You don't need all steps every time. Use what the situation calls for.
+You don't need all steps every time. A quick canon lookup might be just a search. A complex feature might touch all of them.
 
 -----
 
-## Subagents (optional, experimental)
+## Subagents
 
-ODD provides two complementary agent roles for IDEs:
+ODD provides two complementary prompt-based agent roles for IDEs, both optional and experimental. The **Epistemic Guide** acts as a cognitive governor — it gates premature action, surfaces uncertainty, and explains what evidence is needed. The **Scribe** captures learnings and decisions to ledgers and proposes promotion to canon when patterns stabilize.
 
-|Agent              |Purpose           |What it does                                                                  |
-|-------------------|------------------|------------------------------------------------------------------------------|
-|**Epistemic Guide**|Cognitive governor|Gates premature action, surfaces uncertainty, explains what evidence is needed|
-|**Scribe**         |Recorder          |Captures learnings and decisions to ledgers, proposes promotion to canon      |
-
-These are prompt-based subagents that complement oddkit's MCP tooling. They are derived from canon — if canon and subagent conflict, canon wins.
-
-Setup for Cursor:
+Both are derived from canon. If canon and a subagent conflict, canon wins. Do not edit subagent files directly — override behavior through canon instead.
 
 ```bash
 mkdir -p ~/.cursor/agents
 
 curl -o ~/.cursor/agents/odd-epistemic-guide.md \
-  https://raw.githubusercontent.com/klappy/klappy.dev/main/canon/agents/odd-epistemic-guide.md
+  https://raw.githubusercontent.com/klappy/klappy.dev/main/docs/agents/odd-epistemic-guide.md
 
 curl -o ~/.cursor/agents/odd-scribe.md \
-  https://raw.githubusercontent.com/klappy/klappy.dev/main/canon/agents/odd-scribe.md
+  https://raw.githubusercontent.com/klappy/klappy.dev/main/docs/agents/odd-scribe.md
 ```
 
 -----
 
-## Baseline knowledge
+## Baseline and overrides
 
-By default, oddkit uses [klappy.dev](https://github.com/klappy/klappy.dev) as the baseline canon (currently 238 documents). You can override this:
+By default, oddkit uses the klappy.dev repository as the baseline canon (currently 238 documents). You can override this for your own organization:
 
 ```bash
-# Via environment variable
+# Use your own canon repo
 export ODDKIT_BASELINE="https://github.com/yourorg/your-canon.git"
 
-# Via CLI flag
+# Pass on the command line
 oddkit search -i "What is done?" --baseline /path/to/local/canon
 
-# Pin to a specific branch/tag
+# Pin to a specific branch or tag
 export ODDKIT_BASELINE_REF="v1.0.0"
 ```
 
@@ -286,11 +217,4 @@ supersedes: klappy://canon/definition-of-done
 
 *Canon is required conceptually — you need to understand the rules. But you don't need any tool to read it.
 
------
-
-## See also
-
-- [ODD Epistemic Guide](/canon/agents/odd-epistemic-guide) — Start here
-- [Canon Index](/canon/README.md) — Browse constraints
-- [oddkit repository](https://github.com/klappy/oddkit) — Source and CLI docs
-- [MCP Reference](https://github.com/klappy/oddkit/blob/main/docs/MCP.md) — Full MCP integration details
+**See also:** [Epistemic Guide](/docs/agents/odd-epistemic-guide) · [Canon Index](/canon/README.md) · [oddkit repo](https://github.com/klappy/oddkit) · [MCP Reference](https://github.com/klappy/oddkit/blob/main/docs/MCP.md)
