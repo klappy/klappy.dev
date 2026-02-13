@@ -1,9 +1,0 @@
-{
-  "name": "klappy-canon",
-  "version": "0.28.0",
-  "updated_at": "2026-02-05",
-  "description": "Canonical orientation, constraints, decision rules, evidence policies, and ODD appendices used across klappy.dev.",
-  "public_entrypoint": "klappy://public/odd",
-  "canon_entrypoint": "klappy://meta/canon-index",
-  "notes": "Inventory only. Declares what exists and how it may be addressed. Does not prescribe workflows, agent behavior, or execution order."
-}

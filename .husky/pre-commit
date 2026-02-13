@@ -1,16 +1,5 @@
 #!/usr/bin/env sh
 
-# Sync content to public folder and generate manifest
-npm run sync
-
-# Generate the klappy book export
-npm run book
-
-# Build docs index for Librarian fast-lookup
-npm run docs:index
-
-# Stage the generated files so they are included in the commit
-git add public/content/
-git add public/content/manifest.json
-git add public/_compiled/index/
-git add klappy-dev-book-export.md
+# E0005.1: Pre-commit hooks for defunct pipeline removed.
+# sync-content, export-book, and build-docs-index scripts
+# were part of the lane-era pipeline (see D0016).
