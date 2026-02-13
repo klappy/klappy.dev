@@ -21,7 +21,7 @@ start_here_label: Definition of Done
 
 ## Description
 
-This policy is a specific application of the foundational axiom that every claim creates an evidence obligation. This policy defines completion requirements for all work: code, UI, architecture, automation, and AI-assisted outputs. Work is only done when it includes a change description, verification performed, observed behavior, evidence produced, and self-audit completed. Evidence must demonstrate actual behavior (screenshots, recordings, rendered output, test logs) and be produced after the change. Visual verification is required for UI work. The policy covers partial completion handling, explicit exceptions, and agent responsibilities.
+This policy is a specific application of the foundational axiom that every claim creates an evidence obligation. This policy defines completion requirements for all work: code, UI, architecture, automation, documents, and AI-assisted outputs. Work is only done when it includes a change description, verification performed, observed behavior, evidence produced, and self-audit completed. Evidence must demonstrate actual behavior (screenshots, recordings, rendered output, test logs) and be produced after the change. Visual verification is required for UI work. The policy covers partial completion handling, explicit exceptions, and agent responsibilities.
 
 ## Outline
 
@@ -46,6 +46,7 @@ This policy is a specific application of the foundational axiom that every claim
 - MUST provide visual proof for any work affecting UI, interaction, layout, or visible state
 - MUST NOT claim "done" without evidence; the correct response is "This is not complete yet"
 - MUST label partial completion explicitly with what was verified and what remains
+- MUST validate document deliverables against the Writing Canon checklist (`canon/meta/writing-canon.md`) before claiming completion
 
 ---
 
@@ -66,6 +67,7 @@ This policy is a specific application of the foundational axiom that every claim
 - **"This should work"**: Treating confidence as evidence
 - **"I reviewed the code"**: Treating inspection as observation of behavior
 - **"I didn't have time to test"**: Treating explanation as exemption from evidence
+- **"The document exists"**: Treating file creation as completion without validating progressive disclosure structure
 
 ---
 
@@ -134,6 +136,23 @@ Evidence must be:
 • produced after the change
 • specific to the task
 • clearly labeled
+
+---
+
+## 📄 Document Deliverables — Progressive Disclosure Is a Structural Requirement
+
+If the work produces a document targeting `canon/`, `odd/`, or `docs/`, the document must pass the Writing Canon checklist (`canon/meta/writing-canon.md`):
+
+1. **Title** names the concept and its stance
+2. **Blockquote** contains the complete compressed argument — an agent could act on title + blockquote alone
+3. **Metadata** includes epoch, derivation, governance with full file paths
+4. **Summary section** (`## Summary — [subtitle]`) is self-contained — could skip everything below and have the full picture
+5. **Headers** pass the scan test — reading them in sequence tells the document's story
+6. **No buried claims** — every key assertion is present in compressed form at a higher tier
+
+A document that exists but fails these tiers is not done. Existence is not quality.
+
+This was added after the Progressive Disclosure Failure incident (February 2026) — see `docs/incidents/progressive-disclosure-failure-2026-02.md`.
 
 ---
 

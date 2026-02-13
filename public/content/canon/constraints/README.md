@@ -40,6 +40,10 @@ Constraints define the baseline assumptions and design defaults applied to most 
 - [Boundary Transitions Require Deceleration](/canon/constraints/boundary-transitions-require-deceleration.md)
 - [ODD Is an Epistemic OS, Not a Value System](/canon/constraints/odd-is-epistemic-os-not-values.md)
 - [No Irreversible Action Without Epistemic Justification](/canon/constraints/no-irreversible-action-without-epistemic-justification.md)
+- **ODD-Level Constraints** (universal, in `/odd/constraint/`):
+  - [Anti-Metric Laundering](/odd/constraint/anti-metric-laundering.md) — A system that cannot surface its own blind spots will optimize to protect them
+  - [Anti-Cache Lying](/odd/constraint/anti-cache-lying.md) — A cache of derived content is a polite lie; only content-addressed storage is acceptable
+  - [Use Only What Hurts](/odd/constraint/use-only-what-hurts.md) — Prevents ODD from becoming heavy, coercive, or self-justifying
 
 ---
 

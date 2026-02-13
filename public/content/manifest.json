@@ -366,6 +366,25 @@
       ]
     },
     {
+      "uri": "klappy://odd/constraints/anti-cache-lying",
+      "path": "/odd/constraint/anti-cache-lying.md",
+      "title": "Constraint: Anti-Cache Lying",
+      "type": "text/markdown",
+      "audience": "odd",
+      "exposure": "nav",
+      "tier": 1,
+      "voice": "neutral",
+      "stability": "stable",
+      "tags": [
+        "constraints",
+        "caching",
+        "truth",
+        "governance",
+        "agents",
+        "tco"
+      ]
+    },
+    {
       "uri": "klappy://odd/constraints/anti-metric-laundering",
       "path": "/odd/constraint/anti-metric-laundering.md",
       "title": "Constraint: Anti-Metric Laundering",
@@ -1312,6 +1331,22 @@
         "decisions",
         "conceptual",
         "philosophy"
+      ]
+    },
+    {
+      "uri": "klappy://odd/constraint",
+      "path": "/odd/constraint/README.md",
+      "title": "ODD Constraints",
+      "type": "text/markdown",
+      "audience": "odd",
+      "exposure": "nav",
+      "tier": 1,
+      "voice": "neutral",
+      "stability": "evolving",
+      "tags": [
+        "odd",
+        "constraints",
+        "index"
       ]
     },
     {

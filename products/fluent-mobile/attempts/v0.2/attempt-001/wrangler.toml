@@ -1,7 +1,0 @@
-# Cloudflare Pages configuration for Fluent Mobile PoC v0.2
-name = "fluent-mobile-poc"
-compatibility_date = "2024-01-01"
-
-# Pages project - serves static files from src/
-[site]
-bucket = "./src"

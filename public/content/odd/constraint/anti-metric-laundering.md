@@ -85,6 +85,13 @@ If an agent cannot demonstrate how the system fails, it is not yet trustworthy.
 
 ---
 
+## See Also — Sibling Constraints
+
+- [Anti-Cache Lying](anti-cache-lying.md) — A cache of derived content is a polite lie. Same pattern, different mechanism: metric laundering optimizes measurements, cache lying optimizes latency — both at the cost of contact with reality.
+- [Use Only What Hurts](use-only-what-hurts.md) — Prevents ODD from becoming heavy, coercive, or self-justifying.
+
+---
+
 ## Canonical Tie-In
 
 This constraint exists because:

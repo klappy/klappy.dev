@@ -35,6 +35,7 @@ Decision rules describe how decisions are made when multiple valid options exist
 - Say "I Don't Know" Early
 - Prefer One-Shot Builds
 - Hard-Code Protocols, Not Domain Tables
+- Measure Total Cost Before Optimizing
 
 ---
 
@@ -46,6 +47,7 @@ Decision rules describe how decisions are made when multiple valid options exist
 - MUST NOT consider work complete unless it is verified with evidence
 - MUST prefer one-shot builds over steering multi-turn misses; fix inputs and restart clean
 - MUST name tradeoffs as part of design, not as postmortem
+- MUST NOT accept "it will be faster" as justification for caching or optimization without Total Cost of Ownership evidence
 
 ---
 
@@ -68,6 +70,7 @@ Decision rules describe how decisions are made when multiple valid options exist
 - **Steering a Miss**: "Just one more tweak" turning into extended multi-turn patching
 - **Hidden Tradeoffs**: Decisions feeling arbitrary in hindsight; future changes requiring archaeology
 - **Confidence Without Verification**: Bugs discovered by users instead of builders
+- **Local Maxima Optimization (The Cache Trap)**: Optimizing a single metric while ignoring TCO; "it's faster" without measuring debugging hours, staleness incidents, or trust erosion
 
 ---
 
@@ -315,6 +318,26 @@ I do hard-code protocol contracts that define interoperability:
 • Large in-code tables that drift from reality (e.g., enumerations maintained by hand)
 • Domain updates require redeploys without justification
 • Integrations fail because the “contract” was implicit or inconsistent
+
+---
+
+## 15. Measure Total Cost Before Optimizing
+
+I do not accept "it will be faster" as justification without Total Cost of Ownership.
+
+**How I apply this**
+• I require measurement of the cache-less or unoptimized path before accepting optimization
+• I count debugging hours, maintenance burden, staleness risk, cognitive overhead, and trust erosion as costs
+• I treat "pre-optimization" without TCO evidence as a claim without payment (Axiom 2)
+• I recognize that local maxima (faster requests) purchased at the cost of system-wide integrity is not optimization — it is debt
+
+**Signals this rule was violated**
+• "Have you tried clearing the cache?" appears in debugging conversations
+• An optimization is introduced on day one without benchmarking the unoptimized path
+• The team spends more time managing the optimization than it would have spent without it
+• Nobody can say what the system's actual state is without first flushing something
+
+**See also:** `odd/constraint/anti-cache-lying.md` — the canonical constraint on caching derived content
 
 ---
 

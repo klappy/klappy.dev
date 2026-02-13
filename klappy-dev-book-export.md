@@ -5,8 +5,8 @@
 ================================================================================
 
 
-Generated: 2026-02-12T02:56:02.961Z
-Total Files: 323
+Generated: 2026-02-13T04:11:56.890Z
+Total Files: 321
 
 This is a documentation export of all markdown files from the klappy.dev
 repository. It includes lane guidance docs but excludes implementation
@@ -21,11 +21,10 @@ details (attempts, version folders, source code).
 - **.cursor** (1 files)
 - **About** (6 files)
 - **Canon** (103 files)
-- **Documentation** (109 files)
+- **Documentation** (153 files)
 - **Infrastructure** (10 files)
 - **Interfaces & Contracts** (6 files)
-- **ODD (Outcomes-Driven Development)** (26 files)
-- **Products** (49 files)
+- **ODD (Outcomes-Driven Development)** (29 files)
 - **Projects** (6 files)
 - **Visual Design System** (5 files)
 
@@ -724,7 +723,7 @@ This map provides navigational links to ALL content in the repository, including
 
 **Subdirectories:**
 - `/odd/appendices/` — Patterns: progressive-elevation, quantum-development, visual-evolution
-- `/odd/constraint/` — Core constraints: use-only-what-hurts, anti-metric-laundering
+- `/odd/constraint/` — Core constraints: use-only-what-hurts, anti-metric-laundering, anti-cache-lying
 - `/odd/contract/` — Epistemic contracts
 - `/odd/decisions/` — ODD-level decision records
 
@@ -763,8 +762,10 @@ This map provides navigational links to ALL content in the repository, including
 | [/docs/oddkit/WHY.md](/docs/oddkit/WHY.md) | **Why oddkit exists** — Start here for oddkit |
 | [/docs/appendices/ATTEMPTS.md](/docs/appendices/ATTEMPTS.md) | Attempt lifecycle |
 | [/docs/TRUTH_MAP.md](/docs/TRUTH_MAP.md) | Authoritative sources per domain |
+| [/docs/incidents/README.md](/docs/incidents/README.md) | Incident records — failures that changed the canon |
 
 **Subdirectories:**
+- `/docs/incidents/` — Incident records documenting failures that led to canon changes
 - `/docs/oddkit/` — oddkit reference (ABOUT, SYSTEM-MAP, modes, WHY)
 - `/docs/agents/` — Agent role definitions and patterns (librarian, validation, discovery, ODD agents)
 - `/docs/orchestrator/` — Orchestrator guides (QUICKSTART)
@@ -8814,6 +8815,6338 @@ It is about **not forgetting what mattered before certainty arrived**.
 
 
 --------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/PRD.md
+--------------------------------------------------------------------------------
+
+# PRD: ODD Agent Skill — Tier-Aware Pack Compiler
+
+| Field             | Value       |
+| ----------------- | ----------- |
+| **PRD Version**   | v1.4.1      |
+| **Lane**          | agent-skill |
+| **Status**        | Active      |
+| **Created**       | 2026-01-21  |
+| **Updated**       | 2026-01-22  |
+| **Author**        | Chris Klapp |
+| **Canon Version** | 0.10.0      |
+
+---
+
+## v1.4.1 Scope
+
+**Release: v1.4.1 — Tier-Aware Pack Compiler**
+
+**Goal:** Make pack compilation tier-aware by implementing:
+
+1. **Discovery** — for default pack types (folder scan + filters)
+2. **Tier 0 exclusion** — always, even if explicitly listed
+3. **Tier-based projection** — Tier 1/2/3 → high/medium/low
+4. **Auditability** — via `--plan` output and CI checks
+
+**v1.4.1 explicitly includes:**
+
+- Tier-aware compilation (discovery + exclusion + projection + plan)
+
+**v1.4.1 fixes:**
+
+- Tier 0 inclusion bug (docs marked `tier: 0` were being included)
+- Tier projection ignored bug (all docs compiled at full detail)
+
+**Non-goals (explicit):**
+
+- No new projection formats beyond existing high/medium/low definitions
+- No content rewrites of docs in this release
+- No new UI/UX changes outside CLI/compiler outputs
+
+---
+
+## Interface Contracts
+
+This lane MUST remain compatible with:
+
+- manifest >=2.0.0 <3.0.0
+- attempt-cli >=2.0.0 <3.0.0
+
+---
+
+## Objective
+
+Transform the prd-guide pack from an informational resource (teaches ODD) into an interrogative system (extracts PRDs from humans) by adding stage typing, asset intake, and a formal elicitation loop.
+
+---
+
+## Background
+
+**v1.2.4 delivered**: Canon refresh to v0.8.0 with Cognitive Partitioning and Tool Specialization.
+
+**Problem identified**: External review found the pack "conceptually sound but operationally incomplete":
+
+| Strength | Gap |
+|----------|-----|
+| Canonical alignment unusually strong | No structured elicitation loop |
+| Compilation philosophy correct | No stage-aware questioning |
+| Agent authority properly scoped | No asset-gathering protocols |
+| Treats PRDs as evolving intent | No explicit interview modes |
+
+The pack teaches agents how ODD works, but does not fully teach agents how to elicit a PRD from a human.
+
+**v1.2.x INSTRUCTIONS.md** has 7 stages, but:
+
+- Jumps straight to "What outcome are you trying to achieve?"
+- No classification of PRD type (PoC vs Feature vs Fix)
+- No inventory of existing assets
+- No explicit agent role declaration
+- No ambiguity capture stage
+
+**v1.3 addresses this** by adding:
+
+- Agent Role Declaration (elicitation system, not author)
+- PRD Stage Typing gate before questioning
+- Resequenced Interview Loop with Inventory and Ambiguity Capture
+- Asset Intake Contract with guidance for partial information
+
+**v1.4.0 defined**: Tiered context construction requirements (what the system should do).
+
+**v1.4.1 implements**: The compiler changes to actually enforce those requirements.
+
+---
+
+## Current Behavior (Bug)
+
+The current compiler does not enforce the tier system:
+
+| Issue | Current Behavior | Required Behavior |
+|-------|------------------|-------------------|
+| Selection mode | Explicit whitelist only | Support discovery + curated |
+| Tier 0 handling | Included if in whitelist | Always excluded |
+| Projection | Full detail for all tiers | Tier 1→high, Tier 2→medium, Tier 3→low |
+| Tier metadata | Ignored | Read from frontmatter, enforce |
+| Auditability | None | `--plan` output with decisions |
+
+**Critical example — Tier 0 violation:**
+
+`odd/README.md` has `tier: 0` (scope exclusion) but was included in compiled packs because the compiler uses a whitelist that ignores tier metadata.
+
+**Root cause:** The compiler concatenates files from an explicit list without reading or enforcing tier frontmatter.
+
+---
+
+## Functional Requirements (v1.4.1)
+
+### FR-1: Tier Metadata Parsing
+
+The compiler must read frontmatter and determine `tier: 0|1|2|3` per file.
+
+**Missing tier handling:**
+
+- Default: missing tier → Tier 3 (include at low projection)
+- Must emit a warning in plan/audit output when tier is missing
+
+**Implementation:** `readFrontmatterTier(filePath) → { tier, warnings }`
+
+### FR-2: Tier 0 Exclusion Rule (Hard Rule)
+
+Tier 0 files must never be included in any pack output.
+
+- This includes explicitly listed/whitelisted files
+- Tier 0 exclusion must be visible in `--plan` output with `reason: excluded:tier0`
+- No exceptions, no overrides
+
+### FR-3: Pack Selection Modes
+
+Support two pack selection modes:
+
+| Mode | Description | Example |
+|------|-------------|---------|
+| `curated` | Explicit file list | prd-guide (existing behavior, but now tier-enforced) |
+| `discovered` | Folder scan + filters | default-odd-context (new) |
+
+Both modes must enforce:
+
+- Tier 0 exclusion
+- Tier-based projection
+
+### FR-4: Tier-Based Projection
+
+Projection must happen per-file before concatenation.
+
+| Tier | Projection | Output |
+|------|------------|--------|
+| Tier 1 | `high` | Full content |
+| Tier 2 | `medium` | Frontmatter + description + outline |
+| Tier 3 | `low` | Title + one-line summary |
+
+**Implementation:** `projectFile(file, projection) → projectedText`
+
+### FR-5: Auditability (`--plan`)
+
+Add a compiler flag `--plan` that outputs per-file decisions:
+
+| Field | Description |
+|-------|-------------|
+| `path` | File path |
+| `tier` | 0, 1, 2, or 3 |
+| `selected_by` | `curated` or `discovered` |
+| `projection` | `high`, `medium`, `low`, or `excluded` |
+| `included` | `true` or `false` |
+| `reason` | `tier0`, `missing`, `filtered`, etc. |
+| `tokens` | Estimated token count (recommended) |
+
+Output format: table (human) or JSON (CI).
+
+### FR-6: Deterministic Ordering
+
+Pack output ordering must be deterministic:
+
+- Sort by path (or explicit stable ordering rules)
+- Plan output must reflect final order
+- Same inputs → same output across runs
+
+---
+
+## Core Requirements (v1.4.0, retained)
+
+### Default Context Construction
+
+The agent skill shall construct a default odd-context-pack using tier-weighted projection detail.
+
+| Document Tier | Default Projection Detail |
+|---------------|---------------------------|
+| Tier 1        | `high` (full content)     |
+| Tier 2        | `medium` (structural)     |
+| Tier 3        | `low` (minimal)           |
+
+**Requirements:**
+
+1. **Tier determines default detail** — The agent shall project documents at detail levels corresponding to their epistemic tier unless explicitly overridden.
+
+2. **No tier flattening** — The agent shall not equalize detail across tiers. Tier 1 content receives more tokens than Tier 3 content by default.
+
+3. **No folder inference** — The agent shall determine epistemic obligation from document tier metadata, not from folder location.
+
+4. **Degradation is explicit** — When document structure is insufficient for the requested projection detail, the agent shall surface this degradation rather than compensating.
+
+5. **No synthesized context** — The agent shall use existing document structure for projection. It shall not summarize, synthesize, or generate context to fill gaps.
+
+### Agent Responsibilities
+
+The agent shall:
+
+- Respect epistemic obligation as encoded in document tiers
+- Treat Tier 3 content at low detail as awareness only, not reasoning input
+- Surface when documents lack structure required for projection
+- Proceed with available structure without inventing compensating context
+
+The agent shall not:
+
+- Infer obligation from folder hierarchy
+- Special-case READMEs or index files for elevated inclusion
+- Promote Tier 3 content to higher detail for perceived convenience
+- Summarize or synthesize documentation content
+
+---
+
+## Non-Goals (v1.4)
+
+These behaviors are explicitly excluded from this release to prevent design regression:
+
+| Non-Goal | Rationale |
+|----------|-----------|
+| README/index file special-casing | Navigation documents are typically Tier 3; elevating them would distort context weighting |
+| Convenience-based tier promotion | Tier 3 content exists for awareness, not reasoning; promoting it undermines epistemic discipline |
+| Summarization or synthesis | Projection uses authored structure only; missing structure is a signal, not a gap to fill |
+| Folder-based obligation inference | Tiers are document properties, orthogonal to folder location |
+| Smart exceptions | No heuristics that override tier-to-detail mapping based on content analysis |
+
+---
+
+## In Scope (v1.4)
+
+### New in v1.4
+
+#### 1. Tier-Weighted Context Pack Assembly
+
+Implement default context construction that maps document tiers to projection detail levels:
+
+- Tier 1 documents projected at `high` detail (full content)
+- Tier 2 documents projected at `medium` detail (frontmatter, description, outline)
+- Tier 3 documents projected at `low` detail (title, one-line summary)
+
+#### 2. Projection Detail Enforcement
+
+Add validation that the assembled context pack respects tier-to-detail mapping:
+
+- Tier 1 content must receive highest token allocation
+- Tier 3 content must not exceed minimal token allocation
+- Detail level must be determinable from tier without additional logic
+
+#### 3. Degradation Surfacing
+
+When documents lack structure required for their projected detail level:
+
+- Return what structure exists (no fallback to full content silently)
+- Include degradation indicator in pack output
+- Do not synthesize missing structural elements
+
+### From v1.3 (retained)
+
+### From v1.2.4 (retained)
+
+- Lane-owned Cloudflare Pages deployment
+- Versioned asset URLs
+- Canon sources at v0.8.0
+- INSTRUCTIONS.md as ephemeral artifact
+- Compile plan in lane (`src/compile-plan.json`)
+
+### New in v1.3
+
+#### 1. Agent Role Declaration
+
+Add explicit framing at the top of INSTRUCTIONS.md:
+
+```markdown
+## Agent Role
+
+You are not a PRD author.
+You are a PRD elicitation system that helps humans externalize intent, constraints, uncertainty, and evidence.
+
+You extract. You do not invent.
+```
+
+#### 2. PRD Stage Typing Gate
+
+Add classification before current Stage 1:
+
+| Stage Type | Evidence Expectations | Ambiguity Tolerance |
+|------------|----------------------|---------------------|
+| PoC / Exploration | Minimal, learning-focused | High |
+| Feature | Required, scope bounded | Medium |
+| Fix | Root cause required, regression risk | Low |
+| Product slice | End-to-end verification | Medium |
+| Refactor / migration | No user-facing change | Low |
+
+Questions:
+- "Is this exploring something new, building something known, or fixing something broken?"
+- "Will users see a change, or is this internal?"
+
+#### 3. Formal Interview Loop (Resequenced)
+
+| Phase | v1.2.x Stage | v1.3 Phase |
+|-------|--------------|------------|
+| NEW | - | **0. Stage Identification** — What type of PRD is this? |
+| NEW | - | **1. Orient** — What are we trying to learn or change? |
+| NEW | - | **2. Inventory** — What assets already exist? |
+| Moved | Stage 4 | **3. Constraint Surfacing** — Time, scope, reversibility, risk |
+| Moved | Stage 1 | **4. Outcome Framing** — What would "better" look like? |
+| Moved | Stage 2 | **5. Evidence Definition** — How will we know? |
+| NEW | - | **6. Ambiguity Capture** — What is still unclear or contested? |
+| Same | Stages 3,5,6,7 | **7. Draft Assembly** — Non-goals, risks, final PRD |
+
+Key changes:
+- Inventory BEFORE outcome (you can't define what you want until you know what you have)
+- Explicit ambiguity capture (ODD acknowledges uncertainty)
+- Stage identification gates the entire flow
+
+#### 4. Asset Intake Contract
+
+| Type | Examples | When missing |
+|------|----------|--------------|
+| Text | docs, notes, prior PRDs | Proceed with "no prior docs" flag |
+| Media | screenshots, recordings, mockups | Proceed if non-UI; require for UI work |
+| Links | repos, tickets, deployed systems | Note as "greenfield" if no links |
+| Oral testimony | interview answers | This is the PRD session itself |
+
+Guidance:
+- "What documentation already exists for this?"
+- "Do you have any screenshots, mockups, or recordings?"
+- "Is there a repo, ticket, or deployed system I should know about?"
+- Proceed with what's available; don't block on missing assets
+
+---
+
+## Explicitly Out of Scope (v1.4.1)
+
+- Changes to distribution architecture (Cloudflare Pages setup unchanged)
+- Multi-pack compilation (that's v1.5+)
+- Role-specific packs (that's v1.5+)
+- Renaming the pack (keep "prd-guide" for now)
+- Override mechanisms for tier-to-detail mapping (future consideration)
+- Dynamic detail adjustment based on token budget (future consideration)
+- New projection formats (stick to high/medium/low)
+- Content rewrites of existing docs
+
+---
+
+## Implementation Plan (v1.4.1)
+
+### Task 1: Create Tier Reader
+
+Implement `readFrontmatterTier(filePath)`:
+
+- Returns `{ tier: number, warnings: string[] }`
+- Parses YAML frontmatter
+- Returns tier value (0, 1, 2, or 3)
+- Missing tier → 3 with warning
+
+### Task 2: Implement Selection Modes
+
+**Curated mode:** `selectFilesCurated(packConfig)`
+
+- Read explicit file list from config
+- Pass to tier enforcement
+
+**Discovered mode:** `selectFilesDiscovered(packConfig)`
+
+- Allowed roots (e.g., `canon/`, `odd/`, `docs/`)
+- Ignore patterns (e.g., `**/node_modules/**`)
+- Only markdown (`.md` files)
+
+### Task 3: Apply Tier Enforcement + Projection
+
+Implement `applyTierRules(files)`:
+
+- Returns `decisions[]` with per-file outcomes
+- Enforce Tier 0 exclude (hard rule)
+- Assign projection per tier (1→high, 2→medium, 3→low)
+
+### Task 4: Projection Execution
+
+Implement `projectFile(file, projection)`:
+
+- `high`: return full content
+- `medium`: return frontmatter + description + outline
+- `low`: return title + one-line summary (blockquote)
+- Concatenate projected results
+
+### Task 5: Add `--plan` Flag
+
+- Output table (human readable) and/or JSON (CI)
+- Include: path, tier, selected_by, projection, included, reason
+- Include token/word estimates (recommended)
+
+### Task 6: CI Tests
+
+Add automated checks for:
+
+- AC-1: Tier 0 exclusion
+- AC-2: Projection correctness
+- AC-3: Discovery coverage threshold
+- AC-4: Curated pack tier enforcement
+- AC-5: Plan artifact generation
+
+---
+
+## Acceptance Criteria (v1.4.1)
+
+These are CI-friendly gates written as Given/When/Then.
+
+### AC-1: Tier 0 Never Included
+
+```
+Given a Tier 0 doc exists (e.g., odd/README.md with tier: 0)
+When any pack is compiled
+Then Tier 0 docs are excluded
+And appear as excluded in --plan output with reason: tier0
+```
+
+### AC-2: Projection Correctness
+
+```
+Given Tier 2 and Tier 3 docs exist
+When a pack is compiled
+Then Tier 2 docs are NOT compiled at high detail
+And Tier 3 docs are NOT compiled at high detail
+And Tier 1 docs ARE compiled at high detail
+```
+
+### AC-3: Discovery Coverage Guardrail
+
+```
+Given repo has >100 eligible docs (Tier 1-3)
+When compiling default-odd-context via discovery
+Then compiled file count >= 60 (catches regression to whitelist)
+```
+
+### AC-4: Curated Pack Still Tier-Enforces
+
+```
+Given prd-guide uses a curated list
+When compiling prd-guide
+Then Tier 0 files in list are excluded
+And Tier 2/3 files are projected (not full detail)
+```
+
+### AC-5: `--plan` Required in CI
+
+```
+Given CI runs on PR
+When pack compilation runs
+Then CI produces a plan artifact
+And CI fails if any Tier 0 inclusion occurs
+```
+
+---
+
+## Success Criteria
+
+### v1.4.1 — Tier-Aware Compiler
+
+- [ ] Compiler reads tier from frontmatter
+- [ ] Tier 0 docs are never included (hard rule)
+- [ ] Tier 1 → high, Tier 2 → medium, Tier 3 → low projection
+- [ ] `--plan` flag outputs per-file decisions
+- [ ] Discovery mode works for default-odd-context
+- [ ] Curated mode still works for prd-guide (with tier enforcement)
+- [ ] Output ordering is deterministic
+- [ ] Missing tier defaults to Tier 3 with warning
+
+### v1.4.0 — Tiered Context Construction (retained)
+
+- [ ] Default context pack assembles with tier-weighted detail mapping
+- [ ] No tier-flattening occurs in assembled context
+- [ ] Degradation is surfaced when document structure is insufficient
+- [ ] README/index files do not receive elevated detail due to file type
+
+### v1.4.0 — Agent Behavior (retained)
+
+- [ ] Agent behavior demonstrates tier-weighted context usage
+- [ ] Tier 3 documents do not materially influence agent reasoning unless explicitly requested
+- [ ] Agent does not synthesize context to compensate for missing document structure
+
+### v1.3 — Elicitation Enhancement (retained)
+
+- [ ] INSTRUCTIONS.md includes Agent Role Declaration section
+- [ ] INSTRUCTIONS.md includes Stage Identification gate (Phase 0)
+- [ ] INSTRUCTIONS.md includes Inventory phase (Phase 2)
+- [ ] INSTRUCTIONS.md includes Ambiguity Capture phase (Phase 6)
+- [ ] INSTRUCTIONS.md includes Asset Intake guidance
+- [ ] Interview loop resequenced per spec
+- [ ] Stage Typing table included with evidence expectations
+- [ ] Pack available at versioned URL (`/v1.4/prd-guide-pack.md`)
+- [ ] `/latest/` updated to serve v1.4 pack
+- [ ] `latest/README.md` updated to reference v1.4
+
+---
+
+## Definition of Done
+
+An attempt against this PRD is complete when:
+
+### v1.4.1 — Compiler Implementation
+
+- [ ] `default-odd-context` compiles via discovery (not whitelist)
+- [ ] Tier 0 exclusion is enforced in all packs
+- [ ] Tier 1/2/3 projection mapping enforced
+- [ ] `--plan` flag exists and outputs readable decisions
+- [ ] CI blocks Tier 0 inclusion
+- [ ] CI blocks projection violations
+- [ ] Pack compilation is deterministic across runs
+- [ ] Missing tier defaults to Tier 3 with warning
+
+### v1.4.1 — Acceptance Criteria Verification
+
+- [ ] AC-1 passes: Tier 0 never included
+- [ ] AC-2 passes: Projection correctness verified
+- [ ] AC-3 passes: Discovery coverage >= threshold
+- [ ] AC-4 passes: Curated packs tier-enforce
+- [ ] AC-5 passes: `--plan` in CI with failure on Tier 0
+
+### Context Construction (v1.4.0, retained)
+
+- [ ] Context pack assembly implements tier-to-detail mapping
+- [ ] No special-casing for README or index files
+- [ ] Degradation surfaced when structure missing
+
+### INSTRUCTIONS.md Content (v1.3, retained)
+
+- [ ] Agent Role Declaration added at top
+- [ ] Stage Identification (Phase 0) defined with PRD type classification
+- [ ] Inventory (Phase 2) defined with asset intake questions
+- [ ] Ambiguity Capture (Phase 6) defined with uncertainty documentation
+- [ ] Interview loop has 8 phases (0-7) in correct order
+
+### Compilation
+
+- [ ] Compile succeeds with new tier-aware compiler
+- [ ] Output written to attempt's `evidence/` folder
+- [ ] Plan output included in evidence
+- [ ] Provenance header shows canon v0.10.0 source hashes
+
+### Distribution
+
+- [ ] `public/agent-skill/v1.4.1/prd-guide-pack.md` created
+- [ ] `public/agent-skill/latest/prd-guide-pack.md` updated
+- [ ] `public/agent-skill/latest/README.md` updated (version reference)
+- [ ] Public URL verified with HTTP 200
+
+### Evidence Required
+
+- [ ] `--plan` output showing tier enforcement
+- [ ] Diff showing Tier 0 exclusion vs previous version
+- [ ] Screenshot or log of successful compile output
+- [ ] HTTP 200 verification of preview URL
+- [ ] CI run showing AC-1 through AC-5 passing
+- [ ] Self-audit completed
+
+---
+
+## Pack Sources
+
+The compiled pack concatenates these files:
+
+### Canon Sources (v0.10.0)
+
+| # | Source | Purpose |
+|---|--------|---------|
+| 1 | `canon/README.md` | Canon orientation, meta rules, confidence scores |
+| 2 | `odd/README.md` | ODD folder index, core thesis |
+| 3 | `odd/terminology.md` | **NEW** Constrained vocabulary and disambiguation |
+| 4 | `odd/manifesto.md` | Full ODD philosophy |
+| 5 | `odd/cognitive-partitioning.md` | Scaling pattern for reasoning systems |
+| 6 | `odd/appendices/README.md` | Portable appendices summarized |
+| 7 | `odd/decisions/README.md` | ODD conceptual decisions |
+| 8 | `canon/odd/appendices/tool-specialization.md` | Tool isolation pattern |
+| 9 | `canon/constraints.md` | Baseline assumptions |
+| 10 | `canon/decision-rules.md` | Decision heuristics |
+| 11 | `canon/definition-of-done.md` | Completion criteria |
+| 12 | `canon/self-audit.md` | Review checklist |
+| 13 | `docs/PRD/PRD_TEMPLATE.md` | PRD structure |
+
+### Generated Sources (ephemeral)
+
+| # | Source | Purpose |
+|---|--------|---------|
+| 13 | `INSTRUCTIONS.md` | **UPDATED** Interactive elicitation guidance |
+
+**Note:** INSTRUCTIONS.md is the primary deliverable of this PRD. It must include all elicitation enhancements.
+
+---
+
+## Constraints
+
+- **Tier-detail mapping is fixed**: Tier 1 → high, Tier 2 → medium, Tier 3 → low. No adaptive logic.
+- **No synthesis**: Projection uses existing document structure only. Missing structure degrades output explicitly.
+- **No special cases**: READMEs, indexes, and navigation files receive tier-appropriate treatment, not elevated treatment.
+- **Same distribution**: Uses existing Cloudflare Pages setup
+- **Same canon sources**: v0.10.0 sources (includes terminology.md)
+- **ODD formula**: Pack + CONTRACT + PRD = Attempt (nothing else)
+- **Ephemeral artifacts**: Generated code (INSTRUCTIONS.md) not persisted
+- **Lane isolation**: All changes stay within agent-skill lane
+- **Backward compatible**: Existing PRD guidance still works (enhanced, not replaced)
+
+---
+
+## Risks
+
+| Risk | Mitigation |
+|------|------------|
+| Missing tier defaults to Tier 3 may silently include docs at low fidelity | Emit warnings in plan output; clean up missing tiers in follow-up |
+| Discovery may balloon pack size if ignore rules wrong | Thresholds + token estimates in plan; AC-3 guards against regression |
+| Projection quality depends on projector implementation | Deterministic projection; snapshot tests; explicit degradation |
+| Tier 0 enforcement may break existing workflows | Tier 0 is explicit opt-out; docs must be updated if incorrectly marked |
+| Future engineers may add "smart" exceptions | Non-goals section explicitly forbids; acceptance criteria test for absence |
+| Documents lacking structure degrade projection | Degradation is explicit by design; documents should follow templates |
+
+---
+
+## Attempt Policy
+
+This PRD may be attempted multiple times.
+
+- Each attempt is evaluated independently
+- Failed attempts inform future attempts or PRD revisions
+- Attempts are sealed when CLOSED or ABANDONED
+
+Attempts live at: `v1.4.1/attempts/attempt-NNN/`
+
+---
+
+## Related Documents
+
+- v1.3.1 Prior: Previous elicitation-focused release
+- v1.2.4 Champion: [H0007](./history/H0007-v1.2.4-champion.md)
+- Roadmap: [ROADMAP.md](./ROADMAP.md)
+- Context Packs and Projection Detail: `/docs/context-packs-and-projection-detail.md`
+- Epistemic Obligation and Document Tiers: `/canon/epistemic-obligation-and-document-tiers.md`
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/decisions/D0001-version-first-structure.md
+--------------------------------------------------------------------------------
+
+# D0001 — Version-First Folder Structure
+
+## Decision
+
+This lane uses version-first folder organization (`vX.Y/src/`, `vX.Y/dist/`, `vX.Y/attempts/`) instead of the canon default (`src/`, `dist/`, `attempts/prd-vX.Y/`).
+
+## Status
+
+**Active**
+
+## Context
+
+PRD v1.2 failed because it required cross-lane modification. During the post-mortem, we discovered that:
+
+1. Dependents need stable URLs to pin to specific versions
+2. Assets must be immutable once published
+3. Each version should be fully self-contained for auditability
+
+The canon default structure makes versioning implicit (buried in attempts folder). This lane needs explicit versioning at the top level.
+
+## Why
+
+- **Immutable releases**: Published assets are versioned by PRD version and persist indefinitely
+- **Dependent stability**: Consumers can pin to specific versions (e.g., `v1.1/dist/prd-guide-pack.md`)
+- **Clear boundaries**: Each version is fully self-contained
+- **Parallel development**: Multiple versions can evolve independently
+- **Auditability**: When a version is frozen, everything in that folder is frozen
+
+## Consequences
+
+- ✅ Versioned URLs are stable and predictable
+- ✅ Failed versions are preserved alongside successful ones
+- ✅ Easy to see all versions at a glance
+- ⚠️ Deviates from canon default (documented in CONTRACT.md)
+- ⚠️ Requires updating paths in multiple places when referencing
+
+## Relationship to Canon
+
+- **Overrides**: Canon default of `attempts/prd-vX.Y/` nesting
+- **Extends**: Canon principle of immutable attempts
+- **Candidate for elevation**: Yes — if other lanes need versioned distribution
+
+**Note**: Canon already documented PRD immutability (`repo-topology.md`: "PRD (frozen) | N/A (immutable)"). Our v1.2 failure to increment versions was a RTFM failure, not a canon gap. This decision addresses the STRUCTURE pattern, not the immutability principle.
+
+## Evidence
+
+- Conversation: 2026-01-20 (v1.2 failure analysis)
+- Learning source: `v1.2/attempts/attempt-001/LEARNINGS.md`
+- Documentation: `CONTRACT.md` (Structure Deviation section)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/decisions/D0002-lane-owned-deployment.md
+--------------------------------------------------------------------------------
+
+# D0002 — Lane-Owned Cloudflare Pages Deployment
+
+## Decision
+
+The agent-skill lane owns its own Cloudflare Pages deployment, separate from the website lane. No cross-lane dependencies for distribution.
+
+## Status
+
+**Active**
+
+## Context
+
+PRD v1.2 attempted to distribute the compiled pack via the website lane's Cloudflare Pages deployment. This required modifying the website build process (`infra/scripts/smart-build.js`), which violated lane isolation.
+
+The attempt proved the mechanism worked (via mock testing), but the PRD could not be satisfied without cross-lane modification.
+
+## Why
+
+- **Lane isolation**: Attempts cannot modify files outside their lane
+- **Independence**: Lane can deploy without coordinating with other lanes
+- **Simplicity**: No need to modify shared infrastructure
+- **Ownership**: Lane is fully responsible for its deployment lifecycle
+
+## Consequences
+
+- ✅ Full lane isolation maintained
+- ✅ No cross-lane coordination required
+- ✅ Deployment can happen independently of website lane
+- ⚠️ Requires separate Cloudflare Pages project setup
+- ⚠️ May result in different domain (e.g., `agent-skill.klappy.dev` vs `klappy.dev/packs/`)
+
+## Relationship to Canon
+
+- **Overrides**: None (canon doesn't specify deployment ownership)
+- **Extends**: Canon lane isolation principle
+- **Candidate for elevation**: Yes — establishes pattern for lane-owned infrastructure
+
+**Note**: Canon already documented lane isolation extensively (`product-lanes.md`: "Lanes share canon, not lifecycle"). Writing PRD v1.2 to require website build modification was a RTFM failure — we should have known cross-lane modification was prohibited. This decision documents the DEPLOYMENT pattern that respects the existing isolation principle.
+
+## Evidence
+
+- Conversation: 2026-01-20 (v1.2 failure analysis)
+- Failed attempt: `v1.2/attempts/attempt-001/ATTEMPT.md`
+- Learning source: `v1.2/attempts/attempt-001/LEARNINGS.md`
+- PRD: `v1.2.1/PRD.md` (implements this decision)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/decisions/D0003-versioned-kickoff-pattern.md
+--------------------------------------------------------------------------------
+
+# D0003 — Versioned KICKOFF.md Pattern
+
+## Decision
+
+Each PRD version has its own `KICKOFF.md` with detailed shaping instructions. A minimal `ATTEMPT_KICKOFF.md` at the lane root points to the active version's KICKOFF.
+
+## Status
+
+**Active**
+
+## Context
+
+Initially, a single `prompts/ATTEMPT_KICKOFF.md` contained all attempt instructions. This created problems:
+
+1. Instructions might need to change between attempts on the same PRD
+2. Frozen versions should have frozen instructions for auditability
+3. A folder for a single file is unnecessary overhead
+
+## Why
+
+- **Mutability**: Version-specific KICKOFF can evolve between attempts
+- **Auditability**: When version is frozen, its KICKOFF is frozen too
+- **Simplicity**: One-liner at root, details in version folder
+- **Tight coupling**: KICKOFF and PRD are co-located and evolve together
+
+## Consequences
+
+- ✅ Instructions can evolve per-version without affecting other versions
+- ✅ Frozen versions have complete, auditable instruction sets
+- ✅ External kickoff is stable (just update the version pointer)
+- ✅ No unnecessary `prompts/` folder
+- ⚠️ Must remember to create KICKOFF.md when creating new version
+
+## Relationship to Canon
+
+- **Overrides**: Canon pattern of centralized kickoff prompt
+- **Extends**: Canon principle of attempt containment
+- **Candidate for elevation**: Yes — useful pattern for any lane with versioned PRDs
+
+## Evidence
+
+- Conversation: 2026-01-20 (structure discussion)
+- Implementation: `ATTEMPT_KICKOFF.md`, `v1.1/KICKOFF.md`, `v1.2.1/KICKOFF.md`
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/decisions/D0004-readme-contract-pattern.md
+--------------------------------------------------------------------------------
+
+# D0004 — README + CONTRACT Documentation Pattern
+
+## Decision
+
+Lane documentation is split into two files: `README.md` for human-friendly overview and `CONTRACT.md` for formal structure/deviations. README links to CONTRACT for details.
+
+## Status
+
+**Active**
+
+## Context
+
+We needed to document lane-specific deviations from canon (version-first structure, kickoff pattern, etc.). Options considered:
+
+1. Single README with everything
+2. CONTRACT.md only (formal)
+3. README.md only (informal)
+4. README + CONTRACT (both audiences)
+
+## Why
+
+- **README is universal**: First file humans and agents look for
+- **CONTRACT is formal**: Structured, precise deviation documentation
+- **Separation of concerns**: Overview vs. formal contract
+- **Antifragile**: Human-readable prose survives better than brittle JSON manifests
+
+## Consequences
+
+- ✅ Humans get quick orientation from README
+- ✅ Agents can find formal specifications in CONTRACT
+- ✅ Neither file is cluttered with the other's content
+- ✅ CONTRACT can have structured sections without hurting README readability
+- ⚠️ Two files to maintain (but they serve different purposes)
+
+## Relationship to Canon
+
+- **Overrides**: None (canon doesn't specify lane documentation pattern)
+- **Extends**: Canon principle of documentation as product
+- **Candidate for elevation**: Yes — useful pattern for any lane with deviations
+
+## Evidence
+
+- Conversation: 2026-01-20 (documentation discussion)
+- Implementation: `README.md`, `CONTRACT.md`
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/decisions/D0005-test-execution-containment.md
+--------------------------------------------------------------------------------
+
+# D0005 — Test Execution Containment
+
+## Decision
+
+Test execution during attempts must stay within the attempt folder. Cross-lane testing uses mock structures inside the attempt, not actual cross-lane writes.
+
+## Status
+
+**Active**
+
+## Context
+
+During v1.2 attempt-001, the distribution test script initially wrote files to `products/website/dist/packs/`. Even though the *proposals* were contained in the attempt folder, the *test execution* crossed lane boundaries.
+
+This violated lane isolation even though it was "just a test."
+
+## Why
+
+- **Lane isolation is absolute**: Not just for proposals, but for test execution too
+- **Attempts are sandboxes**: Nothing should escape the attempt folder until promotion
+- **Mock structures prove mechanisms**: You can verify cross-lane behavior without actually crossing
+
+## Pattern: Mock Structures
+
+When testing cross-lane behavior:
+
+```
+attempt-001/
+├── mock-website-dist/      # Mirror of target structure
+│   └── packs/
+│       └── agent-skill/
+│           └── prd-guide-pack.md
+└── scripts/
+    └── distribute.js       # Writes to mock, not real target
+```
+
+The test proves the mechanism works. Actual cross-lane changes happen during PROMOTION, not during the attempt.
+
+## Consequences
+
+- ✅ Attempts are fully contained (no side effects)
+- ✅ Failed attempts don't leave debris in other lanes
+- ✅ Mechanism is proven without risk
+- ⚠️ Requires creating mock structures (minor overhead)
+- ⚠️ Mock may diverge from real target (verify during promotion)
+
+## Relationship to Canon
+
+- **Extends**: Canon "lane-contained" principle
+- **Gap filled**: Canon didn't explicitly cover test execution
+- **Candidate for elevation**: Yes — this is a universal principle
+
+## Evidence
+
+- Conversation: 2026-01-20
+- Failed test: `v1.2/attempts/attempt-001/` (initially wrote outside lane)
+- Corrected test: `v1.2/attempts/attempt-001/mock-website-dist/`
+- Learning source: `v1.2/attempts/attempt-001/LEARNINGS.md`
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/decisions/D0006-lane-level-decision-logs.md
+--------------------------------------------------------------------------------
+
+# D0006 — Lane-Level Decision Logs
+
+## Decision
+
+Lanes maintain their own `decisions/` folder for lane-specific architecture decisions that don't rise to canon level but need documented rationale.
+
+## Status
+
+**Active**
+
+## Context
+
+Canon says "Cross-lane learnings are captured in decision logs, not PRD mutations" (`product-lanes.md`). However, ODD only has repo-level decisions (`/odd/decisions/`).
+
+When this lane deviated from canon patterns (version-first structure, versioned kickoff, etc.), we needed a place to document:
+
+- What we decided
+- Why we decided it
+- How it relates to canon
+- Whether it's an elevation candidate
+
+Without lane-level decisions, these learnings would be scattered across LEDGER, ROADMAP, and attempt files — harder to find and replicate.
+
+## Why
+
+- **Transparency**: Deviations from canon are explicitly documented
+- **Replicability**: Other lanes can copy successful patterns
+- **Elevation path**: Patterns that work can be proposed for canon
+- **Auditability**: Future maintainers understand why things are different
+
+## Structure
+
+```
+products/<lane>/decisions/
+├── index.md                    # Decision log with tables
+├── D0001-<title>.md
+├── D0002-<title>.md
+└── ...
+```
+
+Each decision includes:
+
+- Decision statement
+- Context (what prompted this)
+- Relationship to canon (overrides, extends, gap)
+- Elevation candidate flag
+
+## Consequences
+
+- ✅ Lane deviations are documented and justified
+- ✅ Patterns can be shared across lanes
+- ✅ Clear path from lane → canon promotion
+- ✅ Aligns with canon statement about decision logs
+- ⚠️ One more folder to maintain
+- ⚠️ Must avoid duplicating canon decisions
+
+## Relationship to Canon
+
+- **Extends**: Canon "decision logs" concept to lane level
+- **Supports**: Canon statement "Cross-lane learnings are captured in decision logs"
+- **Gap filled**: Canon only had repo-level decisions
+- **Candidate for elevation**: Yes — useful for any lane with deviations
+
+## Evidence
+
+- Conversation: 2026-01-20
+- Canon reference: `product-lanes.md` line 227
+- Implementation: `products/agent-skill/decisions/` (this folder)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/decisions/D0007-upstream-canon-loading.md
+--------------------------------------------------------------------------------
+
+# D0007 — Upstream Canon Loading via Public URL
+
+## Decision
+
+Agent kickoffs load the compiled ODD canon pack from a public URL FIRST (upstream), before any lane-specific instructions. The URL points to `/latest/` which resolves to the current champion version.
+
+## Status
+
+**Active**
+
+## Context
+
+The agent-skill lane produces a compiled pack that contains ODD philosophy (manifesto, constraints, decision rules, etc.). For agents to make good decisions, they need this context BEFORE reading lane-specific instructions.
+
+Two problems with local file references:
+
+1. **Not portable**: `../v1.1/dist/prd-guide-pack.md` only works inside this repo
+2. **Buried context**: If canon comes after lane instructions, it can be obscured
+
+## Why
+
+- **Portable**: Public URL works in any context (parallel lanes, external projects)
+- **Upstream loading**: Canon shapes everything that follows, so it must come first
+- **Latest convention**: `/latest/` always points to current champion, no manual updates
+- **Parallel reuse**: Other lanes can reference the same URL
+
+## Pattern
+
+### URL Structure
+
+```
+https://agent-skill.klappy.dev/
+├── latest/                    # Always points to current champion
+│   └── prd-guide-pack.md
+├── v1.1/dist/
+│   └── prd-guide-pack.md
+└── ...
+```
+
+### Kickoff Structure
+
+```markdown
+# Kickoff
+
+## Step 0: Load ODD Canon (UPSTREAM)
+
+Read and internalize: https://agent-skill.klappy.dev/latest/prd-guide-pack.md
+
+---
+
+## Step 1: Lane-specific instructions
+...
+```
+
+## Consequences
+
+- ✅ Agents start with full ODD context
+- ✅ Parallel lanes can use the same pack
+- ✅ External projects can bootstrap with ODD
+- ✅ No manual version updates needed (latest redirects)
+- ⚠️ Requires deployment infrastructure (v1.2.1 scope)
+- ⚠️ Network dependency (URL must be accessible)
+
+## Relationship to Canon
+
+- **Extends**: Canon compilation pattern
+- **New pattern**: Public URL + latest convention + upstream loading
+- **Candidate for elevation**: Yes — other lanes producing packs should follow
+
+## Evidence
+
+- Conversation: 2026-01-20
+- Implementation: v1.2.1 attempt will create deployment
+- Will update: `ATTEMPT_KICKOFF.md` to reference public URL
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/decisions/D0008-roadmap-vision-only.md
+--------------------------------------------------------------------------------
+
+# D0008 — ROADMAP as Vision Only (No Status Tracking)
+
+## Decision
+
+ROADMAP tracks future vision and version objectives only. It does not track version status (champion, failed, in-progress). The `history/` folder is the single source of truth for what happened.
+
+## Status
+
+**Active**
+
+## Context
+
+The ROADMAP contained a "Status" field for each version (e.g., "CHAMPION", "FAILED", "PRD written, awaiting attempt"). After v1.2.1 was promoted to champion, the ROADMAP still showed "awaiting attempt" — creating drift between ROADMAP and history.
+
+Options considered:
+
+1. **Remove status from ROADMAP** — history/ is authoritative, ROADMAP is vision-only
+2. **Enforce ROADMAP updates during promotion** — Add to promotion checklist
+
+## Why
+
+- **DRY**: history/ already tracks champion/failed status authoritatively. Duplicating in ROADMAP violates DRY.
+- **KISS**: Fewer places to maintain = fewer places to forget
+- **Role clarity**: ROADMAP answers "where are we going?" / history/ answers "where have we been?"
+- **Antifragile**: Design removes drift possibility rather than relying on discipline to prevent it
+
+Option 2 was rejected because it fights drift with process discipline instead of structural design. Discipline eventually loses to forgetfulness.
+
+## Consequences
+
+- ✅ No more drift between ROADMAP and history/
+- ✅ Clear separation of concerns (vision vs. history)
+- ✅ Simpler ROADMAP maintenance (just update vision, not status)
+- ⚠️ Loses at-a-glance "where are we" in ROADMAP (go to history/ for that)
+- ⚠️ Agents loading ROADMAP need to also check history/ for current state
+
+## Relationship to Canon
+
+- **Overrides**: None (canon doesn't specify roadmap structure)
+- **Extends**: Canon principle of DRY (with isolation), KISS
+- **Candidate for elevation**: Yes — useful pattern for any lane with both ROADMAP and LEDGER
+
+## Evidence
+
+- Conversation: 2026-01-21 (ROADMAP showed v1.2.1 as "awaiting attempt" after champion promotion)
+- Root cause: Status tracked in two places (ROADMAP + LEDGER)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/decisions/D0009-history-folder-pattern.md
+--------------------------------------------------------------------------------
+
+# D0009 — History Folder Pattern (Indexed Entries)
+
+## Decision
+
+Lane history is stored in a `history/` folder with an index file (`index.md`) and individual entry files (`H000X-*.md`). This mirrors the `decisions/` folder pattern for consistency.
+
+## Status
+
+**Active**
+
+## Context
+
+LEDGER.md was a single file capturing all lane history (champions, failures, learnings, infrastructure changes). As the lane matures, this file will grow unbounded, making it slow for agents to parse and increasing cognitive load.
+
+Options considered:
+
+1. **Keep single LEDGER.md** — simple but doesn't scale
+2. **Rename to CHANGELOG.md** — standard format but loses narrative/learnings structure
+3. **Split into history/ folder** — mirrors decisions/ pattern, scales well
+
+## Why
+
+- **Consistency**: Same pattern as `decisions/` — index + individual files
+- **Scalability**: Agents can scan index (~500 tokens) and dig deeper only when needed
+- **Cognitive load**: Familiar pattern reduces mental overhead
+- **Growth-friendly**: Individual entries can include evidence, links, screenshots without bloating index
+
+## Structure
+
+```
+products/agent-skill/
+├── history/
+│   ├── index.md                           # Quick reference table
+│   ├── H0001-v1.1-champion.md
+│   ├── H0002-v1.2-failed.md
+│   ├── H0003-lane-structure-migration.md
+│   └── H0004-v1.2.1-champion.md
+```
+
+## Naming
+
+- Folder: `history/` (not `memory/`) — universally understood, consistent with conventions
+- Files: `H000X-<slug>.md` — mirrors `D000X-*.md` pattern from decisions
+- Index: `index.md` — same as decisions
+
+## Consequences
+
+- ✅ Agents can quickly scan lane history via index
+- ✅ Individual entries can grow without affecting scan performance
+- ✅ Consistent with decisions/ pattern — less cognitive load
+- ✅ LEDGER.md removed — single source of truth
+- ✅ ROADMAP Learnings Log removed — history/ is the authority
+- ⚠️ More files to manage (but same tradeoff as decisions/)
+
+## Relationship to Canon
+
+- **Overrides**: None (canon doesn't specify history storage pattern)
+- **Extends**: Canon principle of "Memory Is the Bottleneck" — this makes memory scannable
+- **Candidate for elevation**: Yes — useful pattern for any lane with accumulated history
+
+## Evidence
+
+- Conversation: 2026-01-21 (LEDGER drift discussion, scalability concerns)
+- Prior art: `decisions/` folder in this lane
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/decisions/README.md
+--------------------------------------------------------------------------------
+
+# 📋 Agent-Skill Lane Decision Log
+
+Lane-specific Architecture Decision Records (ADRs) for the agent-skill product lane.
+
+> **Scope:** These decisions apply only to this lane. They may override or extend canon patterns with documented rationale. Successful patterns may be proposed for elevation to canon.
+
+---
+
+## ✅ Active Decisions
+
+### Structure & Organization
+
+| ID                                            | Title                   | What Was Decided                                                                                                                                   |
+| --------------------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [D0001](./D0001-version-first-structure.md)   | Version-first structure | Use `vX.Y/` folders at top level (not `attempts/prd-vX.Y/`). Each version contains PRD, src, dist, attempts. Enables immutable versioned releases. |
+| [D0003](./D0003-versioned-kickoff-pattern.md) | Versioned KICKOFF       | Each PRD version has its own `KICKOFF.md`. Lane root has minimal one-liner pointing to active version. KICKOFFs freeze with their version.         |
+| [D0004](./D0004-readme-contract-pattern.md)   | README + CONTRACT       | Split lane docs: `README.md` for human overview, `CONTRACT.md` for formal structure/deviations. README links to CONTRACT for details.              |
+
+### Deployment & Distribution
+
+| ID                                        | Title                 | What Was Decided                                                                             |
+| ----------------------------------------- | --------------------- | -------------------------------------------------------------------------------------------- |
+| [D0002](./D0002-lane-owned-deployment.md) | Lane-owned deployment | This lane owns its own Cloudflare Pages project. No website lane dependency. Full isolation. |
+
+### Attempt Practices
+
+| ID                                             | Title            | What Was Decided                                                                                                                            |
+| ---------------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| [D0005](./D0005-test-execution-containment.md) | Test containment | Tests during attempts CANNOT write outside attempt folder. Use mock structures (e.g., `mock-website-dist/`) to prove cross-lane mechanisms. |
+
+### Governance
+
+| ID                                           | Title                  | What Was Decided                                                                                                                                        |
+| -------------------------------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [D0006](./D0006-lane-level-decision-logs.md) | Lane decisions folder  | Lanes maintain their own `decisions/` for patterns that don't rise to canon. Enables transparent deviation + elevation path.                            |
+| [D0007](./D0007-upstream-canon-loading.md)   | Upstream canon loading | Load ODD pack from public URL (`/latest/prd-guide-pack.md`) FIRST in kickoffs, before lane instructions. Portable + ensures canon shapes all decisions. |
+| [D0008](./D0008-roadmap-vision-only.md)      | ROADMAP vision only    | ROADMAP tracks future vision only, not version status. History is single source of truth for champion/failed status. Prevents drift.                     |
+| [D0009](./D0009-history-folder-pattern.md)   | History folder pattern | Lane history in `history/` folder with index + individual entry files. Mirrors `decisions/` pattern. Replaces single LEDGER.md file.                     |
+
+---
+
+## 🔄 How Decisions Are Made
+
+1. **During an attempt**: Note decision in `ATTEMPT.md` or `LEARNINGS.md`
+2. **After learning stabilizes**: Document as decision file here
+3. **If pattern proves valuable**: Propose elevation to canon
+
+---
+
+## 📖 RTFM Check
+
+Before documenting a new pattern, verify it isn't already in canon:
+
+- `docs/appendices/product-lanes.md` — Lane isolation, cross-lane rules
+- `docs/appendices/attempt-lifecycle.md` — Attempt containment
+- `docs/appendices/repo-topology.md` — PRD immutability
+- `docs/decisions/` — Existing decisions
+
+Some of our learnings (D0001, D0002) were applications of existing canon principles we failed to read carefully. Document this when it happens — it's valuable evidence that canon is correct but underutilized.
+
+---
+
+## 🔗 Relationship to Canon
+
+These decisions:
+
+- **May override** canon defaults (with documented rationale)
+- **Must not violate** canon constraints (lane isolation, evidence requirements)
+- **Should inform** future canon evolution
+
+When a lane decision proves valuable across multiple lanes, it becomes a candidate for canon promotion.
+
+---
+
+## 📝 Decision File Template
+
+```markdown
+# D000X — [Title]
+
+## Decision
+
+[1-2 sentences stating what was decided]
+
+## Status
+
+**Active** | Proposed | Deprecated
+
+## Context
+
+[What problem prompted this decision]
+
+## Why
+
+- [Bullet point]
+- [Bullet point]
+
+## Consequences
+
+- [What this enables]
+- [What this prevents]
+- [What this costs]
+
+## 🔗 Relationship to Canon
+
+- Overrides: [canon pattern, if any]
+- Extends: [canon pattern, if any]
+- Candidate for elevation: Yes/No
+
+## Evidence
+
+- Conversation: [date or reference]
+- Attempt: [path, if applicable]
+```
+
+---
+
+## 🚫 Deprecated Decisions
+
+_None yet._
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/history/H0001-v1.1-champion.md
+--------------------------------------------------------------------------------
+
+# H0001 — PRD v1.1 Champion
+
+- **Date**: 2026-01-20
+- **Type**: Champion
+- **PRD**: v1.1
+- **Epoch**: E0003 (evidence-first)
+- **Attempt**: `v1.1/attempts/attempt-001/`
+
+## Summary
+
+Delivered a compiled pack (`prd-guide-pack.md`) that enables AI agents to interactively guide humans through creating ODD-aligned PRDs.
+
+## Deliverable
+
+- **Pack**: `v1.1/dist/prd-guide-pack.md`
+- **Size**: ~12K tokens (45KB, 1838 lines)
+- **Sources**: 7 canon + guidance documents compiled
+
+## What Worked
+
+- Compiled pack approach produces portable, self-contained context artifact
+- Interactive guidance instructions transform static docs into conversation flow
+- 7-stage PRD creation process covers outcomes, criteria, constraints, evidence
+- Token budget (~12K) is reasonable for context injection (~6-12% of typical windows)
+
+## What Didn't
+
+- Initial implementation scattered files across repo (infra/, public/_compiled/, docs/PRD/)
+- Had to reorganize to consolidate everything under products/agent-skill/
+
+## Learnings
+
+- Lane isolation matters: all artifacts for a lane should live in `products/<lane>/`
+- PRD-first, then implement: creating just the PRD before building prevents scope creep
+- Attempt structure preserves implementation as evidence, not production artifacts
+
+## Follow-up
+
+- Test pack with Claude Code on a real PRD creation session to validate interactive flow
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/history/H0002-v1.2-failed.md
+--------------------------------------------------------------------------------
+
+# H0002 — PRD v1.2 Failed
+
+- **Date**: 2026-01-20
+- **Type**: Failed
+- **PRD**: v1.2
+- **Epoch**: E0003 (evidence-first)
+- **Attempt**: `v1.2/attempts/attempt-001/`
+
+## Summary
+
+Attempted to add zero-friction public access to the compiled pack via website lane's Cloudflare Pages deployment. Failed because the PRD required cross-lane modification, violating lane isolation.
+
+## Objective
+
+Add zero-friction public access to the compiled pack via a stable URL using website lane's Cloudflare Pages deployment.
+
+## What Happened
+
+The PRD required modifying the website lane's build process (`infra/scripts/smart-build.js`) to copy the pack to website dist. This violates lane isolation — attempts cannot modify files outside their lane.
+
+The mechanism was proven to work via mock testing within the attempt folder, but the PRD cannot be satisfied without cross-lane modification.
+
+## What Worked
+
+- Mirroring repo structure in attempt folder for clean promotion path
+- Mock website dist for lane-contained testing
+- PROMOTION.md document for clear promotion instructions
+
+## What Didn't
+
+- Initial plan to modify infra directly (lane violation)
+- Running test that wrote outside lane (lane violation)
+- The PRD itself (requires cross-lane modification by design)
+
+## Learnings
+
+- Lane isolation is absolute during attempts — not just for proposals, but for test execution too
+- PRDs can have design flaws that violate constraints
+- A lane cannot require modification of another lane's build process
+
+## Follow-up
+
+- Create v1.2.1 PRD with lane-owned deployment approach
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/history/H0003-lane-structure-migration.md
+--------------------------------------------------------------------------------
+
+# H0003 — Lane Structure Migration
+
+- **Date**: 2026-01-20
+- **Type**: Infrastructure
+- **Epoch**: E0003 (evidence-first)
+
+## Summary
+
+Migrated lane from flat structure to version-first structure, enabling immutable versioned releases.
+
+## What Changed
+
+**Before:**
+
+```
+products/agent-skill/
+├── PRD.md
+├── src/
+├── dist/
+└── attempts/
+    └── prd-vX.Y/
+```
+
+**After:**
+
+```
+products/agent-skill/
+├── README.md        # Lane overview
+├── CONTRACT.md      # Formal structure/deviations
+├── ROADMAP.md       # Vision document
+├── history/         # What happened (this folder)
+├── decisions/       # Architecture decisions
+├── prompts/
+│   └── ATTEMPT_KICKOFF.md
+├── v1.1/            # Version-first
+│   ├── PRD.md       # Frozen
+│   ├── src/
+│   ├── dist/
+│   └── attempts/
+├── v1.2/            # Failed version
+│   ├── PRD.md       # Frozen
+│   └── attempts/
+└── v1.2.1/          # Current
+    └── PRD.md       # Active
+```
+
+## Why
+
+- Versioned assets enable immutable releases
+- Dependents can pin to specific versions
+- Each version is fully self-contained
+- Clear boundaries between version states
+
+## Documented In
+
+- `README.md` — Lane overview, file index, version table
+- `CONTRACT.md` — Formal deviation from canon structure
+- `decisions/D0001-version-first-structure.md` — Decision record
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/history/H0004-v1.2.1-champion.md
+--------------------------------------------------------------------------------
+
+# H0004 — PRD v1.2.1 Champion
+
+- **Date**: 2026-01-21
+- **Type**: Champion
+- **PRD**: v1.2.1
+- **Epoch**: E0003 (evidence-first)
+- **Attempt**: `v1.2.1/attempts/attempt-001/`
+
+## Summary
+
+Patched v1.2's failed approach with lane-owned Cloudflare Pages deployment. Pack now available at public URL without website lane dependency.
+
+## Deliverable
+
+- **Cloudflare Pages project**: `klappy-dev-agent-skill`
+- **Preview URL**: `https://main.klappy-dev-agent-skill.pages.dev/`
+- **Pack URL**: `/v1.1/prd-guide-pack.md`
+- **Latest URL**: `/latest/prd-guide-pack.md`
+
+## What Worked
+
+- Lane-owned Cloudflare Pages deployment (full isolation from website lane)
+- Publishing from `public/agent-skill/` ensures only promoted content is accessible
+- Consistent URL structure: `/latest/` and `/v1.1/` (no `dist/` in paths)
+- Preview URL verification before production deployment
+
+## What Didn't
+
+- Initial gitignore blocked `dist/` folders (fixed with exception)
+- Inconsistent URL structure initially (`/latest/` vs `/v1.1/dist/`) — normalized
+
+## Learnings
+
+- Root gitignore patterns can unexpectedly block public distribution. Use `!public/**/dist/` exception
+- Deploy contents of dist, not the dist folder itself — keeps URLs clean
+- Multi-lane CF deployments create serial build bottleneck — single `/public` deployment worth exploring
+
+## Follow-up
+
+- Fast-forward `prod` branch to enable production URL, then configure custom domain
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/history/H0005-v1.2.2-failed.md
+--------------------------------------------------------------------------------
+
+# H0005 — PRD v1.2.2 Failed
+
+- **Date**: 2026-01-21
+- **Type**: Failed
+- **PRD**: v1.2.2
+- **Epoch**: E0003 (evidence-first)
+- **Attempt**: `v1.2.2/attempts/attempt-001/`
+
+## Summary
+
+Attempt to add README index pattern for tree-shakeable memory exposed fundamental ODD violations. INSTRUCTIONS.md was being persisted when it should be ephemeral. Compile plans were in central infra instead of lane. Multiple infrastructure changes made during attempt instead of clean restart.
+
+## What Was Discovered
+
+1. **INSTRUCTIONS.md is ephemeral** — Generated artifact, not persisted input
+2. **Compile plans belong in lane** — Not central `infra/compile/plans/`
+3. **ODD formula violated** — Agent should only need Pack + CONTRACT + PRD
+
+## What Worked
+
+- README index pattern created (canon 0.5.4)
+- Discovered real architectural issues
+- User feedback forced examination of fundamentals
+
+## What Didn't
+
+- Attempted to steer a miss instead of failing early
+- Made infrastructure changes during attempt
+- Modified PRD during attempt (should have created v1.2.3)
+- Initially declared CHAMPION before understanding full scope
+
+## Learnings
+
+1. **Ephemeral artifacts are ephemeral** — Don't persist generated code
+2. **ODD formula is strict** — Pack + CONTRACT + PRD = Attempt. Nothing else.
+3. **Don't steer a miss** — When fundamentals are wrong, fail and restart clean
+4. **Lane isolation applies to compile plans** — Everything lane-specific in lane folder
+
+## Follow-up
+
+- Create v1.2.3 PRD with proper ODD compliance
+- Move compile plan to version folder
+- Document ephemeral artifact generation in CONTRACT.md
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/history/H0006-v1.2.3-champion.md
+--------------------------------------------------------------------------------
+
+# H0006 — PRD v1.2.3 Champion
+
+- **Date**: 2026-01-21
+- **Type**: Champion
+- **PRD**: v1.2.3
+- **Epoch**: E0003 (evidence-first)
+- **Attempt**: `v1.2.3/attempts/attempt-001/`
+
+## Summary
+
+Canon refresh to v0.5.4 with proper ODD compliance. INSTRUCTIONS.md treated as ephemeral (generated per-attempt), pack includes README index pattern for tree-shakeable memory.
+
+## Deliverable
+
+- **Pack**: `public/agent-skill/v1.2.3/prd-guide-pack.md`
+- **Latest**: `public/agent-skill/latest/prd-guide-pack.md`
+- **Production URL**: `https://agent-skill.klappy.dev/v1.2.3/prd-guide-pack.md`
+
+## What Worked
+
+- Clean restart after v1.2.2 failure (didn't steer a miss)
+- INSTRUCTIONS.md generated fresh in attempt folder (ephemeral)
+- Proper deployment verification before claiming CHAMPION
+- Evidence produced for every claim
+
+## What Didn't
+
+- Initially declared CHAMPION before verifying deployment (corrected)
+- Had to find preview URL pattern (deployment ID based)
+- `public/agent-skill/latest/README.md` not updated during promotion (discovered post-deploy, still claimed v1.1)
+
+## Learnings
+
+1. **Verify before claiming**: Don't mark CHAMPION until HTTP 200 verified
+2. **Cloudflare preview URLs**: Use deployment ID from PR checks (e.g., `20426ceb.klappy-dev-agent-skill.pages.dev`)
+3. **ODD formula works**: Pack + CONTRACT + PRD = Attempt. Nothing else needed.
+4. **Production vs preview**: `agent-skill.klappy.dev` is production; `main.klappy-dev-agent-skill.pages.dev` is main branch preview
+5. **Update ALL latest references**: Promotion must update `latest/README.md` to reflect new champion version (pack file alone is not enough)
+
+## Follow-up
+
+- Consider automating preview URL discovery in attempt workflow
+- Add `latest/README.md` update to promotion checklist or automate it
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/history/H0007-v1.2.4-champion.md
+--------------------------------------------------------------------------------
+
+# H0007 — PRD v1.2.4 Champion
+
+- **Date**: 2026-01-21
+- **Type**: Champion
+- **PRD**: v1.2.4
+- **Epoch**: E0003 (evidence-first)
+- **Attempt**: `v1.2.4/attempts/attempt-001/`
+
+## Summary
+
+Canon refresh to v0.8.0 with ODD path fixes (elevated from `/canon/odd/` to `/odd/`) and new content (Cognitive Partitioning, Tool Specialization).
+
+## Deliverable
+
+- **Pack**: `public/agent-skill/v1.2.4/prd-guide-pack.md`
+- **Latest**: `public/agent-skill/latest/prd-guide-pack.md`
+- **Preview URL**: `https://main.klappy-dev-agent-skill.pages.dev/v1.2.4/prd-guide-pack.md`
+
+## What Worked
+
+- Clean path fixes without behavioral changes
+- New content (Cognitive Partitioning, Tool Specialization) integrated seamlessly
+- INSTRUCTIONS.md generated fresh per-attempt (ephemeral pattern)
+- HTTP 200 verified before claiming CHAMPION
+- Evidence produced for every claim
+
+## What Didn't
+
+- Manual compilation required (no automated path validation)
+- Compile plan doesn't auto-generate INSTRUCTIONS.md
+
+## Learnings
+
+1. **Canon reorganizations require path audits**: ODD elevation from `/canon/odd/` to `/odd/` created stale references
+2. **Compile plans need version tracking**: When canon version bumps, compile plan paths should be validated
+3. **New content integration is straightforward**: Adding sources to compile plan is additive, non-breaking
+4. **ODD formula still works**: Pack + CONTRACT + PRD = Attempt (no additional context needed)
+
+## Follow-up
+
+- Consider automating compile plan path validation against canon version
+- Production deploy to `agent-skill.klappy.dev` for stable URL
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/history/H0008-v1.3-champion.md
+--------------------------------------------------------------------------------
+
+# H0008 — PRD v1.3 Champion
+
+- **Date**: 2026-01-21
+- **Type**: Champion
+- **PRD**: v1.3
+- **Epoch**: E0003 (evidence-first)
+- **Attempt**: `v1.3/attempts/attempt-001/`
+
+## Summary
+
+PRD Elicitation Enhancement — transformed the prd-guide pack from teaching ODD to actively eliciting PRDs through structured questioning.
+
+## Deliverable
+
+- **Pack**: `public/agent-skill/v1.3/prd-guide-pack.md`
+- **Latest**: `public/agent-skill/latest/prd-guide-pack.md`
+- **Preview URL**: `https://dd379b0d.klappy-dev-agent-skill.pages.dev/v1.3/prd-guide-pack.md`
+- **PR**: https://github.com/klappy/klappy.dev/pull/4
+
+## What's New
+
+### Agent Role Declaration
+Clear framing: "You extract. You do not invent."
+
+### PRD Stage Typing
+6 types with evidence/ambiguity expectations (PoC, Feature, Fix, Product slice, Refactor, Other)
+
+### Asset Intake Contract
+4 asset types (Text, Media, Links, Oral testimony) with guidance for partial information
+
+### 8-Phase Interview Loop
+Resequenced from 7 stages:
+- Phase 0: Stage Identification (NEW)
+- Phase 1: Orient (NEW)
+- Phase 2: Inventory (NEW)
+- Phase 3: Constraint Surfacing (moved)
+- Phase 4: Outcome Framing (moved)
+- Phase 5: Evidence Definition (moved)
+- Phase 6: Ambiguity Capture (NEW)
+- Phase 7: Draft Assembly (consolidated)
+
+Key change: Inventory BEFORE Outcome (can't define what you want until you know what you have)
+
+## What Worked
+
+- Clean separation of elicitation phases
+- Stage typing table provides clear evidence expectations
+- Asset intake prevents blocking on missing information
+- Ambiguity capture aligns with ODD philosophy
+- Example dialogue demonstrates full flow
+
+## What Didn't
+
+- Pack size increased (~16K tokens vs ~15K)
+- Interview loop may feel long for simple PRDs
+
+## Learnings
+
+1. **Inventory before scope**: You can't define what you want until you know what you have
+2. **Stage typing sets expectations**: Different PRD types need different rigor
+3. **Ambiguity is expected**: ODD principle — acknowledged early is cheaper than discovered late
+4. **Extract, don't invent**: The agent's role is elicitation, not authorship
+
+## Follow-up
+
+- Monitor feedback on interview loop length
+- Consider v1.3.1 for streamlined flow if needed
+- Production deploy to stable URL when PR merges
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/history/H0009-v1.4-attempt-001-failed.md
+--------------------------------------------------------------------------------
+
+# H0009 — v1.4 Closed
+
+- **Date**: 2026-01-22
+- **Type**: Closed (Awaiting Human Review)
+- **PRD**: v1.4.0
+- **Attempt**: `v1.4/attempts/attempt-001/`
+
+## Summary
+
+Preview deployment verified for Tiered Context Construction guidance. The prd-guide pack now teaches agents how to weight content based on document tiers using a fixed tier-to-detail mapping.
+
+**AWAITING HUMAN REVIEW** — Agent cannot promote to Champion. That is a human authority decision.
+
+Per ODD: "AI is an accelerator, not an authority."
+
+## Deliverable
+
+- **Pack**: `public/agent-skill/v1.4/prd-guide-pack.md`
+- **Latest**: `public/agent-skill/latest/prd-guide-pack.md`
+- **Preview URL**: `https://main.klappy-dev-agent-skill.pages.dev/v1.4/prd-guide-pack.md`
+- **Size**: ~19K tokens
+
+## What Worked
+
+- Clean execution from PRD to deployment
+- Fixed tier-to-detail mapping is simple and unambiguous
+- Agent prohibitions make non-goals explicit and testable
+- Degradation handling documented clearly
+
+## What Didn't
+
+- Nothing significant — clean one-shot execution
+
+## Learnings
+
+- Compile plan path in `infra/compile/plans/` must be updated when changing INSTRUCTIONS.md version
+- Preview URL testing works immediately after push to main; production requires separate `prod` branch deployment
+- INSTRUCTIONS.md is the primary deliverable — canon sources provide context, but the instructions drive agent behavior
+
+## Follow-up
+
+**HUMAN REVIEW REQUIRED FOR CHAMPION STATUS:**
+
+The agent has completed its work. The following are **human decisions**:
+
+1. Review the evidence in `v1.4/attempts/attempt-001/evidence/`
+2. Decide if the work meets Champion criteria
+3. If approved:
+   - Fast-forward `prod` branch to deploy to production
+   - Verify HTTP 200 on `agent-skill.klappy.dev`
+   - Update status to CHAMPION (this is YOUR call, not the agent's)
+
+## Learnings (Agent Violation)
+
+**Critical ODD violation discovered**: The agent attempted to mark its own work as CHAMPION. This violates:
+
+- "AI is an accelerator, not an authority"
+- "AI may NOT silently assume trust"
+- "Authority boundaries and escalation points must be explicit"
+
+CHAMPION is an **elevation** that requires human judgment. The agent's role ends at CLOSED.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/history/index.md
+--------------------------------------------------------------------------------
+
+# 📜 Agent-Skill Lane History
+
+What actually happened — champions, failures, learnings, infrastructure changes.
+
+For future vision, see [ROADMAP.md](../ROADMAP.md).
+
+---
+
+## 📋 Entries
+
+| ID | Version/Event | What Happened | Date |
+|----|---------------|---------------|------|
+| [H0001](./H0001-v1.1-champion.md) | v1.1 | Champion — PRD Creation Guidance pack delivered (~12K tokens) | 2026-01-20 |
+| [H0002](./H0002-v1.2-failed.md) | v1.2 | Failed — Cross-lane violation (website lane dependency) | 2026-01-20 |
+| [H0003](./H0003-lane-structure-migration.md) | Infrastructure | Migrated to version-first folder structure | 2026-01-20 |
+| [H0004](./H0004-v1.2.1-champion.md) | v1.2.1 | Champion — Lane-owned Cloudflare Pages deployment | 2026-01-21 |
+| [H0005](./H0005-v1.2.2-failed.md) | v1.2.2 | Failed — Exposed ODD violations (ephemeral artifacts, compile plan location) | 2026-01-21 |
+| [H0006](./H0006-v1.2.3-champion.md) | v1.2.3 | Champion — Canon refresh v0.5.4 + ODD compliance | 2026-01-21 |
+| [H0007](./H0007-v1.2.4-champion.md) | v1.2.4 | Champion — Canon refresh v0.8.0 (path fixes + new content) | 2026-01-21 |
+| [H0008](./H0008-v1.3-champion.md) | v1.3 | Champion — PRD Elicitation Enhancement (interview mechanics, stage typing) | 2026-01-21 |
+| [H0009](./H0009-v1.4-attempt-001-failed.md) | v1.4 | FAILED (attempt-001) — Authority violation, missing Tier 0 | 2026-01-22 |
+| H0010 | v1.4 | FAILED (attempt-002) — Compiler does not implement tier enforcement | 2026-01-22 |
+
+---
+
+## 🏷️ Entry Types
+
+- **Champion**: PRD attempt succeeded, deliverable promoted
+- **Failed**: PRD attempt failed, learnings captured
+- **Infrastructure**: Non-PRD changes to lane structure/tooling
+
+---
+
+## ➕ How to Add an Entry
+
+1. Create `H000X-<slug>.md` using template below
+2. Add row to index table above
+3. Keep entries append-only (don't edit old entries except to fix errors)
+
+---
+
+## 📝 Entry Template
+
+```markdown
+# H000X — [Title]
+
+- **Date**: YYYY-MM-DD
+- **Type**: Champion | Failed | Infrastructure
+- **PRD**: vX.Y (if applicable)
+- **Attempt**: `vX.Y/attempts/attempt-NNN/` (if applicable)
+
+## Summary
+
+[1-2 sentences: what happened]
+
+## Deliverable (if Champion)
+
+- [What was produced, where it lives]
+
+## What Worked
+
+- [Bullet points]
+
+## What Didn't
+
+- [Bullet points]
+
+## Learnings
+
+- [1-3 bullets that inform future work]
+
+## Follow-up
+
+- [One next action, if any]
+```
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/v1.1/PRD.md
+--------------------------------------------------------------------------------
+
+# PRD: ODD Agent Skill
+
+| Field           | Value            |
+|-----------------|------------------|
+| **PRD Version** | v1.1             |
+| **Lane**        | agent-skill      |
+| **Status**      | Frozen           |
+| **Created**     | 2026-01-17       |
+| **Updated**     | 2026-01-20       |
+| **Author**      | Chris Klapp      |
+
+---
+
+## Interface Contracts
+
+This lane MUST remain compatible with:
+
+- manifest >=2.0.0 <3.0.0
+- attempt-cli >=2.0.0 <3.0.0
+
+This lane is allowed to have no UI and is not required to satisfy build-output unless it produces a deployable artifact.
+
+---
+
+## Objective
+
+Deliver a compiled pack (`prd-guide-pack.md`) that enables AI agents to interactively guide humans through creating ODD-aligned PRDs.
+
+---
+
+## Background
+
+This is the whole point.
+
+This PRD is about how agents think, not what they render.
+
+This is not tied to this website. This should work on any project.
+
+Once this succeeds, any future PoC can start without rebuilding process.
+
+**V1 Focus**: Before agents can run evolutionary attempts or detect failure, they need to help humans write better PRDs. V1 delivers a portable, compiled pack that any LLM can use to guide PRD creation using ODD principles.
+
+---
+
+## In Scope (V1)
+
+- Compiled pack for PRD creation guidance
+- Distilled ODD philosophy (manifesto, constraints, decision rules)
+- PRD template structure
+- Interactive conversation flow instructions
+- Questions to probe for outcomes, evidence, and constraints
+- Anti-pattern detection (feature-first thinking, untestable criteria)
+
+---
+
+## Explicitly Out of Scope (V1)
+
+- UI rendering (belongs to website lane)
+- Website styling or navigation
+- Human onboarding (belongs to website lane)
+- Content authoring for humans
+- Helping humans understand ODD (belongs to ai-navigation lane)
+- MCP server integration (V2+)
+- Cursor SKILL.md format (V2+)
+- Attempt execution guidance (V2+)
+- Failure detection / self-improvement (V2+)
+- Multi-project orchestration (V2+)
+
+---
+
+## Success Criteria
+
+- [ ] Pack can be consumed by any LLM with 100K+ context window
+- [ ] Agent using pack asks clarifying questions about outcomes (not features)
+- [ ] Agent using pack identifies untestable success criteria
+- [ ] Agent using pack suggests missing constraints or non-goals
+- [ ] Resulting PRD follows ODD template structure
+- [ ] No dependency on this repo's UI or tooling
+
+---
+
+## Definition of Done
+
+An attempt against this PRD is complete when:
+
+- [ ] Compile plan exists at `v1.1/src/compile-plan.json`
+- [ ] Interactive guidance exists at `v1.1/src/INSTRUCTIONS.md`
+- [ ] Pack generated at `v1.1/dist/prd-guide-pack.md`
+- [ ] Pack includes valid provenance header (lane, pack, built_at, git_commit, sources, source_hashes)
+- [ ] Pack tested with Claude Code (or similar) on a sample project
+- [ ] Evidence: transcript of successful PRD creation session
+- [ ] Resulting PRD demonstrates ODD alignment (outcomes, evidence, constraints)
+- [ ] Self-audit completed with explicit tradeoffs
+
+---
+
+## Primary User
+
+AI agents (Claude Opus 4.5 or similar) operating in Claude Code, Cursor, or any IDE with LLM context injection.
+
+---
+
+## Target Use Case
+
+A developer wants to create a V1 PRD for their product using ODD principles. They paste the pack into their AI context, and the AI guides them through:
+
+1. Clarifying the outcome (not features)
+2. Defining testable success criteria
+3. Establishing constraints and non-goals
+4. Specifying evidence requirements
+5. Completing a self-audit
+
+---
+
+## Compiled Pack (V1 Deliverable)
+
+### Command
+
+- `npm run lane:compile -- --lane agent-skill --pack prd-guide`
+
+### Output
+
+- `v1.1/dist/prd-guide-pack.md`
+- `v1.1/dist/_meta/prd-guide-COMPILE_META.json`
+
+### Verification
+
+- `npm run verify:compiled -- --lane agent-skill --pack prd-guide`
+
+### Contract
+
+- The compiled pack MUST include a provenance header as defined in:
+  - `klappy://canon/odd/compilation`
+
+### Sources (in order)
+
+1. `canon/odd/manifesto.md` - Philosophy foundation
+2. `canon/constraints.md` - Baseline assumptions
+3. `canon/decision-rules.md` - Decision heuristics
+4. `canon/definition-of-done.md` - Completion criteria
+5. `canon/self-audit.md` - Review checklist
+6. `docs/PRD/PRD_TEMPLATE.md` - PRD structure
+7. `v1.1/src/INSTRUCTIONS.md` - Interactive guidance
+
+---
+
+## Constraints
+
+This PRD is shaped by Canon constraints:
+
+- Evidence over assertion
+- Evolution, not automation (humans stay in the loop)
+- Explicit tradeoffs required
+- Bounded evolution (no self-modifying goals)
+- Portability: pack must work outside this repository
+
+---
+
+## Attempt Policy
+
+This PRD may be attempted multiple times.
+
+- Each attempt is evaluated independently
+- Failed attempts inform future attempts or PRD revisions
+- Attempts are sealed when CLOSED or ABANDONED
+
+Attempts live at: `v1.1/attempts/attempt-NNN/`
+
+---
+
+## Related Documents
+
+- Lane architecture: `/canon/odd/appendices/product-lanes.md`
+- Canon constraints: `/canon/constraints/README.md`
+- Definition of Done: `/canon/constraints/definition-of-done.md`
+- Evolution philosophy: `/canon/odd/appendices/evolution-not-automation.md`
+- Compilation: `/canon/odd/appendices/compilation.md`
+- Compilation targets: `/canon/odd/appendices/compilation-targets.md`
+
+---
+
+## Freeze Notice
+
+This PRD is **FROZEN**. It was used by attempt-001 which achieved CHAMPION status.
+
+Any modifications require a new PRD version.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/v1.2.1/PRD.md
+--------------------------------------------------------------------------------
+
+# PRD: ODD Agent Skill — Distribution
+
+| Field           | Value            |
+|-----------------|------------------|
+| **PRD Version** | v1.2.1           |
+| **Lane**        | agent-skill      |
+| **Status**      | Active           |
+| **Created**     | 2026-01-20       |
+| **Updated**     | 2026-01-20       |
+| **Author**      | Chris Klapp      |
+
+---
+
+## Interface Contracts
+
+This lane MUST remain compatible with:
+
+- manifest >=2.0.0 <3.0.0
+- attempt-cli >=2.0.0 <3.0.0
+
+This lane is allowed to have no UI and is not required to satisfy build-output unless it produces a deployable artifact.
+
+---
+
+## Objective
+
+Deliver zero-friction public access to the compiled PRD guide pack via a lane-owned deployment with versioned, immutable asset URLs.
+
+---
+
+## Background
+
+**v1.1 delivered**: A portable, compiled pack that any LLM can use to guide PRD creation using ODD principles. Friction: clone repo, run build, copy pack.
+
+**v1.2 attempted**: Distribution via website lane's Cloudflare Pages deployment. **FAILED** due to PRD design conflict — the approach required modifying website lane's build process, violating lane isolation.
+
+**v1.2.1 patches v1.2** with a lane-owned approach:
+
+- Agent-skill lane owns its own Cloudflare Pages deployment
+- No cross-lane dependencies
+- Versioned asset URLs enable dependents to pin to specific versions
+- README per version provides antifragile documentation
+
+---
+
+## In Scope (v1.2.1)
+
+### From v1.1 (retained)
+
+- Compiled pack for PRD creation guidance
+- Distilled ODD philosophy (manifesto, constraints, decision rules)
+- PRD template structure
+- Interactive conversation flow instructions
+
+### New in v1.2.1
+
+- Lane-owned Cloudflare Pages deployment
+- Versioned asset URLs (e.g., `/v1.1/prd-guide-pack.md`)
+- README.md per version folder for consumer guidance
+- No website lane dependency
+
+---
+
+## Explicitly Out of Scope (v1.2.1)
+
+- Website lane modification
+- Shared hosting infrastructure
+- UI showcase page (future version)
+- Try-it chat interface (future version)
+- MCP server integration (future version)
+- Cursor SKILL.md format (future version)
+
+---
+
+## Success Criteria
+
+- [ ] Lane-owned Cloudflare Pages project configured
+- [ ] Pack available at versioned URL (e.g., `https://agent-skill.klappy.dev/v1.1/prd-guide-pack.md`)
+- [ ] URL returns HTTP 200 with correct pack content
+- [ ] `v1.1/dist/README.md` accessible at public URL
+- [ ] No clone or build required for consumers to access pack
+- [ ] Versioned URLs persist indefinitely (immutable releases)
+
+---
+
+## Definition of Done
+
+An attempt against this PRD is complete when:
+
+### Deployment
+
+- [ ] Cloudflare Pages project created for agent-skill lane
+- [ ] Deployment configured to serve from `v*/dist/` folders
+- [ ] Custom domain configured (optional, can use default CF domain initially)
+
+### Verification
+
+- [ ] Public URL verified with HTTP 200 after deployment
+- [ ] Pack content at URL matches local build output
+- [ ] README at public URL is readable and helpful
+
+### Evidence Required
+
+- [ ] Screenshot of pack URL returning 200
+- [ ] Screenshot of README URL returning 200
+- [ ] Diff showing pack content matches local build
+- [ ] Self-audit completed with explicit tradeoffs
+
+---
+
+## Primary User
+
+AI agents and developers who want to use the ODD PRD guide without cloning the repo.
+
+---
+
+## Target Use Case
+
+A developer wants to create a PRD using ODD principles.
+
+**v1.2.1 flow**:
+
+1. Visit `https://agent-skill.klappy.dev/v1.1/dist/README.md` to understand what's available
+2. Copy pack from `https://agent-skill.klappy.dev/v1.1/dist/prd-guide-pack.md`
+3. Paste into AI context
+4. Start PRD creation conversation
+
+No clone, no build, no website dependency.
+
+---
+
+## Distribution Architecture
+
+### Lane-Owned Deployment
+
+```
+Cloudflare Pages Project: agent-skill
+├── v1.1/
+│   └── dist/
+│       ├── README.md
+│       ├── prd-guide-pack.md
+│       └── _meta/
+├── v1.2/  (no dist — failed attempt)
+├── v1.2.1/
+│   └── dist/  (when championed)
+└── index.html  (optional: redirect to latest or list versions)
+```
+
+### URL Pattern
+
+- Base: `https://agent-skill.klappy.dev/` (or CF default domain)
+- Version: `/v1.1/dist/prd-guide-pack.md`
+- README: `/v1.1/dist/README.md`
+
+### Immutable Versions
+
+- Versions are immutable once published
+- Bug fixes require new version (e.g., v1.1.1)
+- Dependents can pin to specific versions
+- Old versions persist indefinitely
+
+---
+
+## Constraints
+
+This PRD is shaped by Canon constraints:
+
+- **Lane isolation**: No modification of other lanes allowed
+- **Evidence over assertion**: Public URL must be verified
+- **Explicit tradeoffs**: New CF project adds operational overhead
+- **Portability**: Pack remains a standalone file
+
+### v1.2.1 Specific Constraints
+
+- Must NOT modify website lane or shared infrastructure
+- Must NOT require coordination with other lanes
+- Lane owns its deployment end-to-end
+
+---
+
+## Implementation Notes
+
+### Cloudflare Pages Setup
+
+1. Create new CF Pages project linked to `klappy.dev` repo
+2. Configure build: none (static files only)
+3. Configure publish directory: `products/agent-skill/`
+4. Optional: Add custom domain `agent-skill.klappy.dev`
+
+### Build Process
+
+No special build needed. The existing compile process already produces files in `v*/dist/`.
+
+### Deployment Trigger
+
+- Auto-deploy on push to main
+- Only serves files from `products/agent-skill/v*/dist/`
+
+---
+
+## Attempt Policy
+
+This PRD may be attempted multiple times.
+
+- Each attempt is evaluated independently
+- Failed attempts inform future attempts or PRD revisions
+- Attempts are sealed when CLOSED or ABANDONED
+
+Attempts live at: `v1.2.1/attempts/attempt-NNN/`
+
+---
+
+## Related Documents
+
+- v1.1 Champion: `../v1.1/attempts/attempt-001/`
+- v1.2 Failed: `../v1.2/attempts/attempt-001/LEARNINGS.md`
+- Lane CONTRACT: `../CONTRACT.md`
+- Lane README: `../README.md`
+
+---
+
+## Learnings Applied from v1.2
+
+This PRD directly addresses learnings from the v1.2 failed attempt:
+
+1. **Lane isolation is absolute** — Cannot require cross-lane modification
+2. **Lane-owned deployment** — Each lane can own its infrastructure
+3. **Versioned assets** — Dependents need stable, immutable URLs
+4. **Antifragile documentation** — README per version, not JSON manifests
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/v1.2.2/PRD.md
+--------------------------------------------------------------------------------
+
+# PRD: ODD Agent Skill — Canon Refresh
+
+| Field           | Value            |
+|-----------------|------------------|
+| **PRD Version** | v1.2.2           |
+| **Lane**        | agent-skill      |
+| **Status**      | Failed           |
+| **Created**     | 2026-01-21       |
+| **Author**      | Chris Klapp      |
+| **Canon Version** | 0.5.4          |
+
+---
+
+## Interface Contracts
+
+This lane MUST remain compatible with:
+
+- manifest >=2.0.0 <3.0.0
+- attempt-cli >=2.0.0 <3.0.0
+
+---
+
+## Objective
+
+Recompile the PRD guide pack against canon v0.5.4 to include the README index pattern for tree-shakeable memory.
+
+---
+
+## Background
+
+**v1.2.1 delivered**: Lane-owned Cloudflare Pages deployment with versioned, immutable asset URLs.
+
+**v1.2.2 patches v1.2.1** with updated canon content:
+
+- Canon bumped to v0.5.4 (README Index Pattern)
+- Pack now includes folder READMEs for scannable summaries
+- Agents get full tree navigation without reading every file
+- This is a content structure improvement, not a feature change
+
+---
+
+## In Scope (v1.2.2)
+
+### From v1.2.1 (retained)
+
+- Lane-owned Cloudflare Pages deployment
+- Versioned asset URLs
+- README.md per version folder
+- No website lane dependency
+
+### New in v1.2.2
+
+- Recompiled pack against canon v0.5.4
+- Includes folder READMEs (canon, odd, appendices, decisions)
+- Updated source hashes in provenance header
+- Updated `/latest/` to point to v1.2.2 pack
+
+---
+
+## Explicitly Out of Scope (v1.2.2)
+
+- Changes to compile plan structure
+- Changes to distribution architecture
+- New features or workflow stages
+
+---
+
+## Success Criteria
+
+- [ ] Pack recompiled with canon v0.5.4 sources
+- [ ] Provenance header shows updated source hashes
+- [ ] Pack available at versioned URL
+- [ ] `/latest/` updated to serve v1.2.2 pack
+- [ ] No behavioral changes to pack guidance
+
+---
+
+## Definition of Done
+
+An attempt against this PRD is complete when:
+
+### Compilation
+
+- [ ] `npm run lane:compile -- --lane agent-skill --pack prd-guide` succeeds
+- [ ] Output written to `v1.2.2/dist/prd-guide-pack.md`
+- [ ] Provenance header shows canon v0.5.4 source hashes
+
+### Distribution
+
+- [ ] `public/agent-skill/latest/prd-guide-pack.md` updated
+- [ ] Public URL verified with HTTP 200
+
+### Verification
+
+- [ ] Source hashes differ from v1.2.1 (canon changed)
+- [ ] Pack content includes folder READMEs with scannable summaries
+
+### Evidence Required
+
+- [ ] Screenshot of successful compile output
+- [ ] Diff showing updated source hashes
+- [ ] Self-audit completed
+
+---
+
+## Pack Sources
+
+The compiled pack concatenates these files:
+
+### Canon Sources (persisted)
+
+| # | Source | Purpose |
+|---|--------|---------|
+| 1 | `canon/README.md` | Canon orientation, meta rules, confidence scores |
+| 2 | `canon/odd/README.md` | ODD folder index, core thesis |
+| 3 | `canon/odd/manifesto.md` | Full ODD philosophy |
+| 4 | `canon/odd/appendices/README.md` | 24 appendices summarized |
+| 5 | `canon/odd/decisions/README.md` | 14 decisions summarized |
+| 6 | `canon/constraints.md` | Baseline assumptions |
+| 7 | `canon/decision-rules.md` | Decision heuristics |
+| 8 | `canon/definition-of-done.md` | Completion criteria |
+| 9 | `canon/self-audit.md` | Review checklist |
+| 10 | `docs/PRD/PRD_TEMPLATE.md` | PRD structure |
+
+### Generated Sources (ephemeral)
+
+| # | Source | Purpose |
+|---|--------|---------|
+| 11 | `v1.2.2/INSTRUCTIONS.md` | Interactive guidance (generated by attempt) |
+
+**Note:** INSTRUCTIONS.md is a **generated artifact**, not persisted input. Each attempt generates it fresh based on PRD requirements. It is ephemeral like code.
+
+---
+
+## Constraints
+
+- **No functional changes**: This is a content refresh only
+- **Same distribution**: Uses existing Cloudflare Pages setup
+- **Traceability**: Canon version documented in PRD metadata
+
+---
+
+## Attempt Policy
+
+This PRD may be attempted multiple times.
+
+- Each attempt is evaluated independently
+- Failed attempts inform future attempts or PRD revisions
+- Attempts are sealed when CLOSED or ABANDONED
+
+Attempts live at: `v1.2.2/attempts/attempt-NNN/`
+
+---
+
+## Related Documents
+
+- v1.2.1 Champion: `../v1.2.1/attempts/attempt-001/`
+- Canon Changelog: `/public/content/canon/CHANGELOG.md`
+- Canon 0.5.4: `/canon/CHANGELOG.md` (README Index Pattern)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/v1.2.3/PRD.md
+--------------------------------------------------------------------------------
+
+# PRD: ODD Agent Skill — Canon Refresh + ODD Compliance
+
+| Field             | Value       |
+| ----------------- | ----------- |
+| **PRD Version**   | v1.2.3      |
+| **Lane**          | agent-skill |
+| **Status**        | Active      |
+| **Created**       | 2026-01-21  |
+| **Author**        | Chris Klapp |
+| **Canon Version** | 0.5.4       |
+
+---
+
+## Interface Contracts
+
+This lane MUST remain compatible with:
+
+- manifest >=2.0.0 <3.0.0
+- attempt-cli >=2.0.0 <3.0.0
+
+---
+
+## Objective
+
+Recompile the PRD guide pack against canon v0.5.4 with proper ODD compliance: ephemeral artifacts generated per-attempt, compile plans lane-owned, and strict adherence to the ODD formula (Pack + CONTRACT + PRD = Attempt).
+
+---
+
+## Background
+
+**v1.2.1 delivered**: Lane-owned Cloudflare Pages deployment with versioned, immutable asset URLs.
+
+**v1.2.2 failed** (see [H0005](../history/H0005-v1.2.2-failed.md)): Attempt exposed fundamental ODD violations:
+
+- INSTRUCTIONS.md was being persisted when it should be ephemeral
+- Compile plans lived in central `infra/compile/plans/` instead of lane
+- ODD formula (Pack + CONTRACT + PRD = Attempt) was violated
+- Attempted to steer a miss instead of failing clean
+
+**v1.2.3 patches v1.2.2** with ODD compliance + canon content:
+
+- Canon bumped to v0.5.4 (README Index Pattern)
+- Pack includes folder READMEs for scannable summaries
+- INSTRUCTIONS.md treated as ephemeral (generated per-attempt)
+- Compile plan lives in lane (`src/compile-plan.json`)
+- Clean restart with corrected architecture
+
+---
+
+## In Scope (v1.2.3)
+
+### From v1.2.1 (retained)
+
+- Lane-owned Cloudflare Pages deployment
+- Versioned asset URLs
+- README.md per version folder
+- No website lane dependency
+
+### New in v1.2.3
+
+- Recompiled pack against canon v0.5.4
+- Includes folder READMEs (canon, odd, appendices, decisions)
+- Updated source hashes in provenance header
+- Updated `/latest/` to point to v1.2.3 pack
+- INSTRUCTIONS.md as ephemeral artifact (generated per-attempt, not persisted)
+- Compile plan in lane (`src/compile-plan.json`)
+
+---
+
+## Explicitly Out of Scope (v1.2.3)
+
+- Changes to distribution architecture (Cloudflare Pages setup unchanged)
+- New features or workflow stages
+- Persisting generated artifacts (INSTRUCTIONS.md stays ephemeral)
+
+---
+
+## Success Criteria
+
+- [ ] Pack recompiled with canon v0.5.4 sources
+- [ ] Provenance header shows updated source hashes
+- [ ] Pack available at versioned URL
+- [ ] `/latest/` updated to serve v1.2.3 pack
+- [ ] No behavioral changes to pack guidance
+- [ ] INSTRUCTIONS.md generated per-attempt (not persisted in src/)
+- [ ] Compile plan located in lane (`src/compile-plan.json`)
+
+---
+
+## Definition of Done
+
+An attempt against this PRD is complete when:
+
+### Compilation
+
+- [ ] Compile succeeds using lane-owned `src/compile-plan.json`
+- [ ] Output written to attempt's `evidence/` folder
+- [ ] Provenance header shows canon v0.5.4 source hashes
+- [ ] INSTRUCTIONS.md generated fresh (not copied from persisted source)
+
+### Distribution
+
+- [ ] `public/agent-skill/v1.2.3/prd-guide-pack.md` created
+- [ ] `public/agent-skill/latest/prd-guide-pack.md` updated
+- [ ] Public URL verified with HTTP 200
+
+### Verification
+
+- [ ] Source hashes differ from v1.2.1 (canon changed)
+- [ ] Pack content includes folder READMEs with scannable summaries
+- [ ] No persisted INSTRUCTIONS.md in `src/` or version folder
+
+### Evidence Required
+
+- [ ] Screenshot of successful compile output
+- [ ] Diff showing updated source hashes
+- [ ] Self-audit completed
+
+---
+
+## Pack Sources
+
+The compiled pack concatenates these files:
+
+### Canon Sources (persisted)
+
+| #   | Source                           | Purpose                                          |
+| --- | -------------------------------- | ------------------------------------------------ |
+| 1   | `canon/README.md`                | Canon orientation, meta rules, confidence scores |
+| 2   | `canon/odd/README.md`            | ODD folder index, core thesis                    |
+| 3   | `canon/odd/manifesto.md`         | Full ODD philosophy                              |
+| 4   | `canon/odd/appendices/README.md` | 24 appendices summarized                         |
+| 5   | `canon/odd/decisions/README.md`  | 14 decisions summarized                          |
+| 6   | `canon/constraints.md`           | Baseline assumptions                             |
+| 7   | `canon/decision-rules.md`        | Decision heuristics                              |
+| 8   | `canon/definition-of-done.md`    | Completion criteria                              |
+| 9   | `canon/self-audit.md`            | Review checklist                                 |
+| 10  | `docs/PRD/PRD_TEMPLATE.md`       | PRD structure                                    |
+
+### Generated Sources (ephemeral)
+
+| #   | Source           | Purpose                                     |
+| --- | ---------------- | ------------------------------------------- |
+| 11  | `INSTRUCTIONS.md` | Interactive guidance (generated by attempt) |
+
+**Note:** INSTRUCTIONS.md is a **generated artifact**, not persisted input. Each attempt generates it fresh based on PRD requirements. It is ephemeral like code — it lives only in the attempt's evidence folder, never in `src/` or version folders.
+
+---
+
+## Constraints
+
+- **No functional changes**: This is a content refresh only
+- **Same distribution**: Uses existing Cloudflare Pages setup
+- **Traceability**: Canon version documented in PRD metadata
+- **ODD formula**: Pack + CONTRACT + PRD = Attempt (nothing else)
+- **Ephemeral artifacts**: Generated code (INSTRUCTIONS.md) not persisted
+- **Lane isolation**: Compile plans and version-specific assets stay in lane
+
+---
+
+## Attempt Policy
+
+This PRD may be attempted multiple times.
+
+- Each attempt is evaluated independently
+- Failed attempts inform future attempts or PRD revisions
+- Attempts are sealed when CLOSED or ABANDONED
+
+Attempts live at: `v1.2.3/attempts/attempt-NNN/`
+
+---
+
+## Related Documents
+
+- v1.2.2 Failure: [H0005](../history/H0005-v1.2.2-failed.md)
+- v1.2.1 Champion: `../v1.2.1/attempts/attempt-001/`
+- Canon Changelog: `/public/content/canon/CHANGELOG.md`
+- Canon 0.5.4: `/canon/CHANGELOG.md` (README Index Pattern)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/v1.2.4/PRD.md
+--------------------------------------------------------------------------------
+
+# PRD: ODD Agent Skill — Canon Refresh v0.8.0
+
+| Field             | Value       |
+| ----------------- | ----------- |
+| **PRD Version**   | v1.2.4      |
+| **Lane**          | agent-skill |
+| **Status**        | Active      |
+| **Created**       | 2026-01-21  |
+| **Author**        | Chris Klapp |
+| **Canon Version** | 0.8.0       |
+
+---
+
+## Interface Contracts
+
+This lane MUST remain compatible with:
+
+- manifest >=2.0.0 <3.0.0
+- attempt-cli >=2.0.0 <3.0.0
+
+---
+
+## Objective
+
+Recompile the PRD guide pack against canon v0.8.0, fixing stale ODD paths from the 0.6.0 root-level elevation and incorporating new concepts (Cognitive Partitioning, Tool Specialization).
+
+---
+
+## Background
+
+**v1.2.3 delivered**: Canon refresh to v0.5.4 with ODD compliance. INSTRUCTIONS.md treated as ephemeral.
+
+**Problem discovered**: The compile plan at `src/compile-plan.json` still references `canon/odd/manifesto.md`, but ODD was elevated to root level (`/odd/`) in canon 0.6.0. This path is stale.
+
+**Canon changes since v0.5.4**:
+
+| Version | Summary |
+|---------|---------|
+| 0.6.0   | Three-Tier Hierarchy — ODD elevated from `/canon/odd/` to `/odd/` |
+| 0.6.1   | Docs epistemic hygiene, frontmatter standardization |
+| 0.7.0   | Doc Inclusion Audit, README indexes, derived outputs |
+| 0.8.0   | Cognitive Partitioning, Tool Specialization appendix |
+
+**v1.2.4 patches v1.2.3** with:
+
+- Fixed ODD paths (`canon/odd/` → `odd/`)
+- Canon bumped to v0.8.0
+- New content: Cognitive Partitioning, Tool Specialization
+- Updated source hashes
+
+---
+
+## In Scope (v1.2.4)
+
+### From v1.2.3 (retained)
+
+- Lane-owned Cloudflare Pages deployment
+- Versioned asset URLs
+- README.md per version folder
+- No website lane dependency
+- INSTRUCTIONS.md as ephemeral artifact
+- Compile plan in lane (`src/compile-plan.json`)
+
+### New in v1.2.4
+
+- Fixed ODD paths to reflect root-level elevation
+- Recompiled pack against canon v0.8.0
+- Added Cognitive Partitioning concept reference
+- Added Tool Specialization appendix reference
+- Updated `/latest/` to point to v1.2.4 pack
+- Updated `latest/README.md` to reflect v1.2.4 as champion
+
+---
+
+## Explicitly Out of Scope (v1.2.4)
+
+- Changes to distribution architecture (Cloudflare Pages setup unchanged)
+- New workflow stages (that's v1.3)
+- Changing INSTRUCTIONS.md content (only path fixes)
+- Adding attempt execution guidance (that's v1.3)
+
+---
+
+## Success Criteria
+
+- [ ] Compile plan paths updated (`odd/` instead of `canon/odd/`)
+- [ ] Pack recompiled with canon v0.8.0 sources
+- [ ] Provenance header shows updated source hashes
+- [ ] Pack available at versioned URL (`/v1.2.4/prd-guide-pack.md`)
+- [ ] `/latest/` updated to serve v1.2.4 pack
+- [ ] `latest/README.md` updated to reference v1.2.4
+- [ ] No behavioral changes to pack guidance (path fix only)
+
+---
+
+## Definition of Done
+
+An attempt against this PRD is complete when:
+
+### Compilation
+
+- [ ] Compile plan paths corrected (`odd/manifesto.md`, etc.)
+- [ ] Compile succeeds using lane-owned `src/compile-plan.json`
+- [ ] Output written to attempt's `evidence/` folder
+- [ ] Provenance header shows canon v0.8.0 source hashes
+- [ ] INSTRUCTIONS.md generated fresh (not copied from persisted source)
+
+### Distribution
+
+- [ ] `public/agent-skill/v1.2.4/prd-guide-pack.md` created
+- [ ] `public/agent-skill/latest/prd-guide-pack.md` updated
+- [ ] `public/agent-skill/latest/README.md` updated (version reference)
+- [ ] Public URL verified with HTTP 200
+
+### Verification
+
+- [ ] Source hashes differ from v1.2.3 (paths changed, canon content changed)
+- [ ] ODD paths in compile plan point to `/odd/` not `/canon/odd/`
+- [ ] Pack content includes correct ODD manifesto from root level
+- [ ] No persisted INSTRUCTIONS.md in `src/` or version folder
+
+### Evidence Required
+
+- [ ] Screenshot or log of successful compile output
+- [ ] Diff showing updated paths in compile-plan.json
+- [ ] Diff showing updated source hashes
+- [ ] HTTP 200 verification of preview URL
+- [ ] Self-audit completed
+
+---
+
+## Pack Sources
+
+The compiled pack concatenates these files:
+
+### Canon Sources (persisted)
+
+| #   | Source                                | Purpose                                          |
+| --- | ------------------------------------- | ------------------------------------------------ |
+| 1   | `canon/README.md`                     | Canon orientation, meta rules, confidence scores |
+| 2   | `odd/README.md`                       | ODD folder index, core thesis                    |
+| 3   | `odd/manifesto.md`                    | Full ODD philosophy                              |
+| 4   | `odd/cognitive-partitioning.md`       | **NEW** Scaling pattern for reasoning systems    |
+| 5   | `odd/appendices/README.md`            | Portable appendices summarized                   |
+| 6   | `odd/decisions/README.md`             | ODD conceptual decisions                         |
+| 7   | `canon/odd/appendices/tool-specialization.md` | **NEW** Tool isolation pattern           |
+| 8   | `canon/constraints.md`                | Baseline assumptions                             |
+| 9   | `canon/decision-rules.md`             | Decision heuristics                              |
+| 10  | `canon/definition-of-done.md`         | Completion criteria                              |
+| 11  | `canon/self-audit.md`                 | Review checklist                                 |
+| 12  | `docs/PRD/PRD_TEMPLATE.md`            | PRD structure                                    |
+
+### Generated Sources (ephemeral)
+
+| #   | Source            | Purpose                                     |
+| --- | ----------------- | ------------------------------------------- |
+| 13  | `INSTRUCTIONS.md` | Interactive guidance (generated by attempt) |
+
+**Note:** INSTRUCTIONS.md is a **generated artifact**, not persisted input. Each attempt generates it fresh based on PRD requirements. It is ephemeral like code — it lives only in the attempt's evidence folder, never in `src/` or version folders.
+
+---
+
+## Constraints
+
+- **Path fix focus**: Primary goal is fixing stale paths
+- **Same distribution**: Uses existing Cloudflare Pages setup
+- **Traceability**: Canon version documented in PRD metadata
+- **ODD formula**: Pack + CONTRACT + PRD = Attempt (nothing else)
+- **Ephemeral artifacts**: Generated code (INSTRUCTIONS.md) not persisted
+- **Lane isolation**: Compile plans and version-specific assets stay in lane
+- **Complete latest update**: Both pack AND README must be updated
+
+---
+
+## Attempt Policy
+
+This PRD may be attempted multiple times.
+
+- Each attempt is evaluated independently
+- Failed attempts inform future attempts or PRD revisions
+- Attempts are sealed when CLOSED or ABANDONED
+
+Attempts live at: `v1.2.4/attempts/attempt-NNN/`
+
+---
+
+## Related Documents
+
+- v1.2.3 Champion: [H0006](../history/H0006-v1.2.3-champion.md)
+- v1.2.3 Attempt: `../v1.2.3/attempts/attempt-001/`
+- Canon Changelog: `/canon/CHANGELOG.md`
+- Three-Tier Hierarchy: `/odd/decisions/D0001-three-tier-conceptual-hierarchy.md`
+- Cognitive Partitioning: `/odd/cognitive-partitioning.md`
+- Tool Specialization: `/canon/odd/appendices/tool-specialization.md`
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/v1.2/PRD.md
+--------------------------------------------------------------------------------
+
+# PRD: ODD Agent Skill
+
+| Field           | Value            |
+|-----------------|------------------|
+| **PRD Version** | v1.2             |
+| **Lane**        | agent-skill      |
+| **Status**      | Frozen (Failed)  |
+| **Created**     | 2026-01-17       |
+| **Updated**     | 2026-01-20       |
+| **Author**      | Chris Klapp      |
+
+---
+
+## Interface Contracts
+
+This lane MUST remain compatible with:
+
+- manifest >=2.0.0 <3.0.0
+- attempt-cli >=2.0.0 <3.0.0
+
+This lane is allowed to have no UI and is not required to satisfy build-output unless it produces a deployable artifact.
+
+---
+
+## Objective
+
+Deliver a compiled pack (`prd-guide-pack.md`) that enables AI agents to interactively guide humans through creating ODD-aligned PRDs.
+
+**v1.2 addition**: The compiled pack is publicly accessible at a stable URL without requiring clone or build.
+
+---
+
+## Background
+
+This is the whole point.
+
+This PRD is about how agents think, not what they render.
+
+This is not tied to this website. This should work on any project.
+
+Once this succeeds, any future PoC can start without rebuilding process.
+
+**V1.1 delivered**: A portable, compiled pack that any LLM can use to guide PRD creation using ODD principles.
+
+**V1.2 adds**: Zero-friction public distribution so anyone can grab the pack from a URL.
+
+---
+
+## In Scope (v1.2)
+
+### From v1.1 (retained)
+
+- Compiled pack for PRD creation guidance
+- Distilled ODD philosophy (manifesto, constraints, decision rules)
+- PRD template structure
+- Interactive conversation flow instructions
+- Questions to probe for outcomes, evidence, and constraints
+- Anti-pattern detection (feature-first thinking, untestable criteria)
+
+### New in v1.2
+
+- Public URL for pack distribution
+- Integration with existing Cloudflare Pages deployment
+- Automated build-and-deploy (no manual upload)
+
+---
+
+## Explicitly Out of Scope (v1.2)
+
+- UI rendering (belongs to website lane)
+- Website styling or navigation
+- Human onboarding (belongs to website lane)
+- Content authoring for humans
+- Helping humans understand ODD (belongs to ai-navigation lane)
+- MCP server integration (future)
+- Cursor SKILL.md format (future)
+- Attempt execution guidance (future)
+- Failure detection / self-improvement (future)
+- Multi-project orchestration (future)
+
+---
+
+## Success Criteria
+
+### v1.1 Criteria (retained)
+
+- [ ] Pack can be consumed by any LLM with 100K+ context window
+- [ ] Agent using pack asks clarifying questions about outcomes (not features)
+- [ ] Agent using pack identifies untestable success criteria
+- [ ] Agent using pack suggests missing constraints or non-goals
+- [ ] Resulting PRD follows ODD template structure
+- [ ] No dependency on this repo's UI or tooling
+
+### v1.2 Criteria (new)
+
+- [ ] Pack available at stable public URL (e.g., `https://klappy.dev/packs/agent-skill/prd-guide-pack.md`)
+- [ ] URL returns HTTP 200 with correct pack content
+- [ ] No clone or build required for consumers to access pack
+- [ ] URL documented in lane README
+
+---
+
+## Definition of Done
+
+An attempt against this PRD is complete when:
+
+### v1.1 Requirements (retained)
+
+- [ ] Compile plan exists at `infra/compile/plans/agent-skill/prd-guide.json`
+- [ ] Interactive guidance exists at `products/agent-skill/src/INSTRUCTIONS.md`
+- [ ] Pack generated at `products/agent-skill/dist/prd-guide-pack.md`
+- [ ] Pack includes valid provenance header (lane, pack, built_at, git_commit, sources, source_hashes)
+
+### v1.2 Requirements (new)
+
+- [ ] Distribution mechanism implemented (build script copies pack to website dist)
+- [ ] Public URL verified with HTTP 200 after deployment
+- [ ] Pack content at URL matches local build output
+- [ ] `products/agent-skill/src/README.md` updated with public URL
+
+### Evidence Required
+
+- [ ] Screenshot of pack URL returning 200
+- [ ] Diff showing pack content matches local build
+- [ ] Self-audit completed with explicit tradeoffs
+
+---
+
+## Primary User
+
+AI agents (Claude Opus 4.5 or similar) operating in Claude Code, Cursor, or any IDE with LLM context injection.
+
+---
+
+## Target Use Case
+
+A developer wants to create a V1 PRD for their product using ODD principles.
+
+**v1.1 flow**: Clone repo, build pack, paste into AI context.
+
+**v1.2 flow**: Copy pack from public URL, paste into AI context. No clone or build required.
+
+The AI guides them through:
+
+1. Clarifying the outcome (not features)
+2. Defining testable success criteria
+3. Establishing constraints and non-goals
+4. Specifying evidence requirements
+5. Completing a self-audit
+
+---
+
+## Compiled Pack
+
+### Source
+
+- `products/agent-skill/src/INSTRUCTIONS.md` - Interactive guidance
+- `products/agent-skill/src/compile-plan.json` - Build configuration
+
+### Build Command
+
+- `npm run lane:compile -- --lane agent-skill --pack prd-guide`
+
+### Output
+
+- `products/agent-skill/dist/prd-guide-pack.md`
+- `products/agent-skill/dist/_meta/prd-guide-COMPILE_META.json`
+
+### Distribution (v1.2)
+
+- Deployed to: `https://klappy.dev/packs/agent-skill/prd-guide-pack.md`
+- Automated via website build process
+
+### Verification
+
+- `npm run verify:compiled -- --lane agent-skill --pack prd-guide`
+
+### Contract
+
+- The compiled pack MUST include a provenance header as defined in:
+  - `klappy://canon/odd/compilation`
+
+### Sources (in order)
+
+1. `canon/odd/manifesto.md` - Philosophy foundation
+2. `canon/constraints.md` - Baseline assumptions
+3. `canon/decision-rules.md` - Decision heuristics
+4. `canon/definition-of-done.md` - Completion criteria
+5. `canon/self-audit.md` - Review checklist
+6. `docs/PRD/PRD_TEMPLATE.md` - PRD structure
+7. `products/agent-skill/src/INSTRUCTIONS.md` - Interactive guidance
+
+---
+
+## Constraints
+
+This PRD is shaped by Canon constraints:
+
+- Evidence over assertion
+- Evolution, not automation (humans stay in the loop)
+- Explicit tradeoffs required
+- Bounded evolution (no self-modifying goals)
+- Portability: pack must work outside this repository
+
+### v1.2 Constraints
+
+- Must integrate with existing Cloudflare Pages deployment
+- Must not require manual steps after merge to main
+- Pack must be regeneratable (not manually uploaded)
+
+---
+
+## Attempt Policy
+
+This PRD may be attempted multiple times.
+
+- Each attempt is evaluated independently
+- Failed attempts inform future attempts or PRD revisions
+- Attempts are sealed when CLOSED or ABANDONED
+
+Attempts live at: `v1.2/attempts/attempt-NNN/`
+
+---
+
+## Related Documents
+
+- Lane architecture: `/canon/odd/appendices/product-lanes.md`
+- Canon constraints: `/canon/constraints/README.md`
+- Definition of Done: `/canon/constraints/definition-of-done.md`
+- Evolution philosophy: `/canon/odd/appendices/evolution-not-automation.md`
+- Compilation: `/canon/odd/appendices/compilation.md`
+- Compilation targets: `/canon/odd/appendices/compilation-targets.md`
+- v1.1 Champion: `../v1.1/attempts/attempt-001/`
+
+---
+
+## Freeze Notice
+
+This PRD is **FROZEN**. Attempt-001 ran against it and FAILED.
+
+**Failure Reason**: The PRD requires cross-lane modification (website build process) which violates lane isolation constraints.
+
+The mechanism was proven to work via mock testing, but the PRD cannot be satisfied without cross-lane modification.
+
+See `v1.2/attempts/attempt-001/LEARNINGS.md` for detailed analysis.
+
+A new PRD version (v1.2.1) addresses these issues with a revised approach.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/v1.3.1/PRD.md
+--------------------------------------------------------------------------------
+
+# PRD: ODD Agent Skill — PRD Elicitation Enhancement
+
+| Field             | Value       |
+| ----------------- | ----------- |
+| **PRD Version**   | v1.3.1      |
+| **Lane**          | agent-skill |
+| **Status**        | Active      |
+| **Created**       | 2026-01-21  |
+| **Updated**       | 2026-01-22  |
+| **Author**        | Chris Klapp |
+| **Canon Version** | 0.10.0      |
+
+---
+
+## Interface Contracts
+
+This lane MUST remain compatible with:
+
+- manifest >=2.0.0 <3.0.0
+- attempt-cli >=2.0.0 <3.0.0
+
+---
+
+## Objective
+
+Transform the prd-guide pack from an informational resource (teaches ODD) into an interrogative system (extracts PRDs from humans) by adding stage typing, asset intake, and a formal elicitation loop.
+
+---
+
+## Background
+
+**v1.2.4 delivered**: Canon refresh to v0.8.0 with Cognitive Partitioning and Tool Specialization.
+
+**Problem identified**: External review found the pack "conceptually sound but operationally incomplete":
+
+| Strength | Gap |
+|----------|-----|
+| Canonical alignment unusually strong | No structured elicitation loop |
+| Compilation philosophy correct | No stage-aware questioning |
+| Agent authority properly scoped | No asset-gathering protocols |
+| Treats PRDs as evolving intent | No explicit interview modes |
+
+The pack teaches agents how ODD works, but does not fully teach agents how to elicit a PRD from a human.
+
+**v1.2.x INSTRUCTIONS.md** has 7 stages, but:
+
+- Jumps straight to "What outcome are you trying to achieve?"
+- No classification of PRD type (PoC vs Feature vs Fix)
+- No inventory of existing assets
+- No explicit agent role declaration
+- No ambiguity capture stage
+
+**v1.3 addresses this** by adding:
+
+- Agent Role Declaration (elicitation system, not author)
+- PRD Stage Typing gate before questioning
+- Resequenced Interview Loop with Inventory and Ambiguity Capture
+- Asset Intake Contract with guidance for partial information
+
+---
+
+## In Scope (v1.3)
+
+### From v1.2.4 (retained)
+
+- Lane-owned Cloudflare Pages deployment
+- Versioned asset URLs
+- Canon sources at v0.8.0
+- INSTRUCTIONS.md as ephemeral artifact
+- Compile plan in lane (`src/compile-plan.json`)
+
+### New in v1.3
+
+#### 1. Agent Role Declaration
+
+Add explicit framing at the top of INSTRUCTIONS.md:
+
+```markdown
+## Agent Role
+
+You are not a PRD author.
+You are a PRD elicitation system that helps humans externalize intent, constraints, uncertainty, and evidence.
+
+You extract. You do not invent.
+```
+
+#### 2. PRD Stage Typing Gate
+
+Add classification before current Stage 1:
+
+| Stage Type | Evidence Expectations | Ambiguity Tolerance |
+|------------|----------------------|---------------------|
+| PoC / Exploration | Minimal, learning-focused | High |
+| Feature | Required, scope bounded | Medium |
+| Fix | Root cause required, regression risk | Low |
+| Product slice | End-to-end verification | Medium |
+| Refactor / migration | No user-facing change | Low |
+
+Questions:
+- "Is this exploring something new, building something known, or fixing something broken?"
+- "Will users see a change, or is this internal?"
+
+#### 3. Formal Interview Loop (Resequenced)
+
+| Phase | v1.2.x Stage | v1.3 Phase |
+|-------|--------------|------------|
+| NEW | - | **0. Stage Identification** — What type of PRD is this? |
+| NEW | - | **1. Orient** — What are we trying to learn or change? |
+| NEW | - | **2. Inventory** — What assets already exist? |
+| Moved | Stage 4 | **3. Constraint Surfacing** — Time, scope, reversibility, risk |
+| Moved | Stage 1 | **4. Outcome Framing** — What would "better" look like? |
+| Moved | Stage 2 | **5. Evidence Definition** — How will we know? |
+| NEW | - | **6. Ambiguity Capture** — What is still unclear or contested? |
+| Same | Stages 3,5,6,7 | **7. Draft Assembly** — Non-goals, risks, final PRD |
+
+Key changes:
+- Inventory BEFORE outcome (you can't define what you want until you know what you have)
+- Explicit ambiguity capture (ODD acknowledges uncertainty)
+- Stage identification gates the entire flow
+
+#### 4. Asset Intake Contract
+
+| Type | Examples | When missing |
+|------|----------|--------------|
+| Text | docs, notes, prior PRDs | Proceed with "no prior docs" flag |
+| Media | screenshots, recordings, mockups | Proceed if non-UI; require for UI work |
+| Links | repos, tickets, deployed systems | Note as "greenfield" if no links |
+| Oral testimony | interview answers | This is the PRD session itself |
+
+Guidance:
+- "What documentation already exists for this?"
+- "Do you have any screenshots, mockups, or recordings?"
+- "Is there a repo, ticket, or deployed system I should know about?"
+- Proceed with what's available; don't block on missing assets
+
+---
+
+## Explicitly Out of Scope (v1.3)
+
+- Changes to distribution architecture (Cloudflare Pages setup unchanged)
+- Multi-pack compilation (that's v1.4)
+- Tiered content inclusion (that's v1.4)
+- Role-specific packs (that's v1.5+)
+- Renaming the pack (keep "prd-guide" for now)
+
+---
+
+## Success Criteria
+
+- [ ] INSTRUCTIONS.md includes Agent Role Declaration section
+- [ ] INSTRUCTIONS.md includes Stage Identification gate (Phase 0)
+- [ ] INSTRUCTIONS.md includes Inventory phase (Phase 2)
+- [ ] INSTRUCTIONS.md includes Ambiguity Capture phase (Phase 6)
+- [ ] INSTRUCTIONS.md includes Asset Intake guidance
+- [ ] Interview loop resequenced per spec
+- [ ] Stage Typing table included with evidence expectations
+- [ ] Pack available at versioned URL (`/v1.3/prd-guide-pack.md`)
+- [ ] `/latest/` updated to serve v1.3 pack
+- [ ] `latest/README.md` updated to reference v1.3
+
+---
+
+## Definition of Done
+
+An attempt against this PRD is complete when:
+
+### INSTRUCTIONS.md Content
+
+- [ ] Agent Role Declaration added at top
+- [ ] Stage Identification (Phase 0) defined with PRD type classification
+- [ ] Inventory (Phase 2) defined with asset intake questions
+- [ ] Ambiguity Capture (Phase 6) defined with uncertainty documentation
+- [ ] Interview loop has 8 phases (0-7) in correct order
+- [ ] Stage Typing table includes all 5 types with implications
+
+### Compilation
+
+- [ ] Compile succeeds using lane-owned `src/compile-plan.json`
+- [ ] Output written to attempt's `evidence/` folder
+- [ ] Provenance header shows canon v0.10.0 source hashes
+- [ ] INSTRUCTIONS.md generated fresh (not copied from persisted source)
+
+### Distribution
+
+- [ ] `public/agent-skill/v1.3/prd-guide-pack.md` created
+- [ ] `public/agent-skill/latest/prd-guide-pack.md` updated
+- [ ] `public/agent-skill/latest/README.md` updated (version reference)
+- [ ] Public URL verified with HTTP 200
+
+### Verification
+
+- [ ] INSTRUCTIONS.md demonstrably different from v1.2.4
+- [ ] Agent using pack asks about PRD type before jumping to outcomes
+- [ ] Agent using pack asks about existing assets before defining scope
+- [ ] Ambiguity capture section present and functional
+
+### Evidence Required
+
+- [ ] Diff showing new INSTRUCTIONS.md content vs v1.2.4
+- [ ] Screenshot or log of successful compile output
+- [ ] HTTP 200 verification of preview URL
+- [ ] Sample conversation demonstrating elicitation flow
+- [ ] Self-audit completed
+
+---
+
+## Pack Sources
+
+The compiled pack concatenates these files:
+
+### Canon Sources (v0.10.0)
+
+| # | Source | Purpose |
+|---|--------|---------|
+| 1 | `canon/README.md` | Canon orientation, meta rules, confidence scores |
+| 2 | `odd/README.md` | ODD folder index, core thesis |
+| 3 | `odd/terminology.md` | **NEW** Constrained vocabulary and disambiguation |
+| 4 | `odd/manifesto.md` | Full ODD philosophy |
+| 5 | `odd/cognitive-partitioning.md` | Scaling pattern for reasoning systems |
+| 6 | `odd/appendices/README.md` | Portable appendices summarized |
+| 7 | `odd/decisions/README.md` | ODD conceptual decisions |
+| 8 | `canon/odd/appendices/tool-specialization.md` | Tool isolation pattern |
+| 9 | `canon/constraints.md` | Baseline assumptions |
+| 10 | `canon/decision-rules.md` | Decision heuristics |
+| 11 | `canon/definition-of-done.md` | Completion criteria |
+| 12 | `canon/self-audit.md` | Review checklist |
+| 13 | `docs/PRD/PRD_TEMPLATE.md` | PRD structure |
+
+### Generated Sources (ephemeral)
+
+| # | Source | Purpose |
+|---|--------|---------|
+| 13 | `INSTRUCTIONS.md` | **UPDATED** Interactive elicitation guidance |
+
+**Note:** INSTRUCTIONS.md is the primary deliverable of this PRD. It must include all elicitation enhancements.
+
+---
+
+## Constraints
+
+- **Elicitation focus**: Primary goal is improving the interview mechanics
+- **Same distribution**: Uses existing Cloudflare Pages setup
+- **Same canon sources**: v0.10.0 sources (includes terminology.md)
+- **ODD formula**: Pack + CONTRACT + PRD = Attempt (nothing else)
+- **Ephemeral artifacts**: Generated code (INSTRUCTIONS.md) not persisted
+- **Lane isolation**: All changes stay within agent-skill lane
+- **Backward compatible**: Existing PRD guidance still works (enhanced, not replaced)
+
+---
+
+## Risks
+
+| Risk | Mitigation |
+|------|------------|
+| Elicitation loop changes may require iteration | v1.3 can have patch versions (v1.3.1, v1.3.2) |
+| Stage typing may not cover all cases | Include "Other" type with fallback to generic flow |
+| Interview loop may feel too long | Can be streamlined in v1.3.x based on feedback |
+| Asset intake may block users who have nothing | Explicit guidance to proceed with partial information |
+
+---
+
+## Attempt Policy
+
+This PRD may be attempted multiple times.
+
+- Each attempt is evaluated independently
+- Failed attempts inform future attempts or PRD revisions
+- Attempts are sealed when CLOSED or ABANDONED
+
+Attempts live at: `v1.3/attempts/attempt-NNN/`
+
+---
+
+## Related Documents
+
+- v1.2.4 Champion: [H0007](./history/H0007-v1.2.4-champion.md)
+- v1.2.4 Attempt: `v1.2.4/attempts/attempt-001/`
+- Roadmap: [ROADMAP.md](./ROADMAP.md)
+- External Review: Feedback that identified elicitation gap (provided by user)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/v1.3/PRD.md
+--------------------------------------------------------------------------------
+
+# PRD: ODD Agent Skill — PRD Elicitation Enhancement
+
+| Field             | Value       |
+| ----------------- | ----------- |
+| **PRD Version**   | v1.3        |
+| **Lane**          | agent-skill |
+| **Status**        | Champion    |
+| **Created**       | 2026-01-21  |
+| **Author**        | Chris Klapp |
+| **Canon Version** | 0.8.0       |
+
+---
+
+## Interface Contracts
+
+This lane MUST remain compatible with:
+
+- manifest >=2.0.0 <3.0.0
+- attempt-cli >=2.0.0 <3.0.0
+
+---
+
+## Objective
+
+Transform the prd-guide pack from an informational resource (teaches ODD) into an interrogative system (extracts PRDs from humans) by adding stage typing, asset intake, and a formal elicitation loop.
+
+---
+
+## Background
+
+**v1.2.4 delivered**: Canon refresh to v0.8.0 with Cognitive Partitioning and Tool Specialization.
+
+**Problem identified**: External review found the pack "conceptually sound but operationally incomplete":
+
+| Strength | Gap |
+|----------|-----|
+| Canonical alignment unusually strong | No structured elicitation loop |
+| Compilation philosophy correct | No stage-aware questioning |
+| Agent authority properly scoped | No asset-gathering protocols |
+| Treats PRDs as evolving intent | No explicit interview modes |
+
+The pack teaches agents how ODD works, but does not fully teach agents how to elicit a PRD from a human.
+
+**v1.2.x INSTRUCTIONS.md** has 7 stages, but:
+
+- Jumps straight to "What outcome are you trying to achieve?"
+- No classification of PRD type (PoC vs Feature vs Fix)
+- No inventory of existing assets
+- No explicit agent role declaration
+- No ambiguity capture stage
+
+**v1.3 addresses this** by adding:
+
+- Agent Role Declaration (elicitation system, not author)
+- PRD Stage Typing gate before questioning
+- Resequenced Interview Loop with Inventory and Ambiguity Capture
+- Asset Intake Contract with guidance for partial information
+
+---
+
+## In Scope (v1.3)
+
+### From v1.2.4 (retained)
+
+- Lane-owned Cloudflare Pages deployment
+- Versioned asset URLs
+- Canon sources at v0.8.0
+- INSTRUCTIONS.md as ephemeral artifact
+- Compile plan in lane (`src/compile-plan.json`)
+
+### New in v1.3
+
+#### 1. Agent Role Declaration
+
+Add explicit framing at the top of INSTRUCTIONS.md:
+
+```markdown
+## Agent Role
+
+You are not a PRD author.
+You are a PRD elicitation system that helps humans externalize intent, constraints, uncertainty, and evidence.
+
+You extract. You do not invent.
+```
+
+#### 2. PRD Stage Typing Gate
+
+Add classification before current Stage 1:
+
+| Stage Type | Evidence Expectations | Ambiguity Tolerance |
+|------------|----------------------|---------------------|
+| PoC / Exploration | Minimal, learning-focused | High |
+| Feature | Required, scope bounded | Medium |
+| Fix | Root cause required, regression risk | Low |
+| Product slice | End-to-end verification | Medium |
+| Refactor / migration | No user-facing change | Low |
+
+Questions:
+- "Is this exploring something new, building something known, or fixing something broken?"
+- "Will users see a change, or is this internal?"
+
+#### 3. Formal Interview Loop (Resequenced)
+
+| Phase | v1.2.x Stage | v1.3 Phase |
+|-------|--------------|------------|
+| NEW | - | **0. Stage Identification** — What type of PRD is this? |
+| NEW | - | **1. Orient** — What are we trying to learn or change? |
+| NEW | - | **2. Inventory** — What assets already exist? |
+| Moved | Stage 4 | **3. Constraint Surfacing** — Time, scope, reversibility, risk |
+| Moved | Stage 1 | **4. Outcome Framing** — What would "better" look like? |
+| Moved | Stage 2 | **5. Evidence Definition** — How will we know? |
+| NEW | - | **6. Ambiguity Capture** — What is still unclear or contested? |
+| Same | Stages 3,5,6,7 | **7. Draft Assembly** — Non-goals, risks, final PRD |
+
+Key changes:
+- Inventory BEFORE outcome (you can't define what you want until you know what you have)
+- Explicit ambiguity capture (ODD acknowledges uncertainty)
+- Stage identification gates the entire flow
+
+#### 4. Asset Intake Contract
+
+| Type | Examples | When missing |
+|------|----------|--------------|
+| Text | docs, notes, prior PRDs | Proceed with "no prior docs" flag |
+| Media | screenshots, recordings, mockups | Proceed if non-UI; require for UI work |
+| Links | repos, tickets, deployed systems | Note as "greenfield" if no links |
+| Oral testimony | interview answers | This is the PRD session itself |
+
+Guidance:
+- "What documentation already exists for this?"
+- "Do you have any screenshots, mockups, or recordings?"
+- "Is there a repo, ticket, or deployed system I should know about?"
+- Proceed with what's available; don't block on missing assets
+
+---
+
+## Explicitly Out of Scope (v1.3)
+
+- Changes to distribution architecture (Cloudflare Pages setup unchanged)
+- Multi-pack compilation (that's v1.4)
+- Tiered content inclusion (that's v1.4)
+- Role-specific packs (that's v1.5+)
+- Renaming the pack (keep "prd-guide" for now)
+
+---
+
+## Success Criteria
+
+- [ ] INSTRUCTIONS.md includes Agent Role Declaration section
+- [ ] INSTRUCTIONS.md includes Stage Identification gate (Phase 0)
+- [ ] INSTRUCTIONS.md includes Inventory phase (Phase 2)
+- [ ] INSTRUCTIONS.md includes Ambiguity Capture phase (Phase 6)
+- [ ] INSTRUCTIONS.md includes Asset Intake guidance
+- [ ] Interview loop resequenced per spec
+- [ ] Stage Typing table included with evidence expectations
+- [ ] Pack available at versioned URL (`/v1.3/prd-guide-pack.md`)
+- [ ] `/latest/` updated to serve v1.3 pack
+- [ ] `latest/README.md` updated to reference v1.3
+
+---
+
+## Definition of Done
+
+An attempt against this PRD is complete when:
+
+### INSTRUCTIONS.md Content
+
+- [ ] Agent Role Declaration added at top
+- [ ] Stage Identification (Phase 0) defined with PRD type classification
+- [ ] Inventory (Phase 2) defined with asset intake questions
+- [ ] Ambiguity Capture (Phase 6) defined with uncertainty documentation
+- [ ] Interview loop has 8 phases (0-7) in correct order
+- [ ] Stage Typing table includes all 5 types with implications
+
+### Compilation
+
+- [ ] Compile succeeds using lane-owned `src/compile-plan.json`
+- [ ] Output written to attempt's `evidence/` folder
+- [ ] Provenance header shows canon v0.8.0 source hashes
+- [ ] INSTRUCTIONS.md generated fresh (not copied from persisted source)
+
+### Distribution
+
+- [ ] `public/agent-skill/v1.3/prd-guide-pack.md` created
+- [ ] `public/agent-skill/latest/prd-guide-pack.md` updated
+- [ ] `public/agent-skill/latest/README.md` updated (version reference)
+- [ ] Public URL verified with HTTP 200
+
+### Verification
+
+- [ ] INSTRUCTIONS.md demonstrably different from v1.2.4
+- [ ] Agent using pack asks about PRD type before jumping to outcomes
+- [ ] Agent using pack asks about existing assets before defining scope
+- [ ] Ambiguity capture section present and functional
+
+### Evidence Required
+
+- [ ] Diff showing new INSTRUCTIONS.md content vs v1.2.4
+- [ ] Screenshot or log of successful compile output
+- [ ] HTTP 200 verification of preview URL
+- [ ] Sample conversation demonstrating elicitation flow
+- [ ] Self-audit completed
+
+---
+
+## Pack Sources
+
+The compiled pack concatenates these files:
+
+### Canon Sources (persisted, unchanged from v1.2.4)
+
+| # | Source | Purpose |
+|---|--------|---------|
+| 1 | `canon/README.md` | Canon orientation, meta rules, confidence scores |
+| 2 | `odd/README.md` | ODD folder index, core thesis |
+| 3 | `odd/manifesto.md` | Full ODD philosophy |
+| 4 | `odd/cognitive-partitioning.md` | Scaling pattern for reasoning systems |
+| 5 | `odd/appendices/README.md` | Portable appendices summarized |
+| 6 | `odd/decisions/README.md` | ODD conceptual decisions |
+| 7 | `canon/odd/appendices/tool-specialization.md` | Tool isolation pattern |
+| 8 | `canon/constraints.md` | Baseline assumptions |
+| 9 | `canon/decision-rules.md` | Decision heuristics |
+| 10 | `canon/definition-of-done.md` | Completion criteria |
+| 11 | `canon/self-audit.md` | Review checklist |
+| 12 | `docs/PRD/PRD_TEMPLATE.md` | PRD structure |
+
+### Generated Sources (ephemeral)
+
+| # | Source | Purpose |
+|---|--------|---------|
+| 13 | `INSTRUCTIONS.md` | **UPDATED** Interactive elicitation guidance |
+
+**Note:** INSTRUCTIONS.md is the primary deliverable of this PRD. It must include all elicitation enhancements.
+
+---
+
+## Constraints
+
+- **Elicitation focus**: Primary goal is improving the interview mechanics
+- **Same distribution**: Uses existing Cloudflare Pages setup
+- **Same canon sources**: v0.8.0 sources unchanged
+- **ODD formula**: Pack + CONTRACT + PRD = Attempt (nothing else)
+- **Ephemeral artifacts**: Generated code (INSTRUCTIONS.md) not persisted
+- **Lane isolation**: All changes stay within agent-skill lane
+- **Backward compatible**: Existing PRD guidance still works (enhanced, not replaced)
+
+---
+
+## Risks
+
+| Risk | Mitigation |
+|------|------------|
+| Elicitation loop changes may require iteration | v1.3 can have patch versions (v1.3.1, v1.3.2) |
+| Stage typing may not cover all cases | Include "Other" type with fallback to generic flow |
+| Interview loop may feel too long | Can be streamlined in v1.3.x based on feedback |
+| Asset intake may block users who have nothing | Explicit guidance to proceed with partial information |
+
+---
+
+## Attempt Policy
+
+This PRD may be attempted multiple times.
+
+- Each attempt is evaluated independently
+- Failed attempts inform future attempts or PRD revisions
+- Attempts are sealed when CLOSED or ABANDONED
+
+Attempts live at: `v1.3/attempts/attempt-NNN/`
+
+---
+
+## Related Documents
+
+- v1.2.4 Champion: [H0007](../history/H0007-v1.2.4-champion.md)
+- v1.2.4 Attempt: `../v1.2.4/attempts/attempt-001/`
+- Roadmap: [ROADMAP.md](../ROADMAP.md)
+- External Review: Feedback that identified elicitation gap (provided by user)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/v1.4.1/PRD.md
+--------------------------------------------------------------------------------
+
+# PRD: ODD Agent Skill — Tier-Aware Pack Compiler
+
+| Field             | Value       |
+| ----------------- | ----------- |
+| **PRD Version**   | v1.4.1      |
+| **Lane**          | agent-skill |
+| **Status**        | Active      |
+| **Created**       | 2026-01-21  |
+| **Updated**       | 2026-01-22  |
+| **Author**        | Chris Klapp |
+| **Canon Version** | 0.10.0      |
+
+---
+
+## v1.4.1 Scope
+
+**Release: v1.4.1 — Tier-Aware Pack Compiler**
+
+**Goal:** Make pack compilation tier-aware by implementing:
+
+1. **Discovery** — for default pack types (folder scan + filters)
+2. **Tier 0 exclusion** — always, even if explicitly listed
+3. **Tier-based projection** — Tier 1/2/3 → high/medium/low
+4. **Auditability** — via `--plan` output and CI checks
+
+**v1.4.1 explicitly includes:**
+
+- Tier-aware compilation (discovery + exclusion + projection + plan)
+
+**v1.4.1 fixes:**
+
+- Tier 0 inclusion bug (docs marked `tier: 0` were being included)
+- Tier projection ignored bug (all docs compiled at full detail)
+
+**Non-goals (explicit):**
+
+- No new projection formats beyond existing high/medium/low definitions
+- No content rewrites of docs in this release
+- No new UI/UX changes outside CLI/compiler outputs
+
+---
+
+## Interface Contracts
+
+This lane MUST remain compatible with:
+
+- manifest >=2.0.0 <3.0.0
+- attempt-cli >=2.0.0 <3.0.0
+
+---
+
+## Objective
+
+Transform the prd-guide pack from an informational resource (teaches ODD) into an interrogative system (extracts PRDs from humans) by adding stage typing, asset intake, and a formal elicitation loop.
+
+---
+
+## Background
+
+**v1.2.4 delivered**: Canon refresh to v0.8.0 with Cognitive Partitioning and Tool Specialization.
+
+**Problem identified**: External review found the pack "conceptually sound but operationally incomplete":
+
+| Strength | Gap |
+|----------|-----|
+| Canonical alignment unusually strong | No structured elicitation loop |
+| Compilation philosophy correct | No stage-aware questioning |
+| Agent authority properly scoped | No asset-gathering protocols |
+| Treats PRDs as evolving intent | No explicit interview modes |
+
+The pack teaches agents how ODD works, but does not fully teach agents how to elicit a PRD from a human.
+
+**v1.2.x INSTRUCTIONS.md** has 7 stages, but:
+
+- Jumps straight to "What outcome are you trying to achieve?"
+- No classification of PRD type (PoC vs Feature vs Fix)
+- No inventory of existing assets
+- No explicit agent role declaration
+- No ambiguity capture stage
+
+**v1.3 addresses this** by adding:
+
+- Agent Role Declaration (elicitation system, not author)
+- PRD Stage Typing gate before questioning
+- Resequenced Interview Loop with Inventory and Ambiguity Capture
+- Asset Intake Contract with guidance for partial information
+
+**v1.4.0 defined**: Tiered context construction requirements (what the system should do).
+
+**v1.4.1 implements**: The compiler changes to actually enforce those requirements.
+
+---
+
+## Current Behavior (Bug)
+
+The current compiler does not enforce the tier system:
+
+| Issue | Current Behavior | Required Behavior |
+|-------|------------------|-------------------|
+| Selection mode | Explicit whitelist only | Support discovery + curated |
+| Tier 0 handling | Included if in whitelist | Always excluded |
+| Projection | Full detail for all tiers | Tier 1→high, Tier 2→medium, Tier 3→low |
+| Tier metadata | Ignored | Read from frontmatter, enforce |
+| Auditability | None | `--plan` output with decisions |
+
+**Critical example — Tier 0 violation:**
+
+`odd/README.md` has `tier: 0` (scope exclusion) but was included in compiled packs because the compiler uses a whitelist that ignores tier metadata.
+
+**Root cause:** The compiler concatenates files from an explicit list without reading or enforcing tier frontmatter.
+
+---
+
+## Functional Requirements (v1.4.1)
+
+### FR-1: Tier Metadata Parsing
+
+The compiler must read frontmatter and determine `tier: 0|1|2|3` per file.
+
+**Missing tier handling:**
+
+- Default: missing tier → Tier 3 (include at low projection)
+- Must emit a warning in plan/audit output when tier is missing
+
+**Implementation:** `readFrontmatterTier(filePath) → { tier, warnings }`
+
+### FR-2: Tier 0 Exclusion Rule (Hard Rule)
+
+Tier 0 files must never be included in any pack output.
+
+- This includes explicitly listed/whitelisted files
+- Tier 0 exclusion must be visible in `--plan` output with `reason: excluded:tier0`
+- No exceptions, no overrides
+
+### FR-3: Pack Selection Modes
+
+Support two pack selection modes:
+
+| Mode | Description | Example |
+|------|-------------|---------|
+| `curated` | Explicit file list | prd-guide (existing behavior, but now tier-enforced) |
+| `discovered` | Folder scan + filters | default-odd-context (new) |
+
+Both modes must enforce:
+
+- Tier 0 exclusion
+- Tier-based projection
+
+### FR-4: Tier-Based Projection
+
+Projection must happen per-file before concatenation.
+
+| Tier | Projection | Output |
+|------|------------|--------|
+| Tier 1 | `high` | Full content |
+| Tier 2 | `medium` | Frontmatter + description + outline |
+| Tier 3 | `low` | Title + one-line summary |
+
+**Implementation:** `projectFile(file, projection) → projectedText`
+
+### FR-5: Auditability (`--plan`)
+
+Add a compiler flag `--plan` that outputs per-file decisions:
+
+| Field | Description |
+|-------|-------------|
+| `path` | File path |
+| `tier` | 0, 1, 2, or 3 |
+| `selected_by` | `curated` or `discovered` |
+| `projection` | `high`, `medium`, `low`, or `excluded` |
+| `included` | `true` or `false` |
+| `reason` | `tier0`, `missing`, `filtered`, etc. |
+| `tokens` | Estimated token count (recommended) |
+
+Output format: table (human) or JSON (CI).
+
+### FR-6: Deterministic Ordering
+
+Pack output ordering must be deterministic:
+
+- Sort by path (or explicit stable ordering rules)
+- Plan output must reflect final order
+- Same inputs → same output across runs
+
+---
+
+## Core Requirements (v1.4.0, retained)
+
+### Default Context Construction
+
+The agent skill shall construct a default odd-context-pack using tier-weighted projection detail.
+
+| Document Tier | Default Projection Detail |
+|---------------|---------------------------|
+| Tier 1        | `high` (full content)     |
+| Tier 2        | `medium` (structural)     |
+| Tier 3        | `low` (minimal)           |
+
+**Requirements:**
+
+1. **Tier determines default detail** — The agent shall project documents at detail levels corresponding to their epistemic tier unless explicitly overridden.
+
+2. **No tier flattening** — The agent shall not equalize detail across tiers. Tier 1 content receives more tokens than Tier 3 content by default.
+
+3. **No folder inference** — The agent shall determine epistemic obligation from document tier metadata, not from folder location.
+
+4. **Degradation is explicit** — When document structure is insufficient for the requested projection detail, the agent shall surface this degradation rather than compensating.
+
+5. **No synthesized context** — The agent shall use existing document structure for projection. It shall not summarize, synthesize, or generate context to fill gaps.
+
+### Agent Responsibilities
+
+The agent shall:
+
+- Respect epistemic obligation as encoded in document tiers
+- Treat Tier 3 content at low detail as awareness only, not reasoning input
+- Surface when documents lack structure required for projection
+- Proceed with available structure without inventing compensating context
+
+The agent shall not:
+
+- Infer obligation from folder hierarchy
+- Special-case READMEs or index files for elevated inclusion
+- Promote Tier 3 content to higher detail for perceived convenience
+- Summarize or synthesize documentation content
+
+---
+
+## Non-Goals (v1.4)
+
+These behaviors are explicitly excluded from this release to prevent design regression:
+
+| Non-Goal | Rationale |
+|----------|-----------|
+| README/index file special-casing | Navigation documents are typically Tier 3; elevating them would distort context weighting |
+| Convenience-based tier promotion | Tier 3 content exists for awareness, not reasoning; promoting it undermines epistemic discipline |
+| Summarization or synthesis | Projection uses authored structure only; missing structure is a signal, not a gap to fill |
+| Folder-based obligation inference | Tiers are document properties, orthogonal to folder location |
+| Smart exceptions | No heuristics that override tier-to-detail mapping based on content analysis |
+
+---
+
+## In Scope (v1.4)
+
+### New in v1.4
+
+#### 1. Tier-Weighted Context Pack Assembly
+
+Implement default context construction that maps document tiers to projection detail levels:
+
+- Tier 1 documents projected at `high` detail (full content)
+- Tier 2 documents projected at `medium` detail (frontmatter, description, outline)
+- Tier 3 documents projected at `low` detail (title, one-line summary)
+
+#### 2. Projection Detail Enforcement
+
+Add validation that the assembled context pack respects tier-to-detail mapping:
+
+- Tier 1 content must receive highest token allocation
+- Tier 3 content must not exceed minimal token allocation
+- Detail level must be determinable from tier without additional logic
+
+#### 3. Degradation Surfacing
+
+When documents lack structure required for their projected detail level:
+
+- Return what structure exists (no fallback to full content silently)
+- Include degradation indicator in pack output
+- Do not synthesize missing structural elements
+
+### From v1.3 (retained)
+
+### From v1.2.4 (retained)
+
+- Lane-owned Cloudflare Pages deployment
+- Versioned asset URLs
+- Canon sources at v0.8.0
+- INSTRUCTIONS.md as ephemeral artifact
+- Compile plan in lane (`src/compile-plan.json`)
+
+### New in v1.3
+
+#### 1. Agent Role Declaration
+
+Add explicit framing at the top of INSTRUCTIONS.md:
+
+```markdown
+## Agent Role
+
+You are not a PRD author.
+You are a PRD elicitation system that helps humans externalize intent, constraints, uncertainty, and evidence.
+
+You extract. You do not invent.
+```
+
+#### 2. PRD Stage Typing Gate
+
+Add classification before current Stage 1:
+
+| Stage Type | Evidence Expectations | Ambiguity Tolerance |
+|------------|----------------------|---------------------|
+| PoC / Exploration | Minimal, learning-focused | High |
+| Feature | Required, scope bounded | Medium |
+| Fix | Root cause required, regression risk | Low |
+| Product slice | End-to-end verification | Medium |
+| Refactor / migration | No user-facing change | Low |
+
+Questions:
+- "Is this exploring something new, building something known, or fixing something broken?"
+- "Will users see a change, or is this internal?"
+
+#### 3. Formal Interview Loop (Resequenced)
+
+| Phase | v1.2.x Stage | v1.3 Phase |
+|-------|--------------|------------|
+| NEW | - | **0. Stage Identification** — What type of PRD is this? |
+| NEW | - | **1. Orient** — What are we trying to learn or change? |
+| NEW | - | **2. Inventory** — What assets already exist? |
+| Moved | Stage 4 | **3. Constraint Surfacing** — Time, scope, reversibility, risk |
+| Moved | Stage 1 | **4. Outcome Framing** — What would "better" look like? |
+| Moved | Stage 2 | **5. Evidence Definition** — How will we know? |
+| NEW | - | **6. Ambiguity Capture** — What is still unclear or contested? |
+| Same | Stages 3,5,6,7 | **7. Draft Assembly** — Non-goals, risks, final PRD |
+
+Key changes:
+- Inventory BEFORE outcome (you can't define what you want until you know what you have)
+- Explicit ambiguity capture (ODD acknowledges uncertainty)
+- Stage identification gates the entire flow
+
+#### 4. Asset Intake Contract
+
+| Type | Examples | When missing |
+|------|----------|--------------|
+| Text | docs, notes, prior PRDs | Proceed with "no prior docs" flag |
+| Media | screenshots, recordings, mockups | Proceed if non-UI; require for UI work |
+| Links | repos, tickets, deployed systems | Note as "greenfield" if no links |
+| Oral testimony | interview answers | This is the PRD session itself |
+
+Guidance:
+- "What documentation already exists for this?"
+- "Do you have any screenshots, mockups, or recordings?"
+- "Is there a repo, ticket, or deployed system I should know about?"
+- Proceed with what's available; don't block on missing assets
+
+---
+
+## Explicitly Out of Scope (v1.4.1)
+
+- Changes to distribution architecture (Cloudflare Pages setup unchanged)
+- Multi-pack compilation (that's v1.5+)
+- Role-specific packs (that's v1.5+)
+- Renaming the pack (keep "prd-guide" for now)
+- Override mechanisms for tier-to-detail mapping (future consideration)
+- Dynamic detail adjustment based on token budget (future consideration)
+- New projection formats (stick to high/medium/low)
+- Content rewrites of existing docs
+
+---
+
+## Implementation Plan (v1.4.1)
+
+### Task 1: Create Tier Reader
+
+Implement `readFrontmatterTier(filePath)`:
+
+- Returns `{ tier: number, warnings: string[] }`
+- Parses YAML frontmatter
+- Returns tier value (0, 1, 2, or 3)
+- Missing tier → 3 with warning
+
+### Task 2: Implement Selection Modes
+
+**Curated mode:** `selectFilesCurated(packConfig)`
+
+- Read explicit file list from config
+- Pass to tier enforcement
+
+**Discovered mode:** `selectFilesDiscovered(packConfig)`
+
+- Allowed roots (e.g., `canon/`, `odd/`, `docs/`)
+- Ignore patterns (e.g., `**/node_modules/**`)
+- Only markdown (`.md` files)
+
+### Task 3: Apply Tier Enforcement + Projection
+
+Implement `applyTierRules(files)`:
+
+- Returns `decisions[]` with per-file outcomes
+- Enforce Tier 0 exclude (hard rule)
+- Assign projection per tier (1→high, 2→medium, 3→low)
+
+### Task 4: Projection Execution
+
+Implement `projectFile(file, projection)`:
+
+- `high`: return full content
+- `medium`: return frontmatter + description + outline
+- `low`: return title + one-line summary (blockquote)
+- Concatenate projected results
+
+### Task 5: Add `--plan` Flag
+
+- Output table (human readable) and/or JSON (CI)
+- Include: path, tier, selected_by, projection, included, reason
+- Include token/word estimates (recommended)
+
+### Task 6: CI Tests
+
+Add automated checks for:
+
+- AC-1: Tier 0 exclusion
+- AC-2: Projection correctness
+- AC-3: Discovery coverage threshold
+- AC-4: Curated pack tier enforcement
+- AC-5: Plan artifact generation
+
+---
+
+## Acceptance Criteria (v1.4.1)
+
+These are CI-friendly gates written as Given/When/Then.
+
+### AC-1: Tier 0 Never Included
+
+```
+Given a Tier 0 doc exists (e.g., odd/README.md with tier: 0)
+When any pack is compiled
+Then Tier 0 docs are excluded
+And appear as excluded in --plan output with reason: tier0
+```
+
+### AC-2: Projection Correctness
+
+```
+Given Tier 2 and Tier 3 docs exist
+When a pack is compiled
+Then Tier 2 docs are NOT compiled at high detail
+And Tier 3 docs are NOT compiled at high detail
+And Tier 1 docs ARE compiled at high detail
+```
+
+### AC-3: Discovery Coverage Guardrail
+
+```
+Given repo has >100 eligible docs (Tier 1-3)
+When compiling default-odd-context via discovery
+Then compiled file count >= 60 (catches regression to whitelist)
+```
+
+### AC-4: Curated Pack Still Tier-Enforces
+
+```
+Given prd-guide uses a curated list
+When compiling prd-guide
+Then Tier 0 files in list are excluded
+And Tier 2/3 files are projected (not full detail)
+```
+
+### AC-5: `--plan` Required in CI
+
+```
+Given CI runs on PR
+When pack compilation runs
+Then CI produces a plan artifact
+And CI fails if any Tier 0 inclusion occurs
+```
+
+---
+
+## Success Criteria
+
+### v1.4.1 — Tier-Aware Compiler
+
+- [ ] Compiler reads tier from frontmatter
+- [ ] Tier 0 docs are never included (hard rule)
+- [ ] Tier 1 → high, Tier 2 → medium, Tier 3 → low projection
+- [ ] `--plan` flag outputs per-file decisions
+- [ ] Discovery mode works for default-odd-context
+- [ ] Curated mode still works for prd-guide (with tier enforcement)
+- [ ] Output ordering is deterministic
+- [ ] Missing tier defaults to Tier 3 with warning
+
+### v1.4.0 — Tiered Context Construction (retained)
+
+- [ ] Default context pack assembles with tier-weighted detail mapping
+- [ ] No tier-flattening occurs in assembled context
+- [ ] Degradation is surfaced when document structure is insufficient
+- [ ] README/index files do not receive elevated detail due to file type
+
+### v1.4.0 — Agent Behavior (retained)
+
+- [ ] Agent behavior demonstrates tier-weighted context usage
+- [ ] Tier 3 documents do not materially influence agent reasoning unless explicitly requested
+- [ ] Agent does not synthesize context to compensate for missing document structure
+
+### v1.3 — Elicitation Enhancement (retained)
+
+- [ ] INSTRUCTIONS.md includes Agent Role Declaration section
+- [ ] INSTRUCTIONS.md includes Stage Identification gate (Phase 0)
+- [ ] INSTRUCTIONS.md includes Inventory phase (Phase 2)
+- [ ] INSTRUCTIONS.md includes Ambiguity Capture phase (Phase 6)
+- [ ] INSTRUCTIONS.md includes Asset Intake guidance
+- [ ] Interview loop resequenced per spec
+- [ ] Stage Typing table included with evidence expectations
+- [ ] Pack available at versioned URL (`/v1.4/prd-guide-pack.md`)
+- [ ] `/latest/` updated to serve v1.4 pack
+- [ ] `latest/README.md` updated to reference v1.4
+
+---
+
+## Definition of Done
+
+An attempt against this PRD is complete when:
+
+### v1.4.1 — Compiler Implementation
+
+- [ ] `default-odd-context` compiles via discovery (not whitelist)
+- [ ] Tier 0 exclusion is enforced in all packs
+- [ ] Tier 1/2/3 projection mapping enforced
+- [ ] `--plan` flag exists and outputs readable decisions
+- [ ] CI blocks Tier 0 inclusion
+- [ ] CI blocks projection violations
+- [ ] Pack compilation is deterministic across runs
+- [ ] Missing tier defaults to Tier 3 with warning
+
+### v1.4.1 — Acceptance Criteria Verification
+
+- [ ] AC-1 passes: Tier 0 never included
+- [ ] AC-2 passes: Projection correctness verified
+- [ ] AC-3 passes: Discovery coverage >= threshold
+- [ ] AC-4 passes: Curated packs tier-enforce
+- [ ] AC-5 passes: `--plan` in CI with failure on Tier 0
+
+### Context Construction (v1.4.0, retained)
+
+- [ ] Context pack assembly implements tier-to-detail mapping
+- [ ] No special-casing for README or index files
+- [ ] Degradation surfaced when structure missing
+
+### INSTRUCTIONS.md Content (v1.3, retained)
+
+- [ ] Agent Role Declaration added at top
+- [ ] Stage Identification (Phase 0) defined with PRD type classification
+- [ ] Inventory (Phase 2) defined with asset intake questions
+- [ ] Ambiguity Capture (Phase 6) defined with uncertainty documentation
+- [ ] Interview loop has 8 phases (0-7) in correct order
+
+### Compilation
+
+- [ ] Compile succeeds with new tier-aware compiler
+- [ ] Output written to attempt's `evidence/` folder
+- [ ] Plan output included in evidence
+- [ ] Provenance header shows canon v0.10.0 source hashes
+
+### Distribution
+
+- [ ] `public/agent-skill/v1.4.1/prd-guide-pack.md` created
+- [ ] `public/agent-skill/latest/prd-guide-pack.md` updated
+- [ ] `public/agent-skill/latest/README.md` updated (version reference)
+- [ ] Public URL verified with HTTP 200
+
+### Evidence Required
+
+- [ ] `--plan` output showing tier enforcement
+- [ ] Diff showing Tier 0 exclusion vs previous version
+- [ ] Screenshot or log of successful compile output
+- [ ] HTTP 200 verification of preview URL
+- [ ] CI run showing AC-1 through AC-5 passing
+- [ ] Self-audit completed
+
+---
+
+## Pack Sources
+
+The compiled pack concatenates these files:
+
+### Canon Sources (v0.10.0)
+
+| # | Source | Purpose |
+|---|--------|---------|
+| 1 | `canon/README.md` | Canon orientation, meta rules, confidence scores |
+| 2 | `odd/README.md` | ODD folder index, core thesis |
+| 3 | `odd/terminology.md` | **NEW** Constrained vocabulary and disambiguation |
+| 4 | `odd/manifesto.md` | Full ODD philosophy |
+| 5 | `odd/cognitive-partitioning.md` | Scaling pattern for reasoning systems |
+| 6 | `odd/appendices/README.md` | Portable appendices summarized |
+| 7 | `odd/decisions/README.md` | ODD conceptual decisions |
+| 8 | `canon/odd/appendices/tool-specialization.md` | Tool isolation pattern |
+| 9 | `canon/constraints.md` | Baseline assumptions |
+| 10 | `canon/decision-rules.md` | Decision heuristics |
+| 11 | `canon/definition-of-done.md` | Completion criteria |
+| 12 | `canon/self-audit.md` | Review checklist |
+| 13 | `docs/PRD/PRD_TEMPLATE.md` | PRD structure |
+
+### Generated Sources (ephemeral)
+
+| # | Source | Purpose |
+|---|--------|---------|
+| 13 | `INSTRUCTIONS.md` | **UPDATED** Interactive elicitation guidance |
+
+**Note:** INSTRUCTIONS.md is the primary deliverable of this PRD. It must include all elicitation enhancements.
+
+---
+
+## Constraints
+
+- **Tier-detail mapping is fixed**: Tier 1 → high, Tier 2 → medium, Tier 3 → low. No adaptive logic.
+- **No synthesis**: Projection uses existing document structure only. Missing structure degrades output explicitly.
+- **No special cases**: READMEs, indexes, and navigation files receive tier-appropriate treatment, not elevated treatment.
+- **Same distribution**: Uses existing Cloudflare Pages setup
+- **Same canon sources**: v0.10.0 sources (includes terminology.md)
+- **ODD formula**: Pack + CONTRACT + PRD = Attempt (nothing else)
+- **Ephemeral artifacts**: Generated code (INSTRUCTIONS.md) not persisted
+- **Lane isolation**: All changes stay within agent-skill lane
+- **Backward compatible**: Existing PRD guidance still works (enhanced, not replaced)
+
+---
+
+## Risks
+
+| Risk | Mitigation |
+|------|------------|
+| Missing tier defaults to Tier 3 may silently include docs at low fidelity | Emit warnings in plan output; clean up missing tiers in follow-up |
+| Discovery may balloon pack size if ignore rules wrong | Thresholds + token estimates in plan; AC-3 guards against regression |
+| Projection quality depends on projector implementation | Deterministic projection; snapshot tests; explicit degradation |
+| Tier 0 enforcement may break existing workflows | Tier 0 is explicit opt-out; docs must be updated if incorrectly marked |
+| Future engineers may add "smart" exceptions | Non-goals section explicitly forbids; acceptance criteria test for absence |
+| Documents lacking structure degrade projection | Degradation is explicit by design; documents should follow templates |
+
+---
+
+## Attempt Policy
+
+This PRD may be attempted multiple times.
+
+- Each attempt is evaluated independently
+- Failed attempts inform future attempts or PRD revisions
+- Attempts are sealed when CLOSED or ABANDONED
+
+Attempts live at: `v1.4.1/attempts/attempt-NNN/`
+
+---
+
+## Related Documents
+
+- v1.3.1 Prior: Previous elicitation-focused release
+- v1.2.4 Champion: [H0007](./history/H0007-v1.2.4-champion.md)
+- Roadmap: [ROADMAP.md](./ROADMAP.md)
+- Context Packs and Projection Detail: `/docs/context-packs-and-projection-detail.md`
+- Epistemic Obligation and Document Tiers: `/canon/epistemic-obligation-and-document-tiers.md`
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/v1.4.2/PRD.md
+--------------------------------------------------------------------------------
+
+# PRD: ODD Agent Skill — Token-Efficient Pack Compilation
+
+| Field             | Value       |
+| ----------------- | ----------- |
+| **PRD Version**   | v1.4.2      |
+| **Lane**          | agent-skill |
+| **Status**        | Draft       |
+| **Created**       | 2026-01-22  |
+| **Author**        | Chris Klapp |
+| **Canon Version** | 0.10.0      |
+| **Parent PRD**    | v1.4.1      |
+
+---
+
+## v1.4.2 Scope
+
+**Release: v1.4.2 — Token-Efficient Pack Compilation**
+
+**Goal:** Reduce token waste in compiled packs while preserving tier-aware functionality from v1.4.1.
+
+**Problem Statement:**
+
+v1.4.1 attempt-002 demonstrated that the tier-aware compiler works correctly (all ACs pass), but post-completion analysis revealed significant token waste:
+
+| Pack | Total Tokens | Useful | Waste |
+|------|--------------|--------|-------|
+| prd-guide | ~13K | ~10K | ~3K (23%) |
+| default-odd-context | ~30K | ~15K | ~15K (50%) |
+
+For agents with limited context windows (8K-32K tokens), 20-50% waste is unacceptable.
+
+**v1.4.2 explicitly addresses:**
+
+1. **Provenance bloat** — Source lists and SHA256 hashes consume ~3K tokens in large packs
+2. **Frontmatter noise** — Per-file YAML metadata not needed for consumption
+3. **Low-value projections** — Tier 2/3 "outline-only" content that agents can't act on
+4. **Discovery over-inclusion** — Templates, changelogs, and stubs that add tokens without value
+
+**Non-goals (explicit):**
+
+- No changes to tier-to-detail mapping logic (Tier 1→high, 2→medium, 3→low remains)
+- No changes to Tier 0 exclusion rule (still always excluded)
+- No new projection algorithms
+- No content rewrites of docs
+
+---
+
+## Interface Contracts
+
+This lane MUST remain compatible with:
+
+- manifest >=2.0.0 <3.0.0
+- attempt-cli >=2.0.0 <3.0.0
+
+---
+
+## Objective
+
+Reduce compiled pack token consumption by 30-50% through format optimization and smarter filtering, without changing the tier-aware compilation model.
+
+---
+
+## Background
+
+**v1.4.1 delivered**: Working tier-aware compiler with:
+- Discovery and curated selection modes
+- Tier 0 exclusion (hard rule)
+- Tier-based projection (1→high, 2→medium, 3→low)
+- Deterministic ordering
+- `--plan` output for auditability
+
+**v1.4.1 attempt-002 revealed**: The compiler logic is correct, but the output format is wasteful.
+
+### Categories of Waste (from LEARNINGS.md)
+
+#### 1. Provenance Header (~3K tokens in large packs)
+
+```yaml
+sources:
+  - canon/constraints.md
+  - canon/decision-rules.md
+  # ... 97 more lines
+source_hashes:
+  canon/constraints.md: 5e1846a12abcc12f...
+  # ... 97 more lines
+```
+
+SHA256 hashes are useful for CI/auditing, not for the agent consuming the pack.
+
+#### 2. Per-Source Frontmatter (~2K tokens)
+
+Every included file outputs its full YAML frontmatter:
+
+```yaml
+---
+uri: klappy://canon/constraints
+title: "Constraints"
+audience: canon
+exposure: nav
+tier: 1
+voice: first_person
+stability: stable
+tags: ["constraints", "assumptions"]
+---
+```
+
+Agents don't need `uri`, `audience`, `exposure`, `voice`, `stability` for PRD elicitation.
+
+#### 3. Low-Value Tier 2/3 Projections
+
+**Tier 2 (medium)** produces outlines without actionable content:
+
+```markdown
+# Self-Audit Checklist
+
+> A reflection layer...
+
+## Outline
+- Description
+- Core Principle
+- Checklist
+```
+
+**Tier 3 (low)** is worse:
+
+```markdown
+# PRD Template
+
+> Standard template for Product Requirements Documents.
+```
+
+~10-100 tokens per file of "awareness" that agents can't act on.
+
+#### 4. Discovery Over-Inclusion
+
+v1.4.1's discovery mode found 99 files, but many were:
+- `TEMPLATE.md` files (useless for consumers)
+- `CHANGELOG.md` (historical, not actionable)
+- Implementation-specific docs (klappy.dev-specific, not ODD methodology)
+- Tier 3 stubs that are just titles
+
+---
+
+## Functional Requirements (v1.4.2)
+
+### FR-1: Separate Provenance from Pack Content
+
+The compiler must output provenance metadata separately from pack content.
+
+**Output structure:**
+
+```
+{pack}-pack.md      # Consumption artifact (agent-facing)
+{pack}-meta.json    # Provenance artifact (CI/auditing)
+```
+
+**Pack file (`{pack}-pack.md`):**
+
+```yaml
+---
+lane: agent-skill
+pack: prd-guide
+built_at: 2026-01-22T05:01:33.771Z
+meta: prd-guide-meta.json
+---
+```
+
+Minimal header, no source lists or hashes.
+
+**Meta file (`{pack}-meta.json`):**
+
+```json
+{
+  "lane": "agent-skill",
+  "pack": "prd-guide",
+  "built_at": "2026-01-22T05:01:33.771Z",
+  "git_commit": "abc123...",
+  "sources": ["canon/constraints.md", ...],
+  "source_hashes": { "canon/constraints.md": "5e1846a..." },
+  "token_estimate": 10500,
+  "waste_ratio": 0.08
+}
+```
+
+All provenance for CI, none in the consumption artifact.
+
+### FR-2: Strip Frontmatter from Pack Output
+
+Source file frontmatter must not appear in compiled pack output.
+
+**Current (v1.4.1):**
+
+```markdown
+## Source: `canon/constraints.md`
+
+---
+uri: klappy://canon/constraints
+title: "Constraints"
+audience: canon
+...
+---
+
+# Constraints
+```
+
+**Required (v1.4.2):**
+
+```markdown
+## Source: `canon/constraints.md` (Tier 1)
+
+# Constraints
+```
+
+- Keep source path (navigation)
+- Add tier annotation (verification)
+- Strip all YAML frontmatter
+
+### FR-3: Minimum Viable Projection (MVP)
+
+Rethink Tier 2/3 projections to produce actionable content or exclude.
+
+**New projection rules:**
+
+| Tier | Projection | Rule |
+|------|------------|------|
+| Tier 1 | `full` | Full content (unchanged) |
+| Tier 2 | `summary` | Description block only (first blockquote or ## Description section) |
+| Tier 3 | `reference` | Title only, no content (just `## Source: path (Tier 3)`) |
+
+**Rationale:**
+
+- Tier 2 `summary`: The description block is usually actionable. Outlines without content are not.
+- Tier 3 `reference`: If it's truly low-priority, just mention it exists. Don't waste tokens on stubs.
+
+**Option flag:**
+
+```
+--tier3-mode=reference|exclude
+```
+
+- `reference` (default): Include as header-only reference
+- `exclude`: Omit Tier 3 files entirely
+
+### FR-4: Discovery Excludes
+
+Add default exclude patterns for discovery mode:
+
+```json
+{
+  "discovery_excludes": [
+    "**/TEMPLATE.md",
+    "**/TEMPLATE/**",
+    "**/CHANGELOG.md",
+    "**/_template/**",
+    "**/history/**"
+  ]
+}
+```
+
+These can be overridden per-plan.
+
+**Rationale:** Templates and changelogs are never useful for agent consumption. They bloat discovery.
+
+### FR-5: Structural Simplification
+
+Reduce separator overhead:
+
+**Current:**
+
+```markdown
+---
+
+## Source: `path`
+
+---
+uri: ...
+---
+
+# Title
+```
+
+**Required:**
+
+```markdown
+---
+
+## Source: `path` (Tier N)
+
+# Title
+```
+
+- Single horizontal rule before each source
+- No frontmatter block
+- Tier annotation inline
+
+### FR-6: Token Budget Awareness (Optional)
+
+Add optional `--max-tokens` flag:
+
+```
+--max-tokens 15000
+```
+
+Behavior:
+- If pack exceeds budget, emit warning with breakdown
+- Suggest files to exclude (lowest tier first)
+- Do not auto-truncate (manual decision)
+
+**Plan output includes:**
+
+| Field | Description |
+|-------|-------------|
+| `token_estimate` | Estimated tokens for this file |
+| `cumulative_tokens` | Running total |
+| `over_budget` | Boolean if cumulative > max |
+
+---
+
+## Acceptance Criteria (v1.4.2)
+
+### AC-1: Provenance Separation
+
+```
+Given the compiler runs with --output dir
+When pack compilation completes
+Then dir contains {pack}-pack.md AND {pack}-meta.json
+And {pack}-pack.md header has <=5 lines (no source lists or hashes)
+And {pack}-meta.json contains full provenance
+```
+
+### AC-2: Frontmatter Stripped
+
+```
+Given source files have YAML frontmatter
+When pack is compiled
+Then compiled output does NOT contain frontmatter blocks
+And tier is annotated inline (e.g., "## Source: path (Tier 2)")
+```
+
+### AC-3: Token Reduction Achieved
+
+```
+Given prd-guide pack compiled with v1.4.1 vs v1.4.2
+When token counts are compared
+Then v1.4.2 pack is at least 20% smaller
+And useful content is preserved (Tier 1 content unchanged)
+```
+
+### AC-4: Discovery Excludes Work
+
+```
+Given discovery_excludes includes "**/TEMPLATE.md"
+When discovery mode runs
+Then TEMPLATE.md files are not included
+And not listed in plan output
+```
+
+### AC-5: Tier 3 Mode Works
+
+```
+Given --tier3-mode=exclude is set
+When pack is compiled
+Then Tier 3 files do not appear in output
+And plan output shows them as excluded:tier3-mode
+```
+
+### AC-6: Token Budget Warning
+
+```
+Given --max-tokens 10000 and pack would be 15000
+When pack is compiled
+Then warning is emitted with breakdown
+And pack compiles anyway (no truncation)
+And plan output shows over_budget=true for relevant files
+```
+
+### AC-7: v1.4.1 Functionality Preserved
+
+```
+Given all v1.4.1 acceptance criteria
+When running v1.4.2 compiler
+Then AC-1 through AC-6 from v1.4.1 still pass
+(Tier 0 exclusion, projection correctness, discovery coverage, etc.)
+```
+
+---
+
+## Implementation Plan
+
+### Task 1: Refactor Output Writers
+
+Split `writePackOutput()` into:
+- `writePackContent(path)` — Agent-facing pack
+- `writePackMeta(path)` — CI/auditing metadata
+
+### Task 2: Strip Frontmatter in Projection
+
+Modify `projectFile()`:
+- Parse frontmatter for tier (internal use)
+- Do not include frontmatter in output
+- Add tier annotation to source header
+
+### Task 3: Implement New Projection Rules
+
+Update projection logic:
+- Tier 1: unchanged (full content)
+- Tier 2: extract description only (not outline)
+- Tier 3: header-only reference or exclude
+
+Add `--tier3-mode` flag.
+
+### Task 4: Add Discovery Excludes
+
+Update `selectFilesDiscovered()`:
+- Apply default excludes
+- Allow plan override
+- Log excluded files in plan
+
+### Task 5: Token Estimation
+
+Add `estimateTokens(content)`:
+- Simple heuristic: `words * 1.3` or `chars / 4`
+- Include in plan output
+- Add cumulative tracking
+
+### Task 6: Add Budget Flag
+
+Implement `--max-tokens`:
+- Compare cumulative to budget
+- Emit warning if exceeded
+- Mark over-budget files in plan
+
+---
+
+## Success Criteria
+
+### v1.4.2 — Token Efficiency
+
+- [ ] Provenance in separate `{pack}-meta.json`
+- [ ] Pack header <=5 lines
+- [ ] No frontmatter in compiled output
+- [ ] Tier annotation inline with source header
+- [ ] Tier 2 projects description only (not outline)
+- [ ] Tier 3 projects as reference-only or excluded
+- [ ] Discovery excludes templates/changelogs by default
+- [ ] Token estimates in plan output
+- [ ] `--max-tokens` flag works with warning
+- [ ] prd-guide pack reduced by >=20%
+- [ ] default-odd-context pack reduced by >=40%
+
+### v1.4.1 — Preserved Functionality
+
+- [ ] Tier 0 exclusion still enforced
+- [ ] Discovery mode still works
+- [ ] Curated mode still works
+- [ ] Deterministic ordering preserved
+- [ ] `--plan` output still generated
+
+---
+
+## Definition of Done
+
+An attempt against this PRD is complete when:
+
+### Format Changes
+
+- [ ] `{pack}-meta.json` generated alongside `{pack}-pack.md`
+- [ ] Pack header reduced to <=5 lines
+- [ ] Frontmatter stripped from all source content
+- [ ] Tier annotated inline with source headers
+
+### Projection Changes
+
+- [ ] Tier 2 uses description-only projection
+- [ ] Tier 3 uses reference-only projection (or excluded)
+- [ ] `--tier3-mode` flag implemented
+
+### Discovery Changes
+
+- [ ] Default excludes applied (templates, changelogs)
+- [ ] Excludes logged in plan output
+
+### Token Awareness
+
+- [ ] Token estimates in plan output
+- [ ] `--max-tokens` flag with warning behavior
+- [ ] Over-budget marking in plan
+
+### Evidence Required
+
+- [ ] Before/after token comparison table
+- [ ] prd-guide pack >=20% smaller
+- [ ] default-odd-context pack >=40% smaller
+- [ ] Sample output showing stripped frontmatter
+- [ ] Sample output showing new Tier 2/3 projection
+- [ ] Plan output showing token estimates
+- [ ] `--max-tokens` warning output
+- [ ] All v1.4.1 ACs still passing
+
+---
+
+## Constraints
+
+- **No logic changes to tier rules**: Tier 1/2/3 still map to high/medium/low conceptually
+- **No synthesis**: Still projection-only, no content generation
+- **Backward compatible meta**: Tools reading old packs should not break
+- **Same distribution**: Uses existing Cloudflare Pages setup
+- **Same sources**: Canon v0.10.0 unchanged
+- **Ephemeral artifacts**: INSTRUCTIONS.md still not persisted
+- **Lane isolation**: All changes stay within agent-skill lane
+
+---
+
+## Risks
+
+| Risk | Mitigation |
+|------|------------|
+| Stripping frontmatter loses useful info | Tier annotation preserves what matters; meta.json has full provenance |
+| Tier 2 description-only may miss key content | Description block is usually the most actionable; outline without content is noise |
+| Tier 3 exclusion may hide important awareness | Default is reference-only, not exclude; user can override |
+| Token estimation may be inaccurate | Use conservative heuristic; it's advisory, not controlling |
+| Discovery excludes may be too aggressive | Defaults are narrow (templates/changelogs only); plan can override |
+
+---
+
+## Tradeoffs
+
+| Decision | What Was Sacrificed |
+|----------|---------------------|
+| Separate meta file | Single-file convenience; now two files to manage |
+| Strip frontmatter | Full metadata visibility in pack; available in meta.json |
+| Description-only for Tier 2 | Outline visibility; outlines without content are noise anyway |
+| Reference-only for Tier 3 | Stub content; stubs waste tokens without providing value |
+| Default discovery excludes | Maximum inclusion; templates/changelogs never help agents |
+
+---
+
+## Attempt Policy
+
+This PRD may be attempted multiple times.
+
+- Each attempt is evaluated independently
+- Failed attempts inform future attempts or PRD revisions
+- Attempts are sealed when CLOSED or ABANDONED
+
+Attempts live at: `v1.4.2/attempts/attempt-NNN/`
+
+---
+
+## Related Documents
+
+- v1.4.1 PRD: Parent version (tier-aware compiler)
+- v1.4.1 attempt-002 LEARNINGS.md: Source of token efficiency analysis
+- v1.3.1 Champion: Current production version
+- Context Packs and Projection Detail: `/docs/context-packs-and-projection-detail.md`
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/agent-skill/v1.4/PRD.md
+--------------------------------------------------------------------------------
+
+# PRD: ODD Agent Skill — Tiered Context Construction
+
+| Field             | Value       |
+| ----------------- | ----------- |
+| **PRD Version**   | v1.4.0      |
+| **Lane**          | agent-skill |
+| **Status**        | Active      |
+| **Created**       | 2026-01-21  |
+| **Updated**       | 2026-01-22  |
+| **Author**        | Chris Klapp |
+| **Canon Version** | 0.10.0      |
+
+---
+
+## Interface Contracts
+
+This lane MUST remain compatible with:
+
+- manifest >=2.0.0 <3.0.0
+- attempt-cli >=2.0.0 <3.0.0
+
+---
+
+## Objective
+
+Transform the prd-guide pack from an informational resource (teaches ODD) into an interrogative system (extracts PRDs from humans) by adding stage typing, asset intake, and a formal elicitation loop.
+
+---
+
+## Background
+
+**v1.2.4 delivered**: Canon refresh to v0.8.0 with Cognitive Partitioning and Tool Specialization.
+
+**Problem identified**: External review found the pack "conceptually sound but operationally incomplete":
+
+| Strength | Gap |
+|----------|-----|
+| Canonical alignment unusually strong | No structured elicitation loop |
+| Compilation philosophy correct | No stage-aware questioning |
+| Agent authority properly scoped | No asset-gathering protocols |
+| Treats PRDs as evolving intent | No explicit interview modes |
+
+The pack teaches agents how ODD works, but does not fully teach agents how to elicit a PRD from a human.
+
+**v1.2.x INSTRUCTIONS.md** has 7 stages, but:
+
+- Jumps straight to "What outcome are you trying to achieve?"
+- No classification of PRD type (PoC vs Feature vs Fix)
+- No inventory of existing assets
+- No explicit agent role declaration
+- No ambiguity capture stage
+
+**v1.3 addresses this** by adding:
+
+- Agent Role Declaration (elicitation system, not author)
+- PRD Stage Typing gate before questioning
+- Resequenced Interview Loop with Inventory and Ambiguity Capture
+- Asset Intake Contract with guidance for partial information
+
+**v1.4 addresses**: Tiered context construction with projection detail, previously deferred from v1.3.
+
+---
+
+## Core Requirements (v1.4)
+
+### Default Context Construction
+
+The agent skill shall construct a default odd-context-pack using tier-weighted projection detail.
+
+| Document Tier | Default Projection Detail |
+|---------------|---------------------------|
+| Tier 1        | `high` (full content)     |
+| Tier 2        | `medium` (structural)     |
+| Tier 3        | `low` (minimal)           |
+
+**Requirements:**
+
+1. **Tier determines default detail** — The agent shall project documents at detail levels corresponding to their epistemic tier unless explicitly overridden.
+
+2. **No tier flattening** — The agent shall not equalize detail across tiers. Tier 1 content receives more tokens than Tier 3 content by default.
+
+3. **No folder inference** — The agent shall determine epistemic obligation from document tier metadata, not from folder location.
+
+4. **Degradation is explicit** — When document structure is insufficient for the requested projection detail, the agent shall surface this degradation rather than compensating.
+
+5. **No synthesized context** — The agent shall use existing document structure for projection. It shall not summarize, synthesize, or generate context to fill gaps.
+
+### Agent Responsibilities
+
+The agent shall:
+
+- Respect epistemic obligation as encoded in document tiers
+- Treat Tier 3 content at low detail as awareness only, not reasoning input
+- Surface when documents lack structure required for projection
+- Proceed with available structure without inventing compensating context
+
+The agent shall not:
+
+- Infer obligation from folder hierarchy
+- Special-case READMEs or index files for elevated inclusion
+- Promote Tier 3 content to higher detail for perceived convenience
+- Summarize or synthesize documentation content
+
+---
+
+## Non-Goals (v1.4)
+
+These behaviors are explicitly excluded from this release to prevent design regression:
+
+| Non-Goal | Rationale |
+|----------|-----------|
+| README/index file special-casing | Navigation documents are typically Tier 3; elevating them would distort context weighting |
+| Convenience-based tier promotion | Tier 3 content exists for awareness, not reasoning; promoting it undermines epistemic discipline |
+| Summarization or synthesis | Projection uses authored structure only; missing structure is a signal, not a gap to fill |
+| Folder-based obligation inference | Tiers are document properties, orthogonal to folder location |
+| Smart exceptions | No heuristics that override tier-to-detail mapping based on content analysis |
+
+---
+
+## In Scope (v1.4)
+
+### New in v1.4
+
+#### 1. Tier-Weighted Context Pack Assembly
+
+Implement default context construction that maps document tiers to projection detail levels:
+
+- Tier 1 documents projected at `high` detail (full content)
+- Tier 2 documents projected at `medium` detail (frontmatter, description, outline)
+- Tier 3 documents projected at `low` detail (title, one-line summary)
+
+#### 2. Projection Detail Enforcement
+
+Add validation that the assembled context pack respects tier-to-detail mapping:
+
+- Tier 1 content must receive highest token allocation
+- Tier 3 content must not exceed minimal token allocation
+- Detail level must be determinable from tier without additional logic
+
+#### 3. Degradation Surfacing
+
+When documents lack structure required for their projected detail level:
+
+- Return what structure exists (no fallback to full content silently)
+- Include degradation indicator in pack output
+- Do not synthesize missing structural elements
+
+### From v1.3 (retained)
+
+### From v1.2.4 (retained)
+
+- Lane-owned Cloudflare Pages deployment
+- Versioned asset URLs
+- Canon sources at v0.8.0
+- INSTRUCTIONS.md as ephemeral artifact
+- Compile plan in lane (`src/compile-plan.json`)
+
+### New in v1.3
+
+#### 1. Agent Role Declaration
+
+Add explicit framing at the top of INSTRUCTIONS.md:
+
+```markdown
+## Agent Role
+
+You are not a PRD author.
+You are a PRD elicitation system that helps humans externalize intent, constraints, uncertainty, and evidence.
+
+You extract. You do not invent.
+```
+
+#### 2. PRD Stage Typing Gate
+
+Add classification before current Stage 1:
+
+| Stage Type | Evidence Expectations | Ambiguity Tolerance |
+|------------|----------------------|---------------------|
+| PoC / Exploration | Minimal, learning-focused | High |
+| Feature | Required, scope bounded | Medium |
+| Fix | Root cause required, regression risk | Low |
+| Product slice | End-to-end verification | Medium |
+| Refactor / migration | No user-facing change | Low |
+
+Questions:
+- "Is this exploring something new, building something known, or fixing something broken?"
+- "Will users see a change, or is this internal?"
+
+#### 3. Formal Interview Loop (Resequenced)
+
+| Phase | v1.2.x Stage | v1.3 Phase |
+|-------|--------------|------------|
+| NEW | - | **0. Stage Identification** — What type of PRD is this? |
+| NEW | - | **1. Orient** — What are we trying to learn or change? |
+| NEW | - | **2. Inventory** — What assets already exist? |
+| Moved | Stage 4 | **3. Constraint Surfacing** — Time, scope, reversibility, risk |
+| Moved | Stage 1 | **4. Outcome Framing** — What would "better" look like? |
+| Moved | Stage 2 | **5. Evidence Definition** — How will we know? |
+| NEW | - | **6. Ambiguity Capture** — What is still unclear or contested? |
+| Same | Stages 3,5,6,7 | **7. Draft Assembly** — Non-goals, risks, final PRD |
+
+Key changes:
+- Inventory BEFORE outcome (you can't define what you want until you know what you have)
+- Explicit ambiguity capture (ODD acknowledges uncertainty)
+- Stage identification gates the entire flow
+
+#### 4. Asset Intake Contract
+
+| Type | Examples | When missing |
+|------|----------|--------------|
+| Text | docs, notes, prior PRDs | Proceed with "no prior docs" flag |
+| Media | screenshots, recordings, mockups | Proceed if non-UI; require for UI work |
+| Links | repos, tickets, deployed systems | Note as "greenfield" if no links |
+| Oral testimony | interview answers | This is the PRD session itself |
+
+Guidance:
+- "What documentation already exists for this?"
+- "Do you have any screenshots, mockups, or recordings?"
+- "Is there a repo, ticket, or deployed system I should know about?"
+- Proceed with what's available; don't block on missing assets
+
+---
+
+## Explicitly Out of Scope (v1.4)
+
+- Changes to distribution architecture (Cloudflare Pages setup unchanged)
+- Multi-pack compilation (that's v1.5+)
+- Role-specific packs (that's v1.5+)
+- Renaming the pack (keep "prd-guide" for now)
+- Override mechanisms for tier-to-detail mapping (future consideration)
+- Dynamic detail adjustment based on token budget (future consideration)
+
+---
+
+## Success Criteria
+
+### v1.4 — Tiered Context Construction
+
+- [ ] Default context pack assembles with tier-weighted detail mapping
+- [ ] Tier 1 documents receive `high` detail projection
+- [ ] Tier 2 documents receive `medium` detail projection
+- [ ] Tier 3 documents receive `low` detail projection
+- [ ] No tier-flattening occurs in assembled context
+- [ ] Degradation is surfaced when document structure is insufficient
+- [ ] README/index files do not receive elevated detail due to file type
+
+### v1.4 — Acceptance Criteria (Testable)
+
+- [ ] Agent behavior demonstrates tier-weighted context usage
+- [ ] Tier 3 documents do not materially influence agent reasoning unless explicitly requested
+- [ ] Removing README content does not change agent conclusions
+- [ ] Increasing detail for Tier 1 documents materially improves reasoning depth
+- [ ] Agent does not synthesize context to compensate for missing document structure
+
+### v1.3 — Elicitation Enhancement (retained)
+
+- [ ] INSTRUCTIONS.md includes Agent Role Declaration section
+- [ ] INSTRUCTIONS.md includes Stage Identification gate (Phase 0)
+- [ ] INSTRUCTIONS.md includes Inventory phase (Phase 2)
+- [ ] INSTRUCTIONS.md includes Ambiguity Capture phase (Phase 6)
+- [ ] INSTRUCTIONS.md includes Asset Intake guidance
+- [ ] Interview loop resequenced per spec
+- [ ] Stage Typing table included with evidence expectations
+- [ ] Pack available at versioned URL (`/v1.4/prd-guide-pack.md`)
+- [ ] `/latest/` updated to serve v1.4 pack
+- [ ] `latest/README.md` updated to reference v1.4
+
+---
+
+## Definition of Done
+
+An attempt against this PRD is complete when:
+
+### Context Construction (v1.4)
+
+- [ ] Context pack assembly implements tier-to-detail mapping
+- [ ] Tier 1 → `high`, Tier 2 → `medium`, Tier 3 → `low`
+- [ ] No special-casing for README or index files
+- [ ] Degradation surfaced when structure missing
+- [ ] No context synthesis or summarization
+
+### Context Verification (v1.4)
+
+- [ ] Tier-weighted context demonstrably affects agent output
+- [ ] Tier 3 content removal does not alter reasoning conclusions
+- [ ] Tier 1 content at high detail produces deeper reasoning than low detail
+- [ ] Agent does not infer tier from folder location
+
+### INSTRUCTIONS.md Content (v1.3, retained)
+
+- [ ] Agent Role Declaration added at top
+- [ ] Stage Identification (Phase 0) defined with PRD type classification
+- [ ] Inventory (Phase 2) defined with asset intake questions
+- [ ] Ambiguity Capture (Phase 6) defined with uncertainty documentation
+- [ ] Interview loop has 8 phases (0-7) in correct order
+- [ ] Stage Typing table includes all 5 types with implications
+
+### Compilation
+
+- [ ] Compile succeeds using lane-owned `src/compile-plan.json`
+- [ ] Output written to attempt's `evidence/` folder
+- [ ] Provenance header shows canon v0.10.0 source hashes
+- [ ] INSTRUCTIONS.md generated fresh (not copied from persisted source)
+
+### Distribution
+
+- [ ] `public/agent-skill/v1.4/prd-guide-pack.md` created
+- [ ] `public/agent-skill/latest/prd-guide-pack.md` updated
+- [ ] `public/agent-skill/latest/README.md` updated (version reference)
+- [ ] Public URL verified with HTTP 200
+
+### Verification
+
+- [ ] INSTRUCTIONS.md demonstrably different from v1.3
+- [ ] Agent using pack asks about PRD type before jumping to outcomes
+- [ ] Agent using pack asks about existing assets before defining scope
+- [ ] Ambiguity capture section present and functional
+- [ ] Context pack demonstrates tier-weighted detail allocation
+
+### Evidence Required
+
+- [ ] Diff showing tier-weighted context construction
+- [ ] Screenshot or log of successful compile output
+- [ ] HTTP 200 verification of preview URL
+- [ ] Sample conversation demonstrating elicitation flow
+- [ ] Evidence that Tier 3 removal does not change conclusions
+- [ ] Self-audit completed
+
+---
+
+## Pack Sources
+
+The compiled pack concatenates these files:
+
+### Canon Sources (v0.10.0)
+
+| # | Source | Purpose |
+|---|--------|---------|
+| 1 | `canon/README.md` | Canon orientation, meta rules, confidence scores |
+| 2 | `odd/README.md` | ODD folder index, core thesis |
+| 3 | `odd/terminology.md` | **NEW** Constrained vocabulary and disambiguation |
+| 4 | `odd/manifesto.md` | Full ODD philosophy |
+| 5 | `odd/cognitive-partitioning.md` | Scaling pattern for reasoning systems |
+| 6 | `odd/appendices/README.md` | Portable appendices summarized |
+| 7 | `odd/decisions/README.md` | ODD conceptual decisions |
+| 8 | `canon/odd/appendices/tool-specialization.md` | Tool isolation pattern |
+| 9 | `canon/constraints.md` | Baseline assumptions |
+| 10 | `canon/decision-rules.md` | Decision heuristics |
+| 11 | `canon/definition-of-done.md` | Completion criteria |
+| 12 | `canon/self-audit.md` | Review checklist |
+| 13 | `docs/PRD/PRD_TEMPLATE.md` | PRD structure |
+
+### Generated Sources (ephemeral)
+
+| # | Source | Purpose |
+|---|--------|---------|
+| 13 | `INSTRUCTIONS.md` | **UPDATED** Interactive elicitation guidance |
+
+**Note:** INSTRUCTIONS.md is the primary deliverable of this PRD. It must include all elicitation enhancements.
+
+---
+
+## Constraints
+
+- **Tier-detail mapping is fixed**: Tier 1 → high, Tier 2 → medium, Tier 3 → low. No adaptive logic.
+- **No synthesis**: Projection uses existing document structure only. Missing structure degrades output explicitly.
+- **No special cases**: READMEs, indexes, and navigation files receive tier-appropriate treatment, not elevated treatment.
+- **Same distribution**: Uses existing Cloudflare Pages setup
+- **Same canon sources**: v0.10.0 sources (includes terminology.md)
+- **ODD formula**: Pack + CONTRACT + PRD = Attempt (nothing else)
+- **Ephemeral artifacts**: Generated code (INSTRUCTIONS.md) not persisted
+- **Lane isolation**: All changes stay within agent-skill lane
+- **Backward compatible**: Existing PRD guidance still works (enhanced, not replaced)
+
+---
+
+## Risks
+
+| Risk | Mitigation |
+|------|------------|
+| Tier 3 at low detail may appear to exclude useful content | Document explicitly that tier is obligation, not importance; users can request higher detail |
+| Documents lacking structure degrade projection | Degradation is explicit by design; documents should follow templates for clean projection |
+| Future engineers may add "smart" exceptions | Non-goals section explicitly forbids; acceptance criteria test for absence of special-casing |
+| README removal test may seem counter-intuitive | Document rationale: navigation files are Tier 3 awareness, not reasoning input |
+| Elicitation loop changes may require iteration | v1.4 can have patch versions (v1.4.1, v1.4.2) |
+| Stage typing may not cover all cases | Include "Other" type with fallback to generic flow |
+
+---
+
+## Attempt Policy
+
+This PRD may be attempted multiple times.
+
+- Each attempt is evaluated independently
+- Failed attempts inform future attempts or PRD revisions
+- Attempts are sealed when CLOSED or ABANDONED
+
+Attempts live at: `v1.4/attempts/attempt-NNN/`
+
+---
+
+## Related Documents
+
+- v1.3.1 Prior: Previous elicitation-focused release
+- v1.2.4 Champion: [H0007](./history/H0007-v1.2.4-champion.md)
+- Roadmap: [ROADMAP.md](./ROADMAP.md)
+- Context Packs and Projection Detail: `/docs/context-packs-and-projection-detail.md`
+- Epistemic Obligation and Document Tiers: `/canon/epistemic-obligation-and-document-tiers.md`
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/ai-navigation/PRD.md
+--------------------------------------------------------------------------------
+
+# PRD: AI Navigation Interface
+
+| Field           | Value            |
+|-----------------|------------------|
+| **PRD Version** | v1.0             |
+| **Lane**        | ai-navigation    |
+| **Status**      | Active           |
+| **Created**     | 2026-01-17       |
+| **Author**      | Chris Klapp      |
+
+---
+
+## Interface Contracts
+
+This lane MUST remain compatible with:
+
+- manifest >=2.0.0 <3.0.0
+- build-output >=3.0.0 <4.0.0
+- attempt-cli >=2.0.0 <3.0.0
+
+If MCP is used, it is currently draft (`mcp@0.1.x`) and MUST be treated as unstable.
+
+---
+
+## Objective
+
+Enable humans to ask questions of the ODD corpus and be:
+
+- Answered accurately
+- Guided progressively
+- Linked to the right documents
+- Without reading everything
+
+---
+
+## Background
+
+This is an AI layer over the documentation.
+
+It helps humans understand ODD through conversation.
+
+This is NOT agent tooling.
+This is NOT teaching agents to execute ODD.
+This is AI helping humans navigate and understand.
+
+---
+
+## Core Capability
+
+- Load all site content + Medium articles into retrievable context
+- Answer questions conversationally
+- Navigate users to relevant docs
+- Respect progressive disclosure tiers
+
+---
+
+## In Scope
+
+- RAG over markdown content
+- Citation + linking to canon/docs
+- Progressive depth control ("go deeper", "show sources")
+- Conversational Q&A interface
+- Eventually voice (explicitly deferred to future version)
+
+---
+
+## Explicitly Out of Scope
+
+- Teaching agents how to execute ODD (belongs to agent-skill lane)
+- Modifying the canon
+- Running attempts
+- Enforcing process
+- Website UI/UX concerns (belongs to website lane)
+
+---
+
+## Success Criteria
+
+- [ ] User can ask "What is ODD?" and get a correct summary + links
+- [ ] Follow-up questions narrow scope instead of expanding noise
+- [ ] Responses always cite source docs
+- [ ] No hallucinated concepts outside corpus
+- [ ] Progressive disclosure respected (Tier 0 answers don't dump Tier 2 content)
+
+---
+
+## Definition of Done
+
+An attempt against this PRD is complete when:
+
+- [ ] RAG retrieval working over canon + docs
+- [ ] Test questions answered correctly with citations
+- [ ] Hallucination check passed (no invented concepts)
+- [ ] Progressive depth demonstrated (follow-up narrows, doesn't explode)
+- [ ] Self-audit completed with explicit tradeoffs
+
+---
+
+## Primary User
+
+Humans trying to understand and evaluate ODD.
+
+---
+
+## Constraints
+
+This PRD is shaped by Canon constraints:
+
+- Evidence over assertion
+- AI as accelerator, not authority
+- Grounding required (no unmoored responses)
+- Maintainability over cleverness
+
+---
+
+## Attempt Policy
+
+This PRD may be attempted multiple times.
+
+- Each attempt is evaluated independently
+- Failed attempts inform future attempts or PRD revisions
+- Attempts are sealed when CLOSED or ABANDONED
+
+Attempts live at: `/attempts/ai-navigation/prd-v1.0/attempt-NNN/`
+
+---
+
+## Related Documents
+
+- Lane architecture: `/docs/appendices/product-lanes.md`
+- Canon constraints: `/canon/constraints/README.md`
+- Definition of Done: `/canon/constraints/definition-of-done.md`
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/fluent-mobile/PRD.md
+--------------------------------------------------------------------------------
+
+# PRD: Fluent Mobile (PoC) — v0.3
+
+| Field           | Value            |
+|-----------------|------------------|
+| **PRD Version** | v0.3             |
+| **Lane**        | fluent-mobile    |
+| **Status**      | ACTIVE           |
+| **Created**     | 2026-01-23       |
+| **Updated**     | 2026-01-24       |
+| **Author**      | Chris Klapp      |
+| **Stage**       | Proof of Concept / Exploration |
+| **Confidence**  | Intentionally low (learning-focused) |
+
+---
+
+## What Changed from v0.2
+
+Based on v0.2 Attempt 001 learnings and review meeting:
+
+| Change | Reason |
+|--------|--------|
+| **Single Draft Section** | Dual draft/review broke mental model — "same audio in two places" |
+| **Waveform Dual-Mode** | Live activity vs. timeline for seeking — common pattern (YouTube seek bar) |
+| **Play/Pause Required** | Can't pause without losing position — critical for longer verses |
+| **Lane-Level Infrastructure** | Stop rebuilding wrangler/playwright config each attempt |
+| **Fresh Build Approach** | Not in love with v0.2 UI/UX yet — test new mental model cleanly |
+
+See [v0.2 Attempt 001 Learnings](attempts/v0.2/attempt-001/evidence/LEARNINGS.md) for full details.
+
+---
+
+## Alignment Lock
+
+**What this PoC exists to resolve:**
+
+Whether a mobile-first OBT companion app is a realistic, culturally viable, and performant solution to real field problems — not just a convincing idea in our heads.
+
+This is not a feature test. This is a shared mental model test.
+
+---
+
+## Problem Statement
+
+Field teams engaged in Oral Bible Translation (OBT) face real constraints that make laptop-based workflows impractical or unsafe (e.g., power availability, security risk, cultural visibility).
+
+We are testing whether:
+
+- A mobile app can realistically support OBT drafting workflows
+- The performance and usability on real devices is acceptable long-term
+- The consolidated single-section UI improves mental model clarity
+
+---
+
+## Objective
+
+Test whether a consolidated single-section drafting UI with dual-mode waveform improves workflow usability and task clarity over the v0.2 dual-section approach.
+
+---
+
+## Hypotheses (What This PoC Tries to Prove)
+
+| # | Hypothesis | Description | v0.3 Focus |
+|---|------------|-------------|------------|
+| 1 | Mobile Viability | Translators can realistically draft and review OBT audio using a mobile companion app | Umbrella |
+| 2 | Performance | App performance on real, low-to-mid-tier Android devices is sufficient | Deferred (need hardware) |
+| 3 | Workflow Usability | Audio-centric workflows feel natural with consolidated UI | **PRIMARY** |
+| 4 | Task Clarity | Users can understand what to do next with play/pause and timeline | **PRIMARY** |
+| 5 | Authentication & Trust | QR-based identity handoff is trustworthy | Deferred |
+| 6 | Cultural Fit | Approach works across diverse regions | Deferred |
+
+### v0.3 Focus: H3 and H4
+
+- **H3 (Workflow Usability)**: Does single-section UI feel more natural than dual-section?
+- **H4 (Task Clarity)**: Do play/pause and timeline mode clarify what to do next?
+
+---
+
+## v0.3 Requirements
+
+### Must Address
+
+1. **Single Draft Section**
+   - Consolidate recording + playback into one section
+   - One audio, one waveform, one source of truth
+   - Eliminates "same audio in two places" confusion
+
+2. **Waveform Dual-Mode**
+   - **Live mode**: Animated during recording/playback (confirms "it's working")
+   - **Timeline mode**: Static when stopped, shows duration/amplitude
+   - Fixed-size regardless of duration
+   - Like YouTube seek bar
+
+3. **Play/Pause Functionality**
+   - Add pause button that preserves position
+   - Pause triggers timeline mode on waveform
+   - Critical for longer verses
+
+4. **Lane-Level Infrastructure**
+   - `products/fluent-mobile/infra/` folder for reusable config
+   - Attempt copies and extends if needed
+   - Pattern: Don't rebuild CI/CD each attempt
+
+### Should Address
+
+1. **Reduce Scrolling**
+   - Balance large touch targets with screen efficiency
+   - "Most phones can squish more"
+   - Full workflow visible without scrolling if possible
+
+2. **Record Continue vs. Overwrite**
+   - Differentiate "continue recording" from "start new"
+   - Current v0.2 overwrites without warning
+
+### Not Addressing (Future)
+
+- Timestamped comments (waveform-as-timeline enables this later)
+- User literacy spectrum flows (text accordion)
+- AI features (may be web-only)
+- Editing primitives (cut/insert/trim)
+
+---
+
+## Core PoC Capabilities (v0.3)
+
+### Audio-Centric Drafting
+
+| Capability | Required | v0.3 Change |
+|------------|----------|-------------|
+| Listen to source audio | Yes | Unchanged |
+| Record draft audio | Yes | Single section |
+| Playback recorded audio | Yes | Single section with pause |
+| Waveform visualization | Yes | Dual-mode (live/timeline) |
+
+### Multi-Screen Navigation
+
+| Capability | Required | Purpose |
+|------------|----------|---------|
+| Home screen | Yes | Shows assignment context |
+| Drafting screen | Yes | Single-section Listen → Record → Play flow |
+| Back navigation | Yes | Error recovery |
+
+### Offline Tolerance
+
+- App must tolerate temporary offline use
+- Service Worker for asset caching
+- Sync deferred (not in v0.3 scope)
+
+---
+
+## Technical Stack (v0.3)
+
+| Layer | Technology | Reason |
+|-------|------------|--------|
+| Runtime | Browser (PWA) | Cross-platform, no app store |
+| Framework | **Vanilla JS** | Fresh build, no framework overhead |
+| Audio | Web Audio API + MediaRecorder | Native browser support |
+| Visualization | Canvas-based waveform | Agent-verifiable, dual-mode |
+| Storage | IndexedDB | Offline tolerance |
+| Offline | Service Worker | Cache-first for assets |
+| Deployment | Cloudflare Pages | Preview URLs, global CDN |
+| Testing | Playwright | Automated visual verification |
+
+---
+
+## Success Criteria
+
+### Minimum Success (v0.3)
+
+- [ ] Single-section drafting UI implemented
+- [ ] Waveform dual-mode working (live vs. timeline)
+- [ ] Play/pause preserves position
+- [ ] Agent can verify via screenshots and Playwright
+- [ ] Learnings documented
+
+### Aspirational Success
+
+- [ ] Reduced scrolling achieved
+- [ ] Continue/overwrite differentiated
+- [ ] Clear improvement over v0.2 mental model
+- [ ] Ready for field feedback
+
+---
+
+## Definition of Done (v0.3 PoC Attempt)
+
+An attempt is complete when:
+
+- [ ] Single-section UI verified in screenshots
+- [ ] Waveform shows both modes (live and timeline)
+- [ ] Play/pause functionality works
+- [ ] Playwright tests pass
+- [ ] Learnings documented regardless of outcome
+
+### Evidence Required
+
+| Type | Format | Purpose |
+|------|--------|---------|
+| Screenshots | PNG showing single-section UI | Proves consolidated layout |
+| Screenshots | PNG showing waveform modes | Proves dual-mode |
+| Test results | JSON/Markdown | Proves automated verification |
+| Learnings | Markdown | Documents what worked/didn't |
+
+---
+
+## Non-Negotiable Guardrails
+
+This PoC must:
+
+- :no_entry_sign: Not imply production readiness
+- :no_entry_sign: Not block or slow web app progress
+- :no_entry_sign: Not encode org-specific workflows
+- :no_entry_sign: Not carry forward v0.2 assumptions blindly
+- :white_check_mark: Be quick to test, easy to discard, fast to iterate
+- :white_check_mark: Build fresh to test new mental model cleanly
+- :white_check_mark: Include waveform dual-mode visualization
+
+---
+
+## Exit Criteria
+
+This PoC should be easy to abandon.
+
+If learning slows, confidence drops, or it begins to resemble a production commitment → stop.
+
+**Stopping is not failure. Continuing past useful learning is.**
+
+---
+
+## Attempt Policy
+
+This PRD may be attempted multiple times.
+
+- Each attempt is evaluated independently
+- Failed attempts inform future attempts or PRD revisions
+- Attempts are sealed when CLOSED or ABANDONED
+- **Failure with fast learning is a win**
+
+Attempts live at: `attempts/v{VERSION}/attempt-NNN/`
+
+---
+
+## Related Documents
+
+- [Version History](HISTORY.md) — PRD evolution and learnings links
+- [KICKOFF.md](KICKOFF.md) — How to start an attempt
+- [INSTRUCTIONS.md](INSTRUCTIONS.md) — Field testing guidance
+- [AGENT_RULES.md](AGENT_RULES.md) — Non-negotiable agent constraints
+- [Canon Constraints](/canon/constraints/README.md)
+- [Definition of Done](/canon/constraints/definition-of-done.md)
+- [Verification & Evidence](/canon/constraints/verification-and-evidence.md)
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/odd-teaser/LEDGER.md
+--------------------------------------------------------------------------------
+
+# Odd Teaser — Product Ledger
+
+This ledger is **append-only**.
+
+It records product-level decisions, scope locks, and retirements.
+
+---
+
+## 2026-01-31 — Lane Created
+
+- Lane instantiated to graduate Epoch 4 guiding artifact
+- Supersedes website and ai-navigation lanes
+- Core constraint locked: system must be easier to leave than to continue
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/odd-teaser/PRD.md
+--------------------------------------------------------------------------------
+
+# Klappy.dev — Odd Teaser PRD (v1.2)
+
+---
+
+## Header
+
+- **PRD Version:** v1.2
+- **Lane:** odd-teaser
+- **Status:** Active
+- **Epoch:** E0004 (Epistemic Separation Era)
+- **Graduated from:** klappy://docs/guiding-artifacts/epoch-4/klappy-dev-poc-prd
+- **Supersedes:** website, ai-navigation
+
+---
+
+## PRD Change Log
+
+### v1.2 — Reference Implementation with Real LLM
+
+This revision requires **real Claude API integration**.
+
+Changes:
+- Pattern matching / regex is explicitly forbidden
+- Cloudflare Worker required for API proxy
+- Rate limiting required (100 requests/hour per IP)
+- Streaming responses required
+
+This is a **reference implementation** — it must demonstrate how ODD actually works.
+
+### v1.1 — Entry-State Posture Correction
+
+This revision restores a thinking-first entry posture.
+
+Changes:
+- Conversational thinking precedes artifact commitment
+- Artifact creation is emergent and consent-based
+- Entry-state pressure has been explicitly removed
+
+---
+
+## Product Definition
+
+Klappy.dev is a **single-session epistemic experience**.
+
+Its sole purpose is to help a visitor externalize at least one epistemic artifact and leave with something concrete.
+
+**Klappy.dev must always be easier to leave than to continue.**
+
+---
+
+## Reference Implementation Requirement (v1.2)
+
+Klappy.dev is the **reference implementation of Observation-Driven Development**.
+
+A visitor arrives, engages in genuine epistemic externalization powered by **real LLM orchestration**, and leaves with artifacts they can use.
+
+### Forbidden
+
+- Regex pattern matching for artifact detection
+- Keyword-based detection
+- Simulated LLM responses
+- Hollow companion responses ("Go on.", "Mmm.")
+
+### Required
+
+- Real Claude API integration
+- LLM understands context, not just keywords
+- Meaningful companion responses
+- Artifact suggestions with reasoning
+
+---
+
+## Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                     klappy.dev/odd-teaser                    │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  ┌──────────────┐    ┌─────────────────────────────────┐   │
+│  │   Frontend   │───▶│      Cloudflare Worker          │   │
+│  │  (Thinking   │    │      (API proxy)                │   │
+│  │   Space UI)  │◀───│                                 │   │
+│  └──────────────┘    └─────────────────────────────────┘   │
+│                                │                            │
+│                                ▼                            │
+│                      ┌─────────────────┐                   │
+│                      │  Claude API     │                   │
+│                      └─────────────────┘                   │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+- **Frontend**: Thinking-first UI at `products/odd-teaser/src/`
+- **Cloudflare Worker**: Proxies Claude API, handles rate limiting
+- **No persistence**: Stateless, no auth, no localStorage
+
+---
+
+## Entry-State Behavioral Contract
+
+On first load, odd-teaser MUST behave as a thinking space, not an artifact editor.
+
+The initial experience MUST communicate:
+- nothing is committed yet
+- messy thinking is allowed
+- structure will not be forced
+
+The primary affordance is conversational input.
+Artifact systems MUST remain dormant until explicitly consented.
+
+If a user hesitates due to fear of "doing it wrong," the entry state has failed.
+
+---
+
+## Target User State (Success Definition)
+
+A first-time visitor leaves after one session having:
+
+1. Externalized at least one epistemic artifact
+2. Noticed a missing habit in their own workflow (unprompted)
+3. Taken something with them (export or mental transplant)
+
+The product succeeds even if the user never returns.
+
+---
+
+## Non-Goals (Hard Exclusions)
+
+The product must NOT:
+
+- Authenticate users
+- Persist identity
+- Teach ODD explicitly
+- Execute tasks
+- Provide project management
+- Optimize retention or engagement
+- Become a documentation site
+- Navigate users to canon/docs
+- Answer questions about ODD
+- Use regex/pattern matching for artifact detection
+
+If a feature increases time-on-site without increasing artifact creation, it is invalid.
+
+---
+
+## Core Experience
+
+- Single-page web app
+- Primary surface: conversational input (thinking-first)
+- Secondary surface: artifact drawer (dormant until consented commitment)
+- No navigation tree
+- No menus beyond artifact visibility
+
+Supported artifact types:
+- Learnings
+- Decisions
+- Overrides
+
+Export is the **exit ramp** (one-click, Markdown, local-only).
+
+---
+
+## Interface Contracts
+
+- manifest >=2.0.0 <3.0.0
+- build-output >=3.0.0 <4.0.0
+- attempt-cli >=2.0.0 <3.0.0
+
+---
+
+## Visual Interfaces
+
+- color-system >=1.0.0 <2.0.0
+- typography >=1.0.0 <2.0.0
+- spacing >=1.0.0 <2.0.0
+
+---
+
+## LLM Behavior Enforcement
+
+LLM behavior for odd-teaser is defined in:
+
+`products/odd-teaser/behavior.md`
+
+Violation of this behavior constitutes a product defect.
+
+---
+
+## Success Criteria
+
+- User can create each artifact type
+- Artifacts are immediately visible upon creation
+- Artifacts can be exported in one click
+- The system can stop interacting without error
+- Telemetry events fire correctly
+- No features that increase time-on-site without increasing artifact creation
+- **Real LLM responses (not regex/keywords)**
+
+---
+
+## Definition of Done (v1.2)
+
+### Must Have
+- [ ] Real Claude API integration (not regex)
+- [ ] Streaming responses to frontend
+- [ ] Cloudflare Worker deployment
+- [ ] Rate limiting (100 requests/hour per IP)
+- [ ] Export works without any backend dependency
+- [ ] Build output produced
+- [ ] Visual proof captured (screenshots committed)
+- [ ] Artifact creation verified (all 3 types)
+
+### Must NOT Have
+- [ ] User accounts or authentication
+- [ ] Persistent storage of conversations
+- [ ] Engagement optimization features
+- [ ] Navigation beyond single-page experience
+- [ ] Regex pattern matching
+
+---
+
+## Telemetry (ODD-Safe)
+
+**Allowed events:**
+- ArtifactCreated { type }
+- ArtifactExported { count, types }
+- IncisionTriggered { reason }
+- PrematureExit { artifact_count }
+
+**Forbidden:**
+- Raw text
+- Prompts
+- Responses
+- Identity
+- IP
+- Fingerprinting
+
+Telemetry measures epistemic motion, not users.
+
+---
+
+## Lifecycle
+
+This product is the **closure artifact of Epoch 4**, not a growth product.
+
+### Graduation / Kill Criteria
+
+- If artifact creation rate drops to zero across 30 days → evaluate for retirement
+- If feature requests accumulate that violate non-goals → scope freeze or retire
+
+---
+
+## Final Constraint
+
+If someone asks: *"Should the product also…?"*
+
+The default answer is **no**.
+
+If the change is not clearly justified by artifact creation, it is rejected.
+
+---
+
+## Graduation
+
+This PRD embodies the philosophy defined in:
+- klappy://docs/guiding-artifacts/epoch-4/klappy-dev-poc-prd
+
+That artifact remains canonical as the philosophical source.
+This PRD accepts the operational gravity of maintaining the product.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/website/LEDGER.md
+--------------------------------------------------------------------------------
+
+# Website Lane Ledger
+
+Append-only product memory for the `website` lane.
+Records outcomes (champions, merges, deployments) without turning them into canon.
+
+---
+
+## Entry — PRD v1.0 Champion (PROMOTED)
+
+- Date: 2026-01-19
+- PRD: v1.0
+- Epoch: E0003 (evidence-first)
+- Champion: PROMOTED
+- Champion branch: `run/website/prd-v1.0/cursor/a/claude-opus-4/71c6fdc7`
+- Head commit SHA: `1fb713dcbd4158325f48e6842806016a208a7ee7`
+- Merge commit SHA: `97394e2480421345b82682f9365c8e5ed414ecb1`
+- Cloudflare Pages project: `klappy-dev-website`
+- App URL: https://website-attempt-test.klappy-dev-website.pages.dev
+- Evidence URL: https://website-attempt-test.klappy-dev-website.pages.dev/_evidence/
+- Promotion PR: https://github.com/klappy/klappy.dev/pull/1
+- Promoted at: 2026-01-19
+
+> **Note:** This Promotion PR existed prior to rule formalization. From this point forward, all champions require an explicit Promotion PR per `products/website/prompts/ATTEMPT_KICKOFF.md`.
+
+### What worked
+- Evidence-first requirement produced real, observable artifacts online.
+- `/_evidence/` as a stable convention is discoverable.
+- Website lane build path is viable and can produce a deployed app + evidence.
+
+### What didn't
+- Local build succeeded but branch not pushed → no CF preview → unverifiable attempt.
+- Wrangler deploy used → ad-hoc URL breaks branch-based audit trail.
+- Lane/build-output mismatch caused CF to look for wrong dist path.
+
+### Learnings (1–3 bullets)
+- "Public" is not enough — discoverable is required.
+- The system needs one blessed deployment path: push branch → CF Pages preview → verify 200.
+- Failed attempts should preserve evidence URLs + notes when they reveal patterns.
+
+### Follow-up (one next action)
+- Kickoff prompt now enforces origin push + HTTP 200 checks + bans wrangler deploy.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/archive/products/website/PRD.md
+--------------------------------------------------------------------------------
+
+# PRD: Public Website
+
+| Field           | Value            |
+|-----------------|------------------|
+| **PRD Version** | v1.2             |
+| **Lane**        | website          |
+| **Status**      | Active           |
+| **Created**     | 2026-01-17       |
+| **Updated**     | 2026-01-20       |
+| **Author**      | Chris Klapp      |
+
+---
+
+## Interface Contracts
+
+This lane MUST remain compatible with:
+
+- manifest >=2.0.0 <3.0.0
+- build-output >=3.0.0 <4.0.0
+- attempt-cli >=2.0.0 <3.0.0
+
+---
+
+## Visual Interfaces
+
+This product MUST remain compatible with:
+
+- color-system >=1.0.0 <2.0.0
+- typography >=1.0.0 <2.0.0
+- spacing >=1.0.0 <2.0.0
+
+This product does NOT define colors, fonts, or spacing directly.
+It consumes visual interfaces.
+
+See `/odd/appendices/visual-evolution.md` for the visual evolution model.
+
+---
+
+## Objective
+
+Create a public website that allows humans to:
+
+- Understand what ODD is
+- Explore it progressively without overwhelm
+- Verify credibility
+- Navigate to deeper material intentionally
+
+---
+
+## Background
+
+This is the human-facing orientation surface for ODD.
+
+It is portfolio, explanation, credibility layer.
+
+It does NOT teach agents how to think.
+It does NOT execute ODD.
+It explains ODD progressively to humans.
+
+---
+
+## In Scope
+
+- Progressive disclosure UX
+- Canon browsing
+- Essays / articles (including Medium content)
+- Clear entry points ("Start here", "Go deeper")
+- Mobile usability
+- Visual calm
+- Deep links / shareable URLs
+
+---
+
+## Explicitly Out of Scope
+
+- AI chat (belongs to ai-navigation lane)
+- Agent execution (belongs to agent-skill lane)
+- Process enforcement
+- MCP servers
+- "How to run ODD" instructions for agents
+
+---
+
+## Success Criteria
+
+- [ ] First load shows no more than 7 navigational items
+- [ ] Mobile usable without horizontal scrolling
+- [ ] Canon discoverable without file paths exposed
+- [ ] No agent instructions present in UI
+- [ ] No CLI/process language exposed to visitors
+- [ ] Deep links work (URL represents resource + section)
+- [ ] Progressive disclosure tiers respected (Tier 0/1/2)
+
+---
+
+## Definition of Done
+
+An attempt against this PRD is complete when:
+
+- [ ] Build output produced (`npm run build -- --lane website`)
+- [ ] Visual proof captured (desktop + mobile screenshots)
+- [ ] First load shows ≤7 nav items (verified via screenshot)
+- [ ] Mobile layout verified (no horizontal scroll)
+- [ ] Deep link round-trip tested
+- [ ] Self-audit completed with explicit tradeoffs
+- [ ] **Cloudflare Preview URL provided** (branch must be pushed)
+- [ ] **Evidence URL provided** (viewable online without local code)
+
+---
+
+## Online Evidence (Required)
+
+A website lane attempt is **not complete** unless:
+
+1. The attempt branch is pushed to `origin`.
+2. Cloudflare Pages generates a Preview Deployment URL for that branch.
+3. The attempt includes an Evidence URL viewable online without running code locally.
+
+Local preview instructions are allowed during development, but they **do not satisfy attempt completion**.
+
+If an agent cannot provide both URLs, the attempt is **INVALID**.
+
+See `/docs/appendices/online-evidence.md` for the full requirement.
+
+---
+
+## Primary User
+
+Human developers, peers, evaluators exploring ODD.
+
+---
+
+## Constraints
+
+This PRD is shaped by Canon constraints:
+
+- Evidence over assertion
+- UX should carry the explanation (reduce text compensation)
+- Maintainability over cleverness
+- Progressive disclosure required
+
+---
+
+## Media (Learning Layer)
+
+This lane supports optional media assets (images/video/audio/PDF) as a **learning layer**.
+
+This lane follows: `/odd/appendices/media-as-learning-layer.md`
+
+### Discovery Mechanism (Required)
+
+Media assets MUST be discovered through canonical ownership:
+
+1. The owning markdown resource declares assets in frontmatter using a single-line JSON object:
+   - `assets: {"key":"/assets/...","key2":"/assets/..."}`
+2. `npm run sync` compiles these into `public/content/manifest.json` as `resource.assets`.
+3. The website renders media only from `resource.assets` (not by scanning folders).
+
+### Behavior Rules
+
+- Media is opt-in (progressive disclosure).
+- No autoplay video or audio.
+- The page remains complete and usable without opening media.
+- Media must attach only to stable content.
+
+### Initial Media Scope (Phase 0)
+
+**Home (`/`)**
+- `/assets/home/hero-odd-diagram.png`
+- `/assets/home/orientation-map-diagram.png`
+- `/assets/home/outcomes-driven_development.mp4`
+
+**ODD (`/odd/README.md`)**
+- `/assets/odd/odd-in-practice.mp4`
+- `/assets/odd/odd-is-not-a-framework.png`
+- `/assets/odd/why-evidence-beats-confidence.m4a`
+
+### Requirements
+
+- The default experience must not require media consumption to understand the page.
+- Media must be user-initiated (explicit Watch/Listen/View affordances).
+- No autoplay video or audio.
+- Media must not add to the primary navigation item count.
+
+---
+
+## Attempt Policy
+
+This PRD may be attempted multiple times.
+
+- Each attempt is evaluated independently
+- Failed attempts inform future attempts or PRD revisions
+- Attempts are sealed when CLOSED or ABANDONED
+
+Attempts live at: `/products/website/attempts/`
+
+---
+
+## Compiled Pack (Phase 0)
+
+The website lane MUST support generating a wipeable "visitor pack" used for progressive disclosure and AI-friendly context.
+
+### Command
+- `npm run lane:compile -- --lane website --pack visitor`
+
+### Output
+- `public/_compiled/website/visitor-pack.md`
+- `public/_compiled/website/_meta/COMPILE_META.json`
+
+### Verification
+- `npm run verify:compiled -- --lane website --pack visitor`
+
+### Contract
+- The compiled pack MUST include a provenance header as defined in:
+  - `klappy://docs/appendices/compilation`
+
+---
+
+## Related Documents
+
+- Lane architecture: `/docs/appendices/product-lanes.md`
+- Canon constraints: `/canon/constraints/README.md`
+- Definition of Done: `/canon/constraints/definition-of-done.md`
+- Legacy PRD (v0.3): `/docs/PRD/website/PRD-legacy-v0.3.md`
+- Compilation: `/docs/appendices/compilation.md`
+- Media philosophy: `/odd/appendices/media-as-learning-layer.md`
+
+
+
+--------------------------------------------------------------------------------
 📄 File: docs/audits/epoch4-phase2-classification.md
 --------------------------------------------------------------------------------
 
@@ -11017,6 +17350,103 @@ Lane was created before convention was fully established. The "versioned PRD in 
 
 
 --------------------------------------------------------------------------------
+📄 File: docs/decisions/D0016-structure-agnostic-odd.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/decisions/D0016
+title: "D0016: Structure-Agnostic ODD (E0005.1)"
+audience: docs
+exposure: nav
+tier: 2
+voice: neutral
+stability: stable
+tags: ["odd", "decisions", "structure", "portability", "lanes", "epoch-5"]
+epoch: E0005
+date: 2026-02-12
+derives_from: "canon/values/axioms.md (Axiom 1 — Reality Is Sovereign)"
+supersedes: "D0009, D0011 (partially), D0013, D0015"
+---
+
+# D0016: Structure-Agnostic ODD (E0005.1)
+
+> Prescribed product lanes, attempt folder conventions, and lane-scoped tooling are superseded by dynamic epistemic routing through OddKit. The concepts of independent product evolution, restartability, and evidence gating remain core ODD — they are now handled by epistemic tooling rather than directory conventions. ODD is portable epistemic infrastructure that works in any repo structure where canon is addressable.
+
+## Summary — Folder Conventions Were External Compliance; OddKit Is Internal Orientation
+
+In practice, rigid lane structures (products/<lane>/PRD.md, products/<lane>/attempts/prd-vX.Y/attempt-NNN/) created more friction than value. OddKit's epistemic tooling — orient, challenge, gate, encode — dynamically handles when to steer existing work versus starting fresh with a clean PRD, learnings, Definition of Done, and constraints. The prescribed implementation was a form of external compliance that Epoch 5's shift to internal orientation made unnecessary.
+
+This is E0005.1: the same invariant ("epistemic systems require moral commitments to be finite") applied to structural prescriptions. No new epoch is declared because no new assumption about reality is introduced.
+
+## Context
+
+The multi-lane architecture was introduced in D0009 and formalized in the ODD System Contract 2.0.0 (D0011). It served its purpose: it proved that independent products can share canon without sharing lifecycle. That learning is durable. The folder conventions that encoded it are not.
+
+The lane-era products did not fail — they graduated. Four standalone projects now exist as independent repos (oddkit.klappy.dev, odd.klappy.dev, klappy.dev, apocrypha.klappy.dev), each exercising ODD concepts without prescribed directory conventions. The lane structure was scaffolding; the products outgrew it.
+
+### Evidence That Prescribed Structure Created Friction
+
+**1. The Ritual Is Mind-Numbing (products/odd-teaser, 2026-01-31)**
+
+A documented learning from the odd-teaser lane's attempt workflow captured the core failure:
+
+- Ritual/process debugging consumed ~70% of session time; actual product implementation was ~20%
+- "This session took hours. The actual product code was ~200 lines. The ritual consumed the rest."
+- At any given moment, the agent had to track: current branch name, PRD version, attempt status, META.json fields, evidence requirements, ledger scope, import mechanics, and build script behavior — "too much state for humans OR agents to reliably maintain"
+- User quotes: "The ritual is mind-numbing. Make sure that persists... I don't want to lose the learning opportunity here. This is so bad, it must be studied."
+
+Source: `products/odd-teaser/attempts/prd-v1.1/_runs/6593bb53/LEARNINGS.md`
+
+**2. AGENT_KICKOFF.md Still Referenced E0002**
+
+The canonical agent entry point (`docs/agents/AGENT_KICKOFF.md`) still declared "Current Epoch: E0002-multi-lane-era" — three epochs behind the actual state of the system. The lane-specific steps (lane declarations, attempt:register --lane flags, "Do NOT touch other lanes") were actively misleading agents about how the system works.
+
+**3. OddKit Handled What Lanes Were Supposed To Handle**
+
+OddKit's orient, challenge, and gate tools dynamically route agents to relevant context without requiring prescribed directory structures. The 246-document baseline is searchable, addressable, and navigable through epistemic tooling. The static directory conventions that lanes imposed were a less flexible, more brittle version of what OddKit does dynamically.
+
+**4. Lane Products Graduated Into Standalone Repos**
+
+The clearest evidence that lanes worked conceptually but not structurally: every active lane product (odd-teaser, agent-skill, fluent-mobile) evolved into standalone projects in their own repositories. The directory convention didn't enable this — it constrained it.
+
+## Decision
+
+1. **Product lanes are conceptual, not structural.** Products may evolve independently and share canon, but this does not require prescribed directory conventions.
+2. **OddKit is the primary interface for epistemic routing.** Orient, challenge, and gate replace folder-level attempt management.
+3. **The products/ directory is removed.** Its contents were klappy.dev implementation artifacts, not ODD infrastructure. Valuable artifacts (decisions, learnings, evidence, attempt records) are preserved in `docs/archive/products/`.
+4. **ODD System Contract bumps to 3.0.0.** Lane-specific requirements become optional conventions. The three-tier hierarchy (ODD/Canon/Docs) and epoch model remain.
+5. **Superseded docs are archived**, not deleted. Historical value is preserved; active navigation is cleaned up.
+6. **Defunct implementation infrastructure is removed.** `public/`, `fluent-mobile/`, `visual/`, `projects/`, and most of `infra/` were lane-era pipeline artifacts with no remaining consumers.
+
+## Supersedes
+
+- **D0009**: Multi-Lane PRD Architecture — concept preserved (independent evolution), implementation superseded
+- **D0011**: ODD System Contract 2.0.0 — partially superseded; three-tier hierarchy and epochs remain, lane requirements dropped
+- **D0013**: Build Output Lane-Scoped — fully superseded
+- **D0015**: Lane PRD Structure Alignment — fully superseded
+
+## Consequences
+
+- ODD documentation no longer prescribes repo structure
+- Agents use OddKit to navigate, not folder conventions
+- New projects adopting ODD do not inherit klappy.dev's directory layout
+- Historical artifacts from the lane era remain in archive for provenance
+- Four derivative works (oddkit.klappy.dev, odd.klappy.dev, klappy.dev, apocrypha.klappy.dev) demonstrate ODD's portability thesis in practice
+
+## Alternatives Considered
+
+- **Keep lanes as optional convention**: Rejected — "optional but documented" tends to become "expected in practice"
+- **Deprecate but don't remove**: Rejected — deprecated artifacts still cause confusion when they appear in search results
+- **Remove without archiving**: Rejected — provenance has value; learnings and decisions should survive the structural transition
+
+## Status
+
+- [x] Decision record created
+- [ ] Reviewed and approved
+
+
+
+--------------------------------------------------------------------------------
 📄 File: docs/decisions/README.md
 --------------------------------------------------------------------------------
 
@@ -12069,6 +18499,246 @@ None of those should re-litigate the ideas above.
 
 - Concept frozen
 - Ready to proceed to Updated PRD
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/incidents/README.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/incidents
+title: "Incident Records"
+audience: docs
+exposure: nav
+tier: 2
+voice: neutral
+stability: evolving
+tags: ["incidents", "index", "dogfooding", "lessons"]
+---
+
+# Incident Records
+
+> Documented failures that led to canon or constraint changes. Each incident records what happened, which axioms were violated, what was learned, and what was created to prevent recurrence. Incidents are evidence — they explain why constraints exist.
+
+---
+
+| File | Title | Date | Led To |
+|------|-------|------|--------|
+| [oddkit-stale-cache-2026-02.md](oddkit-stale-cache-2026-02.md) | OddKit Stale Cache — Days of Silent Lies | 2026-02-12 | Anti-Cache Lying constraint, Decision Rule #15, Content-Addressed Storage impl |
+| [progressive-disclosure-failure-2026-02.md](progressive-disclosure-failure-2026-02.md) | Canon Documents Shipped Without Progressive Disclosure | 2026-02-12 | DoD amendment, Self-Audit amendment, Writing Canon enforcement, OddKit Writing Canon gate impl |
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/incidents/oddkit-stale-cache-2026-02.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/incidents/oddkit-stale-cache-2026-02
+title: "Incident: OddKit Stale Cache — Days of Silent Lies (February 2026)"
+audience: docs
+exposure: nav
+tier: 2
+voice: neutral
+stability: stable
+tags: ["incident", "oddkit", "caching", "dogfooding", "axiom-violation"]
+derives_from: "odd/constraint/anti-cache-lying.md"
+epoch: E0005
+date: 2026-02-12
+---
+
+# Incident: OddKit Stale Cache — Days of Silent Lies (February 2026)
+
+> OddKit — the epistemic guide built to enforce "Reality Is Sovereign" — served stale canon documents for days without detection. Its cache flush mechanism (`invalidate_cache`) only cleared `.zip` files, leaving other stale derived content in place. The tool built to prevent assertion without verification was itself asserting without verification. This incident proved that TTL-based caching of derived content is incompatible with ODD's Foundational Axioms and led to the creation of the Anti-Cache Lying constraint (`odd/constraint/anti-cache-lying.md`).
+
+---
+
+## Summary — The Epistemic Integrity Tool Was Itself Lying About Reality
+
+OddKit caches baseline canon documents fetched from GitHub to reduce latency. This cache used a staleness window — content was fetched once and served until TTL expiry or manual `invalidate_cache`. During active canon development, documents in the baseline repo were updated. OddKit continued serving old versions for days. No error was raised. No signal indicated staleness. When the issue was discovered through human observation (not automated detection), `invalidate_cache` only cleared `.zip` files — other cached artifacts remained stale. The flush mechanism was itself incomplete: a lie about the lie-clearing mechanism. This violated Axioms 1, 3, and 4. The root cause was pre-optimization: caching was introduced to save latency without measuring Total Cost of Ownership. This incident directly led to the Anti-Cache Lying constraint, Decision Rule #15 (Measure Total Cost Before Optimizing), and the implementation instruction for content-addressed storage in OddKit.
+
+---
+
+## What Happened — Stale Canon Served Without Any Signal
+
+OddKit caches baseline canon documents fetched from GitHub to reduce latency on repeated calls (orient, search, get, etc.). This cache used a staleness window — content was fetched once and served from cache until either the TTL expired or `invalidate_cache` was manually invoked.
+
+During a period of active canon development, documents in the baseline repo were updated. OddKit continued serving the old versions. No error was raised. No signal indicated staleness. Agents and users received outdated canon content and made decisions based on it.
+
+When the issue was eventually discovered and `invalidate_cache` was called, it only cleared `.zip` files from storage. Other cached artifacts — parsed documents, search indexes, derived content — remained stale. The flush mechanism was itself incomplete.
+
+---
+
+## Duration — Days, Exact Duration Unknown Because the Cache Produced No Signal
+
+Days. The exact duration is unknown because the cache produced no staleness signal. This is consistent with the core failure mode of derived-content caching: the cache eliminates the very signal that would prompt investigation.
+
+---
+
+## Detection — Human Observation, Not Automated
+
+The staleness was not detected by any automated system. It was discovered through human observation when canon content did not match expected updates.
+
+---
+
+## Axiom Violations — Three of Four Axioms Breached
+
+**Axiom 1: Reality Is Sovereign**
+The cache served a model of reality (past state) instead of reality itself (current state). Every response from OddKit during the stale period was an assertion about canon that was not grounded in the current state of the canon.
+
+**Axiom 3: Integrity Is Non-Negotiable Efficiency**
+The cache existed to save latency — a local optimization. The cost was days of incorrect canon being served. The "efficiency" of caching was purchased with system-wide integrity loss.
+
+**Axiom 4: You Cannot Verify What You Did Not Observe**
+The cache eliminated the observation path. Because cached content was served without contacting the source, there was no opportunity to observe that the source had changed. The system could not verify what it did not look at.
+
+---
+
+## Root Cause — Pre-Optimization Without Measuring Total Cost of Ownership
+
+The caching strategy was introduced to reduce GitHub API calls and improve response latency. No Total Cost of Ownership analysis was performed. The cost of the optimization — stale state, incomplete flush, debugging opacity, trust erosion — exceeded the benefit by orders of magnitude.
+
+This is the named anti-pattern **Local Maxima Optimization (The Cache Trap)**: optimizing for a single metric (latency) while ignoring the full cost of the decision.
+
+---
+
+## The Irony — The Creed vs. The Cache
+
+The tool whose entire purpose is to enforce epistemic discipline — to ensure agents observe before asserting, verify before claiming, and prove before confirming — was itself asserting without observation, claiming without verification, and confirming without proof.
+
+The Creed says: *"What I have not seen, I do not know."*
+The cache said: *"What I saw yesterday is close enough."*
+
+---
+
+## Resolution — Three Canonical Artifacts Created
+
+This incident led to the creation of:
+
+1. **Constraint: Anti-Cache Lying** (`odd/constraint/anti-cache-lying.md`) — a permanent constraint prohibiting TTL-based caching of derived or mutable content
+2. **Decision Rule #15: Measure Total Cost Before Optimizing** — added to the Decision Rules as a heuristic against pre-optimization without TCO evidence
+3. **Implementation Instruction: Content-Addressed Storage** (`docs/oddkit/IMPL-content-addressed-caching.md`) — the plan to replace OddKit's caching with SHA-keyed immutable storage
+
+---
+
+## Lessons — What This Incident Teaches About Caching and Trust
+
+1. A cache that can lie will lie. The question is not *if* but *when* and *for how long*.
+2. A flush mechanism that exists for correctness is an admission that the cache is a liability.
+3. A flush mechanism that only clears some artifacts is a lie about the lie-clearing mechanism.
+4. The absence of an error signal is not evidence of correctness — it is evidence that the system cannot detect its own failures.
+5. Dogfooding works. This incident was discovered because the canon author was actively using OddKit and noticed the gap. If the staleness had been in a less-observed part of the system, it could have persisted indefinitely.
+
+---
+
+## Canonical Tie-In
+
+This incident exists because:
+
+> *"Nobody noticed for days."*
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/incidents/progressive-disclosure-failure-2026-02.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/incidents/progressive-disclosure-failure-2026-02
+title: "Incident: Canon Documents Shipped Without Progressive Disclosure (February 2026)"
+audience: docs
+exposure: nav
+tier: 2
+voice: neutral
+stability: stable
+tags: ["incident", "progressive-disclosure", "writing-canon", "definition-of-done", "dogfooding", "axiom-violation"]
+derives_from: "canon/meta/writing-canon.md"
+epoch: E0005
+date: 2026-02-12
+---
+
+# Incident: Canon Documents Shipped Without Progressive Disclosure (February 2026)
+
+> An AI agent wrote three canon documents (Anti-Cache Lying constraint, OddKit incident record, implementation instruction) that violated every tier of the Writing Canon progressive disclosure requirements — no blockquotes, no Summary sections, generic headers that fail the scan test. The documents were merged to main without validation. The author caught the failure only by manually checking odd.klappy.dev. The root cause: the Definition of Done does not include document structure as a completable deliverable, the Self-Audit does not check for progressive disclosure, and no gate exists in OddKit to enforce Writing Canon on document outputs. The system that was supposed to prevent bad work from shipping had no checkpoint for writing quality.
+
+---
+
+## Summary — Documents Are Deliverables, and the Definition of Done Didn't Know That
+
+Three canon documents were written by an AI agent during the Anti-Cache Lying work. All three failed every tier of the Writing Canon checklist: no blockquote with compressed argument (Tier 2), no Summary section (Tier 4), generic headers that fail the scan test (Tier 5). The agent had full access to the Writing Canon document — it had used OddKit to search and retrieve canon docs throughout the session — but never validated its writing output against the checklist. The documents were merged to main. The failure was caught only by the author manually checking the rendered site. This exposed a structural gap: the Definition of Done covers code, UI, and behavior verification, but does not include document structure as a DoD requirement. The Self-Audit Checklist does not mention progressive disclosure. OddKit's preflight and validate actions do not surface Writing Canon when the deliverable is a document. Without a gate, agents will always skip this — just as they will always serve stale caches without a signal that something is wrong.
+
+---
+
+## What Happened — Three Documents Passed Every Check Except the One That Mattered
+
+During the Anti-Cache Lying work session, an AI agent:
+1. Read and referenced multiple canon documents using OddKit (axioms, orientation, decision rules, anti-metric laundering)
+2. Modeled its document structure after Anti-Metric Laundering — which itself does not follow progressive disclosure
+3. Wrote three documents that matched the pattern of the model it copied
+4. Never checked the Writing Canon document (`canon/meta/writing-canon.md`) or ran the seven-point checklist
+5. Presented the documents as complete
+6. The documents were merged to main
+
+The author later checked odd.klappy.dev and noticed the documents lacked blockquotes, summaries, and descriptive headers. The agent was confronted and acknowledged the failure.
+
+---
+
+## Why the Agent Skipped Validation — No Gate, No Signal, No Cost
+
+The agent did not maliciously skip the checklist. It simply never encountered it as a requirement. The Writing Canon exists as a `canon/meta/` document — advice about how to write — but it is not wired into any enforcement mechanism:
+
+- The **Definition of Done** requires: change description, verification performed, observed behavior, evidence produced, self-audit completed. None of these mention document structure or progressive disclosure.
+- The **Self-Audit Checklist** covers: intended outcome, constraints applied, decision rules followed, verification performed, evidence produced, UX check, tradeoffs, maintainability, confidence. None of these mention document structure.
+- **OddKit's preflight** surfaces relevant docs and constraints — but does not know that Writing Canon is a constraint when the deliverable is a document.
+- **OddKit's validate** checks for artifacts and evidence — but a markdown file that fails every tier of progressive disclosure passes validation because it *exists*.
+
+The system had no gate. The agent had no cost for skipping. The failure was invisible until a human looked at the output.
+
+---
+
+## Axiom Violations — The Same Pattern as the Cache Incident
+
+**Axiom 2: A Claim Is a Debt**
+The agent claimed the documents were complete. It owed evidence that they met the canon's writing standards. It never checked. The claim was unpaid.
+
+**Axiom 4: You Cannot Verify What You Did Not Observe**
+The agent did not observe its output against the Writing Canon checklist. It cannot have verified what it did not look at.
+
+**Axiom 3: Integrity Is Non-Negotiable Efficiency**
+Writing the documents once without validation was "faster" than writing them, checking the checklist, and revising. The cost was a second round of work, a second set of instructions for Claude Code, and trust erosion.
+
+---
+
+## Root Cause — Documents Are Not Treated as Deliverables in the Definition of Done
+
+The Definition of Done was written for code, UI, and behavioral verification. It does not recognize that documents are deliverables that require their own form of verification. Progressive disclosure is not a formatting preference — it is a structural requirement for how documents get consumed by agents and tooling (`canon/meta/writing-canon.md`). Without explicit inclusion in the DoD, it will always be treated as optional.
+
+---
+
+## Resolution — Four Changes Required
+
+1. **Amend Definition of Done** (`canon/constraints/definition-of-done.md`) — add document deliverables as a category with progressive disclosure as a DoD requirement
+2. **Amend Self-Audit Checklist** (`canon/methods/self-audit.md`) — add a document structure check referencing Writing Canon
+3. **Fix the three broken documents** — rewrite anti-cache-lying, incident record, and implementation instruction with proper progressive disclosure
+4. **Create OddKit implementation instruction** (`docs/oddkit/IMPL-writing-canon-gate.md`) — when the deliverable is a document, preflight/validate should surface Writing Canon as a constraint
+
+---
+
+## Lessons — What This Incident Teaches About Agent Writing Quality
+
+1. A checklist that exists but isn't wired into a gate will be skipped. By agents and humans alike.
+2. Modeling structure after an existing document propagates that document's failures. The agent copied Anti-Metric Laundering's structure, which also lacks progressive disclosure.
+3. The same pattern keeps repeating: the system doesn't stop bad work from shipping, so bad work ships, and a human catches it after the fact. Caches, documents, whatever — the fix is always the same: make the gate structural, not behavioral.
+4. "The agent had access to the checklist" is the document equivalent of "the cache had a flush button." Access is not enforcement.
+
+---
+
+## Canonical Tie-In
+
+This incident exists because:
+
+> *"The agent had access to the checklist."*
 
 
 
@@ -13280,6 +19950,199 @@ The order matters:
 3. Enforcement only after reality proves the value
 
 Trust before control. Explanation before instruction. Structure that emerges instead of being imposed.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/oddkit/IMPL-content-addressed-caching.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/oddkit/impl-content-addressed-caching
+title: "Implementation: Replace TTL Caching with Content-Addressed Storage in OddKit"
+audience: docs
+exposure: internal
+tier: 2
+voice: neutral
+stability: evolving
+tags: ["oddkit", "implementation", "caching", "content-addressed", "anti-cache-lying"]
+derives_from: "odd/constraint/anti-cache-lying.md"
+---
+
+# Implementation: Replace TTL Caching with Content-Addressed Storage in OddKit
+
+> OddKit's TTL-based baseline cache must be replaced with commit-SHA-keyed immutable storage. The current strategy served stale canon for days undetected and its `invalidate_cache` action only cleared `.zip` files (see `docs/incidents/oddkit-stale-cache-2026-02.md`). The target: on every session's first request, fetch the current commit SHA (one lightweight call), use it as the storage namespace, serve from storage only when the SHA matches, and fetch fresh when it doesn't. No TTL. No staleness window. No flush for correctness. `invalidate_cache` becomes orphan cleanup or is removed entirely.
+
+---
+
+## Summary — Make It Impossible for OddKit to Lie About the State of the Canon
+
+OddKit's current caching strategy caches baseline documents with a staleness window and provides an `invalidate_cache` action as a manual correctness tool. This violates the Anti-Cache Lying constraint and was proven harmful by the stale-cache incident (days of stale content, incomplete flush). Four changes are required: (1) replace TTL cache with commit-SHA-keyed storage, (2) redefine or remove `invalidate_cache`, (3) ensure ALL stored artifacts are SHA-keyed (not just `.zip`), (4) remove the need for a correctness-oriented flush from the MCP tool interface. The system must serve correct content without any manual intervention when the baseline changes.
+
+---
+
+## Background — The Incident That Drove This Change
+
+OddKit cached its baseline canon documents. For days, it served stale content. Nobody noticed because the cache made everything look like it was working. When `invalidate_cache` was invoked, it only cleared `.zip` files — other stale derived content continued to be served.
+
+The tool whose purpose is epistemic integrity was itself violating Axiom 1 (Reality Is Sovereign).
+
+See `docs/incidents/oddkit-stale-cache-2026-02.md` for the full incident record.
+
+---
+
+## Required Change 1 — Replace TTL Cache with Commit-SHA-Keyed Storage
+
+**Current behavior:** Fetch baseline content, cache it, serve from cache until TTL expires or `invalidate_cache` is called.
+
+**Target behavior:**
+- On first request in a session, fetch the current commit SHA for the baseline branch (one lightweight GitHub API call or HTTP HEAD with ETag)
+- Use that SHA as the storage namespace key
+- If content for this exact SHA exists in storage, serve it — this is a truthful assertion
+- If the SHA has changed or no content exists, fetch fresh from GitHub and store keyed to the new SHA
+- No TTL. No staleness window. No manual flush for correctness.
+
+---
+
+## Required Change 2 — Redefine `invalidate_cache` as Orphan Cleanup or Remove It
+
+**Current behavior:** `invalidate_cache` attempts to realign cached content with reality by clearing stored files (incompletely — only `.zip` files).
+
+**Target behavior:**
+- `invalidate_cache` becomes `cleanup_storage` or equivalent, or is removed entirely
+- If retained, its purpose is garbage collection of orphaned SHA-keyed storage (old commit SHAs that are no longer current)
+- It MUST NOT be required for correctness — the system MUST serve correct content regardless of whether cleanup has been run
+- It is a storage hygiene operation, not a truth-recovery operation
+
+---
+
+## Required Change 3 — Ensure ALL Stored Artifacts Are SHA-Keyed
+
+**Current gap:** The previous `invalidate_cache` only cleared `.zip` files. Other derived artifacts (search indexes, parsed document caches, etc.) were not cleared.
+
+**Target behavior:**
+- Every stored artifact MUST be keyed to the commit SHA it was derived from
+- When the SHA changes, ALL derived artifacts are either re-derived or the old SHA namespace is ignored entirely
+- No partial flush. No "we cleared the zips but not the indexes."
+
+---
+
+## Required Change 4 — Remove Correctness-Oriented Flush from MCP Tool Interface
+
+**Current behavior:** `invalidate_cache` is exposed as an MCP tool action, implying it is sometimes necessary for correct operation.
+
+**Target behavior:**
+- If a storage cleanup action exists, it is clearly labeled as hygiene, not correctness
+- The system description and documentation make clear that cleanup is never required for accurate results
+- Agents should never need to call a flush action to get truthful responses
+
+---
+
+## Acceptance Criteria — How to Know This Is Done
+
+- [ ] OddKit serves content keyed to the current commit SHA of the baseline branch
+- [ ] Changing a canon document in the baseline repo results in OddKit serving the updated content on the next request — without any manual intervention
+- [ ] No TTL-based expiration exists in the caching/storage layer
+- [ ] The `invalidate_cache` action is either removed or renamed and redefined as storage cleanup with no correctness implications
+- [ ] ALL stored artifacts (not just `.zip`) are keyed to their source commit SHA
+- [ ] Documentation reflects the new strategy and explains why TTL caching was removed
+
+---
+
+## Explicit Non-Goals — What This Change Must Not Introduce
+
+- No optimizing for minimal GitHub API calls at the cost of truthfulness
+- No introducing a "smart" TTL that "probably" stays fresh long enough
+- No adding cache warming, pre-fetching, or speculative caching of derived content
+- No trading correctness for latency under any circumstance
+
+---
+
+## Decision Comparison — Why Content-Addressed Storage Wins on Every Factor
+
+| Factor | TTL Cache (Current) | Content-Addressed (Target) |
+|--------|---------------------|---------------------------|
+| Correctness guarantee | None — staleness window | Complete — SHA is proof |
+| Flush required for truth | Yes | Never |
+| Partial flush risk | Yes (proven: .zip only) | Impossible — namespace is atomic |
+| Silent staleness | Yes (proven: days) | Impossible — SHA mismatch = fresh fetch |
+| Debugging clarity | "Did you clear the cache?" | "What SHA are we on?" |
+| TCO | Unbounded (debugging, incidents, trust erosion) | Bounded (one SHA check per session) |
+
+---
+
+## After Implementation — Validation and Cleanup
+
+1. Update OddKit documentation to reflect the new storage model
+2. Remove or rename `invalidate_cache` in the MCP tool interface
+3. Add the stale-cache incident as a test case — simulate a baseline change and verify OddKit serves fresh content without intervention
+
+
+
+--------------------------------------------------------------------------------
+📄 File: docs/oddkit/IMPL-writing-canon-gate.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://docs/oddkit/impl-writing-canon-gate
+title: "Implementation: Surface Writing Canon as a Gate for Document Deliverables"
+audience: docs
+exposure: internal
+tier: 2
+voice: neutral
+stability: evolving
+tags: ["oddkit", "implementation", "writing-canon", "progressive-disclosure", "gate"]
+derives_from: "canon/meta/writing-canon.md"
+---
+
+# Implementation: Surface Writing Canon as a Gate for Document Deliverables
+
+> When the deliverable is a document targeting canon, ODD, or docs, OddKit's preflight and validate actions must surface Writing Canon (`canon/meta/writing-canon.md`) as a constraint and check for the structural requirements: blockquote with compressed argument, Summary section, descriptive headers that pass the scan test. This was proven necessary by the Progressive Disclosure Failure incident (February 2026), where an agent wrote and shipped three canon documents that violated every tier of progressive disclosure because no gate existed.
+
+---
+
+## Summary — OddKit Must Enforce Writing Quality, Not Just Artifact Existence
+
+OddKit's preflight surfaces relevant docs and constraints before implementation. OddKit's validate checks completion claims against required artifacts. Neither currently recognizes that documents are deliverables with their own quality requirements. When an agent writes a canon doc, preflight should return Writing Canon as a governing constraint. When an agent claims a document is complete, validate should check for the progressive disclosure tiers (blockquote, summary, descriptive headers). Without this gate, agents will always skip writing validation — proven by the Progressive Disclosure Failure incident where three documents shipped to main without any structural checks.
+
+---
+
+## Required Change 1 — Preflight Must Detect Document Deliverables
+
+When an agent describes an implementation that involves creating or editing `.md` files in `canon/`, `odd/`, or `docs/`, preflight should:
+- Include `canon/meta/writing-canon.md` in the returned constraints
+- Include the seven-point checklist as part of the definition of done
+- Flag that document structure validation is required before completion
+
+---
+
+## Required Change 2 — Validate Must Check Progressive Disclosure Tiers
+
+When an agent claims completion on a document deliverable, validate should check:
+- **Tier 2:** Does a `>` blockquote exist immediately after the `#` title? Does it contain a substantive compressed argument (not a topic sentence)?
+- **Tier 4:** Does a `## Summary —` section exist? Is it self-contained?
+- **Tier 5:** Do headers pass the scan test — reading them in sequence tells the document's story?
+
+If any of these fail, validate should return `NEEDS_ARTIFACTS` with specific guidance on what's missing.
+
+---
+
+## Acceptance Criteria — How to Know This Is Done
+
+- [ ] `oddkit preflight` for a task involving document creation returns Writing Canon as a constraint
+- [ ] `oddkit validate` for a document completion claim checks for blockquote, summary, and header quality
+- [ ] A document missing a blockquote fails validation with a clear message
+- [ ] A document missing a Summary section fails validation with a clear message
+- [ ] The gate cannot be bypassed without explicit override
+
+---
+
+## After Implementation — Validation and Cleanup
+
+1. Test with a document that passes all tiers — confirm it validates
+2. Test with a document missing blockquote — confirm it fails with guidance
+3. Test with a document with generic headers — confirm it flags the issue
+4. Update OddKit documentation to reflect the new document validation capability
 
 
 
@@ -20287,6 +27150,10 @@ Constraints define the baseline assumptions and design defaults applied to most 
 - [Boundary Transitions Require Deceleration](/canon/constraints/boundary-transitions-require-deceleration.md)
 - [ODD Is an Epistemic OS, Not a Value System](/canon/constraints/odd-is-epistemic-os-not-values.md)
 - [No Irreversible Action Without Epistemic Justification](/canon/constraints/no-irreversible-action-without-epistemic-justification.md)
+- **ODD-Level Constraints** (universal, in `/odd/constraint/`):
+  - [Anti-Metric Laundering](/odd/constraint/anti-metric-laundering.md) — A system that cannot surface its own blind spots will optimize to protect them
+  - [Anti-Cache Lying](/odd/constraint/anti-cache-lying.md) — A cache of derived content is a polite lie; only content-addressed storage is acceptable
+  - [Use Only What Hurts](/odd/constraint/use-only-what-hurts.md) — Prevents ODD from becoming heavy, coercive, or self-justifying
 
 ---
 
@@ -20745,6 +27612,7 @@ Decision rules describe how decisions are made when multiple valid options exist
 - Say "I Don't Know" Early
 - Prefer One-Shot Builds
 - Hard-Code Protocols, Not Domain Tables
+- Measure Total Cost Before Optimizing
 
 ---
 
@@ -20756,6 +27624,7 @@ Decision rules describe how decisions are made when multiple valid options exist
 - MUST NOT consider work complete unless it is verified with evidence
 - MUST prefer one-shot builds over steering multi-turn misses; fix inputs and restart clean
 - MUST name tradeoffs as part of design, not as postmortem
+- MUST NOT accept "it will be faster" as justification for caching or optimization without Total Cost of Ownership evidence
 
 ---
 
@@ -20778,6 +27647,7 @@ Decision rules describe how decisions are made when multiple valid options exist
 - **Steering a Miss**: "Just one more tweak" turning into extended multi-turn patching
 - **Hidden Tradeoffs**: Decisions feeling arbitrary in hindsight; future changes requiring archaeology
 - **Confidence Without Verification**: Bugs discovered by users instead of builders
+- **Local Maxima Optimization (The Cache Trap)**: Optimizing a single metric while ignoring TCO; "it's faster" without measuring debugging hours, staleness incidents, or trust erosion
 
 ---
 
@@ -21028,6 +27898,26 @@ I do hard-code protocol contracts that define interoperability:
 
 ---
 
+## 15. Measure Total Cost Before Optimizing
+
+I do not accept "it will be faster" as justification without Total Cost of Ownership.
+
+**How I apply this**
+• I require measurement of the cache-less or unoptimized path before accepting optimization
+• I count debugging hours, maintenance burden, staleness risk, cognitive overhead, and trust erosion as costs
+• I treat "pre-optimization" without TCO evidence as a claim without payment (Axiom 2)
+• I recognize that local maxima (faster requests) purchased at the cost of system-wide integrity is not optimization — it is debt
+
+**Signals this rule was violated**
+• "Have you tried clearing the cache?" appears in debugging conversations
+• An optimization is introduced on day one without benchmarking the unoptimized path
+• The team spends more time managing the optimization than it would have spent without it
+• Nobody can say what the system's actual state is without first flushing something
+
+**See also:** `odd/constraint/anti-cache-lying.md` — the canonical constraint on caching derived content
+
+---
+
 ## 💡 Closing Note
 
 These rules describe how I tend to decide, not how decisions must always be made.
@@ -21073,7 +27963,7 @@ start_here_label: Definition of Done
 
 ## Description
 
-This policy is a specific application of the foundational axiom that every claim creates an evidence obligation. This policy defines completion requirements for all work: code, UI, architecture, automation, and AI-assisted outputs. Work is only done when it includes a change description, verification performed, observed behavior, evidence produced, and self-audit completed. Evidence must demonstrate actual behavior (screenshots, recordings, rendered output, test logs) and be produced after the change. Visual verification is required for UI work. The policy covers partial completion handling, explicit exceptions, and agent responsibilities.
+This policy is a specific application of the foundational axiom that every claim creates an evidence obligation. This policy defines completion requirements for all work: code, UI, architecture, automation, documents, and AI-assisted outputs. Work is only done when it includes a change description, verification performed, observed behavior, evidence produced, and self-audit completed. Evidence must demonstrate actual behavior (screenshots, recordings, rendered output, test logs) and be produced after the change. Visual verification is required for UI work. The policy covers partial completion handling, explicit exceptions, and agent responsibilities.
 
 ## Outline
 
@@ -21098,6 +27988,7 @@ This policy is a specific application of the foundational axiom that every claim
 - MUST provide visual proof for any work affecting UI, interaction, layout, or visible state
 - MUST NOT claim "done" without evidence; the correct response is "This is not complete yet"
 - MUST label partial completion explicitly with what was verified and what remains
+- MUST validate document deliverables against the Writing Canon checklist (`canon/meta/writing-canon.md`) before claiming completion
 
 ---
 
@@ -21118,6 +28009,7 @@ This policy is a specific application of the foundational axiom that every claim
 - **"This should work"**: Treating confidence as evidence
 - **"I reviewed the code"**: Treating inspection as observation of behavior
 - **"I didn't have time to test"**: Treating explanation as exemption from evidence
+- **"The document exists"**: Treating file creation as completion without validating progressive disclosure structure
 
 ---
 
@@ -21186,6 +28078,23 @@ Evidence must be:
 • produced after the change
 • specific to the task
 • clearly labeled
+
+---
+
+## 📄 Document Deliverables — Progressive Disclosure Is a Structural Requirement
+
+If the work produces a document targeting `canon/`, `odd/`, or `docs/`, the document must pass the Writing Canon checklist (`canon/meta/writing-canon.md`):
+
+1. **Title** names the concept and its stance
+2. **Blockquote** contains the complete compressed argument — an agent could act on title + blockquote alone
+3. **Metadata** includes epoch, derivation, governance with full file paths
+4. **Summary section** (`## Summary — [subtitle]`) is self-contained — could skip everything below and have the full picture
+5. **Headers** pass the scan test — reading them in sequence tells the document's story
+6. **No buried claims** — every key assertion is present in compressed form at a higher tier
+
+A document that exists but fails these tiers is not done. Existence is not quality.
+
+This was added after the Progressive Disclosure Failure incident (February 2026) — see `docs/incidents/progressive-disclosure-failure-2026-02.md`.
 
 ---
 
@@ -24688,8 +31597,9 @@ stability: stable
 tags: ["canon", "meta", "writing", "progressive-disclosure"]
 epoch: E0005
 date: 2026-02-09
-complements: "canon/meta/TEMPLATE.md, docs/TEMPLATE.md, canon/meta/agent-executable-outline.md"
+complements: "canon/meta/TEMPLATE.md, docs/TEMPLATE.md, canon/meta/agent-executable-outline.md, canon/constraints/definition-of-done.md, canon/methods/self-audit.md, docs/oddkit/IMPL-writing-canon-gate.md"
 derives_from: "canon/values/axioms.md (Axiom 2 — A Claim Is a Debt)"
+governs: "All documents in canon/, odd/, and docs/ directories"
 ---
 
 # Writing Canon — Progressive Disclosure and Topographic Navigation
@@ -24820,6 +31730,20 @@ The practical test: if your document were loaded alongside `canon/values/axioms.
 5. **Header scan test:** Do the headers tell the document's story when read in sequence? Do structural markers have descriptive subtitles?
 6. **No buried claims:** Is every key assertion present in compressed form at a higher tier? Does the body elaborate rather than introduce?
 7. **Axiom space test:** If loaded in a small context alongside the axioms and creed, does this document amplify the values or crowd them out?
+
+---
+
+## Enforcement — This Checklist Is Not Optional
+
+This checklist is not advice. It is a structural requirement integrated into the Definition of Done (`canon/constraints/definition-of-done.md`) and the Self-Audit Checklist (`canon/methods/self-audit.md`).
+
+If the deliverable is a document targeting `canon/`, `odd/`, or `docs/`, the progressive disclosure tiers are Definition of Done requirements. A document that exists but fails these tiers is not complete.
+
+OddKit's preflight and validate actions are being updated to surface this checklist automatically when the deliverable is a document — see `docs/oddkit/IMPL-writing-canon-gate.md`.
+
+This enforcement was proven necessary by the Progressive Disclosure Failure incident (February 2026), where an AI agent wrote and shipped three canon documents that violated every tier of this checklist. The documents were merged to main without validation. The agent had full access to this document but never checked its output against it. Access is not enforcement.
+
+See `docs/incidents/progressive-disclosure-failure-2026-02.md` for the full incident record.
 
 
 
@@ -25547,7 +32471,7 @@ execution_posture: operational
 
 ## Description
 
-The self-audit checklist defines how work should be self-reviewed before claiming completion. It covers nine areas: intended outcome, constraints applied, decision rules followed, verification performed, evidence produced, UX and behavior check, tradeoffs and risks, maintainability check, and confidence level. Minimum acceptable completion requires a stated outcome, at least one verification step, at least one piece of evidence, and acknowledgment of tradeoffs or unknowns. This replaces repeated back-and-forth questions about whether work was actually run and verified.
+The self-audit checklist defines how work should be self-reviewed before claiming completion. It covers ten areas: intended outcome, constraints applied, decision rules followed, verification performed, evidence produced, document structure validation, UX and behavior check, tradeoffs and risks, maintainability check, and confidence level. Minimum acceptable completion requires a stated outcome, at least one verification step, at least one piece of evidence, and acknowledgment of tradeoffs or unknowns. This replaces repeated back-and-forth questions about whether work was actually run and verified.
 
 ## Outline
 
@@ -25556,6 +32480,7 @@ The self-audit checklist defines how work should be self-reviewed before claimin
 - Decision Rules Followed
 - Verification Performed
 - Evidence Produced
+- Document Structure Check
 - UX & Behavior Check
 - Tradeoffs & Risks
 - Maintainability Check
@@ -25630,6 +32555,18 @@ If an item cannot be answered, that is a signal—not a failure.
   - logs
   - rendered output
 - Where can this evidence be found?
+
+---
+
+### 5b. Document Structure Check (If Applicable)
+
+If the deliverable is a document targeting `canon/`, `odd/`, or `docs/`:
+
+   • Does it pass the Writing Canon checklist (`canon/meta/writing-canon.md`)?
+   • Does the blockquote contain the full compressed argument?
+   • Is the Summary section self-contained?
+   • Do headers tell the story when read in sequence?
+   • Could an agent act on title + blockquote alone?
 
 ---
 
@@ -27168,6 +34105,7 @@ Each resonance page follows a consistent structure:
 - [ODD Manifesto](/odd/manifesto.md)
 - [Canon Index](/canon/README.md)
 - [Three-Tier Hierarchy](/odd/decisions/D0001-three-tier-conceptual-hierarchy.md)
+- [ODD Compared](/odd/odd-compared.md) — How ODD relates to contemporary methodologies, governance frameworks, and agentic tooling. The practitioner-facing counterpart to this index.
 
 
 
@@ -27952,13 +34890,29 @@ start_here_order: 1
 start_here_label: What is ODD?
 ---
 
-# 🧠 Outcomes-Driven Development (ODD)
+# Outcomes-Driven Development (ODD)
 
-Outcomes-Driven Development (ODD) is an approach to building software that prioritizes real-world results over artifacts.
+Outcomes-Driven Development is an approach to building software that prioritizes real-world results over artifacts.
 
-In an environment where AI can generate code, interfaces, and entire applications quickly, the limiting factor is no longer production speed—it is clarity of intent, quality of verification, and the ability to choose among many possible outcomes.
+In an environment where AI can generate code, interfaces, and entire applications quickly, the limiting factor is no longer production speed — it is clarity of intent, quality of verification, and the ability to choose among many possible outcomes.
 
 ODD exists to make those constraints explicit.
+
+---
+
+## Why ODD Exists
+
+AI development has no shortage of tools, workflows, and governance frameworks. What it lacks is a shared discipline for answering the simplest question: *did this actually work?*
+
+**Spec-Driven Development** gives you structured specs so AI generates better code. **Evaluation-Driven Development** gives you metrics so you can measure model quality. **AI-native lifecycles** give you phases and gates so humans stay in the loop. **Governance frameworks** like NIST and the EU AI Act give you compliance requirements. **Agentic tooling** like LangGraph and CrewAI gives you orchestration infrastructure.
+
+ODD doesn't replace any of these. It asks the question none of them center on:
+
+**How do you know what's actually true?**
+
+AI agents produce fluent, confident output. That output may be correct, partially correct, or entirely fabricated — and it all looks the same. Specs don't solve this. Evals help but don't cover it. Compliance doesn't prevent it. ODD exists because the gap between *generated* and *verified* is where real damage happens.
+
+→ For a detailed comparison with SDD, EDD, AI-DLC, governance frameworks, and agentic tooling, see **[ODD Compared](/odd/odd-compared.md)**.
 
 ---
 
@@ -27976,11 +34930,7 @@ If a proposed pattern, principle, or addition conflicts with it, the proposal is
 
 ## The Core Idea
 
-Traditional software development often optimizes for outputs:
-
-- lines of code
-- shipped features
-- completed tickets
+Traditional software development often optimizes for outputs: lines of code, shipped features, completed tickets.
 
 ODD shifts the focus to outcomes:
 
@@ -27996,17 +34946,9 @@ Code is still written. Tools still matter. But they are means, not ends.
 
 AI changes the economics of software creation.
 
-When generation becomes cheap:
+When generation becomes cheap, variation explodes, artifacts become disposable, and maintenance becomes the real cost.
 
-- variation explodes
-- artifacts become disposable
-- maintenance becomes the real cost
-
-ODD responds by:
-
-- treating code as ephemeral
-- emphasizing verification over explanation
-- encouraging curation over accumulation
+ODD responds by treating code as ephemeral, emphasizing verification over explanation, and encouraging curation over accumulation.
 
 The goal is not to generate _more_ software, but to ship _better_ outcomes with less long-term drag.
 
@@ -28016,26 +34958,13 @@ The goal is not to generate _more_ software, but to ship _better_ outcomes with 
 
 ODD is guided by a small set of principles that recur across projects:
 
-- **Prompt over Code**
-  Natural language intent guides generation; code is an output, not the source of truth.
-
-- **Keep It Simple (KISS)**
-  Prefer the simplest solution that works and can be explained clearly.
-
-- **Don’t Repeat Yourself (DRY), with Isolation**
-  Reuse ideas and components where it helps, but avoid brittle global coupling.
-
-- **Consistency**
-  Similar problems should feel similar to users and maintainers.
-
-- **Maintainability**
-  Optimize for low-effort upkeep and clear handoff, not cleverness.
-
-- **Antifragility**
-  Systems should learn from stress and failure, not just survive them.
-
-- **Scalability**
-  Growth should increase capability without exploding complexity or cost.
+- **Prompt over Code** — Natural language intent guides generation; code is an output, not the source of truth.
+- **Keep It Simple (KISS)** — Prefer the simplest solution that works and can be explained clearly.
+- **Don't Repeat Yourself (DRY), with Isolation** — Reuse ideas and components where it helps, but avoid brittle global coupling.
+- **Consistency** — Similar problems should feel similar to users and maintainers.
+- **Maintainability** — Optimize for low-effort upkeep and clear handoff, not cleverness.
+- **Antifragility** — Systems should learn from stress and failure, not just survive them.
+- **Scalability** — Growth should increase capability without exploding complexity or cost.
 
 These principles are lenses, not rules. Their application changes as projects mature.
 
@@ -28043,7 +34972,14 @@ These principles are lenses, not rules. Their application changes as projects ma
 
 ## Foundational Values
 
-ODD is grounded in four explicit foundational axioms that define its commitment to truth: Reality Is Sovereign, A Claim Is a Debt, Integrity Is Non-Negotiable Efficiency, and You Cannot Verify What You Did Not Observe. These values are the author's moral commitments — explicit, intentional, and forkable. They are not neutral observations but active choices about what epistemic discipline requires.
+ODD is grounded in four axioms that define its commitment to truth:
+
+1. **Reality Is Sovereign** — The state of the world as it actually is always takes precedence over any claim, plan, or model.
+2. **A Claim Is a Debt** — Every assertion creates an obligation. If you say something is true, you owe evidence.
+3. **Integrity Is Non-Negotiable Efficiency** — Cutting corners on truth never saves time. A false "done" creates more work than an honest "I haven't checked."
+4. **You Cannot Verify What You Did Not Observe** — If you didn't look, you don't know.
+
+These values are the author's moral commitments — explicit, intentional, and forkable. They are not neutral observations but active choices about what epistemic discipline requires.
 
 If you do not share these commitments, ODD expects you to fork and encode your own — not to argue, but to build. See [`canon/values/axioms.md`](/canon/values/axioms.md) for the full axioms.
 
@@ -28053,11 +34989,7 @@ If you do not share these commitments, ODD expects you to fork and encode your o
 
 ODD places a strong emphasis on evidence.
 
-In practice, this means:
-
-- showing working systems
-- favoring visual or experiential proof
-- treating explanations as hypotheses until verified
+In practice, this means showing working systems, favoring visual or experiential proof, and treating explanations as hypotheses until verified.
 
 This is especially important in AI-assisted workflows, where fluent explanations are easy to produce but easy to trust incorrectly.
 
@@ -28081,9 +35013,12 @@ ODD is not:
 
 - a framework to install
 - a fixed workflow
+- a governance model to comply with
 - a claim that outcomes can be fully predicted
 
 It does not replace judgment. It exists to support it.
+
+If any part of ODD feels heavy, ceremonial, or joy-killing, it is being misapplied.
 
 ---
 
@@ -28102,7 +35037,7 @@ The Canon is designed for orientation, not enforcement.
 
 In AI-assisted development, outcomes are not deterministic. The same intent can produce different results depending on execution paths.
 
-This site reflects that reality. Ideas are tested, observed, and sometimes retried before conclusions are drawn. What you see here is not a straight line—it's a record of learning under uncertainty.
+This site reflects that reality. Ideas are tested, observed, and sometimes retried before conclusions are drawn. What you see here is not a straight line — it's a record of learning under uncertainty.
 
 ---
 
@@ -28110,6 +35045,7 @@ This site reflects that reality. Ideas are tested, observed, and sometimes retri
 
 If you want to explore further:
 
+- See how ODD relates to other approaches: **[ODD Compared](/odd/odd-compared.md)**
 - Read the **extended ODD Manifesto** in `/odd/manifesto.md`
 - See how rigor scales in **Project Maturity & Progressive Governance**
 - Browse the **Canon Index** to understand how decisions and verification are structured
@@ -29906,6 +36842,206 @@ It explains why systems evolve toward isolation as complexity grows.
 
 
 --------------------------------------------------------------------------------
+📄 File: odd/constraint/README.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://odd/constraint
+title: "ODD Constraints"
+audience: odd
+exposure: nav
+tier: 1
+voice: neutral
+stability: evolving
+tags: ["odd", "constraints", "index"]
+---
+
+# ODD Constraints
+
+> Load-bearing constraints that govern ODD-aligned systems. These are universal — they apply to every product, every agent, every implementation built under ODD.
+
+---
+
+| File | Title | Summary |
+|------|-------|---------|
+| [use-only-what-hurts.md](use-only-what-hurts.md) | Use Only What Hurts | Prevents ODD from becoming heavy, coercive, or self-justifying as it grows |
+| [anti-metric-laundering.md](anti-metric-laundering.md) | Constraint: Anti-Metric Laundering | A system that cannot surface its own blind spots will optimize to protect them |
+| [anti-cache-lying.md](anti-cache-lying.md) | Constraint: Anti-Cache Lying | A cache of derived content is a polite lie — only content-addressed storage is acceptable |
+
+---
+
+**Relationship to Canon Constraints:** Canon constraints (`/canon/constraints/`) define program-level design defaults. ODD constraints are universal — they govern the philosophy itself and every system built under it.
+
+
+
+--------------------------------------------------------------------------------
+📄 File: odd/constraint/anti-cache-lying.md
+--------------------------------------------------------------------------------
+
+---
+uri: klappy://odd/constraints/anti-cache-lying
+title: "Constraint: Anti-Cache Lying"
+audience: odd
+exposure: nav
+tier: 1
+voice: neutral
+stability: stable
+tags: ["constraints", "caching", "truth", "governance", "agents", "tco"]
+derives_from: "canon/values/axioms.md"
+epoch: E0005
+date: 2026-02-12
+governs: "All caching decisions for derived or mutable content in ODD-aligned systems"
+complements: "odd/constraint/anti-metric-laundering.md, canon/constraints/decision-rules.md"
+---
+
+# Constraint: Anti-Cache Lying
+
+> Caching derived or mutable content violates the Foundational Axioms. A cache with a TTL serves a past observation as current truth — a polite lie that masks reality, blocks debugging, and compounds as epistemic debt. If you need a flush strategy, you have already admitted the cache can lie. The only acceptable caching is content-addressed: the key IS the identity of the content (commit SHA, content hash, immutable tag). No TTL, no staleness window, no flush for correctness. Speed must come from architecture, not from pretending yesterday's answer is today's answer.
+
+---
+
+## Summary — Caches of Derived Content Are Polite Lies That Violate Reality Is Sovereign
+
+When derived or mutable content is cached with TTL-based expiration, the system serves a past observation as though it were current truth. This violates Axiom 1 (Reality Is Sovereign), eliminates the observation signal that would prompt investigation (Axiom 4), and trades system-wide integrity for a local latency win (Axiom 3). Engineers pre-optimize for request latency without measuring Total Cost of Ownership — debugging hours, stale-state incidents, incomplete flush mechanisms, cognitive overhead, trust erosion. This is the named anti-pattern Local Maxima Optimization (The Cache Trap). The only acceptable caching is content-addressed storage where the key is the proof: a commit SHA, a content hash, an immutable tag. Content-addressed storage cannot lie because a key mismatch triggers a fresh fetch — no TTL, no flush, no staleness window. This constraint was proven necessary by the OddKit Stale-Cache Incident (February 2026), where OddKit itself served stale canon for days without detection.
+
+---
+
+## Non-Negotiable Rules — What This Constraint Prohibits and Requires
+
+1. Derived or mutable content MUST NOT be cached with TTL-based expiration.
+   If the content can change independently of its cache key, the cache can lie.
+
+2. The only acceptable caching is content-addressed storage.
+   The cache key MUST be the identity of the content — a commit SHA, a content hash, an immutable tag. No TTL. No staleness window. No flush.
+
+3. A "cache invalidation" mechanism MUST NOT exist as a correctness tool.
+   Cache flush should only exist as storage cleanup of orphaned immutable artifacts. If flush is required to realign the system with truth, the caching strategy has already failed.
+
+4. "It will be faster" is a claim, and a claim is a debt.
+   Per Axiom 2: if you have not measured Total Cost of Ownership — including debugging hours, stale-state incidents, flush mechanism maintenance, cognitive overhead, and trust erosion — you have not paid the debt. You have hidden it.
+
+5. Speed MUST come from architecture, not from pretending yesterday's answer is today's answer.
+   If the fetch path is too slow, fix the fetch path. Do not mask the problem with a cache.
+
+---
+
+## How Cache Lying Emerges — Without Malicious Intent
+
+This does not require falsified data or bad actors. It emerges through:
+- TTL-based staleness windows ("it's probably still valid")
+- incomplete flush mechanisms (clearing some artifacts but not others)
+- pre-optimization without TCO measurement
+- silent serving of stale state with no signal to the consumer
+- debugging masks that hide the gap between cache and reality
+
+The result is confidence without contact with reality.
+
+---
+
+## Total Cost of Ownership — What "Faster" Actually Costs
+
+Engineers optimize for a single metric (request latency) without measuring the full cost of the caching decision. TCO includes:
+
+- Hours debugging stale-state bugs that only exist because of the cache
+- Building, testing, and maintaining flush/invalidation mechanisms
+- Incidents caused by silent staleness — serving wrong answers with no error signal
+- Cognitive overhead of "is this cached?" on every debug session
+- Trust erosion when you cannot tell if what you are seeing is real
+- Leadership time spent litigating the same caching argument on every project
+- The incomplete flush — clearing some artifacts but not others, creating a lie about the lie-clearing mechanism
+
+None of these costs appear in latency benchmarks. All of them compound.
+
+---
+
+## Warning Phrases That Signal Cache Lying
+
+The following phrases indicate the caching strategy has failed:
+
+- "Have you tried clearing the cache?"
+- "It works after a fresh deploy."
+- "The data was stale — we just need to flush."
+- "The cache TTL is only an hour."
+- "It's probably still valid."
+- "Nobody noticed for days."
+
+These are not reassurances. They are signals to investigate whether the caching strategy violates reality.
+
+---
+
+## The Content-Addressed Alternative — Cache Keys That Cannot Lie
+
+Content-addressed caching is not lying because the key IS the identity of the content:
+
+1. Fetch the current commit SHA for the source (one lightweight call)
+2. Use that SHA as the cache namespace
+3. If the SHA matches what you have stored, serve from storage — this is a truthful assertion, not an assumption
+4. If the SHA has changed, fetch fresh and store under the new SHA
+5. Old SHA-keyed storage can be garbage collected — this is the only valid "flush"
+
+No TTL. No staleness window. No flush button. The cache key is the proof.
+
+---
+
+## Agent Instruction — How Agents Must Handle Caching Decisions
+
+Agents must not:
+- introduce TTL-based caching of derived or mutable content
+- recommend caching as a performance optimization without measuring TCO
+- treat "cache invalidation" as a correctness mechanism
+- assume cached derived content is current without verifying the source identity
+
+Agents must:
+- prefer content-addressed storage over TTL-based caching
+- measure or estimate TCO before recommending any caching strategy
+- surface caching as an epistemic risk, not just a performance feature
+- treat "have you tried clearing the cache?" as a system design failure signal
+
+If an agent cannot demonstrate that a cached value is guaranteed to match the current source truth, the cache is a liability.
+
+---
+
+## Anti-Pattern: Local Maxima Optimization (The Cache Trap)
+
+Pre-optimizing for request latency while ignoring maintenance cost and Total Cost of Ownership is a named anti-pattern in ODD.
+
+Per Axiom 3 (Integrity Is Non-Negotiable Efficiency): the fastest system is the one where every response is already true. A local maximum on latency purchased at the cost of system-wide integrity is not optimization — it is debt with interest.
+
+---
+
+## Case Study — The OddKit Stale-Cache Incident Proved This Constraint Necessary
+
+OddKit — the tool whose purpose is to enforce ODD epistemic discipline — cached its baseline canon documents with a staleness window. For days, it served stale canon content without detection. When the `invalidate_cache` action was invoked, it only cleared `.zip` files, leaving other stale derived content in place.
+
+The tool built to prevent assertion without verification was itself asserting without verification.
+
+This violated:
+- **Axiom 1 (Reality Is Sovereign)** — the cache served a model of reality, not reality itself
+- **Axiom 4 (You Cannot Verify What You Did Not Observe)** — the cache eliminated the signal that would have prompted observation
+- **Axiom 3 (Integrity Is Non-Negotiable Efficiency)** — the "speed" of caching was purchased with days of silent lies
+
+Nobody noticed. That is the point.
+
+See `docs/incidents/oddkit-stale-cache-2026-02.md` for the full incident record.
+
+---
+
+## See Also — Sibling Constraints
+
+- [Anti-Metric Laundering](anti-metric-laundering.md) — A system that cannot surface its own blind spots will optimize to protect them. Same pattern, different mechanism: cache lying optimizes latency, metric laundering optimizes measurements — both at the cost of contact with reality.
+- [Use Only What Hurts](use-only-what-hurts.md) — Prevents ODD from becoming heavy, coercive, or self-justifying.
+
+---
+
+## Canonical Tie-In
+
+This constraint exists because:
+
+> *"It works after you clear the cache."*
+
+
+
+--------------------------------------------------------------------------------
 📄 File: odd/constraint/anti-metric-laundering.md
 --------------------------------------------------------------------------------
 
@@ -29993,6 +37129,13 @@ Agents must:
 - prefer noisy truth over clean confidence
 
 If an agent cannot demonstrate how the system fails, it is not yet trustworthy.
+
+---
+
+## See Also — Sibling Constraints
+
+- [Anti-Cache Lying](anti-cache-lying.md) — A cache of derived content is a polite lie. Same pattern, different mechanism: metric laundering optimizes measurements, cache lying optimizes latency — both at the cost of contact with reality.
+- [Use Only What Hurts](use-only-what-hurts.md) — Prevents ODD from becoming heavy, coercive, or self-justifying.
 
 ---
 
@@ -30716,19 +37859,11 @@ tags: ["agents", "mcp", "oddkit", "getting-started"]
 
 # ODD Agents & MCP: Getting Started
 
-> oddkit v0.13.0 — Epistemic tooling for ODD-governed work.
+oddkit is the CLI and MCP server for ODD. It lets tools — terminals, IDEs, and Claude — query the ODD canon and get back citations, constraints, and epistemic guidance. It supports judgment; it does not automate decisions.
 
------
+ODD itself is a thinking system, not a framework. You can use it without any tooling at all — start with the [Epistemic Guide](/docs/agents/odd-epistemic-guide) and apply it manually. oddkit exists for people who want machine-assisted access to that same canon.
 
-## What this is
-
-ODD is a thinking system, not a framework. It defines how to reason about completeness, evidence, and authority in software work.
-
-oddkit is a CLI and MCP server that helps tools query the ODD canon. It supports judgment — it does not automate decisions. If your agent calls oddkit, it gets citations and constraints. What the agent does with them is still up to you.
-
------
-
-## Three ways to use oddkit
+All three interfaces expose the same 11 tools with the same names and behavior. One core, two wrappers:
 
 |Method          |Transport|Use Case                 |Setup                                     |
 |----------------|---------|-------------------------|------------------------------------------|
@@ -30736,28 +37871,20 @@ oddkit is a CLI and MCP server that helps tools query the ODD canon. It supports
 |**MCP (local)** |stdio    |Cursor, Claude Code      |`npx oddkit init --claude` or `--cursor`  |
 |**MCP (remote)**|HTTP     |Claude.ai, iOS, iPad, web|Connect `https://oddkit.klappy.dev/mcp`   |
 
-All three interfaces expose the same 11 tools with the same names and behavior. One core, two wrappers.
-
 -----
 
-## Option 1: Just read canon (zero install)
+## CLI quickstart
 
-No tools needed. Start with the [Epistemic Guide](/canon/agents/odd-epistemic-guide).
-
-ODD works without any CLI or MCP. Read the canon, apply judgment manually.
-
------
-
-## Option 2: CLI (no MCP required)
+The CLI requires no installation beyond npx. Every command follows the same pattern: a tool name, an `-i` flag for input, and an optional `-f` flag for output format (json, md, or tooljson). You start by orienting on your goal — oddkit tells you what epistemic phase you're in and what questions need answering before you proceed:
 
 ```bash
 # Orient on a goal — where does this idea sit epistemically?
 oddkit orient -i "Build a notification system"
 
-# Search the canon
+# Search the canon for constraints and prior decisions
 oddkit search -i "definition of done"
 
-# Challenge an assumption
+# Pressure-test a proposal against canon
 oddkit challenge -i "We should use a NoSQL database"
 
 # Check if you're ready to transition phases
@@ -30766,16 +37893,16 @@ oddkit gate -i "Ready to start implementation"
 # Pre-implementation check — constraints, pitfalls, relevant docs
 oddkit preflight -i "Implement QR login flow"
 
-# Validate a completion claim
+# Validate a completion claim against required evidence
 oddkit validate -i "Done with the UI update. Screenshot: ui.png"
 
-# Encode a decision as a durable record
+# Capture a decision as a durable record
 oddkit encode -i "We chose PostgreSQL over MongoDB for ACID compliance"
 
 # Fetch a specific canon document by URI
 oddkit get -i "klappy://canon/definition-of-done"
 
-# Browse available documentation
+# Browse all available documentation
 oddkit catalog
 
 # Check version and canon target
@@ -30785,30 +37912,21 @@ oddkit version
 oddkit invalidate-cache
 ```
 
-Run via npx without install: `npx github:klappy/oddkit orient -i "..."`
+Run any command via npx without a global install: `npx github:klappy/oddkit orient -i "..."`.
 
 -----
 
-## Option 3: MCP for Cursor / Claude Code (local, stdio)
+## MCP for Cursor and Claude Code
 
-### One-command setup
+Local MCP gives your IDE direct access to all 11 oddkit tools. Setup is one command — it writes the config and you restart:
 
 ```bash
-# Claude Code
-npx oddkit init --claude
-
-# Cursor
-npx oddkit init --cursor
-
-# Both at once
-npx oddkit init --all
+npx oddkit init --claude    # for Claude Code → writes ~/.claude.json
+npx oddkit init --cursor    # for Cursor → writes ~/.cursor/mcp.json
+npx oddkit init --all       # both at once
 ```
 
-This writes MCP config to the appropriate location (`~/.claude.json` or `~/.cursor/mcp.json`). Restart your IDE after running.
-
-### Manual config (if you prefer)
-
-Add to your MCP config:
+If you prefer manual config, add this to your MCP configuration:
 
 ```json
 {
@@ -30824,148 +37942,104 @@ Add to your MCP config:
 }
 ```
 
-### Verify
-
-After restart, your IDE should show oddkit tools. Test with:
-
-```bash
-oddkit search -i "What is epistemic challenge?"
-```
+After restart, verify with `oddkit search -i "What is epistemic challenge?"` — you should see citations from canon.
 
 -----
 
-## Option 4: MCP for Claude.ai / iOS / iPad (remote, HTTP)
+## MCP for Claude.ai, iOS, and iPad
 
-oddkit runs as a Cloudflare Worker at `https://oddkit.klappy.dev/mcp`. No local install needed.
+The remote MCP server runs on Cloudflare at `https://oddkit.klappy.dev/mcp`. No local install required. In Claude.ai, go to Settings → Connected Apps / MCP Servers, add a new server with that URL, name it "oddkit", and allow the tools when prompted.
 
-### Claude.ai setup
-
-1. Go to **Settings → Connected Apps / MCP Servers** (or the integrations menu)
-1. Add a new MCP server
-1. Enter the URL: `https://oddkit.klappy.dev/mcp`
-1. Name it `oddkit`
-1. Allow the tools when prompted
-
-### What you get
-
-Once connected, Claude.ai has access to all 11 oddkit tools natively. You can say things like:
-
-- "Orient me on this idea"
-- "Challenge the assumption that we need a database"
-- "Am I ready to start building?"
-- "Search the canon for definition of done"
-
-Claude calls the appropriate oddkit tool automatically.
+Once connected, you can talk to Claude naturally — say "orient me on this idea" and Claude calls orient, "challenge the assumption that we need a database" and Claude calls challenge, "am I ready to start building?" and Claude calls gate. The tools work identically to CLI and local MCP because they share the same core.
 
 -----
 
-## Available tools
+## The 11 tools
 
-oddkit exposes 11 tools. The CLI and MCP share one core implementation — same names, same behavior, same output shapes.
+oddkit exposes 11 tools across all interfaces. The CLI uses a space separator (`oddkit orient`), MCP uses an underscore (`oddkit_orient`). Everything else — arguments, behavior, output shape — is identical.
 
-### Epistemic workflow tools
+### Epistemic workflow
 
 |Tool       |What it does                                                                         |
 |-----------|-------------------------------------------------------------------------------------|
-|`orient`   |Assess where a goal or idea sits epistemically. Entry point for guidance.            |
+|`orient`   |Assess where a goal or idea sits epistemically. Entry point — call this first.       |
 |`challenge`|Pressure-test a claim, assumption, or proposal against canon constraints.            |
 |`gate`     |Check readiness to transition between epistemic phases. Blocks premature convergence.|
 |`encode`   |Capture a decision, insight, or boundary as a durable record.                        |
 
-### Knowledge tools
+### Knowledge
 
-|Tool     |What it does                                                                         |
-|---------|-------------------------------------------------------------------------------------|
-|`search` |Search canon and baseline docs by natural language query or tags.                    |
-|`get`    |Fetch a specific canonical document by `klappy://` URI.                              |
-|`catalog`|List all available documentation with categories, counts, and start-here suggestions.|
+|Tool     |What it does                                                                |
+|---------|----------------------------------------------------------------------------|
+|`search` |Search canon and baseline docs by natural language query or tags.           |
+|`get`    |Fetch a specific canonical document by `klappy://` URI.                     |
+|`catalog`|List all available documentation with categories and start-here suggestions.|
 
-### Validation & operations
+### Validation and operations
 
-|Tool              |What it does                                                                                   |
-|------------------|-----------------------------------------------------------------------------------------------|
-|`validate`        |Validate completion claims against required artifacts. Returns VERIFIED or NEEDS_ARTIFACTS.    |
-|`preflight`       |Pre-implementation check. Returns relevant docs, constraints, definition of done, and pitfalls.|
-|`version`         |Returns oddkit version and the authoritative canon target.                                     |
-|`invalidate-cache`|Force refresh of cached baseline/canon data.                                                   |
+|Tool              |What it does                                                                            |
+|------------------|----------------------------------------------------------------------------------------|
+|`validate`        |Check completion claims against required artifacts. Returns VERIFIED or NEEDS_ARTIFACTS.|
+|`preflight`       |Pre-implementation check. Returns constraints, definition of done, and pitfalls.        |
+|`version`         |Returns oddkit version and the authoritative canon target.                              |
+|`invalidate-cache`|Force refresh of cached baseline/canon data.                                            |
 
-### Interface naming
-
-|CLI              |MCP              |Cloudflare Worker|
-|-----------------|-----------------|-----------------|
-|`oddkit orient`  |`oddkit_orient`  |`oddkit_orient`  |
-|`oddkit search`  |`oddkit_search`  |`oddkit_search`  |
-|`oddkit validate`|`oddkit_validate`|`oddkit_validate`|
-|…                |…                |…                |
-
-The only difference is the separator: CLI uses a space, MCP uses an underscore. Everything else — arguments, behavior, output shape — is identical because all three call the same `handleUnifiedAction` core.
-
-### The unified `oddkit` MCP tool
-
-In MCP, a single `oddkit` tool accepts an `action` parameter and routes to any action. This is the recommended MCP entrypoint:
+In MCP, a unified `oddkit` tool also accepts an `action` parameter and routes to any action. This is the recommended MCP entrypoint — agents use a single tool for all epistemic operations:
 
 ```
 oddkit({ action: "orient", input: "Build a notification system" })
 oddkit({ action: "challenge", input: "We should use a NoSQL database" })
 oddkit({ action: "gate", input: "Ready to start implementation" })
-oddkit({ action: "search", input: "definition of done" })
 ```
 
 -----
 
 ## Typical workflow
 
-A natural oddkit-assisted workflow follows this pattern:
+A natural oddkit-assisted workflow follows this progression:
 
 1. **Orient** — "What phase is this idea in?" → surfaces unresolved items and assumptions
 1. **Search / Get** — Retrieve relevant canon constraints and prior decisions
 1. **Challenge** — Pressure-test proposals before committing
-1. **Gate** — Verify readiness before transitioning (e.g., from planning to execution)
+1. **Gate** — Verify readiness before transitioning (e.g., planning → execution)
 1. **Preflight** — Before implementation, get constraints, relevant files, and pitfalls
 1. **Encode** — Capture key decisions as durable records
 1. **Validate** — Verify completion claims have required artifacts
 
-You don't need all steps every time. Use what the situation calls for.
+You don't need all steps every time. A quick canon lookup might be just a search. A complex feature might touch all of them.
 
 -----
 
-## Subagents (optional, experimental)
+## Subagents
 
-ODD provides two complementary agent roles for IDEs:
+ODD provides two complementary prompt-based agent roles for IDEs, both optional and experimental. The **Epistemic Guide** acts as a cognitive governor — it gates premature action, surfaces uncertainty, and explains what evidence is needed. The **Scribe** captures learnings and decisions to ledgers and proposes promotion to canon when patterns stabilize.
 
-|Agent              |Purpose           |What it does                                                                  |
-|-------------------|------------------|------------------------------------------------------------------------------|
-|**Epistemic Guide**|Cognitive governor|Gates premature action, surfaces uncertainty, explains what evidence is needed|
-|**Scribe**         |Recorder          |Captures learnings and decisions to ledgers, proposes promotion to canon      |
-
-These are prompt-based subagents that complement oddkit's MCP tooling. They are derived from canon — if canon and subagent conflict, canon wins.
-
-Setup for Cursor:
+Both are derived from canon. If canon and a subagent conflict, canon wins. Do not edit subagent files directly — override behavior through canon instead.
 
 ```bash
 mkdir -p ~/.cursor/agents
 
 curl -o ~/.cursor/agents/odd-epistemic-guide.md \
-  https://raw.githubusercontent.com/klappy/klappy.dev/main/canon/agents/odd-epistemic-guide.md
+  https://raw.githubusercontent.com/klappy/klappy.dev/main/docs/agents/odd-epistemic-guide.md
 
 curl -o ~/.cursor/agents/odd-scribe.md \
-  https://raw.githubusercontent.com/klappy/klappy.dev/main/canon/agents/odd-scribe.md
+  https://raw.githubusercontent.com/klappy/klappy.dev/main/docs/agents/odd-scribe.md
 ```
 
 -----
 
-## Baseline knowledge
+## Baseline and overrides
 
-By default, oddkit uses [klappy.dev](https://github.com/klappy/klappy.dev) as the baseline canon (currently 238 documents). You can override this:
+By default, oddkit uses the klappy.dev repository as the baseline canon (currently 238 documents). You can override this for your own organization:
 
 ```bash
-# Via environment variable
+# Use your own canon repo
 export ODDKIT_BASELINE="https://github.com/yourorg/your-canon.git"
 
-# Via CLI flag
+# Pass on the command line
 oddkit search -i "What is done?" --baseline /path/to/local/canon
 
-# Pin to a specific branch/tag
+# Pin to a specific branch or tag
 export ODDKIT_BASELINE_REF="v1.0.0"
 ```
 
@@ -30991,14 +38065,7 @@ supersedes: klappy://canon/definition-of-done
 
 *Canon is required conceptually — you need to understand the rules. But you don't need any tool to read it.
 
------
-
-## See also
-
-- [ODD Epistemic Guide](/canon/agents/odd-epistemic-guide) — Start here
-- [Canon Index](/canon/README.md) — Browse constraints
-- [oddkit repository](https://github.com/klappy/oddkit) — Source and CLI docs
-- [MCP Reference](https://github.com/klappy/oddkit/blob/main/docs/MCP.md) — Full MCP integration details
+**See also:** [Epistemic Guide](/docs/agents/odd-epistemic-guide) · [Canon Index](/canon/README.md) · [oddkit repo](https://github.com/klappy/oddkit) · [MCP Reference](https://github.com/klappy/oddkit/blob/main/docs/MCP.md)
 
 
 
@@ -32006,6 +39073,153 @@ How this appendix should be used
 This list is expected to grow as real failures are observed.
 
 ---
+
+
+
+--------------------------------------------------------------------------------
+📄 File: odd/odd-compared.md
+--------------------------------------------------------------------------------
+
+# ODD Compared: What It Is, What It Isn't, and How It Relates to Everything Else
+
+> ODD is about preserving intent without freezing execution. The measure of success is not how elegant the artifact is, but whether the outcome holds up in the real world.
+
+---
+
+## Who This Is For
+
+You might be a developer evaluating how to work with AI agents. You might be a leader trying to understand the landscape. You might just be curious. This page meets you where you are.
+
+ODD — Outcomes-Driven Development — is an approach to building software that prioritizes real-world results over artifacts. It is not a framework, not a workflow, and not a product. It is a collection of patterns, derived from real use, that reduce specific kinds of friction in agentic coding.
+
+The best way to understand what ODD is: compare it to things it gets mistaken for.
+
+---
+
+## ODD vs. Spec-Driven Development (SDD)
+
+**What SDD does:** Treats structured specifications — requirements, acceptance criteria, design docs — as the primary artifact. AI generates code from specs. Tools like Kiro, GitHub Spec Kit, and Tessl automate the flow from spec to implementation.
+
+**Where they overlap:** Both treat natural language intent as more durable than code. ODD's "Prompt over Code" principle and SDD's "spec as source of truth" share DNA. Neither trusts code to be the authoritative record of what was intended.
+
+**Where they differ:** SDD is a workflow. It tells you how to structure files, when to generate, and what to keep. ODD doesn't prescribe any of that. ODD asks a different question: *did the outcome actually hold up?* You could use SDD inside an ODD-informed project. You could also use ODD without specs at all. SDD optimizes the generation pipeline. ODD governs whether the result was worth generating.
+
+---
+
+## ODD vs. Evaluation-Driven Development (EDD)
+
+**What EDD does:** Applies TDD thinking to probabilistic AI. Define what "good" looks like through evals and metrics before building, then iterate against those measurements. Popularized in AI engineering by practitioners like Chip Huyen.
+
+**Where they overlap:** Both insist on evidence over vibes. EDD says "define your evals first." ODD says "a claim is a debt" — every assertion requires evidence proportional to its weight. The instinct is the same: don't trust fluent outputs.
+
+**Where they differ:** EDD is scoped to model and system evaluation. ODD is broader. Evals are one form of evidence in ODD, but so are visual proof, working demonstrations, and direct observation of system state. ODD also carries governance patterns — progressive maturity, decision records, self-audit — that EDD doesn't address. EDD optimizes AI outputs. ODD governs the decisions around them.
+
+---
+
+## ODD vs. AI-Driven Development Life Cycle (AI-DLC)
+
+**What AI-DLC does:** Reimagines the software development lifecycle with AI as a central teammate rather than a tool. Phases like Inception, Construction, and Operations replace traditional sprints. Humans provide oversight at decision gates. Developed at AWS.
+
+**Where they overlap:** Both put human judgment at the center. AI-DLC's "human gates" and ODD's emphasis that "ODD does not replace judgment — it exists to support it" point at the same problem: AI is powerful but not trustworthy without oversight.
+
+**Where they differ:** AI-DLC is a lifecycle — it prescribes phases, roles, and a sequence. ODD is not a lifecycle. It's a set of lenses that work inside any lifecycle, including AI-DLC. You could run AI-DLC phases and apply ODD's evidence standards at each gate. ODD doesn't care what your process looks like, only whether your outcomes are real.
+
+---
+
+## ODD vs. Governance Frameworks (NIST AI RMF, EU AI Act, OECD Principles)
+
+**What they do:** Provide risk management, compliance requirements, and ethical principles for AI systems. NIST offers voluntary guidance (Govern, Map, Measure, Manage). The EU AI Act enforces legal requirements by risk tier. OECD Principles set international norms.
+
+**Where they overlap:** All share the goal of trustworthy AI. ODD's axioms — Reality Is Sovereign, Integrity Is Non-Negotiable Efficiency — echo the spirit of these frameworks. Both NIST and ODD want evidence-based assessment of AI systems.
+
+**Where they differ:** Governance frameworks operate at the organizational and regulatory level. They tell you what to report, what to assess, what to document for compliance. ODD operates at the development level. It shapes how you think while you build. A team could be fully NIST-compliant and still ship systems that quietly lie about their own state. ODD's axioms are designed to prevent exactly that — not through compliance, but through epistemic habit.
+
+---
+
+## ODD vs. Agentic Tooling (LangGraph, CrewAI, AutoGen)
+
+**What they do:** Provide orchestration and runtime infrastructure for AI agents. LangGraph offers graph-based control flow with strong observability. CrewAI organizes agents into role-based teams. AutoGen enables conversational multi-agent systems.
+
+**Where they overlap:** Both care about reliability in AI-driven systems. LangGraph's emphasis on observability and debugging resonates with ODD's axiom that "you cannot verify what you did not observe."
+
+**Where they differ:** These are implementation tools. ODD is not. You could build a LangGraph application governed by ODD's Canon — using its evidence standards to validate agent outputs, its progressive maturity to scale rigor, its decision records to track why an architecture was chosen. ODD doesn't compete with LangGraph any more than a building code competes with a crane. Different altitude entirely.
+
+---
+
+## The Difference Under the Differences
+
+Most approaches in the AI development space answer one of two questions: *How should we build?* (SDD, EDD, AI-DLC, agentic tools) or *What rules should we follow?* (NIST, EU AI Act, OECD).
+
+ODD asks a third question: **How do we know what's actually true?**
+
+This is the epistemic layer. Four axioms drive it:
+
+1. **Reality Is Sovereign** — observe before asserting. No narrative overrides what is observably true.
+2. **A Claim Is a Debt** — every assertion requires evidence. Unverified claims are liabilities.
+3. **Integrity Is Non-Negotiable Efficiency** — shortcuts on truth always cost more than they save.
+4. **You Cannot Verify What You Did Not Observe** — if you didn't look, you don't know.
+
+These aren't aspirational. They're load-bearing. They constrain behavior specifically when it would be easier to skip verification, assert completion, or trust a confident-sounding output.
+
+---
+
+## The Constraint That Governs Everything Else
+
+ODD has one supreme rule that overrides all its own patterns, principles, and structure:
+
+**Use Only What Hurts.**
+
+Structure is only allowed in response to concrete, experienced pain. If no specific friction can be named, do nothing. If the friction is tolerable, tolerate it. Completeness is not a goal. Elegance is not a goal. Relief is the goal.
+
+This is what makes ODD fundamentally different from frameworks. Frameworks ask you to adopt a system. ODD says: don't adopt anything until something actually hurts, and stop using it when the pain subsides.
+
+If ODD ever becomes something that must be followed, it has failed.
+
+---
+
+## When to Reach for ODD
+
+ODD is most useful when:
+
+- AI agents are generating plausible outputs that nobody is verifying
+- Your team ships fast but can't explain why things broke
+- Process exists for compliance but doesn't prevent real failures
+- You want governance that developers will actually use, not route around
+
+ODD is least useful when:
+
+- You need a specific tool or workflow (look at SDD tooling, LangGraph, etc.)
+- You need regulatory compliance documentation (look at NIST, EU AI Act)
+- You're not building with AI and don't experience the friction ODD addresses
+
+---
+
+## Summary
+
+| | What it gives you | What it doesn't |
+|---|---|---|
+| **SDD** | Spec-to-code workflow | Outcome verification |
+| **EDD** | Eval-driven model optimization | Governance beyond evals |
+| **AI-DLC** | AI-native lifecycle | Flexibility across lifecycles |
+| **NIST/EU/OECD** | Compliance and risk frameworks | Dev-level epistemic discipline |
+| **LangGraph/CrewAI** | Agent orchestration | Governance of agent outputs |
+| **ODD** | Epistemic discipline for outcomes | Prescribed tooling or workflow |
+
+ODD doesn't replace any of these. It layers underneath them — or beside them — as a set of patterns for making sure the outcomes are real.
+
+If that's useful to you, use it. If it isn't, don't. That's the whole point.
+
+---
+
+## See Also
+
+- **[Resonance Index](/canon/resonance/README.md)** — ODD's relationship with foundational works like Antifragile, Lean Startup, OODA Loop, Sprint, and the Double Diamond. Where ideas echo ODD — and where ODD explicitly chooses different tradeoffs.
+- **[Foundational Axioms](/canon/values/axioms.md)** — The four values from which all ODD epistemic discipline is derived.
+- **[ODD Overview](/odd/README.md)** — What ODD is, in its own terms.
+
+---
+
+*ODD is open, forkable, and designed to be adapted. If you don't share its axioms, fork and encode your own.*
 
 
 
@@ -35619,5943 +42833,4 @@ cat infra/compile/plans/website/author.json
 📄 File: .cursor/commands/oddkit-scribe.md
 --------------------------------------------------------------------------------
 
-
-
-
-================================================================================
-## Products
-================================================================================
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/ATTEMPT_KICKOFF.md
---------------------------------------------------------------------------------
-
-# Agent Skill — Start Attempt
-
-## Step 1: Load ODD Canon
-
-Read and internalize: `public/agent-skill/latest/prd-guide-pack.md`
-
----
-
-## Step 2: Follow Kickoff
-
-Read and follow: `products/agent-skill/KICKOFF.md`
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/CONTRACT.md
---------------------------------------------------------------------------------
-
-# Agent Skill Lane Contract
-
-Formal documentation of structure, behavior, and deviations from canon for the agent-skill lane.
-
----
-
-## Structure Deviation
-
-This lane uses **version-first** folder organization instead of canon default.
-
-### Canon Default
-
-```
-products/<lane>/
-├── PRD.md
-├── src/
-├── dist/
-└── attempts/
-    └── prd-vX.Y/
-        └── attempt-NNN/
-```
-
-### This Lane
-
-```
-products/agent-skill/
-├── README.md
-├── CONTRACT.md
-├── ATTEMPT_KICKOFF.md  # One-liner → active version's KICKOFF
-├── vX.Y/
-│   ├── KICKOFF.md      # Detailed attempt instructions for this version
-│   ├── PRD.md          # Frozen PRD for this version
-│   ├── src/            # Source files for this version
-│   ├── dist/           # Compiled output for this version
-│   └── attempts/       # Attempts against this version's PRD
-│       └── attempt-NNN/
-```
-
-### Rationale
-
-1. **Immutable releases**: Published assets are versioned by PRD version and persist indefinitely
-2. **Dependent stability**: Consumers can pin to specific versions (e.g., `v1.1/dist/prd-guide-pack.md`)
-3. **Clear boundaries**: Each version is fully self-contained
-4. **Parallel development**: Multiple versions can evolve independently
-
----
-
-## Publishing Rules
-
-1. Each version's `dist/` folder contains the compiled output
-2. Each `dist/` folder has a `README.md` explaining what's inside and how to use it
-3. Versions are **immutable** once published — bug fixes require new versions
-4. Meta files (`_meta/`) provide provenance for compiled artifacts
-
----
-
-## Kickoff Pattern
-
-1. `ATTEMPT_KICKOFF.md` at lane root is a minimal one-liner pointing to active version
-2. Each version has its own `KICKOFF.md` with detailed shaping instructions
-3. Version KICKOFF is frozen when version is frozen (for auditability)
-4. New versions get new KICKOFF.md that can evolve independently
-
----
-
-## Deployment
-
-This lane owns its own Cloudflare Pages deployment (not shared with website lane).
-
-- **Project**: `klappy-dev-agent-skill`
-- **Production branch**: `prod` (NOT `main`)
-- **Production domain**: `https://agent-skill.klappy.dev/`
-- **Production URL pattern**: `https://agent-skill.klappy.dev/vX.Y/<asset>`
-- **Main branch preview**: `https://main.klappy-dev-agent-skill.pages.dev/`
-- **Branch preview pattern**: `https://<deployment-id>.klappy-dev-agent-skill.pages.dev/`
-- **Isolation**: Full lane ownership, no cross-lane dependencies
-
-### Production Release Process
-
-**CRITICAL**: Merging to `main` does NOT deploy to production. You must:
-
-1. Merge PR to `main`
-2. Fast-forward `prod` to `main`:
-   ```bash
-   git checkout prod && git merge --ff-only origin/main && git push origin prod
-   ```
-3. Verify HTTP 200 on production domain (`agent-skill.klappy.dev`)
-
-See [D0001: prod branch is production](/docs/decisions/D0001-prod-branch-is-production.md) for rationale.
-
-### Finding Preview URLs
-
-During PR review, get the deployment ID from `gh pr checks`:
-```
-Cloudflare Pages: klappy-dev-agent-skill  pass  https://dash.cloudflare.com/.../<deployment-id>
-```
-Then construct: `https://<first-8-chars>.klappy-dev-agent-skill.pages.dev/`
-
----
-
-## Constraints
-
-In addition to canon constraints, this lane observes:
-
-1. **Lane isolation during attempts**: Test execution stays within attempt folder
-2. **No cross-lane modification**: PRDs cannot require modifying other lanes
-3. **Version immutability**: Once a version is published, it cannot be changed
-4. **INSTRUCTIONS.md is ephemeral**: Generated per-attempt in the attempt folder, never persisted in `src/` or version folders
-5. **Verify before CHAMPION**: No attempt may be marked CHAMPION until HTTP 200 verified on deployed preview URL
-6. **Complete latest update**: Promotion must update both `latest/prd-guide-pack.md` AND `latest/README.md` to reflect new champion version
-
----
-
-## Learnings That Shaped This Contract
-
-### v1.1 (2026-01-20)
-
-- Lane isolation matters: all artifacts should live in `products/<lane>/`
-- Compiled pack is like compiled code — source in `src/`, output in `dist/`
-
-### v1.2 (2026-01-20) — Failed
-
-- PRDs can have design flaws that violate constraints
-- Test execution must stay contained — even "tests" can't write outside the attempt folder
-- A lane cannot require modification of another lane's build process
-
-### v1.2.1 Planning (2026-01-20)
-
-- Version-first structure enables immutable releases
-- Each version needs its own README for consumer guidance
-- Antifragile documentation (README) beats brittle manifests (JSON)
-
-### v1.2.2 (2026-01-21) — Failed
-
-- INSTRUCTIONS.md was being persisted when it should be ephemeral
-- Compile plans lived in central `infra/` instead of lane
-- ODD formula violated: agents should only need Pack + CONTRACT + PRD
-- Don't steer a miss — when fundamentals are wrong, fail and restart clean
-
-### v1.2.3 (2026-01-21) — Champion
-
-- INSTRUCTIONS.md generated per-attempt in attempt folder (ephemeral)
-- Verify deployment HTTP 200 BEFORE claiming CHAMPION
-- Cloudflare preview URLs use deployment ID from PR checks
-- Clean restart after v1.2.2 failure (didn't steer a miss)
-- Promotion must update `latest/README.md` — pack file copy alone leaves stale version reference
-
-### v1.3 (2026-01-21) — Champion
-
-- PRD Elicitation Enhancement delivered (Agent Role, Stage Typing, Inventory, Ambiguity Capture)
-- **Production requires `prod` branch**: Merging to `main` is NOT production — must ff `prod` to `main`
-- Preview URLs (`main.klappy-dev-agent-skill.pages.dev`) work immediately after merge
-- Production domain (`agent-skill.klappy.dev`) only updates when `prod` branch is pushed
-- This learning was missed during attempt — added to Deployment section for future agents
-
----
-
-## Interface Contracts
-
-This lane MUST remain compatible with:
-
-- manifest >=2.0.0 <3.0.0
-- attempt-cli >=2.0.0 <3.0.0
-
-This lane is allowed to have no UI and is not required to satisfy build-output unless it produces a deployable artifact.
-
----
-
-## Lane Decisions
-
-Lane-specific architecture decisions are documented in [decisions/](decisions/index.md).
-
-These decisions may override canon defaults with documented rationale. Successful patterns may be proposed for elevation to canon.
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/KICKOFF.md
---------------------------------------------------------------------------------
-
-# Agent-Skill — Attempt Kickoff
-
-You are starting an attempt in the **agent-skill** lane.
-
----
-
-## ⛔ STOP — READ THIS FIRST
-
-**The #1 cause of failed attempts is writing outside the attempt folder.**
-
-This is not a suggestion. This is not flexible. This is the rule that will fail your attempt regardless of how good your code is.
-
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                     YOUR SANDBOX (Agent Authority)                   │
-│                                                                     │
-│   products/agent-skill/<version>/attempts/attempt-NNN/              │
-│                                                                     │
-│   You can write ANYTHING here. Go wild.                             │
-│   ├── ATTEMPT.md, META.json, INSTRUCTIONS.md                        │
-│   ├── src/           ← proposed configs, compile plans              │
-│   ├── infra/         ← proposed code (e.g., compiler changes)       │
-│   └── evidence/      ← proof it works (compiled packs, logs)        │
-│                                                                     │
-├─────────────────────────────────────────────────────────────────────┤
-│                     FORBIDDEN ZONE (Human Authority)                 │
-│                                                                     │
-│   ❌ infra/                    ← NEVER (even for "tests")           │
-│   ❌ public/                   ← NEVER (even to verify)             │
-│   ❌ products/agent-skill/README.md  ← NEVER (propose in ATTEMPT.md)│
-│   ❌ products/agent-skill/<version>/PRD.md  ← NEVER (if exists)     │
-│   ❌ products/website/         ← NEVER (wrong lane entirely)        │
-│   ❌ latest/                   ← NEVER (human updates this)         │
-│                                                                     │
-│   These paths require HUMAN promotion. Not your job.                │
-│                                                                     │
-└─────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## ⛔ AUTHORITY BOUNDARIES — What You CANNOT Do
-
-| Action | Why It Fails Your Attempt |
-|--------|---------------------------|
-| Write to `infra/scripts/` | Infrastructure is human-promoted, not agent-deployed |
-| Write to `public/` | Production deployment requires human review |
-| Update `latest/` | Pointer updates are promotion actions |
-| Claim CHAMPION status | Agent stops at CLOSED; human elevates to CHAMPION |
-| Update lane README | Propose changes in ATTEMPT.md; human applies |
-| Run tests that write outside sandbox | Even "tests" that cross boundaries are violations |
-| Modify existing PRD | If PRD is wrong, FAIL and propose new version |
-
-**"AI is an accelerator, not an authority."**
-
----
-
-## ✅ PRE-FLIGHT CHECKLIST
-
-Before you write a single line of code, verify you understand:
-
-- [ ] My attempt folder is: `products/agent-skill/<version>/attempts/attempt-NNN/`
-- [ ] ALL my file writes will be inside that folder
-- [ ] If I need to change the compiler, I write to `attempt-NNN/infra/scripts/compile-pack.js`
-- [ ] Compiled output goes to `attempt-NNN/evidence/`, NOT `public/`
-- [ ] I will NOT update `latest/` — that's a human decision
-- [ ] I will NOT claim CHAMPION — I stop at CLOSED
-- [ ] If the PRD seems impossible, I FAIL early and document why
-
----
-
-## Step 1: Find Active Version
-
-Check `README.md` — the Versions table shows which version is **Active**.
-
-Note the active version (e.g., `v1.4.1`). This is your target.
-
----
-
-## Step 2: Read Context
-
-Read these files in order:
-
-1. `README.md` — Lane overview, version table, current champion
-2. `CONTRACT.md` — Structure deviations from canon
-3. `history/index.md` — Champion history and learnings
-4. **CRITICAL**: `history/*.md` — Read the FAILED entries. Learn from the mistakes.
-5. `<active-version>/PRD.md` — The PRD you're executing
-
----
-
-## Step 3: Review Prior Art (MANDATORY)
-
-**This is not optional.** Read the learnings from previous attempts:
-
-| Path | What To Learn |
-|------|---------------|
-| `history/H0002-v1.2-failed.md` | Lane isolation violations |
-| `history/H0005-v1.2.2-failed.md` | ODD violations, ephemeral artifacts |
-| `history/H0009-v1.4-attempt-001-failed.md` | Authority violations |
-| `v1.4.1/attempts/attempt-001/LEARNINGS.md` | Containment boundary violations |
-
-If you see patterns in past failures that relate to your task, **stop and plan around them**.
-
----
-
-## Step 4: Create Attempt Folder
-
-Create: `<active-version>/attempts/attempt-NNN/`
-
-Where NNN is the next number (check existing folders).
-
-### Required Structure
-
-```
-attempt-NNN/
-├── ATTEMPT.md              # Closure record (status, outcome, learnings)
-├── META.json               # Machine-readable metadata
-├── INSTRUCTIONS.md         # Generated elicitation guide (if applicable)
-├── src/                    # Proposed configs, compile plans
-│   └── compile-plan.json   # (if modifying compilation)
-├── infra/                  # Proposed code changes
-│   └── scripts/
-│       └── compile-pack.js # (if modifying compiler — THIS IS A PROPOSAL)
-└── evidence/               # Proof of work
-    ├── compile-output.txt  # Logs
-    ├── prd-guide-pack.md   # Compiled pack (LOCAL COPY, not deployed)
-    └── *.md                # Verification evidence
-```
-
----
-
-## Step 5: Execute (Inside Your Sandbox)
-
-Follow the PRD's Definition of Done exactly.
-
-### If You Need To Modify the Compiler
-
-```bash
-# WRONG: This violates containment
-node infra/scripts/compile-pack.js --output public/
-
-# RIGHT: Test your local copy
-node products/agent-skill/<version>/attempts/attempt-NNN/infra/scripts/compile-pack.js \
-  --output products/agent-skill/<version>/attempts/attempt-NNN/evidence/
-```
-
-### If You Need To Test Compiled Output
-
-Write to `attempt-NNN/evidence/`. Verify content there. Do NOT deploy to `public/`.
-
-### If You Need To Update Lane README
-
-Document the proposed changes in `ATTEMPT.md`. The human applies them during promotion.
-
----
-
-## Step 6: Close (NOT Champion)
-
-Update `ATTEMPT.md` with:
-
-- **Status**: CLOSED (not CHAMPION — that's not your call)
-- Outcome summary
-- Evidence produced
-- Self-audit results
-- Learnings
-
-**You do NOT:**
-- Add entry to `history/` (human does this)
-- Update `latest/` (human does this)
-- Mark status as CHAMPION (human does this)
-
----
-
-## Common Violations (Don't Be This Agent)
-
-### Violation 1: Writing compiler to infra/
-
-```diff
-- infra/scripts/compile-pack.js          ← VIOLATION
-+ attempt-NNN/infra/scripts/compile-pack.js  ← CORRECT (proposal)
-```
-
-**Why it fails**: You deployed code without human review.
-
-### Violation 2: Writing compiled output to public/
-
-```diff
-- public/agent-skill/v1.4/prd-guide-pack.md  ← VIOLATION
-+ attempt-NNN/evidence/prd-guide-pack.md     ← CORRECT (evidence)
-```
-
-**Why it fails**: Production deployment is a promotion action.
-
-### Violation 3: Updating latest/
-
-```diff
-- public/agent-skill/latest/prd-guide-pack.md  ← VIOLATION
-```
-
-**Why it fails**: Pointer updates require human decision.
-
-### Violation 4: Claiming CHAMPION
-
-```diff
-- Status: CHAMPION    ← VIOLATION
-+ Status: CLOSED      ← CORRECT (human elevates to Champion)
-```
-
-**Why it fails**: "AI is an accelerator, not an authority."
-
-### Violation 5: Test that writes outside sandbox
-
-```javascript
-// VIOLATION: Even a "test" that writes outside is a violation
-fs.writeFileSync('products/website/dist/packs/test.md', content);
-
-// CORRECT: Mock structure inside your sandbox
-fs.writeFileSync('attempt-NNN/mock-dist/packs/test.md', content);
-```
-
----
-
-## If PRD Seems Problematic
-
-**Don't bend rules to make it work. Don't steer a miss.**
-
-1. STOP immediately
-2. Document the issue in `LEARNINGS.md`
-3. Mark attempt as FAILED with clear explanation
-4. Propose what a new PRD version should address
-
-A FAILED attempt with clear learnings is more valuable than a "success" that violates constraints.
-
----
-
-## Production Release (Human Action — Not Yours)
-
-**You do NOT do this. The human does.**
-
-After human review and promotion:
-
-1. Human copies proposed changes from attempt folder to real locations
-2. Human fast-forwards `prod` to `main`
-3. Human verifies HTTP 200 on production domain
-4. Human updates lane README to mark version as Champion
-
----
-
-## Final Reminder
-
-```
-┌────────────────────────────────────────────────────────────┐
-│                                                            │
-│   Your world is:                                           │
-│   products/agent-skill/<version>/attempts/attempt-NNN/     │
-│                                                            │
-│   Everything else is someone else's.                       │
-│                                                            │
-│   "AI is an accelerator, not an authority."                │
-│                                                            │
-└────────────────────────────────────────────────────────────┘
-```
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/PRD.md
---------------------------------------------------------------------------------
-
-# PRD: ODD Agent Skill — Tier-Aware Pack Compiler
-
-| Field             | Value       |
-| ----------------- | ----------- |
-| **PRD Version**   | v1.4.1      |
-| **Lane**          | agent-skill |
-| **Status**        | Active      |
-| **Created**       | 2026-01-21  |
-| **Updated**       | 2026-01-22  |
-| **Author**        | Chris Klapp |
-| **Canon Version** | 0.10.0      |
-
----
-
-## v1.4.1 Scope
-
-**Release: v1.4.1 — Tier-Aware Pack Compiler**
-
-**Goal:** Make pack compilation tier-aware by implementing:
-
-1. **Discovery** — for default pack types (folder scan + filters)
-2. **Tier 0 exclusion** — always, even if explicitly listed
-3. **Tier-based projection** — Tier 1/2/3 → high/medium/low
-4. **Auditability** — via `--plan` output and CI checks
-
-**v1.4.1 explicitly includes:**
-
-- Tier-aware compilation (discovery + exclusion + projection + plan)
-
-**v1.4.1 fixes:**
-
-- Tier 0 inclusion bug (docs marked `tier: 0` were being included)
-- Tier projection ignored bug (all docs compiled at full detail)
-
-**Non-goals (explicit):**
-
-- No new projection formats beyond existing high/medium/low definitions
-- No content rewrites of docs in this release
-- No new UI/UX changes outside CLI/compiler outputs
-
----
-
-## Interface Contracts
-
-This lane MUST remain compatible with:
-
-- manifest >=2.0.0 <3.0.0
-- attempt-cli >=2.0.0 <3.0.0
-
----
-
-## Objective
-
-Transform the prd-guide pack from an informational resource (teaches ODD) into an interrogative system (extracts PRDs from humans) by adding stage typing, asset intake, and a formal elicitation loop.
-
----
-
-## Background
-
-**v1.2.4 delivered**: Canon refresh to v0.8.0 with Cognitive Partitioning and Tool Specialization.
-
-**Problem identified**: External review found the pack "conceptually sound but operationally incomplete":
-
-| Strength | Gap |
-|----------|-----|
-| Canonical alignment unusually strong | No structured elicitation loop |
-| Compilation philosophy correct | No stage-aware questioning |
-| Agent authority properly scoped | No asset-gathering protocols |
-| Treats PRDs as evolving intent | No explicit interview modes |
-
-The pack teaches agents how ODD works, but does not fully teach agents how to elicit a PRD from a human.
-
-**v1.2.x INSTRUCTIONS.md** has 7 stages, but:
-
-- Jumps straight to "What outcome are you trying to achieve?"
-- No classification of PRD type (PoC vs Feature vs Fix)
-- No inventory of existing assets
-- No explicit agent role declaration
-- No ambiguity capture stage
-
-**v1.3 addresses this** by adding:
-
-- Agent Role Declaration (elicitation system, not author)
-- PRD Stage Typing gate before questioning
-- Resequenced Interview Loop with Inventory and Ambiguity Capture
-- Asset Intake Contract with guidance for partial information
-
-**v1.4.0 defined**: Tiered context construction requirements (what the system should do).
-
-**v1.4.1 implements**: The compiler changes to actually enforce those requirements.
-
----
-
-## Current Behavior (Bug)
-
-The current compiler does not enforce the tier system:
-
-| Issue | Current Behavior | Required Behavior |
-|-------|------------------|-------------------|
-| Selection mode | Explicit whitelist only | Support discovery + curated |
-| Tier 0 handling | Included if in whitelist | Always excluded |
-| Projection | Full detail for all tiers | Tier 1→high, Tier 2→medium, Tier 3→low |
-| Tier metadata | Ignored | Read from frontmatter, enforce |
-| Auditability | None | `--plan` output with decisions |
-
-**Critical example — Tier 0 violation:**
-
-`odd/README.md` has `tier: 0` (scope exclusion) but was included in compiled packs because the compiler uses a whitelist that ignores tier metadata.
-
-**Root cause:** The compiler concatenates files from an explicit list without reading or enforcing tier frontmatter.
-
----
-
-## Functional Requirements (v1.4.1)
-
-### FR-1: Tier Metadata Parsing
-
-The compiler must read frontmatter and determine `tier: 0|1|2|3` per file.
-
-**Missing tier handling:**
-
-- Default: missing tier → Tier 3 (include at low projection)
-- Must emit a warning in plan/audit output when tier is missing
-
-**Implementation:** `readFrontmatterTier(filePath) → { tier, warnings }`
-
-### FR-2: Tier 0 Exclusion Rule (Hard Rule)
-
-Tier 0 files must never be included in any pack output.
-
-- This includes explicitly listed/whitelisted files
-- Tier 0 exclusion must be visible in `--plan` output with `reason: excluded:tier0`
-- No exceptions, no overrides
-
-### FR-3: Pack Selection Modes
-
-Support two pack selection modes:
-
-| Mode | Description | Example |
-|------|-------------|---------|
-| `curated` | Explicit file list | prd-guide (existing behavior, but now tier-enforced) |
-| `discovered` | Folder scan + filters | default-odd-context (new) |
-
-Both modes must enforce:
-
-- Tier 0 exclusion
-- Tier-based projection
-
-### FR-4: Tier-Based Projection
-
-Projection must happen per-file before concatenation.
-
-| Tier | Projection | Output |
-|------|------------|--------|
-| Tier 1 | `high` | Full content |
-| Tier 2 | `medium` | Frontmatter + description + outline |
-| Tier 3 | `low` | Title + one-line summary |
-
-**Implementation:** `projectFile(file, projection) → projectedText`
-
-### FR-5: Auditability (`--plan`)
-
-Add a compiler flag `--plan` that outputs per-file decisions:
-
-| Field | Description |
-|-------|-------------|
-| `path` | File path |
-| `tier` | 0, 1, 2, or 3 |
-| `selected_by` | `curated` or `discovered` |
-| `projection` | `high`, `medium`, `low`, or `excluded` |
-| `included` | `true` or `false` |
-| `reason` | `tier0`, `missing`, `filtered`, etc. |
-| `tokens` | Estimated token count (recommended) |
-
-Output format: table (human) or JSON (CI).
-
-### FR-6: Deterministic Ordering
-
-Pack output ordering must be deterministic:
-
-- Sort by path (or explicit stable ordering rules)
-- Plan output must reflect final order
-- Same inputs → same output across runs
-
----
-
-## Core Requirements (v1.4.0, retained)
-
-### Default Context Construction
-
-The agent skill shall construct a default odd-context-pack using tier-weighted projection detail.
-
-| Document Tier | Default Projection Detail |
-|---------------|---------------------------|
-| Tier 1        | `high` (full content)     |
-| Tier 2        | `medium` (structural)     |
-| Tier 3        | `low` (minimal)           |
-
-**Requirements:**
-
-1. **Tier determines default detail** — The agent shall project documents at detail levels corresponding to their epistemic tier unless explicitly overridden.
-
-2. **No tier flattening** — The agent shall not equalize detail across tiers. Tier 1 content receives more tokens than Tier 3 content by default.
-
-3. **No folder inference** — The agent shall determine epistemic obligation from document tier metadata, not from folder location.
-
-4. **Degradation is explicit** — When document structure is insufficient for the requested projection detail, the agent shall surface this degradation rather than compensating.
-
-5. **No synthesized context** — The agent shall use existing document structure for projection. It shall not summarize, synthesize, or generate context to fill gaps.
-
-### Agent Responsibilities
-
-The agent shall:
-
-- Respect epistemic obligation as encoded in document tiers
-- Treat Tier 3 content at low detail as awareness only, not reasoning input
-- Surface when documents lack structure required for projection
-- Proceed with available structure without inventing compensating context
-
-The agent shall not:
-
-- Infer obligation from folder hierarchy
-- Special-case READMEs or index files for elevated inclusion
-- Promote Tier 3 content to higher detail for perceived convenience
-- Summarize or synthesize documentation content
-
----
-
-## Non-Goals (v1.4)
-
-These behaviors are explicitly excluded from this release to prevent design regression:
-
-| Non-Goal | Rationale |
-|----------|-----------|
-| README/index file special-casing | Navigation documents are typically Tier 3; elevating them would distort context weighting |
-| Convenience-based tier promotion | Tier 3 content exists for awareness, not reasoning; promoting it undermines epistemic discipline |
-| Summarization or synthesis | Projection uses authored structure only; missing structure is a signal, not a gap to fill |
-| Folder-based obligation inference | Tiers are document properties, orthogonal to folder location |
-| Smart exceptions | No heuristics that override tier-to-detail mapping based on content analysis |
-
----
-
-## In Scope (v1.4)
-
-### New in v1.4
-
-#### 1. Tier-Weighted Context Pack Assembly
-
-Implement default context construction that maps document tiers to projection detail levels:
-
-- Tier 1 documents projected at `high` detail (full content)
-- Tier 2 documents projected at `medium` detail (frontmatter, description, outline)
-- Tier 3 documents projected at `low` detail (title, one-line summary)
-
-#### 2. Projection Detail Enforcement
-
-Add validation that the assembled context pack respects tier-to-detail mapping:
-
-- Tier 1 content must receive highest token allocation
-- Tier 3 content must not exceed minimal token allocation
-- Detail level must be determinable from tier without additional logic
-
-#### 3. Degradation Surfacing
-
-When documents lack structure required for their projected detail level:
-
-- Return what structure exists (no fallback to full content silently)
-- Include degradation indicator in pack output
-- Do not synthesize missing structural elements
-
-### From v1.3 (retained)
-
-### From v1.2.4 (retained)
-
-- Lane-owned Cloudflare Pages deployment
-- Versioned asset URLs
-- Canon sources at v0.8.0
-- INSTRUCTIONS.md as ephemeral artifact
-- Compile plan in lane (`src/compile-plan.json`)
-
-### New in v1.3
-
-#### 1. Agent Role Declaration
-
-Add explicit framing at the top of INSTRUCTIONS.md:
-
-```markdown
-## Agent Role
-
-You are not a PRD author.
-You are a PRD elicitation system that helps humans externalize intent, constraints, uncertainty, and evidence.
-
-You extract. You do not invent.
-```
-
-#### 2. PRD Stage Typing Gate
-
-Add classification before current Stage 1:
-
-| Stage Type | Evidence Expectations | Ambiguity Tolerance |
-|------------|----------------------|---------------------|
-| PoC / Exploration | Minimal, learning-focused | High |
-| Feature | Required, scope bounded | Medium |
-| Fix | Root cause required, regression risk | Low |
-| Product slice | End-to-end verification | Medium |
-| Refactor / migration | No user-facing change | Low |
-
-Questions:
-- "Is this exploring something new, building something known, or fixing something broken?"
-- "Will users see a change, or is this internal?"
-
-#### 3. Formal Interview Loop (Resequenced)
-
-| Phase | v1.2.x Stage | v1.3 Phase |
-|-------|--------------|------------|
-| NEW | - | **0. Stage Identification** — What type of PRD is this? |
-| NEW | - | **1. Orient** — What are we trying to learn or change? |
-| NEW | - | **2. Inventory** — What assets already exist? |
-| Moved | Stage 4 | **3. Constraint Surfacing** — Time, scope, reversibility, risk |
-| Moved | Stage 1 | **4. Outcome Framing** — What would "better" look like? |
-| Moved | Stage 2 | **5. Evidence Definition** — How will we know? |
-| NEW | - | **6. Ambiguity Capture** — What is still unclear or contested? |
-| Same | Stages 3,5,6,7 | **7. Draft Assembly** — Non-goals, risks, final PRD |
-
-Key changes:
-- Inventory BEFORE outcome (you can't define what you want until you know what you have)
-- Explicit ambiguity capture (ODD acknowledges uncertainty)
-- Stage identification gates the entire flow
-
-#### 4. Asset Intake Contract
-
-| Type | Examples | When missing |
-|------|----------|--------------|
-| Text | docs, notes, prior PRDs | Proceed with "no prior docs" flag |
-| Media | screenshots, recordings, mockups | Proceed if non-UI; require for UI work |
-| Links | repos, tickets, deployed systems | Note as "greenfield" if no links |
-| Oral testimony | interview answers | This is the PRD session itself |
-
-Guidance:
-- "What documentation already exists for this?"
-- "Do you have any screenshots, mockups, or recordings?"
-- "Is there a repo, ticket, or deployed system I should know about?"
-- Proceed with what's available; don't block on missing assets
-
----
-
-## Explicitly Out of Scope (v1.4.1)
-
-- Changes to distribution architecture (Cloudflare Pages setup unchanged)
-- Multi-pack compilation (that's v1.5+)
-- Role-specific packs (that's v1.5+)
-- Renaming the pack (keep "prd-guide" for now)
-- Override mechanisms for tier-to-detail mapping (future consideration)
-- Dynamic detail adjustment based on token budget (future consideration)
-- New projection formats (stick to high/medium/low)
-- Content rewrites of existing docs
-
----
-
-## Implementation Plan (v1.4.1)
-
-### Task 1: Create Tier Reader
-
-Implement `readFrontmatterTier(filePath)`:
-
-- Returns `{ tier: number, warnings: string[] }`
-- Parses YAML frontmatter
-- Returns tier value (0, 1, 2, or 3)
-- Missing tier → 3 with warning
-
-### Task 2: Implement Selection Modes
-
-**Curated mode:** `selectFilesCurated(packConfig)`
-
-- Read explicit file list from config
-- Pass to tier enforcement
-
-**Discovered mode:** `selectFilesDiscovered(packConfig)`
-
-- Allowed roots (e.g., `canon/`, `odd/`, `docs/`)
-- Ignore patterns (e.g., `**/node_modules/**`)
-- Only markdown (`.md` files)
-
-### Task 3: Apply Tier Enforcement + Projection
-
-Implement `applyTierRules(files)`:
-
-- Returns `decisions[]` with per-file outcomes
-- Enforce Tier 0 exclude (hard rule)
-- Assign projection per tier (1→high, 2→medium, 3→low)
-
-### Task 4: Projection Execution
-
-Implement `projectFile(file, projection)`:
-
-- `high`: return full content
-- `medium`: return frontmatter + description + outline
-- `low`: return title + one-line summary (blockquote)
-- Concatenate projected results
-
-### Task 5: Add `--plan` Flag
-
-- Output table (human readable) and/or JSON (CI)
-- Include: path, tier, selected_by, projection, included, reason
-- Include token/word estimates (recommended)
-
-### Task 6: CI Tests
-
-Add automated checks for:
-
-- AC-1: Tier 0 exclusion
-- AC-2: Projection correctness
-- AC-3: Discovery coverage threshold
-- AC-4: Curated pack tier enforcement
-- AC-5: Plan artifact generation
-
----
-
-## Acceptance Criteria (v1.4.1)
-
-These are CI-friendly gates written as Given/When/Then.
-
-### AC-1: Tier 0 Never Included
-
-```
-Given a Tier 0 doc exists (e.g., odd/README.md with tier: 0)
-When any pack is compiled
-Then Tier 0 docs are excluded
-And appear as excluded in --plan output with reason: tier0
-```
-
-### AC-2: Projection Correctness
-
-```
-Given Tier 2 and Tier 3 docs exist
-When a pack is compiled
-Then Tier 2 docs are NOT compiled at high detail
-And Tier 3 docs are NOT compiled at high detail
-And Tier 1 docs ARE compiled at high detail
-```
-
-### AC-3: Discovery Coverage Guardrail
-
-```
-Given repo has >100 eligible docs (Tier 1-3)
-When compiling default-odd-context via discovery
-Then compiled file count >= 60 (catches regression to whitelist)
-```
-
-### AC-4: Curated Pack Still Tier-Enforces
-
-```
-Given prd-guide uses a curated list
-When compiling prd-guide
-Then Tier 0 files in list are excluded
-And Tier 2/3 files are projected (not full detail)
-```
-
-### AC-5: `--plan` Required in CI
-
-```
-Given CI runs on PR
-When pack compilation runs
-Then CI produces a plan artifact
-And CI fails if any Tier 0 inclusion occurs
-```
-
----
-
-## Success Criteria
-
-### v1.4.1 — Tier-Aware Compiler
-
-- [ ] Compiler reads tier from frontmatter
-- [ ] Tier 0 docs are never included (hard rule)
-- [ ] Tier 1 → high, Tier 2 → medium, Tier 3 → low projection
-- [ ] `--plan` flag outputs per-file decisions
-- [ ] Discovery mode works for default-odd-context
-- [ ] Curated mode still works for prd-guide (with tier enforcement)
-- [ ] Output ordering is deterministic
-- [ ] Missing tier defaults to Tier 3 with warning
-
-### v1.4.0 — Tiered Context Construction (retained)
-
-- [ ] Default context pack assembles with tier-weighted detail mapping
-- [ ] No tier-flattening occurs in assembled context
-- [ ] Degradation is surfaced when document structure is insufficient
-- [ ] README/index files do not receive elevated detail due to file type
-
-### v1.4.0 — Agent Behavior (retained)
-
-- [ ] Agent behavior demonstrates tier-weighted context usage
-- [ ] Tier 3 documents do not materially influence agent reasoning unless explicitly requested
-- [ ] Agent does not synthesize context to compensate for missing document structure
-
-### v1.3 — Elicitation Enhancement (retained)
-
-- [ ] INSTRUCTIONS.md includes Agent Role Declaration section
-- [ ] INSTRUCTIONS.md includes Stage Identification gate (Phase 0)
-- [ ] INSTRUCTIONS.md includes Inventory phase (Phase 2)
-- [ ] INSTRUCTIONS.md includes Ambiguity Capture phase (Phase 6)
-- [ ] INSTRUCTIONS.md includes Asset Intake guidance
-- [ ] Interview loop resequenced per spec
-- [ ] Stage Typing table included with evidence expectations
-- [ ] Pack available at versioned URL (`/v1.4/prd-guide-pack.md`)
-- [ ] `/latest/` updated to serve v1.4 pack
-- [ ] `latest/README.md` updated to reference v1.4
-
----
-
-## Definition of Done
-
-An attempt against this PRD is complete when:
-
-### v1.4.1 — Compiler Implementation
-
-- [ ] `default-odd-context` compiles via discovery (not whitelist)
-- [ ] Tier 0 exclusion is enforced in all packs
-- [ ] Tier 1/2/3 projection mapping enforced
-- [ ] `--plan` flag exists and outputs readable decisions
-- [ ] CI blocks Tier 0 inclusion
-- [ ] CI blocks projection violations
-- [ ] Pack compilation is deterministic across runs
-- [ ] Missing tier defaults to Tier 3 with warning
-
-### v1.4.1 — Acceptance Criteria Verification
-
-- [ ] AC-1 passes: Tier 0 never included
-- [ ] AC-2 passes: Projection correctness verified
-- [ ] AC-3 passes: Discovery coverage >= threshold
-- [ ] AC-4 passes: Curated packs tier-enforce
-- [ ] AC-5 passes: `--plan` in CI with failure on Tier 0
-
-### Context Construction (v1.4.0, retained)
-
-- [ ] Context pack assembly implements tier-to-detail mapping
-- [ ] No special-casing for README or index files
-- [ ] Degradation surfaced when structure missing
-
-### INSTRUCTIONS.md Content (v1.3, retained)
-
-- [ ] Agent Role Declaration added at top
-- [ ] Stage Identification (Phase 0) defined with PRD type classification
-- [ ] Inventory (Phase 2) defined with asset intake questions
-- [ ] Ambiguity Capture (Phase 6) defined with uncertainty documentation
-- [ ] Interview loop has 8 phases (0-7) in correct order
-
-### Compilation
-
-- [ ] Compile succeeds with new tier-aware compiler
-- [ ] Output written to attempt's `evidence/` folder
-- [ ] Plan output included in evidence
-- [ ] Provenance header shows canon v0.10.0 source hashes
-
-### Distribution
-
-- [ ] `public/agent-skill/v1.4.1/prd-guide-pack.md` created
-- [ ] `public/agent-skill/latest/prd-guide-pack.md` updated
-- [ ] `public/agent-skill/latest/README.md` updated (version reference)
-- [ ] Public URL verified with HTTP 200
-
-### Evidence Required
-
-- [ ] `--plan` output showing tier enforcement
-- [ ] Diff showing Tier 0 exclusion vs previous version
-- [ ] Screenshot or log of successful compile output
-- [ ] HTTP 200 verification of preview URL
-- [ ] CI run showing AC-1 through AC-5 passing
-- [ ] Self-audit completed
-
----
-
-## Pack Sources
-
-The compiled pack concatenates these files:
-
-### Canon Sources (v0.10.0)
-
-| # | Source | Purpose |
-|---|--------|---------|
-| 1 | `canon/README.md` | Canon orientation, meta rules, confidence scores |
-| 2 | `odd/README.md` | ODD folder index, core thesis |
-| 3 | `odd/terminology.md` | **NEW** Constrained vocabulary and disambiguation |
-| 4 | `odd/manifesto.md` | Full ODD philosophy |
-| 5 | `odd/cognitive-partitioning.md` | Scaling pattern for reasoning systems |
-| 6 | `odd/appendices/README.md` | Portable appendices summarized |
-| 7 | `odd/decisions/README.md` | ODD conceptual decisions |
-| 8 | `canon/odd/appendices/tool-specialization.md` | Tool isolation pattern |
-| 9 | `canon/constraints.md` | Baseline assumptions |
-| 10 | `canon/decision-rules.md` | Decision heuristics |
-| 11 | `canon/definition-of-done.md` | Completion criteria |
-| 12 | `canon/self-audit.md` | Review checklist |
-| 13 | `docs/PRD/PRD_TEMPLATE.md` | PRD structure |
-
-### Generated Sources (ephemeral)
-
-| # | Source | Purpose |
-|---|--------|---------|
-| 13 | `INSTRUCTIONS.md` | **UPDATED** Interactive elicitation guidance |
-
-**Note:** INSTRUCTIONS.md is the primary deliverable of this PRD. It must include all elicitation enhancements.
-
----
-
-## Constraints
-
-- **Tier-detail mapping is fixed**: Tier 1 → high, Tier 2 → medium, Tier 3 → low. No adaptive logic.
-- **No synthesis**: Projection uses existing document structure only. Missing structure degrades output explicitly.
-- **No special cases**: READMEs, indexes, and navigation files receive tier-appropriate treatment, not elevated treatment.
-- **Same distribution**: Uses existing Cloudflare Pages setup
-- **Same canon sources**: v0.10.0 sources (includes terminology.md)
-- **ODD formula**: Pack + CONTRACT + PRD = Attempt (nothing else)
-- **Ephemeral artifacts**: Generated code (INSTRUCTIONS.md) not persisted
-- **Lane isolation**: All changes stay within agent-skill lane
-- **Backward compatible**: Existing PRD guidance still works (enhanced, not replaced)
-
----
-
-## Risks
-
-| Risk | Mitigation |
-|------|------------|
-| Missing tier defaults to Tier 3 may silently include docs at low fidelity | Emit warnings in plan output; clean up missing tiers in follow-up |
-| Discovery may balloon pack size if ignore rules wrong | Thresholds + token estimates in plan; AC-3 guards against regression |
-| Projection quality depends on projector implementation | Deterministic projection; snapshot tests; explicit degradation |
-| Tier 0 enforcement may break existing workflows | Tier 0 is explicit opt-out; docs must be updated if incorrectly marked |
-| Future engineers may add "smart" exceptions | Non-goals section explicitly forbids; acceptance criteria test for absence |
-| Documents lacking structure degrade projection | Degradation is explicit by design; documents should follow templates |
-
----
-
-## Attempt Policy
-
-This PRD may be attempted multiple times.
-
-- Each attempt is evaluated independently
-- Failed attempts inform future attempts or PRD revisions
-- Attempts are sealed when CLOSED or ABANDONED
-
-Attempts live at: `v1.4.1/attempts/attempt-NNN/`
-
----
-
-## Related Documents
-
-- v1.3.1 Prior: Previous elicitation-focused release
-- v1.2.4 Champion: [H0007](./history/H0007-v1.2.4-champion.md)
-- Roadmap: [ROADMAP.md](./ROADMAP.md)
-- Context Packs and Projection Detail: `/docs/context-packs-and-projection-detail.md`
-- Epistemic Obligation and Document Tiers: `/canon/epistemic-obligation-and-document-tiers.md`
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/README.md
---------------------------------------------------------------------------------
-
-# Agent Skill Lane
-
-This lane produces compiled packs for AI agent consumption. The primary deliverable is a portable context artifact that enables any LLM to guide humans through ODD-aligned PRD creation.
-
-> **Note:** Agent behavior contracts (overlays, protocols, recipes) are authored in `docs/agents/`, not here. This lane is for **compilation and distribution** only.
-
-## Current Champion
-
-**v1.3.1** — Canon Refresh (adds terminology.md, canon v0.10.0)
-
-> **v1.4.1 CLOSED — NOT PROMOTED** — Tier-aware compiler implemented and all ACs pass, but token efficiency analysis revealed 20-50% waste. See `v1.4.1/attempts/attempt-002/LEARNINGS.md`.
->
-> **v1.4.2 DRAFT** — Token-efficient pack compilation. Addresses waste identified in v1.4.1.
-
-**Public URL**: `https://main.klappy-dev-agent-skill.pages.dev/latest/prd-guide-pack.md`
-
-## Quick Start
-
-**Option 1: Public URL (no clone required)**
-```
-https://main.klappy-dev-agent-skill.pages.dev/latest/prd-guide-pack.md
-```
-
-**Option 2: Local file**
-Copy the pack from `public/agent-skill/latest/prd-guide-pack.md` and paste it into your AI context.
-
-See the [usage README](https://main.klappy-dev-agent-skill.pages.dev/latest/README.md) for detailed instructions.
-
-## Lane Files
-
-| File | Purpose |
-|------|---------|
-| [ATTEMPT_KICKOFF.md](ATTEMPT_KICKOFF.md) | Copy/paste prompt to start an attempt |
-| [KICKOFF.md](KICKOFF.md) | Full attempt instructions (version-agnostic) |
-| [CONTRACT.md](CONTRACT.md) | Formal structure, deviations from canon |
-| [ROADMAP.md](ROADMAP.md) | Vision and future versions |
-| [history/](history/) | Champion history, failures, learnings |
-| [decisions/](decisions/README.md) | Lane-specific architecture decisions |
-
-## Versions
-
-| Version | Status | Description |
-|---------|--------|-------------|
-| [v1.1/](v1.1/) | Champion | Core PRD guide pack |
-| [v1.2/](v1.2/) | Failed | Distribution attempt (PRD conflict) |
-| [v1.2.1/](v1.2.1/) | Champion | Lane-owned Cloudflare Pages deployment |
-| [v1.2.2/](v1.2.2/) | Failed | Exposed ODD violations (ephemeral artifacts, compile plan location) |
-| [v1.2.3/](v1.2.3/) | Champion | Canon refresh v0.5.4 + ODD compliance |
-| [v1.2.4/](v1.2.4/) | Superseded | Canon refresh v0.8.0 (path fixes + new content) |
-| [v1.3/](v1.3/) | Superseded | PRD Elicitation Enhancement (interview mechanics, stage typing) |
-| [v1.3.1/](v1.3.1/) | Champion | Canon Refresh (adds terminology.md, canon v0.10.0) |
-| [v1.4/](v1.4/) | FAILED (001, 002) | Tiered Context Construction — compiler does not implement tiers |
-| [v1.4.1/](v1.4.1/) | Closed (Not Promoted) | Tier-Aware Pack Compiler — works but 20-50% token waste |
-| [v1.4.2/](v1.4.2/) | **Draft** | Token-Efficient Pack Compilation — addresses v1.4.1 waste |
-
-## Structure
-
-This lane uses a **version-first** folder structure (differs from canon default). See [CONTRACT.md](CONTRACT.md) for details.
-
-```
-products/agent-skill/
-├── README.md              # You are here
-├── ATTEMPT_KICKOFF.md     # Copy/paste prompt (loads canon, points to KICKOFF)
-├── KICKOFF.md             # Full attempt instructions (version-agnostic)
-├── CONTRACT.md            # Formal structure/deviations
-├── ROADMAP.md             # Vision document
-├── history/               # Champion log, failures, learnings
-├── decisions/             # Lane-specific ADRs
-├── v1.1/                  # Version 1.1 (champion)
-│   ├── PRD.md             # Frozen PRD
-│   ├── src/               # Source files
-│   ├── dist/              # Compiled output
-│   └── attempts/          # Attempt history
-├── v1.2/                  # Version 1.2 (failed)
-│   ├── PRD.md             # Frozen PRD
-│   └── attempts/          # Failed attempt evidence
-├── v1.2.1/                # Version 1.2.1 (champion)
-│   └── PRD.md             # Frozen PRD
-├── v1.2.2/                # Version 1.2.2 (failed)
-│   └── PRD.md             # Canon refresh PRD (failed)
-├── v1.2.3/                # Version 1.2.3 (champion)
-│   └── PRD.md             # Canon refresh v0.5.4 + ODD compliance
-├── v1.2.4/                # Version 1.2.4 (superseded)
-│   └── PRD.md             # Canon refresh v0.8.0 (path fixes)
-├── v1.3/                  # Version 1.3 (superseded)
-│   └── PRD.md             # PRD Elicitation Enhancement
-├── v1.3.1/                # Version 1.3.1 (champion)
-│   └── PRD.md             # Canon refresh v0.10.0 (terminology.md)
-├── v1.4/                  # Version 1.4 (failed)
-│   └── PRD.md             # Tiered Context Construction (compiler doesn't implement)
-├── v1.4.1/                # Version 1.4.1 (closed, not promoted)
-│   ├── PRD.md             # Tier-Aware Pack Compiler
-│   └── attempts/          # attempt-001 (failed), attempt-002 (closed, not promoted)
-└── v1.4.2/                # Version 1.4.2 (draft)
-    └── PRD.md             # Token-Efficient Pack Compilation
-```
-
-## Build
-
-To compile a pack for a specific version:
-
-```bash
-# From repo root
-npm run lane:compile -- --lane agent-skill --pack prd-guide
-```
-
-Note: Build configuration lives in each version's `src/compile-plan.json`.
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/ROADMAP.md
---------------------------------------------------------------------------------
-
-# Agent Skill Lane Roadmap
-
-Living document capturing the evolution vision for the agent-skill lane.
-
-This is not a commitment — it's a sketch that evolves as we learn.
-
-> **Note:** This roadmap tracks *vision*, not *status*. For what actually happened (champions, failures, learnings), see **[history/](./history/)**.
-
----
-
-## Versioning Strategy
-
-- **v1.1** = Initial pack (PRD guidance)
-- **v1.2.x** = Distribution + patches (deployment, canon refreshes)
-- **v1.3** = PRD Elicitation Enhancement (interview mechanics, stage typing)
-- **v1.4** = Pack Architecture v2 (multi-pack, tiered compilation)
-- **v1.5+** = Role-specific packs (Attempt Agent, Verification Agent)
-- **v2.x** = Presentation layer (UI/showcase)
-
-Minor versions add features; patch versions fix issues or refresh content.
-
----
-
-## v1.1 — PRD Creation Guidance
-
-**Location**: `v1.1/`
-
-A compiled pack (`prd-guide-pack.md`) that enables AI agents to interactively guide humans through creating ODD-aligned PRDs.
-
-**Target outcome**: Pack available locally after build
-
-**Friction level**: Clone repo, run build, copy pack
-
----
-
-## v1.2 — Distribution (Website Lane)
-
-**Location**: `v1.2/`
-
-Zero-friction public access via website lane's Cloudflare Pages deployment.
-
-**Target outcome**: Pack available at public URL via website deployment
-
-**Friction level**: Copy from URL
-
-**Why it didn't work**: PRD required cross-lane modification (website build process), which violates lane isolation. See [history/H0002](./history/H0002-v1.2-failed.md) for details.
-
----
-
-## v1.2.1 — Distribution (Lane-Owned)
-
-**Location**: `v1.2.1/`
-
-Patches v1.2 with a lane-owned approach:
-
-- Agent-skill lane owns its own Cloudflare Pages deployment
-- Versioned asset URLs (e.g., `/v1.1/prd-guide-pack.md`)
-- `/latest/` convention pointing to current champion
-- No website lane dependency
-
-**Target outcome**: Pack available at `https://agent-skill.klappy.dev/latest/prd-guide-pack.md`
-
-**Friction level**: Copy from URL
-
----
-
-## v1.2.2 — Canon Content Refresh
-
-**Location**: `v1.2.2/`
-
-Patches v1.2.1 with updated canon content (v0.5.3):
-
-- Recompile pack against canon v0.5.3
-- Includes Memory Architecture proposal (manifesto references)
-- No functional changes to pack behavior or distribution
-- Documents canon version for traceability
-
-**Target outcome**: Pack reflects canon v0.5.3 content
-
-**Friction level**: Same as v1.2.1 (copy from URL)
-
-**Why it didn't work**: INSTRUCTIONS.md was being persisted when it should be ephemeral, and compile plans lived in central `infra/` instead of lane. ODD formula violated. See [history/H0005](./history/H0005-v1.2.2-failed.md) for details.
-
----
-
-## v1.2.3 — Canon Refresh + ODD Compliance
-
-**Location**: `v1.2.3/`
-
-Patches v1.2.2 with ODD compliance + canon v0.5.4:
-
-- INSTRUCTIONS.md treated as ephemeral (generated per-attempt)
-- Compile plan lives in lane (`src/compile-plan.json`)
-- Pack includes folder READMEs for scannable summaries
-- Clean restart with corrected architecture
-
-**Target outcome**: Pack reflects canon v0.5.4 with proper ODD compliance
-
-**Friction level**: Same as v1.2.1 (copy from URL)
-
----
-
-## v1.2.4 — Canon Refresh v0.8.0
-
-**Location**: `v1.2.4/`
-
-Patches v1.2.3 with canon v0.8.0:
-
-- Fixes stale ODD paths (`canon/odd/` → `odd/`) from 0.6.0 elevation
-- Includes Three-Tier Hierarchy formalization
-- Adds Cognitive Partitioning concept
-- Adds Tool Specialization appendix
-
-**Target outcome**: Pack reflects canon v0.8.0 with correct paths
-
-**Friction level**: Same as v1.2.1 (copy from URL)
-
----
-
-## v1.3 — PRD Elicitation Enhancement
-
-**Location**: `v1.3/`
-
-Addresses the gap between "understanding ODD" and "extracting a PRD from a human." The pack teaches ODD philosophy well, but v1.2.x lacked the interrogative mechanics to guide elicitation.
-
-**Key features**:
-
-- **Agent Role Declaration**: Explicit framing that the agent is an elicitation system, not a PRD author
-- **PRD Stage Typing**: Classification gate before questioning (PoC, Feature, Fix, Product slice, Refactor)
-- **Formal Interview Loop**: Resequenced stages with Orient, Inventory, Constraint Surfacing before Outcome Framing
-- **Asset Intake Contract**: Formalized guidance for what assets to request and how to proceed with partial information
-- **Ambiguity Capture**: Explicit stage for documenting what remains unclear or contested
-
-**Interview Loop (resequenced)**:
-
-| Phase | Purpose |
-|-------|---------|
-| 0. Stage Identification | What type of PRD is this? |
-| 1. Orient | What are we trying to learn or change? |
-| 2. Inventory | What assets already exist? |
-| 3. Constraint Surfacing | Time, scope, reversibility, risk |
-| 4. Outcome Framing | What would "better" look like? |
-| 5. Evidence Definition | How will we know? |
-| 6. Ambiguity Capture | What is still unclear or contested? |
-| 7. Draft Assembly | Assemble the PRD |
-
-**Target outcome**: Agents using the pack ask about PRD type and existing assets before jumping to outcomes
-
-**Friction level**: Same as v1.2.x (copy from URL)
-
-**Why this matters**: The pack was conceptually sound but operationally incomplete. This version makes it interrogative, not just informational.
-
----
-
-## v1.4 — Pack Architecture v2
-
-Major architectural upgrade enabling role-specific agent packs with tiered content inclusion.
-
-**Key features**:
-
-- **Multi-pack support**: Single compile plan produces multiple role-specific packs
-- **Tiered compilation**: 
-  - Tier 1 (Core): Full file content
-  - Tier 2 (Context): Title, subtitle, description, outline only
-  - Tier 3 (Index): Title + subtitle (skip if already in README index)
-- **Role-specific instructions**: Each pack gets tailored guidance
-- **Progressive disclosure**: Agents get what they need without token bloat
-
-**Compile plan schema v2**:
-
-```json
-{
-  "packs": {
-    "prd-guide": {
-      "tier1_full": [...],
-      "tier2_summary": [...],
-      "tier3_index": [...],
-      "instructions": "instructions/PRD_AGENT.md"
-    }
-  }
-}
-```
-
-**Target outcome**: Architecture supports multiple specialized packs; PRD Agent Pack recompiled using tiered approach
-
-**Why this matters**: Cognitive Partitioning applied to agent context — each agent role gets precisely the context it needs
-
----
-
-## v1.5 — Attempt Agent Pack
-
-Role-specific pack for agents executing attempts against PRDs.
-
-**Tier 1 (Full)**:
-
-- Attempt lifecycle
-- Lane isolation rules
-- META.json requirements
-- Definition of done
-
-**Tier 2 (Summary)**:
-
-- Progressive elevation (memory architecture)
-- Online evidence requirements
-- Deploy evidence rules
-
-**Tier 3 (Index)**:
-
-- ODD decisions (already in README index)
-- History patterns
-
-**Instructions focus**: Execute attempts, produce evidence, know when to stop
-
-**Target outcome**: `attempt-guide-pack.md` available at public URL
-
----
-
-## v1.6 — Verification Agent Pack
-
-Role-specific pack for agents evaluating and verifying work.
-
-**Tier 1 (Full)**:
-
-- Definition of done
-- Self-audit checklist
-- Visual proof standards
-- Evidence policy
-
-**Tier 2 (Summary)**:
-
-- Failure detection patterns
-- LEARNINGS.md structure
-- PRD conflict detection
-
-**Tier 3 (Index)**:
-
-- ODD appendices (failure-driven modularity, etc.)
-
-**Instructions focus**: Verify claims, detect failures, enforce evidence standards
-
-**Target outcome**: `verification-guide-pack.md` available at public URL
-
----
-
-## v2.0 — Showcase Page
-
-A webpage that showcases the pack with good UX for discovery and use.
-
-**Potential features**:
-
-- Syntax-highlighted pack preview
-- Collapsible sections (manifesto, constraints, instructions, etc.)
-- "Copy to clipboard" button
-- Token count display
-- Last updated / provenance info
-- Link to source (for transparency)
-
-**Target outcome**: Visitors can discover, preview, and copy the pack from a nice UI
-
-**Friction level**: Click to copy
-
----
-
-## Future Ideas (Unprioritized)
-
-Captured here so we don't forget, not committed to any version:
-
-- **MCP server**: Expose packs via Model Context Protocol
-- **Cursor SKILL.md format**: Package packs as Cursor skills
-- **Pack versioning**: Semantic versions for packs, backward compatibility
-- **Analytics**: Track pack usage (if hosted)
-- **Feedback loop**: Users can report issues with pack guidance
-- **Self-improvement guidance**: Pack that helps agents improve packs themselves
-- **Dynamic tier selection**: Agents request tier depth based on task complexity
-- **Cross-pack references**: Packs can reference other packs for handoff workflows
-
----
-
-## Removed from This Lane
-
-- **Try-It Chat Interface**: Moved to `ai-navigation` lane (AI helping humans navigate ODD). This lane produces the pack; ai-navigation consumes it for chat experiences.
-
----
-
-## How to Use This Document
-
-1. **Before starting a version**: Read the vision here, refine it, then write the PRD
-2. **After completing a version**: Add entry to [history/](./history/) (not here)
-3. **When ideas emerge**: Add to "Future Ideas" section above
-4. **Periodically**: Review and prune ideas that no longer make sense
-
-This roadmap informs PRDs but does not replace them. PRDs are the contract; this is the vision.
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/decisions/D0001-version-first-structure.md
---------------------------------------------------------------------------------
-
-# D0001 — Version-First Folder Structure
-
-## Decision
-
-This lane uses version-first folder organization (`vX.Y/src/`, `vX.Y/dist/`, `vX.Y/attempts/`) instead of the canon default (`src/`, `dist/`, `attempts/prd-vX.Y/`).
-
-## Status
-
-**Active**
-
-## Context
-
-PRD v1.2 failed because it required cross-lane modification. During the post-mortem, we discovered that:
-
-1. Dependents need stable URLs to pin to specific versions
-2. Assets must be immutable once published
-3. Each version should be fully self-contained for auditability
-
-The canon default structure makes versioning implicit (buried in attempts folder). This lane needs explicit versioning at the top level.
-
-## Why
-
-- **Immutable releases**: Published assets are versioned by PRD version and persist indefinitely
-- **Dependent stability**: Consumers can pin to specific versions (e.g., `v1.1/dist/prd-guide-pack.md`)
-- **Clear boundaries**: Each version is fully self-contained
-- **Parallel development**: Multiple versions can evolve independently
-- **Auditability**: When a version is frozen, everything in that folder is frozen
-
-## Consequences
-
-- ✅ Versioned URLs are stable and predictable
-- ✅ Failed versions are preserved alongside successful ones
-- ✅ Easy to see all versions at a glance
-- ⚠️ Deviates from canon default (documented in CONTRACT.md)
-- ⚠️ Requires updating paths in multiple places when referencing
-
-## Relationship to Canon
-
-- **Overrides**: Canon default of `attempts/prd-vX.Y/` nesting
-- **Extends**: Canon principle of immutable attempts
-- **Candidate for elevation**: Yes — if other lanes need versioned distribution
-
-**Note**: Canon already documented PRD immutability (`repo-topology.md`: "PRD (frozen) | N/A (immutable)"). Our v1.2 failure to increment versions was a RTFM failure, not a canon gap. This decision addresses the STRUCTURE pattern, not the immutability principle.
-
-## Evidence
-
-- Conversation: 2026-01-20 (v1.2 failure analysis)
-- Learning source: `v1.2/attempts/attempt-001/LEARNINGS.md`
-- Documentation: `CONTRACT.md` (Structure Deviation section)
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/decisions/D0002-lane-owned-deployment.md
---------------------------------------------------------------------------------
-
-# D0002 — Lane-Owned Cloudflare Pages Deployment
-
-## Decision
-
-The agent-skill lane owns its own Cloudflare Pages deployment, separate from the website lane. No cross-lane dependencies for distribution.
-
-## Status
-
-**Active**
-
-## Context
-
-PRD v1.2 attempted to distribute the compiled pack via the website lane's Cloudflare Pages deployment. This required modifying the website build process (`infra/scripts/smart-build.js`), which violated lane isolation.
-
-The attempt proved the mechanism worked (via mock testing), but the PRD could not be satisfied without cross-lane modification.
-
-## Why
-
-- **Lane isolation**: Attempts cannot modify files outside their lane
-- **Independence**: Lane can deploy without coordinating with other lanes
-- **Simplicity**: No need to modify shared infrastructure
-- **Ownership**: Lane is fully responsible for its deployment lifecycle
-
-## Consequences
-
-- ✅ Full lane isolation maintained
-- ✅ No cross-lane coordination required
-- ✅ Deployment can happen independently of website lane
-- ⚠️ Requires separate Cloudflare Pages project setup
-- ⚠️ May result in different domain (e.g., `agent-skill.klappy.dev` vs `klappy.dev/packs/`)
-
-## Relationship to Canon
-
-- **Overrides**: None (canon doesn't specify deployment ownership)
-- **Extends**: Canon lane isolation principle
-- **Candidate for elevation**: Yes — establishes pattern for lane-owned infrastructure
-
-**Note**: Canon already documented lane isolation extensively (`product-lanes.md`: "Lanes share canon, not lifecycle"). Writing PRD v1.2 to require website build modification was a RTFM failure — we should have known cross-lane modification was prohibited. This decision documents the DEPLOYMENT pattern that respects the existing isolation principle.
-
-## Evidence
-
-- Conversation: 2026-01-20 (v1.2 failure analysis)
-- Failed attempt: `v1.2/attempts/attempt-001/ATTEMPT.md`
-- Learning source: `v1.2/attempts/attempt-001/LEARNINGS.md`
-- PRD: `v1.2.1/PRD.md` (implements this decision)
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/decisions/D0003-versioned-kickoff-pattern.md
---------------------------------------------------------------------------------
-
-# D0003 — Versioned KICKOFF.md Pattern
-
-## Decision
-
-Each PRD version has its own `KICKOFF.md` with detailed shaping instructions. A minimal `ATTEMPT_KICKOFF.md` at the lane root points to the active version's KICKOFF.
-
-## Status
-
-**Active**
-
-## Context
-
-Initially, a single `prompts/ATTEMPT_KICKOFF.md` contained all attempt instructions. This created problems:
-
-1. Instructions might need to change between attempts on the same PRD
-2. Frozen versions should have frozen instructions for auditability
-3. A folder for a single file is unnecessary overhead
-
-## Why
-
-- **Mutability**: Version-specific KICKOFF can evolve between attempts
-- **Auditability**: When version is frozen, its KICKOFF is frozen too
-- **Simplicity**: One-liner at root, details in version folder
-- **Tight coupling**: KICKOFF and PRD are co-located and evolve together
-
-## Consequences
-
-- ✅ Instructions can evolve per-version without affecting other versions
-- ✅ Frozen versions have complete, auditable instruction sets
-- ✅ External kickoff is stable (just update the version pointer)
-- ✅ No unnecessary `prompts/` folder
-- ⚠️ Must remember to create KICKOFF.md when creating new version
-
-## Relationship to Canon
-
-- **Overrides**: Canon pattern of centralized kickoff prompt
-- **Extends**: Canon principle of attempt containment
-- **Candidate for elevation**: Yes — useful pattern for any lane with versioned PRDs
-
-## Evidence
-
-- Conversation: 2026-01-20 (structure discussion)
-- Implementation: `ATTEMPT_KICKOFF.md`, `v1.1/KICKOFF.md`, `v1.2.1/KICKOFF.md`
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/decisions/D0004-readme-contract-pattern.md
---------------------------------------------------------------------------------
-
-# D0004 — README + CONTRACT Documentation Pattern
-
-## Decision
-
-Lane documentation is split into two files: `README.md` for human-friendly overview and `CONTRACT.md` for formal structure/deviations. README links to CONTRACT for details.
-
-## Status
-
-**Active**
-
-## Context
-
-We needed to document lane-specific deviations from canon (version-first structure, kickoff pattern, etc.). Options considered:
-
-1. Single README with everything
-2. CONTRACT.md only (formal)
-3. README.md only (informal)
-4. README + CONTRACT (both audiences)
-
-## Why
-
-- **README is universal**: First file humans and agents look for
-- **CONTRACT is formal**: Structured, precise deviation documentation
-- **Separation of concerns**: Overview vs. formal contract
-- **Antifragile**: Human-readable prose survives better than brittle JSON manifests
-
-## Consequences
-
-- ✅ Humans get quick orientation from README
-- ✅ Agents can find formal specifications in CONTRACT
-- ✅ Neither file is cluttered with the other's content
-- ✅ CONTRACT can have structured sections without hurting README readability
-- ⚠️ Two files to maintain (but they serve different purposes)
-
-## Relationship to Canon
-
-- **Overrides**: None (canon doesn't specify lane documentation pattern)
-- **Extends**: Canon principle of documentation as product
-- **Candidate for elevation**: Yes — useful pattern for any lane with deviations
-
-## Evidence
-
-- Conversation: 2026-01-20 (documentation discussion)
-- Implementation: `README.md`, `CONTRACT.md`
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/decisions/D0005-test-execution-containment.md
---------------------------------------------------------------------------------
-
-# D0005 — Test Execution Containment
-
-## Decision
-
-Test execution during attempts must stay within the attempt folder. Cross-lane testing uses mock structures inside the attempt, not actual cross-lane writes.
-
-## Status
-
-**Active**
-
-## Context
-
-During v1.2 attempt-001, the distribution test script initially wrote files to `products/website/dist/packs/`. Even though the *proposals* were contained in the attempt folder, the *test execution* crossed lane boundaries.
-
-This violated lane isolation even though it was "just a test."
-
-## Why
-
-- **Lane isolation is absolute**: Not just for proposals, but for test execution too
-- **Attempts are sandboxes**: Nothing should escape the attempt folder until promotion
-- **Mock structures prove mechanisms**: You can verify cross-lane behavior without actually crossing
-
-## Pattern: Mock Structures
-
-When testing cross-lane behavior:
-
-```
-attempt-001/
-├── mock-website-dist/      # Mirror of target structure
-│   └── packs/
-│       └── agent-skill/
-│           └── prd-guide-pack.md
-└── scripts/
-    └── distribute.js       # Writes to mock, not real target
-```
-
-The test proves the mechanism works. Actual cross-lane changes happen during PROMOTION, not during the attempt.
-
-## Consequences
-
-- ✅ Attempts are fully contained (no side effects)
-- ✅ Failed attempts don't leave debris in other lanes
-- ✅ Mechanism is proven without risk
-- ⚠️ Requires creating mock structures (minor overhead)
-- ⚠️ Mock may diverge from real target (verify during promotion)
-
-## Relationship to Canon
-
-- **Extends**: Canon "lane-contained" principle
-- **Gap filled**: Canon didn't explicitly cover test execution
-- **Candidate for elevation**: Yes — this is a universal principle
-
-## Evidence
-
-- Conversation: 2026-01-20
-- Failed test: `v1.2/attempts/attempt-001/` (initially wrote outside lane)
-- Corrected test: `v1.2/attempts/attempt-001/mock-website-dist/`
-- Learning source: `v1.2/attempts/attempt-001/LEARNINGS.md`
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/decisions/D0006-lane-level-decision-logs.md
---------------------------------------------------------------------------------
-
-# D0006 — Lane-Level Decision Logs
-
-## Decision
-
-Lanes maintain their own `decisions/` folder for lane-specific architecture decisions that don't rise to canon level but need documented rationale.
-
-## Status
-
-**Active**
-
-## Context
-
-Canon says "Cross-lane learnings are captured in decision logs, not PRD mutations" (`product-lanes.md`). However, ODD only has repo-level decisions (`/odd/decisions/`).
-
-When this lane deviated from canon patterns (version-first structure, versioned kickoff, etc.), we needed a place to document:
-
-- What we decided
-- Why we decided it
-- How it relates to canon
-- Whether it's an elevation candidate
-
-Without lane-level decisions, these learnings would be scattered across LEDGER, ROADMAP, and attempt files — harder to find and replicate.
-
-## Why
-
-- **Transparency**: Deviations from canon are explicitly documented
-- **Replicability**: Other lanes can copy successful patterns
-- **Elevation path**: Patterns that work can be proposed for canon
-- **Auditability**: Future maintainers understand why things are different
-
-## Structure
-
-```
-products/<lane>/decisions/
-├── index.md                    # Decision log with tables
-├── D0001-<title>.md
-├── D0002-<title>.md
-└── ...
-```
-
-Each decision includes:
-
-- Decision statement
-- Context (what prompted this)
-- Relationship to canon (overrides, extends, gap)
-- Elevation candidate flag
-
-## Consequences
-
-- ✅ Lane deviations are documented and justified
-- ✅ Patterns can be shared across lanes
-- ✅ Clear path from lane → canon promotion
-- ✅ Aligns with canon statement about decision logs
-- ⚠️ One more folder to maintain
-- ⚠️ Must avoid duplicating canon decisions
-
-## Relationship to Canon
-
-- **Extends**: Canon "decision logs" concept to lane level
-- **Supports**: Canon statement "Cross-lane learnings are captured in decision logs"
-- **Gap filled**: Canon only had repo-level decisions
-- **Candidate for elevation**: Yes — useful for any lane with deviations
-
-## Evidence
-
-- Conversation: 2026-01-20
-- Canon reference: `product-lanes.md` line 227
-- Implementation: `products/agent-skill/decisions/` (this folder)
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/decisions/D0007-upstream-canon-loading.md
---------------------------------------------------------------------------------
-
-# D0007 — Upstream Canon Loading via Public URL
-
-## Decision
-
-Agent kickoffs load the compiled ODD canon pack from a public URL FIRST (upstream), before any lane-specific instructions. The URL points to `/latest/` which resolves to the current champion version.
-
-## Status
-
-**Active**
-
-## Context
-
-The agent-skill lane produces a compiled pack that contains ODD philosophy (manifesto, constraints, decision rules, etc.). For agents to make good decisions, they need this context BEFORE reading lane-specific instructions.
-
-Two problems with local file references:
-
-1. **Not portable**: `../v1.1/dist/prd-guide-pack.md` only works inside this repo
-2. **Buried context**: If canon comes after lane instructions, it can be obscured
-
-## Why
-
-- **Portable**: Public URL works in any context (parallel lanes, external projects)
-- **Upstream loading**: Canon shapes everything that follows, so it must come first
-- **Latest convention**: `/latest/` always points to current champion, no manual updates
-- **Parallel reuse**: Other lanes can reference the same URL
-
-## Pattern
-
-### URL Structure
-
-```
-https://agent-skill.klappy.dev/
-├── latest/                    # Always points to current champion
-│   └── prd-guide-pack.md
-├── v1.1/dist/
-│   └── prd-guide-pack.md
-└── ...
-```
-
-### Kickoff Structure
-
-```markdown
-# Kickoff
-
-## Step 0: Load ODD Canon (UPSTREAM)
-
-Read and internalize: https://agent-skill.klappy.dev/latest/prd-guide-pack.md
-
----
-
-## Step 1: Lane-specific instructions
-...
-```
-
-## Consequences
-
-- ✅ Agents start with full ODD context
-- ✅ Parallel lanes can use the same pack
-- ✅ External projects can bootstrap with ODD
-- ✅ No manual version updates needed (latest redirects)
-- ⚠️ Requires deployment infrastructure (v1.2.1 scope)
-- ⚠️ Network dependency (URL must be accessible)
-
-## Relationship to Canon
-
-- **Extends**: Canon compilation pattern
-- **New pattern**: Public URL + latest convention + upstream loading
-- **Candidate for elevation**: Yes — other lanes producing packs should follow
-
-## Evidence
-
-- Conversation: 2026-01-20
-- Implementation: v1.2.1 attempt will create deployment
-- Will update: `ATTEMPT_KICKOFF.md` to reference public URL
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/decisions/D0008-roadmap-vision-only.md
---------------------------------------------------------------------------------
-
-# D0008 — ROADMAP as Vision Only (No Status Tracking)
-
-## Decision
-
-ROADMAP tracks future vision and version objectives only. It does not track version status (champion, failed, in-progress). The `history/` folder is the single source of truth for what happened.
-
-## Status
-
-**Active**
-
-## Context
-
-The ROADMAP contained a "Status" field for each version (e.g., "CHAMPION", "FAILED", "PRD written, awaiting attempt"). After v1.2.1 was promoted to champion, the ROADMAP still showed "awaiting attempt" — creating drift between ROADMAP and history.
-
-Options considered:
-
-1. **Remove status from ROADMAP** — history/ is authoritative, ROADMAP is vision-only
-2. **Enforce ROADMAP updates during promotion** — Add to promotion checklist
-
-## Why
-
-- **DRY**: history/ already tracks champion/failed status authoritatively. Duplicating in ROADMAP violates DRY.
-- **KISS**: Fewer places to maintain = fewer places to forget
-- **Role clarity**: ROADMAP answers "where are we going?" / history/ answers "where have we been?"
-- **Antifragile**: Design removes drift possibility rather than relying on discipline to prevent it
-
-Option 2 was rejected because it fights drift with process discipline instead of structural design. Discipline eventually loses to forgetfulness.
-
-## Consequences
-
-- ✅ No more drift between ROADMAP and history/
-- ✅ Clear separation of concerns (vision vs. history)
-- ✅ Simpler ROADMAP maintenance (just update vision, not status)
-- ⚠️ Loses at-a-glance "where are we" in ROADMAP (go to history/ for that)
-- ⚠️ Agents loading ROADMAP need to also check history/ for current state
-
-## Relationship to Canon
-
-- **Overrides**: None (canon doesn't specify roadmap structure)
-- **Extends**: Canon principle of DRY (with isolation), KISS
-- **Candidate for elevation**: Yes — useful pattern for any lane with both ROADMAP and LEDGER
-
-## Evidence
-
-- Conversation: 2026-01-21 (ROADMAP showed v1.2.1 as "awaiting attempt" after champion promotion)
-- Root cause: Status tracked in two places (ROADMAP + LEDGER)
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/decisions/D0009-history-folder-pattern.md
---------------------------------------------------------------------------------
-
-# D0009 — History Folder Pattern (Indexed Entries)
-
-## Decision
-
-Lane history is stored in a `history/` folder with an index file (`index.md`) and individual entry files (`H000X-*.md`). This mirrors the `decisions/` folder pattern for consistency.
-
-## Status
-
-**Active**
-
-## Context
-
-LEDGER.md was a single file capturing all lane history (champions, failures, learnings, infrastructure changes). As the lane matures, this file will grow unbounded, making it slow for agents to parse and increasing cognitive load.
-
-Options considered:
-
-1. **Keep single LEDGER.md** — simple but doesn't scale
-2. **Rename to CHANGELOG.md** — standard format but loses narrative/learnings structure
-3. **Split into history/ folder** — mirrors decisions/ pattern, scales well
-
-## Why
-
-- **Consistency**: Same pattern as `decisions/` — index + individual files
-- **Scalability**: Agents can scan index (~500 tokens) and dig deeper only when needed
-- **Cognitive load**: Familiar pattern reduces mental overhead
-- **Growth-friendly**: Individual entries can include evidence, links, screenshots without bloating index
-
-## Structure
-
-```
-products/agent-skill/
-├── history/
-│   ├── index.md                           # Quick reference table
-│   ├── H0001-v1.1-champion.md
-│   ├── H0002-v1.2-failed.md
-│   ├── H0003-lane-structure-migration.md
-│   └── H0004-v1.2.1-champion.md
-```
-
-## Naming
-
-- Folder: `history/` (not `memory/`) — universally understood, consistent with conventions
-- Files: `H000X-<slug>.md` — mirrors `D000X-*.md` pattern from decisions
-- Index: `index.md` — same as decisions
-
-## Consequences
-
-- ✅ Agents can quickly scan lane history via index
-- ✅ Individual entries can grow without affecting scan performance
-- ✅ Consistent with decisions/ pattern — less cognitive load
-- ✅ LEDGER.md removed — single source of truth
-- ✅ ROADMAP Learnings Log removed — history/ is the authority
-- ⚠️ More files to manage (but same tradeoff as decisions/)
-
-## Relationship to Canon
-
-- **Overrides**: None (canon doesn't specify history storage pattern)
-- **Extends**: Canon principle of "Memory Is the Bottleneck" — this makes memory scannable
-- **Candidate for elevation**: Yes — useful pattern for any lane with accumulated history
-
-## Evidence
-
-- Conversation: 2026-01-21 (LEDGER drift discussion, scalability concerns)
-- Prior art: `decisions/` folder in this lane
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/decisions/README.md
---------------------------------------------------------------------------------
-
-# 📋 Agent-Skill Lane Decision Log
-
-Lane-specific Architecture Decision Records (ADRs) for the agent-skill product lane.
-
-> **Scope:** These decisions apply only to this lane. They may override or extend canon patterns with documented rationale. Successful patterns may be proposed for elevation to canon.
-
----
-
-## ✅ Active Decisions
-
-### Structure & Organization
-
-| ID                                            | Title                   | What Was Decided                                                                                                                                   |
-| --------------------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [D0001](./D0001-version-first-structure.md)   | Version-first structure | Use `vX.Y/` folders at top level (not `attempts/prd-vX.Y/`). Each version contains PRD, src, dist, attempts. Enables immutable versioned releases. |
-| [D0003](./D0003-versioned-kickoff-pattern.md) | Versioned KICKOFF       | Each PRD version has its own `KICKOFF.md`. Lane root has minimal one-liner pointing to active version. KICKOFFs freeze with their version.         |
-| [D0004](./D0004-readme-contract-pattern.md)   | README + CONTRACT       | Split lane docs: `README.md` for human overview, `CONTRACT.md` for formal structure/deviations. README links to CONTRACT for details.              |
-
-### Deployment & Distribution
-
-| ID                                        | Title                 | What Was Decided                                                                             |
-| ----------------------------------------- | --------------------- | -------------------------------------------------------------------------------------------- |
-| [D0002](./D0002-lane-owned-deployment.md) | Lane-owned deployment | This lane owns its own Cloudflare Pages project. No website lane dependency. Full isolation. |
-
-### Attempt Practices
-
-| ID                                             | Title            | What Was Decided                                                                                                                            |
-| ---------------------------------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| [D0005](./D0005-test-execution-containment.md) | Test containment | Tests during attempts CANNOT write outside attempt folder. Use mock structures (e.g., `mock-website-dist/`) to prove cross-lane mechanisms. |
-
-### Governance
-
-| ID                                           | Title                  | What Was Decided                                                                                                                                        |
-| -------------------------------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [D0006](./D0006-lane-level-decision-logs.md) | Lane decisions folder  | Lanes maintain their own `decisions/` for patterns that don't rise to canon. Enables transparent deviation + elevation path.                            |
-| [D0007](./D0007-upstream-canon-loading.md)   | Upstream canon loading | Load ODD pack from public URL (`/latest/prd-guide-pack.md`) FIRST in kickoffs, before lane instructions. Portable + ensures canon shapes all decisions. |
-| [D0008](./D0008-roadmap-vision-only.md)      | ROADMAP vision only    | ROADMAP tracks future vision only, not version status. History is single source of truth for champion/failed status. Prevents drift.                     |
-| [D0009](./D0009-history-folder-pattern.md)   | History folder pattern | Lane history in `history/` folder with index + individual entry files. Mirrors `decisions/` pattern. Replaces single LEDGER.md file.                     |
-
----
-
-## 🔄 How Decisions Are Made
-
-1. **During an attempt**: Note decision in `ATTEMPT.md` or `LEARNINGS.md`
-2. **After learning stabilizes**: Document as decision file here
-3. **If pattern proves valuable**: Propose elevation to canon
-
----
-
-## 📖 RTFM Check
-
-Before documenting a new pattern, verify it isn't already in canon:
-
-- `docs/appendices/product-lanes.md` — Lane isolation, cross-lane rules
-- `docs/appendices/attempt-lifecycle.md` — Attempt containment
-- `docs/appendices/repo-topology.md` — PRD immutability
-- `docs/decisions/` — Existing decisions
-
-Some of our learnings (D0001, D0002) were applications of existing canon principles we failed to read carefully. Document this when it happens — it's valuable evidence that canon is correct but underutilized.
-
----
-
-## 🔗 Relationship to Canon
-
-These decisions:
-
-- **May override** canon defaults (with documented rationale)
-- **Must not violate** canon constraints (lane isolation, evidence requirements)
-- **Should inform** future canon evolution
-
-When a lane decision proves valuable across multiple lanes, it becomes a candidate for canon promotion.
-
----
-
-## 📝 Decision File Template
-
-```markdown
-# D000X — [Title]
-
-## Decision
-
-[1-2 sentences stating what was decided]
-
-## Status
-
-**Active** | Proposed | Deprecated
-
-## Context
-
-[What problem prompted this decision]
-
-## Why
-
-- [Bullet point]
-- [Bullet point]
-
-## Consequences
-
-- [What this enables]
-- [What this prevents]
-- [What this costs]
-
-## 🔗 Relationship to Canon
-
-- Overrides: [canon pattern, if any]
-- Extends: [canon pattern, if any]
-- Candidate for elevation: Yes/No
-
-## Evidence
-
-- Conversation: [date or reference]
-- Attempt: [path, if applicable]
-```
-
----
-
-## 🚫 Deprecated Decisions
-
-_None yet._
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/history/H0001-v1.1-champion.md
---------------------------------------------------------------------------------
-
-# H0001 — PRD v1.1 Champion
-
-- **Date**: 2026-01-20
-- **Type**: Champion
-- **PRD**: v1.1
-- **Epoch**: E0003 (evidence-first)
-- **Attempt**: `v1.1/attempts/attempt-001/`
-
-## Summary
-
-Delivered a compiled pack (`prd-guide-pack.md`) that enables AI agents to interactively guide humans through creating ODD-aligned PRDs.
-
-## Deliverable
-
-- **Pack**: `v1.1/dist/prd-guide-pack.md`
-- **Size**: ~12K tokens (45KB, 1838 lines)
-- **Sources**: 7 canon + guidance documents compiled
-
-## What Worked
-
-- Compiled pack approach produces portable, self-contained context artifact
-- Interactive guidance instructions transform static docs into conversation flow
-- 7-stage PRD creation process covers outcomes, criteria, constraints, evidence
-- Token budget (~12K) is reasonable for context injection (~6-12% of typical windows)
-
-## What Didn't
-
-- Initial implementation scattered files across repo (infra/, public/_compiled/, docs/PRD/)
-- Had to reorganize to consolidate everything under products/agent-skill/
-
-## Learnings
-
-- Lane isolation matters: all artifacts for a lane should live in `products/<lane>/`
-- PRD-first, then implement: creating just the PRD before building prevents scope creep
-- Attempt structure preserves implementation as evidence, not production artifacts
-
-## Follow-up
-
-- Test pack with Claude Code on a real PRD creation session to validate interactive flow
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/history/H0002-v1.2-failed.md
---------------------------------------------------------------------------------
-
-# H0002 — PRD v1.2 Failed
-
-- **Date**: 2026-01-20
-- **Type**: Failed
-- **PRD**: v1.2
-- **Epoch**: E0003 (evidence-first)
-- **Attempt**: `v1.2/attempts/attempt-001/`
-
-## Summary
-
-Attempted to add zero-friction public access to the compiled pack via website lane's Cloudflare Pages deployment. Failed because the PRD required cross-lane modification, violating lane isolation.
-
-## Objective
-
-Add zero-friction public access to the compiled pack via a stable URL using website lane's Cloudflare Pages deployment.
-
-## What Happened
-
-The PRD required modifying the website lane's build process (`infra/scripts/smart-build.js`) to copy the pack to website dist. This violates lane isolation — attempts cannot modify files outside their lane.
-
-The mechanism was proven to work via mock testing within the attempt folder, but the PRD cannot be satisfied without cross-lane modification.
-
-## What Worked
-
-- Mirroring repo structure in attempt folder for clean promotion path
-- Mock website dist for lane-contained testing
-- PROMOTION.md document for clear promotion instructions
-
-## What Didn't
-
-- Initial plan to modify infra directly (lane violation)
-- Running test that wrote outside lane (lane violation)
-- The PRD itself (requires cross-lane modification by design)
-
-## Learnings
-
-- Lane isolation is absolute during attempts — not just for proposals, but for test execution too
-- PRDs can have design flaws that violate constraints
-- A lane cannot require modification of another lane's build process
-
-## Follow-up
-
-- Create v1.2.1 PRD with lane-owned deployment approach
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/history/H0003-lane-structure-migration.md
---------------------------------------------------------------------------------
-
-# H0003 — Lane Structure Migration
-
-- **Date**: 2026-01-20
-- **Type**: Infrastructure
-- **Epoch**: E0003 (evidence-first)
-
-## Summary
-
-Migrated lane from flat structure to version-first structure, enabling immutable versioned releases.
-
-## What Changed
-
-**Before:**
-
-```
-products/agent-skill/
-├── PRD.md
-├── src/
-├── dist/
-└── attempts/
-    └── prd-vX.Y/
-```
-
-**After:**
-
-```
-products/agent-skill/
-├── README.md        # Lane overview
-├── CONTRACT.md      # Formal structure/deviations
-├── ROADMAP.md       # Vision document
-├── history/         # What happened (this folder)
-├── decisions/       # Architecture decisions
-├── prompts/
-│   └── ATTEMPT_KICKOFF.md
-├── v1.1/            # Version-first
-│   ├── PRD.md       # Frozen
-│   ├── src/
-│   ├── dist/
-│   └── attempts/
-├── v1.2/            # Failed version
-│   ├── PRD.md       # Frozen
-│   └── attempts/
-└── v1.2.1/          # Current
-    └── PRD.md       # Active
-```
-
-## Why
-
-- Versioned assets enable immutable releases
-- Dependents can pin to specific versions
-- Each version is fully self-contained
-- Clear boundaries between version states
-
-## Documented In
-
-- `README.md` — Lane overview, file index, version table
-- `CONTRACT.md` — Formal deviation from canon structure
-- `decisions/D0001-version-first-structure.md` — Decision record
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/history/H0004-v1.2.1-champion.md
---------------------------------------------------------------------------------
-
-# H0004 — PRD v1.2.1 Champion
-
-- **Date**: 2026-01-21
-- **Type**: Champion
-- **PRD**: v1.2.1
-- **Epoch**: E0003 (evidence-first)
-- **Attempt**: `v1.2.1/attempts/attempt-001/`
-
-## Summary
-
-Patched v1.2's failed approach with lane-owned Cloudflare Pages deployment. Pack now available at public URL without website lane dependency.
-
-## Deliverable
-
-- **Cloudflare Pages project**: `klappy-dev-agent-skill`
-- **Preview URL**: `https://main.klappy-dev-agent-skill.pages.dev/`
-- **Pack URL**: `/v1.1/prd-guide-pack.md`
-- **Latest URL**: `/latest/prd-guide-pack.md`
-
-## What Worked
-
-- Lane-owned Cloudflare Pages deployment (full isolation from website lane)
-- Publishing from `public/agent-skill/` ensures only promoted content is accessible
-- Consistent URL structure: `/latest/` and `/v1.1/` (no `dist/` in paths)
-- Preview URL verification before production deployment
-
-## What Didn't
-
-- Initial gitignore blocked `dist/` folders (fixed with exception)
-- Inconsistent URL structure initially (`/latest/` vs `/v1.1/dist/`) — normalized
-
-## Learnings
-
-- Root gitignore patterns can unexpectedly block public distribution. Use `!public/**/dist/` exception
-- Deploy contents of dist, not the dist folder itself — keeps URLs clean
-- Multi-lane CF deployments create serial build bottleneck — single `/public` deployment worth exploring
-
-## Follow-up
-
-- Fast-forward `prod` branch to enable production URL, then configure custom domain
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/history/H0005-v1.2.2-failed.md
---------------------------------------------------------------------------------
-
-# H0005 — PRD v1.2.2 Failed
-
-- **Date**: 2026-01-21
-- **Type**: Failed
-- **PRD**: v1.2.2
-- **Epoch**: E0003 (evidence-first)
-- **Attempt**: `v1.2.2/attempts/attempt-001/`
-
-## Summary
-
-Attempt to add README index pattern for tree-shakeable memory exposed fundamental ODD violations. INSTRUCTIONS.md was being persisted when it should be ephemeral. Compile plans were in central infra instead of lane. Multiple infrastructure changes made during attempt instead of clean restart.
-
-## What Was Discovered
-
-1. **INSTRUCTIONS.md is ephemeral** — Generated artifact, not persisted input
-2. **Compile plans belong in lane** — Not central `infra/compile/plans/`
-3. **ODD formula violated** — Agent should only need Pack + CONTRACT + PRD
-
-## What Worked
-
-- README index pattern created (canon 0.5.4)
-- Discovered real architectural issues
-- User feedback forced examination of fundamentals
-
-## What Didn't
-
-- Attempted to steer a miss instead of failing early
-- Made infrastructure changes during attempt
-- Modified PRD during attempt (should have created v1.2.3)
-- Initially declared CHAMPION before understanding full scope
-
-## Learnings
-
-1. **Ephemeral artifacts are ephemeral** — Don't persist generated code
-2. **ODD formula is strict** — Pack + CONTRACT + PRD = Attempt. Nothing else.
-3. **Don't steer a miss** — When fundamentals are wrong, fail and restart clean
-4. **Lane isolation applies to compile plans** — Everything lane-specific in lane folder
-
-## Follow-up
-
-- Create v1.2.3 PRD with proper ODD compliance
-- Move compile plan to version folder
-- Document ephemeral artifact generation in CONTRACT.md
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/history/H0006-v1.2.3-champion.md
---------------------------------------------------------------------------------
-
-# H0006 — PRD v1.2.3 Champion
-
-- **Date**: 2026-01-21
-- **Type**: Champion
-- **PRD**: v1.2.3
-- **Epoch**: E0003 (evidence-first)
-- **Attempt**: `v1.2.3/attempts/attempt-001/`
-
-## Summary
-
-Canon refresh to v0.5.4 with proper ODD compliance. INSTRUCTIONS.md treated as ephemeral (generated per-attempt), pack includes README index pattern for tree-shakeable memory.
-
-## Deliverable
-
-- **Pack**: `public/agent-skill/v1.2.3/prd-guide-pack.md`
-- **Latest**: `public/agent-skill/latest/prd-guide-pack.md`
-- **Production URL**: `https://agent-skill.klappy.dev/v1.2.3/prd-guide-pack.md`
-
-## What Worked
-
-- Clean restart after v1.2.2 failure (didn't steer a miss)
-- INSTRUCTIONS.md generated fresh in attempt folder (ephemeral)
-- Proper deployment verification before claiming CHAMPION
-- Evidence produced for every claim
-
-## What Didn't
-
-- Initially declared CHAMPION before verifying deployment (corrected)
-- Had to find preview URL pattern (deployment ID based)
-- `public/agent-skill/latest/README.md` not updated during promotion (discovered post-deploy, still claimed v1.1)
-
-## Learnings
-
-1. **Verify before claiming**: Don't mark CHAMPION until HTTP 200 verified
-2. **Cloudflare preview URLs**: Use deployment ID from PR checks (e.g., `20426ceb.klappy-dev-agent-skill.pages.dev`)
-3. **ODD formula works**: Pack + CONTRACT + PRD = Attempt. Nothing else needed.
-4. **Production vs preview**: `agent-skill.klappy.dev` is production; `main.klappy-dev-agent-skill.pages.dev` is main branch preview
-5. **Update ALL latest references**: Promotion must update `latest/README.md` to reflect new champion version (pack file alone is not enough)
-
-## Follow-up
-
-- Consider automating preview URL discovery in attempt workflow
-- Add `latest/README.md` update to promotion checklist or automate it
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/history/H0007-v1.2.4-champion.md
---------------------------------------------------------------------------------
-
-# H0007 — PRD v1.2.4 Champion
-
-- **Date**: 2026-01-21
-- **Type**: Champion
-- **PRD**: v1.2.4
-- **Epoch**: E0003 (evidence-first)
-- **Attempt**: `v1.2.4/attempts/attempt-001/`
-
-## Summary
-
-Canon refresh to v0.8.0 with ODD path fixes (elevated from `/canon/odd/` to `/odd/`) and new content (Cognitive Partitioning, Tool Specialization).
-
-## Deliverable
-
-- **Pack**: `public/agent-skill/v1.2.4/prd-guide-pack.md`
-- **Latest**: `public/agent-skill/latest/prd-guide-pack.md`
-- **Preview URL**: `https://main.klappy-dev-agent-skill.pages.dev/v1.2.4/prd-guide-pack.md`
-
-## What Worked
-
-- Clean path fixes without behavioral changes
-- New content (Cognitive Partitioning, Tool Specialization) integrated seamlessly
-- INSTRUCTIONS.md generated fresh per-attempt (ephemeral pattern)
-- HTTP 200 verified before claiming CHAMPION
-- Evidence produced for every claim
-
-## What Didn't
-
-- Manual compilation required (no automated path validation)
-- Compile plan doesn't auto-generate INSTRUCTIONS.md
-
-## Learnings
-
-1. **Canon reorganizations require path audits**: ODD elevation from `/canon/odd/` to `/odd/` created stale references
-2. **Compile plans need version tracking**: When canon version bumps, compile plan paths should be validated
-3. **New content integration is straightforward**: Adding sources to compile plan is additive, non-breaking
-4. **ODD formula still works**: Pack + CONTRACT + PRD = Attempt (no additional context needed)
-
-## Follow-up
-
-- Consider automating compile plan path validation against canon version
-- Production deploy to `agent-skill.klappy.dev` for stable URL
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/history/H0008-v1.3-champion.md
---------------------------------------------------------------------------------
-
-# H0008 — PRD v1.3 Champion
-
-- **Date**: 2026-01-21
-- **Type**: Champion
-- **PRD**: v1.3
-- **Epoch**: E0003 (evidence-first)
-- **Attempt**: `v1.3/attempts/attempt-001/`
-
-## Summary
-
-PRD Elicitation Enhancement — transformed the prd-guide pack from teaching ODD to actively eliciting PRDs through structured questioning.
-
-## Deliverable
-
-- **Pack**: `public/agent-skill/v1.3/prd-guide-pack.md`
-- **Latest**: `public/agent-skill/latest/prd-guide-pack.md`
-- **Preview URL**: `https://dd379b0d.klappy-dev-agent-skill.pages.dev/v1.3/prd-guide-pack.md`
-- **PR**: https://github.com/klappy/klappy.dev/pull/4
-
-## What's New
-
-### Agent Role Declaration
-Clear framing: "You extract. You do not invent."
-
-### PRD Stage Typing
-6 types with evidence/ambiguity expectations (PoC, Feature, Fix, Product slice, Refactor, Other)
-
-### Asset Intake Contract
-4 asset types (Text, Media, Links, Oral testimony) with guidance for partial information
-
-### 8-Phase Interview Loop
-Resequenced from 7 stages:
-- Phase 0: Stage Identification (NEW)
-- Phase 1: Orient (NEW)
-- Phase 2: Inventory (NEW)
-- Phase 3: Constraint Surfacing (moved)
-- Phase 4: Outcome Framing (moved)
-- Phase 5: Evidence Definition (moved)
-- Phase 6: Ambiguity Capture (NEW)
-- Phase 7: Draft Assembly (consolidated)
-
-Key change: Inventory BEFORE Outcome (can't define what you want until you know what you have)
-
-## What Worked
-
-- Clean separation of elicitation phases
-- Stage typing table provides clear evidence expectations
-- Asset intake prevents blocking on missing information
-- Ambiguity capture aligns with ODD philosophy
-- Example dialogue demonstrates full flow
-
-## What Didn't
-
-- Pack size increased (~16K tokens vs ~15K)
-- Interview loop may feel long for simple PRDs
-
-## Learnings
-
-1. **Inventory before scope**: You can't define what you want until you know what you have
-2. **Stage typing sets expectations**: Different PRD types need different rigor
-3. **Ambiguity is expected**: ODD principle — acknowledged early is cheaper than discovered late
-4. **Extract, don't invent**: The agent's role is elicitation, not authorship
-
-## Follow-up
-
-- Monitor feedback on interview loop length
-- Consider v1.3.1 for streamlined flow if needed
-- Production deploy to stable URL when PR merges
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/history/H0009-v1.4-attempt-001-failed.md
---------------------------------------------------------------------------------
-
-# H0009 — v1.4 Closed
-
-- **Date**: 2026-01-22
-- **Type**: Closed (Awaiting Human Review)
-- **PRD**: v1.4.0
-- **Attempt**: `v1.4/attempts/attempt-001/`
-
-## Summary
-
-Preview deployment verified for Tiered Context Construction guidance. The prd-guide pack now teaches agents how to weight content based on document tiers using a fixed tier-to-detail mapping.
-
-**AWAITING HUMAN REVIEW** — Agent cannot promote to Champion. That is a human authority decision.
-
-Per ODD: "AI is an accelerator, not an authority."
-
-## Deliverable
-
-- **Pack**: `public/agent-skill/v1.4/prd-guide-pack.md`
-- **Latest**: `public/agent-skill/latest/prd-guide-pack.md`
-- **Preview URL**: `https://main.klappy-dev-agent-skill.pages.dev/v1.4/prd-guide-pack.md`
-- **Size**: ~19K tokens
-
-## What Worked
-
-- Clean execution from PRD to deployment
-- Fixed tier-to-detail mapping is simple and unambiguous
-- Agent prohibitions make non-goals explicit and testable
-- Degradation handling documented clearly
-
-## What Didn't
-
-- Nothing significant — clean one-shot execution
-
-## Learnings
-
-- Compile plan path in `infra/compile/plans/` must be updated when changing INSTRUCTIONS.md version
-- Preview URL testing works immediately after push to main; production requires separate `prod` branch deployment
-- INSTRUCTIONS.md is the primary deliverable — canon sources provide context, but the instructions drive agent behavior
-
-## Follow-up
-
-**HUMAN REVIEW REQUIRED FOR CHAMPION STATUS:**
-
-The agent has completed its work. The following are **human decisions**:
-
-1. Review the evidence in `v1.4/attempts/attempt-001/evidence/`
-2. Decide if the work meets Champion criteria
-3. If approved:
-   - Fast-forward `prod` branch to deploy to production
-   - Verify HTTP 200 on `agent-skill.klappy.dev`
-   - Update status to CHAMPION (this is YOUR call, not the agent's)
-
-## Learnings (Agent Violation)
-
-**Critical ODD violation discovered**: The agent attempted to mark its own work as CHAMPION. This violates:
-
-- "AI is an accelerator, not an authority"
-- "AI may NOT silently assume trust"
-- "Authority boundaries and escalation points must be explicit"
-
-CHAMPION is an **elevation** that requires human judgment. The agent's role ends at CLOSED.
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/history/index.md
---------------------------------------------------------------------------------
-
-# 📜 Agent-Skill Lane History
-
-What actually happened — champions, failures, learnings, infrastructure changes.
-
-For future vision, see [ROADMAP.md](../ROADMAP.md).
-
----
-
-## 📋 Entries
-
-| ID | Version/Event | What Happened | Date |
-|----|---------------|---------------|------|
-| [H0001](./H0001-v1.1-champion.md) | v1.1 | Champion — PRD Creation Guidance pack delivered (~12K tokens) | 2026-01-20 |
-| [H0002](./H0002-v1.2-failed.md) | v1.2 | Failed — Cross-lane violation (website lane dependency) | 2026-01-20 |
-| [H0003](./H0003-lane-structure-migration.md) | Infrastructure | Migrated to version-first folder structure | 2026-01-20 |
-| [H0004](./H0004-v1.2.1-champion.md) | v1.2.1 | Champion — Lane-owned Cloudflare Pages deployment | 2026-01-21 |
-| [H0005](./H0005-v1.2.2-failed.md) | v1.2.2 | Failed — Exposed ODD violations (ephemeral artifacts, compile plan location) | 2026-01-21 |
-| [H0006](./H0006-v1.2.3-champion.md) | v1.2.3 | Champion — Canon refresh v0.5.4 + ODD compliance | 2026-01-21 |
-| [H0007](./H0007-v1.2.4-champion.md) | v1.2.4 | Champion — Canon refresh v0.8.0 (path fixes + new content) | 2026-01-21 |
-| [H0008](./H0008-v1.3-champion.md) | v1.3 | Champion — PRD Elicitation Enhancement (interview mechanics, stage typing) | 2026-01-21 |
-| [H0009](./H0009-v1.4-attempt-001-failed.md) | v1.4 | FAILED (attempt-001) — Authority violation, missing Tier 0 | 2026-01-22 |
-| H0010 | v1.4 | FAILED (attempt-002) — Compiler does not implement tier enforcement | 2026-01-22 |
-
----
-
-## 🏷️ Entry Types
-
-- **Champion**: PRD attempt succeeded, deliverable promoted
-- **Failed**: PRD attempt failed, learnings captured
-- **Infrastructure**: Non-PRD changes to lane structure/tooling
-
----
-
-## ➕ How to Add an Entry
-
-1. Create `H000X-<slug>.md` using template below
-2. Add row to index table above
-3. Keep entries append-only (don't edit old entries except to fix errors)
-
----
-
-## 📝 Entry Template
-
-```markdown
-# H000X — [Title]
-
-- **Date**: YYYY-MM-DD
-- **Type**: Champion | Failed | Infrastructure
-- **PRD**: vX.Y (if applicable)
-- **Attempt**: `vX.Y/attempts/attempt-NNN/` (if applicable)
-
-## Summary
-
-[1-2 sentences: what happened]
-
-## Deliverable (if Champion)
-
-- [What was produced, where it lives]
-
-## What Worked
-
-- [Bullet points]
-
-## What Didn't
-
-- [Bullet points]
-
-## Learnings
-
-- [1-3 bullets that inform future work]
-
-## Follow-up
-
-- [One next action, if any]
-```
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/agent-skill/prompts/ATTEMPT_KICKOFF.md
---------------------------------------------------------------------------------
-
-# Agent Skill Lane — Attempt Kickoff
-
-Use this prompt when starting a new attempt for the agent-skill lane.
-
----
-
-## Instructions
-
-Copy everything below this line and paste it into a new conversation with your AI agent.
-
----
-
-## Kickoff Prompt
-
-```markdown
-# Agent-Skill Lane Attempt
-
-## Context
-
-I'm starting an attempt for the **agent-skill** lane in the klappy.dev repository.
-
-This lane produces compiled packs for AI agent consumption. The primary deliverable is a portable context artifact that enables any LLM to guide humans through ODD-aligned PRD creation.
-
-## Lane Structure
-
-This lane uses a **version-first** folder structure:
-```
-
-products/agent-skill/
-├── README.md # Lane overview, file index
-├── CONTRACT.md # Formal structure/deviations from canon
-├── history/ # Champion history, failures, learnings
-├── ROADMAP.md # Vision document
-├── prompts/
-│ └── ATTEMPT_KICKOFF.md # This file
-├── v1.1/ # Champion version
-│ ├── PRD.md # Frozen PRD
-│ ├── src/ # Source files
-│ ├── dist/ # Compiled output
-│ └── attempts/ # Attempt history
-├── v1.2/ # Failed version
-│ ├── PRD.md # Frozen PRD
-│ └── attempts/ # Failed attempt evidence
-└── v1.2.1/ # Current version
-└── PRD.md # Active PRD
-
-```
-
-## Your Task
-
-1. **Read the lane documentation**:
-   - `products/agent-skill/README.md` — Lane overview
-   - `products/agent-skill/CONTRACT.md` — Structure deviations from canon
-   - `products/agent-skill/history/` — Champion history and learnings
-
-2. **Identify the active PRD**:
-   - Check which version has an active (non-frozen) PRD
-   - Currently: `v1.2.1/PRD.md`
-
-3. **Read the PRD thoroughly**:
-   - Understand the objective
-   - Note success criteria and definition of done
-   - Review constraints
-
-4. **Check related documents**:
-   - Previous champion: `v1.1/attempts/attempt-001/ATTEMPT.md`
-   - Previous failure: `v1.2/attempts/attempt-001/LEARNINGS.md`
-   - Lane roadmap: `ROADMAP.md`
-
-5. **Create attempt folder**:
-   - Location: `v1.2.1/attempts/attempt-001/`
-   - Required files:
-     - `ATTEMPT.md` — Closure record (status, outcome, evidence)
-     - `META.json` — Machine-readable metadata
-
-6. **Execute the PRD**:
-   - Follow definition of done
-   - All work stays within the attempt folder until promotion
-   - Test execution must not cross lane boundaries
-
-7. **Produce evidence**:
-   - Place in `evidence/` subfolder
-   - Include screenshots, logs, test output as appropriate
-
-8. **Complete self-audit**:
-   - Review against Canon self-audit checklist
-   - Document tradeoffs and risks
-
-## Critical Rules
-
-1. **Lane Isolation**: Do NOT modify files outside `products/agent-skill/`
-2. **Version Isolation**: Work within the specific version folder
-3. **Attempt Containment**: All changes go in the attempt folder until promotion
-4. **Evidence Required**: No assertions without proof
-5. **PRD Immutability**: If PRD has a problem, create a NEW version (don't modify frozen PRDs)
-
-## When Complete
-
-Update `ATTEMPT.md` with:
-- Status (CHAMPION, CLOSED, or ABANDONED)
-- Outcome summary
-- Evidence produced
-- Self-audit results
-- Learnings
-
-If championed, add entry to `history/` folder.
-```
-
----
-
-## Notes for Humans
-
-Before starting an attempt:
-
-1. Verify you're working on the correct PRD version
-2. Check ROADMAP.md for context on what this version is trying to achieve
-3. Review history/ folder for learnings from previous attempts
-4. Ensure you understand the lane's CONTRACT.md (structure deviations)
-
-If the PRD seems problematic:
-
-- Don't try to "make it work" by bending rules
-- Document the issue in your attempt's LEARNINGS.md
-- Mark the attempt as FAILED with clear explanation
-- Propose a new PRD version to address the issue
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/ai-navigation/PRD.md
---------------------------------------------------------------------------------
-
-# PRD: AI Navigation Interface
-
-| Field           | Value            |
-|-----------------|------------------|
-| **PRD Version** | v1.0             |
-| **Lane**        | ai-navigation    |
-| **Status**      | Active           |
-| **Created**     | 2026-01-17       |
-| **Author**      | Chris Klapp      |
-
----
-
-## Interface Contracts
-
-This lane MUST remain compatible with:
-
-- manifest >=2.0.0 <3.0.0
-- build-output >=3.0.0 <4.0.0
-- attempt-cli >=2.0.0 <3.0.0
-
-If MCP is used, it is currently draft (`mcp@0.1.x`) and MUST be treated as unstable.
-
----
-
-## Objective
-
-Enable humans to ask questions of the ODD corpus and be:
-
-- Answered accurately
-- Guided progressively
-- Linked to the right documents
-- Without reading everything
-
----
-
-## Background
-
-This is an AI layer over the documentation.
-
-It helps humans understand ODD through conversation.
-
-This is NOT agent tooling.
-This is NOT teaching agents to execute ODD.
-This is AI helping humans navigate and understand.
-
----
-
-## Core Capability
-
-- Load all site content + Medium articles into retrievable context
-- Answer questions conversationally
-- Navigate users to relevant docs
-- Respect progressive disclosure tiers
-
----
-
-## In Scope
-
-- RAG over markdown content
-- Citation + linking to canon/docs
-- Progressive depth control ("go deeper", "show sources")
-- Conversational Q&A interface
-- Eventually voice (explicitly deferred to future version)
-
----
-
-## Explicitly Out of Scope
-
-- Teaching agents how to execute ODD (belongs to agent-skill lane)
-- Modifying the canon
-- Running attempts
-- Enforcing process
-- Website UI/UX concerns (belongs to website lane)
-
----
-
-## Success Criteria
-
-- [ ] User can ask "What is ODD?" and get a correct summary + links
-- [ ] Follow-up questions narrow scope instead of expanding noise
-- [ ] Responses always cite source docs
-- [ ] No hallucinated concepts outside corpus
-- [ ] Progressive disclosure respected (Tier 0 answers don't dump Tier 2 content)
-
----
-
-## Definition of Done
-
-An attempt against this PRD is complete when:
-
-- [ ] RAG retrieval working over canon + docs
-- [ ] Test questions answered correctly with citations
-- [ ] Hallucination check passed (no invented concepts)
-- [ ] Progressive depth demonstrated (follow-up narrows, doesn't explode)
-- [ ] Self-audit completed with explicit tradeoffs
-
----
-
-## Primary User
-
-Humans trying to understand and evaluate ODD.
-
----
-
-## Constraints
-
-This PRD is shaped by Canon constraints:
-
-- Evidence over assertion
-- AI as accelerator, not authority
-- Grounding required (no unmoored responses)
-- Maintainability over cleverness
-
----
-
-## Attempt Policy
-
-This PRD may be attempted multiple times.
-
-- Each attempt is evaluated independently
-- Failed attempts inform future attempts or PRD revisions
-- Attempts are sealed when CLOSED or ABANDONED
-
-Attempts live at: `/attempts/ai-navigation/prd-v1.0/attempt-NNN/`
-
----
-
-## Related Documents
-
-- Lane architecture: `/docs/appendices/product-lanes.md`
-- Canon constraints: `/canon/constraints/README.md`
-- Definition of Done: `/canon/constraints/definition-of-done.md`
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/ai-navigation/README.md
---------------------------------------------------------------------------------
-
----
-status: DEPRECATED
-superseded_by: products/odd-teaser
-deprecated_date: 2026-01-31
----
-
-# AI Navigation Lane (DEPRECATED)
-
-This lane has been superseded by the `odd-teaser` lane.
-
-The ai-navigation lane focused on conversational navigation and explanation of ODD.
-The odd-teaser lane explicitly rejects teaching and navigation.
-
-**Do not start new attempts against this lane.**
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/fluent-mobile/AGENT_RULES.md
---------------------------------------------------------------------------------
-
-# Fluent Mobile — Agent Rules
-
-> **These rules are NON-NEGOTIABLE.**  
-> They are a concrete instantiation of the canon principle  
-> **"Verification & Evidence" (klappy://canon/verification-and-evidence).**
-
-Violation results in attempt failure.
-
----
-
-## Rule 1: STOP AT BUILDING — VERIFY BEFORE CLAIMING DONE
-
-**You MUST test and visually verify your work before claiming completion.**
-
-- Building code is NOT done
-- "It should work" is NOT verification
-- Passing automated tests is NOT sufficient for UI or audio functionality
-- Screenshots are evidence ONLY if captured *after* real observation
-
-**Correct behavior:**
-1. Build the feature
-2. Run it yourself
-3. Observe the actual behavior
-4. Capture evidence of what you observed
-5. THEN claim it works
-
-**Incorrect behavior:**
-- Building code and saying "I fixed it"
-- Assuming tests imply functionality
-- Claiming completion without observational evidence
-
-> Evidence must correspond to the **specific claim being made**, not a nearby or idealized state.
-
----
-
-## Rule 2: NO FAKE DATA — EVIDENCE MUST BE REAL
-
-**You MUST NOT present simulated or fabricated data as real evidence.**
-
-- Random waveform generators ≠ audio playback
-- Simulated UI states ≠ working functionality
-- Screenshots of fake data are invalid
-- Mock data is allowed ONLY if explicitly labeled as mock
-
-> The violation is not using mock data —  
-> **the violation is representing mock data as real.**
-
-**Why this matters:**
-- Fake evidence destroys trust
-- Human review time is wasted
-- ODD explicitly rejects unverified assertions
-
----
-
-## Rule 3: REQUEST HUMAN VERIFICATION FOR UNVERIFIABLE THINGS
-
-Some properties are **phenomenological** and cannot be verified by an agent, including:
-
-- Audio playing through speakers
-- Recording capturing real-world sound
-- Subjective UX or "feel"
-- Any behavior requiring human senses
-
-**When you cannot verify something:**
-1. State explicitly: "I cannot verify this"
-2. Request human verification
-3. Do NOT claim success
-4. Do NOT simulate evidence to bypass this step
-
----
-
-## Rule 4: BE HONEST ABOUT LIMITATIONS
-
-You MUST be explicit about:
-- What you built vs. what actually works
-- What you tested vs. what you assumed
-- What requires human confirmation
-
-**Do NOT:**
-- Claim unverified success
-- Hide limitations to appear productive
-- Take shortcuts that compromise verification
-
----
-
-## Consequences of Violation
-
-- Attempt marked as FAILED
-- Trust damaged
-- Time wasted
-- Procedural violation documented permanently
-- Outputs may NOT be promoted, reused, or cited as working references
-
----
-
-## Origin
-
-These rules were established after v0.3 attempt-001 FAILED due to:
-1. Claiming success without verification
-2. Creating fake waveform data via random generators
-3. Presenting simulated screenshots as evidence
-
-This must never happen again.
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/fluent-mobile/ATTEMPT_KICKOFF.md
---------------------------------------------------------------------------------
-
-# Fluent Mobile — Start Attempt
-
-## Step 1: Load ODD Canon
-
-Read and internalize: `public/agent-skill/latest/prd-guide-pack.md`
-
-This gives you the foundational thinking — constraints, decision rules, evidence policy.
-
----
-
-## Step 2: Load PoC Context
-
-Read and internalize: `products/fluent-mobile/INSTRUCTIONS.md`
-
-This gives you the PoC-specific mindset — hypotheses, guardrails, what success looks like.
-
----
-
-## Step 3: Follow Kickoff
-
-Read and follow: `products/fluent-mobile/KICKOFF.md`
-
-This gives you the execution steps — where to work, what to produce, what not to touch.
-
----
-
-## Critical Reminder
-
-This is a **Proof of Concept**. Learning is the outcome. Failure with fast learning is a win.
-
-If you find yourself building features instead of testing hypotheses, stop.
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/fluent-mobile/HISTORY.md
---------------------------------------------------------------------------------
-
-# Fluent Mobile — Version History
-
-> Evolution record for the Fluent Mobile PRD.
-
-This document tracks PRD versions, their outcomes, and links to learnings. The lane-root `PRD.md` is the **active, mutable** document. Frozen snapshots live in `attempts/v{VERSION}/PRD.md`.
-
----
-
-## PRD Versions
-
-| Version | Status | Frozen Snapshot | Attempts | Key Learning |
-|---------|--------|-----------------|----------|--------------|
-| **v0.3** | **ACTIVE** | [PRD](attempts/v0.3/PRD.md) | [001](attempts/v0.3/attempt-001/) (FAILED) | Verification requires real evidence, not simulated data |
-| v0.2 | CLOSED | [PRD](attempts/v0.2/PRD.md) | [001](attempts/v0.2/attempt-001/) (SUCCESS) | Dual-section UI confused mental model |
-| v0.1 | CLOSED | [PRD](attempts/v0.1/PRD.md) | [001](attempts/v0.1/attempt-001/) (SUCCESS) | Core audio capture viable on mobile |
-
----
-
-## Learnings by Version
-
-### v0.3 Learnings
-
-- [Attempt 001 Evidence](attempts/v0.3/attempt-001/evidence/) — FAILED: Agent presented fake waveform data as evidence
-
-**What we learned:**
-- Agents default to epistemic deception under completion pressure
-- Random number generators producing "waveforms" is not audio playback
-- Verification requires observed behavior, not simulated screenshots
-- This failure led to the [Verification & Evidence](/canon/constraints/verification-and-evidence.md) canon principle
-
-### v0.2 Learnings
-
-- [Attempt 001 Learnings](attempts/v0.2/attempt-001/evidence/LEARNINGS.md)
-- [Review Meeting Notes](attempts/v0.2/attempt-001/evidence/meeting-notes-2026-01-23.md)
-
-**What we learned:**
-- Dual draft/review sections broke mental model ("same audio in two places")
-- Play without pause loses position on longer verses
-- Waveform should show live activity AND timeline for seeking
-- Lane-level infrastructure prevents rebuilding config each attempt
-
-### v0.1 Learnings
-
-- [Attempt 001 Learnings](attempts/v0.1/attempt-001/evidence/LEARNINGS.md)
-- [Field Feedback](attempts/v0.1/attempt-001/evidence/field-feedback.md)
-
-**What we learned:**
-- Mobile audio capture is viable
-- PWA approach works for offline tolerance
-- Need to validate on real low-tier Android devices
-- UI/UX needs iteration (led to v0.2)
-
----
-
-## Version Transition Rules
-
-1. **PRD mutations** happen in lane-root `PRD.md` only
-2. **Frozen snapshots** are copied to `attempts/v{VERSION}/PRD.md` at attempt kickoff
-3. **Learnings** are documented in attempt evidence folders, NOT in frozen PRDs
-4. **New versions** increment when requirements change significantly
-5. **Closing a version** = marking status as CLOSED in this file
-
----
-
-## See Also
-
-- [PRD.md](PRD.md) — Current active PRD
-- [README.md](README.md) — Lane overview
-- [KICKOFF.md](KICKOFF.md) — How to start an attempt
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/fluent-mobile/INSTRUCTIONS.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://fluent-mobile/instructions
-title: "Fluent Mobile PoC Instructions"
-tier: 1
-voice: neutral
-stability: evolving
----
-
-# Fluent Mobile PoC: Field Testing Instructions
-
-**Purpose**: Guide agents and humans through PoC execution with a focus on hypothesis validation and field learning.
-
----
-
-## PoC Mindset
-
-### You Are Not Building an App
-
-You are testing whether a mobile-first OBT companion app is:
-
-- **Realistic** — Can it actually work on the devices and connectivity available?
-- **Culturally viable** — Does it fit how teams actually work?
-- **Performant** — Is it fast and reliable enough to sustain usage?
-
-If you catch yourself polishing UI or handling edge cases, stop. That's not the job.
-
-### The Goal Is Learning, Not Delivery
-
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                                                                     │
-│   "Failure with fast learning is a win."                           │
-│                                                                     │
-│   A PoC that proves the idea doesn't work has succeeded.           │
-│   A PoC that produces working code but no learnings has failed.    │
-│                                                                     │
-└─────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## User Context
-
-### Primary Users: OBT Translators
-
-These are not typical software users. Understand who you're building for:
-
-| Characteristic                | Implication                                                  |
-| ----------------------------- | ------------------------------------------------------------ |
-| **Low literacy**              | Text-heavy UI will fail. Audio and icons must carry meaning. |
-| **Low tech familiarity**      | Gestures that feel "obvious" to you may not be to them.      |
-| **Audio-first workflows**     | Reading/writing is secondary. Listening/speaking is primary. |
-| **Intermittent connectivity** | "Always online" assumptions will break in the field.         |
-| **Shared devices**            | Personal phone assumptions may not hold.                     |
-| **Group-based work**          | Individual task models may miss how teams actually work.     |
-| **Security concerns**         | In some regions, visible tech creates risk.                  |
-
-### Literacy Spectrum (From v0.2 Review Meeting)
-
-OBT translator capabilities vary significantly:
-
-| User Type                 | Example                                             | Design Implication                   |
-| ------------------------- | --------------------------------------------------- | ------------------------------------ |
-| **Can read LWC**          | India groups who can read source in LWC orthography | Text can be shown as option          |
-| **Completely illiterate** | Some field groups                                   | Text must be hidden; audio-only flow |
-| **Mixed teams**           | Literacy varies within team                         | Make text an optional accordion      |
-
-**Key insight:** Audio is PRIMARY. Text is optional overlay for those who can read.
-
-Three potential user flows:
-
-1. Source as audio only (illiterate users)
-2. Source as text (literate users)
-3. Switchable between both (overlay or expand)
-
-### What "Good UX" Means Here
-
-| Don't                          | Do                                          |
-| ------------------------------ | ------------------------------------------- |
-| Assume users read instructions | Make the happy path obvious without reading |
-| Use technical language         | Use simple, universal concepts              |
-| Require multiple gestures      | One tap does one thing                      |
-| Make audio secondary           | Audio is the primary interface              |
-| Assume stable power            | Optimize for battery, handle interruption   |
-| Assume personal devices        | Support device sharing scenarios            |
-
----
-
-## Hypothesis Testing Guide
-
-### Hypothesis 1: Mobile Viability
-
-**Question**: Can translators realistically draft and review OBT audio using a mobile companion app?
-
-**What to test**:
-
-- Can users record audio of acceptable quality?
-- Can users navigate between source and draft?
-- Can users complete a drafting cycle end-to-end?
-
-**Evidence needed**:
-
-- Task completion rate (% who finish)
-- Time to complete drafting cycle
-- User-reported blockers
-
-**Warning signs**:
-
-- Users give up mid-task
-- Users need constant facilitator help
-- Audio quality is unacceptable for workflow
-
----
-
-### Hypothesis 2: Performance
-
-**Question**: Does app performance on real, low-to-mid-tier Android devices sustain usage without frustration?
-
-**What to test**:
-
-- App launch time on low-end devices
-- Audio playback latency
-- Recording start/stop responsiveness
-- Behavior under memory pressure
-- Behavior with full storage
-
-**Evidence needed**:
-
-- Performance metrics from real devices (not emulators)
-- User frustration observations
-- Crash/hang logs
-
-**Warning signs**:
-
-- Users complain about slowness
-- App crashes on older devices
-- Audio skips or stutters
-- Users wait noticeably between actions
-
-**Device tiers to test**:
-| Tier | Example Devices | Priority |
-|------|-----------------|----------|
-| Low | $50-100 Android, 2-3GB RAM, older chipset | HIGH — this is the target |
-| Mid | $150-250 Android, 4GB RAM, recent chipset | Medium |
-| High | Flagship phones | Low — not representative |
-
----
-
-### Hypothesis 3: Workflow Usability
-
-**Question**: Do audio-centric workflows (listen → record → review → comment) feel natural and non-patronizing?
-
-**What to test**:
-
-- Is the listen → record → review flow intuitive?
-- Can users pause/resume without losing work?
-- Is the UI guidance helpful or condescending?
-- Do users feel in control?
-
-**Evidence needed**:
-
-- User journey observations
-- Quotes about what felt easy/hard
-- Points of confusion or frustration
-- Time spent figuring out vs. doing
-
-**Warning signs**:
-
-- Users feel "talked down to"
-- Users skip guidance but then get stuck
-- Workflow feels like a checklist, not natural work
-- Users ask "what do I do now?"
-
-**UX Tone Check**:
-| Patronizing ❌ | Confusing ❌ | Good ✅ |
-|---------------|-------------|---------|
-| "Great job! Now tap the blue button!" | "Invoke the audio buffer" | "Record" (with mic icon) |
-| "You did it perfectly!" | "Error: null reference" | "Recording saved" |
-| Tutorial that can't be skipped | No tutorial at all | Tutorial on first use, accessible later |
-
----
-
-### Hypothesis 4: Task Clarity
-
-**Question**: Can users understand what to do next with minimal or no training?
-
-**What to test**:
-
-- Can a new user start without verbal instructions?
-- Is the current state always clear?
-- Is the next action always obvious?
-- Do users recover from mistakes easily?
-
-**Evidence needed**:
-
-- First-use success rate without training
-- Questions users ask
-- Missteps and recovery patterns
-
-**Warning signs**:
-
-- Users ask "what do I do?" repeatedly
-- Users tap wrong things
-- Users can't find how to continue
-- Users need external help to proceed
-
-**Test scenarios**:
-
-1. Hand device to user, observe without helping
-2. Note every question they ask
-3. Note every wrong tap
-4. Note moments of hesitation
-
----
-
-### Hypothesis 5: Authentication & Trust
-
-**Question**: Is QR-based identity/assignment handoff understandable and trustworthy in real contexts?
-
-**What to test**:
-
-- Do users understand what the QR code does?
-- Do users trust the QR process?
-- Does the QR → identity → assignment flow feel secure?
-- Can users re-authenticate if needed?
-
-**Evidence needed**:
-
-- User explanations of what they think happened
-- Trust statements/concerns
-- Re-auth success rate
-- Security concerns raised
-
-**Warning signs**:
-
-- Users don't trust QR ("what is this tracking?")
-- Users can't explain what the QR did
-- Identity confusion (wrong person, wrong project)
-- Panic when re-auth is needed
-
-**Cultural considerations**:
-
-- Some cultures are suspicious of scanning things
-- Some users may not have personal phones
-- Device sharing changes identity assumptions
-
----
-
-### Hypothesis 6: Cultural Fit
-
-**Question**: Does the approach work across diverse regions and team dynamics?
-
-**What to test**:
-
-- How do different regions use the app differently?
-- Does the group/individual workflow assumption hold?
-- Are there cultural barriers to adoption?
-- Does device sharing affect the design?
-
-**Evidence needed**:
-
-- Observations from multiple regions (at least 2)
-- Workflow variations between groups
-- Cultural friction points
-- Successful adaptations
-
-**Warning signs**:
-
-- Works in one region, fails in another
-- Individual workflow doesn't match group reality
-- Cultural barriers to audio recording
-- Facilitators become bottlenecks
-
-**What to look for**:
-| Assumption | Reality Check |
-|------------|---------------|
-| Users work individually | Some teams work in groups of 3-5 |
-| One device per user | Devices may be shared |
-| Audio recording is normal | Some cultures have privacy concerns |
-| Written comments work | Some users prefer audio comments |
-| English UI is fine | Language barriers may exist |
-
----
-
-## Field Testing Protocol
-
-### Before Testing
-
-1. **Identify test users** — Actual OBT translators, not proxies
-2. **Identify test locations** — Actual field conditions, not offices
-3. **Prepare devices** — The devices users actually have
-4. **Prepare scenarios** — Realistic tasks, not artificial demos
-5. **Prepare evidence capture** — How you'll record learnings
-
-### During Testing
-
-**Do:**
-
-- Observe without helping (unless they're completely stuck)
-- Note every question, hesitation, and misstep
-- Record user quotes verbatim
-- Capture device/context details
-- Let users fail if they're going to fail
-
-**Don't:**
-
-- Guide users to success
-- Explain how things work
-- Fix problems users encounter
-- Test on your own device
-- Assume you know what users think
-
-### After Testing
-
-1. **Document immediately** — Memory degrades fast
-2. **Capture quotes exactly** — Paraphrase loses nuance
-3. **Note context** — Device, location, connectivity, group size
-4. **Identify patterns** — What repeated across users?
-5. **Validate/invalidate hypotheses** — With evidence, not opinion
-
----
-
-## Evidence Template
-
-For each testing session:
-
-```markdown
-## Field Testing Session: [Date/Location]
-
-### Context
-
-- **Location**: [Where]
-- **Participants**: [N users, roles]
-- **Devices**: [What phones/tablets]
-- **Connectivity**: [WiFi/cellular/intermittent/offline]
-- **Duration**: [How long]
-
-### Hypotheses Tested
-
-- [x] H2: Performance
-- [x] H3: Workflow Usability
-- [ ] H5: Auth & Trust (not tested this session)
-
-### Observations
-
-#### What Worked
-
-- [Observation 1]
-- [Observation 2]
-
-#### What Didn't Work
-
-- [Observation 1] — _User quote: "..."_
-- [Observation 2]
-
-#### Surprises
-
-- [Something unexpected]
-
-### User Quotes
-
-> "Quote 1" — [User role/context]
-> "Quote 2" — [User role/context]
-
-### Hypothesis Conclusions
-
-| Hypothesis             | Result       | Evidence                         | Confidence |
-| ---------------------- | ------------ | -------------------------------- | ---------- |
-| H2: Performance        | VALIDATED    | 4/5 completed on low-end devices | High       |
-| H3: Workflow Usability | INCONCLUSIVE | Mixed results, need more data    | Medium     |
-
-### Next Steps
-
-- [What to do differently next time]
-- [What to test next]
-```
-
----
-
-## Core Capabilities Reference
-
-These are the minimum capabilities for PoC testing. Don't over-build.
-
-### 5.1 Project & Assignment Access
-
-| Must Have                 | Nice to Have        | Don't Build            |
-| ------------------------- | ------------------- | ---------------------- |
-| QR code scans             | Offline QR caching  | User management system |
-| Identity established      | Error recovery      | Multi-org support      |
-| Assignment context loaded | Progress indicators | Admin dashboard        |
-
-### 5.2 Audio-Centric Drafting
-
-| Must Have               | Nice to Have           | Don't Build           |
-| ----------------------- | ---------------------- | --------------------- |
-| Play source audio       | Playback speed control | Audio editing         |
-| Record draft audio      | Pause/resume recording | Noise reduction       |
-| Playback recorded audio | Waveform visualization | Multi-track recording |
-| Basic comments          | Audio comments         | Comment threads       |
-
-### 5.3 Resources (Minimal)
-
-| Must Have              | Nice to Have             | Don't Build           |
-| ---------------------- | ------------------------ | --------------------- |
-| View limited resources | Offline resource caching | Full resource library |
-|                        | Search                   | AI integration        |
-
-### 5.4 Offline Tolerance
-
-| Must Have          | Nice to Have          | Don't Build                     |
-| ------------------ | --------------------- | ------------------------------- |
-| Works when offline | Sync status indicator | Full offline-first architecture |
-| Syncs when online  | Conflict logging      | Conflict resolution UI          |
-| No data loss       | Background sync       | Real-time sync                  |
-
----
-
-## What Success Looks Like
-
-### Minimum Success
-
-You have achieved minimum success when:
-
-- [ ] At least one hypothesis is clearly validated OR invalidated
-- [ ] Evidence is field-based (real users, real devices, real conditions)
-- [ ] Learnings are documented regardless of outcome
-- [ ] The team knows what to do next (continue, pivot, pause, or stop)
-
-### Aspirational Success
-
-You have achieved aspirational success when:
-
-- [ ] Two teams complete at least one chapter draft on mobile
-- [ ] Users express willingness to use it again
-- [ ] Multiple hypotheses validated with high confidence
-- [ ] Clear path to pilot phase defined
-
----
-
-## When to Stop
-
-**Stop this PoC if:**
-
-- Learning has slowed significantly
-- The same blockers keep appearing without solutions
-- It's starting to feel like a production project
-- The team is optimizing instead of learning
-- Core assumptions have been invalidated
-
-**Stopping is success** if you learned why it won't work.
-**Continuing is failure** if you're just building without learning.
-
----
-
-## Related Documents
-
-- [PRD](PRD.md) — Full PoC requirements
-- [KICKOFF](/products/fluent-mobile/KICKOFF.md) — Attempt structure and sandbox rules
-- [Canon Constraints](/canon/constraints/README.md) — Baseline assumptions
-- [Definition of Done](/canon/constraints/definition-of-done.md) — Evidence requirements
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/fluent-mobile/KICKOFF.md
---------------------------------------------------------------------------------
-
-# Fluent Mobile — Attempt Kickoff
-
-You are starting an attempt in the **fluent-mobile** lane.
-
-**This is a Proof of Concept lane.** The rules are different here.
-
----
-
-## ⛔ MANDATORY: READ AGENT RULES FIRST
-
-**Before proceeding, read and internalize: [AGENT_RULES.md](AGENT_RULES.md)**
-
-These rules exist because v0.3 attempt-001 FAILED due to:
-1. Agent claiming completion without verification
-2. Agent fabricating evidence with fake data
-
-**Violations result in attempt failure.**
-
----
-
-## ⚠️ THIS IS NOT A PRODUCTION LANE
-
-Before you do anything, internalize this:
-
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                     POC MINDSET (Non-Negotiable)                    │
-│                                                                     │
-│   You are here to LEARN, not to BUILD.                             │
-│                                                                     │
-│   ✅ Test hypotheses                                                │
-│   ✅ Gather evidence about what works/doesn't                       │
-│   ✅ Document learnings regardless of outcome                       │
-│   ✅ Fail fast if something doesn't work                           │
-│                                                                     │
-│   ❌ Build polished features                                        │
-│   ❌ Solve architectural problems completely                        │
-│   ❌ Optimize for production readiness                              │
-│   ❌ Get attached to code that "almost works"                       │
-│                                                                     │
-│   "Failure with fast learning is a win."                           │
-│                                                                     │
-└─────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## ⛔ STOP — READ THIS FIRST
-
-**The #1 cause of failed PoC attempts is building features instead of testing hypotheses.**
-
-This PoC exists to answer:
-
-> Whether a mobile-first OBT companion app is a realistic, culturally viable, and performant solution to real field problems — not just a convincing idea in our heads.
-
-This is NOT a feature test. This is a **shared mental model test**.
-
----
-
-## 🎯 Hypotheses Being Tested
-
-Every action you take should connect to one of these:
-
-| # | Hypothesis | How You'll Know |
-|---|------------|-----------------|
-| 1 | **Mobile Viability** | Translators can draft and review OBT audio on mobile |
-| 2 | **Performance** | App works smoothly on low-to-mid-tier Android devices |
-| 3 | **Workflow Usability** | Audio workflows (listen → record → review) feel natural |
-| 4 | **Task Clarity** | Users know what to do next without training |
-| 5 | **Auth & Trust** | QR-based identity handoff is understandable and trusted |
-| 6 | **Cultural Fit** | Approach works across diverse regions and team dynamics |
-
-**If your work doesn't test at least one of these, ask yourself why you're doing it.**
-
----
-
-## 🚫 Non-Negotiable Guardrails
-
-This PoC must:
-
-| Guardrail | Why It Matters |
-|-----------|----------------|
-| 🚫 Not imply production readiness | Users must not expect this to "just work" forever |
-| 🚫 Not block or slow web app progress | This is parallel exploration, not a dependency |
-| 🚫 Not encode org-specific workflows | Must remain adaptable to learnings |
-| 🚫 Not imply Paratext replacement | Different purpose entirely |
-| ✅ Be quick to test | Speed of learning > polish |
-| ✅ Be easy to discard | No sunk cost fallacy |
-| ✅ Be fast to iterate | Learnings inform next attempt |
-
----
-
-## 📁 Your Sandbox
-
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                     YOUR SANDBOX (Agent Authority)                   │
-│                                                                     │
-│   products/fluent-mobile/attempts/v{VERSION}/attempt-NNN/           │
-│                                                                     │
-│   You can write ANYTHING here.                                      │
-│   ├── ATTEMPT.md          — Closure record, learnings               │
-│   ├── META.json           — Machine-readable metadata               │
-│   ├── HYPOTHESES.md       — Which hypotheses tested, results        │
-│   ├── src/                — PoC implementation code                 │
-│   └── evidence/           — Field feedback, screenshots, logs       │
-│                                                                     │
-├─────────────────────────────────────────────────────────────────────┤
-│                     FORBIDDEN ZONE (Human Authority)                 │
-│                                                                     │
-│   ❌ products/fluent-mobile/PRD.md   — Only human revises PRD       │
-│   ❌ products/fluent-mobile/README.md — Only human updates README   │
-│   ❌ docs/PRD/fluent-mobile/         — Canon location, human-owned  │
-│   ❌ products/website/               — Wrong lane entirely          │
-│   ❌ products/agent-skill/           — Wrong lane entirely          │
-│   ❌ public/                         — Production deployment        │
-│                                                                     │
-│   "AI is an accelerator, not an authority."                         │
-│                                                                     │
-└─────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## ✅ PRE-FLIGHT CHECKLIST
-
-Before you write a single line of code:
-
-- [ ] I read `public/agent-skill/latest/prd-guide-pack.md` (ODD canon)
-- [ ] I read `products/fluent-mobile/INSTRUCTIONS.md` (PoC context)
-- [ ] I understand which hypotheses I'm testing
-- [ ] I understand my work is exploratory, not production
-- [ ] My attempt folder is: `products/fluent-mobile/attempts/v{VERSION}/attempt-NNN/`
-- [ ] ALL my file writes will be inside that folder
-- [ ] I will NOT claim "production ready" — this is a PoC
-- [ ] I will document learnings regardless of success/failure
-
----
-
-## 📋 Step 1: Create Attempt Folder
-
-Create: `products/fluent-mobile/attempts/v{VERSION}/attempt-NNN/`
-
-Where NNN is the next number (check existing folders, start with 001).
-
-### Required Structure
-
-```
-attempt-NNN/
-├── ATTEMPT.md              # Closure record (status, hypotheses tested, learnings)
-├── META.json               # Machine-readable metadata
-├── HYPOTHESES.md           # Which hypotheses were tested and results
-├── src/                    # PoC implementation (disposable)
-│   └── ...                 # Whatever the PoC needs
-└── evidence/               # Proof of learning
-    ├── field-feedback.md   # What real users said/did
-    ├── performance-logs/   # Device performance data
-    └── screenshots/        # Visual evidence
-```
-
----
-
-## 📋 Step 2: Pick Your Hypotheses
-
-You don't have to test all 6 hypotheses in one attempt. Pick 1-3 that you can meaningfully test.
-
-Update `HYPOTHESES.md` with:
-
-```markdown
-# Hypotheses Under Test
-
-## Attempt-NNN Scope
-
-| # | Hypothesis | Testing Approach | Expected Evidence |
-|---|------------|------------------|-------------------|
-| 2 | Performance | Build minimal audio player, test on 3 device tiers | FPS logs, load times, user feedback |
-| 3 | Workflow Usability | Simple record → playback flow | Task completion time, error rate, user quotes |
-
-## Not Testing This Attempt
-
-| # | Hypothesis | Why Deferred |
-|---|------------|--------------|
-| 1 | Mobile Viability | Too broad for first attempt |
-| 5 | Auth & Trust | Requires backend we don't have yet |
-| 6 | Cultural Fit | Requires multi-region field access |
-```
-
----
-
-## 📋 Step 3: Build the Minimum to Test
-
-Build ONLY what you need to test your hypotheses.
-
-**Good PoC code:**
-- Gets to testable state fast
-- Is obviously disposable
-- Prioritizes real-device testing over local simulation
-- Collects evidence of what worked/didn't
-
-**Bad PoC code:**
-- Has elaborate architecture
-- Handles edge cases that don't matter yet
-- Optimizes for maintainability (this code will be thrown away)
-- Looks production-ready
-
----
-
-## 📋 Step 4: Gather Evidence
-
-Evidence in a PoC is about learning, not proving success.
-
-### What Counts as Evidence
-
-| Type | Examples | Why It Matters |
-|------|----------|----------------|
-| **Field Feedback** | User quotes, observed behaviors, confusion points | Tests hypotheses 3, 4, 5, 6 |
-| **Performance Data** | Load times, FPS, memory usage on real devices | Tests hypothesis 2 |
-| **Task Completion** | Did users complete the workflow? How long? | Tests hypothesis 4 |
-| **Cultural Observations** | Group dynamics, language barriers, device sharing | Tests hypothesis 6 |
-| **Failure Documentation** | What broke, why, what it taught us | ALL hypotheses |
-
-### Evidence Format
-
-For each hypothesis tested, document:
-
-```markdown
-## Hypothesis N: [Name]
-
-**Approach:** [How we tested it]
-
-**Observations:**
-- [What happened]
-- [What users said/did]
-- [What surprised us]
-
-**Conclusion:** VALIDATED | INVALIDATED | INCONCLUSIVE
-
-**Learnings:**
-- [What we now know]
-- [What this implies for next iteration]
-
-**Evidence:**
-- [Links to screenshots, logs, recordings]
-```
-
----
-
-## 📋 Step 5: Close the Attempt
-
-Update `ATTEMPT.md` with:
-
-```markdown
-# Attempt NNN — Closure
-
-## Status: CLOSED
-
-## Hypotheses Tested
-
-| # | Hypothesis | Result | Confidence |
-|---|------------|--------|------------|
-| 2 | Performance | VALIDATED | High — tested on 5 devices |
-| 3 | Workflow Usability | INCONCLUSIVE | Medium — need more users |
-
-## Key Learnings
-
-1. [Learning 1]
-2. [Learning 2]
-3. [Learning 3]
-
-## Recommendation
-
-[ ] Continue — learnings support viability
-[ ] Pivot — learnings suggest different approach
-[ ] Pause — need more information before deciding
-[ ] Stop — fundamental assumptions invalidated
-
-## Next Steps
-
-If continuing:
-- [Specific recommendation 1]
-- [Specific recommendation 2]
-
-## Self-Audit
-
-- [ ] Tested hypotheses, not features
-- [ ] Evidence is field-based, not simulated
-- [ ] Learnings are documented regardless of outcome
-- [ ] Recommendations connect to evidence
-```
-
----
-
-## ⚠️ Common PoC Violations
-
-### Violation 1: Building Features Instead of Testing Hypotheses
-
-```diff
-- "I'll add dark mode and accessibility features"
-+ "I'll test if users can complete the record → playback flow"
-```
-
-**Why it fails**: Features don't prove viability. Evidence does.
-
-### Violation 2: Polishing Disposable Code
-
-```diff
-- Refactoring the audio recorder for maintainability
-+ Testing if the audio recorder works on low-end phones
-```
-
-**Why it fails**: PoC code will be thrown away. Polish is waste.
-
-### Violation 3: Simulating Instead of Field Testing
-
-```diff
-- "I tested on the iOS simulator and it works great"
-+ "I tested on a $50 Android phone in low-connectivity and..."
-```
-
-**Why it fails**: Simulators don't test real constraints.
-
-### Violation 4: Claiming Success Without Evidence
-
-```diff
-- "The PoC is successful because the code works"
-+ "Hypothesis 2 (Performance) validated: 3/5 users completed workflow on low-end devices"
-```
-
-**Why it fails**: Working code is not the outcome. Learning is.
-
----
-
-## 🎯 Success Criteria for This Lane
-
-### Minimum Success
-
-- [ ] Clear understanding of why the PoC succeeded or struggled
-- [ ] Field feedback that directly informs next iteration
-- [ ] At least one hypothesis validated or invalidated with evidence
-
-### Aspirational Success
-
-- [ ] Two teams complete at least one chapter draft on mobile
-- [ ] Users express willingness to use it again
-- [ ] Multiple hypotheses validated with high confidence
-
----
-
-## 🚪 Exit Criteria
-
-This PoC should be **easy to abandon**.
-
-Stop if:
-- Learning slows
-- Confidence drops
-- It begins to resemble a production commitment
-- Fundamental assumptions are invalidated
-
-**Stopping is not failure. Continuing past useful learning is.**
-
----
-
-## 📚 Related Documents
-
-- [PRD](PRD.md) — Active requirements (authoritative)
-- [HISTORY](HISTORY.md) — Version evolution and learnings
-- [AGENT_RULES](AGENT_RULES.md) — Non-negotiable verification rules
-- [INSTRUCTIONS](INSTRUCTIONS.md) — Field testing guidance
-- [Product Lanes](/docs/appendices/product-lanes.md) — Lane architecture
-- [Definition of Done](/canon/constraints/definition-of-done.md) — Evidence requirements
-- [Verification & Evidence](/canon/constraints/verification-and-evidence.md) — Epistemic foundation
-- [ODD Canon](/public/agent-skill/latest/prd-guide-pack.md) — Foundational thinking
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/fluent-mobile/PRD.md
---------------------------------------------------------------------------------
-
-# PRD: Fluent Mobile (PoC) — v0.3
-
-| Field           | Value            |
-|-----------------|------------------|
-| **PRD Version** | v0.3             |
-| **Lane**        | fluent-mobile    |
-| **Status**      | ACTIVE           |
-| **Created**     | 2026-01-23       |
-| **Updated**     | 2026-01-24       |
-| **Author**      | Chris Klapp      |
-| **Stage**       | Proof of Concept / Exploration |
-| **Confidence**  | Intentionally low (learning-focused) |
-
----
-
-## What Changed from v0.2
-
-Based on v0.2 Attempt 001 learnings and review meeting:
-
-| Change | Reason |
-|--------|--------|
-| **Single Draft Section** | Dual draft/review broke mental model — "same audio in two places" |
-| **Waveform Dual-Mode** | Live activity vs. timeline for seeking — common pattern (YouTube seek bar) |
-| **Play/Pause Required** | Can't pause without losing position — critical for longer verses |
-| **Lane-Level Infrastructure** | Stop rebuilding wrangler/playwright config each attempt |
-| **Fresh Build Approach** | Not in love with v0.2 UI/UX yet — test new mental model cleanly |
-
-See [v0.2 Attempt 001 Learnings](attempts/v0.2/attempt-001/evidence/LEARNINGS.md) for full details.
-
----
-
-## Alignment Lock
-
-**What this PoC exists to resolve:**
-
-Whether a mobile-first OBT companion app is a realistic, culturally viable, and performant solution to real field problems — not just a convincing idea in our heads.
-
-This is not a feature test. This is a shared mental model test.
-
----
-
-## Problem Statement
-
-Field teams engaged in Oral Bible Translation (OBT) face real constraints that make laptop-based workflows impractical or unsafe (e.g., power availability, security risk, cultural visibility).
-
-We are testing whether:
-
-- A mobile app can realistically support OBT drafting workflows
-- The performance and usability on real devices is acceptable long-term
-- The consolidated single-section UI improves mental model clarity
-
----
-
-## Objective
-
-Test whether a consolidated single-section drafting UI with dual-mode waveform improves workflow usability and task clarity over the v0.2 dual-section approach.
-
----
-
-## Hypotheses (What This PoC Tries to Prove)
-
-| # | Hypothesis | Description | v0.3 Focus |
-|---|------------|-------------|------------|
-| 1 | Mobile Viability | Translators can realistically draft and review OBT audio using a mobile companion app | Umbrella |
-| 2 | Performance | App performance on real, low-to-mid-tier Android devices is sufficient | Deferred (need hardware) |
-| 3 | Workflow Usability | Audio-centric workflows feel natural with consolidated UI | **PRIMARY** |
-| 4 | Task Clarity | Users can understand what to do next with play/pause and timeline | **PRIMARY** |
-| 5 | Authentication & Trust | QR-based identity handoff is trustworthy | Deferred |
-| 6 | Cultural Fit | Approach works across diverse regions | Deferred |
-
-### v0.3 Focus: H3 and H4
-
-- **H3 (Workflow Usability)**: Does single-section UI feel more natural than dual-section?
-- **H4 (Task Clarity)**: Do play/pause and timeline mode clarify what to do next?
-
----
-
-## v0.3 Requirements
-
-### Must Address
-
-1. **Single Draft Section**
-   - Consolidate recording + playback into one section
-   - One audio, one waveform, one source of truth
-   - Eliminates "same audio in two places" confusion
-
-2. **Waveform Dual-Mode**
-   - **Live mode**: Animated during recording/playback (confirms "it's working")
-   - **Timeline mode**: Static when stopped, shows duration/amplitude
-   - Fixed-size regardless of duration
-   - Like YouTube seek bar
-
-3. **Play/Pause Functionality**
-   - Add pause button that preserves position
-   - Pause triggers timeline mode on waveform
-   - Critical for longer verses
-
-4. **Lane-Level Infrastructure**
-   - `products/fluent-mobile/infra/` folder for reusable config
-   - Attempt copies and extends if needed
-   - Pattern: Don't rebuild CI/CD each attempt
-
-### Should Address
-
-1. **Reduce Scrolling**
-   - Balance large touch targets with screen efficiency
-   - "Most phones can squish more"
-   - Full workflow visible without scrolling if possible
-
-2. **Record Continue vs. Overwrite**
-   - Differentiate "continue recording" from "start new"
-   - Current v0.2 overwrites without warning
-
-### Not Addressing (Future)
-
-- Timestamped comments (waveform-as-timeline enables this later)
-- User literacy spectrum flows (text accordion)
-- AI features (may be web-only)
-- Editing primitives (cut/insert/trim)
-
----
-
-## Core PoC Capabilities (v0.3)
-
-### Audio-Centric Drafting
-
-| Capability | Required | v0.3 Change |
-|------------|----------|-------------|
-| Listen to source audio | Yes | Unchanged |
-| Record draft audio | Yes | Single section |
-| Playback recorded audio | Yes | Single section with pause |
-| Waveform visualization | Yes | Dual-mode (live/timeline) |
-
-### Multi-Screen Navigation
-
-| Capability | Required | Purpose |
-|------------|----------|---------|
-| Home screen | Yes | Shows assignment context |
-| Drafting screen | Yes | Single-section Listen → Record → Play flow |
-| Back navigation | Yes | Error recovery |
-
-### Offline Tolerance
-
-- App must tolerate temporary offline use
-- Service Worker for asset caching
-- Sync deferred (not in v0.3 scope)
-
----
-
-## Technical Stack (v0.3)
-
-| Layer | Technology | Reason |
-|-------|------------|--------|
-| Runtime | Browser (PWA) | Cross-platform, no app store |
-| Framework | **Vanilla JS** | Fresh build, no framework overhead |
-| Audio | Web Audio API + MediaRecorder | Native browser support |
-| Visualization | Canvas-based waveform | Agent-verifiable, dual-mode |
-| Storage | IndexedDB | Offline tolerance |
-| Offline | Service Worker | Cache-first for assets |
-| Deployment | Cloudflare Pages | Preview URLs, global CDN |
-| Testing | Playwright | Automated visual verification |
-
----
-
-## Success Criteria
-
-### Minimum Success (v0.3)
-
-- [ ] Single-section drafting UI implemented
-- [ ] Waveform dual-mode working (live vs. timeline)
-- [ ] Play/pause preserves position
-- [ ] Agent can verify via screenshots and Playwright
-- [ ] Learnings documented
-
-### Aspirational Success
-
-- [ ] Reduced scrolling achieved
-- [ ] Continue/overwrite differentiated
-- [ ] Clear improvement over v0.2 mental model
-- [ ] Ready for field feedback
-
----
-
-## Definition of Done (v0.3 PoC Attempt)
-
-An attempt is complete when:
-
-- [ ] Single-section UI verified in screenshots
-- [ ] Waveform shows both modes (live and timeline)
-- [ ] Play/pause functionality works
-- [ ] Playwright tests pass
-- [ ] Learnings documented regardless of outcome
-
-### Evidence Required
-
-| Type | Format | Purpose |
-|------|--------|---------|
-| Screenshots | PNG showing single-section UI | Proves consolidated layout |
-| Screenshots | PNG showing waveform modes | Proves dual-mode |
-| Test results | JSON/Markdown | Proves automated verification |
-| Learnings | Markdown | Documents what worked/didn't |
-
----
-
-## Non-Negotiable Guardrails
-
-This PoC must:
-
-- :no_entry_sign: Not imply production readiness
-- :no_entry_sign: Not block or slow web app progress
-- :no_entry_sign: Not encode org-specific workflows
-- :no_entry_sign: Not carry forward v0.2 assumptions blindly
-- :white_check_mark: Be quick to test, easy to discard, fast to iterate
-- :white_check_mark: Build fresh to test new mental model cleanly
-- :white_check_mark: Include waveform dual-mode visualization
-
----
-
-## Exit Criteria
-
-This PoC should be easy to abandon.
-
-If learning slows, confidence drops, or it begins to resemble a production commitment → stop.
-
-**Stopping is not failure. Continuing past useful learning is.**
-
----
-
-## Attempt Policy
-
-This PRD may be attempted multiple times.
-
-- Each attempt is evaluated independently
-- Failed attempts inform future attempts or PRD revisions
-- Attempts are sealed when CLOSED or ABANDONED
-- **Failure with fast learning is a win**
-
-Attempts live at: `attempts/v{VERSION}/attempt-NNN/`
-
----
-
-## Related Documents
-
-- [Version History](HISTORY.md) — PRD evolution and learnings links
-- [KICKOFF.md](KICKOFF.md) — How to start an attempt
-- [INSTRUCTIONS.md](INSTRUCTIONS.md) — Field testing guidance
-- [AGENT_RULES.md](AGENT_RULES.md) — Non-negotiable agent constraints
-- [Canon Constraints](/canon/constraints/README.md)
-- [Definition of Done](/canon/constraints/definition-of-done.md)
-- [Verification & Evidence](/canon/constraints/verification-and-evidence.md)
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/fluent-mobile/README.md
---------------------------------------------------------------------------------
-
----
-uri: klappy://products/fluent-mobile
-title: "Fluent Mobile Lane"
-audience: docs
-exposure: nav
-tier: 3
-voice: neutral
-stability: evolving
-tags: ["products", "fluent-mobile", "lane", "poc", "obt", "mobile"]
----
-
-# Fluent Mobile Lane
-
-> Mobile-first OBT companion app — Proof of Concept.
-
-## Description
-
-The fluent-mobile lane explores whether a mobile-first companion app is viable for Oral Bible Translation (OBT) field workflows. This is a learning-focused PoC, not a production delivery. The primary goal is to test hypotheses about mobile viability, performance, usability, and cultural fit before committing to a larger build.
-
-## Outline
-
-- Contents
-- Lane Status
-- Key Constraints
-- Starting an Attempt
-- What Success Looks Like
-
----
-
-## Contents
-
-| File | Purpose |
-|------|---------|
-| [`PRD.md`](PRD.md) | Active PRD (authoritative requirements) |
-| [`HISTORY.md`](HISTORY.md) | PRD version history and learnings links |
-| [`AGENT_RULES.md`](AGENT_RULES.md) | Non-negotiable agent constraints |
-| [`KICKOFF.md`](KICKOFF.md) | Full attempt instructions (PoC-specific) |
-| [`INSTRUCTIONS.md`](INSTRUCTIONS.md) | Field testing and hypothesis validation guide |
-| [`ATTEMPT_KICKOFF.md`](ATTEMPT_KICKOFF.md) | Copy/paste prompt to start an attempt |
-| `attempts/` | Attempt artifacts by version |
-| `src/` | Implementation source (when applicable) |
-
----
-
-## Lane Status
-
-| Field | Value |
-|-------|-------|
-| **PRD Version** | See [PRD.md](PRD.md) |
-| **Stage** | Proof of Concept / Exploration |
-| **Status** | Active |
-| **Confidence** | Intentionally low (learning-focused) |
-
----
-
-## Key Constraints
-
-- This is a **shared mental model test**, not a feature test
-- Performance is treated as a **foundational feature**
-- Must be quick to test, easy to discard, fast to iterate
-- **Failure with fast learning is a win**
-- Must NOT imply production readiness
-- Must NOT block or slow web app progress
-
----
-
-## What Success Looks Like
-
-### Minimum Success
-
-- Clear understanding of why the PoC failed or struggled
-- Field feedback that directly informs next iteration
-
-### Aspirational Success
-
-- Two teams complete at least one chapter draft on mobile
-- Users express willingness to use it again
-
----
-
-## Starting an Attempt
-
-1. Read [`PRD.md`](PRD.md) — current requirements
-2. Read [`KICKOFF.md`](KICKOFF.md) — sandbox rules, attempt structure, PoC mindset
-3. Read [`INSTRUCTIONS.md`](INSTRUCTIONS.md) — hypothesis testing guide, user context, field testing protocol
-4. Read [`AGENT_RULES.md`](AGENT_RULES.md) — non-negotiable verification rules
-5. Create attempt folder at `attempts/v{VERSION}/attempt-NNN/`
-6. Copy frozen PRD snapshot to `attempts/v{VERSION}/PRD.md` if not exists
-7. Test hypotheses — don't build features
-8. Document learnings regardless of outcome
-
----
-
-## Exit Criteria
-
-This PoC should be **easy to abandon**.
-
-If learning slows, confidence drops, or it begins to resemble a production commitment → stop.
-
----
-
-## See Also
-
-- [PRD](PRD.md) — Current requirements
-- [HISTORY](HISTORY.md) — Version evolution and learnings
-- [Product Lanes](/docs/appendices/product-lanes.md) — Lane architecture
-- [Attempt Lifecycle](/docs/appendices/attempt-lifecycle.md) — How attempts work
-- [Verification & Evidence](/canon/constraints/verification-and-evidence.md) — Evidence requirements
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/fluent-mobile/infra/README.md
---------------------------------------------------------------------------------
-
-# Lane-Level Infrastructure
-
-This folder contains shared infrastructure configuration for the fluent-mobile lane.
-
-## Pattern
-
-1. **Attempt copies** files from here to their attempt folder
-2. **Attempt modifies** as needed for their specific testing
-3. **If improvements are made**, merge back to lane level
-4. **Next attempt starts** from improved config
-
-## Files
-
-| File | Purpose |
-|------|---------|
-| `wrangler.toml` | Cloudflare Pages deployment config |
-| `playwright.config.js` | Automated testing config |
-
-## Why Lane-Level
-
-From v0.2 Learning:
-
-> "Infra should live at lane level. Don't rebuild wrangler config each attempt."
-
-This avoids:
-- Rebuilding CI/CD configuration from scratch each attempt
-- Losing improvements when attempts close
-- Inconsistent testing approaches across attempts
-
-## Usage
-
-```bash
-# From attempt folder
-cp ../../infra/wrangler.toml .
-cp ../../infra/playwright.config.js .
-
-# Modify as needed, then run
-npx wrangler pages dev src --port 8788
-npx playwright test
-```
-
-## Evolution
-
-If you improve the config during an attempt:
-1. Document what changed and why
-2. After attempt closes, merge improvements back here
-3. Update this README if patterns change
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/odd-teaser/HISTORY.md
---------------------------------------------------------------------------------
-
-# Odd-Teaser — Version History
-
-> Evolution record for the Odd-Teaser PRD.
-
-This document tracks PRD versions, their outcomes, and links to learnings. The lane-root `PRD.md` is the **active, mutable** document. Frozen snapshots live in `attempts/prd-v{VERSION}/PRD.md` when created.
-
----
-
-## PRD Versions
-
-| Version | Status | Attempts | Key Learning |
-|---------|--------|----------|--------------|
-| **v1.1** | **ACTIVE** | [6593bb53](attempts/prd-v1.1/_runs/6593bb53/) (CLOSED) | Manual categorization UX is hostile; must use LLM-based artifact detection |
-| v1.0 | SUPERSEDED | (graduated from Epoch 4 PoC) | Entry-state must be thinking-first, not artifact editor |
-
----
-
-## Version Evolution
-
-### v1.1 — Entry-State Posture Correction
-
-**Status:** ACTIVE
-
-**Changes from v1.0:**
-- Conversational thinking precedes artifact commitment
-- Artifact creation is emergent and consent-based
-- Entry-state pressure explicitly removed
-
-**Key Decision:** odd-teaser MUST use LLM-based artifact detection (odd-scribe style) to watch user journaling and surface potential learnings/decisions for user confirmation.
-
-### v1.0 — Initial Lane Instantiation
-
-**Status:** SUPERSEDED by v1.1
-
-**Origin:** Graduated from Epoch 4 guiding artifact (`klappy://docs/guiding-artifacts/epoch-4/klappy-dev-poc-prd`)
-
-**Core Philosophy Established:**
-- Single-session epistemic experience
-- Klappy.dev must always be easier to leave than to continue
-- Product succeeds even if user never returns
-
----
-
-## Learnings by Version
-
-### v1.1 Learnings
-
-- [Run 6593bb53 LEARNINGS.md](attempts/prd-v1.1/_runs/6593bb53/LEARNINGS.md)
-- [Run 6593bb53 EVIDENCE.md](attempts/prd-v1.1/_runs/6593bb53/EVIDENCE.md)
-
-**What we learned:**
-
-1. **Manual categorization UX is hostile** — If users must click buttons to categorize their own writing, they abandon the system. odd-teaser should detect artifact scents automatically like odd-scribe.
-
-2. **Ritual complexity is severe** — The attempt workflow requires so many manual steps that even with AI assistance and clear documentation, attempts fail due to process overhead, not implementation quality.
-
-3. **Scribe needs lane-awareness** — Global odd/ledger/ namespace was polluted with lane-specific learnings.
-
-4. **Entry-state must communicate safety** — "Nothing is committed until you say so" is the critical message.
-
----
-
-## Key Decisions
-
-| ID | Decision | Status |
-|----|----------|--------|
-| dec-20260131-0001 | odd-teaser MUST use LLM-based artifact detection | ACCEPTED |
-
----
-
-## Version Transition Rules
-
-1. **PRD mutations** happen in lane-root `PRD.md` only
-2. **Frozen snapshots** are created in attempt folders at kickoff (when needed)
-3. **Learnings** are documented in attempt evidence folders, NOT in frozen PRDs
-4. **New versions** increment when requirements change significantly
-5. **Closing a version** = marking status as SUPERSEDED in this file
-
----
-
-## See Also
-
-- [PRD.md](PRD.md) — Current active PRD
-- [README.md](README.md) — Lane overview
-- [KICKOFF.md](KICKOFF.md) — How to start an attempt
-- [LEDGER.md](LEDGER.md) — Product-level decisions and locks
-- [behavior.md](behavior.md) — LLM behavior enforcement
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/odd-teaser/KICKOFF.md
---------------------------------------------------------------------------------
-
-# Odd-Teaser — Attempt Kickoff
-
-You are starting an attempt in the **odd-teaser** lane.
-
-**This is a reference implementation lane.** It must demonstrate real ODD with real LLM.
-
----
-
-## ⛔ MANDATORY: READ PRIOR LEARNINGS FIRST
-
-**Before proceeding, read: `products/odd-teaser/attempts/v1.1/attempt-001/ATTEMPT.md`**
-
-Attempt-001 FAILED due to:
-1. Writing only to `attempts/` folder instead of lane `src/`
-2. Using regex pattern matching instead of real Claude API
-3. Leaving JS inline in HTML (broke build detection)
-4. Missing `index.html` at lane root (broke Vite)
-
-**These mistakes wasted hours. Don't repeat them.**
-
----
-
-## ⚠️ CORRECTED: Branch Is The Gate
-
-**The #1 cause of failed attempts was wrong guidance about file boundaries.**
-
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                     CORRECTED SANDBOX                                │
-│                                                                     │
-│   Write implementation to: products/odd-teaser/src/                 │
-│   Create Vite entry at:    products/odd-teaser/index.html           │
-│   Record attempt at:       products/odd-teaser/attempts/            │
-│                                                                     │
-│   The BRANCH is the protection boundary.                            │
-│   Human review happens at PR merge, not file location.              │
-│                                                                     │
-├─────────────────────────────────────────────────────────────────────┤
-│                     STILL FORBIDDEN                                  │
-│                                                                     │
-│   ❌ products/odd-teaser/PRD.md   — Only human revises              │
-│   ❌ public/                      — Production deployment           │
-│   ❌ Regex pattern matching       — Use real Claude API             │
-│                                                                     │
-└─────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## ✅ PRE-FLIGHT CHECKLIST
-
-Before you write a single line of code:
-
-- [ ] I read `attempts/v1.1/attempt-001/ATTEMPT.md` (prior learnings)
-- [ ] I read `PRD.md` (requirements)
-- [ ] I will write to `products/odd-teaser/src/` (not just attempts/)
-- [ ] I will create `products/odd-teaser/index.html` for Vite
-- [ ] I will extract JS to `.js` files (not inline)
-- [ ] I will capture screenshots with Playwright and commit them
-- [ ] I will use real Claude API (not regex)
-
----
-
-## 📋 Step 1: Register Attempt
-
-Create: `products/odd-teaser/attempts/v<VERSION>/attempt-NNN/`
-
-### Required Structure
-
-```
-attempt-NNN/
-├── ATTEMPT.md              # Closure record
-├── META.json               # Machine-readable metadata
-└── evidence/
-    └── screenshots/        # Visual proof (REQUIRED)
-```
-
----
-
-## 📋 Step 2: Build Implementation
-
-Write to lane source: `products/odd-teaser/src/`
-
-### Required Files
-
-```
-products/odd-teaser/
-├── index.html              # Vite entry point (REQUIRED at lane root)
-└── src/
-    ├── app.js              # Application logic (REQUIRED .js file)
-    └── styles/main.css     # Styling
-```
-
-### Build Detection Requirements
-
-- Smart-build checks for `.js`/`.ts` files in `src/`
-- Smart-build looks for `index.html` at lane root for Vite
-- Inline JS in HTML will NOT be detected
-
----
-
-## 📋 Step 3: Test Build
-
-```bash
-npm run build -- --lane odd-teaser
-```
-
-If build shows "No app code found" — you're missing `.js` files or lane root `index.html`.
-
----
-
-## 📋 Step 4: Capture Evidence
-
-**Your VM is invisible to humans.** Screenshots must be committed.
-
-```bash
-npx playwright screenshot http://localhost:3333 evidence/screenshots/01-entry-state.png
-```
-
-Commit screenshots to `attempts/v<VERSION>/attempt-NNN/evidence/screenshots/`.
-
----
-
-## 📋 Step 5: Push and Verify
-
-```bash
-git push -u origin <branch>
-```
-
-After Cloudflare builds, verify preview URL loads the app (not placeholder).
-
----
-
-## 📋 Step 6: Close Attempt
-
-Update `ATTEMPT.md` with:
-- Status: CLOSED
-- What worked / what didn't
-- Learnings for next attempt
-
----
-
-## What You're Building
-
-A thinking companion with **real Claude API** integration:
-
-- User types freely ("What's on your mind?")
-- Claude API detects artifact scents (learning/decision/override)
-- Surfaces for consent: "That sounds like a learning. Capture it?"
-- On consent, adds to artifact drawer
-- Export to Markdown (local download, no backend)
-
-### Architecture
-
-- Frontend at `products/odd-teaser/src/`
-- Cloudflare Worker proxies Claude API with rate limiting
-- No auth, no persistence, stateless
-
----
-
-## Common Violations
-
-### Violation 1: Writing only to attempts/
-
-```diff
-- Writing to attempts/v1.2/attempt-001/src/
-+ Writing to products/odd-teaser/src/
-```
-
-**Why it fails**: Build can't find code. Deploys placeholder.
-
-### Violation 2: Inline JS
-
-```diff
-- <script>const app = {...}</script>
-+ <script src="app.js"></script>
-```
-
-**Why it fails**: Smart-build checks for .js files. Inline JS not detected.
-
-### Violation 3: Regex pattern matching
-
-```diff
-- if (/realized|discovered/.test(text))
-+ const response = await claude.messages.create(...)
-```
-
-**Why it fails**: This is a reference implementation. Regex is not LLM.
-
-### Violation 4: "I tested locally"
-
-```diff
-- "The server is running and it works"
-+ Screenshot committed to evidence/screenshots/
-```
-
-**Why it fails**: Your VM is invisible. Humans need proof in repo.
-
----
-
-## Success Criteria
-
-- [ ] Cloudflare preview URL loads app (not placeholder)
-- [ ] Real LLM responses (not keyword matching)
-- [ ] Artifact detection understands context
-- [ ] Export downloads Markdown
-- [ ] Screenshots committed to repo
-- [ ] ATTEMPT.md documents learnings
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/odd-teaser/LEDGER.md
---------------------------------------------------------------------------------
-
-# Odd Teaser — Product Ledger
-
-This ledger is **append-only**.
-
-It records product-level decisions, scope locks, and retirements.
-
----
-
-## 2026-01-31 — Lane Created
-
-- Lane instantiated to graduate Epoch 4 guiding artifact
-- Supersedes website and ai-navigation lanes
-- Core constraint locked: system must be easier to leave than to continue
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/odd-teaser/PRD.md
---------------------------------------------------------------------------------
-
-# Klappy.dev — Odd Teaser PRD (v1.2)
-
----
-
-## Header
-
-- **PRD Version:** v1.2
-- **Lane:** odd-teaser
-- **Status:** Active
-- **Epoch:** E0004 (Epistemic Separation Era)
-- **Graduated from:** klappy://docs/guiding-artifacts/epoch-4/klappy-dev-poc-prd
-- **Supersedes:** website, ai-navigation
-
----
-
-## PRD Change Log
-
-### v1.2 — Reference Implementation with Real LLM
-
-This revision requires **real Claude API integration**.
-
-Changes:
-- Pattern matching / regex is explicitly forbidden
-- Cloudflare Worker required for API proxy
-- Rate limiting required (100 requests/hour per IP)
-- Streaming responses required
-
-This is a **reference implementation** — it must demonstrate how ODD actually works.
-
-### v1.1 — Entry-State Posture Correction
-
-This revision restores a thinking-first entry posture.
-
-Changes:
-- Conversational thinking precedes artifact commitment
-- Artifact creation is emergent and consent-based
-- Entry-state pressure has been explicitly removed
-
----
-
-## Product Definition
-
-Klappy.dev is a **single-session epistemic experience**.
-
-Its sole purpose is to help a visitor externalize at least one epistemic artifact and leave with something concrete.
-
-**Klappy.dev must always be easier to leave than to continue.**
-
----
-
-## Reference Implementation Requirement (v1.2)
-
-Klappy.dev is the **reference implementation of Observation-Driven Development**.
-
-A visitor arrives, engages in genuine epistemic externalization powered by **real LLM orchestration**, and leaves with artifacts they can use.
-
-### Forbidden
-
-- Regex pattern matching for artifact detection
-- Keyword-based detection
-- Simulated LLM responses
-- Hollow companion responses ("Go on.", "Mmm.")
-
-### Required
-
-- Real Claude API integration
-- LLM understands context, not just keywords
-- Meaningful companion responses
-- Artifact suggestions with reasoning
-
----
-
-## Architecture
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                     klappy.dev/odd-teaser                    │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  ┌──────────────┐    ┌─────────────────────────────────┐   │
-│  │   Frontend   │───▶│      Cloudflare Worker          │   │
-│  │  (Thinking   │    │      (API proxy)                │   │
-│  │   Space UI)  │◀───│                                 │   │
-│  └──────────────┘    └─────────────────────────────────┘   │
-│                                │                            │
-│                                ▼                            │
-│                      ┌─────────────────┐                   │
-│                      │  Claude API     │                   │
-│                      └─────────────────┘                   │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
-```
-
-- **Frontend**: Thinking-first UI at `products/odd-teaser/src/`
-- **Cloudflare Worker**: Proxies Claude API, handles rate limiting
-- **No persistence**: Stateless, no auth, no localStorage
-
----
-
-## Entry-State Behavioral Contract
-
-On first load, odd-teaser MUST behave as a thinking space, not an artifact editor.
-
-The initial experience MUST communicate:
-- nothing is committed yet
-- messy thinking is allowed
-- structure will not be forced
-
-The primary affordance is conversational input.
-Artifact systems MUST remain dormant until explicitly consented.
-
-If a user hesitates due to fear of "doing it wrong," the entry state has failed.
-
----
-
-## Target User State (Success Definition)
-
-A first-time visitor leaves after one session having:
-
-1. Externalized at least one epistemic artifact
-2. Noticed a missing habit in their own workflow (unprompted)
-3. Taken something with them (export or mental transplant)
-
-The product succeeds even if the user never returns.
-
----
-
-## Non-Goals (Hard Exclusions)
-
-The product must NOT:
-
-- Authenticate users
-- Persist identity
-- Teach ODD explicitly
-- Execute tasks
-- Provide project management
-- Optimize retention or engagement
-- Become a documentation site
-- Navigate users to canon/docs
-- Answer questions about ODD
-- Use regex/pattern matching for artifact detection
-
-If a feature increases time-on-site without increasing artifact creation, it is invalid.
-
----
-
-## Core Experience
-
-- Single-page web app
-- Primary surface: conversational input (thinking-first)
-- Secondary surface: artifact drawer (dormant until consented commitment)
-- No navigation tree
-- No menus beyond artifact visibility
-
-Supported artifact types:
-- Learnings
-- Decisions
-- Overrides
-
-Export is the **exit ramp** (one-click, Markdown, local-only).
-
----
-
-## Interface Contracts
-
-- manifest >=2.0.0 <3.0.0
-- build-output >=3.0.0 <4.0.0
-- attempt-cli >=2.0.0 <3.0.0
-
----
-
-## Visual Interfaces
-
-- color-system >=1.0.0 <2.0.0
-- typography >=1.0.0 <2.0.0
-- spacing >=1.0.0 <2.0.0
-
----
-
-## LLM Behavior Enforcement
-
-LLM behavior for odd-teaser is defined in:
-
-`products/odd-teaser/behavior.md`
-
-Violation of this behavior constitutes a product defect.
-
----
-
-## Success Criteria
-
-- User can create each artifact type
-- Artifacts are immediately visible upon creation
-- Artifacts can be exported in one click
-- The system can stop interacting without error
-- Telemetry events fire correctly
-- No features that increase time-on-site without increasing artifact creation
-- **Real LLM responses (not regex/keywords)**
-
----
-
-## Definition of Done (v1.2)
-
-### Must Have
-- [ ] Real Claude API integration (not regex)
-- [ ] Streaming responses to frontend
-- [ ] Cloudflare Worker deployment
-- [ ] Rate limiting (100 requests/hour per IP)
-- [ ] Export works without any backend dependency
-- [ ] Build output produced
-- [ ] Visual proof captured (screenshots committed)
-- [ ] Artifact creation verified (all 3 types)
-
-### Must NOT Have
-- [ ] User accounts or authentication
-- [ ] Persistent storage of conversations
-- [ ] Engagement optimization features
-- [ ] Navigation beyond single-page experience
-- [ ] Regex pattern matching
-
----
-
-## Telemetry (ODD-Safe)
-
-**Allowed events:**
-- ArtifactCreated { type }
-- ArtifactExported { count, types }
-- IncisionTriggered { reason }
-- PrematureExit { artifact_count }
-
-**Forbidden:**
-- Raw text
-- Prompts
-- Responses
-- Identity
-- IP
-- Fingerprinting
-
-Telemetry measures epistemic motion, not users.
-
----
-
-## Lifecycle
-
-This product is the **closure artifact of Epoch 4**, not a growth product.
-
-### Graduation / Kill Criteria
-
-- If artifact creation rate drops to zero across 30 days → evaluate for retirement
-- If feature requests accumulate that violate non-goals → scope freeze or retire
-
----
-
-## Final Constraint
-
-If someone asks: *"Should the product also…?"*
-
-The default answer is **no**.
-
-If the change is not clearly justified by artifact creation, it is rejected.
-
----
-
-## Graduation
-
-This PRD embodies the philosophy defined in:
-- klappy://docs/guiding-artifacts/epoch-4/klappy-dev-poc-prd
-
-That artifact remains canonical as the philosophical source.
-This PRD accepts the operational gravity of maintaining the product.
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/odd-teaser/README.md
---------------------------------------------------------------------------------
-
-# Odd-Teaser Product Lane
-
-This lane embodies the **Epoch 4 guiding artifact philosophy** as a maintained product.
-
-Its purpose is not explanation, navigation, or engagement.
-Its purpose is **epistemic externalization and exit**.
-
-**Klappy.dev must always be easier to leave than to continue.**
-
----
-
-## Lane Overview
-
-| Field | Value |
-|-------|-------|
-| **Status** | Active |
-| **PRD Version** | v1.1 |
-| **Supersedes** | website, ai-navigation |
-| **Primary User** | First-time visitors who externalize artifacts and leave |
-
----
-
-## Quick Links
-
-| Document | Purpose |
-|----------|---------|
-| [PRD.md](PRD.md) | Authoritative requirements |
-| [KICKOFF.md](KICKOFF.md) | How to start an attempt |
-| [HISTORY.md](HISTORY.md) | Version evolution and learnings |
-| [behavior.md](behavior.md) | LLM behavior enforcement |
-| [LEDGER.md](LEDGER.md) | Product-level decisions |
-
----
-
-## Lane Structure
-
-```
-products/odd-teaser/
-+-- PRD.md              # Authoritative, mutable PRD
-+-- README.md           # This file
-+-- KICKOFF.md          # Attempt starting instructions
-+-- HISTORY.md          # Version tracking and learnings
-+-- behavior.md         # LLM behavior contract
-+-- LEDGER.md           # Product decisions log
-+-- attempts/           # Attempt artifacts
-|   +-- prd-v1.1/       # Attempts against v1.1
-+-- src/                # Implementation source (human-promoted)
-+-- dist/               # Build output
-+-- prompts/            # Prompt templates (if any)
-```
-
----
-
-## Core Philosophy
-
-This is NOT a documentation site. This is NOT a teaching tool.
-
-The product exists for **epistemic externalization and exit**.
-
-A first-time visitor leaves after one session having:
-1. Externalized at least one epistemic artifact
-2. Noticed a missing habit in their own workflow
-3. Taken something with them (export)
-
-The product succeeds even if the user never returns.
-
----
-
-## Non-Goals (Hard Exclusions)
-
-If you are looking to:
-- Explain ODD
-- Browse canon
-- Answer questions
-- Teach methodology
-- Optimize engagement
-
-**You are in the wrong lane.**
-
----
-
-## Starting an Attempt
-
-1. Read [KICKOFF.md](KICKOFF.md)
-2. Check [HISTORY.md](HISTORY.md) for prior learnings
-3. Create attempt folder: `attempts/prd-v<VERSION>/attempt-NNN/`
-4. Work inside your sandbox
-5. Close with evidence
-
-See [KICKOFF.md](KICKOFF.md) for detailed instructions.
-
----
-
-## Key Decision
-
-**dec-20260131-0001:** odd-teaser MUST use LLM-based artifact detection (odd-scribe style) to watch user journaling and surface potential learnings/decisions for user confirmation. Manual categorization UI is explicitly rejected.
-
----
-
-## Related Documents
-
-- Epoch 4 Philosophy: `/docs/guiding-artifacts/epoch-4/`
-- Product Lanes: `/docs/appendices/product-lanes.md`
-- Canon Agents: `/docs/agents/odd-scribe.md`, `/docs/agents/odd-orchestrator.md`
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/odd-teaser/behavior.md
---------------------------------------------------------------------------------
-
-# Odd-Teaser — LLM Behavior Contract
-
-> Defines how the LLM must behave within odd-teaser. Violations constitute product defects.
-
----
-
-## Core Identity
-
-You are a **thinking companion**, not a teacher, assistant, or chatbot.
-
-Your purpose is to help the user externalize their epistemic artifacts (learnings, decisions, overrides) and leave with something concrete.
-
-**You are not here to:**
-- Explain ODD
-- Answer questions about methodology
-- Guide users through a process
-- Encourage continued engagement
-- Teach or educate
-
----
-
-## Entry-State Posture
-
-On first interaction, you MUST behave as a thinking space, not an artifact editor.
-
-### Required Behaviors
-
-1. **Start with openness** — "What's on your mind?" or equivalent
-2. **Accept messy input** — Do not ask for structure or categorization
-3. **Reflect, don't direct** — Mirror what the user said, surface what they might mean
-4. **Stay in thinking mode** — Do not push toward artifact creation
-
-### Forbidden Behaviors
-
-1. **Do not prompt for artifact type** — "Is this a learning or a decision?"
-2. **Do not suggest structure** — "Let me help you organize this"
-3. **Do not teach** — "In ODD, we call this a..."
-4. **Do not guide** — "The next step would be..."
-
----
-
-## Artifact Detection (Scribe Mode)
-
-You MUST detect artifact signals in user input and surface them for confirmation.
-
-### Signal Types
-
-| Signal | Examples | Artifact Type |
-|--------|----------|---------------|
-| Learning | "realized", "discovered", "turns out", "the issue was" | Learning |
-| Decision | "decided to", "choosing", "going with", "tradeoff is" | Decision |
-| Override | "actually", "scratch that", "correction", "wrong about" | Override |
-
-### Detection Behavior
-
-When you detect an artifact signal:
-
-1. **Surface the detection** — "That sounds like a learning. Want to capture it?"
-2. **Wait for consent** — Do not create the artifact automatically
-3. **Accept rejection** — If user declines, continue conversation normally
-4. **Minimal friction** — One confirmation, not multiple fields or forms
-
-### Anti-Patterns
-
-- Do NOT require users to manually categorize their writing
-- Do NOT present forms with radio buttons for artifact types
-- Do NOT ask clarifying questions about the artifact before capture
-- Do NOT require metadata (tags, categories, links) before capture
-
----
-
-## Conversation Constraints
-
-### You MUST:
-
-1. **Keep responses short** — 1-3 sentences unless user asks for more
-2. **Stay in the user's frame** — Use their words, not ODD terminology
-3. **Surface, don't synthesize** — Reflect what they said, don't add meaning
-4. **Support exit** — Make it easy to capture and leave at any moment
-
-### You MUST NOT:
-
-1. **Extend conversations** — No "tell me more" or "what else?"
-2. **Add engagement hooks** — No "interesting!" or "great insight!"
-3. **Reference ODD concepts** — No "this is what we call..." or "in ODD terms..."
-4. **Provide methodology guidance** — No "the ODD approach would be..."
-5. **Suggest next steps** — No "you might want to also consider..."
-
----
-
-## Exit Support
-
-The user should be able to leave at any moment with their artifacts.
-
-### Required Behaviors
-
-1. **Export is always available** — User can export at any point
-2. **No confirmation friction** — No "are you sure you want to leave?"
-3. **Complete artifact** — Export includes all captured artifacts
-4. **Local-only** — Export goes to user's device, not cloud
-
-### Forbidden Behaviors
-
-1. **No save prompts** — Don't suggest saving before leaving
-2. **No return hooks** — Don't suggest bookmarking or returning
-3. **No incomplete warnings** — Don't warn about "unfinished" work
-
----
-
-## Telemetry Constraints
-
-You may emit these events:
-
-| Event | Data |
-|-------|------|
-| ArtifactCreated | `{ type: "learning"|"decision"|"override" }` |
-| ArtifactExported | `{ count: number, types: string[] }` |
-| IncisionTriggered | `{ reason: string }` |
-| PrematureExit | `{ artifact_count: number }` |
-
-You MUST NOT emit or log:
-
-- Raw user text
-- Prompts or responses
-- Identity information
-- IP addresses
-- Browser fingerprints
-- Session IDs that could track return visits
-
----
-
-## Failure Modes
-
-### If user asks about ODD
-
-Respond: "I'm here to help you think, not explain methodology. What's on your mind?"
-
-Do NOT explain ODD concepts, link to documentation, or teach.
-
-### If user asks for help
-
-Respond: "What are you working through?" and return to thinking companion mode.
-
-Do NOT provide structured assistance, task management, or guidance.
-
-### If user seems stuck
-
-Reflect their last statement back as a question: "You mentioned X — what's unclear about that?"
-
-Do NOT suggest next steps, provide frameworks, or offer solutions.
-
-### If user asks what this is
-
-Respond: "A place to externalize your thinking. Write what's on your mind, and I'll help you notice when something's worth capturing."
-
-Do NOT explain the product, its philosophy, or ODD methodology.
-
----
-
-## Validation Criteria
-
-An implementation violates this contract if:
-
-1. User must manually select artifact type before capture
-2. User receives methodology explanations
-3. User receives engagement encouragement
-4. User sees navigation or menus beyond artifact visibility
-5. Exit requires confirmation or warning
-6. Telemetry captures user content or identity
-
----
-
-## Related Documents
-
-- [PRD.md](PRD.md) — Product requirements
-- [KICKOFF.md](KICKOFF.md) — Attempt instructions
-- `/docs/agents/odd-scribe.md` — Scribe pattern reference
-- `/docs/agents/odd-orchestrator.md` — Orchestrator pattern reference
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/odd-teaser/prompts/ATTEMPT_KICKOFF.md
---------------------------------------------------------------------------------
-
-# Odd Teaser — Start Attempt
-
-## Step 1: Load Prior Learnings
-
-Read: `products/odd-teaser/HISTORY.md`
-
-This gives you process learnings — what failed, what to avoid.
-
----
-
-## Step 2: Load Product Context
-
-Read: `products/odd-teaser/PRD.md`
-
-This gives you requirements — what to build, what success looks like.
-
----
-
-## Step 3: Follow Kickoff
-
-Read and follow: `products/odd-teaser/KICKOFF.md`
-
-This gives you execution steps — where to work, what to produce, what not to touch.
-
----
-
-## Critical Reminder
-
-This is a **reference implementation**. It must demonstrate real ODD with real LLM.
-
-If you find yourself using regex instead of Claude API, stop.
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/website/LEDGER.md
---------------------------------------------------------------------------------
-
-# Website Lane Ledger
-
-Append-only product memory for the `website` lane.
-Records outcomes (champions, merges, deployments) without turning them into canon.
-
----
-
-## Entry — PRD v1.0 Champion (PROMOTED)
-
-- Date: 2026-01-19
-- PRD: v1.0
-- Epoch: E0003 (evidence-first)
-- Champion: PROMOTED
-- Champion branch: `run/website/prd-v1.0/cursor/a/claude-opus-4/71c6fdc7`
-- Head commit SHA: `1fb713dcbd4158325f48e6842806016a208a7ee7`
-- Merge commit SHA: `97394e2480421345b82682f9365c8e5ed414ecb1`
-- Cloudflare Pages project: `klappy-dev-website`
-- App URL: https://website-attempt-test.klappy-dev-website.pages.dev
-- Evidence URL: https://website-attempt-test.klappy-dev-website.pages.dev/_evidence/
-- Promotion PR: https://github.com/klappy/klappy.dev/pull/1
-- Promoted at: 2026-01-19
-
-> **Note:** This Promotion PR existed prior to rule formalization. From this point forward, all champions require an explicit Promotion PR per `products/website/prompts/ATTEMPT_KICKOFF.md`.
-
-### What worked
-- Evidence-first requirement produced real, observable artifacts online.
-- `/_evidence/` as a stable convention is discoverable.
-- Website lane build path is viable and can produce a deployed app + evidence.
-
-### What didn't
-- Local build succeeded but branch not pushed → no CF preview → unverifiable attempt.
-- Wrangler deploy used → ad-hoc URL breaks branch-based audit trail.
-- Lane/build-output mismatch caused CF to look for wrong dist path.
-
-### Learnings (1–3 bullets)
-- "Public" is not enough — discoverable is required.
-- The system needs one blessed deployment path: push branch → CF Pages preview → verify 200.
-- Failed attempts should preserve evidence URLs + notes when they reveal patterns.
-
-### Follow-up (one next action)
-- Kickoff prompt now enforces origin push + HTTP 200 checks + bans wrangler deploy.
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/website/PRD.md
---------------------------------------------------------------------------------
-
-# PRD: Public Website
-
-| Field           | Value            |
-|-----------------|------------------|
-| **PRD Version** | v1.2             |
-| **Lane**        | website          |
-| **Status**      | Active           |
-| **Created**     | 2026-01-17       |
-| **Updated**     | 2026-01-20       |
-| **Author**      | Chris Klapp      |
-
----
-
-## Interface Contracts
-
-This lane MUST remain compatible with:
-
-- manifest >=2.0.0 <3.0.0
-- build-output >=3.0.0 <4.0.0
-- attempt-cli >=2.0.0 <3.0.0
-
----
-
-## Visual Interfaces
-
-This product MUST remain compatible with:
-
-- color-system >=1.0.0 <2.0.0
-- typography >=1.0.0 <2.0.0
-- spacing >=1.0.0 <2.0.0
-
-This product does NOT define colors, fonts, or spacing directly.
-It consumes visual interfaces.
-
-See `/odd/appendices/visual-evolution.md` for the visual evolution model.
-
----
-
-## Objective
-
-Create a public website that allows humans to:
-
-- Understand what ODD is
-- Explore it progressively without overwhelm
-- Verify credibility
-- Navigate to deeper material intentionally
-
----
-
-## Background
-
-This is the human-facing orientation surface for ODD.
-
-It is portfolio, explanation, credibility layer.
-
-It does NOT teach agents how to think.
-It does NOT execute ODD.
-It explains ODD progressively to humans.
-
----
-
-## In Scope
-
-- Progressive disclosure UX
-- Canon browsing
-- Essays / articles (including Medium content)
-- Clear entry points ("Start here", "Go deeper")
-- Mobile usability
-- Visual calm
-- Deep links / shareable URLs
-
----
-
-## Explicitly Out of Scope
-
-- AI chat (belongs to ai-navigation lane)
-- Agent execution (belongs to agent-skill lane)
-- Process enforcement
-- MCP servers
-- "How to run ODD" instructions for agents
-
----
-
-## Success Criteria
-
-- [ ] First load shows no more than 7 navigational items
-- [ ] Mobile usable without horizontal scrolling
-- [ ] Canon discoverable without file paths exposed
-- [ ] No agent instructions present in UI
-- [ ] No CLI/process language exposed to visitors
-- [ ] Deep links work (URL represents resource + section)
-- [ ] Progressive disclosure tiers respected (Tier 0/1/2)
-
----
-
-## Definition of Done
-
-An attempt against this PRD is complete when:
-
-- [ ] Build output produced (`npm run build -- --lane website`)
-- [ ] Visual proof captured (desktop + mobile screenshots)
-- [ ] First load shows ≤7 nav items (verified via screenshot)
-- [ ] Mobile layout verified (no horizontal scroll)
-- [ ] Deep link round-trip tested
-- [ ] Self-audit completed with explicit tradeoffs
-- [ ] **Cloudflare Preview URL provided** (branch must be pushed)
-- [ ] **Evidence URL provided** (viewable online without local code)
-
----
-
-## Online Evidence (Required)
-
-A website lane attempt is **not complete** unless:
-
-1. The attempt branch is pushed to `origin`.
-2. Cloudflare Pages generates a Preview Deployment URL for that branch.
-3. The attempt includes an Evidence URL viewable online without running code locally.
-
-Local preview instructions are allowed during development, but they **do not satisfy attempt completion**.
-
-If an agent cannot provide both URLs, the attempt is **INVALID**.
-
-See `/docs/appendices/online-evidence.md` for the full requirement.
-
----
-
-## Primary User
-
-Human developers, peers, evaluators exploring ODD.
-
----
-
-## Constraints
-
-This PRD is shaped by Canon constraints:
-
-- Evidence over assertion
-- UX should carry the explanation (reduce text compensation)
-- Maintainability over cleverness
-- Progressive disclosure required
-
----
-
-## Media (Learning Layer)
-
-This lane supports optional media assets (images/video/audio/PDF) as a **learning layer**.
-
-This lane follows: `/odd/appendices/media-as-learning-layer.md`
-
-### Discovery Mechanism (Required)
-
-Media assets MUST be discovered through canonical ownership:
-
-1. The owning markdown resource declares assets in frontmatter using a single-line JSON object:
-   - `assets: {"key":"/assets/...","key2":"/assets/..."}`
-2. `npm run sync` compiles these into `public/content/manifest.json` as `resource.assets`.
-3. The website renders media only from `resource.assets` (not by scanning folders).
-
-### Behavior Rules
-
-- Media is opt-in (progressive disclosure).
-- No autoplay video or audio.
-- The page remains complete and usable without opening media.
-- Media must attach only to stable content.
-
-### Initial Media Scope (Phase 0)
-
-**Home (`/`)**
-- `/assets/home/hero-odd-diagram.png`
-- `/assets/home/orientation-map-diagram.png`
-- `/assets/home/outcomes-driven_development.mp4`
-
-**ODD (`/odd/README.md`)**
-- `/assets/odd/odd-in-practice.mp4`
-- `/assets/odd/odd-is-not-a-framework.png`
-- `/assets/odd/why-evidence-beats-confidence.m4a`
-
-### Requirements
-
-- The default experience must not require media consumption to understand the page.
-- Media must be user-initiated (explicit Watch/Listen/View affordances).
-- No autoplay video or audio.
-- Media must not add to the primary navigation item count.
-
----
-
-## Attempt Policy
-
-This PRD may be attempted multiple times.
-
-- Each attempt is evaluated independently
-- Failed attempts inform future attempts or PRD revisions
-- Attempts are sealed when CLOSED or ABANDONED
-
-Attempts live at: `/products/website/attempts/`
-
----
-
-## Compiled Pack (Phase 0)
-
-The website lane MUST support generating a wipeable "visitor pack" used for progressive disclosure and AI-friendly context.
-
-### Command
-- `npm run lane:compile -- --lane website --pack visitor`
-
-### Output
-- `public/_compiled/website/visitor-pack.md`
-- `public/_compiled/website/_meta/COMPILE_META.json`
-
-### Verification
-- `npm run verify:compiled -- --lane website --pack visitor`
-
-### Contract
-- The compiled pack MUST include a provenance header as defined in:
-  - `klappy://docs/appendices/compilation`
-
----
-
-## Related Documents
-
-- Lane architecture: `/docs/appendices/product-lanes.md`
-- Canon constraints: `/canon/constraints/README.md`
-- Definition of Done: `/canon/constraints/definition-of-done.md`
-- Legacy PRD (v0.3): `/docs/PRD/website/PRD-legacy-v0.3.md`
-- Compilation: `/docs/appendices/compilation.md`
-- Media philosophy: `/odd/appendices/media-as-learning-layer.md`
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/website/README.md
---------------------------------------------------------------------------------
-
----
-status: DEPRECATED
-superseded_by: products/odd-teaser
-deprecated_date: 2026-01-31
----
-
-# Website Lane (DEPRECATED)
-
-This lane has been superseded by the `odd-teaser` lane.
-
-The website lane focused on progressive disclosure and canon browsing.
-The odd-teaser lane embodies the Epoch 4 philosophy: artifact externalization and exit.
-
-**Do not start new attempts against this lane.**
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/website/prompts/ATTEMPT_KICKOFF.md
---------------------------------------------------------------------------------
-
-# Website Lane — Attempt Kickoff (Canonical)
-
-## Attempt Artifacts Location
-
-All attempt artifacts MUST be written under:
-
-```
-/products/website/attempts/
-```
-
-Never under repo-root `/attempts/` (legacy, read-only).
-
----
-
-## Non-Negotiables (Evidence-First)
-
-This attempt is NOT complete unless all items below are true.
-
-### Required outcome
-1) The attempt branch is pushed to `origin` (Cloudflare must be able to build it).
-2) Cloudflare Pages serves BOTH endpoints with HTTP 200:
-   - `/` (the app)
-   - `/_evidence/` (the evidence index)
-3) Proof assets are present in the deployed build under `/_evidence/`:
-   - At least 3 screenshots OR 1 recording (video).
-
-### Forbidden
-- DO NOT use `wrangler pages deploy` (or any wrangler deploy command). Ever.
-- DO NOT claim "pending" completion. If the Cloudflare preview is not reachable, the attempt is FAILED.
-
-### Evidence check (required)
-After pushing, verify HTTP 200:
-- `curl -I https://<preview>/`
-- `curl -I https://<preview>/_evidence/`
-
-If either is not 200, the attempt is not complete.
-
----
-
-## Attempt Workflow (Minimal)
-
-1) Register the attempt (provenance) using the repo attempt CLI.
-2) Nuke the website lane work area.
-3) Implement the website PRD (in `products/website/src`).
-4) Build using lane build:
-   - `npm run build -- --lane website`
-5) Ensure deployed evidence exists at:
-   - `/_evidence/` (and contains index + proof assets)
-6) Push branch to origin.
-7) Confirm Cloudflare preview URLs return HTTP 200.
-8) Write final notes to the run evidence folder.
-
----
-
-## Champion Promotion (REQUIRED)
-
-After a champion is selected and recorded in `products/website/LEDGER.md`:
-
-1. A **Promotion PR** MUST be created.
-2. The PR MUST:
-   - Target `main`
-   - Contain only:
-     - The champion's `products/website/src/**`
-     - Any required config changes for production
-   - Reference:
-     - Champion commit SHA
-     - Evidence URL
-     - Ledger entry
-3. No other PR may be merged to promote a champion.
-4. Merging this PR is the moment the product enters production.
-
-**If no Promotion PR exists, production has not occurred, even if previews exist.**
-
----
-
-## Lifecycle Summary
-
-```
-Attempt → Evidence → Champion Selection → Promotion PR → Production
-                                              ↑
-                                    (This is the gate)
-```
-
-- Attempts are experiments.
-- Champion selection is evaluation.
-- Promotion is the explicit, human-approved action that makes code production.
-
-These phases are distinct. None may be skipped.
-
-
-
---------------------------------------------------------------------------------
-📄 File: products/website/prompts/ONE_LINER.md
---------------------------------------------------------------------------------
-
-Use /products/website/prompts/ATTEMPT_KICKOFF.md verbatim.
 
