@@ -38,49 +38,44 @@ This tool applies the epistemic modes defined in Canon (`klappy://canon/epistemi
 {
   "type": "object",
   "properties": {
-    "goal": {
+    "input": {
       "type": "string",
       "description": "The goal, idea, or situation to assess. Describe what you are trying to achieve or understand."
     },
-    "context": {
+    "canon_url": {
       "type": "string",
-      "description": "Optional. Relevant prior decisions, artifacts, constraints, or evidence that bear on the goal."
-    },
-    "declared_mode": {
-      "type": "string",
-      "enum": ["exploration", "planning", "execution"],
-      "description": "Optional. The mode the caller believes they are in. If provided, orient will validate this claim against available evidence."
+      "description": "Optional. GitHub repo URL for canon override. Defaults to the configured baseline."
     }
   },
-  "required": ["goal"]
+  "required": ["input"]
 }
 ```
 
-### Response Shape
+### Response Shape (Observed)
 
 ```json
 {
-  "mode": {
-    "current": "exploration | planning | execution",
-    "confidence": "high | moderate | low",
-    "basis": "string — what evidence or signals determined the mode"
-  },
-  "unresolved": [
-    {
-      "item": "string — what remains open",
-      "type": "assumption | unknown | tension | dependency",
-      "impact": "string — why this matters for progression"
-    }
-  ],
-  "questions": [
-    "string — specific questions to answer before progressing"
-  ],
-  "valid_actions": [
-    "string — actions that are legitimate in the current mode"
-  ],
-  "warnings": [
-    "string — drift signals, mode mismatches, or epistemic smells detected"
-  ]
+  "action": "orient",
+  "result": {
+    "status": "ORIENTED",
+    "creed": [
+      "string — orientation creed lines from canon/values/orientation.md"
+    ],
+    "current_mode": "exploration | planning | execution",
+    "mode_confidence": "high | moderate | low",
+    "assumptions": [
+      "string — assumptions detected in the input"
+    ],
+    "suggested_questions": [
+      "string — questions to answer before progressing"
+    ],
+    "canon_refs": [
+      {
+        "path": "string — file path#Section Name",
+        "quote": "string — relevant excerpt from the referenced document"
+      }
+    ]
+  }
 }
 ```
 

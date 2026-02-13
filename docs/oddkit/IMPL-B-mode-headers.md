@@ -6,10 +6,15 @@ exposure: internal
 tier: 3
 voice: neutral
 stability: evolving
+status: superseded
 tags: ["oddkit", "implementation", "epistemic-modes"]
 ---
 
 # Implementation Instruction Set B
+
+**Superseded (E0005.1):** Mode headers described here were not implemented. Explicit mode declaration is handled by the `declared_mode` parameter in `oddkit_orient`.
+
+---
 
 ## Add optional epistemic mode headers in conversations
 

@@ -6,10 +6,15 @@ exposure: internal
 tier: 3
 voice: neutral
 stability: evolving
+status: superseded
 tags: ["oddkit", "implementation", "epistemic-modes"]
 ---
 
 # Implementation Instruction Set A
+
+**Superseded (E0005.1):** The `explain` action described here was never implemented as a standalone tool. The concept of epistemic mode annotation is handled by `oddkit_orient`, which returns `current_mode` and `mode_confidence` in every response.
+
+---
 
 ## Lightly annotate oddkit explain output with detected epistemic mode
 

@@ -39,67 +39,48 @@ This tool operationalizes two canon constraints: boundary transitions require de
 {
   "type": "object",
   "properties": {
-    "from_mode": {
+    "input": {
       "type": "string",
-      "enum": ["exploration", "planning", "execution"],
-      "description": "The current epistemic mode being exited."
+      "description": "The proposed transition (e.g., 'ready to build', 'moving to planning'). Describe the transition and any supporting evidence."
     },
-    "to_mode": {
+    "context": {
       "type": "string",
-      "enum": ["exploration", "planning", "execution"],
-      "description": "The target epistemic mode being entered."
+      "description": "Optional. What has been decided so far — prior decisions, artifacts, or evidence."
     },
-    "evidence": {
+    "canon_url": {
       "type": "string",
-      "description": "Optional. Evidence, artifacts, or context that support the transition. What has been produced, decided, or validated so far."
-    },
-    "goal": {
-      "type": "string",
-      "description": "Optional. The goal or initiative being transitioned. Provides context for evaluating readiness."
+      "description": "Optional. GitHub repo URL for canon override."
     }
   },
-  "required": ["from_mode", "to_mode"]
+  "required": ["input"]
 }
 ```
 
-### Response Shape
+### Response Shape (Observed)
 
 ```json
 {
-  "gate_status": "pass | block | conditional",
-  "transition": {
-    "from": "exploration | planning | execution",
-    "to": "exploration | planning | execution",
-    "direction": "forward | revert | skip"
-  },
-  "boundary_exit": {
-    "obligations_met": [
-      "string — current-mode obligations that have been satisfied"
-    ],
-    "obligations_unmet": [
-      "string — current-mode obligations that remain unsatisfied"
-    ],
-    "closures_needed": [
-      "string — decisions or scope items that must be encoded before leaving"
-    ]
-  },
-  "boundary_entry": {
-    "prerequisites": [
-      "string — what must exist before entering the target mode"
-    ],
-    "active_constraints": [
-      "string — constraints that govern behavior in the target mode"
-    ],
-    "risks_to_accept": [
-      "string — risks inherent to the target mode that must be explicitly acknowledged"
-    ]
-  },
-  "conditions_to_proceed": [
-    "string — specific conditions that, if met, would change a block to pass"
-  ],
-  "warnings": [
-    "string — drift signals, skipped phases, or assumption smuggling detected"
-  ]
+  "action": "gate",
+  "result": {
+    "status": "PASS | BLOCK",
+    "transition": {
+      "from": "string — detected or declared source mode",
+      "to": "string — detected or declared target mode"
+    },
+    "prerequisites": {
+      "met": [
+        "string — prerequisites satisfied"
+      ],
+      "unmet": [
+        "string — prerequisites not yet satisfied"
+      ],
+      "unknown": [
+        "string — prerequisites that could not be evaluated"
+      ],
+      "required_met": "number — count of met prerequisites",
+      "required_total": "number — count of total prerequisites"
+    }
+  }
 }
 ```
 
