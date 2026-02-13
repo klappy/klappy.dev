@@ -6,6 +6,7 @@ exposure: nav
 tier: 2
 voice: neutral
 stability: evolving
+epoch: E0005
 tags: ["oddkit", "agents", "epistemic-modes"]
 ---
 
@@ -17,7 +18,8 @@ tags: ["oddkit", "agents", "epistemic-modes"]
 
 This document depends on:
 
-- **Canon: Epistemic Modes**
+- **Canon: Epistemic Modes** — `canon/definitions/epistemic-modes.md`
+- **Canon: Axioms** — `canon/values/axioms.md` (values-first grounding for mode behavior)
 
 If Canon changes, this document must adapt.
 
@@ -61,13 +63,13 @@ Refusals MUST cite the epistemic reason, not a tool limitation.
 
 ## Interaction with Other oddkit Capabilities
 
-- **Librarian** respects mode by:
+- **Search / Get / Catalog** (`oddkit_search`, `oddkit_get`, `oddkit_catalog`) respects mode by:
   - preferring governing docs in Planning
   - allowing broader sources in Exploration
 
-- **Validation** triggers only in Execution
+- **Validate** (`oddkit_validate`) triggers only in Execution
 
-- **Promotions** occur only after repeated Execution outcomes
+- ~~**Promotions**~~ — Historical concept from the lane era; not present in the current oddkit action set.
 
 ---
 

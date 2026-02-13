@@ -39,56 +39,51 @@ This tool operationalizes the epistemic challenge constraint (`klappy://canon/ep
 {
   "type": "object",
   "properties": {
-    "claim": {
+    "input": {
       "type": "string",
       "description": "The claim, assumption, or proposal to challenge. State it as the claimant would."
     },
-    "claim_type": {
+    "mode": {
       "type": "string",
-      "enum": ["assertion", "assumption", "proposal", "completion_claim", "scope_decision"],
-      "description": "Optional. The nature of what is being challenged. Helps calibrate proportional pressure."
+      "enum": ["exploration", "planning", "execution"],
+      "description": "Optional. Epistemic mode for proportional challenge."
     },
-    "context": {
+    "canon_url": {
       "type": "string",
-      "description": "Optional. Surrounding context — current mode, prior decisions, relevant constraints, or evidence already gathered."
-    },
-    "stakes": {
-      "type": "string",
-      "enum": ["low", "moderate", "high", "irreversible"],
-      "description": "Optional. How consequential this claim is. Higher stakes trigger more rigorous challenge. Defaults to moderate."
+      "description": "Optional. GitHub repo URL for canon override."
     }
   },
-  "required": ["claim"]
+  "required": ["input"]
 }
 ```
 
-### Response Shape
+### Response Shape (Observed)
 
 ```json
 {
-  "challenged": "string — restated version of the claim being tested",
-  "tensions": [
-    {
-      "source": "string — canon reference, prior decision, or evidence that creates tension",
-      "description": "string — what the tension is",
-      "type": "contradiction | gap | drift | scope_mismatch | weak_evidence"
-    }
-  ],
-  "missing_evidence": [
-    {
-      "what": "string — evidence that would strengthen or refute the claim",
-      "smallest_artifact": "string — the cheapest artifact that would increase certainty"
-    }
-  ],
-  "risks": [
-    {
-      "risk": "string — an unexamined risk exposed by the challenge",
-      "severity": "low | moderate | high",
-      "mitigation": "string — what would reduce this risk"
-    }
-  ],
-  "next_step": "string — one actionable step to increase certainty",
-  "posture": "SUPPORTED | INSUFFICIENT_EVIDENCE | CONTESTED"
+  "action": "challenge",
+  "result": {
+    "status": "CHALLENGED",
+    "claim_type": "string — inferred type: observation | assertion | assumption | proposal",
+    "tensions": [
+      "string — tensions with canon or prior decisions"
+    ],
+    "missing_prerequisites": [
+      "string — evidence or prerequisites not yet provided"
+    ],
+    "challenges": [
+      "string — specific questions that would need answers to proceed"
+    ],
+    "suggested_reframings": [
+      "string — alternative framings that would be stronger"
+    ],
+    "canon_constraints": [
+      {
+        "citation": "string — file path#Section Name",
+        "quote": "string — relevant excerpt from canon"
+      }
+    ]
+  }
 }
 ```
 

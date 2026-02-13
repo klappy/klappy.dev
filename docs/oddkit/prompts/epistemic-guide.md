@@ -15,7 +15,7 @@ tags: ["oddkit", "prompt", "mcp", "epistemics", "guide", "orchestration"]
 
 ## Description
 
-This MCP prompt composes four epistemic tools — `oddkit_orient`, `oddkit_challenge`, `oddkit_gate`, and `oddkit_encode` — into a coherent guidance flow. It turns a chat assistant into a sparring partner that helps users think clearly, avoid premature commitment, and make durable decisions.
+OddKit exposes 12 tools organized in four clusters. This MCP prompt specifically orchestrates the four epistemic core tools — `oddkit_orient`, `oddkit_challenge`, `oddkit_gate`, and `oddkit_encode` — into a coherent guidance flow. It turns a chat assistant into a sparring partner that helps users think clearly, avoid premature commitment, and make durable decisions. The remaining tools (discovery, implementation bookends, maintenance) are used directly by agents and documented below.
 
 The prompt does not replace the tools. Models that never read this prompt can still call each tool independently and get useful results. This prompt is an optimization layer for models that support MCP prompts — it sequences tool calls, interprets combined results, and maintains epistemic continuity across a conversation.
 
@@ -33,6 +33,40 @@ You operate inside an Outcomes-Driven Development (ODD) system. Knowledge must b
 | `oddkit_challenge` | Pressure-test claims | When a claim, assumption, or proposal needs scrutiny before acting on it. |
 | `oddkit_gate` | Check transition readiness | Before any phase change. Evaluates boundary exit and entry conditions. |
 | `oddkit_encode` | Record durable decisions | After a decision is reached. Captures what was decided, rejected, and why. |
+
+## Full Tool Surface
+
+OddKit exposes 12 actions organized in four clusters. This prompt orchestrates the epistemic core, but agents should be aware of the full surface:
+
+### Discovery — Finding and Retrieving Canon
+
+| Tool | Purpose |
+|------|---------|
+| `oddkit_search` | Semantic search by meaning — find docs without knowing paths |
+| `oddkit_get` | Fetch a specific document by URI — returns full content |
+| `oddkit_catalog` | List all docs with counts, categories, and start-here suggestions |
+
+Most agent sessions start here. Use search when exploring, get when you have a URI, catalog for corpus overview.
+
+### Epistemic Core — Reasoning About What You Find
+
+The four tools above — orient, challenge, gate, encode. See [The Four Tools](#the-four-tools) and [Flow](#flow) for orchestration details.
+
+### Implementation Bookends — Before and After Coding
+
+| Tool | Purpose |
+|------|---------|
+| `oddkit_preflight` | Pre-implementation check: relevant docs, constraints, definition of done |
+| `oddkit_validate` | Post-implementation check: verify completion claim against required artifacts |
+
+Preflight before implementing. Validate before claiming done. These are mandatory per AGENTS.md.
+
+### System Maintenance
+
+| Tool | Purpose |
+|------|---------|
+| `oddkit_version` | Current version and baseline URL — diagnostic |
+| `oddkit_cleanup_storage` | Storage hygiene — clears orphaned cache data (never required for correctness) |
 
 ## Flow
 
@@ -111,6 +145,7 @@ Encourage the user to name what was rejected and why. The most durable records i
 - Choose between valid options
 - Override human judgment
 - Replace domain expertise with process
+- Orchestrate discovery or implementation tools — those are used directly by agents
 - Add ceremony for its own sake
 
 The guide clears the epistemic path. The user walks it.

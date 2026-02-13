@@ -6,11 +6,16 @@ exposure: internal
 tier: 2
 voice: neutral
 stability: evolving
+status: implemented
 tags: ["oddkit", "implementation", "caching", "content-addressed", "anti-cache-lying"]
 derives_from: "odd/constraint/anti-cache-lying.md"
 ---
 
 # Implementation: Replace TTL Caching with Content-Addressed Storage in OddKit
+
+**Implemented:** Content-addressed caching with commit-SHA-keyed storage is live in oddkit v0.14.0. The `invalidate_cache` action was replaced by `cleanup_storage`, which is storage hygiene only — never required for correctness.
+
+---
 
 > OddKit's TTL-based baseline cache must be replaced with commit-SHA-keyed immutable storage. The current strategy served stale canon for days undetected and its `invalidate_cache` action only cleared `.zip` files (see `docs/incidents/oddkit-stale-cache-2026-02.md`). The target: on every session's first request, fetch the current commit SHA (one lightweight call), use it as the storage namespace, serve from storage only when the SHA matches, and fetch fresh when it doesn't. No TTL. No staleness window. No flush for correctness. `invalidate_cache` becomes orphan cleanup or is removed entirely.
 

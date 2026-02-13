@@ -40,69 +40,53 @@ This tool operationalizes the canon constraint that epistemic decisions must be 
 {
   "type": "object",
   "properties": {
-    "decision": {
+    "input": {
       "type": "string",
-      "description": "What was decided. State the decision clearly and completely."
-    },
-    "type": {
-      "type": "string",
-      "enum": ["scope_closure", "boundary_definition", "refusal_condition", "default_assumption", "done_criteria", "evidence_standard", "insight", "constraint"],
-      "description": "The kind of epistemic decision being encoded."
-    },
-    "rejected": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "option": { "type": "string", "description": "What was rejected" },
-          "reason": { "type": "string", "description": "Why it was rejected" }
-        },
-        "required": ["option", "reason"]
-      },
-      "description": "Optional. Alternatives that were considered and rejected. Including rejections prevents future re-litigation."
-    },
-    "evidence": {
-      "type": "string",
-      "description": "Optional. Evidence that supported the decision. If the decision remains a hypothesis, state that explicitly."
+      "description": "The decision, insight, or boundary to capture. State it clearly. Include 'because...' for rationale."
     },
     "context": {
       "type": "string",
-      "description": "Optional. The goal, phase, or situation in which this decision was made."
+      "description": "Optional. Supporting context — goal, phase, alternatives considered, or constraints."
     },
-    "invalidation_conditions": {
-      "type": "array",
-      "items": { "type": "string" },
-      "description": "Optional. Conditions under which this decision should be revisited. Makes the decision challengeable without requiring re-litigation from scratch."
+    "canon_url": {
+      "type": "string",
+      "description": "Optional. GitHub repo URL for canon override."
     }
   },
-  "required": ["decision", "type"]
+  "required": ["input"]
 }
 ```
 
-### Response Shape
+### Response Shape (Observed)
 
 ```json
 {
-  "record": {
-    "id": "string — stable identifier for this decision record",
-    "decision": "string — the encoded decision",
-    "type": "scope_closure | boundary_definition | refusal_condition | default_assumption | done_criteria | evidence_standard | insight | constraint",
-    "decided_at": "string — timestamp or phase marker",
-    "rejected": [
-      {
-        "option": "string — what was rejected",
-        "reason": "string — why"
-      }
-    ],
-    "evidence": "string — supporting evidence or 'hypothesis' if none",
-    "invalidation_conditions": [
-      "string — when to revisit"
-    ],
-    "status": "active | superseded | invalidated"
-  },
-  "warnings": [
-    "string — missing rejections, weak evidence, or other encoding quality signals"
-  ]
+  "action": "encode",
+  "result": {
+    "status": "ENCODED",
+    "artifact": {
+      "title": "string — truncated title derived from the decision",
+      "type": "decision",
+      "decision": "string — the full decision text",
+      "rationale": "string — extracted rationale, or '(not provided)' if missing",
+      "constraints": [
+        "string — constraints created by this decision"
+      ],
+      "status": "draft | active",
+      "timestamp": "string — ISO 8601 timestamp"
+    },
+    "quality": {
+      "level": "insufficient | adequate | strong",
+      "score": "number — 1-5 quality score",
+      "max_score": 5,
+      "gaps": [
+        "string — missing elements that would improve the record"
+      ],
+      "suggestions": [
+        "string — specific improvements to strengthen the encoding"
+      ]
+    }
+  }
 }
 ```
 

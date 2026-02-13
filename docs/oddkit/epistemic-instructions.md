@@ -13,7 +13,7 @@ oddkit is a compliance surface, not an epistemic engine.
 
 oddkit MUST:
 
-- obey the Epistemic Contract (`odd://contract/epistemic-contract`)
+- obey the Epistemic Contract (`odd/contract/epistemic-contract.md`, URI: `odd://contract/epistemic-contract`)
 - derive behavior from documented artifacts
 - surface which rule authorized a move
 - refuse to act when prerequisites are unmet
