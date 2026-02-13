@@ -15,7 +15,7 @@ tags: ["evidence", "cloudflare", "preview", "attempts", "validation"]
 
 ## Description
 
-Local builds are allowed during development but do not satisfy the Definition of Done—every attempt must provide a Cloudflare Preview URL and an Evidence URL. The default mechanism is Cloudflare Pages branch preview deployments with attempt branches pushed to origin. Evidence must be exposed via a static hub path at `/_evidence/` or a dedicated Pages project, documented in the lane PRD.
+Local builds are allowed during development but do not satisfy the Definition of Done—every attempt must provide a Cloudflare Preview URL and an Evidence URL. The default mechanism is Cloudflare Pages branch preview deployments with attempt branches pushed to origin. Evidence must be exposed via a static hub path at `/_evidence/` or a dedicated Pages project.
 
 ## Outline
 
@@ -51,22 +51,18 @@ The default mechanism is Cloudflare Pages branch preview deployments:
 
 - Each attempt MUST push its branch to `origin`.
 - Cloudflare Pages MUST be configured to deploy preview builds for all branches.
-- The attempt branch name MUST include the lane so preview URLs are traceable.
+- The attempt branch name MUST be traceable to the work being done.
 
 ## Required Evidence Artifact
 
 Each attempt MUST produce an evidence markdown file:
 
-`/products/<lane>/attempts/prd-vX.Y/attempt-NNN/EVIDENCE.md` (or run-scoped equivalent during `_runs/`)
+An evidence markdown file (e.g., `EVIDENCE.md`) scoped to the attempt.
 
 The repo MUST expose evidence online via one of:
 
-- A static "evidence hub" path served by the lane site at `/_evidence/`, OR
-- A dedicated Cloudflare Pages project serving the lane's attempts as static content.
-
-The chosen mechanism must be documented in the lane PRD and enforced in kickoff.
-
-Note: Attempts are lane-contained. Root `/attempts/**` is legacy (read-only).
+- A static "evidence hub" path served at `/_evidence/`, OR
+- A dedicated Cloudflare Pages project serving attempts as static content.
 
 ## Non-Goals
 
@@ -78,5 +74,5 @@ Note: Attempts are lane-contained. Root `/attempts/**` is legacy (read-only).
 
 - Definition of Done: `/canon/constraints/definition-of-done.md`
 - Visual Proof Standards: `/canon/constraints/visual-proof.md`
-- Attempt Lifecycle: `/docs/appendices/attempt-lifecycle.md`
-- Preview Guide: `/docs/infra/PREVIEW.md`
+- Attempt Lifecycle: `/docs/archive/attempt-lifecycle.md` (archived)
+- Preview Guide: `/docs/archive/PREVIEW.md` (archived)

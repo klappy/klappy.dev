@@ -33,18 +33,15 @@ Extended concepts that deepen understanding without introducing enforcement. The
 
 ---
 
-## Implementation-Specific Appendices
+## Implementation-Specific Appendices (Archived)
 
-The following have been moved to `/docs/appendices/` as they contain klappy.dev-specific implementation details:
+The following implementation-specific appendices have been archived to `docs/archive/` as part of E0005 (Structure-Agnostic ODD). They are preserved as historical records but are no longer active:
 
-- `attempt-lifecycle.md` — Attempt folder structure, CLI commands, META.json schema
-- `compilation.md`, `compiled-memory.md`, `compilation-targets.md` — Compilation paths and tooling
-- `epochs.md` — E0003 evidence requirements with Cloudflare specifics
-- `evidence.md`, `deploy-evidence.md`, `online-evidence.md` — Evidence path structure
-- `lane-build-layout.md`, `lane-implementation-surfaces.md` — Lane-specific paths
-- `product-lanes.md` — Specific lane names (website, ai-navigation, agent-skill)
-- `repo-topology.md`, `repo-truth.md`, `repo-truth-audit.md` — Specific folder structures
-- `canonical-compression.md`, `memory-architecture.proposed.md` — Compilation and memory paths
+- Lane-specific docs (`product-lanes.md`, `lane-build-layout.md`, `lane-implementation-surfaces.md`)
+- Compilation docs (`compilation.md`, `compiled-memory.md`, `compilation-targets.md`, `canonical-compression.md`)
+- Evidence path docs (`evidence.md`, `deploy-evidence.md`, `online-evidence.md`)
+- Attempt lifecycle (`attempt-lifecycle.md`)
+- Repo topology (`repo-topology.md`, `repo-truth.md`, `repo-truth-audit.md`)
 
 ---
 

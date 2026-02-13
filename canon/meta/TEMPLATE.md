@@ -40,7 +40,7 @@ Do NOT add to Canon when:
 
 - It's implementation-specific → `/docs/`
 - It's universal philosophy → `/odd/`
-- It's lane-specific → `/products/<lane>/`
+- It's project-specific → project docs
 
 **Litmus test:** Should all products obey this? → Canon ✓
 

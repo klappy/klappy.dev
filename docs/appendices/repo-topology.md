@@ -15,7 +15,7 @@ tags: ["odd", "topology", "structure", "decoupling"]
 
 ## Description
 
-The repository separates Application Plane (disposable per attempt), Content Plane (evolves independently), and Infrastructure Plane (persists across attempts). Each product lane owns its implementation under `products/<lane>/src/` with no root-level `/src/` directory. This topology makes restartability cheap by keeping app disposable, content accumulating, infrastructure persisting, and attempts archived.
+The repository separates Content Plane (evolves independently), Governance Plane (canon + ODD), and Implementation Docs. Product lanes (`products/`) have been archived (see `docs/archive/products/`). This topology keeps concerns decoupled and content accumulating independently of any particular product implementation.
 
 ## Outline
 
@@ -53,174 +53,85 @@ It encodes the decoupling between App, Content, and Infrastructure planes.
 ## Core Topology
 
 ```
-/products/<lane>/src/           # Lane application (disposable per attempt)
-/products/<lane>/dist/          # Lane build output (generated)
-/products/<lane>/attempts/      # Lane attempts (sealed, immutable after seal)
 /canon/                         # Canon documents (evolves independently)
 /odd/                           # ODD public docs (evolves independently)
 /about/                         # About docs (evolves independently)
-/projects/                      # Project docs (evolves independently)
-/infra/                         # Infrastructure (persists across attempts)
-/docs/                          # Operational docs + PRD versions
-/attempts/                      # LEGACY (read-only, see /attempts/README.md)
-/public/content/                # Generated (by sync script)
-/dist/                          # Legacy/transitional mirror (generated)
+/docs/                          # Implementation docs, decisions, agent guides
+/docs/archive/                  # Archived content (products/, infra/, projects/, etc.)
+/docs/templates/                # Document templates (PRD, etc.)
 ```
 
-> **Lane-contained architecture:** Each product lane owns its own app plane under `products/<lane>/src/` and its attempts under `products/<lane>/attempts/`. There is no root-level `/src/` directory. Root `/attempts/` is legacy.
+> **Post-lane architecture (E0005):** Product lanes (`products/`), infrastructure (`infra/`), and project docs (`projects/`) have been archived. The repository is now structure-agnostic — meaning is carried by frontmatter metadata and oddkit scope, not by folder paths. See `docs/derivative-works.md` for how derivative products relate to ODD.
 
 ---
 
 ## What Lives Where
 
-### Application Plane (`products/<lane>/src/`)
+### Content Plane (`/canon/`, `/odd/`, `/about/`)
 
-**Disposable per attempt. Lane-scoped.**
-
-Each product lane (website, ai-navigation, agent-skill) has its own application plane:
-- `products/website/src/`
-- `products/ai-navigation/src/`
-- `products/agent-skill/src/`
+**Evolves independently.**
 
 Contains:
-- UI components
-- Routing logic
-- State management
-- Rendering code
+- Canon documents (governance, constraints, principles)
+- ODD philosophy (universal, product-agnostic)
+- About pages (author context)
 
-This folder can be deleted and rebuilt from scratch for each attempt via `attempt:nuke --lane <lane>`.
+### Implementation Docs (`/docs/`)
 
-### Content Plane (`/canon/`, `/odd/`, `/about/`, `/projects/`)
-
-**Evolves independently of attempts.**
+**Implementation-specific reference and procedures.**
 
 Contains:
-- Canon documents
-- ODD philosophy
-- About pages
-- Project documentation
+- Agent guides and kickoff procedures
+- Decision records (ADRs)
+- Appendices, migrations, plans
+- Templates (`/docs/templates/`)
+- Archived content (`/docs/archive/`)
 
-Content changes do not require a new attempt.  
-Content is synced to `/public/content/` for the webapp.
+### Archive (`/docs/archive/`)
 
-### Infrastructure Plane (`/infra/`)
+**Historical records from prior structure.**
 
-**Persists across attempts.**
-
-Contains:
-- Build scripts
-- Sync scripts
-- Verification scripts
-- Deployment configuration
-
-Infrastructure changes rarely.  
-When it does, the change benefits all future attempts.
-
-### PRD Versions (`/docs/PRD/`)
-
-**Living drafts.**
-
-Contains:
-- PRD drafts and working versions
-- PRD template
-
-These are editable until frozen into an attempt.
-
-### Sealed Attempts (`/products/<lane>/attempts/`)
-
-**Lane-contained. Immutable after seal.**
-
-Contains:
-- Frozen PRD per version (`prd-vX.Y/PRD.md`)
-- Attempt records (`attempt-NNN/`)
-- Evidence bundles
-
-Once sealed, these folders are not modified.
-
-Note: Root `/attempts/**` is legacy (read-only). New attempts are lane-contained.
+Contains archived content from:
+- `products/` — former product lanes (website, ai-navigation, agent-skill, etc.)
+- `infra/` — former infrastructure scripts and config
+- `projects/` — former project documentation
+- Lane-specific docs (product-lanes.md, attempt-lifecycle.md, etc.)
 
 ---
 
 ## What Changes When
 
-| Change Type | Location | Triggers New Attempt? |
-|-------------|----------|----------------------|
-| Fix a typo in Canon | `/canon/` | No |
-| Add a new ODD appendix | `/odd/` | No |
-| Update build script | `/infra/` | No |
-| Redesign the UI | `products/<lane>/src/` | Yes (same or new PRD) |
-| Add new feature | `products/<lane>/src/` | Yes (requires PRD) |
-| Add new content doc | `/about/`, `/projects/` | No |
-| Change manifest schema | `/canon/meta/` | No (but may affect app) |
+| Change Type | Location | Impact |
+|-------------|----------|--------|
+| Fix a typo in Canon | `/canon/` | Minimal — content evolves freely |
+| Add a new ODD appendix | `/odd/` | Minimal — philosophy evolves freely |
+| Update implementation docs | `/docs/` | Minimal — docs can rot and be updated |
+| Add new content doc | `/about/` | Minimal — content evolves independently |
+| Change manifest schema | `/canon/meta/` | May affect downstream consumers |
 
 ---
 
 ## Source of Truth
 
-| Asset | Source | Synced To |
-|-------|--------|-----------|
-| Content manifest | per-file frontmatter in `/canon/`, `/odd/`, `/about/`, `/projects/` | `/public/content/manifest.json` |
-| Markdown content | `/canon/`, `/odd/`, `/about/`, `/projects/` | `/public/content/` |
-| PRD (frozen) | `/products/<lane>/attempts/prd-vX.Y/PRD.md` | N/A (immutable) |
-| Evidence | `/products/<lane>/attempts/prd-vX.Y/attempt-NNN/evidence/` | N/A (immutable) |
-
----
-
-## One Active App Per Lane
-
-Each lane contains **one active app implementation** in `products/<lane>/src/`.
-
-Prior attempts are preserved by:
-- Git history
-- Sealed attempt records in `/products/<lane>/attempts/`
-- Commit SHAs in `META.json`
-
-There are no `/app-v1`, `/app-v2` folders.  
-There is one `products/<lane>/src/` per lane that gets rebuilt.
-
----
-
-## Generated vs Source
-
-| Type | Location | How Updated |
-|------|----------|-------------|
-| Source | `/canon/`, `/odd/`, `/about/`, `/projects/` | Manual edit |
-| Generated | `/public/content/` | `npm run sync` |
-| Generated | `/products/<lane>/dist/` | `npm run build -- --lane <lane>` |
-
-**Rule:** Edit source, sync generates output.
-
----
-
-## Deployment Preservation
-
-Each attempt may be deployed as a preview during development. See [Attempt Lifecycle](/docs/appendices/attempt-lifecycle.md) for how deployments fit into the broader attempt model.
-
-Attempt metadata (`META.json`) stores:
-- `sealed_commit` — the commit SHA (truth)
-- `deploy.production_url` — live site URL (if applicable)
-- `deploy.preview_url` — branch/commit preview URL
-- `deploy.provider` — deployment platform (e.g., cloudflare-pages)
-
-Preview URLs are treated as evidence artifacts and must be recorded when sealing.
-
-**Resurrection path:** To resurrect any attempt, check out the `sealed_commit` and redeploy. The attempt record contains everything needed.
-
-Branches used during development are ephemeral. The durable record is the commit SHA and recorded URLs, not the branch name.
+| Asset | Source |
+|-------|--------|
+| Canon governance | `/canon/` (frontmatter-bearing markdown) |
+| ODD philosophy | `/odd/` (frontmatter-bearing markdown) |
+| About content | `/about/` (frontmatter-bearing markdown) |
+| Implementation docs | `/docs/` |
+| Archived products/infra | `/docs/archive/` (read-only historical) |
 
 ---
 
 ## Summary
 
-- **App is disposable** — rebuilt per attempt
-- **Content accumulates** — evolves independently
-- **Infrastructure persists** — shared across attempts
-- **Attempts are archived** — sealed and immutable
-- **PRDs are versioned** — frozen when attempted
-- **Deploys are recorded** — preview URLs preserved in metadata
+- **Content accumulates** — canon, ODD, and about evolve independently
+- **Docs are implementation-specific** — procedures, decisions, and guides for this repo
+- **Archive preserves history** — former products, infra, and projects are archived, not deleted
+- **Structure is not meaning** — scope and identity come from frontmatter and oddkit, not folder paths
 
-This topology makes restartability cheap and keeps concerns decoupled.
+This topology keeps concerns decoupled and supports the structure-agnostic ODD model (E0005).
 
 ---
 
-**Status:** Appendix stable for v0.1
+**Status:** Updated for E0005 (post-lane, structure-agnostic)

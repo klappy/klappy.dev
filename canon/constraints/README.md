@@ -52,7 +52,7 @@ Constraints define the baseline assumptions and design defaults applied to most 
 - MUST design for offline-first unless explicitly stated otherwise; core functionality must work without network
 - MUST treat AI as accelerator, not authority; this constraint is always in effect with no exceptions
 - MUST verify work with evidence; assertions like "it works" are insufficient
-- MUST keep lane artifacts self-contained within `products/<lane>/`; no cross-directory dependencies
+- MUST keep lane artifacts self-contained; no cross-directory dependencies *(path under E0005.1 review)*
 - MUST make tradeoffs explicit and visible; every decision excludes alternatives
 - MUST assume systems will outlive original creators and change hands
 - MUST establish single-agent integrity before scaling collaboration; integrity precedes participation
@@ -89,7 +89,7 @@ Constraints define the baseline assumptions and design defaults applied to most 
 - System works without network (for offline-first requirements)
 - Evidence produced demonstrates actual behavior, not assertion
 - Tradeoffs documented with explicit acknowledgment of downsides
-- Lane can be understood by reading only its `products/<lane>/` directory
+- Lane can be understood by reading only its directory *(path under E0005.1 review)*
 - Next maintainer (who is not the author) can understand and modify the system
 
 ---
@@ -337,6 +337,8 @@ Every decision excludes alternatives. Unspoken tradeoffs cause confusion later.
 ---
 
 ## 11. Lane Self-Containment
+
+> ⚠️ **E0005.1 Review:** This constraint references the `products/<lane>/` directory model which has been archived as part of E0005.1 (Structure-Agnostic ODD). The substantive principle (self-containment of work units) may be preserved in revised form. This section is under human review — do not delete or rewrite.
 
 I require product lanes to be self-contained units.
 

@@ -138,13 +138,13 @@ If terminology lived under `canon/`, language would appear post hoc. ODD would l
 
 ---
 
-### Lane
+### Lane (Historical)
 
-**ODD meaning:** A parallel track of work with its own lifecycle, evidence, and maturity state.
+**ODD meaning:** A parallel track of work with its own lifecycle, evidence, and maturity state. Lanes were a structural concept in ODD v1–v2 that prescribed directory conventions (`products/<lane>/`). As of v3.0.0, ODD is structure-agnostic — the concept of independent project evolution remains, but "lane" as an organizing primitive has been retired in favor of dynamic epistemic routing via OddKit.
 
 **Not:** A branch, feature, or workstream in the general sense.
 
-**Key property:** Lanes can evolve independently while sharing governance.
+**Key property:** Projects can evolve independently while sharing governance.
 
 ---
 

@@ -17,7 +17,7 @@ execution_posture: operational
 
 ## Description
 
-Alignment Reviews are periodic evaluations that detect and correct drift between stated intent, implemented process, and observed outcomes. They apply to content, process, and tooling equally. Reviews evaluate Canon (contradicted rules, obsolete references, undocumented invariants), PRDs (actual decision criteria, implicit patching, lane bleeding), Attempts (incompatible comparisons, ignored failures, insufficient evidence), and Tooling (enforced invariants, accidental drift, silent compensation). Reviews are triggered by events (epoch transitions, repeated failures, PRD rewrites) not schedules. They produce corrections, not features.
+Alignment Reviews are periodic evaluations that detect and correct drift between stated intent, implemented process, and observed outcomes. They apply to content, process, and tooling equally. Reviews evaluate Canon (contradicted rules, obsolete references, undocumented invariants), PRDs (actual decision criteria, implicit patching, boundary bleeding), Attempts (incompatible comparisons, ignored failures, insufficient evidence), and Tooling (enforced invariants, accidental drift, silent compensation). Reviews are triggered by events (epoch transitions, repeated failures, PRD rewrites) not schedules. They produce corrections, not features.
 
 ## Outline
 
@@ -73,10 +73,10 @@ An Alignment Review evaluates:
 - Are obsolete rules still referenced?
 - Are new invariants emerging without documentation?
 
-### PRDs (Per Lane)
+### PRDs (Per Project)
 - Do PRDs still reflect actual decision criteria?
 - Are PRDs being patched implicitly via attempts?
-- Are lanes bleeding into each other?
+- Are project boundaries bleeding into each other?
 
 ### Attempts
 - Are outcomes being compared across incompatible contexts?

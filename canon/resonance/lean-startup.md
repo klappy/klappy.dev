@@ -75,6 +75,4 @@ ODD absorbs Lean Startup's speed while rejecting its tolerance for epistemic amn
 
 ## Related Canon
 
-- [Attempts](/odd/appendices/attempt-lifecycle.md)
-- [Lane Architecture](/docs/appendices/product-lanes.md)
 - [Evolution Not Automation](/odd/appendices/evolution-not-automation.md)

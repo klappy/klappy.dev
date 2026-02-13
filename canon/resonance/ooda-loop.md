@@ -71,5 +71,3 @@ ODD treats orientation as cumulative capital. By externalizing it into artifacts
 ## Related Canon
 
 - [ODD Manifesto](/odd/manifesto.md)
-- [Lane Architecture](/docs/appendices/product-lanes.md)
-- [Attempts](/docs/appendices/ATTEMPTS.md)

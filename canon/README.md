@@ -145,7 +145,9 @@ Prefer stable file and URI naming over clever branding. Rename rarely.
 First-person documents may be consumed as-is or translated by clients. The Canon itself does not require a specific rendering voice.
 
 **5. Multi-Lane PRD Architecture**
-PRDs are organized into independent product lanes. Each lane has its own active PRD, attempts, and lifecycle. Lanes share canon, not lifecycle. See `/docs/appendices/product-lanes.md` for the full model.
+PRDs are organized into independent product lanes. Each lane has its own active PRD, attempts, and lifecycle. Lanes share canon, not lifecycle.
+
+> ⚠️ **E0005.1 Review:** This meta rule references the archived lane/product model. The linked doc (`/docs/appendices/product-lanes.md`) has been archived to `docs/archive/`. This rule is under review as part of E0005.1 (Structure-Agnostic ODD) and may be revised or removed.
 
 ---
 

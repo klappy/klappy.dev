@@ -48,12 +48,12 @@ Start with **ODD** (Outcomes-Driven Development) — the core philosophy that sh
 
 If that resonates, the **Canon** contains the principles, constraints, and verification standards that guide decisions.
 
-If you want to see the philosophy applied, browse the **Projects**.
+If you want to see the philosophy applied, browse the **Derivative Works** documentation.
 
 There is no required order. Follow your curiosity.
 
-- `/docs/WHAT_THIS_REPO_IS_NOT.md` — what this repository is intentionally not
-- `/projects/agentic-memory-portability.md` — the memory portability project
+- `/docs/appendices/WHAT_THIS_REPO_IS_NOT.md` — what this repository is intentionally not
+- `/docs/derivative-works.md` — how derivative products relate to ODD
 
 ---
 
@@ -75,7 +75,6 @@ It does not execute anything by itself and is intentionally separated from tooli
 
 The Canon uses pack-level versioning with a single changelog:
 
-- `/public/content/manifest.json` — generated inventory of what exists (compiled from per-file frontmatter)
 - `/canon/CHANGELOG.md` — record of changes
 
 Individual files are not versioned independently to avoid unnecessary ceremony.
@@ -106,22 +105,18 @@ If you're new and want a concrete path, here's a reasonable order:
    - `/canon/index.md` (orientation)
    - Supporting documents on constraints, decision rules, evidence, and verification
 
-4. **Projects** — proofs of concept and experiments (added over time)
+4. **Derivative Works** — how products relate to ODD (`/docs/derivative-works.md`)
 
 ---
 
-## Web App (Phase 1)
+## Structure
 
-This repository includes a static SPA for browsing content via a chat-first interface.
+This repository is organized around a three-tier hierarchy:
 
-```bash
-npm install
-npm run dev
-```
-
-The app lives in `/src` and serves content from `/public/content/`.
-
-**Note:** `/public/content/` contains copies of source content (`/canon`, `/odd`, `/about`, `/projects`) for the SPA to serve. The source folders remain the canonical authoring location; `/public/content/` is the rendered content root for the web app.
+- `/odd/` — Universal ODD philosophy (timeless, product-agnostic)
+- `/canon/` — Program constraints (shared governance)
+- `/docs/` — Implementation details (how we do it here)
+- `/about/` — Author context and credibility
 
 ---
 

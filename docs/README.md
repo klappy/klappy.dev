@@ -31,12 +31,11 @@ tags: ["docs", "implementation", "reference", "index"]
 
 | Content Type | Examples | Why Here |
 |--------------|----------|----------|
-| CLI commands | `attempt:register`, `attempt:nuke` | Tool-specific |
-| Specific paths | `/products/<lane>/attempts/...` | Repo-specific |
+| CLI commands | `oddkit orient`, `oddkit validate` | Tool-specific |
+| Specific paths | `/docs/archive/...`, `/docs/templates/...` | Repo-specific |
 | Cloudflare config | Branch deploys, preview URLs | Vendor-specific |
-| Lane names | `website`, `ai-navigation`, `agent-skill` | Instance-specific |
-| Epoch definitions | E0001, E0002, E0003 | Instance-specific |
-| Tooling runbooks | ATTEMPTS.md, PREVIEW.md | Procedural |
+| Epoch definitions | E0001–E0005 | Instance-specific |
+| Tooling runbooks | Agent kickoff, orchestrator guides | Procedural |
 
 ---
 
@@ -68,20 +67,14 @@ tags: ["docs", "implementation", "reference", "index"]
 
 | File | Purpose |
 |------|---------|
-| [appendices/ATTEMPTS.md](./appendices/ATTEMPTS.md) | Attempt lifecycle, CLI commands, artifact locations |
-| [appendices/ATTEMPT_KICKOFF.md](./appendices/ATTEMPT_KICKOFF.md) | Human workflow for starting attempts |
 | [agents/AGENT_KICKOFF.md](./agents/AGENT_KICKOFF.md) | Canonical agent entry point |
-| [infra/PREVIEW.md](./infra/PREVIEW.md) | Local and Cloudflare preview guide |
-| [infra/CLOUDFLARE_CONFIG.md](./infra/CLOUDFLARE_CONFIG.md) | Deploy configuration |
+| [derivative-works.md](./derivative-works.md) | Derivative works and product guidance |
 
 ### Reference Documents
 
 | File | Purpose |
 |------|---------|
-| [TRUTH_MAP.md](./TRUTH_MAP.md) | Authoritative source for each domain |
-| [PRD.md](./PRD.md) | PRD orientation and routing |
 | [appendices/WHAT_THIS_REPO_IS_NOT.md](./appendices/WHAT_THIS_REPO_IS_NOT.md) | Scope boundaries |
-| [appendices/context-packs-and-projection-detail.md](./appendices/context-packs-and-projection-detail.md) | Detail levels for context pack projection (full, medium, low) |
 
 ### Templates
 
@@ -90,7 +83,7 @@ tags: ["docs", "implementation", "reference", "index"]
 | [TEMPLATE.md](./TEMPLATE.md) | General article template |
 | [TEMPLATE_README.md](./TEMPLATE_README.md) | Folder README index template |
 | [decisions/TEMPLATE.md](./decisions/TEMPLATE.md) | Decision record template |
-| [PRD/PRD_TEMPLATE.md](./PRD/PRD_TEMPLATE.md) | PRD template |
+| [templates/PRD_TEMPLATE.md](./templates/PRD_TEMPLATE.md) | PRD template |
 
 ### Subfolders
 
@@ -104,14 +97,13 @@ tags: ["docs", "implementation", "reference", "index"]
 | [decisions/](./decisions/) | Implementation decision records (ADRs) | 15 files |
 | [examples/](./examples/) | Case studies and examples | 1 file |
 | [history/](./history/) | What happened, with evidence | 2 files |
-| [infra/](./infra/) | Infrastructure documentation | 3 files |
-| [klappy-dev/](./klappy-dev/) | Project-specific documentation | 3 files |
 | [migrations/](./migrations/) | How we change the system | 2 files |
 | [oddkit/](./oddkit/) | Oddkit subsystem documentation | 7 files |
 | [orchestrator/](./orchestrator/) | Orchestrator reference guides | 5 files |
 | [plans/](./plans/) | Forward-looking design & planning | 1 file |
 | [promotions/](./promotions/) | Canon promotion process | 3 files |
-| [PRD/](./PRD/) | Lane PRDs and template | 3 files |
+| [templates/](./templates/) | Document templates (PRD, etc.) | 1 file |
+| [archive/](./archive/) | Archived docs from prior structure | — |
 
 ---
 

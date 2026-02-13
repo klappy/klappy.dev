@@ -48,7 +48,7 @@ This extends the existing schema in `odd/ledger/learnings.jsonl` and does not br
 
 ## Phase 1 — Lanes as View (Not Ontology)
 
-- Retain `products/<lane>/` if desired
+- Folder layout is non-authoritative (lanes archived as of E0005)
 - Add `oddkit/scopes.json` mapping friendly names to scope IDs
 - oddkit renders filtered views by scope regardless of file location
 
@@ -61,8 +61,7 @@ This extends the existing schema in `odd/ledger/learnings.jsonl` and does not br
   "scopes": {
     "global": { "id": "global", "display": "Global" },
     "odd-teaser": { "id": "product:odd-teaser", "display": "ODD Teaser" },
-    "agent-skill": { "id": "product:agent-skill", "display": "Agent Skill" },
-    "fluent-mobile": { "id": "product:fluent-mobile", "display": "Fluent Mobile" }
+    "agent-skill": { "id": "product:agent-skill", "display": "Agent Skill" }
   }
 }
 ```
@@ -155,10 +154,10 @@ If this test fails, migration is incomplete.
 
 ## What Does NOT Change
 
-- Existing folder structure remains valid
-- Existing `products/<lane>/` paths continue to work
 - Existing `odd/ledger/learnings.jsonl` entries remain valid
 - Branch naming conventions remain unchanged (they're just non-authoritative)
+
+> **Note (E0005):** `products/<lane>/` paths have been archived to `docs/archive/products/`. This migration's goal of removing semantic dependence on folder structure has been substantially achieved.
 
 ---
 
@@ -167,4 +166,4 @@ If this test fails, migration is incomplete.
 - `klappy://canon/principles/scope-over-folders` — the principle this migration enforces
 - `klappy://canon/constraints/meaning-must-not-depend-on-path` — the constraint this migration satisfies
 - `klappy://docs/decisions/D0007` — prior decision establishing branch names as non-authoritative
-- `klappy://docs/appendices/product-lanes` — current lane documentation (remains valid as convenience)
+- `klappy://docs/appendices/product-lanes` — lane documentation (archived to `docs/archive/product-lanes.md`)

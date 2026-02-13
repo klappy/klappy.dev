@@ -60,11 +60,11 @@ Architecture Decision Records (ADRs) specific to the klappy.dev repository imple
 
 These decisions reference:
 
-- Specific file paths in this repository (`/products/`, `/docs/PRD.md`, `/infra/`)
-- Specific CLI scripts (`/infra/scripts/attempt-cli.js`)
-- Specific branch naming conventions (`prod`, `main`, `attempt/*`)
-- Specific tooling (Cloudflare Pages, git worktrees)
-- Specific product lane names (`website`, `ai-navigation`, `agent-skill`)
+- Specific file paths in this repository (`/docs/`, `/canon/`, `/odd/`)
+- Specific branch naming conventions (`prod`, `main`)
+- Specific tooling (Cloudflare Pages)
+
+> **Note:** Some older decisions reference paths that have since been archived (e.g., `products/`, `infra/`). Decision records are historical and are not updated retroactively. See `docs/archive/` for archived content.
 
 ---
 
@@ -104,13 +104,11 @@ Each decision file follows this structure:
 
 ## Implementation
 
-- Script: `/infra/scripts/...`
-- Contract: `/infra/contracts/...`
+- Relevant files: `...`
 
 ## Evidence
 
 - Commit: `abc1234`
-- Attempt: `/products/<lane>/attempts/v{VERSION}/attempt-NNN/`
 ```
 
 ---

@@ -40,7 +40,7 @@ Do NOT add to ODD when:
 
 - It's program-specific → `/canon/`
 - It's implementation-specific → `/docs/`
-- It's lane-specific → `/products/<lane>/`
+- It's project-specific → project docs
 
 **Litmus test:** Would this still be true if klappy.dev didn't exist? → ODD ✓
 

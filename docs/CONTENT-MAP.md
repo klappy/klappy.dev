@@ -80,8 +80,7 @@ This map provides navigational links to ALL content in the repository, including
 |------|---------|
 | [/docs/README.md](/docs/README.md) | Docs index |
 | [/docs/oddkit/WHY.md](/docs/oddkit/WHY.md) | **Why oddkit exists** — Start here for oddkit |
-| [/docs/appendices/ATTEMPTS.md](/docs/appendices/ATTEMPTS.md) | Attempt lifecycle |
-| [/docs/TRUTH_MAP.md](/docs/TRUTH_MAP.md) | Authoritative sources per domain |
+| [/docs/derivative-works.md](/docs/derivative-works.md) | Derivative works and product guidance |
 | [/docs/incidents/README.md](/docs/incidents/README.md) | Incident records — failures that changed the canon |
 
 **Subdirectories:**
@@ -95,8 +94,9 @@ This map provides navigational links to ALL content in the repository, including
 - `/docs/history/` — What happened, with evidence
 - `/docs/plans/` — Forward-looking design & planning
 - `/docs/migrations/` — How we change the system
-- `/docs/infra/` — Infrastructure documentation
 - `/docs/promotions/` — Canon promotion process
+- `/docs/templates/` — Document templates (PRD, etc.)
+- `/docs/archive/` — Archived content from prior structure
 
 ---
 
@@ -161,32 +161,12 @@ This map provides navigational links to ALL content in the repository, including
 | [/about/faq.md](/about/faq.md) | Frequently asked questions |
 | [/about/why-this-exists.md](/about/why-this-exists.md) | Why this repository exists |
 
-### Projects (`/projects/`)
+### Archived Areas (see `/docs/archive/`)
 
-| File | Purpose |
-|------|---------|
-| [/projects/index.md](/projects/index.md) | Projects index |
-| [/projects/agentic-memory-portability.md](/projects/agentic-memory-portability.md) | Memory portability project |
-| [/projects/ADDING-A-PROJECT.md](/projects/ADDING-A-PROJECT.md) | How to add projects |
-| `/projects/repo-as-a-system/` | Repo-as-system exploration |
-
-### Products (`/products/`)
-
-Active product lanes:
-- `/products/website/` — Web app
-- `/products/agent-skill/` — Agent skill product
-- `/products/odd-teaser/` — ODD teaser
-- `/products/fluent-mobile/` — Mobile product
-- `/products/ai-navigation/` — Navigation product
-
-### Infrastructure (`/infra/`)
-
-| Path | Purpose |
-|------|---------|
-| `/infra/orchestrator/` | oddkit orchestrator code |
-| `/infra/scripts/` | Build and compile scripts |
-| `/infra/runners/` | Recipe pack runners |
-| `/infra/prompts/` | Prompt templates |
+The following areas have been archived as part of E0005 (Structure-Agnostic ODD):
+- `projects/` — archived to `docs/archive/projects/`
+- `products/` — archived to `docs/archive/products/`
+- `infra/` — archived to `docs/archive/infra/`
 
 ---
 
@@ -197,7 +177,7 @@ Active product lanes:
 | **ODD** | Outcomes-Driven Development | [/odd/README.md](/odd/README.md) |
 | **ESE** | Epistemic Surface Extraction | [/canon/methods/epistemic-surface-extraction.md](/canon/methods/epistemic-surface-extraction.md) |
 | **MCP** | Model Context Protocol | `/interfaces/mcp/` |
-| **PRD** | Product Requirements Document | `/docs/PRD.md` |
+| **PRD** | Product Requirements Document | `/docs/templates/PRD_TEMPLATE.md` |
 | **ADR** | Architecture Decision Record | `/canon/decisions/decision-record-standard.md` |
 
 ---

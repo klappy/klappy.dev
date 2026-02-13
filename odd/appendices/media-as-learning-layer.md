@@ -151,8 +151,8 @@ If removing a piece of media would break understanding, that is a design failure
 
 ## Compliance Note
 
-Product PRDs may reference this appendix.
+PRDs may reference this appendix.
 They should not re-litigate the philosophy.
 
-PRDs define **how** the lane applies this principle.
+PRDs define **how** a project applies this principle.
 This appendix defines the governing constraint.

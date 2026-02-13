@@ -20,7 +20,7 @@ version: 1.0
 
 ## Description
 
-ODD treats durable thinking as scarce and generated artifacts as abundant—most should decay while only patterns that reduce future drag should elevate. The five layers of portability are Conversation/Attempt, Product Lane/PRD, Interoperability/Contracts, Canon, and Decision Trace. Elevation requires recurrence, portability, drag reduction, and testability; if any criterion fails, the artifact stays local or dies. Elevation must be deliberately triggered—typically after refactors, repeated friction, or closed attempts.
+ODD treats durable thinking as scarce and generated artifacts as abundant—most should decay while only patterns that reduce future drag should elevate. The five layers of portability are Conversation/Attempt, Project/PRD, Interoperability/Contracts, Canon, and Decision Trace. Elevation requires recurrence, portability, drag reduction, and testability; if any criterion fails, the artifact stays local or dies. Elevation must be deliberately triggered—typically after refactors, repeated friction, or closed attempts.
 
 ## Outline
 
@@ -29,7 +29,7 @@ ODD treats durable thinking as scarce and generated artifacts as abundant—most
 - Elevation Criteria (Strict)
 - Elevation Trigger Points
 - Decay Rule (Default)
-- Where This Fits With Lanes and Epochs
+- Where This Fits With Projects and Epochs
 
 ---
 
@@ -57,7 +57,7 @@ This is how the repository avoids documentation sprawl while remaining portable 
 **Default fate:** extract value → seal evidence → discard everything else.
 
 **Lives in:**
-- `/products/<lane>/attempts/v{VERSION}/_runs/<run_id>/`
+- project attempt directories
 - transient branches / worktrees
 - PRD patches produced by failure
 
@@ -65,15 +65,15 @@ This is how the repository avoids documentation sprawl while remaining portable 
 
 ---
 
-### 2) Product Lane / PRD (Project-Local)
+### 2) Project / PRD (Project-Local)
 
-**What it is:** current intent for a specific product lane.  
+**What it is:** current intent for a specific project.  
 **Default fate:** churn freely. PRDs are disposable and should change as reality is observed.
 
 **Lives in:**
-- `/docs/PRD/<lane>/PRD.md`
+- project PRD documents
 
-**Elevate when:** a requirement becomes reusable across lanes/projects, or becomes an interface boundary.
+**Elevate when:** a requirement becomes reusable across projects, or becomes an interface boundary.
 
 ---
 
@@ -145,14 +145,14 @@ When restructuring how something works (not just fixing bugs), pause and ask:
 **After repeated friction:**
 When the same confusion or failure occurs multiple times:
 - Document the pattern at the appropriate layer
-- If it affects multiple lanes, elevate to Canon
+- If it affects multiple projects, elevate to Canon
 - If it's universal, elevate to ODD
 
 **After successful attempts:**
 When an attempt succeeds, extract learnings before moving on:
 - What constraints prevented failure?
 - What decision made this work?
-- Would this help future attempts in other lanes?
+- Would this help future attempts in other projects?
 
 **After failed attempts:**
 Failures often reveal more than successes:
@@ -162,7 +162,7 @@ Failures often reveal more than successes:
 
 ### The Elevation Process
 
-1. **Document locally first** — Write the learning where it happened (attempt evidence, lane decision)
+1. **Document locally first** — Write the learning where it happened (attempt evidence, project decision)
 2. **Tag for review** — Mark patterns that might be elevation candidates
 3. **Test recurrence** — Wait for the pattern to appear again (don't elevate on first occurrence)
 4. **Promote deliberately** — Move to higher layer only when all elevation criteria are met
@@ -193,13 +193,9 @@ Discarding is not nihilism. It is how the system stays legible.
 
 ---
 
-## Where This Fits With Lanes and Epochs
+## Where This Fits With Projects and Epochs
 
-- **Product lanes** isolate intent and success criteria so that unrelated surfaces do not drift together.
+- **Projects** isolate intent and success criteria so that unrelated surfaces do not drift together.
 - **Epochs** define comparability boundaries when the "rules of the game" change.
 
 This document explains the memory model underneath both.
-
-See also:
-- `/docs/appendices/product-lanes.md`
-- `/docs/appendices/epochs.md`

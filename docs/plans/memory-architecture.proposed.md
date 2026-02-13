@@ -74,7 +74,7 @@ Evidence without elevation creates false confidence rather than learning.
 
 **Scope:** Single execution against a PRD  
 **Durability:** Sealed when attempt closes; may be pruned later  
-**Lives in:** `products/<lane>/<version>/attempts/attempt-NNN/evidence/`
+**Lives in:** Scoped to the attempt (historically `products/<lane>/<version>/attempts/attempt-NNN/evidence/`, now archived)
 
 Attempts capture what happened during execution:
 - Test output, logs, screenshots
@@ -89,7 +89,7 @@ Attempts capture what happened during execution:
 
 **Scope:** What happened in this lane — champions, failures, infrastructure changes  
 **Durability:** Persists as long as the lane exists  
-**Lives in:** `products/<lane>/history/`
+**Lives in:** Scoped to the product (historically `products/<lane>/history/`)
 
 History records **what happened** without turning it into rules:
 - Champion promotions
@@ -104,7 +104,7 @@ History records **what happened** without turning it into rules:
 
 **Scope:** Why this lane chose what it chose  
 **Durability:** Persists as long as the lane exists; may be deprecated  
-**Lives in:** `products/<lane>/decisions/`
+**Lives in:** Scoped to the product (historically `products/<lane>/decisions/`)
 
 Decisions record **why we chose** to make things happen the way they did:
 - Architectural choices
@@ -245,5 +245,5 @@ Memory is curated learning that reduces future drag.
 
 - `/odd/appendices/progressive-elevation.md` — Elevation criteria
 - `/docs/appendices/compiled-memory.md` — Compression for agents
-- `/docs/appendices/product-lanes.md` — Lane isolation
-- `/docs/appendices/attempt-lifecycle.md` — Attempt containment
+- `/docs/archive/product-lanes.md` — Lane isolation (archived)
+- `/docs/archive/attempt-lifecycle.md` — Attempt containment (archived)

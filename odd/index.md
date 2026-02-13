@@ -25,7 +25,7 @@ The philosophical and operational foundation for this repository. ODD treats out
 | `manifesto.md` | ODD Manifesto | The core philosophy: defining outcomes, enforcing constraints, verifying reality. AI accelerates execution; governance preserves trust. |
 | `terminology.md` | Terminology & Disambiguation | Constrained vocabulary of ODD. Defines terms before elevation — language governance at the point of origin. |
 | `maturity.md` | Project Maturity | How rigor changes as projects mature. PoC → Pilot → Production. |
-| `contract.md` | ODD System Contract | Version contract for ODD compatibility. Currently v2.0.0 (multi-lane era). |
+| `contract.md` | ODD System Contract | Version contract for ODD compatibility. Currently v3.0.0 (structure-agnostic era). |
 | `misuse-patterns.md` | Misuse Patterns | Common failure modes and how ODD gets misapplied in practice. |
 | `prompt-architecture.md` | Prompt Architecture | How intent scales without giant prompts. |
 | `orientation-map.md` | Orientation Map | One-page mental model of ODD, Canon, Evidence, and Outcomes. |
@@ -52,7 +52,7 @@ The philosophical and operational foundation for this repository. ODD treats out
 1. **`manifesto.md`** — Understand the philosophy
 2. **`terminology.md`** — Lock in the language
 3. **`maturity.md`** — Know when rigor increases
-4. **`appendices/attempt-lifecycle.md`** — See how work flows
+4. **`contract.md`** — Understand the compatibility contract
 
 ---
 
