@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#1a1a2e">
+  <meta name="description" content="Fluent Mobile PoC - Audio drafting companion">
+  <title>Fluent</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Prevent zoom on double-tap for low-end devices -->
+  <meta name="touch-action" content="manipulation">
+</head>
+<body>
+  <div id="app">
+    <!-- State: Idle -->
+    <main class="container">
+      <header class="header">
+        <h1 class="title">Fluent</h1>
+        <div id="status" class="status">Ready</div>
+      </header>
+
+      <!-- Source Audio Section -->
+      <section class="section" id="source-section">
+        <h2 class="section-title">Source</h2>
+        <div class="audio-controls">
+          <button id="play-source" class="btn btn-primary btn-large" aria-label="Play source audio">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            <span>Listen</span>
+          </button>
+          <div id="source-progress" class="progress-bar">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recording Section -->
+      <section class="section" id="record-section">
+        <h2 class="section-title">Your Draft</h2>
+        <div class="audio-controls">
+          <button id="record-btn" class="btn btn-record btn-large" aria-label="Record your draft">
+            <svg class="icon icon-mic" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+              <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+            </svg>
+            <span id="record-label">Record</span>
+          </button>
+          <div id="recording-indicator" class="recording-indicator hidden">
+            <span class="pulse"></span>
+            <span id="recording-time">0:00</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Playback Section -->
+      <section class="section" id="playback-section">
+        <h2 class="section-title">Review</h2>
+        <div class="audio-controls">
+          <button id="play-draft" class="btn btn-secondary btn-large" disabled aria-label="Play your recording">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            <span>Play Draft</span>
+          </button>
+          <div id="draft-progress" class="progress-bar">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+        <p id="no-draft-msg" class="hint">Record your draft first</p>
+      </section>
+
+      <!-- State Indicator -->
+      <div id="state-indicator" class="state-indicator">
+        <span class="state-dot"></span>
+        <span id="state-text">Ready to listen</span>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    // Register service worker for offline support
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(() => console.log('SW registered'))
+        .catch(err => console.log('SW registration failed:', err));
+    }
+  </script>
+</body>
+</html>

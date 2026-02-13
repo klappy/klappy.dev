@@ -1,6 +1,6 @@
 {
   "version": "1.1",
-  "generated_at": "2026-02-13T04:11:57.080Z",
+  "generated_at": "2026-02-13T04:12:48.498Z",
   "description": "Fast-lookup index for Librarian retrieval. Per docs/agents/librarian/contract.md",
   "schema_notes": {
     "authority_band": "Resolved authority (frontmatter override > inferred from root)",
@@ -34,14 +34,14 @@
     "with_frontmatter": 246,
     "with_headings": 319,
     "by_root": {
-      "canon": 102,
-      "docs": 184,
+      "canon": 101,
+      "docs": 185,
       "interfaces": 6,
       "odd": 29
     },
     "by_authority": {
-      "governing": 131,
-      "operational": 190
+      "governing": 130,
+      "operational": 191
     },
     "with_authority_override": 0,
     "with_authority_warning": 0
@@ -5572,100 +5572,6 @@
       "has_frontmatter": true
     },
     {
-      "path": "canon/meta/slice-contract-sml.md",
-      "root": "canon",
-      "authority_band": "governing",
-      "authority_inferred": "governing",
-      "uri": "klappy://canon/meta/slice-contract-sml",
-      "title": "Slice Contract: S / M / L",
-      "subtitle": "How much to extract from each included topic.",
-      "tags": [
-        "context-packs",
-        "extraction"
-      ],
-      "stability": "stable",
-      "tier": "1",
-      "audience": "canon",
-      "exposure": "nav",
-      "voice": "neutral",
-      "relevance": "decision",
-      "execution_posture": "governing",
-      "headings": [
-        {
-          "level": 1,
-          "text": "Slice Contract: S / M / L",
-          "line": 2
-        },
-        {
-          "level": 2,
-          "text": "Summary",
-          "line": 6
-        },
-        {
-          "level": 2,
-          "text": "Required Headings (when applicable)",
-          "line": 15
-        },
-        {
-          "level": 2,
-          "text": "Slice Definitions",
-          "line": 31
-        },
-        {
-          "level": 3,
-          "text": "S — Execution Slice",
-          "line": 33
-        },
-        {
-          "level": 3,
-          "text": "M — Execution + Correctness",
-          "line": 47
-        },
-        {
-          "level": 3,
-          "text": "L — Full Topic",
-          "line": 57
-        },
-        {
-          "level": 3,
-          "text": "XL — Book Export",
-          "line": 66
-        },
-        {
-          "level": 2,
-          "text": "Rules",
-          "line": 73
-        },
-        {
-          "level": 2,
-          "text": "Invariant",
-          "line": 82
-        },
-        {
-          "level": 2,
-          "text": "Operating Constraints",
-          "line": 88
-        },
-        {
-          "level": 2,
-          "text": "Defaults",
-          "line": 98
-        },
-        {
-          "level": 2,
-          "text": "Failure Modes",
-          "line": 108
-        },
-        {
-          "level": 2,
-          "text": "Verification",
-          "line": 118
-        }
-      ],
-      "heading_count": 14,
-      "has_frontmatter": true
-    },
-    {
       "path": "canon/meta/TEMPLATE.md",
       "root": "canon",
       "authority_band": "governing",
@@ -10087,121 +9993,6 @@
       "has_frontmatter": true
     },
     {
-      "path": "docs/appendices/ATTEMPT_KICKOFF.md",
-      "root": "docs",
-      "authority_band": "operational",
-      "authority_inferred": "operational",
-      "uri": "klappy://docs/attempt-kickoff",
-      "title": "Attempt Workflow (Human)",
-      "subtitle": null,
-      "tags": [
-        "docs",
-        "implementation",
-        "attempts",
-        "workflow",
-        "human"
-      ],
-      "acronyms": [
-        "aw"
-      ],
-      "stability": "stable",
-      "tier": "1",
-      "audience": "docs",
-      "exposure": "nav",
-      "voice": "neutral",
-      "relevance": null,
-      "execution_posture": null,
-      "headings": [
-        {
-          "level": 1,
-          "text": "🚀 Attempt Workflow (Human)",
-          "line": 2
-        },
-        {
-          "level": 2,
-          "text": "Canonical Lane Kickoff Prompts",
-          "line": 10
-        },
-        {
-          "level": 2,
-          "text": "E0003.1 Completion Rule (Evidence Discoverable)",
-          "line": 24
-        },
-        {
-          "level": 2,
-          "text": "⚠️ Before Starting",
-          "line": 55
-        },
-        {
-          "level": 2,
-          "text": "🤖 Starting Agents",
-          "line": 85
-        },
-        {
-          "level": 2,
-          "text": "✅ After All Agents Finish",
-          "line": 102
-        },
-        {
-          "level": 1,
-          "text": "1. Import artifact folders from all attempt branches for the lane",
-          "line": 107
-        },
-        {
-          "level": 1,
-          "text": "2. Finalize runs (assign attempt-001, 002…)",
-          "line": 115
-        },
-        {
-          "level": 1,
-          "text": "3. Review evidence + preview URLs in each attempt folder",
-          "line": 118
-        },
-        {
-          "level": 1,
-          "text": "4. Promote winner to production",
-          "line": 120
-        },
-        {
-          "level": 2,
-          "text": "🛠️ CLI Reference",
-          "line": 129
-        },
-        {
-          "level": 2,
-          "text": "📁 Artifact Locations",
-          "line": 146
-        },
-        {
-          "level": 2,
-          "text": "📜 Deploy Contract",
-          "line": 185
-        },
-        {
-          "level": 2,
-          "text": "🔗 Cloudflare Previews",
-          "line": 198
-        },
-        {
-          "level": 2,
-          "text": "🚨 Online Evidence Requirement (Non-Negotiable)",
-          "line": 210
-        },
-        {
-          "level": 2,
-          "text": "🔑 Key Mental Model",
-          "line": 233
-        },
-        {
-          "level": 2,
-          "text": "🔗 Related Documents",
-          "line": 245
-        }
-      ],
-      "heading_count": 17,
-      "has_frontmatter": true
-    },
-    {
       "path": "docs/appendices/ATTEMPT_RECORD_PACK.md",
       "root": "docs",
       "authority_band": "operational",
@@ -10254,385 +10045,6 @@
         }
       ],
       "heading_count": 5,
-      "has_frontmatter": true
-    },
-    {
-      "path": "docs/appendices/attempt-lifecycle.md",
-      "root": "docs",
-      "authority_band": "operational",
-      "authority_inferred": "operational",
-      "uri": "klappy://docs/appendices/attempt-lifecycle",
-      "title": "Attempt Lifecycle",
-      "subtitle": "How work is iterated without steering failed attempts.",
-      "tags": [
-        "odd",
-        "attempt",
-        "lifecycle",
-        "restartability"
-      ],
-      "acronyms": [
-        "al"
-      ],
-      "stability": "semi_stable",
-      "tier": "2",
-      "audience": "docs",
-      "exposure": "nav",
-      "voice": "neutral",
-      "relevance": null,
-      "execution_posture": null,
-      "headings": [
-        {
-          "level": 1,
-          "text": "Attempt Lifecycle",
-          "line": 2
-        },
-        {
-          "level": 2,
-          "text": "Description",
-          "line": 6
-        },
-        {
-          "level": 2,
-          "text": "Outline",
-          "line": 10
-        },
-        {
-          "level": 2,
-          "text": "Content",
-          "line": 33
-        },
-        {
-          "level": 2,
-          "text": "Why This Appendix Exists",
-          "line": 41
-        },
-        {
-          "level": 2,
-          "text": "Core Principles",
-          "line": 51
-        },
-        {
-          "level": 2,
-          "text": "PRD Version vs Attempt",
-          "line": 65
-        },
-        {
-          "level": 2,
-          "text": "PRD as the Unit of Test",
-          "line": 84
-        },
-        {
-          "level": 2,
-          "text": "Independence: Goal vs. Infrastructure",
-          "line": 94
-        },
-        {
-          "level": 2,
-          "text": "Worktrees and Learnings",
-          "line": 109
-        },
-        {
-          "level": 3,
-          "text": "Canonical Places (Single Source of Truth)",
-          "line": 120
-        },
-        {
-          "level": 3,
-          "text": "Learnings Payload (Required)",
-          "line": 132
-        },
-        {
-          "level": 2,
-          "text": "Artifacts Always Merge",
-          "line": 148
-        },
-        {
-          "level": 3,
-          "text": "Two Merges Per Attempt",
-          "line": 165
-        },
-        {
-          "level": 2,
-          "text": "What an Attempt Is",
-          "line": 181
-        },
-        {
-          "level": 2,
-          "text": "What an Attempt Is Not",
-          "line": 199
-        },
-        {
-          "level": 2,
-          "text": "The Three Planes of Change",
-          "line": 210
-        },
-        {
-          "level": 3,
-          "text": "1. Application Plane (Behavior)",
-          "line": 214
-        },
-        {
-          "level": 3,
-          "text": "2. Content / Canon Plane (Knowledge)",
-          "line": 224
-        },
-        {
-          "level": 3,
-          "text": "3. Infrastructure Plane (Capability)",
-          "line": 236
-        },
-        {
-          "level": 2,
-          "text": "Canonical Structure",
-          "line": 248
-        },
-        {
-          "level": 2,
-          "text": "Collision Avoidance (Current Model)",
-          "line": 283
-        },
-        {
-          "level": 2,
-          "text": "Blank Slate Requirement",
-          "line": 297
-        },
-        {
-          "level": 3,
-          "text": "The Problem",
-          "line": 301
-        },
-        {
-          "level": 3,
-          "text": "The Solution: Register → Nuke",
-          "line": 305
-        },
-        {
-          "level": 3,
-          "text": "What Gets Nuked (Lane-Scoped)",
-          "line": 315
-        },
-        {
-          "level": 3,
-          "text": "What Survives",
-          "line": 322
-        },
-        {
-          "level": 2,
-          "text": "Attempt Lifecycle (High Level)",
-          "line": 336
-        },
-        {
-          "level": 2,
-          "text": "Sealing an Attempt",
-          "line": 362
-        },
-        {
-          "level": 2,
-          "text": "Champion Selection and Promotion",
-          "line": 377
-        },
-        {
-          "level": 3,
-          "text": "Definitions",
-          "line": 381
-        },
-        {
-          "level": 3,
-          "text": "The Promotion Rule",
-          "line": 388
-        },
-        {
-          "level": 3,
-          "text": "Minimum Gate (must pass)",
-          "line": 394
-        },
-        {
-          "level": 3,
-          "text": "Tie-Breakers (when multiple pass)",
-          "line": 401
-        },
-        {
-          "level": 3,
-          "text": "Promotion Procedure",
-          "line": 412
-        },
-        {
-          "level": 3,
-          "text": "The One Rule That Prevents Chaos",
-          "line": 444
-        },
-        {
-          "level": 3,
-          "text": "Winner Declaration (ATTEMPT.md snippet)",
-          "line": 454
-        },
-        {
-          "level": 2,
-          "text": "Restartability as a Feature",
-          "line": 470
-        },
-        {
-          "level": 2,
-          "text": "What Persists Across Attempts",
-          "line": 484
-        },
-        {
-          "level": 2,
-          "text": "Why Attempts Are Explicitly Closed",
-          "line": 502
-        },
-        {
-          "level": 2,
-          "text": "How This Appendix Should Be Used",
-          "line": 514
-        },
-        {
-          "level": 2,
-          "text": "Summary",
-          "line": 528
-        }
-      ],
-      "heading_count": 42,
-      "has_frontmatter": true
-    },
-    {
-      "path": "docs/appendices/ATTEMPTS.md",
-      "root": "docs",
-      "authority_band": "operational",
-      "authority_inferred": "operational",
-      "uri": "klappy://docs/attempts",
-      "title": "Attempt Lifecycle",
-      "subtitle": "**If the repository is dirty, conclusions drawn from it are invalid.**",
-      "tags": [
-        "docs",
-        "implementation",
-        "attempts",
-        "lifecycle",
-        "orientation"
-      ],
-      "acronyms": [
-        "al"
-      ],
-      "stability": "stable",
-      "tier": "1",
-      "audience": "docs",
-      "exposure": "nav",
-      "voice": "neutral",
-      "relevance": null,
-      "execution_posture": null,
-      "headings": [
-        {
-          "level": 1,
-          "text": "🧭 Attempt Lifecycle — Orientation",
-          "line": 2
-        },
-        {
-          "level": 2,
-          "text": "📌 Core Principles",
-          "line": 13
-        },
-        {
-          "level": 2,
-          "text": "🌿 Branch Roles",
-          "line": 28
-        },
-        {
-          "level": 2,
-          "text": "🧠 What is an Attempt?",
-          "line": 42
-        },
-        {
-          "level": 3,
-          "text": "Attempt Origin Variations",
-          "line": 53
-        },
-        {
-          "level": 2,
-          "text": "🧹 Fresh Start Requirement",
-          "line": 68
-        },
-        {
-          "level": 2,
-          "text": "🚀 How Attempts Work (Current Model)",
-          "line": 84
-        },
-        {
-          "level": 3,
-          "text": "During an Attempt",
-          "line": 86
-        },
-        {
-          "level": 3,
-          "text": "After All Agents Finish",
-          "line": 98
-        },
-        {
-          "level": 3,
-          "text": "Collision Avoidance",
-          "line": 107
-        },
-        {
-          "level": 2,
-          "text": "📁 Folder Structure",
-          "line": 115
-        },
-        {
-          "level": 2,
-          "text": "Attempt Location (Canonical)",
-          "line": 159
-        },
-        {
-          "level": 2,
-          "text": "📎 META.json Schema",
-          "line": 180
-        },
-        {
-          "level": 2,
-          "text": "📦 Artifacts Always Merge",
-          "line": 221
-        },
-        {
-          "level": 3,
-          "text": "Two Phases Per Attempt",
-          "line": 230
-        },
-        {
-          "level": 2,
-          "text": "🔄 What Evolves vs. What is Frozen",
-          "line": 246
-        },
-        {
-          "level": 2,
-          "text": "💡 Why This Structure?",
-          "line": 259
-        },
-        {
-          "level": 2,
-          "text": "🔮 Resurrection",
-          "line": 269
-        },
-        {
-          "level": 1,
-          "text": "Deploy to preview or production as needed",
-          "line": 277
-        },
-        {
-          "level": 2,
-          "text": "📋 Current Policies",
-          "line": 288
-        },
-        {
-          "level": 2,
-          "text": "🛠️ Tooling Summary",
-          "line": 301
-        },
-        {
-          "level": 2,
-          "text": "🔗 Related Documents",
-          "line": 316
-        }
-      ],
-      "heading_count": 22,
       "has_frontmatter": true
     },
     {
@@ -10751,194 +10163,6 @@
       "has_frontmatter": true
     },
     {
-      "path": "docs/appendices/compilation-targets.md",
-      "root": "docs",
-      "authority_band": "operational",
-      "authority_inferred": "operational",
-      "uri": "klappy://docs/appendices/compilation-targets",
-      "title": "Compilation Targets",
-      "subtitle": "Lane-scoped, target-specific packs that make the corpus usable at constrained context sizes.",
-      "tags": [
-        "odd",
-        "compilation",
-        "memory",
-        "portability",
-        "packs",
-        "lanes"
-      ],
-      "acronyms": [
-        "ct"
-      ],
-      "stability": "stable",
-      "tier": "3",
-      "audience": "docs",
-      "exposure": "public",
-      "voice": "neutral",
-      "relevance": null,
-      "execution_posture": null,
-      "headings": [
-        {
-          "level": 1,
-          "text": "Compilation Targets",
-          "line": 2
-        },
-        {
-          "level": 2,
-          "text": "Description",
-          "line": 6
-        },
-        {
-          "level": 2,
-          "text": "Outline",
-          "line": 10
-        },
-        {
-          "level": 2,
-          "text": "Content",
-          "line": 21
-        },
-        {
-          "level": 2,
-          "text": "Key Idea",
-          "line": 27
-        },
-        {
-          "level": 2,
-          "text": "Output Location (Wipeable)",
-          "line": 38
-        },
-        {
-          "level": 2,
-          "text": "Compile Plans (Deterministic)",
-          "line": 49
-        },
-        {
-          "level": 2,
-          "text": "Targets",
-          "line": 60
-        },
-        {
-          "level": 3,
-          "text": "Website Lane Targets",
-          "line": 64
-        },
-        {
-          "level": 3,
-          "text": "Future Targets (Defined When Needed)",
-          "line": 69
-        },
-        {
-          "level": 2,
-          "text": "Invariants",
-          "line": 76
-        },
-        {
-          "level": 2,
-          "text": "Phase Policy",
-          "line": 83
-        }
-      ],
-      "heading_count": 12,
-      "has_frontmatter": true
-    },
-    {
-      "path": "docs/appendices/compilation.md",
-      "root": "docs",
-      "authority_band": "operational",
-      "authority_inferred": "operational",
-      "uri": "klappy://docs/appendices/compilation",
-      "title": "Compilation",
-      "subtitle": "The process of producing wipeable, portable context packs from source documents.",
-      "tags": [
-        "odd",
-        "compilation",
-        "memory",
-        "context",
-        "packs"
-      ],
-      "stability": "evolving",
-      "tier": "3",
-      "audience": "docs",
-      "exposure": "nav",
-      "voice": "neutral",
-      "relevance": null,
-      "execution_posture": null,
-      "headings": [
-        {
-          "level": 1,
-          "text": "Compilation",
-          "line": 2
-        },
-        {
-          "level": 2,
-          "text": "Description",
-          "line": 6
-        },
-        {
-          "level": 2,
-          "text": "Outline",
-          "line": 10
-        },
-        {
-          "level": 2,
-          "text": "Content",
-          "line": 23
-        },
-        {
-          "level": 2,
-          "text": "Summary",
-          "line": 25
-        },
-        {
-          "level": 2,
-          "text": "Core Rule",
-          "line": 37
-        },
-        {
-          "level": 2,
-          "text": "Output Location (Wipeable)",
-          "line": 49
-        },
-        {
-          "level": 2,
-          "text": "Provenance Header (Required)",
-          "line": 68
-        },
-        {
-          "level": 2,
-          "text": "Why This Is ODD",
-          "line": 83
-        },
-        {
-          "level": 2,
-          "text": "Multi-Pack Output (E0002+)",
-          "line": 104
-        },
-        {
-          "level": 3,
-          "text": "index.json",
-          "line": 116
-        },
-        {
-          "level": 3,
-          "text": "Meta filenames are pack-scoped",
-          "line": 121
-        },
-        {
-          "level": 2,
-          "text": "Relationship to Drift Checks",
-          "line": 133
-        },
-        {
-          "level": 2,
-          "text": "Drift Audits",
-          "line": 143
-        }
-      ],
-      "heading_count": 14,
-      "has_frontmatter": true
-    },
-    {
       "path": "docs/appendices/compiled-memory.md",
       "root": "docs",
       "authority_band": "operational",
@@ -11033,145 +10257,6 @@
       "has_frontmatter": true
     },
     {
-      "path": "docs/appendices/context-packs-and-projection-detail.md",
-      "root": "docs",
-      "authority_band": "operational",
-      "authority_inferred": "operational",
-      "uri": "klappy://docs/context-packs-and-projection-detail",
-      "title": "Context Packs and Projection Detail",
-      "subtitle": "Detail levels control how much content is returned, not which content is relevant.",
-      "tags": [
-        "docs",
-        "context-packs",
-        "projection",
-        "detail-levels"
-      ],
-      "acronyms": [
-        "cppd"
-      ],
-      "stability": "evolving",
-      "tier": "2",
-      "audience": "docs",
-      "exposure": "nav",
-      "voice": "neutral",
-      "relevance": null,
-      "execution_posture": null,
-      "headings": [
-        {
-          "level": 1,
-          "text": "Context Packs and Projection Detail",
-          "line": 2
-        },
-        {
-          "level": 2,
-          "text": "Description",
-          "line": 6
-        },
-        {
-          "level": 2,
-          "text": "Outline",
-          "line": 10
-        },
-        {
-          "level": 2,
-          "text": "Document Tiers vs Query-Time Detail",
-          "line": 20
-        },
-        {
-          "level": 3,
-          "text": "Tier 0 Content",
-          "line": 40
-        },
-        {
-          "level": 2,
-          "text": "Detail Levels Explained",
-          "line": 54
-        },
-        {
-          "level": 3,
-          "text": "`full`",
-          "line": 58
-        },
-        {
-          "level": 3,
-          "text": "`medium`",
-          "line": 67
-        },
-        {
-          "level": 3,
-          "text": "`low`",
-          "line": 76
-        },
-        {
-          "level": 2,
-          "text": "How Detail Affects Output",
-          "line": 87
-        },
-        {
-          "level": 1,
-          "text": "Example Document",
-          "line": 97
-        },
-        {
-          "level": 2,
-          "text": "Description",
-          "line": 101
-        },
-        {
-          "level": 2,
-          "text": "Outline",
-          "line": 105
-        },
-        {
-          "level": 2,
-          "text": "Section 1",
-          "line": 113
-        },
-        {
-          "level": 2,
-          "text": "Section 2",
-          "line": 117
-        },
-        {
-          "level": 2,
-          "text": "Degradation When Structure Is Missing",
-          "line": 132
-        },
-        {
-          "level": 2,
-          "text": "Common Misunderstandings",
-          "line": 149
-        },
-        {
-          "level": 3,
-          "text": "\"Higher detail means more important\"",
-          "line": 151
-        },
-        {
-          "level": 3,
-          "text": "\"Tier controls how much is returned\"",
-          "line": 155
-        },
-        {
-          "level": 3,
-          "text": "\"Detail is set per-document\"",
-          "line": 159
-        },
-        {
-          "level": 3,
-          "text": "\"Missing structure is fine\"",
-          "line": 163
-        },
-        {
-          "level": 2,
-          "text": "See Also",
-          "line": 169
-        }
-      ],
-      "heading_count": 22,
-      "has_frontmatter": true
-    },
-    {
       "path": "docs/appendices/convention-requires-an-enforcer.md",
       "root": "docs",
       "authority_band": "operational",
@@ -11259,76 +10344,6 @@
         }
       ],
       "heading_count": 12,
-      "has_frontmatter": true
-    },
-    {
-      "path": "docs/appendices/deploy-evidence.md",
-      "root": "docs",
-      "authority_band": "operational",
-      "authority_inferred": "operational",
-      "uri": "klappy://docs/appendices/deploy-evidence",
-      "title": "Deploy Evidence",
-      "subtitle": "Evidence is only valid when externally reviewable via deployed URLs.",
-      "tags": [
-        "odd",
-        "deploy",
-        "evidence",
-        "cloudflare",
-        "attempts"
-      ],
-      "acronyms": [
-        "de"
-      ],
-      "stability": "stable",
-      "tier": "2",
-      "audience": "docs",
-      "exposure": "nav",
-      "voice": "first_person",
-      "relevance": null,
-      "execution_posture": null,
-      "headings": [
-        {
-          "level": 1,
-          "text": "Deploy Evidence",
-          "line": 2
-        },
-        {
-          "level": 2,
-          "text": "Description",
-          "line": 6
-        },
-        {
-          "level": 2,
-          "text": "Outline",
-          "line": 10
-        },
-        {
-          "level": 2,
-          "text": "Content",
-          "line": 19
-        },
-        {
-          "level": 2,
-          "text": "Summary",
-          "line": 21
-        },
-        {
-          "level": 2,
-          "text": "Cloudflare Pages Reality",
-          "line": 27
-        },
-        {
-          "level": 2,
-          "text": "Required Evidence Publication Path",
-          "line": 34
-        },
-        {
-          "level": 2,
-          "text": "Completion Rule",
-          "line": 44
-        }
-      ],
-      "heading_count": 8,
       "has_frontmatter": true
     },
     {
@@ -11727,166 +10742,6 @@
       "has_frontmatter": true
     },
     {
-      "path": "docs/appendices/lane-build-layout.md",
-      "root": "docs",
-      "authority_band": "operational",
-      "authority_inferred": "operational",
-      "uri": "klappy://docs/appendices/lane-build-layout",
-      "title": "Lane Build Layout",
-      "subtitle": "Policy ensuring multiple product lanes share Canon without colliding in implementation output.",
-      "tags": [
-        "odd",
-        "lanes",
-        "build",
-        "layout",
-        "deploy"
-      ],
-      "acronyms": [
-        "lbl"
-      ],
-      "stability": "evolving",
-      "tier": "3",
-      "audience": "docs",
-      "exposure": "nav",
-      "voice": "neutral",
-      "relevance": null,
-      "execution_posture": null,
-      "headings": [
-        {
-          "level": 1,
-          "text": "Lane Build Layout",
-          "line": 2
-        },
-        {
-          "level": 2,
-          "text": "Description",
-          "line": 6
-        },
-        {
-          "level": 2,
-          "text": "Outline",
-          "line": 10
-        },
-        {
-          "level": 2,
-          "text": "Content",
-          "line": 20
-        },
-        {
-          "level": 2,
-          "text": "Policy: One Lane Builds at a Time in a Worktree",
-          "line": 32
-        },
-        {
-          "level": 2,
-          "text": "Policy: Production Deployments Are Lane-Scoped",
-          "line": 43
-        },
-        {
-          "level": 2,
-          "text": "Recommended Deployment Model (Least Brittle)",
-          "line": 54
-        },
-        {
-          "level": 2,
-          "text": "What This Means for `/main` and `/prod`",
-          "line": 68
-        },
-        {
-          "level": 2,
-          "text": "Invariant",
-          "line": 77
-        }
-      ],
-      "heading_count": 9,
-      "has_frontmatter": true
-    },
-    {
-      "path": "docs/appendices/lane-implementation-surfaces.md",
-      "root": "docs",
-      "authority_band": "operational",
-      "authority_inferred": "operational",
-      "uri": "klappy://docs/appendices/lane-implementation-surfaces",
-      "title": "Lane-Scoped Implementation Surfaces",
-      "subtitle": "Each lane owns its own source, build output, and deploy root for epistemic independence.",
-      "tags": [
-        "odd",
-        "lanes",
-        "deployment",
-        "contract",
-        "build"
-      ],
-      "acronyms": [
-        "lsis"
-      ],
-      "stability": "stable",
-      "tier": "3",
-      "audience": "docs",
-      "exposure": "nav",
-      "voice": "neutral",
-      "relevance": null,
-      "execution_posture": null,
-      "headings": [
-        {
-          "level": 1,
-          "text": "Lane-Scoped Implementation Surfaces",
-          "line": 2
-        },
-        {
-          "level": 2,
-          "text": "Description",
-          "line": 6
-        },
-        {
-          "level": 2,
-          "text": "Outline",
-          "line": 10
-        },
-        {
-          "level": 2,
-          "text": "Content",
-          "line": 22
-        },
-        {
-          "level": 2,
-          "text": "Summary",
-          "line": 24
-        },
-        {
-          "level": 2,
-          "text": "Locked Folder Contract",
-          "line": 39
-        },
-        {
-          "level": 2,
-          "text": "Build Output Contract (Pages-style)",
-          "line": 58
-        },
-        {
-          "level": 2,
-          "text": "Attempt Independence",
-          "line": 69
-        },
-        {
-          "level": 2,
-          "text": "Deployment Isolation (Cloudflare)",
-          "line": 87
-        },
-        {
-          "level": 2,
-          "text": "Promotion Model",
-          "line": 102
-        },
-        {
-          "level": 2,
-          "text": "Why This Exists",
-          "line": 114
-        }
-      ],
-      "heading_count": 11,
-      "has_frontmatter": true
-    },
-    {
       "path": "docs/appendices/mode-separated-conversations.md",
       "root": "docs",
       "authority_band": "operational",
@@ -12032,176 +10887,6 @@
         }
       ],
       "heading_count": 10,
-      "has_frontmatter": true
-    },
-    {
-      "path": "docs/appendices/product-lanes.md",
-      "root": "docs",
-      "authority_band": "operational",
-      "authority_inferred": "operational",
-      "uri": "klappy://docs/appendices/product-lanes",
-      "title": "Product Lanes in Outcome-Driven Development",
-      "subtitle": "Why multiple PRD lanes exist and how they relate in klappy.dev.",
-      "tags": [
-        "odd",
-        "prd",
-        "architecture",
-        "lanes",
-        "orientation"
-      ],
-      "acronyms": [
-        "plodd"
-      ],
-      "stability": "stable",
-      "tier": "3",
-      "audience": "docs",
-      "exposure": "hidden",
-      "voice": "neutral",
-      "relevance": null,
-      "execution_posture": null,
-      "headings": [
-        {
-          "level": 1,
-          "text": "Product Lanes in Outcome-Driven Development",
-          "line": 2
-        },
-        {
-          "level": 2,
-          "text": "Description",
-          "line": 6
-        },
-        {
-          "level": 2,
-          "text": "Outline",
-          "line": 14
-        },
-        {
-          "level": 2,
-          "text": "Content",
-          "line": 30
-        },
-        {
-          "level": 2,
-          "text": "Summary",
-          "line": 38
-        },
-        {
-          "level": 2,
-          "text": "Why PRDs Must Be Decoupled",
-          "line": 48
-        },
-        {
-          "level": 2,
-          "text": "Active Lanes",
-          "line": 65
-        },
-        {
-          "level": 3,
-          "text": "odd-teaser (Active)",
-          "line": 67
-        },
-        {
-          "level": 3,
-          "text": "agent-skill (Active)",
-          "line": 86
-        },
-        {
-          "level": 3,
-          "text": "fluent-mobile (Active)",
-          "line": 108
-        },
-        {
-          "level": 2,
-          "text": "Deprecated Lanes",
-          "line": 116
-        },
-        {
-          "level": 3,
-          "text": "website (Deprecated)",
-          "line": 118
-        },
-        {
-          "level": 3,
-          "text": "ai-navigation (Deprecated)",
-          "line": 131
-        },
-        {
-          "level": 2,
-          "text": "Implementation Surfaces Are Lane-Scoped",
-          "line": 144
-        },
-        {
-          "level": 2,
-          "text": "Canon Is Not a Product",
-          "line": 159
-        },
-        {
-          "level": 2,
-          "text": "What Is Shared vs What Is Isolated",
-          "line": 176
-        },
-        {
-          "level": 2,
-          "text": "Attempt Structure (Locked)",
-          "line": 189
-        },
-        {
-          "level": 2,
-          "text": "Anti-Patterns",
-          "line": 210
-        },
-        {
-          "level": 3,
-          "text": "One PRD to Rule Them All",
-          "line": 212
-        },
-        {
-          "level": 3,
-          "text": "Treating Artifacts as Features",
-          "line": 220
-        },
-        {
-          "level": 3,
-          "text": "Re-running Experiments Across Lanes",
-          "line": 227
-        },
-        {
-          "level": 2,
-          "text": "Implications for Tooling and Docs",
-          "line": 235
-        },
-        {
-          "level": 3,
-          "text": "Lane Self-Containment (Critical)",
-          "line": 237
-        },
-        {
-          "level": 3,
-          "text": "Where PRDs Live",
-          "line": 261
-        },
-        {
-          "level": 3,
-          "text": "Where Attempts Live",
-          "line": 274
-        },
-        {
-          "level": 3,
-          "text": "How Evolution Propagates",
-          "line": 287
-        },
-        {
-          "level": 2,
-          "text": "Scalability",
-          "line": 296
-        },
-        {
-          "level": 2,
-          "text": "Related Documents",
-          "line": 312
-        }
-      ],
-      "heading_count": 28,
       "has_frontmatter": true
     },
     {
@@ -12609,6 +11294,1519 @@
         }
       ],
       "heading_count": 6,
+      "has_frontmatter": true
+    },
+    {
+      "path": "docs/archive/ATTEMPT_KICKOFF.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "klappy://docs/attempt-kickoff",
+      "title": "Attempt Workflow (Human)",
+      "subtitle": null,
+      "tags": [
+        "docs",
+        "implementation",
+        "attempts",
+        "workflow",
+        "human"
+      ],
+      "acronyms": [
+        "aw"
+      ],
+      "stability": "stable",
+      "tier": "1",
+      "audience": "docs",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "🚀 Attempt Workflow (Human)",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Canonical Lane Kickoff Prompts",
+          "line": 10
+        },
+        {
+          "level": 2,
+          "text": "E0003.1 Completion Rule (Evidence Discoverable)",
+          "line": 24
+        },
+        {
+          "level": 2,
+          "text": "⚠️ Before Starting",
+          "line": 55
+        },
+        {
+          "level": 2,
+          "text": "🤖 Starting Agents",
+          "line": 85
+        },
+        {
+          "level": 2,
+          "text": "✅ After All Agents Finish",
+          "line": 102
+        },
+        {
+          "level": 1,
+          "text": "1. Import artifact folders from all attempt branches for the lane",
+          "line": 107
+        },
+        {
+          "level": 1,
+          "text": "2. Finalize runs (assign attempt-001, 002…)",
+          "line": 115
+        },
+        {
+          "level": 1,
+          "text": "3. Review evidence + preview URLs in each attempt folder",
+          "line": 118
+        },
+        {
+          "level": 1,
+          "text": "4. Promote winner to production",
+          "line": 120
+        },
+        {
+          "level": 2,
+          "text": "🛠️ CLI Reference",
+          "line": 129
+        },
+        {
+          "level": 2,
+          "text": "📁 Artifact Locations",
+          "line": 146
+        },
+        {
+          "level": 2,
+          "text": "📜 Deploy Contract",
+          "line": 185
+        },
+        {
+          "level": 2,
+          "text": "🔗 Cloudflare Previews",
+          "line": 198
+        },
+        {
+          "level": 2,
+          "text": "🚨 Online Evidence Requirement (Non-Negotiable)",
+          "line": 210
+        },
+        {
+          "level": 2,
+          "text": "🔑 Key Mental Model",
+          "line": 233
+        },
+        {
+          "level": 2,
+          "text": "🔗 Related Documents",
+          "line": 245
+        }
+      ],
+      "heading_count": 17,
+      "has_frontmatter": true
+    },
+    {
+      "path": "docs/archive/attempt-lifecycle.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "klappy://docs/appendices/attempt-lifecycle",
+      "title": "Attempt Lifecycle",
+      "subtitle": "How work is iterated without steering failed attempts.",
+      "tags": [
+        "odd",
+        "attempt",
+        "lifecycle",
+        "restartability"
+      ],
+      "acronyms": [
+        "al"
+      ],
+      "stability": "semi_stable",
+      "tier": "2",
+      "audience": "docs",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Attempt Lifecycle",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Outline",
+          "line": 10
+        },
+        {
+          "level": 2,
+          "text": "Content",
+          "line": 33
+        },
+        {
+          "level": 2,
+          "text": "Why This Appendix Exists",
+          "line": 41
+        },
+        {
+          "level": 2,
+          "text": "Core Principles",
+          "line": 51
+        },
+        {
+          "level": 2,
+          "text": "PRD Version vs Attempt",
+          "line": 65
+        },
+        {
+          "level": 2,
+          "text": "PRD as the Unit of Test",
+          "line": 84
+        },
+        {
+          "level": 2,
+          "text": "Independence: Goal vs. Infrastructure",
+          "line": 94
+        },
+        {
+          "level": 2,
+          "text": "Worktrees and Learnings",
+          "line": 109
+        },
+        {
+          "level": 3,
+          "text": "Canonical Places (Single Source of Truth)",
+          "line": 120
+        },
+        {
+          "level": 3,
+          "text": "Learnings Payload (Required)",
+          "line": 132
+        },
+        {
+          "level": 2,
+          "text": "Artifacts Always Merge",
+          "line": 148
+        },
+        {
+          "level": 3,
+          "text": "Two Merges Per Attempt",
+          "line": 165
+        },
+        {
+          "level": 2,
+          "text": "What an Attempt Is",
+          "line": 181
+        },
+        {
+          "level": 2,
+          "text": "What an Attempt Is Not",
+          "line": 199
+        },
+        {
+          "level": 2,
+          "text": "The Three Planes of Change",
+          "line": 210
+        },
+        {
+          "level": 3,
+          "text": "1. Application Plane (Behavior)",
+          "line": 214
+        },
+        {
+          "level": 3,
+          "text": "2. Content / Canon Plane (Knowledge)",
+          "line": 224
+        },
+        {
+          "level": 3,
+          "text": "3. Infrastructure Plane (Capability)",
+          "line": 236
+        },
+        {
+          "level": 2,
+          "text": "Canonical Structure",
+          "line": 248
+        },
+        {
+          "level": 2,
+          "text": "Collision Avoidance (Current Model)",
+          "line": 283
+        },
+        {
+          "level": 2,
+          "text": "Blank Slate Requirement",
+          "line": 297
+        },
+        {
+          "level": 3,
+          "text": "The Problem",
+          "line": 301
+        },
+        {
+          "level": 3,
+          "text": "The Solution: Register → Nuke",
+          "line": 305
+        },
+        {
+          "level": 3,
+          "text": "What Gets Nuked (Lane-Scoped)",
+          "line": 315
+        },
+        {
+          "level": 3,
+          "text": "What Survives",
+          "line": 322
+        },
+        {
+          "level": 2,
+          "text": "Attempt Lifecycle (High Level)",
+          "line": 336
+        },
+        {
+          "level": 2,
+          "text": "Sealing an Attempt",
+          "line": 362
+        },
+        {
+          "level": 2,
+          "text": "Champion Selection and Promotion",
+          "line": 377
+        },
+        {
+          "level": 3,
+          "text": "Definitions",
+          "line": 381
+        },
+        {
+          "level": 3,
+          "text": "The Promotion Rule",
+          "line": 388
+        },
+        {
+          "level": 3,
+          "text": "Minimum Gate (must pass)",
+          "line": 394
+        },
+        {
+          "level": 3,
+          "text": "Tie-Breakers (when multiple pass)",
+          "line": 401
+        },
+        {
+          "level": 3,
+          "text": "Promotion Procedure",
+          "line": 412
+        },
+        {
+          "level": 3,
+          "text": "The One Rule That Prevents Chaos",
+          "line": 444
+        },
+        {
+          "level": 3,
+          "text": "Winner Declaration (ATTEMPT.md snippet)",
+          "line": 454
+        },
+        {
+          "level": 2,
+          "text": "Restartability as a Feature",
+          "line": 470
+        },
+        {
+          "level": 2,
+          "text": "What Persists Across Attempts",
+          "line": 484
+        },
+        {
+          "level": 2,
+          "text": "Why Attempts Are Explicitly Closed",
+          "line": 502
+        },
+        {
+          "level": 2,
+          "text": "How This Appendix Should Be Used",
+          "line": 514
+        },
+        {
+          "level": 2,
+          "text": "Summary",
+          "line": 528
+        }
+      ],
+      "heading_count": 42,
+      "has_frontmatter": true
+    },
+    {
+      "path": "docs/archive/ATTEMPTS.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "klappy://docs/attempts",
+      "title": "Attempt Lifecycle",
+      "subtitle": "**If the repository is dirty, conclusions drawn from it are invalid.**",
+      "tags": [
+        "docs",
+        "implementation",
+        "attempts",
+        "lifecycle",
+        "orientation"
+      ],
+      "acronyms": [
+        "al"
+      ],
+      "stability": "stable",
+      "tier": "1",
+      "audience": "docs",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "🧭 Attempt Lifecycle — Orientation",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "📌 Core Principles",
+          "line": 13
+        },
+        {
+          "level": 2,
+          "text": "🌿 Branch Roles",
+          "line": 28
+        },
+        {
+          "level": 2,
+          "text": "🧠 What is an Attempt?",
+          "line": 42
+        },
+        {
+          "level": 3,
+          "text": "Attempt Origin Variations",
+          "line": 53
+        },
+        {
+          "level": 2,
+          "text": "🧹 Fresh Start Requirement",
+          "line": 68
+        },
+        {
+          "level": 2,
+          "text": "🚀 How Attempts Work (Current Model)",
+          "line": 84
+        },
+        {
+          "level": 3,
+          "text": "During an Attempt",
+          "line": 86
+        },
+        {
+          "level": 3,
+          "text": "After All Agents Finish",
+          "line": 98
+        },
+        {
+          "level": 3,
+          "text": "Collision Avoidance",
+          "line": 107
+        },
+        {
+          "level": 2,
+          "text": "📁 Folder Structure",
+          "line": 115
+        },
+        {
+          "level": 2,
+          "text": "Attempt Location (Canonical)",
+          "line": 159
+        },
+        {
+          "level": 2,
+          "text": "📎 META.json Schema",
+          "line": 180
+        },
+        {
+          "level": 2,
+          "text": "📦 Artifacts Always Merge",
+          "line": 221
+        },
+        {
+          "level": 3,
+          "text": "Two Phases Per Attempt",
+          "line": 230
+        },
+        {
+          "level": 2,
+          "text": "🔄 What Evolves vs. What is Frozen",
+          "line": 246
+        },
+        {
+          "level": 2,
+          "text": "💡 Why This Structure?",
+          "line": 259
+        },
+        {
+          "level": 2,
+          "text": "🔮 Resurrection",
+          "line": 269
+        },
+        {
+          "level": 1,
+          "text": "Deploy to preview or production as needed",
+          "line": 277
+        },
+        {
+          "level": 2,
+          "text": "📋 Current Policies",
+          "line": 288
+        },
+        {
+          "level": 2,
+          "text": "🛠️ Tooling Summary",
+          "line": 301
+        },
+        {
+          "level": 2,
+          "text": "🔗 Related Documents",
+          "line": 316
+        }
+      ],
+      "heading_count": 22,
+      "has_frontmatter": true
+    },
+    {
+      "path": "docs/archive/CLOUDFLARE_CONFIG.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "klappy://docs/cloudflare-config",
+      "title": "Cloudflare Pages Configuration",
+      "subtitle": "**Legacy / Transitional note (pre-D0013):** Some existing deploy configurations may still publish repo-root `/dist/`. That output is no longer canonical; the canonical build output for lane deployments is `products/<lane>/dist/`.",
+      "tags": [
+        "docs",
+        "implementation",
+        "cloudflare",
+        "deploy",
+        "configuration"
+      ],
+      "acronyms": [
+        "cpc"
+      ],
+      "stability": "stable",
+      "tier": "2",
+      "audience": "docs",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "☁️ Cloudflare Pages Configuration",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "🌿 Branch Roles",
+          "line": 10
+        },
+        {
+          "level": 2,
+          "text": "⚠️ Critical Configuration",
+          "line": 22
+        },
+        {
+          "level": 3,
+          "text": "Production Branch",
+          "line": 24
+        },
+        {
+          "level": 3,
+          "text": "Preview Deployments",
+          "line": 39
+        },
+        {
+          "level": 2,
+          "text": "🛠️ Build Configuration",
+          "line": 56
+        },
+        {
+          "level": 2,
+          "text": "📋 Expected Behavior",
+          "line": 79
+        },
+        {
+          "level": 3,
+          "text": "Promotion Semantics",
+          "line": 88
+        },
+        {
+          "level": 2,
+          "text": "✅ Verification",
+          "line": 99
+        },
+        {
+          "level": 2,
+          "text": "💡 Why This Matters",
+          "line": 109
+        },
+        {
+          "level": 2,
+          "text": "📝 Note on Branch Naming",
+          "line": 122
+        },
+        {
+          "level": 2,
+          "text": "🔗 Related Documents",
+          "line": 137
+        }
+      ],
+      "heading_count": 12,
+      "has_frontmatter": true
+    },
+    {
+      "path": "docs/archive/cloudflare-branch-deploys.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": null,
+      "title": "☁️ Cloudflare Pages — Branch Deploys (Observation Infrastructure)",
+      "subtitle": null,
+      "tags": [],
+      "acronyms": [
+        "☁cp—bd"
+      ],
+      "stability": null,
+      "tier": null,
+      "audience": null,
+      "exposure": null,
+      "voice": null,
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "☁️ Cloudflare Pages — Branch Deploys (Observation Infrastructure)",
+          "line": 1
+        },
+        {
+          "level": 2,
+          "text": "🌿 Branch Naming Convention",
+          "line": 9
+        },
+        {
+          "level": 2,
+          "text": "🔗 Preview Deploy Expectation",
+          "line": 26
+        },
+        {
+          "level": 2,
+          "text": "📎 Recording Deploy Evidence in META.json",
+          "line": 33
+        },
+        {
+          "level": 2,
+          "text": "🏷️ \"Every Tag Has a Branch\" (Optional Policy)",
+          "line": 44
+        },
+        {
+          "level": 2,
+          "text": "🔮 Rollback Model (Intent)",
+          "line": 57
+        }
+      ],
+      "heading_count": 6,
+      "has_frontmatter": false
+    },
+    {
+      "path": "docs/archive/compilation-targets.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "klappy://docs/appendices/compilation-targets",
+      "title": "Compilation Targets",
+      "subtitle": "Lane-scoped, target-specific packs that make the corpus usable at constrained context sizes.",
+      "tags": [
+        "odd",
+        "compilation",
+        "memory",
+        "portability",
+        "packs",
+        "lanes"
+      ],
+      "acronyms": [
+        "ct"
+      ],
+      "stability": "stable",
+      "tier": "3",
+      "audience": "docs",
+      "exposure": "public",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Compilation Targets",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Outline",
+          "line": 10
+        },
+        {
+          "level": 2,
+          "text": "Content",
+          "line": 21
+        },
+        {
+          "level": 2,
+          "text": "Key Idea",
+          "line": 27
+        },
+        {
+          "level": 2,
+          "text": "Output Location (Wipeable)",
+          "line": 38
+        },
+        {
+          "level": 2,
+          "text": "Compile Plans (Deterministic)",
+          "line": 49
+        },
+        {
+          "level": 2,
+          "text": "Targets",
+          "line": 60
+        },
+        {
+          "level": 3,
+          "text": "Website Lane Targets",
+          "line": 64
+        },
+        {
+          "level": 3,
+          "text": "Future Targets (Defined When Needed)",
+          "line": 69
+        },
+        {
+          "level": 2,
+          "text": "Invariants",
+          "line": 76
+        },
+        {
+          "level": 2,
+          "text": "Phase Policy",
+          "line": 83
+        }
+      ],
+      "heading_count": 12,
+      "has_frontmatter": true
+    },
+    {
+      "path": "docs/archive/compilation.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "klappy://docs/appendices/compilation",
+      "title": "Compilation",
+      "subtitle": "The process of producing wipeable, portable context packs from source documents.",
+      "tags": [
+        "odd",
+        "compilation",
+        "memory",
+        "context",
+        "packs"
+      ],
+      "stability": "evolving",
+      "tier": "3",
+      "audience": "docs",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Compilation",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Outline",
+          "line": 10
+        },
+        {
+          "level": 2,
+          "text": "Content",
+          "line": 23
+        },
+        {
+          "level": 2,
+          "text": "Summary",
+          "line": 25
+        },
+        {
+          "level": 2,
+          "text": "Core Rule",
+          "line": 37
+        },
+        {
+          "level": 2,
+          "text": "Output Location (Wipeable)",
+          "line": 49
+        },
+        {
+          "level": 2,
+          "text": "Provenance Header (Required)",
+          "line": 68
+        },
+        {
+          "level": 2,
+          "text": "Why This Is ODD",
+          "line": 83
+        },
+        {
+          "level": 2,
+          "text": "Multi-Pack Output (E0002+)",
+          "line": 104
+        },
+        {
+          "level": 3,
+          "text": "index.json",
+          "line": 116
+        },
+        {
+          "level": 3,
+          "text": "Meta filenames are pack-scoped",
+          "line": 121
+        },
+        {
+          "level": 2,
+          "text": "Relationship to Drift Checks",
+          "line": 133
+        },
+        {
+          "level": 2,
+          "text": "Drift Audits",
+          "line": 143
+        }
+      ],
+      "heading_count": 14,
+      "has_frontmatter": true
+    },
+    {
+      "path": "docs/archive/context-packs-and-projection-detail.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "klappy://docs/context-packs-and-projection-detail",
+      "title": "Context Packs and Projection Detail",
+      "subtitle": "Detail levels control how much content is returned, not which content is relevant.",
+      "tags": [
+        "docs",
+        "context-packs",
+        "projection",
+        "detail-levels"
+      ],
+      "acronyms": [
+        "cppd"
+      ],
+      "stability": "evolving",
+      "tier": "2",
+      "audience": "docs",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Context Packs and Projection Detail",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Outline",
+          "line": 10
+        },
+        {
+          "level": 2,
+          "text": "Document Tiers vs Query-Time Detail",
+          "line": 20
+        },
+        {
+          "level": 3,
+          "text": "Tier 0 Content",
+          "line": 40
+        },
+        {
+          "level": 2,
+          "text": "Detail Levels Explained",
+          "line": 54
+        },
+        {
+          "level": 3,
+          "text": "`full`",
+          "line": 58
+        },
+        {
+          "level": 3,
+          "text": "`medium`",
+          "line": 67
+        },
+        {
+          "level": 3,
+          "text": "`low`",
+          "line": 76
+        },
+        {
+          "level": 2,
+          "text": "How Detail Affects Output",
+          "line": 87
+        },
+        {
+          "level": 1,
+          "text": "Example Document",
+          "line": 97
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 101
+        },
+        {
+          "level": 2,
+          "text": "Outline",
+          "line": 105
+        },
+        {
+          "level": 2,
+          "text": "Section 1",
+          "line": 113
+        },
+        {
+          "level": 2,
+          "text": "Section 2",
+          "line": 117
+        },
+        {
+          "level": 2,
+          "text": "Degradation When Structure Is Missing",
+          "line": 132
+        },
+        {
+          "level": 2,
+          "text": "Common Misunderstandings",
+          "line": 149
+        },
+        {
+          "level": 3,
+          "text": "\"Higher detail means more important\"",
+          "line": 151
+        },
+        {
+          "level": 3,
+          "text": "\"Tier controls how much is returned\"",
+          "line": 155
+        },
+        {
+          "level": 3,
+          "text": "\"Detail is set per-document\"",
+          "line": 159
+        },
+        {
+          "level": 3,
+          "text": "\"Missing structure is fine\"",
+          "line": 163
+        },
+        {
+          "level": 2,
+          "text": "See Also",
+          "line": 169
+        }
+      ],
+      "heading_count": 22,
+      "has_frontmatter": true
+    },
+    {
+      "path": "docs/archive/deploy-evidence.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "klappy://docs/appendices/deploy-evidence",
+      "title": "Deploy Evidence",
+      "subtitle": "Evidence is only valid when externally reviewable via deployed URLs.",
+      "tags": [
+        "odd",
+        "deploy",
+        "evidence",
+        "cloudflare",
+        "attempts"
+      ],
+      "acronyms": [
+        "de"
+      ],
+      "stability": "stable",
+      "tier": "2",
+      "audience": "docs",
+      "exposure": "nav",
+      "voice": "first_person",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Deploy Evidence",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Outline",
+          "line": 10
+        },
+        {
+          "level": 2,
+          "text": "Content",
+          "line": 19
+        },
+        {
+          "level": 2,
+          "text": "Summary",
+          "line": 21
+        },
+        {
+          "level": 2,
+          "text": "Cloudflare Pages Reality",
+          "line": 27
+        },
+        {
+          "level": 2,
+          "text": "Required Evidence Publication Path",
+          "line": 34
+        },
+        {
+          "level": 2,
+          "text": "Completion Rule",
+          "line": 44
+        }
+      ],
+      "heading_count": 8,
+      "has_frontmatter": true
+    },
+    {
+      "path": "docs/archive/lane-build-layout.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "klappy://docs/appendices/lane-build-layout",
+      "title": "Lane Build Layout",
+      "subtitle": "Policy ensuring multiple product lanes share Canon without colliding in implementation output.",
+      "tags": [
+        "odd",
+        "lanes",
+        "build",
+        "layout",
+        "deploy"
+      ],
+      "acronyms": [
+        "lbl"
+      ],
+      "stability": "evolving",
+      "tier": "3",
+      "audience": "docs",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Lane Build Layout",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Outline",
+          "line": 10
+        },
+        {
+          "level": 2,
+          "text": "Content",
+          "line": 20
+        },
+        {
+          "level": 2,
+          "text": "Policy: One Lane Builds at a Time in a Worktree",
+          "line": 32
+        },
+        {
+          "level": 2,
+          "text": "Policy: Production Deployments Are Lane-Scoped",
+          "line": 43
+        },
+        {
+          "level": 2,
+          "text": "Recommended Deployment Model (Least Brittle)",
+          "line": 54
+        },
+        {
+          "level": 2,
+          "text": "What This Means for `/main` and `/prod`",
+          "line": 68
+        },
+        {
+          "level": 2,
+          "text": "Invariant",
+          "line": 77
+        }
+      ],
+      "heading_count": 9,
+      "has_frontmatter": true
+    },
+    {
+      "path": "docs/archive/lane-implementation-surfaces.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "klappy://docs/appendices/lane-implementation-surfaces",
+      "title": "Lane-Scoped Implementation Surfaces",
+      "subtitle": "Each lane owns its own source, build output, and deploy root for epistemic independence.",
+      "tags": [
+        "odd",
+        "lanes",
+        "deployment",
+        "contract",
+        "build"
+      ],
+      "acronyms": [
+        "lsis"
+      ],
+      "stability": "stable",
+      "tier": "3",
+      "audience": "docs",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Lane-Scoped Implementation Surfaces",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Outline",
+          "line": 10
+        },
+        {
+          "level": 2,
+          "text": "Content",
+          "line": 22
+        },
+        {
+          "level": 2,
+          "text": "Summary",
+          "line": 24
+        },
+        {
+          "level": 2,
+          "text": "Locked Folder Contract",
+          "line": 39
+        },
+        {
+          "level": 2,
+          "text": "Build Output Contract (Pages-style)",
+          "line": 58
+        },
+        {
+          "level": 2,
+          "text": "Attempt Independence",
+          "line": 69
+        },
+        {
+          "level": 2,
+          "text": "Deployment Isolation (Cloudflare)",
+          "line": 87
+        },
+        {
+          "level": 2,
+          "text": "Promotion Model",
+          "line": 102
+        },
+        {
+          "level": 2,
+          "text": "Why This Exists",
+          "line": 114
+        }
+      ],
+      "heading_count": 11,
+      "has_frontmatter": true
+    },
+    {
+      "path": "docs/archive/PRD.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "klappy://docs/prd",
+      "title": "PRD Index",
+      "subtitle": "Product Requirements Documents organized by lane.",
+      "tags": [
+        "docs",
+        "prd",
+        "index"
+      ],
+      "acronyms": [
+        "pi"
+      ],
+      "stability": "stable",
+      "tier": "2",
+      "audience": "docs",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "PRD Index",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Outline",
+          "line": 10
+        },
+        {
+          "level": 2,
+          "text": "Active PRDs",
+          "line": 18
+        },
+        {
+          "level": 2,
+          "text": "Template",
+          "line": 27
+        },
+        {
+          "level": 2,
+          "text": "Legacy PRDs",
+          "line": 33
+        },
+        {
+          "level": 2,
+          "text": "See Also",
+          "line": 41
+        }
+      ],
+      "heading_count": 7,
+      "has_frontmatter": true
+    },
+    {
+      "path": "docs/archive/PREVIEW.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "klappy://docs/preview",
+      "title": "Previewing Lanes and Attempts",
+      "subtitle": "**Scope:** Local + Cloudflare preview workflows for lanes and attempts.",
+      "tags": [
+        "docs",
+        "implementation",
+        "preview",
+        "cloudflare",
+        "local"
+      ],
+      "acronyms": [
+        "pla"
+      ],
+      "stability": "evolving",
+      "tier": "3",
+      "audience": "docs",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "👁️ Previewing Lanes and Attempts",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Local Preview (Any Lane)",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Cloudflare Pages Preview",
+          "line": 24
+        },
+        {
+          "level": 2,
+          "text": "Troubleshooting",
+          "line": 46
+        },
+        {
+          "level": 3,
+          "text": "Wrong lane building",
+          "line": 48
+        },
+        {
+          "level": 3,
+          "text": "Build succeeds but site shows wrong content",
+          "line": 56
+        },
+        {
+          "level": 3,
+          "text": "Local preview differs from Cloudflare",
+          "line": 62
+        },
+        {
+          "level": 2,
+          "text": "Preview URLs",
+          "line": 70
+        },
+        {
+          "level": 3,
+          "text": "Branch previews (automatic)",
+          "line": 72
+        },
+        {
+          "level": 3,
+          "text": "Production",
+          "line": 86
+        },
+        {
+          "level": 2,
+          "text": "Related Documents",
+          "line": 92
+        }
+      ],
+      "heading_count": 11,
+      "has_frontmatter": true
+    },
+    {
+      "path": "docs/archive/product-lanes.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "klappy://docs/appendices/product-lanes",
+      "title": "Product Lanes in Outcome-Driven Development",
+      "subtitle": "Why multiple PRD lanes exist and how they relate in klappy.dev.",
+      "tags": [
+        "odd",
+        "prd",
+        "architecture",
+        "lanes",
+        "orientation"
+      ],
+      "acronyms": [
+        "plodd"
+      ],
+      "stability": "stable",
+      "tier": "3",
+      "audience": "docs",
+      "exposure": "hidden",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "Product Lanes in Outcome-Driven Development",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Description",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Outline",
+          "line": 14
+        },
+        {
+          "level": 2,
+          "text": "Content",
+          "line": 30
+        },
+        {
+          "level": 2,
+          "text": "Summary",
+          "line": 38
+        },
+        {
+          "level": 2,
+          "text": "Why PRDs Must Be Decoupled",
+          "line": 48
+        },
+        {
+          "level": 2,
+          "text": "Active Lanes",
+          "line": 65
+        },
+        {
+          "level": 3,
+          "text": "odd-teaser (Active)",
+          "line": 67
+        },
+        {
+          "level": 3,
+          "text": "agent-skill (Active)",
+          "line": 86
+        },
+        {
+          "level": 3,
+          "text": "fluent-mobile (Active)",
+          "line": 108
+        },
+        {
+          "level": 2,
+          "text": "Deprecated Lanes",
+          "line": 116
+        },
+        {
+          "level": 3,
+          "text": "website (Deprecated)",
+          "line": 118
+        },
+        {
+          "level": 3,
+          "text": "ai-navigation (Deprecated)",
+          "line": 131
+        },
+        {
+          "level": 2,
+          "text": "Implementation Surfaces Are Lane-Scoped",
+          "line": 144
+        },
+        {
+          "level": 2,
+          "text": "Canon Is Not a Product",
+          "line": 159
+        },
+        {
+          "level": 2,
+          "text": "What Is Shared vs What Is Isolated",
+          "line": 176
+        },
+        {
+          "level": 2,
+          "text": "Attempt Structure (Locked)",
+          "line": 189
+        },
+        {
+          "level": 2,
+          "text": "Anti-Patterns",
+          "line": 210
+        },
+        {
+          "level": 3,
+          "text": "One PRD to Rule Them All",
+          "line": 212
+        },
+        {
+          "level": 3,
+          "text": "Treating Artifacts as Features",
+          "line": 220
+        },
+        {
+          "level": 3,
+          "text": "Re-running Experiments Across Lanes",
+          "line": 227
+        },
+        {
+          "level": 2,
+          "text": "Implications for Tooling and Docs",
+          "line": 235
+        },
+        {
+          "level": 3,
+          "text": "Lane Self-Containment (Critical)",
+          "line": 237
+        },
+        {
+          "level": 3,
+          "text": "Where PRDs Live",
+          "line": 261
+        },
+        {
+          "level": 3,
+          "text": "Where Attempts Live",
+          "line": 274
+        },
+        {
+          "level": 3,
+          "text": "How Evolution Propagates",
+          "line": 287
+        },
+        {
+          "level": 2,
+          "text": "Scalability",
+          "line": 296
+        },
+        {
+          "level": 2,
+          "text": "Related Documents",
+          "line": 312
+        }
+      ],
+      "heading_count": 28,
       "has_frontmatter": true
     },
     {
@@ -20491,6 +20689,175 @@
       "has_frontmatter": false
     },
     {
+      "path": "docs/archive/slice-contract-sml.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "klappy://canon/meta/slice-contract-sml",
+      "title": "Slice Contract: S / M / L",
+      "subtitle": "How much to extract from each included topic.",
+      "tags": [
+        "context-packs",
+        "extraction"
+      ],
+      "stability": "stable",
+      "tier": "1",
+      "audience": "canon",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": "decision",
+      "execution_posture": "governing",
+      "headings": [
+        {
+          "level": 1,
+          "text": "Slice Contract: S / M / L",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "Summary",
+          "line": 6
+        },
+        {
+          "level": 2,
+          "text": "Required Headings (when applicable)",
+          "line": 15
+        },
+        {
+          "level": 2,
+          "text": "Slice Definitions",
+          "line": 31
+        },
+        {
+          "level": 3,
+          "text": "S — Execution Slice",
+          "line": 33
+        },
+        {
+          "level": 3,
+          "text": "M — Execution + Correctness",
+          "line": 47
+        },
+        {
+          "level": 3,
+          "text": "L — Full Topic",
+          "line": 57
+        },
+        {
+          "level": 3,
+          "text": "XL — Book Export",
+          "line": 66
+        },
+        {
+          "level": 2,
+          "text": "Rules",
+          "line": 73
+        },
+        {
+          "level": 2,
+          "text": "Invariant",
+          "line": 82
+        },
+        {
+          "level": 2,
+          "text": "Operating Constraints",
+          "line": 88
+        },
+        {
+          "level": 2,
+          "text": "Defaults",
+          "line": 98
+        },
+        {
+          "level": 2,
+          "text": "Failure Modes",
+          "line": 108
+        },
+        {
+          "level": 2,
+          "text": "Verification",
+          "line": 118
+        }
+      ],
+      "heading_count": 14,
+      "has_frontmatter": true
+    },
+    {
+      "path": "docs/archive/TRUTH_MAP.md",
+      "root": "docs",
+      "authority_band": "operational",
+      "authority_inferred": "operational",
+      "uri": "klappy://docs/truth-map",
+      "title": "Truth Map",
+      "subtitle": "**Purpose:** This document identifies the single authoritative source for each category of truth in this repository. If something is not listed here, it is not authoritative.",
+      "tags": [
+        "docs",
+        "implementation",
+        "truth",
+        "authority",
+        "reference"
+      ],
+      "acronyms": [
+        "tm"
+      ],
+      "stability": "stable",
+      "tier": "1",
+      "audience": "docs",
+      "exposure": "nav",
+      "voice": "neutral",
+      "relevance": null,
+      "execution_posture": null,
+      "headings": [
+        {
+          "level": 1,
+          "text": "🗺️ Truth Map",
+          "line": 2
+        },
+        {
+          "level": 2,
+          "text": "🏛️ Three-Tier Authority Structure",
+          "line": 8
+        },
+        {
+          "level": 2,
+          "text": "📋 Authoritative Sources",
+          "line": 27
+        },
+        {
+          "level": 2,
+          "text": "🌿 Branch Roles (Canonical)",
+          "line": 43
+        },
+        {
+          "level": 2,
+          "text": "🔄 Current Attempt Model (Canonical)",
+          "line": 55
+        },
+        {
+          "level": 2,
+          "text": "🚫 Deprecated Terminology (Do Not Use)",
+          "line": 69
+        },
+        {
+          "level": 2,
+          "text": "📖 How to Use This Document",
+          "line": 81
+        },
+        {
+          "level": 2,
+          "text": "🗑️ Derived Outputs (Do Not Edit)",
+          "line": 90
+        },
+        {
+          "level": 2,
+          "text": "🔗 See Also",
+          "line": 109
+        }
+      ],
+      "heading_count": 9,
+      "has_frontmatter": true
+    },
+    {
       "path": "docs/audits/epoch4-phase2-classification.md",
       "root": "docs",
       "authority_band": "operational",
@@ -23367,235 +23734,6 @@
       "has_frontmatter": true
     },
     {
-      "path": "docs/infra/CLOUDFLARE_CONFIG.md",
-      "root": "docs",
-      "authority_band": "operational",
-      "authority_inferred": "operational",
-      "uri": "klappy://docs/cloudflare-config",
-      "title": "Cloudflare Pages Configuration",
-      "subtitle": "**Legacy / Transitional note (pre-D0013):** Some existing deploy configurations may still publish repo-root `/dist/`. That output is no longer canonical; the canonical build output for lane deployments is `products/<lane>/dist/`.",
-      "tags": [
-        "docs",
-        "implementation",
-        "cloudflare",
-        "deploy",
-        "configuration"
-      ],
-      "acronyms": [
-        "cpc"
-      ],
-      "stability": "stable",
-      "tier": "2",
-      "audience": "docs",
-      "exposure": "nav",
-      "voice": "neutral",
-      "relevance": null,
-      "execution_posture": null,
-      "headings": [
-        {
-          "level": 1,
-          "text": "☁️ Cloudflare Pages Configuration",
-          "line": 2
-        },
-        {
-          "level": 2,
-          "text": "🌿 Branch Roles",
-          "line": 10
-        },
-        {
-          "level": 2,
-          "text": "⚠️ Critical Configuration",
-          "line": 22
-        },
-        {
-          "level": 3,
-          "text": "Production Branch",
-          "line": 24
-        },
-        {
-          "level": 3,
-          "text": "Preview Deployments",
-          "line": 39
-        },
-        {
-          "level": 2,
-          "text": "🛠️ Build Configuration",
-          "line": 56
-        },
-        {
-          "level": 2,
-          "text": "📋 Expected Behavior",
-          "line": 79
-        },
-        {
-          "level": 3,
-          "text": "Promotion Semantics",
-          "line": 88
-        },
-        {
-          "level": 2,
-          "text": "✅ Verification",
-          "line": 99
-        },
-        {
-          "level": 2,
-          "text": "💡 Why This Matters",
-          "line": 109
-        },
-        {
-          "level": 2,
-          "text": "📝 Note on Branch Naming",
-          "line": 122
-        },
-        {
-          "level": 2,
-          "text": "🔗 Related Documents",
-          "line": 137
-        }
-      ],
-      "heading_count": 12,
-      "has_frontmatter": true
-    },
-    {
-      "path": "docs/infra/cloudflare-branch-deploys.md",
-      "root": "docs",
-      "authority_band": "operational",
-      "authority_inferred": "operational",
-      "uri": null,
-      "title": "☁️ Cloudflare Pages — Branch Deploys (Observation Infrastructure)",
-      "subtitle": null,
-      "tags": [],
-      "acronyms": [
-        "☁cp—bd"
-      ],
-      "stability": null,
-      "tier": null,
-      "audience": null,
-      "exposure": null,
-      "voice": null,
-      "relevance": null,
-      "execution_posture": null,
-      "headings": [
-        {
-          "level": 1,
-          "text": "☁️ Cloudflare Pages — Branch Deploys (Observation Infrastructure)",
-          "line": 1
-        },
-        {
-          "level": 2,
-          "text": "🌿 Branch Naming Convention",
-          "line": 9
-        },
-        {
-          "level": 2,
-          "text": "🔗 Preview Deploy Expectation",
-          "line": 26
-        },
-        {
-          "level": 2,
-          "text": "📎 Recording Deploy Evidence in META.json",
-          "line": 33
-        },
-        {
-          "level": 2,
-          "text": "🏷️ \"Every Tag Has a Branch\" (Optional Policy)",
-          "line": 44
-        },
-        {
-          "level": 2,
-          "text": "🔮 Rollback Model (Intent)",
-          "line": 57
-        }
-      ],
-      "heading_count": 6,
-      "has_frontmatter": false
-    },
-    {
-      "path": "docs/infra/PREVIEW.md",
-      "root": "docs",
-      "authority_band": "operational",
-      "authority_inferred": "operational",
-      "uri": "klappy://docs/preview",
-      "title": "Previewing Lanes and Attempts",
-      "subtitle": "**Scope:** Local + Cloudflare preview workflows for lanes and attempts.",
-      "tags": [
-        "docs",
-        "implementation",
-        "preview",
-        "cloudflare",
-        "local"
-      ],
-      "acronyms": [
-        "pla"
-      ],
-      "stability": "evolving",
-      "tier": "3",
-      "audience": "docs",
-      "exposure": "nav",
-      "voice": "neutral",
-      "relevance": null,
-      "execution_posture": null,
-      "headings": [
-        {
-          "level": 1,
-          "text": "👁️ Previewing Lanes and Attempts",
-          "line": 2
-        },
-        {
-          "level": 2,
-          "text": "Local Preview (Any Lane)",
-          "line": 6
-        },
-        {
-          "level": 2,
-          "text": "Cloudflare Pages Preview",
-          "line": 24
-        },
-        {
-          "level": 2,
-          "text": "Troubleshooting",
-          "line": 46
-        },
-        {
-          "level": 3,
-          "text": "Wrong lane building",
-          "line": 48
-        },
-        {
-          "level": 3,
-          "text": "Build succeeds but site shows wrong content",
-          "line": 56
-        },
-        {
-          "level": 3,
-          "text": "Local preview differs from Cloudflare",
-          "line": 62
-        },
-        {
-          "level": 2,
-          "text": "Preview URLs",
-          "line": 70
-        },
-        {
-          "level": 3,
-          "text": "Branch previews (automatic)",
-          "line": 72
-        },
-        {
-          "level": 3,
-          "text": "Production",
-          "line": 86
-        },
-        {
-          "level": 2,
-          "text": "Related Documents",
-          "line": 92
-        }
-      ],
-      "heading_count": 11,
-      "has_frontmatter": true
-    },
-    {
       "path": "docs/klappy-dev/README.md",
       "root": "docs",
       "authority_band": "operational",
@@ -25448,172 +25586,6 @@
       "has_frontmatter": true
     },
     {
-      "path": "docs/PRD.md",
-      "root": "docs",
-      "authority_band": "operational",
-      "authority_inferred": "operational",
-      "uri": "klappy://docs/prd",
-      "title": "PRD Index",
-      "subtitle": "Product Requirements Documents organized by lane.",
-      "tags": [
-        "docs",
-        "prd",
-        "index"
-      ],
-      "acronyms": [
-        "pi"
-      ],
-      "stability": "stable",
-      "tier": "2",
-      "audience": "docs",
-      "exposure": "nav",
-      "voice": "neutral",
-      "relevance": null,
-      "execution_posture": null,
-      "headings": [
-        {
-          "level": 1,
-          "text": "PRD Index",
-          "line": 2
-        },
-        {
-          "level": 2,
-          "text": "Description",
-          "line": 6
-        },
-        {
-          "level": 2,
-          "text": "Outline",
-          "line": 10
-        },
-        {
-          "level": 2,
-          "text": "Active PRDs",
-          "line": 18
-        },
-        {
-          "level": 2,
-          "text": "Template",
-          "line": 27
-        },
-        {
-          "level": 2,
-          "text": "Legacy PRDs",
-          "line": 33
-        },
-        {
-          "level": 2,
-          "text": "See Also",
-          "line": 41
-        }
-      ],
-      "heading_count": 7,
-      "has_frontmatter": true
-    },
-    {
-      "path": "docs/PRD/PRD_TEMPLATE.md",
-      "root": "docs",
-      "authority_band": "operational",
-      "authority_inferred": "operational",
-      "uri": "klappy://docs/prd/template",
-      "title": "PRD Template",
-      "subtitle": "Standard template for Product Requirements Documents.",
-      "tags": [
-        "docs",
-        "prd",
-        "template"
-      ],
-      "acronyms": [
-        "pt"
-      ],
-      "stability": "stable",
-      "tier": "3",
-      "audience": "docs",
-      "exposure": "nav",
-      "voice": "neutral",
-      "relevance": null,
-      "execution_posture": null,
-      "headings": [
-        {
-          "level": 1,
-          "text": "📋 PRD Template",
-          "line": 2
-        },
-        {
-          "level": 2,
-          "text": "Description",
-          "line": 6
-        },
-        {
-          "level": 2,
-          "text": "Outline",
-          "line": 10
-        },
-        {
-          "level": 2,
-          "text": "PRD Identity",
-          "line": 30
-        },
-        {
-          "level": 2,
-          "text": "Objective",
-          "line": 42
-        },
-        {
-          "level": 2,
-          "text": "Success Criteria",
-          "line": 48
-        },
-        {
-          "level": 2,
-          "text": "Non-Goals (Anti-Scope)",
-          "line": 58
-        },
-        {
-          "level": 2,
-          "text": "Background",
-          "line": 68
-        },
-        {
-          "level": 2,
-          "text": "Approach",
-          "line": 74
-        },
-        {
-          "level": 2,
-          "text": "Phases (if applicable)",
-          "line": 80
-        },
-        {
-          "level": 2,
-          "text": "Definition of Done",
-          "line": 89
-        },
-        {
-          "level": 2,
-          "text": "Constraints",
-          "line": 99
-        },
-        {
-          "level": 2,
-          "text": "Risks",
-          "line": 105
-        },
-        {
-          "level": 2,
-          "text": "Notes",
-          "line": 111
-        },
-        {
-          "level": 2,
-          "text": "Attempt Policy",
-          "line": 117
-        }
-      ],
-      "heading_count": 15,
-      "has_frontmatter": true
-    },
-    {
       "path": "docs/promotions/P0001-completion-requires-artifacts.md",
       "root": "docs",
       "authority_band": "operational",
@@ -26259,25 +26231,23 @@
       "has_frontmatter": true
     },
     {
-      "path": "docs/TRUTH_MAP.md",
+      "path": "docs/templates/PRD_TEMPLATE.md",
       "root": "docs",
       "authority_band": "operational",
       "authority_inferred": "operational",
-      "uri": "klappy://docs/truth-map",
-      "title": "Truth Map",
-      "subtitle": "**Purpose:** This document identifies the single authoritative source for each category of truth in this repository. If something is not listed here, it is not authoritative.",
+      "uri": "klappy://docs/templates/prd-template",
+      "title": "PRD Template",
+      "subtitle": "Standard template for Product Requirements Documents.",
       "tags": [
         "docs",
-        "implementation",
-        "truth",
-        "authority",
-        "reference"
+        "prd",
+        "template"
       ],
       "acronyms": [
-        "tm"
+        "pt"
       ],
       "stability": "stable",
-      "tier": "1",
+      "tier": "3",
       "audience": "docs",
       "exposure": "nav",
       "voice": "neutral",
@@ -26286,51 +26256,81 @@
       "headings": [
         {
           "level": 1,
-          "text": "🗺️ Truth Map",
+          "text": "📋 PRD Template",
           "line": 2
         },
         {
           "level": 2,
-          "text": "🏛️ Three-Tier Authority Structure",
-          "line": 8
+          "text": "Description",
+          "line": 6
         },
         {
           "level": 2,
-          "text": "📋 Authoritative Sources",
-          "line": 27
+          "text": "Outline",
+          "line": 10
         },
         {
           "level": 2,
-          "text": "🌿 Branch Roles (Canonical)",
-          "line": 43
+          "text": "PRD Identity",
+          "line": 30
         },
         {
           "level": 2,
-          "text": "🔄 Current Attempt Model (Canonical)",
-          "line": 55
+          "text": "Objective",
+          "line": 42
         },
         {
           "level": 2,
-          "text": "🚫 Deprecated Terminology (Do Not Use)",
-          "line": 69
+          "text": "Success Criteria",
+          "line": 48
         },
         {
           "level": 2,
-          "text": "📖 How to Use This Document",
-          "line": 81
+          "text": "Non-Goals (Anti-Scope)",
+          "line": 58
         },
         {
           "level": 2,
-          "text": "🗑️ Derived Outputs (Do Not Edit)",
-          "line": 90
+          "text": "Background",
+          "line": 68
         },
         {
           "level": 2,
-          "text": "🔗 See Also",
-          "line": 109
+          "text": "Approach",
+          "line": 74
+        },
+        {
+          "level": 2,
+          "text": "Phases (if applicable)",
+          "line": 80
+        },
+        {
+          "level": 2,
+          "text": "Definition of Done",
+          "line": 89
+        },
+        {
+          "level": 2,
+          "text": "Constraints",
+          "line": 99
+        },
+        {
+          "level": 2,
+          "text": "Risks",
+          "line": 105
+        },
+        {
+          "level": 2,
+          "text": "Notes",
+          "line": 111
+        },
+        {
+          "level": 2,
+          "text": "Attempt Policy",
+          "line": 117
         }
       ],
-      "heading_count": 9,
+      "heading_count": 15,
       "has_frontmatter": true
     },
     {

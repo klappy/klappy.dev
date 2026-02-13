@@ -1781,21 +1781,6 @@
       ]
     },
     {
-      "uri": "klappy://canon/meta/slice-contract-sml",
-      "path": "/canon/meta/slice-contract-sml.md",
-      "title": "Slice Contract: S / M / L",
-      "type": "text/markdown",
-      "audience": "canon",
-      "exposure": "nav",
-      "tier": 1,
-      "voice": "neutral",
-      "stability": "stable",
-      "tags": [
-        "context-packs",
-        "extraction"
-      ]
-    },
-    {
       "uri": "klappy://canon/resonance/sprint",
       "path": "/canon/resonance/sprint.md",
       "title": "Sprint",

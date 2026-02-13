@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#1a1a2e">
+  <meta name="description" content="Fluent Mobile - OBT Companion App PoC">
+  <title>Fluent Mobile</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎙️</text></svg>">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Screen 1: Home/Assignment -->
+    <section id="screen-home" class="screen active">
+      <header class="screen-header">
+        <h1>Fluent Mobile</h1>
+        <p class="subtitle">OBT Companion</p>
+      </header>
+      
+      <main class="screen-content">
+        <div class="assignment-card">
+          <div class="assignment-label">Current Assignment</div>
+          <h2 class="assignment-title">Genesis 1:1-5</h2>
+          <p class="assignment-language">Swahili Draft</p>
+          <div class="assignment-progress">
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 20%"></div>
+            </div>
+            <span class="progress-text">1 of 5 verses</span>
+          </div>
+        </div>
+        
+        <button id="btn-start-drafting" class="btn btn-primary btn-large">
+          <span class="btn-icon">✏️</span>
+          <span class="btn-text">Start Drafting</span>
+        </button>
+        
+        <div class="status-indicator" id="home-status">
+          <span class="status-dot online"></span>
+          <span class="status-text">Ready</span>
+        </div>
+      </main>
+    </section>
+
+    <!-- Screen 2: Drafting -->
+    <section id="screen-drafting" class="screen">
+      <header class="screen-header">
+        <button id="btn-back" class="btn btn-icon-only" aria-label="Back to home">
+          ← Back
+        </button>
+        <h1>Genesis 1:1</h1>
+      </header>
+      
+      <main class="screen-content">
+        <!-- Source Audio Section -->
+        <div class="audio-section source-section">
+          <h3 class="section-label">Source Audio</h3>
+          <canvas id="waveform-source" class="waveform" width="300" height="60"></canvas>
+          <button id="btn-listen" class="btn btn-secondary">
+            <span class="btn-icon">▶️</span>
+            <span class="btn-text">Listen</span>
+          </button>
+          <div class="audio-time" id="source-time">0:00 / 0:00</div>
+        </div>
+
+        <!-- Recording Section -->
+        <div class="audio-section record-section">
+          <h3 class="section-label">Your Draft</h3>
+          <canvas id="waveform-record" class="waveform" width="300" height="60"></canvas>
+          <button id="btn-record" class="btn btn-record">
+            <span class="btn-icon">🎙️</span>
+            <span class="btn-text">Record</span>
+          </button>
+          <div class="audio-time" id="record-time">0:00</div>
+        </div>
+
+        <!-- Playback Section -->
+        <div class="audio-section playback-section">
+          <h3 class="section-label">Review</h3>
+          <canvas id="waveform-playback" class="waveform" width="300" height="60"></canvas>
+          <button id="btn-play-draft" class="btn btn-secondary" disabled>
+            <span class="btn-icon">▶️</span>
+            <span class="btn-text">Play Draft</span>
+          </button>
+          <div class="audio-time" id="playback-time">0:00 / 0:00</div>
+        </div>
+
+        <!-- State Indicator -->
+        <div class="state-indicator" id="drafting-state">
+          <span class="state-text">Ready to listen</span>
+        </div>
+      </main>
+    </section>
+  </div>
+
+  <script src="waveform.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

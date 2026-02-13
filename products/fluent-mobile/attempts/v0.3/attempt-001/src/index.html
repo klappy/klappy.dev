@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#1a1a2e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Fluent Mobile</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    
+    <!-- Home Screen -->
+    <div id="home-screen" class="screen active">
+      <header class="header">
+        <h1>Fluent Mobile</h1>
+        <div id="online-status" class="status-indicator online">Online</div>
+      </header>
+      
+      <main class="content">
+        <div class="assignment-card">
+          <div class="assignment-info">
+            <span class="project-name">Genesis Translation</span>
+            <span class="verse-ref">Genesis 1:1</span>
+          </div>
+          <p class="assignment-text">In the beginning, God created the heavens and the earth.</p>
+        </div>
+        
+        <button id="start-drafting-btn" class="primary-btn">
+          <span class="btn-icon">🎙️</span>
+          Start Drafting
+        </button>
+      </main>
+    </div>
+
+    <!-- Drafting Screen -->
+    <div id="drafting-screen" class="screen">
+      <header class="header">
+        <button id="back-btn" class="icon-btn" aria-label="Go back">←</button>
+        <span class="verse-ref">Genesis 1:1</span>
+        <div id="state-indicator" class="state-indicator">Ready</div>
+      </header>
+      
+      <main class="content drafting-content">
+        
+        <!-- Source Audio Section -->
+        <section class="audio-section source-section">
+          <h2 class="section-label">Source Audio</h2>
+          <canvas id="source-waveform" class="waveform" aria-label="Source audio waveform"></canvas>
+          <div class="audio-controls">
+            <button id="listen-btn" class="control-btn" aria-label="Listen to source">
+              <span class="btn-icon">▶️</span>
+              Listen
+            </button>
+          </div>
+        </section>
+
+        <!-- Your Draft Section (CONSOLIDATED - v0.3 key change) -->
+        <section class="audio-section draft-section">
+          <h2 class="section-label">Your Draft</h2>
+          <canvas id="draft-waveform" class="waveform" aria-label="Draft audio waveform"></canvas>
+          <div class="audio-controls draft-controls">
+            <button id="record-btn" class="control-btn record" aria-label="Record draft">
+              <span class="btn-icon">⏺️</span>
+              Record
+            </button>
+            <button id="play-btn" class="control-btn" aria-label="Play draft" disabled>
+              <span class="btn-icon">▶️</span>
+              Play
+            </button>
+            <button id="pause-btn" class="control-btn" aria-label="Pause" disabled style="display: none;">
+              <span class="btn-icon">⏸️</span>
+              Pause
+            </button>
+          </div>
+          <div id="draft-status" class="draft-status">No recording yet</div>
+        </section>
+        
+      </main>
+    </div>
+    
+  </div>
+  
+  <script src="waveform.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

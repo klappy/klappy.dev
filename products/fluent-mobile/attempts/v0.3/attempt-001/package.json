@@ -1,0 +1,16 @@
+{
+  "name": "fluent-mobile-poc-v0.3",
+  "version": "0.3.0",
+  "description": "Fluent Mobile PoC v0.3 - Single section UI with dual-mode waveform",
+  "private": true,
+  "scripts": {
+    "dev": "npx wrangler pages dev src --port 8788",
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:ui": "npx playwright test --ui"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "wrangler": "^3.0.0"
+  }
+}
