@@ -60,8 +60,7 @@ docs/agents/
 | Content               | Location                  | Notes           |
 | --------------------- | ------------------------- | --------------- |
 | Authored contracts    | `docs/agents/**`          | Source of truth |
-| Compiled packs        | `public/_compiled/packs/` | Generated       |
-| Distribution wrappers | `products/agent-skill/`   | Generated       |
+| OddKit tooling        | oddkit.klappy.dev         | Derivative work |
 
 **Rule:** Author here. Generate elsewhere.
 

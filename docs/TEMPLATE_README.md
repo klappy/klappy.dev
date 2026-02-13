@@ -89,18 +89,18 @@ tags: ["canon", "index"]
 ---
 ```
 
-### Product lanes (`/products/<lane>/`)
+### Project documentation
 
 ```yaml
 ---
-uri: klappy://products/website
-title: "Website Lane"
+uri: klappy://docs/templates/prd-template
+title: "PRD Template"
 audience: docs
 exposure: nav
 tier: 2
 voice: neutral
-stability: evolving
-tags: ["products", "website", "lane", "index"]
+stability: stable
+tags: ["docs", "templates", "prd"]
 ---
 ```
 
