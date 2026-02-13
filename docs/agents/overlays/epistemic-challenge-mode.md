@@ -7,9 +7,12 @@ tier: 2
 voice: neutral
 stability: evolving
 tags: ["agents", "overlay", "challenge", "validation", "librarian"]
+status: conceptual-origin
 ---
 
 # Epistemic Challenge Mode
+
+> **Conceptual Origin Note (E0005.1):** This document describes the conceptual design that informed OddKit's `oddkit_challenge` tool. For current operational usage, use OddKit directly. This document is preserved as architectural rationale.
 
 > A reusable overlay that activates constructive challenge when epistemic smell signals are present.
 

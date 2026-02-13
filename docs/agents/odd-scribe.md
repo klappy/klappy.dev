@@ -9,9 +9,12 @@ voice: neutral
 stability: evolving
 type: agent-role
 tags: ["odd", "scribe", "documentation", "epistemics", "decisions", "ledger"]
+status: conceptual-origin
 ---
 
 # ODD Scribe
+
+> **Conceptual Origin Note (E0005.1):** This document describes the conceptual design that informed OddKit's `oddkit_encode` tool. For current operational usage, use OddKit directly. This document is preserved as architectural rationale.
 
 > A phase-aware recorder that captures **learnings** and **decisions** as first-class documentation, then proposes promotion paths without enforcing them.
 

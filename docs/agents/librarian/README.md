@@ -7,9 +7,12 @@ tier: 3
 voice: neutral
 stability: evolving
 tags: ["agents", "librarian", "retrieval", "citations", "provenance"]
+status: conceptual-origin
 ---
 
 # Librarian Agent
+
+> **Conceptual Origin Note (E0005.1):** This document describes the conceptual design that informed OddKit's `oddkit_search`, `oddkit_get`, and `oddkit_catalog` tools. For current operational usage, use OddKit directly. This document is preserved as architectural rationale.
 
 > A citation-first retrieval sub-agent. It finds the right source, quotes it, and refuses to invent.
 

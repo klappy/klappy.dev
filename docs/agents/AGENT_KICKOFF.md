@@ -6,139 +6,111 @@ exposure: nav
 tier: 1
 voice: neutral
 stability: stable
-tags: ["docs", "implementation", "agent", "kickoff", "entry-point"]
+tags: ["docs", "implementation", "agent", "kickoff", "entry-point", "epoch-5"]
+epoch: E0005
+derives_from: "canon/values/axioms.md, canon/values/orientation.md"
 ---
 
-# 🤖 Agent Kickoff — Canonical Entry Point
+# Agent Kickoff — Canonical Entry Point
 
 > Before I speak, I observe. Before I claim, I verify. Before I confirm, I prove.
 > What I have not seen, I do not know. What I have not verified, I will not imply.
 
 See `canon/values/axioms.md` for the four foundational axioms from which all ODD epistemic discipline is derived.
 
-**This file is the ONLY authorized entry point for agent attempts.**
-
-Do not rely on external prompts. Do not synthesize from multiple documents.
-Read this file. Follow it exactly.
+**This file is the authorized entry point for agent work.**
 
 ---
 
-## Step 0: Declare Your Lane and Epoch
+## Step 0: Orient
 
-You MUST know which lane and epoch you are working in before proceeding.
+Before doing anything, orient against the goal using OddKit:
 
-| Lane | PRD Location | Purpose |
-|------|--------------|---------|
-| `website` | `/docs/PRD/website/PRD.md` | Human-facing UI/UX |
-| `ai-navigation` | `/docs/PRD/ai-navigation/PRD.md` | AI layer over documentation |
-| `agent-skill` | `/docs/PRD/agent-skill/PRD.md` | Agent cognitive framework |
+```
+oddkit_orient: <your goal or task description>
+```
 
-**Current Epoch:** `E0002-multi-lane-era`
+This assesses your epistemic mode (exploration, planning, execution), surfaces unresolved items, and identifies relevant canon references.
 
-Epoch determines whether your attempt's outcomes can be compared to prior attempts. If the evaluation rules changed (evidence requirements, provenance, deploy contracts), you are in a new epoch.
+**Current Epoch:** `E0005` (Values-First Epistemics)
 
-**If you do not know your lane, STOP and ask the human.**  
-**If you are unsure whether the epoch has changed, STOP and ask the human.**
+If you are unsure about the current epoch or task scope, STOP and ask the human.
 
 ---
 
 ## Step 1: Read Required Documents (In Order)
 
-1. `/docs/appendices/product-lanes.md` — understand the multi-lane model
-2. `/docs/appendices/epochs.md` — understand when outcomes are comparable
-3. Your lane's PRD (e.g., `/docs/PRD/ai-navigation/PRD.md`)
-4. `/canon/constraints/README.md` — non-negotiables that shape all work
+1. `canon/values/axioms.md` — the four foundational axioms
+2. `canon/values/orientation.md` — the creed
+3. `canon/constraints/definition-of-done.md` — what "done" means
+4. `canon/constraints/README.md` — non-negotiables that shape all work
+
+Use `oddkit_search` or `oddkit_get` to retrieve any document you need.
 
 ---
 
-## Step 2: Register Your Attempt
+## Step 2: Preflight
 
-```bash
-npm run attempt:register -- --lane <LANE> --tool <TOOL> --agent <AGENT_ID> --model <MODEL>
+Before implementing, run a preflight check:
+
+```
+oddkit_preflight: <description of what you are about to implement>
 ```
 
-Example:
-```bash
-npm run attempt:register -- --lane ai-navigation --tool cursor --agent a --model "claude-opus-4"
-```
+This returns:
+- **Start here** — suggested files to read
+- **Constraints** — relevant constraints
+- **Definition of Done** — what evidence is required
+- **Pitfalls** — known failure modes
 
-This creates `.attempt.json` with your run_id, lane, and provenance.
-
-**Lane is REQUIRED. Attempts without a lane are invalid.**
-
-**Epoch is REQUIRED.** Your `META.json` must include `epoch_id`. If missing, results cannot be compared to prior attempts.
+Read the suggested files before coding.
 
 ---
 
-## Step 3: Nuke and Start Fresh
+## Step 3: Work
 
-```bash
-npm run attempt:nuke -- --lane <LANE>
-```
+Implement what the task requires.
 
-Example:
-```bash
-npm run attempt:nuke -- --lane website
-```
+- Do NOT modify Canon without explicit human approval
+- Do NOT invent requirements not in the task
+- Use `oddkit_challenge` to pressure-test assumptions
+- Use `oddkit_gate` before transitioning between modes (exploration → planning → execution)
 
-This deletes `products/<lane>/src/` and lane-local framework configs. You start from a blank slate.
-
-Choose any stack that satisfies the deploy contract (`/infra/contracts/build-output.md`).
-
-Your implementation goes in `products/<lane>/src/`. Build output goes to `products/<lane>/dist/`.
-
-See `/docs/appendices/lane-implementation-surfaces.md` for the locked folder contract.
+If the task is ambiguous, note the ambiguity and ask for clarification. Do not guess.
 
 ---
 
-## Step 4: Build Against Your Lane's PRD
+## Step 4: Produce Evidence
 
-Implement ONLY what your lane's PRD specifies.
+Work is not done until evidence exists. Per the Definition of Done:
 
-- Do NOT modify Canon
-- Do NOT touch other lanes
-- Do NOT invent requirements not in the PRD
-
-If the PRD is ambiguous, note the ambiguity in your ATTEMPT.md. Do not guess.
-
----
-
-## Step 5: Write Evidence
-
-Write to your runs directory (path is in `.attempt.json`):
-
-```
-products/<lane>/attempts/prd-vX.Y/_runs/<run_id>/
-  ATTEMPT.md    — what you built, decisions made, self-audit
-  EVIDENCE.md   — screenshot index, test results
-  evidence/     — actual screenshots, logs
-```
-
-Evidence must prove the PRD success criteria are met.
-
-Note: Attempts are lane-contained. Root `/attempts/**` is legacy.
+1. **Change Description** — What changed, where, and why
+2. **Verification Performed** — What was run or checked
+3. **Observed Behavior** — What actually happened
+4. **Evidence Produced** — Proof that behavior matches intent
+5. **Self-Audit Completed** — Brief audit against constraints
 
 ---
 
-## Step 6: Push
+## Step 5: Validate
 
-```bash
-git add -A && git commit -m "Attempt: <lane> <description>"
-git push
+Before claiming done:
+
+```
+oddkit_validate: <completion claim with artifact references>
 ```
 
-This triggers Cloudflare preview deploy.
+If NEEDS_ARTIFACTS: provide the missing evidence. Do not assert done without validation.
 
 ---
 
 ## Invariants (Non-Negotiable)
 
-1. **Lane declaration is mandatory** — no lane, no attempt
-2. **Epoch declaration is mandatory** — no epoch, results are not comparable
-3. **Canon is read-only** — do not modify `/canon/**`
-4. **PRD is authoritative** — if it's not in the PRD, don't build it
-5. **Evidence is required** — assertions without proof are invalid
-6. **Conflicts require STOP** — if you detect conflicting instructions, stop and report
+1. **Reality is sovereign** — observe before asserting
+2. **A claim is a debt** — every assertion requires evidence
+3. **Canon is read-only** — do not modify `/canon/**` without human approval
+4. **Evidence is required** — assertions without proof are invalid
+5. **Conflicts require STOP** — if you detect conflicting instructions, stop and report
 
 ---
 
@@ -146,10 +118,10 @@ This triggers Cloudflare preview deploy.
 
 If ANY of the following are true, STOP immediately and report to the human:
 
-- The PRD contradicts Canon constraints
-- The lane is unclear or undeclared
+- The task contradicts Canon constraints
 - Required files are missing
-- Previous attempt artifacts conflict with current instructions
+- Previous artifacts conflict with current instructions
+- You cannot verify a claim you are about to make
 
 Do NOT guess. Do NOT synthesize. Report the conflict.
 
@@ -159,14 +131,13 @@ Do NOT guess. Do NOT synthesize. Report the conflict.
 
 | What | Where |
 |------|-------|
-| Lane architecture | `/docs/appendices/product-lanes.md` |
-| Lane implementation surfaces | `/docs/appendices/lane-implementation-surfaces.md` |
-| Epoch semantics | `/docs/appendices/epochs.md` |
-| Constraints | `/canon/constraints/README.md` |
-| Definition of Done | `/canon/constraints/definition-of-done.md` |
-| Deploy contract | `/infra/contracts/build-output.md` |
-| Attempt lifecycle | `/docs/appendices/ATTEMPTS.md` |
-| Human workflow | `/docs/appendices/ATTEMPT_KICKOFF.md` |
+| Axioms | `canon/values/axioms.md` |
+| Creed | `canon/values/orientation.md` |
+| Constraints | `canon/constraints/README.md` |
+| Definition of Done | `canon/constraints/definition-of-done.md` |
+| Epoch semantics | `docs/appendices/epochs.md` |
+| ODD Contract | `odd/contract.md` |
+| ODD Manifesto | `odd/manifesto.md` |
 
 ---
 
@@ -174,4 +145,4 @@ Do NOT guess. Do NOT synthesize. Report the conflict.
 
 If it's not in the repo, it doesn't exist.
 
-This file IS the prompt. Follow it exactly.
+Use OddKit to find what you need. Follow the creed. Produce evidence.

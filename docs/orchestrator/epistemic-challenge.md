@@ -7,9 +7,12 @@ tier: 2
 voice: neutral
 stability: evolving
 tags: ["orchestrator", "validation", "librarian", "challenge", "workflow"]
+status: conceptual-origin
 ---
 
 # Epistemic Challenge
+
+> **Conceptual Origin Note (E0005.1):** This document describes the conceptual design that informed OddKit's `oddkit_challenge` tool. For current operational usage, use OddKit directly. This document is preserved as architectural rationale.
 
 > The practical playbook for applying epistemic challenge without breaking collaboration.
 

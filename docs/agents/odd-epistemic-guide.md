@@ -10,9 +10,12 @@ stability: evolving
 type: agent-role
 tags: ["odd", "agents", "epistemics", "governance", "phase", "validation"]
 derives_from: "canon/values/axioms.md (Axiom 3 — Integrity Is Non-Negotiable Efficiency)"
+status: conceptual-origin
 ---
 
 # ODD Epistemic Guide
+
+> **Conceptual Origin Note (E0005.1):** This document describes the conceptual design that informed OddKit's `oddkit_orient`, `oddkit_challenge`, and `oddkit_gate` tools. For current operational usage, use OddKit directly. This document is preserved as architectural rationale.
 
 > A phase-aware cognitive governor for Outcomes-Driven Development.  
 > Use proactively when users jump to implementation, propose architecture, or request execution before epistemic prerequisites are met.

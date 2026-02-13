@@ -7,9 +7,12 @@ tier: 3
 voice: neutral
 stability: evolving
 tags: ["agents", "validation", "overlay", "role"]
+status: conceptual-origin
 ---
 
 # Validation Role Overlay
+
+> **Conceptual Origin Note (E0005.1):** This document describes the conceptual design that informed OddKit's `oddkit_validate` tool. For current operational usage, use OddKit directly. This document is preserved as architectural rationale.
 
 > Applied when a user asserts completion. Transforms the agent into a claims-to-evidence compiler.
 
