@@ -301,3 +301,38 @@ This change alters the repository's epistemic foundation:
 - E0004 attempts remain valid within E0004.
 - E0004 attempts are not comparable to E0005 attempts by default.
 - E0005 is the current epoch.
+
+---
+
+## E0005.1 — Structure-Agnostic ODD
+
+**Date:** 2026-02-12
+
+Prescribed folder structures created friction without adding epistemic value. E0005.1 applies the same invariant as E0005 — structural prescriptions were a form of external compliance that internal orientation made unnecessary.
+
+See [`docs/decisions/D0016-structure-agnostic-odd.md`](/docs/decisions/D0016-structure-agnostic-odd.md) for the full decision record.
+
+### What changed
+
+E0005.1 removes product lanes as a structural requirement, replaces prescribed tooling commands (register/nuke/finalize/promote) with OddKit dynamic routing, bumps the ODD System Contract to 3.0.0, and archives ~16 lane-specific documents. The concepts of independent product evolution, restartability, and evidence gating remain core ODD — they are now handled by OddKit rather than directory conventions.
+
+### Why this is NOT a new epoch
+
+No new assumption about reality is introduced. E0005.1 extends the E0005 invariant ("epistemic systems require moral commitments to be finite") to structural prescriptions. Directory conventions were external compliance; OddKit routing is internal orientation. Same invariant, broader application.
+
+### Documents introduced
+
+- `docs/decisions/D0016-structure-agnostic-odd.md` — decision record
+- `odd/manifesto.md` v1.2 — updated with structure-agnostic language
+- `odd/contract.md` v3.0.0 — lane requirements removed, OddKit interface documented
+- `docs/derivative-works.md` — maps standalone projects that graduated from lanes
+
+### Documents archived
+
+See D0016 for the full list of 16 archived documents.
+
+### Compatibility
+
+- E0005 artifacts remain valid.
+- Lane-era artifacts (E0002-E0004) are preserved in `docs/archive/` for provenance.
+- E0005.1 does not introduce epoch incompatibility — it extends E0005.

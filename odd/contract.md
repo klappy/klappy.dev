@@ -6,75 +6,81 @@ exposure: nav
 tier: 1
 voice: neutral
 stability: stable
-tags: ["odd", "contract", "version", "semver", "compatibility"]
+tags: ["odd", "contract", "version", "semver", "compatibility", "structure-agnostic"]
 relevance: decision
 execution_posture: governing
+epoch: E0005
+derives_from: "canon/values/axioms.md (Axiom 1 — Reality Is Sovereign)"
 ---
 
 # ODD System Contract
 
-> The single source of truth for ODD workflow compatibility.
+> The single source of truth for ODD workflow compatibility. ODD is structure-agnostic portable epistemic infrastructure — it works in any repo where canon is addressable. Version 3.0.0 removes prescribed directory conventions; epistemic routing is handled by OddKit tooling.
 
 ## Description
 
-The ODD System Contract versions the three-tier hierarchy (ODD/Canon/Docs), repo structure, PRD lanes, attempt lifecycle, tooling invariants, required paths, provenance requirements (META.json), and evidence standards. Current version is 2.1.0. Version 2.1.0 formalizes the three-tier conceptual hierarchy where ODD contains universal principles, Canon contains program constraints, and Docs contains implementation details. Each tier has different decay rates. Epochs mark shifts in the evaluation landscape. Do not compare outcomes across epochs without explicit adjustment.
+The ODD System Contract versions the three-tier hierarchy (ODD/Canon/Docs), epistemic tooling interface (OddKit), provenance requirements, and evidence standards. Version 3.0.0 drops lane-specific structural requirements in favor of dynamic epistemic routing through OddKit. The concepts of independent product evolution, restartability, and evidence gating remain core ODD — they are now handled by tooling rather than directory conventions. Canon must be addressable; repo layout is an implementation choice.
 
 ## Outline
 
 - What This Versions
-- Epochs (E0001, E0002)
-- Contract 2.0.0 Breaking Changes
-- Compatibility (Forward and Backward)
+- Operating Constraints
+- Three-Tier Hierarchy
+- Epochs
+- OddKit Epistemic Tooling Interface
+- Compatibility
 - Version History
+- Related Documents
 
 ---
 
 ## Operating Constraints
 
-- MUST declare lane for all attempts; attempts without lane declaration are invalid
-- MUST declare epoch in META.json; outcomes are not comparable across epochs without explicit adjustment
-- MUST store attempts under `products/<lane>/attempts/` (lane-contained); root `/attempts/**` is legacy read-only
 - MUST follow three-tier hierarchy: ODD (universal) → Canon (program) → Docs (implementation)
-- MUST NOT compare outcomes across epochs without explicit adjustment for evaluation context differences
+- MUST declare epoch context for historical comparisons; outcomes are not comparable across epochs without explicit adjustment
+- MUST use OddKit for epistemic routing (orient, challenge, gate, encode, search, validate)
+- MUST satisfy Definition of Done requirements before claiming completion (see `canon/constraints/definition-of-done.md`)
+- MUST keep canon addressable — OddKit must be able to search, retrieve, and cite any canon document
+- MUST NOT prescribe repo directory structure — ODD works in monorepos, multi-repos, or any layout where canon is addressable
 
 ---
 
 ## Defaults
 
 - When uncertain about file placement, use the litmus test: 10-year truth → ODD, all-products rule → Canon, local implementation → Docs
-- Assume contract 2.x compatibility unless explicitly working with historical E0001 artifacts
 - Treat epoch boundaries as evaluation discontinuities, not version bumps
-- Reference this document for system compatibility questions; individual PRDs have their own versioning
+- Reference this document for system compatibility questions
+- Use OddKit orient for routing decisions; do not rely on directory conventions
 
 ---
 
 ## Failure Modes
 
-- **Cross-Epoch Comparison**: Comparing E0001 outcomes to E0002 without adjustment distorts evaluation
-- **Lane Omission**: Running attempts without lane declaration creates orphaned artifacts
+- **Cross-Epoch Comparison**: Comparing outcomes across epochs without adjustment distorts evaluation
 - **Tier Confusion**: Placing implementation details in ODD or universal principles in Docs
-- **Legacy Path Usage**: Writing new attempts to root `/attempts/` instead of lane-contained paths
-- **Implicit Epochs**: Failing to mark historical E0001 artifacts with epoch context
+- **Structural Prescription**: Requiring specific directory layouts as part of ODD methodology
+- **Tooling Bypass**: Navigating by folder structure instead of using OddKit for epistemic routing
+- **Evidence Skipping**: Claiming completion without meeting Definition of Done requirements
 
 ---
 
 ## Verification
 
-- META.json contains lane and epoch declarations
-- Attempts are stored under `products/<lane>/attempts/prd-vX.Y/attempt-NNN/`
 - Documents placed according to litmus test (10-year, all-products, local)
 - Epoch boundaries respected in any outcome comparison
-- Historical artifacts marked with appropriate epoch context
+- OddKit can search, retrieve, and cite all active canon documents
+- Definition of Done requirements met before completion claims
+- No directory layout assumptions embedded in methodology docs
 
 ---
 
 ## Content
 
-**Current Version:** 2.1.0
+**Current Version:** 3.0.0
 
 This document is the single source of truth for the ODD workflow contract version.
 
-All other documents reference this version. Individual PRDs, attempts, and content packs have their own versioning schemes, but compatibility with the ODD system is determined by this contract.
+All other documents reference this version. Individual projects and artifacts have their own versioning schemes, but compatibility with the ODD system is determined by this contract.
 
 ---
 
@@ -83,16 +89,21 @@ All other documents reference this version. Individual PRDs, attempts, and conte
 The ODD System Contract covers:
 
 - **Three-tier hierarchy** (ODD → Canon → Docs)
-- **Repo structure** required for ODD workflow
-- **PRD lanes** and attempt lifecycle contracts
-- **Tooling invariants** (register/nuke/finalize/promote)
-- **Required paths** and naming conventions
-- **Provenance requirements** (META.json schema)
-- **Evidence standards** (what counts as proof)
+- **OddKit epistemic tooling interface** (orient, challenge, gate, encode, search, validate)
+- **Evidence standards** (what counts as proof — see Definition of Done)
+- **Epoch model** (evaluation context boundaries)
+- **Provenance requirements** (decisions, learnings, evidence must be captured)
+
+The contract does NOT prescribe:
+
+- Directory layouts or folder naming conventions
+- Specific tooling commands (register/nuke/finalize/promote are superseded)
+- PRD file locations or attempt folder structures
+- Build systems, deployment targets, or infrastructure configuration
 
 ---
 
-## Three-Tier Hierarchy (2.1.0)
+## Three-Tier Hierarchy (3.0.0)
 
 ODD is organized as a conceptual hierarchy with different decay rates:
 
@@ -117,46 +128,49 @@ Epochs mark shifts in the evaluation landscape. Contract versions and epochs are
 
 | Epoch | Contract Version | Description |
 |-------|------------------|-------------|
-| E0001-single-prd-era | 1.x | Single PRD world (`/docs/PRD.md`) |
-| E0002-multi-lane-era | 2.x | Multi-lane world (`/docs/PRD/<lane>/PRD.md`) |
+| E0001 | 1.x | Single PRD era — single PRD, single product |
+| E0002 | 2.x | Multi-lane era — prescribed directory conventions for product isolation |
+| E0003 | 2.x | Evidence-first era — evidence requirements formalized |
+| E0004 | 2.x | Canon migration era — three-tier hierarchy established |
+| E0005 | 3.0.0 | Values-first epistemics — axioms, creed, internal orientation |
+| E0005.1 | 3.0.0 | Structure-agnostic ODD — directory conventions replaced by OddKit routing |
 
 **Rule:** Do not compare outcomes across epochs without explicit adjustment.
 
-See `/docs/appendices/epochs.md` for epoch semantics.
+See `docs/appendices/epochs.md` for epoch semantics.
 
 ---
 
-## Contract 2.0.0 — Breaking Changes
+## OddKit Epistemic Tooling Interface
 
-This version introduces structural changes that are not backwards-compatible:
+OddKit is the primary interface for epistemic routing in ODD. It replaces the prescribed tooling commands (register/nuke/finalize/promote) with dynamic, context-aware tools:
 
-### Removed
-- Single active PRD rule (`/docs/PRD.md` as sole PRD location)
+| Tool | Purpose | Replaces |
+|------|---------|----------|
+| `oddkit_orient` | Assess epistemic mode, surface unresolved items | Attempt registration context |
+| `oddkit_challenge` | Pressure-test claims against canon constraints | Manual review checklists |
+| `oddkit_gate` | Check transition readiness between modes | Attempt finalization gates |
+| `oddkit_encode` | Record decisions as durable artifacts | Manual decision logging |
+| `oddkit_search` | Find relevant canon by meaning | Directory-based navigation |
+| `oddkit_validate` | Verify completion claims against required artifacts | Manual evidence checking |
+| `oddkit_get` | Fetch specific canonical documents by URI | File path lookups |
+| `oddkit_catalog` | List available documentation | Directory listings |
+| `oddkit_preflight` | Pre-implementation constraint check | Kickoff checklists |
 
-### Added
-- **Lane declaration required** for all attempts
-- **Epoch declaration required** in META.json
-- PRDs stored under `/docs/PRD/<lane>/PRD.md`
-- Attempts stored under `/products/<lane>/attempts/prd-vX.Y/attempt-NNN/` (lane-contained)
-- Tooling requires `--lane` flag for register, finalize, promote
-
-Note: Root `/attempts/**` is legacy (read-only). All new attempts are lane-contained.
-
-### Changed
-- Mental model: products decoupled, canon shared
-- Comparison validity: same lane + same PRD + same epoch required
+These tools are self-describing via MCP. Do not hardcode tool names or parameters — the MCP server advertises the current API.
 
 ---
 
 ## Compatibility
 
 ### Forward Compatibility
-Documents written for contract 2.x will not work correctly in a 1.x environment.
+Documents written for contract 3.x may reference OddKit tools that are not available in 2.x environments. The three-tier hierarchy and epoch model are unchanged.
 
 ### Backward Compatibility
-Epoch 1 artifacts (pre-lanes) remain valid historical records. They are not "wrong" — they are from a different evaluation context.
-
-Epoch 1 documents should be marked with an epoch header if they remain in the repo for historical reference.
+- Epoch 1-4 artifacts remain valid historical records
+- Lane-era directory conventions are not "wrong" — they were a specific implementation that served its purpose
+- Lane-era tooling commands (register/nuke/finalize/promote) are no longer operational
+- Historical artifacts should be marked with appropriate epoch context
 
 ---
 
@@ -164,6 +178,7 @@ Epoch 1 documents should be marked with an epoch header if they remain in the re
 
 | Version | Date | Summary |
 |---------|------|---------|
+| 3.0.0 | 2026-02-12 | Structure-agnostic ODD; lane requirements removed; OddKit as primary epistemic interface |
 | 2.1.0 | 2026-01-21 | Three-tier hierarchy (ODD/Canon/Docs), ODD at root level |
 | 2.0.0 | 2026-01-17 | Multi-lane architecture, epoch requirements |
 | 1.x | Pre-2026-01-17 | Single PRD era (implicit, never formally versioned) |
@@ -172,7 +187,9 @@ Epoch 1 documents should be marked with an epoch header if they remain in the re
 
 ## Related Documents
 
-- Decision log: `/docs/decisions/D0011-odd-contract-2.0.0.md`
-- Epochs: `/docs/appendices/epochs.md`
-- Product Lanes: `/docs/appendices/product-lanes.md`
-- Alignment Reviews: `/odd/appendices/alignment-reviews.md`
+- Decision log: `docs/decisions/D0016-structure-agnostic-odd.md`
+- Prior contract decision: `docs/decisions/D0011-odd-contract-2.0.0.md`
+- Epochs: `docs/appendices/epochs.md`
+- Alignment Reviews: `odd/appendices/alignment-reviews.md`
+- Definition of Done: `canon/constraints/definition-of-done.md`
+- Axioms: `canon/values/axioms.md`

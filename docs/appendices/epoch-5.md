@@ -141,3 +141,11 @@ This is not a formatting concern. It is a direct consequence of the Epoch 5 arch
 | `canon/values/orientation.md` | The creed — internalized posture for agents |
 | `canon/meta/writing-canon.md` | Writing guide — progressive disclosure as structural protection |
 | This document | Epoch declaration and historiographic record |
+
+---
+
+## E0005.1 — Structure-Agnostic ODD (2026-02-12)
+
+E0005.1 is a sub-epoch that applies the same invariant to structural prescriptions. Product lanes, attempt folder conventions, and lane-scoped tooling were a form of external compliance. OddKit's dynamic epistemic routing is internal orientation — the same shift E0005 made for values, applied to repo structure.
+
+See `docs/decisions/D0016-structure-agnostic-odd.md` for the decision record and `docs/appendices/epochs.md` for the epoch table entry.
