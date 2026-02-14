@@ -13,6 +13,9 @@ derives_from: "canon/values/axioms.md, canon/values/orientation.md"
 complements: "canon/constraints/verification-and-evidence.md, canon/values/axioms.md, docs/architecture/epistemic-os-layers.md, odd/appendices/cognitive-saturation-threshold.md, docs/evidence/testimony-2026-02-13.md"
 governs: "Trust expectations between agents, humans, and mixed teams operating under ODD"
 status: draft
+start_here: true
+start_here_order: 3
+start_here_label: "Shared Values as a Trust Proxy"
 ---
 
 # Shared Values as a Trust Proxy

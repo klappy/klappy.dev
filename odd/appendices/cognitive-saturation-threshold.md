@@ -12,6 +12,9 @@ date: 2026-02-13
 derives_from: "canon/values/axioms.md (Axiom 4 — You Cannot Verify What You Did Not Observe)"
 complements: "odd/appendices/media-as-learning-layer.md, canon/values/shared-values-as-trust-proxy.md, docs/architecture/epistemic-os-layers.md, docs/evidence/testimony-2026-02-13.md"
 status: draft
+start_here: true
+start_here_order: 5
+start_here_label: "Cognitive Saturation Threshold"
 ---
 
 # Cognitive Saturation Threshold — When Words Stop Transferring Knowledge
