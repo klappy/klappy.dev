@@ -44,6 +44,10 @@ related:
   - uri: klappy://writings/the-parallel-architecture
     label: "Appendix: The Parallel Architecture"
     relationship: appendix
+complements: "writings/the-parallel-architecture.md, canon/values/shared-values-as-trust-proxy.md, docs/architecture/epistemic-os-layers.md, odd/appendices/cognitive-saturation-threshold.md, docs/evidence/testimony-2026-02-13.md"
+start_here: true
+start_here_order: 1
+start_here_label: "The Most Expensive Problem — Why This Exists"
 ---
 
 # The Most Expensive Problem

@@ -56,6 +56,7 @@ It encodes the decoupling between App, Content, and Infrastructure planes.
 /canon/                         # Canon documents (evolves independently)
 /odd/                           # ODD public docs (evolves independently)
 /about/                         # About docs (evolves independently)
+/writings/                      # Public-facing essays and long-form content
 /docs/                          # Implementation docs, decisions, agent guides
 /docs/archive/                  # Archived content (products/, infra/, projects/, etc.)
 /docs/templates/                # Document templates (PRD, etc.)
@@ -67,7 +68,7 @@ It encodes the decoupling between App, Content, and Infrastructure planes.
 
 ## What Lives Where
 
-### Content Plane (`/canon/`, `/odd/`, `/about/`)
+### Content Plane (`/canon/`, `/odd/`, `/about/`, `/writings/`)
 
 **Evolves independently.**
 
@@ -75,6 +76,7 @@ Contains:
 - Canon documents (governance, constraints, principles)
 - ODD philosophy (universal, product-agnostic)
 - About pages (author context)
+- Public-facing essays and long-form content
 
 ### Implementation Docs (`/docs/`)
 
@@ -107,6 +109,7 @@ Contains archived content from:
 | Add a new ODD appendix | `/odd/` | Minimal — philosophy evolves freely |
 | Update implementation docs | `/docs/` | Minimal — docs can rot and be updated |
 | Add new content doc | `/about/` | Minimal — content evolves independently |
+| Add new essay or writing | `/writings/` | Minimal — content evolves independently |
 | Change manifest schema | `/canon/meta/` | May affect downstream consumers |
 
 ---
@@ -118,6 +121,7 @@ Contains archived content from:
 | Canon governance | `/canon/` (frontmatter-bearing markdown) |
 | ODD philosophy | `/odd/` (frontmatter-bearing markdown) |
 | About content | `/about/` (frontmatter-bearing markdown) |
+| Public writings | `/writings/` (frontmatter-bearing markdown) |
 | Implementation docs | `/docs/` |
 | Archived products/infra | `/docs/archive/` (read-only historical) |
 
@@ -125,7 +129,7 @@ Contains archived content from:
 
 ## Summary
 
-- **Content accumulates** — canon, ODD, and about evolve independently
+- **Content accumulates** — canon, ODD, about, and writings evolve independently
 - **Docs are implementation-specific** — procedures, decisions, and guides for this repo
 - **Archive preserves history** — former products, infra, and projects are archived, not deleted
 - **Structure is not meaning** — scope and identity come from frontmatter and oddkit, not folder paths

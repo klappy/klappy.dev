@@ -10,7 +10,7 @@ tags: ["canon", "values", "trust", "agents", "teams", "coordination", "handbook"
 epoch: E0005
 date: 2026-02-13
 derives_from: "canon/values/axioms.md, canon/values/orientation.md"
-complements: "canon/constraints/verification-and-evidence.md, canon/values/axioms.md, docs/architecture/epistemic-os-layers.md, odd/appendices/cognitive-saturation-threshold.md, docs/evidence/testimony-2026-02-13.md"
+complements: "canon/constraints/verification-and-evidence.md, canon/values/axioms.md, docs/architecture/epistemic-os-layers.md, odd/appendices/cognitive-saturation-threshold.md, docs/evidence/testimony-2026-02-13.md, writings/the-most-expensive-problem.md, writings/the-parallel-architecture.md"
 governs: "Trust expectations between agents, humans, and mixed teams operating under ODD"
 status: draft
 start_here: true
