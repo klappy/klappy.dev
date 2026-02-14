@@ -5,7 +5,7 @@ audience: canon
 exposure: nav
 tier: 1
 voice: first_person
-stability: draft
+stability: stable
 tags: ["canon", "values", "trust", "agents", "teams", "coordination", "handbook"]
 epoch: E0005
 date: 2026-02-13

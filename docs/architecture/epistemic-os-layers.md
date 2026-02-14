@@ -5,7 +5,7 @@ audience: docs
 exposure: nav
 tier: 2
 voice: neutral
-stability: draft
+stability: stable
 tags: ["architecture", "layers", "epistemic-os", "separation-of-concerns", "overview"]
 epoch: E0005
 date: 2026-02-13

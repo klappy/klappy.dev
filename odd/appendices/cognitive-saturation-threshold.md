@@ -5,7 +5,7 @@ audience: odd
 exposure: nav
 tier: 2
 voice: neutral
-stability: draft
+stability: stable
 tags: ["odd", "cognitive-saturation", "knowledge-transfer", "meetings", "media", "visual-validation", "appendix"]
 epoch: E0005
 date: 2026-02-13
