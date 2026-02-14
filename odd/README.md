@@ -11,7 +11,7 @@ relevance: routing
 execution_posture: routing
 assets: {"practice_video":"/assets/odd/odd-in-practice.mp4","misconception_image":"/assets/odd/odd-is-not-a-framework.png","deep_dive_audio":"/assets/odd/why-evidence-beats-confidence.m4a"}
 start_here: true
-start_here_order: 1
+start_here_order: 10
 start_here_label: What is ODD?
 ---
 
