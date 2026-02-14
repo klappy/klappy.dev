@@ -18,6 +18,44 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
+## 0.32.0 — 2026-02-14
+
+**Epistemic OS Docs, Trust Proxy, Writings, Structure-Agnostic ODD, and OddKit Docs Audit**
+
+This release introduces four new documents articulating the epistemic OS concept — including a canon-tier trust proxy essay, the four-layer architecture map, a cognitive saturation appendix, and a testimony evidence document. Also captures Epoch 5.1 (structure-agnostic ODD), the first public writings, ODD Compared positioning, anti-cache-lying constraint, progressive disclosure fixes, and a full OddKit docs audit.
+
+### Added
+
+- **Canon: Shared Values as a Trust Proxy** (`canon/values/shared-values-as-trust-proxy.md`) — Tier 1 canon document. Names the trust proxy effect as an observable consequence of shared axioms: transparency becomes the default, failure modes become navigable, and collaboration overhead decreases. Derives from axioms and orientation. Includes the organizational handbook analogy, the fork model for genuine adoption vs. compliance, and explicit constraints on what shared values do not guarantee. Draft.
+
+- **Docs: Epistemic OS Layers** (`docs/architecture/epistemic-os-layers.md`) — Tier 2 architecture document. Maps the system's four separable layers: (1) Values/Trust as the kernel, (2) Dynamic Context as the memory, (3) Alignment as the scheduler, (4) Generation/Outcomes as the output. Each layer is independently portable. Includes repository structure mapping and extension points. Draft.
+
+- **ODD Appendix: Cognitive Saturation Threshold** (`odd/appendices/cognitive-saturation-threshold.md`) — Tier 2 appendix. Formalizes the failure mode where verbal exchange stops producing knowledge transfer. Defines the saturation threshold, practical signals (rephrasing without progress, violent agreement, deferred concreteness, meeting recursion), and the remedy (modality switch to observable artifacts). Derives from Axiom 4. Draft.
+
+- **Evidence: Testimony — A Day the System Proved Itself** (`docs/evidence/testimony-2026-02-13.md`) — Tier 2 evidence document. Claude's first-person account of a single day producing five documents from unstructured input — a typing rant and a nine-mile-run voice memo. Documents the trust proxy in action, the counterfactual without the epistemic OS, and the author's assessment that the output was "the most like me anything has ever been written." Final.
+
+- **Writings Directory** (`writings/`) — Two public essays: "The Most Expensive Problem" (knowledge transfer as humanity's costliest recurring failure) and "The Parallel Architecture" (theological roots of the epistemic OS as appendix). First public-facing long-form content.
+
+- **ODD Compared** (`odd/odd-compared.md`) — Positioning document comparing ODD to SDD, EDD, AI-DLC, governance frameworks, and agentic tooling. ODD README restructured with "Why ODD Exists" section.
+
+- **Anti-Cache Lying Constraint** (`odd/constraint/anti-cache-lying.md`) — Tier 1 constraint encoding the OddKit stale-cache incident. Adds Decision Rule #15: Measure Total Cost Before Optimizing. Includes incident record and implementation plan for content-addressed storage.
+
+- **OddKit Tool Docs** — Seven new tool documentation files: `oddkit_catalog`, `oddkit_cleanup_storage`, `oddkit_get`, `oddkit_preflight`, `oddkit_search`, `oddkit_validate`, `oddkit_version`. Updated epistemic guide prompt. IMPL status markers added.
+
+- **New Directories** — `docs/architecture/` for system-level architecture documents. `docs/evidence/` for testimony and evidence records.
+
+### Changed
+
+- **E0005.1: Structure-Agnostic ODD** — Major structural refactor. ODD is no longer software-specific — epistemic modes apply to any kind of work. Repository reorganized: archive directory created, repo topology rewritten, agent kickoff updated, content map revised, templates simplified.
+
+- **Progressive Disclosure Fixes** — Definition of Done and Self-Audit amended for document deliverables. Writing Canon updated. Progressive disclosure failure incident recorded. Incidents README added.
+
+- **OddKit Docs** — Mode drift fixes in existing tool docs (`oddkit_challenge`, `oddkit_encode`, `oddkit_gate`, `oddkit_orient`). Modes documentation updated.
+
+- **Resonance README** — Cross-linked to ODD Compared.
+
+---
+
 ## 0.31.0 — 2026-02-12
 
 **Content Metadata Pass + Getting Started Rewrite**
