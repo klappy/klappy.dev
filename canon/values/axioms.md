@@ -11,7 +11,7 @@ epoch: E0005
 date: 2026-02-09
 governs: "All epistemic constraints, validators, and definitions of done derive from these axioms"
 start_here: true
-start_here_order: 12
+start_here_order: 11
 start_here_label: Foundational Axioms
 ---
 

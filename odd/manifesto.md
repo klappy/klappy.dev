@@ -10,7 +10,7 @@ tags: ["odd", "philosophy", "outcomes-driven-development", "manifesto", "governa
 relevance: background
 execution_posture: exploratory
 start_here: true
-start_here_order: 14
+start_here_order: 12
 start_here_label: The Manifesto
 epoch: E0005
 derives_from: "canon/values/axioms.md"

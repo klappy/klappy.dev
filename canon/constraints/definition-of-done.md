@@ -11,7 +11,7 @@ derives_from: "canon/values/axioms.md (Axiom 2 — A Claim Is a Debt)"
 relevance: decision
 execution_posture: governing
 start_here: true
-start_here_order: 4
+start_here_order: 13
 start_here_label: Definition of Done
 ---
 

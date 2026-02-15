@@ -14,7 +14,7 @@ complements: "canon/constraints/verification-and-evidence.md, canon/values/axiom
 governs: "Trust expectations between agents, humans, and mixed teams operating under ODD"
 status: final
 start_here: true
-start_here_order: 9
+start_here_order: 3
 start_here_label: "Shared Values as a Trust Proxy"
 ---
 

@@ -48,7 +48,7 @@ related:
     relationship: parent
 complements: "writings/the-most-expensive-problem.md, canon/values/shared-values-as-trust-proxy.md, docs/architecture/epistemic-os-layers.md, docs/evidence/testimony-2026-02-13.md"
 start_here: true
-start_here_order: 8
+start_here_order: 2
 start_here_label: "The Parallel Architecture — Where the Axioms Came From"
 ---
 
