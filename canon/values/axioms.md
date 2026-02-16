@@ -93,5 +93,6 @@ These four axioms make the existing body of ODD constraints derivable rather tha
 - **Validation Agent** (`docs/agents/validation/README.md`) derives from Axiom 4 (You Cannot Verify What You Did Not Observe)
 - **Agent Fault: Assertion Without Verification** (`docs/_incoming/agent-fault-assertion-without-verification.md`) is a violation of Axiom 1 (Reality Is Sovereign)
 - **Epistemic Guide** (`docs/agents/odd-epistemic-guide.md`) derives from Axiom 3 (Integrity Is Non-Negotiable Efficiency)
+- **Trust Kernel** (`canon/values/trust-kernel.md`) — the principle that explains *why* all four axioms exist: trust is built by managing expectations. Not a fifth axiom, but the outcome the four produce together.
 
 When a novel situation arises that no existing rule covers, the correct behavior should be derivable from these axioms. If it is not, the axioms are incomplete and should be extended — not bypassed.

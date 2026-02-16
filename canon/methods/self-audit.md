@@ -80,7 +80,7 @@ If an item cannot be answered, that is a signal—not a failure.
 ### 3. Decision Rules Followed
 
 - Which decision rules guided the approach?
-- (e.g., Borrow→Bend→Break→Build, KISS, explicit tradeoffs)
+- (e.g., Borrow→Bend→Break→Beget→Build (`canon/methods/borrow-bend-break-beget-build.md`), KISS, explicit tradeoffs)
 - Were there moments where a different rule could have been applied?
 - Why was it not?
 
@@ -177,6 +177,19 @@ Agents and collaborators are expected to:
 • explicitly state uncertainty instead of hiding it
 
 If an agent cannot complete the checklist honestly, the correct action is to continue working or mark the task incomplete.
+
+---
+
+## 📦 Canon Document Preflight — Six Checks Before Done
+
+When the deliverable is a canon document, six checks must pass before it is considered done. This preflight supplements the self-audit — it does not replace it.
+
+1. **Progressive disclosure** — Writing Canon checklist (`canon/meta/writing-canon.md`): blockquote with complete compressed argument, self-contained summary, descriptive headers, no buried claims.
+2. **Drift audit** — What existing documents does this create tension with? For each: amend, acknowledge, or investigate. See `canon/values/drift.md`.
+3. **Cross-reference integrity** — Bidirectional links verified. `derives_from`, `complements`, and `governs` fields are accurate and reciprocated where appropriate.
+4. **Downstream amendments** — Existing documents that should now reference the new document have been updated.
+5. **Frontmatter completeness** — YAML metadata includes URI, title, audience, exposure, tier, voice, stability, tags, epoch, date, and relationship fields as applicable.
+6. **Self-audit** — This ten-item checklist, completed honestly.
 
 ---
 

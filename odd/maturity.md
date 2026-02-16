@@ -169,7 +169,7 @@ This maturity model modulates the following:
 • Constraints
 Some constraints are optional at PoC and mandatory later.
 • Decision Rules
-Rules like KISS and Borrow→Build apply at all levels, but escalation thresholds change.
+Rules like KISS and Borrow→Bend→Break→Beget→Build (`canon/methods/borrow-bend-break-beget-build.md`) apply at all levels, but escalation thresholds change.
 • Definition of Done
 Evidence requirements increase with maturity.
 • Self-Audit Checklist

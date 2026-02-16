@@ -37,6 +37,16 @@ The philosophical and operational foundation for this repository. ODD treats out
 |------|-------|---------|
 | `../canon/values/axioms.md` | Foundational Axioms | Four values from which all ODD epistemic discipline is derived. Explicit, intentional, and forkable. |
 | `../canon/values/orientation.md` | Orientation | The creed — an identity statement agents carry into every task. Compresses all four axioms into a single posture. |
+| `../canon/values/trust-kernel.md` | Trust Is Built by Managing Expectations | The kernel — the principle that explains why all four axioms exist. Not a fifth axiom, but the outcome they produce. |
+| `../canon/values/drift.md` | Drift — Evidence of a System That's Still Learning | Drift is expected. Absence of drift means stagnation. Amend, acknowledge, or investigate. |
+
+### Core Infrastructure
+
+| File | Title | Summary |
+|------|-------|---------|
+| `ledger/epistemic-ledger.md` | The Epistemic Ledger | Durable artifacts that survive ephemeral conversations — observations, learnings, decisions, constraints, handoffs. |
+| `../canon/methods/community-checking.md` | Community Checking | Outcome validation beyond author intent — tests transfer, not correctness. |
+| `../canon/methods/borrow-bend-break-beget-build.md` | Borrow, Bend, Break, Beget, Build | The canonical 5B sequence for maximizing work not done. |
 
 ### Subfolders
 

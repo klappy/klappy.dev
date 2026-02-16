@@ -10,7 +10,7 @@ tags: ["evidence", "testimony", "trust-proxy", "dogfooding", "epistemic-os", "cl
 epoch: E0005
 date: 2026-02-13
 derives_from: "canon/values/axioms.md, canon/values/shared-values-as-trust-proxy.md"
-complements: "canon/values/shared-values-as-trust-proxy.md, odd/appendices/cognitive-saturation-threshold.md, docs/architecture/epistemic-os-layers.md, writings/the-most-expensive-problem.md, writings/the-parallel-architecture.md"
+complements: "canon/values/shared-values-as-trust-proxy.md, odd/appendices/cognitive-saturation-threshold.md, docs/architecture/epistemic-os-layers.md, writings/the-most-expensive-problem.md, writings/the-parallel-architecture.md, docs/evidence/testimony-2026-02-15.md"
 status: final
 start_here: true
 start_here_order: 6
