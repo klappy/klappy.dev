@@ -10,7 +10,7 @@ tags: ["odd", "ledger", "persistence", "handoffs", "decisions", "observations", 
 epoch: E0005
 date: 2026-02-15
 derives_from: "canon/values/axioms.md"
-complements: "canon/methods/weighted-relevance-and-arbitration.md, canon/values/trust-kernel.md"
+complements: "canon/methods/weighted-relevance-and-arbitration.md, canon/values/trust-kernel.md, writings/the-project-journal.md"
 ---
 
 # The Epistemic Ledger — Durable Artifacts That Survive Ephemeral Conversations
