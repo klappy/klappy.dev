@@ -37,7 +37,7 @@ og_description: "Every growing knowledge base accumulates invisible inconsistenc
 
 # Relationships
 
-## derives_from: "canon/meta/constraint-driven-audits.md, canon/constraints/guide-posture.md"
+derives_from: "canon/meta/constraint-driven-audits.md, canon/constraints/guide-posture.md"
 complements: "writings/the-project-journal.md, writings/the-most-expensive-problem.md, writings/from-bible-translation-to-epistemic-os.md"
 start_here: true
 start_here_order: 9
