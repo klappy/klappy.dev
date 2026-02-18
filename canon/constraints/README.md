@@ -40,6 +40,7 @@ Constraints define the baseline assumptions and design defaults applied to most 
 - [Boundary Transitions Require Deceleration](/canon/constraints/boundary-transitions-require-deceleration.md)
 - [ODD Is an Epistemic OS, Not a Value System](/canon/constraints/odd-is-epistemic-os-not-values.md)
 - [No Irreversible Action Without Epistemic Justification](/canon/constraints/no-irreversible-action-without-epistemic-justification.md)
+- [Guide Posture — We Enter Their Story, Not the Other Way Around](/canon/constraints/guide-posture.md)
 - **ODD-Level Constraints** (universal, in `/odd/constraint/`):
   - [Anti-Metric Laundering](/odd/constraint/anti-metric-laundering.md) — A system that cannot surface its own blind spots will optimize to protect them
   - [Anti-Cache Lying](/odd/constraint/anti-cache-lying.md) — A cache of derived content is a polite lie; only content-addressed storage is acceptable
@@ -59,6 +60,7 @@ Constraints define the baseline assumptions and design defaults applied to most 
 - MUST encode epistemic decisions so settled ground stays settled and reasoning compounds
 - MUST decelerate at boundary transitions; speed inside a boundary does not justify speed across boundaries
 - MUST NOT use ODD as a value system, moral authority, or ideological enforcement mechanism
+- MUST lead all public-facing content with the user's pain before introducing system terminology; guide posture governs the order of encounter
 
 ---
 

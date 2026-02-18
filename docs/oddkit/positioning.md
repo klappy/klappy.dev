@@ -9,7 +9,7 @@ stability: stable
 tags: ["oddkit", "positioning", "protocol", "mcp", "epistemic-discipline", "voice", "multimodal"]
 epoch: E0005
 date: 2026-02-15
-complements: "odd/ledger/epistemic-ledger.md, canon/values/trust-kernel.md"
+complements: "odd/ledger/epistemic-ledger.md, canon/values/trust-kernel.md, canon/constraints/guide-posture.md"
 start_here: true
 start_here_order: 8
 start_here_label: "oddkit — A Protocol, Not a Platform"

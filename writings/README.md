@@ -20,3 +20,4 @@ tags: ["writings", "index", "essays"]
 | [The Parallel Architecture](klappy://writings/the-parallel-architecture) | Theological roots of the Epistemic OS — appendix to The Most Expensive Problem |
 | [From Bible Translation to Epistemic OS](klappy://writings/from-bible-translation-to-epistemic-os) | How 15 years of Bible translation work became an operating system for AI collaboration |
 | [The Project Journal](klappy://writings/the-project-journal) | A practical guide to keeping your AI collaboration honest and cumulative |
+| [The Drift Queue](klappy://writings/the-drift-queue) | How one person manages a growing knowledge base without drowning in maintenance |
