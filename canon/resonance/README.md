@@ -89,6 +89,7 @@ Each resonance page follows a consistent structure:
 | `ooda-loop.md` | OODA Loop | Orientation Dominates Action |
 | `sprint.md` | Sprint | Constrained Convergence Produces Clarity |
 | `double-diamond.md` | The Double Diamond | Governed Divergence and Convergence |
+| `ai-coding-toolkit.md` | AI Coding Toolkit — Harness Engineering | Verification Must Be Structural, Not Manual |
 
 ---
 
