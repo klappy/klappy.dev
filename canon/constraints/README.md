@@ -20,7 +20,7 @@ start_here_label: Constraints
 
 ## Description
 
-Constraints define the baseline assumptions and design defaults applied to most work. They cover offline-first design, long-term maintainability, interoperability, stateless architectures, AI as accelerator (not authority), evidence over assertion, contextual UX, ephemeral artifacts, explicit tradeoffs, and lane self-containment. Each constraint includes what is assumed, why it matters, what it forces, and when it does not apply. These are not universal best practices but reflect specific environments and problems.
+Constraints define the baseline assumptions and design defaults applied to most work. They cover offline-first design, long-term maintainability, interoperability, stateless architectures, AI as accelerator (not authority), evidence over assertion, contextual UX, ephemeral artifacts, explicit tradeoffs, work-unit self-containment, single-agent integrity before collaboration, encoding epistemic decisions, deceleration at boundary transitions, the value-grounded nature of ODD, irreversibility gates, human variability, and guide posture in public-facing content. Each constraint includes what is assumed, why it matters, what it forces, and when it does not apply. These are not universal best practices but reflect specific environments and problems.
 
 ## Outline
 
@@ -34,12 +34,13 @@ Constraints define the baseline assumptions and design defaults applied to most 
 - UX Is Contextual, Not Universal
 - Ephemeral Artifacts Are Acceptable
 - Explicit Tradeoffs
-- Lane Self-Containment
+- Work-Unit Self-Containment
 - [Single-Agent Integrity Precedes Collaboration](/canon/constraints/single-agent-integrity-precedes-collaboration.md)
 - [Encode Epistemic Decisions](/canon/constraints/encode-epistemic-decisions.md)
 - [Boundary Transitions Require Deceleration](/canon/constraints/boundary-transitions-require-deceleration.md)
-- [ODD Is an Epistemic OS, Not a Value System](/canon/constraints/odd-is-epistemic-os-not-values.md)
+- [ODD Is a Value-Grounded Epistemic OS](/canon/constraints/odd-is-epistemic-os-not-values.md)
 - [No Irreversible Action Without Epistemic Justification](/canon/constraints/no-irreversible-action-without-epistemic-justification.md)
+- [Humans Are Variable Inputs](/canon/constraints/humans-are-variable-inputs.md)
 - [Guide Posture — We Enter Their Story, Not the Other Way Around](/canon/constraints/guide-posture.md)
 - **ODD-Level Constraints** (universal, in `/odd/constraint/`):
   - [Anti-Metric Laundering](/odd/constraint/anti-metric-laundering.md) — A system that cannot surface its own blind spots will optimize to protect them
@@ -53,13 +54,15 @@ Constraints define the baseline assumptions and design defaults applied to most 
 - MUST design for offline-first unless explicitly stated otherwise; core functionality must work without network
 - MUST treat AI as accelerator, not authority; this constraint is always in effect with no exceptions
 - MUST verify work with evidence; assertions like "it works" are insufficient
-- MUST keep lane artifacts self-contained; no cross-directory dependencies *(path under E0005.1 review)*
+- MUST keep work-unit artifacts self-contained; all context necessary to understand and execute a unit must be co-located or explicitly referenced from a single entry point
 - MUST make tradeoffs explicit and visible; every decision excludes alternatives
 - MUST assume systems will outlive original creators and change hands
 - MUST establish single-agent integrity before scaling collaboration; integrity precedes participation
 - MUST encode epistemic decisions so settled ground stays settled and reasoning compounds
 - MUST decelerate at boundary transitions; speed inside a boundary does not justify speed across boundaries
-- MUST NOT use ODD as a value system, moral authority, or ideological enforcement mechanism
+- MUST NOT use ODD as a moral authority or ideological enforcement mechanism; ODD is value-grounded with an unconditional commitment to truth, but does not define what is morally correct or who decides
+- MUST NOT take irreversible action without documented epistemic justification; defer commitment until epistemic thresholds are met
+- MUST NOT design systems that assume humans behave consistently, remember steps, or compensate for missing affordances; failure attributed to user error is a system design failure
 - MUST lead all public-facing content with the user's pain before introducing system terminology; guide posture governs the order of encounter
 
 ---
@@ -82,7 +85,13 @@ Constraints define the baseline assumptions and design defaults applied to most 
 - **Clever Code**: Solutions that only the original author understands
 - **Tight Coupling**: Small changes causing widespread breakage; teams blocked on shared components
 - **AI as Oracle**: Treating unverified AI output as authoritative truth
-- **Scattered Lanes**: Lane artifacts spread across directories, causing incomplete context and drift
+- **Scattered Work Units**: Artifacts spread across locations, causing incomplete context and drift
+- **Premature Collaboration**: Scaling participation before single-agent integrity is established; noise compounds before signal is stable
+- **Epistemic Amnesia**: Decisions re-litigated because they were never encoded; settled ground treated as open ground
+- **Boundary Rushing**: Speed inside a boundary used to justify speed across a boundary; transitions skipped rather than decelerated
+- **Irreversible Overcommit**: Committing before epistemic thresholds are met; action taken before claims are tested
+- **Human System Blame**: Failures attributed to user error rather than system design; "they should have remembered" instead of redesigning the affordance
+- **Hero Posture**: Public-facing content that leads with system terminology or methodology before establishing the user's problem; centering the product instead of the user
 
 ---
 
@@ -91,14 +100,18 @@ Constraints define the baseline assumptions and design defaults applied to most 
 - System works without network (for offline-first requirements)
 - Evidence produced demonstrates actual behavior, not assertion
 - Tradeoffs documented with explicit acknowledgment of downsides
-- Lane can be understood by reading only its directory *(path under E0005.1 review)*
+- Work unit can be understood from its entry point without reading the rest of the system
 - Next maintainer (who is not the author) can understand and modify the system
+- Single-agent output is coherent and trustworthy before additional agents or collaborators are introduced
+- Epistemic decisions are recorded; the same question does not need to be re-litigated in a subsequent session
+- Boundary transitions are preceded by explicit deceleration; mode changes are not made at speed
+- Irreversible actions are preceded by documented epistemic justification; no commitment taken before thresholds are met
+- System failures are analyzed for design-level causes; "user forgot to" is treated as a system deficiency, not a user deficiency
+- Public-facing content leads with the user's problem before naming the system; the system is introduced as a plan, not an opening
 
 ---
 
 ## Content
-
-**Canon v0.1**
 
 > This is written in first person, website-ready, and structured so agents can reliably translate it into neutral/system constraints at runtime.
 
@@ -338,34 +351,34 @@ Every decision excludes alternatives. Unspoken tradeoffs cause confusion later.
 
 ---
 
-## 11. Lane Self-Containment
+## 11. Work-Unit Self-Containment
 
-> ⚠️ **E0005.1 Review:** This constraint references the `products/<lane>/` directory model which has been archived as part of E0005.1 (Structure-Agnostic ODD). The substantive principle (self-containment of work units) may be preserved in revised form. This section is under human review — do not delete or rewrite.
+> **D0016 (Structure-Agnostic ODD):** The prescribed `products/<lane>/` directory model has been superseded. The surviving principle — self-containment of work units — is retained here decoupled from any directory convention.
 
-I require product lanes to be self-contained units.
+I require units of work to be self-contained and independently coherent.
 
 **Why this matters**
 
-When lane artifacts are scattered across directories:
+When the artifacts that define a unit of work are scattered:
 • Agents load incomplete context
 • Documentation drifts from implementation
-• Lanes cannot be moved, archived, or reasoned about as units
+• Units cannot be moved, archived, or reasoned about in isolation
 • "Where does X live?" becomes a recurring question
 
 **What this forces**
-• PRD, README, attempts, src, and all lane artifacts live within `products/<lane>/`
-• No cross-directory dependencies for lane-specific content
-• A lane can be understood by reading only its directory
-• If creating lane artifacts outside the lane folder, stop and reconsider
+• All artifacts necessary to understand and execute a unit of work must be co-located or explicitly referenced from a single entry point
+• No implicit dependency on context that lives outside the unit's scope
+• A unit can be understood without reading the rest of the system
+• If creating artifacts outside a unit's scope, stop and reconsider whether the boundary is correctly drawn
 
 **When this does not apply**
-• Shared canon (which lanes reference but do not own)
-• Cross-lane tooling (which is lane-agnostic by design)
+• Shared canon (which units reference but do not own)
+• Cross-unit tooling (which is unit-agnostic by design)
 • Legacy paths being migrated (must be documented and time-boxed)
 
 ---
 
-## 💡 Closing Note
+## Closing Note
 
 These constraints define how I default, not how everyone should build.
 
@@ -373,10 +386,3 @@ Agents and collaborators should:
 • assume these constraints apply
 • translate them into neutral/system requirements
 • explicitly note when a constraint is overridden or does not apply
-
----
-
-## ✅ Status
-
-- Canon v0.1 — Constraints complete
-- Ready to proceed to Canon v0.1 — Decision Rules
