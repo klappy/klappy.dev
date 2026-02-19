@@ -76,8 +76,53 @@ For document deliverables, validate also checks compliance with the Writing Cano
 2. **Check against the full Definition of Done.** Every claim is evaluated against the five DoD requirements: change description, verification performed, observed behavior, evidence produced, self-audit completed. Missing any one produces NEEDS_ARTIFACTS.
 3. **Binary verdicts only.** The result is VERIFIED or NEEDS_ARTIFACTS. There is no "partially verified," "probably done," or "close enough." Ambiguity resolves to NEEDS_ARTIFACTS.
 4. **Name the gaps specifically.** When the verdict is NEEDS_ARTIFACTS, the `gaps` array must contain concrete, actionable descriptions of what is missing (e.g., "visual proof (screenshot or recording)" not "more evidence").
-5. **Check document deliverables against Writing Canon.** If the completion claim involves a document targeting `canon/`, `odd/`, or `docs/`, validate progressive disclosure compliance per `canon/meta/writing-canon.md`. A document that exists but fails structural requirements is not done.
+5. **Check document deliverables against Writing Canon.** If the completion claim involves a document targeting `canon/`, `odd/`, `docs/`, or `writings/`, validate progressive disclosure compliance per `canon/meta/writing-canon.md`. A document that exists but fails structural requirements is not done. See the Writing Canon Gate section below for specific checks.
 6. **Do not fabricate artifacts.** If the input references evidence that cannot be verified, treat it as provided but note that verification of the artifact itself is the caller's responsibility.
+
+## Writing Canon Gate — Document Validation Checks
+
+This gate fires automatically when a completion claim involves a document deliverable. No one asks for it. If someone writes a doc and says "review this," "audit this," "is this done," or "validate this," the Writing Canon gate fires without prompting.
+
+### Detection
+
+The gate activates when any of these conditions are true:
+
+- The completion claim references a `.md` file in `canon/`, `odd/`, `docs/`, or `writings/`
+- The completion claim describes writing, creating, or completing a document
+- The completion claim asks for review or audit of a document
+
+### Structural Checks
+
+When the gate fires, validate must check the document against these progressive disclosure requirements:
+
+#### Check 1: Blockquote After Title (Tier 2)
+
+- Look for a `>` blockquote immediately after the first `#` title heading
+- The blockquote must contain a substantive compressed argument — not a topic sentence, not a teaser
+- **If missing or empty:** return `NEEDS_ARTIFACTS` with gap: `"Writing Canon Tier 2: Document is missing a blockquote (> ...) immediately after the # title. The blockquote must contain the complete compressed argument — the full claim in compressed form, not a topic sentence."`
+
+#### Check 2: Summary Section (Tier 4)
+
+- Look for a `## Summary —` section (the heading must start with `## Summary —` followed by a descriptive subtitle)
+- The summary must be self-contained — reading only title + blockquote + summary gives the full picture
+- **If missing:** return `NEEDS_ARTIFACTS` with gap: `"Writing Canon Tier 4: Document is missing a '## Summary — [descriptive subtitle]' section. The summary must be self-contained — someone reading only the title, blockquote, and summary should have the full picture."`
+
+#### Check 3: Headers Pass Scan Test (Tier 5)
+
+- Print only the `#` lines from the document and read them in sequence
+- Headers must tell the document's story — not read like a generic form ("Background," "Discussion," "Details")
+- Structural markers (like "Summary") must have descriptive subtitles
+- **If headers are generic:** return `NEEDS_ARTIFACTS` with gap: `"Writing Canon Tier 5: Headers fail the scan test. Reading the headers in sequence should tell the document's story. Generic headers like 'Background,' 'Discussion,' or 'Details' without descriptive content are not sufficient."`
+
+### Verdict Logic
+
+- If any of the three structural checks fail: return `NEEDS_ARTIFACTS` with all failing checks listed in `gaps`
+- If all three pass: proceed with standard DoD validation (the Writing Canon gate does not override other requirements)
+- Writing Canon compliance is necessary but not sufficient — the document must also meet the standard five DoD requirements
+
+### Why This Is Mandatory
+
+The Progressive Disclosure Failure incident (February 2026) proved that agents will always skip writing validation unless a gate enforces it. Three canon documents were merged to main without any structural checks. The agent had full access to the Writing Canon but never checked its output against it. Access is not enforcement. This gate ensures document quality is validated automatically — not only when a human remembers to ask.
 
 ## Canon References
 

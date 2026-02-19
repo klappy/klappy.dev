@@ -76,7 +76,40 @@ For document deliverables, preflight includes the Writing Canon (`klappy://canon
 3. **Surface constraints applicable to the specific task.** Do not return all constraints — return the subset that governs the described work. Generic constraints (like the constraints README) may be included for orientation.
 4. **Return doc count for awareness.** The `docs_available` field tells the caller how large the corpus is, signaling whether the returned subset is narrow (well-targeted) or broad (more reading may be needed).
 5. **The returned start_here docs must be read before coding.** Preflight output is not informational — it is prescriptive. The listed documents contain governing material. Ignoring them and proceeding is a policy violation.
-6. **Include Writing Canon for document deliverables.** If the described task involves creating or modifying documents, the Writing Canon must appear in the constraints list.
+6. **Include Writing Canon for document deliverables.** If the described task involves creating or modifying `.md` files in `canon/`, `odd/`, `docs/`, or `writings/`, the Writing Canon (`canon/meta/writing-canon.md`) must appear in the constraints list, and `start_here` must include it as a required read.
+
+## Writing Canon Gate — Document Deliverable Detection
+
+This gate fires automatically. No one asks for it. If the preflight input describes creating, editing, writing, reviewing, or auditing a document, the gate activates.
+
+### Detection
+
+The gate activates when any of these conditions are true:
+
+- The input mentions creating or editing a `.md` file
+- The input references paths in `canon/`, `odd/`, `docs/`, or `writings/`
+- The input describes writing an article, essay, document, spec, or canon entry
+- The input uses verbs like "write," "draft," "author," "document," "update" in connection with a deliverable
+
+### What Preflight Returns When the Gate Fires
+
+In addition to the standard preflight response:
+
+1. **Constraints** must include `canon/meta/writing-canon.md`
+2. **Start_here** must include `canon/meta/writing-canon.md` ranked high
+3. **Definition of done** must include the seven-point Writing Canon checklist:
+
+   1. **Title test:** Does the title name the concept and its stance? Could someone decide relevance from the title alone?
+   2. **Blockquote test:** Does the blockquote contain the complete compressed argument? Could an agent act on title + blockquote alone?
+   3. **Metadata test:** Do the metadata fields orient the document in the canon? Is the epoch, derivation, and governance clear?
+   4. **Summary test:** Is the summary self-contained? Could someone skip everything below it and still have the full picture?
+   5. **Header scan test:** Do the headers tell the document's story when read in sequence? Do structural markers have descriptive subtitles?
+   6. **No buried claims:** Is every key assertion present in compressed form at a higher tier? Does the body elaborate rather than introduce?
+   7. **Axiom space test:** If loaded in a small context alongside the axioms and creed, does this document amplify the values or crowd them out?
+
+### Why This Is Mandatory
+
+The Progressive Disclosure Failure incident (February 2026) proved that agents with full access to the Writing Canon will skip it unless preflight surfaces it as a constraint. Access is not enforcement. This gate ensures the checklist is visible before authoring begins — not after a human asks "why didn't you check progressive disclosure?"
 
 ## Canon References
 

@@ -151,7 +151,7 @@ This checklist is not advice. It is a structural requirement integrated into the
 
 If the deliverable is a document targeting `canon/`, `odd/`, or `docs/`, the progressive disclosure tiers are Definition of Done requirements. A document that exists but fails these tiers is not complete.
 
-OddKit's preflight and validate actions are being updated to surface this checklist automatically when the deliverable is a document — see `docs/oddkit/IMPL-writing-canon-gate.md`.
+OddKit's preflight and validate actions surface this checklist automatically when the deliverable is a document. Preflight includes the seven-point checklist in the definition of done. Validate checks for blockquote, summary section, and header quality, returning `NEEDS_ARTIFACTS` with specific guidance when checks fail. The gate fires without being asked. See `docs/oddkit/tools/oddkit_preflight.md` and `docs/oddkit/tools/oddkit_validate.md` for behavioral specification, and `docs/oddkit/IMPL-writing-canon-gate.md` for the implementation record.
 
 This enforcement was proven necessary by the Progressive Disclosure Failure incident (February 2026), where an AI agent wrote and shipped three canon documents that violated every tier of this checklist. The documents were merged to main without validation. The agent had full access to this document but never checked its output against it. Access is not enforcement.
 
