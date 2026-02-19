@@ -18,6 +18,112 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
+## 0.33.0 — 2026-02-18
+
+**Guide Posture, Trust Kernel, Epistemic Ledger, Bible Translation Origin, and Public Writings Expansion**
+
+This release introduces the Guide Posture constraint governing all public-facing content, formalizes the Trust Kernel as a canon value, adds the Epistemic Ledger as an ODD-level concept, and expands public writings with four new essays. Also adds constraint-driven audits architecture, community checking method, Borrow-Bend-Break-Beget-Build method, and updates the constraints README to reflect the full post-Epoch 5 constraint set.
+
+### Added — Canon
+
+- **Constraint: Guide Posture** (`canon/constraints/guide-posture.md`) — Tier 1, stable. All public-facing content must open with the user's pain, not our system. We are the guide, not the hero. Derives from trust kernel and Axiom 1. Includes three-question test, application-by-surface guide, and recursive portability to users' own products.
+
+- **Value: Trust Kernel** (`canon/values/trust-kernel.md`) — Tier 1, stable. Trust is built by managing expectations. Names the foundational mechanism underlying all four axioms.
+
+- **Value: Drift** (`canon/values/drift.md`) — Tier 1, evolving. Reframes tension between old and new understanding as evidence of a system that's still learning, not a problem to eliminate.
+
+- **Meta: Constraint-Driven Audits** (`canon/meta/constraint-driven-audits.md`) — Tier 1, evolving. Every constraint is an auditable compliance surface. Formalizes the audit methodology.
+
+- **Method: Borrow, Bend, Break, Beget, Build** (`canon/methods/borrow-bend-break-beget-build.md`) — Tier 2, stable. The canonical sequence for maximizing work not done.
+
+- **Method: Community Checking** (`canon/methods/community-checking.md`) — Tier 2, evolving. Outcome validation beyond author intent. Derived from Bible translation practice.
+
+- **The Frame** (`canon/the-frame.md`) — Tier 2, stable. The Epistemic OS — Reducing Friction in AI-Human Collaboration.
+
+### Added — ODD
+
+- **Epistemic Ledger** (`odd/ledger/epistemic-ledger.md`) — Tier 1, stable. Durable artifacts that survive ephemeral conversations. Formalizes the ledger concept as ODD infrastructure for observations, learnings, decisions, and constraints.
+
+### Added — Docs
+
+- **Guide Posture Audit** (`docs/audits/guide-posture-audit.md`) — Tier 2, evolving. Audit of public-facing homepage documents against guide posture constraint. 13 findings across 5 documents.
+
+- **Testimony: Feb 15** (`docs/evidence/testimony-2026-02-15.md`) — Tier 2, stable. When the system found its own origin story — the moment ODD's Bible translation roots became visible.
+
+- **IMPL: Guide Posture Gate** (`docs/oddkit/IMPL-guide-posture-gate.md`) — Tier 2, evolving. Surface guide posture constraint for public-facing deliverables in oddkit preflight and validate.
+
+- **oddkit Positioning** (`docs/oddkit/positioning.md`) — Tier 2, stable. oddkit — A Protocol, Not a Platform.
+
+- **Planning: Changelog as Epistemic Ledger** (`docs/planning/automated-changelog.md`) — Tier 2, evolving. The changelog is the epistemic ledger for the repo. Git is the storage mechanism. CHANGELOG.md is a projection. Plans for `oddkit_diff` as the universal "what moved" primitive.
+
+- **Planning: oddkit Write Access** (`docs/planning/oddkit-write-access.md`) — Tier 2, evolving. Three-layer product architecture: repo (user data) + oddkit (epistemic discipline) + projections (derivative assets). Four-phase implementation plan for write access that eliminates the human-as-bus bottleneck between conversations and commits.
+
+### Added — Writings
+
+- **The Project Journal** (`writings/the-project-journal.md`) — Tier 1, stable. Your AI Collaboration's Memory. Public-facing introduction to the epistemic ledger concept using progressive disclosure.
+
+- **The Drift Queue** (`writings/the-drift-queue.md`) — Tier 1, stable. Your Knowledge Base Cleans Itself. Public-facing essay on the constraint drift pattern as a self-cleaning mechanism.
+
+- **From Bible Translation to Epistemic OS** (`writings/from-bible-translation-to-epistemic-os.md`) — Tier 2, stable. And Back Again. Origin story tracing ODD's roots to 15 years of Bible translation practice.
+
+- **Writings README** (`writings/README.md`) — Index for public writings with cross-references.
+
+### Changed
+
+- **Constraints README** (`canon/constraints/README.md`) — Major update. Added Humans Are Variable Inputs, Meaning Must Not Depend on Path, and Guide Posture to outline and operating constraints. Updated ODD-is-epistemic-os framing to reflect Epoch 5 revision (value-grounded, not value-free). Revised Lane Self-Containment to structure-agnostic form per D0016. Added failure modes and verification criteria for all post-v0.1 constraints. Updated status footer from "Canon v0.1" to "Canon 0.33.0".
+
+- **Foundational Axioms** (`canon/values/axioms.md`) — Cross-references to trust kernel.
+
+- **Definition of Done** (`canon/constraints/definition-of-done.md`) — Minor refinement.
+
+- **Self-Audit Checklist** (`canon/methods/self-audit.md`) — Extended with new verification areas.
+
+- **Shared Values as Trust Proxy** (`canon/values/shared-values-as-trust-proxy.md`) — Promoted from draft, cross-references updated.
+
+- **ODD README** (`odd/README.md`) — Updated cross-references.
+
+- **ODD Index** (`odd/index.md`) — Added epistemic ledger and new methods to contents.
+
+- **Use Only What Hurts** (`odd/constraint/use-only-what-hurts.md`) — Extended with guide posture application examples.
+
+- **ODD Manifesto** (`odd/manifesto.md`) — Minor cross-reference update.
+
+- **Project Maturity** (`odd/maturity.md`) — Minor cross-reference update.
+
+- **Epistemic OS Layers** (`docs/architecture/epistemic-os-layers.md`) — Updated layer descriptions.
+
+- **Cognitive Saturation Threshold** (`odd/appendices/cognitive-saturation-threshold.md`) — Promoted from draft, cross-references updated.
+
+- **Testimony Feb 13** (`docs/evidence/testimony-2026-02-13.md`) — Cross-reference updates.
+
+- **Repository Topology** (`docs/appendices/repo-topology.md`) — Updated to reflect new directories.
+
+- **The Most Expensive Problem** (`writings/the-most-expensive-problem.md`) — Cross-references to new writings.
+
+- **The Parallel Architecture** (`writings/the-parallel-architecture.md`) — Cross-references to new writings.
+
+### Philosophy
+
+- **Guide posture is epistemic, not marketing** — Leading with the user's pain is a structural application of the trust kernel: managing expectations toward trust rather than creating friction with system terminology.
+
+- **The changelog ritual is a smell** — This release was reconstructed from `git diff --name-status` and frontmatter extraction, not from manual memory. The CHANGELOG.md is a derived artifact; git history is the source of truth. Future releases should be generated, not remembered.
+
+- **The changelog is an epistemic ledger** — Every commit records an observation (files changed), a learning (why — the commit message), and a decision (to commit). Git is the ledger's storage mechanism. CHANGELOG.md is a progressive disclosure projection of it. The enforcement problem dissolves because the entries generate themselves from commits; only the version bump decision and summary narrative remain human.
+
+- **Constraints README must track constraints** — Three constraints (Humans Are Variable Inputs, Guide Posture, Meaning Must Not Depend on Path) existed as committed canon documents but were invisible in the index. The README is now treated as a compliance surface that must be updated when constraints are added.
+
+### Source Commits
+
+| SHA | PR | Description |
+|-----|-----|-------------|
+| `c2e00bf` | #37 | Promote three draft documents to stable |
+| `f82f3f3` | #38 | Fix start_here_order collisions and reorder homepage sections |
+| `089ad27` | #39 | Implement 10 documents from Feb 15-16 handoff session |
+| `c3338b0` | #40 | Add "The Project Journal" article with writings index and cross-references |
+| `7a69370` | #41 | Add guide posture constraint, constraint-driven audits architecture, and drift queue essay |
+
+---
+
 ## 0.32.0 — 2026-02-14
 
 **Epistemic OS Docs, Trust Proxy, Writings, Structure-Agnostic ODD, and OddKit Docs Audit**

@@ -20,7 +20,7 @@ start_here_label: Constraints
 
 ## Description
 
-Constraints define the baseline assumptions and design defaults applied to most work. They cover offline-first design, long-term maintainability, interoperability, stateless architectures, AI as accelerator (not authority), evidence over assertion, contextual UX, ephemeral artifacts, explicit tradeoffs, and lane self-containment. Each constraint includes what is assumed, why it matters, what it forces, and when it does not apply. These are not universal best practices but reflect specific environments and problems.
+Constraints define the baseline assumptions and design defaults applied to most work. They cover offline-first design, long-term maintainability, interoperability, stateless architectures, AI as accelerator (not authority), evidence over assertion, contextual UX, ephemeral artifacts, explicit tradeoffs, human variability as a design input, irreversibility gates, epistemic encoding, boundary deceleration, single-agent integrity, guide posture for public content, and the relationship between ODD's values and its epistemic function. Each constraint includes what is assumed, why it matters, what it forces, and when it does not apply. These are not universal best practices but reflect specific environments and problems.
 
 ## Outline
 
@@ -40,6 +40,8 @@ Constraints define the baseline assumptions and design defaults applied to most 
 - [Boundary Transitions Require Deceleration](/canon/constraints/boundary-transitions-require-deceleration.md)
 - [ODD Is an Epistemic OS, Not a Value System](/canon/constraints/odd-is-epistemic-os-not-values.md)
 - [No Irreversible Action Without Epistemic Justification](/canon/constraints/no-irreversible-action-without-epistemic-justification.md)
+- [Humans Are Variable Inputs](/canon/constraints/humans-are-variable-inputs.md)
+- [Meaning Must Not Depend on Path](/canon/constraints/meaning-must-not-depend-on-path.md)
 - [Guide Posture — We Enter Their Story, Not the Other Way Around](/canon/constraints/guide-posture.md)
 - **ODD-Level Constraints** (universal, in `/odd/constraint/`):
   - [Anti-Metric Laundering](/odd/constraint/anti-metric-laundering.md) — A system that cannot surface its own blind spots will optimize to protect them
@@ -59,8 +61,11 @@ Constraints define the baseline assumptions and design defaults applied to most 
 - MUST establish single-agent integrity before scaling collaboration; integrity precedes participation
 - MUST encode epistemic decisions so settled ground stays settled and reasoning compounds
 - MUST decelerate at boundary transitions; speed inside a boundary does not justify speed across boundaries
-- MUST NOT use ODD as a value system, moral authority, or ideological enforcement mechanism
+- MUST ground ODD in axiomatic values without claiming moral authority or ideological enforcement; ODD defines commitment to truth, not morality
 - MUST lead all public-facing content with the user's pain before introducing system terminology; guide posture governs the order of encounter
+- MUST NOT take irreversible actions (merging, publishing, deploying, canon mutation) without documented epistemic justification
+- MUST NOT design systems that assume humans behave consistently, remember steps, or compensate for missing affordances; if failure analysis includes "they forgot to..." the system violated this constraint
+- MUST NOT derive canonical meaning, scope, or lifecycle state from filesystem paths or branch names; if moving a file changes what it means, the system is invalid
 
 ---
 
@@ -83,6 +88,12 @@ Constraints define the baseline assumptions and design defaults applied to most 
 - **Tight Coupling**: Small changes causing widespread breakage; teams blocked on shared components
 - **AI as Oracle**: Treating unverified AI output as authoritative truth
 - **Scattered Lanes**: Lane artifacts spread across directories, causing incomplete context and drift
+- **Premature Collaboration**: Scaling participation before single-agent integrity is established
+- **Epistemic Amnesia**: Decisions re-litigated because they were never encoded
+- **Boundary Rushing**: Speed across mode transitions without deceleration; premature convergence
+- **Irreversible Overcommit**: Committing (merging, publishing, deploying) before epistemic thresholds are met
+- **Hero Posture**: Public content that opens with system features instead of user pain; positioning ODD as the hero instead of the guide
+- **Path-Dependent Meaning**: Folder structure silently encoding scope, lifecycle, or authority
 
 ---
 
@@ -93,12 +104,19 @@ Constraints define the baseline assumptions and design defaults applied to most 
 - Tradeoffs documented with explicit acknowledgment of downsides
 - Lane can be understood by reading only its directory *(path under E0005.1 review)*
 - Next maintainer (who is not the author) can understand and modify the system
+- Single agent produces correct results before multi-agent collaboration is attempted
+- Epistemic decisions (observations, learnings, decisions, constraints) are encoded in durable artifacts
+- Mode transitions (exploration→planning, planning→execution) include explicit deceleration and gate checks
+- Irreversible actions have documented justification with evidence
+- Public-facing content opens with user pain, not system terminology (three-question test: who is the hero, does it open with their pain, is the system revealed as a plan)
+- Humans are not required to remember, compensate, or behave consistently for the system to function
+- No file's meaning changes when it is moved to a different directory
 
 ---
 
 ## Content
 
-**Canon v0.1**
+**Canon 0.33.0**
 
 > This is written in first person, website-ready, and structured so agents can reliably translate it into neutral/system constraints at runtime.
 
@@ -338,34 +356,34 @@ Every decision excludes alternatives. Unspoken tradeoffs cause confusion later.
 
 ---
 
-## 11. Lane Self-Containment
+## 11. Work Unit Self-Containment
 
-> ⚠️ **E0005.1 Review:** This constraint references the `products/<lane>/` directory model which has been archived as part of E0005.1 (Structure-Agnostic ODD). The substantive principle (self-containment of work units) may be preserved in revised form. This section is under human review — do not delete or rewrite.
+> Revised per D0016 (Structure-Agnostic ODD). The original "Lane Self-Containment" constraint referenced the `products/<lane>/` directory model which has been archived. The surviving principle — that a unit of work should be understandable from its own artifacts — is preserved here in structure-agnostic form.
 
-I require product lanes to be self-contained units.
+I require work units to be self-contained and independently comprehensible.
 
 **Why this matters**
 
-When lane artifacts are scattered across directories:
-• Agents load incomplete context
-• Documentation drifts from implementation
-• Lanes cannot be moved, archived, or reasoned about as units
+When artifacts belonging to a single concern are scattered:
+• Agents and collaborators load incomplete context
+• Documentation drifts from the work it describes
+• Work units cannot be moved, archived, or reasoned about as coherent wholes
 • "Where does X live?" becomes a recurring question
 
 **What this forces**
-• PRD, README, attempts, src, and all lane artifacts live within `products/<lane>/`
-• No cross-directory dependencies for lane-specific content
-• A lane can be understood by reading only its directory
-• If creating lane artifacts outside the lane folder, stop and reconsider
+• All artifacts required to understand a work unit should be reachable from its entry point
+• No hidden cross-dependencies that require knowledge of directory conventions
+• A work unit can be understood without reading unrelated parts of the repository
+• If understanding requires navigating multiple unrelated locations, stop and reconsider the structure
 
 **When this does not apply**
-• Shared canon (which lanes reference but do not own)
-• Cross-lane tooling (which is lane-agnostic by design)
-• Legacy paths being migrated (must be documented and time-boxed)
+• Shared canon and values (which work units reference but do not own)
+• Cross-cutting tooling and infrastructure (which is concern-agnostic by design)
+• Gradual migrations (must be documented and time-boxed)
 
 ---
 
-## 💡 Closing Note
+## Closing Note
 
 These constraints define how I default, not how everyone should build.
 
@@ -376,7 +394,7 @@ Agents and collaborators should:
 
 ---
 
-## ✅ Status
+## Status
 
-- Canon v0.1 — Constraints complete
-- Ready to proceed to Canon v0.1 — Decision Rules
+- Canon 0.33.0 — Constraints index updated to reflect post-Epoch 5 constraint set
+- Last audited: 2026-02-18
