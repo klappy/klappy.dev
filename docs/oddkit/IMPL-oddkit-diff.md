@@ -222,6 +222,7 @@ Risk derives from tier + stability + change type:
 
 - Tier 1 + stable + modified → "Foundational obligation shifted"
 - Tier 1 + any stability + added → "New foundational content to internalize"
+- Tier 1 + any stability + removed → "Foundational document removed — loss of obligation"
 - `odd/` path + modified → "Behavioral layer affected"
 
 **Medium risk** — review when convenient:
