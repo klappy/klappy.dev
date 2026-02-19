@@ -16,7 +16,7 @@ governs: "oddkit MCP server write actions, klappy.dev GitHub Actions, derivative
 
 # Planning: oddkit Write Access — Conversation as CMS
 
-> The single largest source of friction in the current workflow is the human carrying files between conversations and Claude Code. Every session produces insights that must be manually rescued into handoff documents, downloaded, re-uploaded, re-explained, and executed in a separate tool. The human is the bus. This is the exact failure mode the system exists to eliminate. oddkit with direct write access to GitHub repos collapses thinking and committing into one session. The conversation becomes the CMS. Every downstream surface — website, voice agent, video pipeline, changelog — regenerates from the repo. There is no platform. There is a repo, an epistemic discipline layer, and projections. oddkit never writes to main — all changes go to branches, all branches become PRs, GitHub Actions enforce constraints on every PR regardless of origin.
+> The single largest source of friction in the current workflow is the human carrying files between conversations and Claude Code. Every session produces insights that must be manually rescued into handoff documents, downloaded, re-uploaded, re-explained, and executed in a separate tool. The human is the bus. This is the exact failure mode the system exists to eliminate. oddkit with direct write access to GitHub repos collapses thinking and committing into one session. The conversation becomes the CMS. Every downstream surface — website, voice agent, video pipeline, changelog — regenerates from the repo. There is no platform. There is a repo, an epistemic discipline layer, and projections. oddkit never writes to main — all changes go to branches, all branches become PRs, GitHub Actions enforce constraints on every PR regardless of origin. The repo becomes the coordination bus for multi-tool workflows: any tool that can write to the repo and read through oddkit shares the same epistemic ledger, and the ODD repo can define specs that oddkit picks up to build itself.
 
 -----
 
@@ -222,6 +222,22 @@ Deliverables:
 4. **Session-to-ledger mapping.** How does a conversation session know which ledger entries it produced? The encode action currently returns structured output but no session ID. Adding a session identifier would enable "show me everything this session decided."
 
 5. **Conflict resolution.** If two sessions both edit the same file and both try to commit, who wins? GitHub's API rejects the second commit (requires a fresh SHA). The resolution path needs to be designed — probably "fetch latest, re-validate, re-propose."
+
+-----
+
+## Multi-Tool Coordination — The Repo as Message Bus
+
+oddkit write access is not just a productivity improvement for one user. It is the coordination mechanism for multi-tool workflows.
+
+Any tool that can write to the repo and read through oddkit shares the same epistemic ledger. Handoffs become repo commits, not files humans carry between tools. Claude chat writes planning docs, Claude Code executes them, the voice agent explores against them, the website renders from them — all through the same repo. The human directs which tool acts next. The repo coordinates.
+
+This extends to any MCP-compatible tool. The repo is open. The protocol is open. The epistemic discipline travels with the data, not the tool. Any tool that connects through oddkit joins the coordination without custom integration.
+
+## Self-Referential Spec Watching — The Protocol Defines Its Own Tools
+
+The ODD canon repo can define build specs that oddkit picks up for itself. Oddkit watches the planning queue of the canon it serves to maintain consistency with the latest ODD version. The loop: ODD defines the discipline → oddkit implements it → the planning queue defines oddkit's next capabilities → oddkit reads the queue → when a spec hurts enough, it becomes the implementation handoff for oddkit itself.
+
+This generalizes: GitHub Actions watch for workflow specs, the website watches for projection specs, each tool's build instructions live in the same canon they serve. The protocol defines itself in a repo. The tools that implement it read from that repo.
 
 -----
 

@@ -66,6 +66,44 @@ A planning doc in `docs/planning/` follows writing canon like any other doc in t
 
 -----
 
+## The Repo as Coordination Bus — Multi-Tool Workflows Through Shared Memory
+
+The planning queue is not just a documentation convention. When combined with oddkit write access, it becomes the coordination mechanism for multi-tool workflows.
+
+Any tool that can write to the repo and read through oddkit shares the same epistemic ledger. Handoffs become repo commits, not files humans carry between tools:
+
+- Claude chat writes a planning doc → commits to branch → PR merges
+- oddkit indexes the new content
+- Claude Code picks up the planning doc through oddkit search → executes the spec → commits results
+- oddkit indexes the implementation
+- The voice agent reads the updated canon through oddkit → conversations reflect the new capability
+- The website regenerates from the updated repo
+
+No human carried anything between tools. The repo carried everything. Each tool did what it's best at: chat for thinking, Code for building, voice for exploring, website for presenting. The human directed which tool acts next. The repo coordinated.
+
+This extends to any MCP-compatible tool. The repo is open. The protocol is open. The epistemic discipline travels with the data, not the tool. Any tool that connects through oddkit joins the coordination without custom integration — it just reads from and writes to the same repo.
+
+-----
+
+## Self-Referential Spec Watching — The Protocol Defines Its Own Tools
+
+The most powerful implication of the planning queue is self-referential: the ODD canon repo can define build specs that oddkit picks up for itself.
+
+The loop:
+1. ODD defines the epistemic discipline (axioms, constraints, methods)
+2. oddkit implements that discipline (search, challenge, encode, validate)
+3. The planning queue in the ODD repo contains specs for oddkit's next capabilities
+4. oddkit reads the queue through its own search
+5. When a spec hurts enough to build, it becomes the implementation handoff for oddkit itself
+
+Oddkit watches the planning queue of the canon it serves to maintain consistency with the latest ODD version. If ODD adds a new constraint that requires enforcement, the planning queue contains the spec for the oddkit action that enforces it. Oddkit doesn't drift from ODD because ODD defines what oddkit should become.
+
+This generalizes to every tool in the ecosystem: GitHub Actions watch for workflow specs in the repo. The website watches for projection specs. The voice agent watches for prompt specs. Each tool's build instructions live in the same canon they serve.
+
+This is the implementation-level meaning of "ODD is a protocol, not a platform": the protocol defines itself in a repo. The tools that implement the protocol read from that repo. The single source of truth governs both the rules and the roadmap.
+
+-----
+
 ## Relationship to Other Ledger Concepts
 
 **Epistemic ledger** (`odd/ledger/epistemic-ledger.md`) — the ledger already says entry types are extensible: "Projects can define additional artifact types through conversation with their agent." Planned work is a new entry type. It sits alongside observations, learnings, decisions, constraints, and handoffs.
