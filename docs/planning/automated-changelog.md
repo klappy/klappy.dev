@@ -10,7 +10,7 @@ tags: ["planning", "changelog", "epistemic-ledger", "automation", "ritual-smell"
 epoch: E0005
 date: 2026-02-18
 derives_from: "canon/principles/ritual-is-a-smell.md, canon/constraints/humans-are-variable-inputs.md, odd/constraint/anti-cache-lying.md, odd/ledger/epistemic-ledger.md"
-complements: "canon/CHANGELOG.md, docs/oddkit/IMPL-content-addressed-caching.md"
+complements: "canon/CHANGELOG.md, docs/oddkit/IMPL-content-addressed-caching.md, docs/oddkit/IMPL-oddkit-diff.md"
 ---
 
 # Planning: The Changelog Is an Epistemic Ledger
@@ -288,7 +288,7 @@ This planning document derives from:
 
 1. Include this document in the 0.33.0 handoff as a new planning doc (`docs/planning/automated-changelog.md`)
 2. The 0.33.0 CHANGELOG entry was already generated from git — this is proof-of-concept evidence
-3. After 0.33.0 lands, implement `oddkit_diff` as the universal "what moved" primitive
+3. After 0.33.0 lands, implement `oddkit_diff` as the universal "what moved" primitive — see `docs/oddkit/IMPL-oddkit-diff.md` for the full implementation spec
 4. Use `oddkit_diff` to generate the 0.34.0 changelog entry, validating the approach end-to-end
 5. Once validated, decide whether CHANGELOG.md becomes fully generated (with human summary) or whether the website renders the ledger dynamically and the file is retired
 6. Encode the insight as a method in canon: "Changelogs Are Ledger Projections, Not Maintained Documents"

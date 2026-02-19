@@ -80,12 +80,13 @@ This map provides navigational links to ALL content in the repository, including
 |------|---------|
 | [/docs/README.md](/docs/README.md) | Docs index |
 | [/docs/oddkit/WHY.md](/docs/oddkit/WHY.md) | **Why oddkit exists** — Start here for oddkit |
+| [/docs/oddkit/IMPL-oddkit-diff.md](/docs/oddkit/IMPL-oddkit-diff.md) | **IMPL: oddkit_diff** — The universal "what moved" primitive (Phase 1 of write access) |
 | [/docs/derivative-works.md](/docs/derivative-works.md) | Derivative works and product guidance |
 | [/docs/incidents/README.md](/docs/incidents/README.md) | Incident records — failures that changed the canon |
 
 **Subdirectories:**
 - `/docs/incidents/` — Incident records documenting failures that led to canon changes
-- `/docs/oddkit/` — oddkit reference (ABOUT, SYSTEM-MAP, modes, WHY)
+- `/docs/oddkit/` — oddkit reference (ABOUT, SYSTEM-MAP, modes, WHY) and IMPL specs (content-addressed-caching, oddkit-diff, guide-posture-gate, writing-canon-gate)
 - `/docs/agents/` — Agent role definitions and patterns (librarian, validation, discovery, ODD agents)
 - `/docs/orchestrator/` — Orchestrator guides (QUICKSTART)
 - `/docs/appendices/` — Implementation appendices
