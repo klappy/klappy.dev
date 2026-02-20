@@ -21,16 +21,9 @@ tags:
   - humanity
 epoch: E0005
 date: 2026-02-20
----
-
-# Discovery
-
 hook: "I kept solving the same problem — in engineering, in Bible translation, in parenting, in AI — without recognizing it as one problem. The machines finally made it impossible to ignore."
 description: "The preface to Nothing New, Even AI — a personal confession about what collaborating with AI agents revealed about the oldest human problem."
 slug: nothing-new-even-ai
-
-# Social graph
-
 og_title: "Nothing New, Even AI"
 og_description: "I kept solving the same problem everywhere I went. The machines finally made it impossible to ignore."
 og_type: article
@@ -39,9 +32,6 @@ twitter_card: summary_large_image
 twitter_title: "Nothing New, Even AI"
 twitter_description: "I kept solving the same problem everywhere I went. The machines finally made it impossible to ignore."
 twitter_image: /images/nothing-new-even-ai-og.png
-
-# Relationships
-
 derives_from:
   - canon/values/axioms.md
   - canon/values/trust-kernel.md
@@ -52,7 +42,6 @@ related:
     label: "Chapter 1: The Most Expensive Problem"
     relationship: sequel
 complements: "writings/the-most-expensive-problem.md, writings/from-bible-translation-to-epistemic-os.md, canon/apocrypha/fragments/fragment-08-the-image-of-the-image.md, canon/apocrypha/fragments/fragment-09-the-line.md"
-
 ---
 
 # Nothing New, Even AI

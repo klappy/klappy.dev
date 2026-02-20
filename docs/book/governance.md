@@ -17,22 +17,14 @@ tags:
   - distribution
 epoch: E0005
 date: 2026-02-20
----
-
-# Discovery
-
 hook: "The complete plan for Nothing New, Even AI — a book of standalone essays that stack into a cohesive argument about the oldest human problem and what the machines revealed about it."
 description: "Master governance document for the book. Contains editorial rules, chapter plan with status, distribution model, definition of done per chapter, draft-zero handling process, and all decisions made during planning."
-
-# Relationships
-
 derives_from:
   - canon/values/axioms.md
   - canon/constraints/guide-posture.md
   - canon/meta/writing-canon.md
 complements: "writings/*, canon/apocrypha/fragments/*"
 governs: "All book chapters in writings/ directory"
-
 ---
 
 # Book Governance — Nothing New, Even AI
