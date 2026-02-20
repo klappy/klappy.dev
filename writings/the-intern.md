@@ -79,7 +79,7 @@ The single biggest mistake I see people make — and I've made it myself — is 
 
 That's like hiring an intern on Monday and handing them your most complex project on Tuesday. You don't know what they're good at yet. They don't know how you work. Nobody has established expectations, and without expectations, you get disappointment.
 
-My colleague Ed tried this. He gave Claude a broad task — something that required understanding his whole workflow, his standards, his industry context — and got mediocre results. His diagnosis was honest: "I asked it to do more than it was ready to do." But the real issue wasn't readiness. It was that he skipped the relationship-building step.
+A friend tried this. He gave the AI a broad task — something that required understanding his whole workflow, his standards, his industry context — and got mediocre results. His diagnosis was honest: "I asked it to do more than it was ready to do." But the real issue wasn't readiness. It was that he skipped the relationship-building step.
 
 Start by exploring. Have a conversation. Tell the AI what you're trying to accomplish — not what you want it to do, but what you're trying to achieve. Dream out loud. Ask it questions. Let it ask you questions. You're not wasting time. You're building the shared context that makes everything after this productive.
 
@@ -99,7 +99,7 @@ The fix isn't a timer. It's a smaller ask.
 
 Give it one piece of the work. "Here's a candidate profile — build me a template for evaluating people like this." Check the result. If it's good, give it three more. If it's off, correct it and try again. You're building a feedback loop, not automating a process.
 
-When I coached my colleague Laura — who had zero technical background but deep expertise in talent acquisition — I told her: do one, then check. Not five, then check. Not "run for an hour," then check. One. Because the value isn't in the volume. It's in the calibration. Each cycle teaches you what works, what the AI understood, and what it missed. Over time, you naturally expand the scope because you've built trust through evidence, not hope.
+When I coached a corporate recruiter — someone with zero technical background but deep expertise in talent acquisition — I told her: do one, then check. Not five, then check. Not "run for an hour," then check. One. Because the value isn't in the volume. It's in the calibration. Each cycle teaches you what works, what the AI understood, and what it missed. Over time, you naturally expand the scope because you've built trust through evidence, not hope.
 
 This is exactly how you'd manage a real intern. You don't give them the whole project on day one. You give them one deliverable, review it, course-correct, and then give them two. The scope grows as the trust grows. And trust grows from evidence — from seeing that what you asked for is what you got.
 
@@ -111,7 +111,7 @@ This is the part nobody wants to hear, but it changed everything for me: the fru
 
 My inability to think bigger. My inability to specify what I actually want. My tendency to contradict myself without noticing. My habit of giving vague instructions and expecting precise results. These are the real constraints — not the AI's intelligence, not the technology's limitations. Me.
 
-When Ed predicted that Laura would be more successful with AI than he was, his reasoning was revealing: "She's more detail-oriented than I am." He wasn't being modest. He was recognizing that the quality of AI output is bounded by the quality of human input. Laura's natural precision — the same skill that makes her a great recruiter — would make her a great AI collaborator.
+When my friend predicted that the recruiter would be more successful with AI than he was, his reasoning was revealing: "She's more detail-oriented than I am." He wasn't being modest. He was recognizing that the quality of AI output is bounded by the quality of human input. Her natural precision — the same skill that makes her a great recruiter — would make her a great AI collaborator.
 
 The thing that blows me away is how often I'm the bottleneck. I catch myself thinking too small, asking for something I could have described more clearly, or — the classic — changing my mind mid-conversation and then blaming the AI for being confused. It's bizarre how much AI behavior mirrors human behavior. It forgets things mid-conversation, just like we do. It needs clear instructions, just like any colleague does. It gets stuck and doesn't tell you, just like an intern who doesn't want to look incompetent.
 
@@ -146,6 +146,22 @@ This is where most people get stuck and give up. But it's also where the real op
 That progression — from frustration with amnesia, to capturing knowledge, to building something cumulative — is the natural path. You don't need to plan for it now. Just know that when the forgetting starts to hurt, the solution exists, and it's simpler than you think.
 
 *When you're ready for that next step, [The Project Journal](klappy://writings/the-project-journal) shows you how to stop repeating yourself and start building on what you've already figured out.*
+
+-----
+
+## Four Hours Later, the First Candidates Arrived
+
+I want to tell you how the story ended — because it ended the same day it started.
+
+That corporate recruiter I coached? Within hours of our conversation, she had created a candidate evaluation template in chat mode, exactly the way we discussed. She described the role, told the AI what she looks for when scanning profiles, and let it build the template. Then she started running candidates through it.
+
+That evening, I got a message from my friend: "Our first pass of delivering candidates is phenomenal." Then, from the recruiter: "Template created with ranking order." And then: "BLESS YOU!!!!!"
+
+No advanced prompting. No technical skills. No framework or methodology. Just the intern mental model: explore first, start small, check the result, grow the ask. She went from never having used AI to delivering ranked candidates in a single afternoon.
+
+What made it work wasn't the technology. It was that she brought her expertise to the conversation. She knows recruiting. She knows what good candidates look like. She knows what her clients need. The AI didn't replace any of that — it amplified it. She was the expert; the intern just worked fast.
+
+That's the whole promise of AI, delivered in four hours by someone who started the day not knowing where to begin.
 
 -----
 
