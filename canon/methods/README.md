@@ -9,6 +9,7 @@ stability: stable
 tags: ["canon", "methods", "practice", "application"]
 relevance: decision
 execution_posture: governing
+index_sort: alpha
 ---
 
 # Methods
@@ -28,6 +29,7 @@ They are **durable application patterns** that reduce ambiguity, prevent drift, 
 - What Methods Are Not
 - How Methods Relate to Constraints and Principles
 - When to Add a Method
+- Contents
 - See Also
 
 ---
@@ -69,6 +71,30 @@ Do not add a method when:
 - You're designing governance
 - You're defining lane-specific workflows
 - You're encoding tool-specific steps that will churn
+
+---
+
+## Contents
+
+<!-- INDEX:START -->
+| Title | Description |
+|-------|-------------|
+| [Community Checking — Outcome Validation Beyond Author Intent](klappy://canon/methods/community-checking) | Output verification asks "does this match the author's intent?" Outcome verification asks "does this transfer to the people it's for?" ODD currently … |
+| [Epistemic Surface Extraction (ESE)](klappy://canon/epistemic-surface-extraction) | Making visual/audio/video evidence legible to agents without turning it into doctrine. |
+| [Method: Borrow, Bend, Break, Beget, Build](klappy://canon/methods/borrow-bend-break-beget-build) | The canonical sequence for maximizing work not done. Before building anything yourself, attempt to borrow what exists, bend it to your context, and l… |
+| [Method: Boundary Transition Review](klappy://canon/methods/boundary-transition-review) | A repeatable review-and-prepare step used when moving between epistemic boundaries. |
+| [Method: Choosing the Right Narrative Container](klappy://canon/methods/choosing-the-right-narrative-container) | Not every insight belongs in the same kind of document. |
+| [Method: Exploration Exhaust](klappy://canon/methods/exploration-exhaust) | A repeatable way to preserve exploration context, closures, and warnings so scope stays closed. |
+| [Method: Extreme Exploration for Limit Discovery](klappy://canon/methods/extreme-exploration-for-limit-discovery) | Exploration may go to the edge so implementation does not have to. |
+| [Method: Using Ease and Resistance as Signals](klappy://canon/methods/using-ease-and-resistance-as-signals) | Resistance is often a classification error, not a lack of insight. |
+| [Method: Writing Apocrypha Fragments](klappy://canon/methods/writing-apocrypha-fragments) | Apocrypha fragments are not guidance. They are residue. |
+| [Method: Writing Predocumentaries](klappy://canon/methods/writing-predocumentaries) | Predocumentaries are reconstructions written in micro-documentary voice — investigative journalism from the near future, reporting on events that hav… |
+| [Pivot on Inversion](klappy://canon/methods/pivot-on-inversion) | When observable improvement turns negative, change mode. Snapshot, extract invariants, regenerate cleanly. |
+| [Self-Audit Checklist](klappy://canon/self-audit) | A reflection layer that makes the Definition of Done actionable. |
+| [The Planning Queue — Implementation-Ready Specs That Wait Until They Hurt](klappy://canon/methods/planning-queue) | The planning queue is a collection of implementation-ready specs stored in `docs/planning/` that are fully documented but deliberately not yet built.… |
+| [Tool Specialization](klappy://canon/odd/tool-specialization) | A general pattern for preserving reliability as tool availability increases. |
+| [Weighted Relevance & Arbitration](klappy://canon/weighted-relevance-and-arbitration) | How the system handles conflict between competing truths — and why resolution is not always the goal. |
+<!-- INDEX:END -->
 
 ---
 

@@ -17,12 +17,14 @@ tags: ["template", "readme", "index"]
 
 Every navigable folder should have a README.md that serves as a scannable index. This enables agents to understand folder contents (~500 tokens) without reading every file (~20K+ tokens). The README-as-index pattern supports tree-shaking in context packs.
 
+Contents tables are **auto-generated** from frontmatter by `scripts/generate-indexes.mjs`. The pre-commit hook runs the script and stages any updated READMEs. To enable auto-indexing for a folder, add `index_sort` to the README's frontmatter and place `<!-- INDEX:START -->` / `<!-- INDEX:END -->` markers where the table should appear.
+
 ## Outline
 
 - When to Use This Template
 - Frontmatter by Folder Type
+- Auto-Generated Contents Tables
 - Template Structure
-- Contents Table Format
 
 ---
 
@@ -56,6 +58,7 @@ tier: 1
 voice: neutral
 stability: semi_stable
 tags: ["about", "index"]
+index_sort: alpha
 ---
 ```
 
@@ -71,6 +74,7 @@ tier: 2
 voice: neutral
 stability: evolving
 tags: ["docs", "appendices", "index"]
+index_sort: alpha
 ---
 ```
 
@@ -86,6 +90,7 @@ tier: 1
 voice: neutral
 stability: stable
 tags: ["canon", "index"]
+index_sort: alpha
 ---
 ```
 
@@ -101,8 +106,39 @@ tier: 2
 voice: neutral
 stability: stable
 tags: ["docs", "templates", "prd"]
+index_sort: alpha
 ---
 ```
+
+---
+
+## Auto-Generated Contents Tables
+
+Contents tables are derived artifacts, not hand-maintained lists. The source of truth is the frontmatter in each file plus the file system directory listing. See `docs/planning/automated-readme-indexes.md` for the rationale.
+
+### How it works
+
+1. Add `index_sort` to the README's frontmatter (see sort modes below)
+2. Place `<!-- INDEX:START -->` and `<!-- INDEX:END -->` markers in the README where the table should appear
+3. The pre-commit hook runs `scripts/generate-indexes.mjs`, which scans the directory, parses frontmatter from each `.md` file (excluding `README.md` and `TEMPLATE.md`), and generates a `| Title | Description |` table between the markers
+4. Modified READMEs are staged automatically
+
+### Sort modes (`index_sort`)
+
+| Value | Behavior | Use for |
+|-------|----------|---------|
+| `date_desc` | Reverse chronological by frontmatter `date` | `writings/` |
+| `alpha` | Alphabetical by frontmatter `title` | `canon/` folders |
+| `id` | Numeric by ID extracted from filename | `docs/decisions/` |
+
+### Required frontmatter on content files
+
+For a file to appear in the auto-generated index, it must have at minimum:
+
+- `title` — used as the link text
+- `uri` (recommended) — used as the link target; falls back to relative file path
+
+Description is derived from (in priority order): `description` > `hook` > `subtitle` > first blockquote in body.
 
 ---
 
@@ -118,6 +154,7 @@ tier: 1 | 2
 voice: neutral
 stability: stable | evolving
 tags: ["folder", "index"]
+index_sort: alpha | date_desc | id
 ---
 
 # Folder Name
@@ -141,11 +178,8 @@ to the broader structure?
 
 ## Contents
 
-| File | Purpose |
-|------|---------|
-| `file1.md` | Brief description |
-| `file2.md` | Brief description |
-| `subfolder/` | Brief description |
+<!-- INDEX:START -->
+<!-- INDEX:END -->
 
 ---
 
@@ -163,48 +197,9 @@ to the broader structure?
 
 ---
 
-## Contents Table Format
-
-### For files
-
-```markdown
-| File | Purpose |
-|------|---------|
-| `ATTEMPTS.md` | Attempt lifecycle and CLI commands |
-| `TRUTH_MAP.md` | Authoritative source for each domain |
-```
-
-### For files with titles
-
-```markdown
-| File | Title | Summary |
-|------|-------|---------|
-| `bio.md` | Bio | Author background |
-| `faq.md` | FAQ | Common questions |
-```
-
-### For subfolders
-
-```markdown
-| Folder | Purpose | Count |
-|--------|---------|-------|
-| `appendices/` | Implementation appendices | 17 files |
-| `decisions/` | Decision records | 14 files |
-```
-
-### For decisions (with status)
-
-```markdown
-| ID | Title | Status |
-|----|-------|--------|
-| D0001 | prod Branch Is Production | Active |
-| D0002 | Attempt Provenance Required | Active |
-```
-
----
-
 ## See Also
 
 - [Docs Index](./README.md) — Example implementation docs index
 - [About Index](/about/README.md) — Example public-facing index
 - [Article Template](./TEMPLATE.md) — For non-index documents
+- [Planning: Automated README Indexes](./planning/automated-readme-indexes.md) — Rationale for this pattern

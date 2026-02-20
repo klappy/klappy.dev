@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
-# E0005.1: Pre-commit hooks for defunct pipeline removed.
-# sync-content, export-book, and build-docs-index scripts
-# were part of the lane-era pipeline (see D0016).
+# Generate README index tables from frontmatter.
+# See: docs/planning/automated-readme-indexes.md
+node scripts/generate-indexes.mjs
+
+# Stage any READMEs that were updated by the generator.
+git diff --name-only -- '*/README.md' | xargs -r git add

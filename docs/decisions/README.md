@@ -7,9 +7,10 @@ tier: 3
 voice: neutral
 stability: evolving
 tags: ["docs", "decisions", "adr", "implementation", "reference", "index"]
+index_sort: id
 ---
 
-# 📜 Implementation Decision Log
+# Implementation Decision Log
 
 Architecture Decision Records (ADRs) specific to the klappy.dev repository implementation.
 
@@ -17,46 +18,32 @@ Architecture Decision Records (ADRs) specific to the klappy.dev repository imple
 
 ---
 
-## ✅ Active Decisions
+## Decisions
 
-### Branch & Deploy Model
-
-| ID | Decision | Status |
-|----|----------|--------|
-| [D0001](./D0001-prod-branch-is-production.md) | `prod` branch is production; `main` is experiment ledger | **Active** |
-| [D0005](./D0005-nuke-safety-guards.md) | Nuke command refuses on `prod`, warns on `main` | **Active** |
-| [D0007](./D0007-branch-names-are-convenience.md) | Branch names are convenience; provenance lives in META | **Active** |
-
-### Attempt Lifecycle
-
-| ID | Decision | Status |
-|----|----------|--------|
-| [D0002](./D0002-attempt-provenance-required.md) | Model provenance must be captured at registration | **Active** |
-| [D0003](./D0003-prd-version-auto-detection.md) | PRD version auto-detected from lane PRD | **Active** |
-| [D0006](./D0006-dogfooding-requirement.md) | Agents must apply canon docs, not just read them | **Active** |
-| [D0008](./D0008-register-before-nuke.md) | Register first (provenance), then nuke (independence) | **Active** |
-| [D0010](./D0010-canonical-agent-kickoff.md) | Single canonical agent entry point (`AGENT_KICKOFF.md`) | **Active** |
-
-### Architecture
-
-| ID | Decision | Status |
-|----|----------|--------|
-| [D0009](./D0009-multi-lane-prd-architecture.md) | PRDs organized into independent product lanes | **Active** |
-| [D0011](./D0011-odd-contract-2.0.0.md) | ODD System Contract 2.0.0 (multi-lane era) | **Active** |
-| [D0012](./D0012-e0002-transition-interpretation.md) | E0002 transition interpretation (truth can lead enforcement) | **Active** |
-| [D0013](./D0013-build-output-lane-scoped-dist.md) | Build output truth is lane-scoped (`products/<lane>/dist`) | **Active** |
-| [D0014](./D0014-e0003-evidence-first-era.md) | E0003 evidence-first era (deployment proof required) | **Active** |
-| [D0015](./D0015-lane-prd-structure-alignment.md) | Lane-root PRD must be authoritative, not an index | **Active** |
-
-### Repository Hygiene
-
-| ID | Decision | Status |
-|----|----------|--------|
-| [D0004](./D0004-repo-truth-cleanup-mandatory.md) | Cleanup is mandatory; dirty repos invalidate conclusions | **Active** |
+<!-- INDEX:START -->
+| Title | Description |
+|-------|-------------|
+| [D0001: prod Branch Is Production](klappy://docs/decisions/D0001) | Protect production from accidental nuke operations by separating production from experiments. |
+| [D0002: Attempt Provenance Required](klappy://docs/decisions/D0002) | Every attempt must capture model provenance at registration to enable meaningful comparison between AI models. |
+| [D0003: PRD Version Auto-Detection](klappy://docs/decisions/D0003) | PRD version is parsed from source at runtime, eliminating hardcoded version drift in prompts. |
+| [D0004: Repo Truth & Cleanup Mandatory](klappy://docs/decisions/D0004) | A dirty repository invalidates conclusions; cleanup resets epistemic state for valid experiments. |
+| [D0005: Nuke Command Safety Guards](klappy://docs/decisions/D0005) | Branch-aware safety prevents accidental destruction of production code while preserving attempt branch freedom. |
+| [D0006: Dogfooding Requirement](klappy://docs/decisions/D0006) | Agents must apply canon documents to their work, not just read them, validating documentation through actual use. |
+| [D0007: Branch Names Are Convenience](klappy://docs/decisions/D0007) | Branch names are optional human convenience; canonical provenance lives in META.json files. |
+| [D0008: Register Before Nuke](klappy://docs/decisions/D0008) | Registration must precede nuke to preserve provenance before destroying pre-state. |
+| [D0009: Multi-Lane PRD Architecture](klappy://docs/decisions/D0009) | PRDs are organized into independent product lanes, sharing canon but maintaining separate lifecycles. |
+| [D0010: Canonical Agent Kickoff](klappy://docs/decisions/D0010) | A single authoritative entry point file eliminates agent prompt reconstruction and drift. |
+| [D0011: ODD System Contract 2.0.0](klappy://docs/decisions/D0011) | Major version bump introduces multi-lane architecture with explicit epoch boundaries. |
+| [D0012: E0002 Transition Interpretation (Truth vs Enforcement Lag)](klappy://docs/decisions/D0012) | During epoch transitions, canon defines truth while tooling may temporarily lag behind. |
+| [D0013: Build Output Truth is Lane-Scoped (products/<lane>/dist)](klappy://docs/decisions/D0013) | Lane builds must output to products/<lane>/dist/, eliminating repo-root collision. |
+| [D0014: Declare E0003 Evidence-First Era](klappy://docs/decisions/D0014) | Attempts require externally verifiable deployment evidence, not just local build success. |
+| [D0015: Lane PRD Structure Alignment](klappy://docs/decisions/D0015) | Lane-root PRD must be authoritative, not an index pointing elsewhere. |
+| [D0016: Structure-Agnostic ODD (E0005.1)](klappy://docs/decisions/D0016) | Prescribed product lanes, attempt folder conventions, and lane-scoped tooling are superseded by dynamic epistemic routing through OddKit. The concept… |
+<!-- INDEX:END -->
 
 ---
 
-## 🔧 What Makes These Implementation-Specific
+## What Makes These Implementation-Specific
 
 These decisions reference:
 
@@ -68,7 +55,7 @@ These decisions reference:
 
 ---
 
-## 🔄 How Decisions Are Made
+## How Decisions Are Made
 
 1. **During an attempt**: Agent notes "Decision Delta" in `ATTEMPT.md`
 2. **After the attempt**: Human or librarian promotes durable decisions here
@@ -76,7 +63,7 @@ These decisions reference:
 
 ---
 
-## 📝 Decision File Template
+## Decision File Template
 
 Each decision file follows this structure:
 
@@ -113,13 +100,13 @@ Each decision file follows this structure:
 
 ---
 
-## 🚫 Deprecated Decisions
+## Deprecated Decisions
 
 _None yet._
 
 ---
 
-## 🔗 Relationship to ODD and Canon
+## Relationship to ODD and Canon
 
 ODD contains universal principles. Canon contains program constraints. These decisions are the klappy.dev-specific application of those higher-level documents.
 

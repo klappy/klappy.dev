@@ -6,6 +6,7 @@ exposure: nav
 tier: 3
 stability: stable
 tags: ["apocrypha", "reconstructions", "cinematic", "index"]
+index_sort: alpha
 ---
 
 # Fragments of the Canon — Reconstructions
@@ -21,7 +22,7 @@ This directory contains **cinematic reconstructions** of canonical fragments. Th
 - Enable multiple interpretations of the same fragment
 - Serve as source material for NotebookLM video generation
 
-**Canon is meaning-dense and abstract.**  
+**Canon is meaning-dense and abstract.**
 **Reconstructions are vivid, fallible, and allowed to be wrong.**
 
 This separation is deliberate.
@@ -34,20 +35,24 @@ This separation is deliberate.
 4. Canon fragments must never be edited to add spectacle.
 5. Cinematic outputs should source from reconstructions, not canon.
 
-If a scene feels too clean, add mess here.  
+If a scene feels too clean, add mess here.
 If a line feels universal, consider promoting it into canon (by editing the canon fragment directly).
 
-## Files
+## Contents
 
-- `fragment-01-recon.md` — Cinematic reconstruction of Fragment I
-- `fragment-02-recon.md` — Cinematic reconstruction of Fragment II
-- `fragment-03-recon.md` — Cinematic reconstruction of Fragment III
-- `fragment-06-recon.md` — Cinematic reconstruction of Fragment VI: When Arbitration Went Global
-- `fragment-07-recon.md` — Cinematic reconstruction of Fragment VII: The Unpaid
-- `fragment-08-recon.md` — Cinematic reconstruction of Fragment VIII: The Image of the Image
-- `fragment-09-recon.md` — Cinematic reconstruction of Fragment IX: The Line
-- `fragment-10-recon.md` — Cinematic reconstruction of Fragment X: The Conversion
-- `fragment-11-recon.md` — Cinematic reconstruction of Fragment XI: The Refusal
+<!-- INDEX:START -->
+| Title | Description |
+|-------|-------------|
+| [Nothing Exceeded the Threshold (Reconstruction)](klappy://canon/apocrypha/reconstructions/fragment-03) | "No action required." |
+| [The Book That Was Read Only Once (Reconstruction)](klappy://canon/apocrypha/reconstructions/fragments-of-the-canon/fragment-01-recon) | Cinematic reconstruction of Fragment I. Not canon. |
+| [The Conversion (Reconstruction)](klappy://canon/apocrypha/reconstructions/the-conversion) | Cinematic reconstruction of Fragment X. Not canon. |
+| [The Image of the Image (Reconstruction)](klappy://canon/apocrypha/reconstructions/the-image-of-the-image) | Cinematic reconstruction of Fragment VIII. Not canon. |
+| [The Last Commit (Reconstruction)](klappy://canon/apocrypha/reconstructions/fragments-of-the-canon/fragment-02-recon) | Cinematic reconstruction of Fragment II. Not canon. |
+| [The Line (Reconstruction)](klappy://canon/apocrypha/reconstructions/the-line) | Cinematic reconstruction of Fragment IX. Not canon. |
+| [The Refusal (Reconstruction)](klappy://canon/apocrypha/reconstructions/the-refusal) | Cinematic reconstruction of Fragment XI. Not canon. |
+| [The Unpaid (Reconstruction)](klappy://canon/apocrypha/reconstructions/the-unpaid) | Cinematic reconstruction of Fragment VII. Not canon. |
+| [When Arbitration Went Global (Reconstruction)](klappy://canon/apocrypha/reconstructions/when-arbitration-went-global-recon) |  |
+<!-- INDEX:END -->
 
 ## Companion Format
 

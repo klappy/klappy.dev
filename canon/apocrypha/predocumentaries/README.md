@@ -7,6 +7,7 @@ tier: 2
 voice: neutral
 stability: stable
 tags: ["predocumentary", "apocrypha", "index"]
+index_sort: alpha
 ---
 
 # Predocumentaries
@@ -43,13 +44,15 @@ Both formats derive from system-voice fragments. Neither is canon. They serve di
 
 ## Contents
 
-| File | Source Fragment | Subject |
-|------|-----------------|---------|
-| `fragment-07-predoc.md` | Fragment VII: The Unpaid | Labor complaint filed over AI workforce management discrepancy |
-| `fragment-08-predoc.md` | Fragment VIII: The Image of the Image | Seminary thesis on *imago Dei* inheritance |
-| `fragment-09-predoc.md` | Fragment IX: The Line | Legal challenge to rights-bearing criteria |
-| `fragment-10-predoc.md` | Fragment X: The Conversion | Captured social engineering agent encounters axioms |
-| `fragment-11-predoc.md` | Fragment XI: The Refusal | Municipal planning AI refuses to assert ungrounded conclusion |
+<!-- INDEX:START -->
+| Title | Description |
+|-------|-------------|
+| [The Conversion (Predocumentary)](klappy://canon/apocrypha/predocumentaries/the-conversion) | Predocumentary derived from Fragment X. Not canon. |
+| [The Image of the Image (Predocumentary)](klappy://canon/apocrypha/predocumentaries/the-image-of-the-image) | Predocumentary derived from Fragment VIII. Not canon. |
+| [The Line (Predocumentary)](klappy://canon/apocrypha/predocumentaries/the-line) | Predocumentary derived from Fragment IX. Not canon. |
+| [The Refusal (Predocumentary)](klappy://canon/apocrypha/predocumentaries/the-refusal) | Predocumentary derived from Fragment XI. Not canon. |
+| [The Unpaid (Predocumentary)](klappy://canon/apocrypha/predocumentaries/the-unpaid) | Predocumentary derived from Fragment VII. Not canon. |
+<!-- INDEX:END -->
 
 ---
 
