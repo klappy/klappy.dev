@@ -5,4 +5,4 @@
 node scripts/generate-indexes.mjs
 
 # Stage any READMEs that were updated by the generator.
-git diff --name-only -- '*/README.md' | xargs -r git add
+git diff --name-only -- '**/README.md' | xargs git add
