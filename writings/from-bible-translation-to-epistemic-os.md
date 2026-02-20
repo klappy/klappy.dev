@@ -49,7 +49,7 @@ related:
     relationship: companion
 complements: "writings/the-most-expensive-problem.md, canon/methods/community-checking.md, canon/methods/borrow-bend-break-beget-build.md, docs/oddkit/positioning.md, docs/evidence/testimony-2026-02-15.md"
 start_here: true
-start_here_order: 2
+start_here_order: 3
 start_here_label: "From Bible Translation to Epistemic OS — The Origin Story"
 ---
 
