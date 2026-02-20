@@ -1,5 +1,5 @@
 ---
-uri: klappy://writings/preface
+uri: klappy://writings/preface-nothing-new-even-ai
 title: "Nothing New, Even AI"
 subtitle: "What I learned about humanity while collaborating with agents"
 author: "Klappy"
@@ -46,6 +46,8 @@ complements: "writings/the-most-expensive-problem.md, writings/from-bible-transl
 
 # Nothing New, Even AI
 
+> I kept solving the same problem — in engineering, in Bible translation, in parenting, in AI — without recognizing it as one problem. The machines finally made it impossible to ignore.
+
 ### What I learned about humanity while collaborating with agents
 
 *By Klappy*
@@ -66,6 +68,8 @@ The question wasn't technical. It was: if the machines break in the same ways we
 
 ---
 
+## The Oldest Bottleneck
+
 Solomon wrote those words three thousand years ago and they still sting. We want to believe our era is different. That our tools are unprecedented. That the challenges we face are novel.
 
 They're not.
@@ -77,6 +81,8 @@ AI didn't break this pattern. AI *is* the pattern, at the next layer. For the en
 That's not a new problem. It's the oldest problem wearing new clothes.
 
 ---
+
+## Three Directions That Were One Direction
 
 I came to this from an unexpected direction — or maybe three directions that turned out to be the same direction.
 
@@ -91,6 +97,8 @@ Then I started working with AI, and the AI broke in exactly the same ways. It as
 There is nothing new under the sun.
 
 ---
+
+## The Pattern I Didn't Want to See
 
 The further I followed this trail, the deeper it went — and the more uncomfortable it got.
 
@@ -118,6 +126,8 @@ There is nothing new under the sun. Not even this.
 
 ---
 
+## The Book That Built Itself
+
 But this book isn't theory. Everything in these pages was lived — except what is explicitly marked as fiction.
 
 The book you are holding is itself proof of the thesis. I spent years trying to write this material. I told these stories orally — in cigar lounges, in late-night conversations with strangers, in meetings with colleagues who saw the same patterns I did. But I could never write it. Too many threads. Too much sequencing required. The ideas were all connected, but the connections demanded a precision I couldn't achieve alone on the page.
@@ -133,6 +143,8 @@ And that constraint felt familiar. The same trust that had to be built with AI a
 There is nothing new under the sun.
 
 ---
+
+## An Invitation
 
 This book traces one question through every layer: how do you know what's actually true — and what happens when the tool you're using is faster than your ability to check?
 
