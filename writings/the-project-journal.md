@@ -139,4 +139,4 @@ That's not a productivity hack. It's how knowledge actually works — in AI coll
 
 If you're reading this, you probably don't need the full system yet. You need the piece that addresses [what hurts right now](klappy://odd/constraint/use-only-what-hurts). Start with the journal. The rest of the system is there when the next pain point shows up.
 
-*The next chapter, [The Harness and the Operating System](klappy://writings/the-harness-and-the-operating-system), shows what happened when someone else arrived at the same patterns from a completely different direction. Or if you skipped ahead to the practical path, [The Most Expensive Problem](klappy://writings/the-most-expensive-problem) is where the big picture starts.*
+*The next chapter, [The Harness and the Operating System](klappy://writings/the-harness-and-the-operating-system), shows what happened when someone else arrived at the same patterns from a completely different direction. Or if you skipped ahead to the practical path, [From Bible Translation to Epistemic OS](klappy://writings/from-bible-translation-to-epistemic-os) is where the origin story begins.*
