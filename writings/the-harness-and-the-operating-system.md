@@ -50,13 +50,15 @@ related:
     label: "From Bible Translation to Epistemic OS"
     relationship: companion
 complements: "writings/the-most-expensive-problem.md, writings/from-bible-translation-to-epistemic-os.md, docs/architecture/epistemic-os-layers.md, canon/methods/community-checking.md, canon/resonance/ai-coding-toolkit.md"
+start_here: true
+start_here_order: 7
 ---
 
 # The Harness and the Operating System
 
 ### Why the best AI coding toolkit and an Epistemic OS belong in the same stack — not the same category
 
-*By Klappy — builder of the Epistemic OS*
+> A developer who doesn't read his code and a systems architect who built an Epistemic OS arrived at the same conclusion independently. That's not competition. That's directional validation.
 
 ---
 
@@ -182,6 +184,6 @@ Let him own developers. The rest of the experts are waiting.
 
 ---
 
-*The Epistemic OS is open, public, and working in the open at [github.com/klappy/klappy.dev](https://github.com/klappy/klappy.dev).*
+*If you followed the full arc, this is the end — for now. More chapters are coming. If you took the practical path and want the deeper roots, [From Bible Translation to Epistemic OS](klappy://writings/from-bible-translation-to-epistemic-os) is where it all started.*
 
 *Ben Shoemaker's AI Coding Toolkit is at [github.com/benjaminshoemaker/ai_coding_project_base](https://github.com/benjaminshoemaker/ai_coding_project_base).*

@@ -9,7 +9,7 @@ audience: public
 exposure: public
 tier: 1
 voice: first_person
-stability: draft
+stability: stable
 tags:
   - writings
   - article
@@ -40,6 +40,7 @@ twitter_image: /images/the-intern-og.png
 derives_from:
   - canon/values/axioms.md
   - canon/constraints/guide-posture.md
+  - canon/values/trust-kernel.md
 related:
   - uri: klappy://writings/the-project-journal
     label: "The Project Journal (next step)"
@@ -47,9 +48,9 @@ related:
   - uri: klappy://writings/the-most-expensive-problem
     label: "The Most Expensive Problem"
     relationship: companion
-complements: "writings/the-project-journal.md, writings/the-most-expensive-problem.md, odd/constraint/use-only-what-hurts.md"
+complements: "writings/nothing-new-even-ai.md, writings/the-project-journal.md, writings/the-most-expensive-problem.md, odd/constraint/use-only-what-hurts.md"
 start_here: true
-start_here_order: 1
+start_here_order: 2
 start_here_label: "The Intern — Start Here"
 ---
 
@@ -145,7 +146,7 @@ This is where most people get stuck and give up. But it's also where the real op
 
 That progression — from frustration with amnesia, to capturing knowledge, to building something cumulative — is the natural path. You don't need to plan for it now. Just know that when the forgetting starts to hurt, the solution exists, and it's simpler than you think.
 
-*When you're ready for that next step, [The Project Journal](klappy://writings/the-project-journal) shows you how to stop repeating yourself and start building on what you've already figured out.*
+*The next chapter, [The Most Expensive Problem](klappy://writings/the-most-expensive-problem), zooms out to the civilizational pattern behind what you just experienced. Or if you'd rather skip ahead to the practical fix, [The Project Journal](klappy://writings/the-project-journal) shows you how to stop repeating yourself and start building on what you've already figured out.*
 
 -----
 

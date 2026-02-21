@@ -3,7 +3,7 @@ uri: klappy://writings/the-parallel-architecture
 title: "The Parallel Architecture"
 subtitle: "Theological roots of the Epistemic OS"
 author: "Klappy"
-type: appendix
+type: essay
 public: true
 audience: public
 exposure: public
@@ -12,7 +12,7 @@ voice: first_person
 stability: stable
 tags:
   - writings
-  - appendix
+  - essay
   - epistemics
   - theology
   - biblical-worldview
@@ -26,7 +26,6 @@ date: 2026-02-13
 hook: "The parallels between human cognition, AI systems, and biblical narrative are too structural to be coincidental."
 description: "A companion piece exploring where the Epistemic OS axioms came from — context windows and sleep, lifespan as epistemic governor, Babel as blast radius limitation, and the time compression crisis."
 slug: the-parallel-architecture
-parent: klappy://writings/the-most-expensive-problem
 
 # Social graph
 og_title: "The Parallel Architecture"
@@ -42,23 +41,22 @@ twitter_image: /images/the-parallel-architecture-og.png
 derives_from:
   - canon/values/axioms.md
   - canon/values/orientation.md
+  - canon/values/trust-kernel.md
 related:
   - uri: klappy://writings/the-most-expensive-problem
-    label: "The Most Expensive Problem (parent essay)"
-    relationship: parent
-complements: "writings/the-most-expensive-problem.md, canon/values/shared-values-as-trust-proxy.md, docs/architecture/epistemic-os-layers.md, docs/evidence/testimony-2026-02-13.md"
+    label: "The Most Expensive Problem"
+    relationship: companion
+complements: "writings/nothing-new-even-ai.md, writings/the-intern.md, writings/from-bible-translation-to-epistemic-os.md, writings/the-project-journal.md, writings/the-most-expensive-problem.md, canon/values/shared-values-as-trust-proxy.md, docs/architecture/epistemic-os-layers.md, docs/evidence/testimony-2026-02-13.md"
 start_here: true
-start_here_order: 4
+start_here_order: 5
 start_here_label: "The Parallel Architecture — Where the Axioms Came From"
 ---
 
 # The Parallel Architecture
 
-### Appendix to [The Most Expensive Problem](klappy://writings/the-most-expensive-problem)
+### Theological roots of the Epistemic OS
 
-*The essay presents what the Epistemic OS is and why it exists — from practical pain to universal principle. This appendix explores where the ideas actually came from, and why the parallels between human cognition, AI systems, and biblical narrative are too structural to be coincidental.*
-
-*This is a living document. Observations are appended as they surface.*
+> The parallels between human cognition, AI systems, and biblical narrative are too structural to be coincidental. Context windows and sleep. Lifespan as epistemic governor. Babel as blast radius limitation. AI reversing all of them. The axioms aren't arbitrary engineering rules — they are the constraints that mortality imposes on humanity, applied deliberately to systems that don't have mortality as a natural check.
 
 ---
 
@@ -304,7 +302,7 @@ Whether that bridge can hold is the open question of our era.
 
 ## Observations to Develop Further
 
-*Append additional parallels below as they surface. This section is a living intake.*
+*This is a living document. Observations are appended as they surface.*
 
 - Oral tradition → written Torah as the first knowledge transfer technology with built-in verification requirements (witnesses, repetition, public reading cycles)
 - The biblical emphasis on *witnesses* (two or three witnesses required) as an ancient verification protocol — observation-based, not assertion-based
@@ -316,4 +314,4 @@ Whether that bridge can hold is the open question of our era.
 
 ---
 
-*This document is appendix to [The Most Expensive Problem](klappy://writings/the-most-expensive-problem). The essay stands without this piece. This piece cannot stand without the essay.*
+*The next chapter, [The Project Journal](klappy://writings/the-project-journal), is where the theory becomes practice — how to stop losing what you've learned between sessions.*

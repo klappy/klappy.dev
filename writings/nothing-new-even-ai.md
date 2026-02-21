@@ -9,7 +9,7 @@ audience: public
 exposure: public
 tier: 1
 voice: first_person
-stability: draft
+stability: stable
 tags:
   - writings
   - essay
@@ -38,19 +38,19 @@ derives_from:
   - writings/the-most-expensive-problem.md
   - writings/from-bible-translation-to-epistemic-os.md
 related:
-  - uri: klappy://writings/the-most-expensive-problem
-    label: "Chapter 1: The Most Expensive Problem"
+  - uri: klappy://writings/the-intern
+    label: "The Intern — A Mental Model for Starting with AI"
     relationship: sequel
-complements: "writings/the-most-expensive-problem.md, writings/from-bible-translation-to-epistemic-os.md, canon/apocrypha/fragments/fragment-08-the-image-of-the-image.md, canon/apocrypha/fragments/fragment-09-the-line.md"
+complements: "writings/the-most-expensive-problem.md, writings/from-bible-translation-to-epistemic-os.md, writings/the-intern.md, canon/apocrypha/fragments/fragment-08-the-image-of-the-image.md, canon/apocrypha/fragments/fragment-09-the-line.md"
+start_here: true
+start_here_order: 1
 ---
 
 # Nothing New, Even AI
 
-> I kept solving the same problem — in engineering, in Bible translation, in parenting, in AI — without recognizing it as one problem. The machines finally made it impossible to ignore.
-
 ### What I learned about humanity while collaborating with agents
 
-*By Klappy*
+> I kept solving the same problem — in engineering, in Bible translation, in parenting, in AI — without recognizing it as one problem. The machines finally made it impossible to ignore.
 
 ---
 
@@ -151,6 +151,8 @@ This book traces one question through every layer: how do you know what's actual
 You don't need to be technical to read this. You don't need to care about AI specifically. You just need to have ever experienced the frustration of knowing something important and not being able to get it into someone else's head intact. You've felt that frustration as a parent trying to explain *why* a rule exists instead of just enforcing it. As a teacher, a mentor, a manager, a friend. As anyone who has ever tried to transfer not just information, but judgment.
 
 That frustration is the oldest human problem. The chapters that follow are what happened when the machines made it impossible to ignore.
+
+*The next chapter, [The Intern](klappy://writings/the-intern), is where to start if you've ever tried an AI tool and weren't sure what to do with it.*
 
 ---
 

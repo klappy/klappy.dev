@@ -102,6 +102,34 @@ The preface and relevant chapters acknowledge that the book was written using th
 
 Biblical connections are genuine theological roots, not proof-texting. The risk of misapplication is named directly. The risk of abdication (not bringing biblical principles to AI governance) is named as worse. The biblical appendix exists for readers who want the roots; the main chapters stand without them.
 
+### Rule 10: No bylines in essay body
+
+Author attribution is on the cover/homepage, not repeated per chapter.
+
+### Rule 11: No standalone companion/appendix/see-also reference lines at top of essays
+
+References belong in: metadata (for tooling), inline links (when body text naturally references another essay), or closing CTA (for navigation).
+
+### Rule 12: No footnotes
+
+References are inline links or closing CTAs. If a footnote contains content (not navigation), fold it into the body as an inline paragraph.
+
+### Rule 13: Body structure standard
+
+`# Title` → `### Subtitle` → `> Blockquote` → `---` → Body
+
+### Rule 14: CTA two-path pattern at fork points
+
+Next chapter in linear book order + alternate path for practitioner-first readers. Don't repeat the same skip-ahead target from consecutive chapters.
+
+### Two Reading Paths
+
+**Linear (full depth):** Preface → Intern → Most Expensive Problem → From Bible Translation → Parallel Architecture → Project Journal → Harness
+
+**Alternate (practitioner-first):** Preface → Intern → Project Journal → Harness → Most Expensive Problem → From Bible Translation → Parallel Architecture
+
+Fork points where alt CTA appears: The Intern, Project Journal, Harness.
+
 ---
 
 ## Definition of Done — Per Chapter
@@ -115,6 +143,7 @@ Biblical connections are genuine theological roots, not proof-texting. The risk 
 - [ ] `derives_from` and `complements` metadata accurate
 - [ ] No overclaiming — every assertion grounded in lived experience or cited evidence
 - [ ] Author review — corrections for hallucination, overclaiming, and voice
+- [ ] Closing CTA offers next chapter in book order AND optional skip-ahead at fork points
 
 ---
 

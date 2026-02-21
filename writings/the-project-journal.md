@@ -49,7 +49,7 @@ related:
     relationship: defines
 complements: "writings/the-most-expensive-problem.md, odd/ledger/epistemic-ledger.md, docs/appendices/compiled-memory.md, odd/appendices/cognitive-saturation-threshold.md, writings/from-bible-translation-to-epistemic-os.md, odd/constraint/use-only-what-hurts.md"
 start_here: true
-start_here_order: 8
+start_here_order: 6
 start_here_label: "The Project Journal — Getting Started"
 ---
 
@@ -139,4 +139,4 @@ That's not a productivity hack. It's how knowledge actually works — in AI coll
 
 If you're reading this, you probably don't need the full system yet. You need the piece that addresses [what hurts right now](klappy://odd/constraint/use-only-what-hurts). Start with the journal. The rest of the system is there when the next pain point shows up.
 
-*See also: [The Epistemic Ledger](klappy://odd/ledger/epistemic-ledger) for the full technical definition, [Cognitive Saturation Threshold](klappy://odd/appendices/cognitive-saturation-threshold) for why conversations degrade, and [From Bible Translation to Epistemic OS](klappy://writings/from-bible-translation-to-epistemic-os) for the origin story behind these ideas.*
+*The next chapter, [The Harness and the Operating System](klappy://writings/the-harness-and-the-operating-system), shows what happened when someone else arrived at the same patterns from a completely different direction. Or if you skipped ahead to the practical path, [The Most Expensive Problem](klappy://writings/the-most-expensive-problem) is where the big picture starts.*

@@ -47,9 +47,9 @@ related:
   - uri: klappy://writings/the-most-expensive-problem
     label: "The Most Expensive Problem"
     relationship: companion
-complements: "writings/the-most-expensive-problem.md, canon/methods/community-checking.md, canon/methods/borrow-bend-break-beget-build.md, docs/oddkit/positioning.md, docs/evidence/testimony-2026-02-15.md"
+complements: "writings/nothing-new-even-ai.md, writings/the-intern.md, writings/the-parallel-architecture.md, writings/the-most-expensive-problem.md, canon/methods/community-checking.md, canon/methods/borrow-bend-break-beget-build.md, docs/oddkit/positioning.md, docs/evidence/testimony-2026-02-15.md"
 start_here: true
-start_here_order: 3
+start_here_order: 4
 start_here_label: "From Bible Translation to Epistemic OS — The Origin Story"
 ---
 
@@ -57,8 +57,7 @@ start_here_label: "From Bible Translation to Epistemic OS — The Origin Story"
 
 ### An essay on how fifteen years of Bible translation work became the foundation for AI-human collaboration infrastructure
 
-*By Klappy — builder of the Epistemic OS*
-*Companion: [The Most Expensive Problem](klappy://writings/the-most-expensive-problem)*
+> Fifteen years of Bible translation taught me that every collaboration failure is an expectations failure. I abstracted those patterns into an Epistemic OS — without realizing I was doing it. Now I'm testing whether it can go back where it came from.
 
 ---
 
@@ -194,4 +193,4 @@ Trust is built by managing expectations. Bible translators have been practicing 
 
 ---
 
-*The Epistemic OS is open, public, and working in the open at [github.com/klappy/klappy.dev](https://github.com/klappy/klappy.dev).*
+*The next chapter, [The Parallel Architecture](klappy://writings/the-parallel-architecture), maps these parallels in structural detail — same failures, centuries apart.*
