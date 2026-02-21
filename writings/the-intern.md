@@ -42,11 +42,11 @@ derives_from:
   - canon/constraints/guide-posture.md
   - canon/values/trust-kernel.md
 related:
-  - uri: klappy://writings/the-project-journal
-    label: "The Project Journal (next step)"
-    relationship: sequel
   - uri: klappy://writings/the-most-expensive-problem
-    label: "The Most Expensive Problem"
+    label: "The Most Expensive Problem (next chapter)"
+    relationship: sequel
+  - uri: klappy://writings/the-project-journal
+    label: "The Project Journal"
     relationship: companion
 complements: "writings/nothing-new-even-ai.md, writings/the-project-journal.md, writings/the-most-expensive-problem.md, odd/constraint/use-only-what-hurts.md"
 start_here: true
