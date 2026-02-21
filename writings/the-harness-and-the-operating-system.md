@@ -52,6 +52,7 @@ related:
 complements: "writings/the-most-expensive-problem.md, writings/from-bible-translation-to-epistemic-os.md, docs/architecture/epistemic-os-layers.md, canon/methods/community-checking.md, canon/resonance/ai-coding-toolkit.md"
 start_here: true
 start_here_order: 7
+start_here_label: "The Harness and the Operating System — Independent Validation"
 ---
 
 # The Harness and the Operating System
@@ -184,6 +185,6 @@ Let him own developers. The rest of the experts are waiting.
 
 ---
 
-*If you followed the full arc, this is the end — for now. More chapters are coming. If you took the practical path and want the deeper roots, [From Bible Translation to Epistemic OS](klappy://writings/from-bible-translation-to-epistemic-os) is where it all started.*
+*If you followed the full arc, this is the end — for now. More chapters are coming. If you took the practical path and want the deeper roots, [The Most Expensive Problem](klappy://writings/the-most-expensive-problem) is where the pattern first becomes visible.*
 
 *Ben Shoemaker's AI Coding Toolkit is at [github.com/benjaminshoemaker/ai_coding_project_base](https://github.com/benjaminshoemaker/ai_coding_project_base).*

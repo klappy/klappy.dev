@@ -44,6 +44,7 @@ related:
 complements: "writings/the-most-expensive-problem.md, writings/from-bible-translation-to-epistemic-os.md, writings/the-intern.md, canon/apocrypha/fragments/fragment-08-the-image-of-the-image.md, canon/apocrypha/fragments/fragment-09-the-line.md"
 start_here: true
 start_here_order: 1
+start_here_label: "Nothing New, Even AI — The Preface"
 ---
 
 # Nothing New, Even AI
