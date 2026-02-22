@@ -42,8 +42,8 @@ derives_from:
   - canon/constraints/guide-posture.md
   - canon/values/trust-kernel.md
 related:
-  - uri: klappy://writings/the-most-expensive-problem
-    label: "The Most Expensive Problem (next chapter)"
+  - uri: klappy://writings/choosing-faith-not-fear
+    label: "Choosing Faith, Not Fear (next chapter)"
     relationship: sequel
   - uri: klappy://writings/the-project-journal
     label: "The Project Journal"
@@ -146,7 +146,7 @@ This is where most people get stuck and give up. But it's also where the real op
 
 That progression — from frustration with amnesia, to capturing knowledge, to building something cumulative — is the natural path. You don't need to plan for it now. Just know that when the forgetting starts to hurt, the solution exists, and it's simpler than you think.
 
-*The next chapter, [The Most Expensive Problem](klappy://writings/the-most-expensive-problem), zooms out to the civilizational pattern behind what you just experienced. Or if you'd rather skip ahead to the practical fix, [The Project Journal](klappy://writings/the-project-journal) shows you how to stop repeating yourself and start building on what you've already figured out.*
+*The next chapter, [Choosing Faith, Not Fear](klappy://writings/choosing-faith-not-fear), confronts the deeper displacement — not AI replacing your job, but AI replacing your first conversation of the day. Or if you'd rather skip ahead to the practical fix, [The Project Journal](klappy://writings/the-project-journal) shows you how to stop repeating yourself and start building on what you've already figured out.*
 
 -----
 

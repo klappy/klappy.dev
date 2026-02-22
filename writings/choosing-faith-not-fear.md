@@ -45,8 +45,8 @@ derives_from:
   - canon/values/axioms.md
   - canon/constraints/guide-posture.md
 related:
-  - uri: klappy://writings/the-voice-came-first
-    label: "The Voice Came First (next chapter)"
+  - uri: klappy://writings/the-most-expensive-problem
+    label: "The Most Expensive Problem (next chapter)"
     relationship: sequel
   - uri: klappy://writings/four-questions-that-change-everything
     label: "Four Questions That Change Everything"
@@ -200,4 +200,4 @@ AI is the newest thing under the sun. It's genuinely impressive. It's genuinely 
 
 Choose faith, not fear. Not because the fear isn't real — it is. But because the thing you're afraid of losing was never the thing that defined you. And the one who does define you has never, not once, failed to show up.
 
-*The next chapter, [The Voice Came First](klappy://writings/the-voice-came-first), traces the method behind every discovery in this book — and it starts with a confession about blank pages. Or if you'd rather jump to the principles, [Four Questions That Change Everything](klappy://writings/four-questions-that-change-everything) gives you the framework without the story.*
+*The next chapter, [The Most Expensive Problem](klappy://writings/the-most-expensive-problem), zooms out to the civilizational pattern — every generation faced the same bottleneck, and AI just inverted the cost. Or if you'd rather jump to the principles, [Four Questions That Change Everything](klappy://writings/four-questions-that-change-everything) gives you the framework without the story.*
