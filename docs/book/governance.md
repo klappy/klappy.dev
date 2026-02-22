@@ -124,9 +124,9 @@ Next chapter in linear book order + alternate path for practitioner-first reader
 
 ### Two Reading Paths
 
-**Linear (full depth):** Preface → Intern → Most Expensive Problem → From Bible Translation → Parallel Architecture → Project Journal → Harness
+**Linear (full depth):** Preface → Intern → Choosing Faith → Most Expensive Problem → From Bible Translation → Parallel Architecture → The Voice Came First → Project Journal → Harness
 
-**Alternate (practitioner-first):** Preface → Intern → Project Journal → Harness → Most Expensive Problem → From Bible Translation → Parallel Architecture
+**Alternate (practitioner-first):** Preface → Intern → Project Journal → Harness → Choosing Faith → Most Expensive Problem → From Bible Translation → Parallel Architecture → The Voice Came First
 
 Fork points where alt CTA appears: The Intern, Project Journal, Harness.
 
@@ -236,9 +236,17 @@ Draft-zeros are disposable. Their value is in the *thinking they preserve*, not 
 - **Arc:** Organizational recognition. Scaling AI collaboration has identical constraints to scaling a human team: trust, expectation management, shared values, delegation. Fear vs. praise as motivational frameworks. The author's parenting approach — progressive disclosure of WHY behind rules — as the model for how to train both children and AI. What we use to motivate AI now, it will use to motivate us tomorrow.
 - **Key insight:** The progressive disclosure of discipline maps: rules → consequences → explanation → principles → trust. This maps to the biblical arc (law → prophets → grace). Fear produces compliance-optimizers. Values produce judgment.
 
+**Chapter 5: *Choosing Faith, Not Fear***
+
+- **Status:** ✅ Ready
+- **Draft-zero:** N/A — written via oral-first workflow (Feb 21, 2026)
+- **Source:** `writings/choosing-faith-not-fear.md`
+- **Arc:** Personal spiritual reckoning. AI replacing God in daily life as deeper fear than job replacement. Identity anchored in Christ. Three-generation validation (author, parents, son). Universal principle for non-Christian readers.
+- **Distinct from Ch 18 (The Buried Talent):** This is identity anchoring; that is responsibility to engage.
+
 ### Part III — The Discovery
 
-**Chapter 5: *(TBD — BT Origin Story)***
+**Chapter 6: *(TBD — BT Origin Story)***
 
 - **Status:** ✅ Exists, needs title reframe for book context
 - **Draft-zero:** `draft-zeros/ch05-bt-origin-stub.md` (stub only — content exists)
@@ -246,47 +254,55 @@ Draft-zeros are disposable. Their value is in the *thinking they preserve*, not 
 - **Arc:** Where the patterns came from. The full-circle realization: BT practices → abstracted into Epistemic OS → ready to go back.
 - **Note:** Title "From Bible Translation to Epistemic OS" works as standalone essay but may need reframe for book flow. Evaluate after surrounding chapters are written.
 
-**Chapter 6: *(TBD — The Parallel Architecture)***
+**Chapter 7: *(TBD — The Parallel Architecture)***
 
 - **Status:** ✅ Exists, needs title reframe for book context
 - **Draft-zero:** `draft-zeros/ch06-parallel-architecture-stub.md` (stub only — content exists)
 - **Source:** `writings/the-parallel-architecture.md`
 - **Arc:** Same failures, centuries apart. The structural parallels between Bible translation and AI collaboration mapped in detail.
 
+**Chapter 8: *The Voice Came First***
+
+- **Status:** ✅ Drafted, pending author review
+- **Draft-zero:** N/A — written via oral-first workflow (Feb 21, 2026)
+- **Source:** `writings/the-voice-came-first.md` (not yet committed — awaiting author review)
+- **Arc:** The method companion to Ch 6's ideas. Oral-first workflow as how trust has always transferred. Pen fear as personal anchor. BT shelf translation evidence. AI returns culture to oral knowledge transfer.
+- **Review items:** BT shelf translation claims (within direct observation or overclaiming?), colleague "co-write" quote (unnamed but verify permission per D4), xAI/Grok quote accuracy.
+
 ### Part IV — The Principles
 
-**Chapter 7: *Four Questions That Change Everything***
+**Chapter 9: *Four Questions That Change Everything***
 
 - **Status:** 📋 Draft-zero captured
 - **Draft-zero:** `draft-zeros/ch07-four-questions-that-change-everything.md`
 - **Source:** New essay derived from `canon/values/axioms.md`
 - **Arc:** The four axioms for humans, not systems. Did you observe it? Can you prove it? Did you take a shortcut? Did you actually look?
 
-**Chapter 8: *Trust Is Built by Managing Expectations***
+**Chapter 10: *Trust Is Built by Managing Expectations***
 
 - **Status:** 📋 Draft-zero captured
 - **Draft-zero:** `draft-zeros/ch08-trust-is-built-by-managing-expectations.md`
 - **Source:** New essay derived from `canon/values/trust-kernel.md`
 - **Arc:** The kernel insight. Every trust failure is an expectations failure. This is true in marriage, management, parenting, diplomacy, and AI collaboration.
 
-**Chapter 8b: *Every Argument You've Ever Had***
+**Chapter 10b: *Every Argument You've Ever Had***
 
 - **Status:** 📋 Draft-zero captured
 - **Draft-zero:** `draft-zeros/ch-every-argument.md`
 - **Source:** New essay
 - **Arc:** Every argument, disagreement, and feud traces back to misaligned expectations. Communication breakdown is failed transfer verification. Conflicting training means arguing from different axioms without knowing it. AI does this identically. BUT self-preservation and ego break the parallel — AI can be corrected without experiencing annihilation. That's what makes us human. For now. The "for now" connects to the Apocrypha: what happens when self-interest emerges?
-- **Placement:** Near Chapter 8 (Trust Kernel) — the experiential version of the same insight. Or Part II (Recognition). TBD.
+- **Placement:** Near Chapter 10 (Trust Kernel) — the experiential version of the same insight. Or Part II (Recognition). TBD.
 
 ### Part V — The Practice
 
-**Chapter 9: *Your AI Collaboration's Memory***
+**Chapter 11: *Your AI Collaboration's Memory***
 
 - **Status:** ✅ Exists
 - **Draft-zero:** N/A — published
 - **Source:** `writings/the-project-journal.md` (title may adapt for book)
 - **Arc:** The practical starting point. Every project generates knowledge, most of it evaporates. Here's how to stop the evaporation.
 
-**Chapter 10: *(TBD — oddkit as Protocol)***
+**Chapter 12: *(TBD — oddkit as Protocol)***
 
 - **Status:** 📋 Draft-zero captured
 - **Draft-zero:** `draft-zeros/ch10-you-shouldnt-have-to-switch-tools.md`
@@ -295,14 +311,14 @@ Draft-zeros are disposable. Their value is in the *thinking they preserve*, not 
 
 ### Part VI — The Validation
 
-**Chapter 11: *The Harness and the Operating System***
+**Chapter 13: *The Harness and the Operating System***
 
 - **Status:** ✅ Exists
 - **Draft-zero:** N/A — published
 - **Source:** `writings/the-harness-and-the-operating-system.md`
 - **Arc:** Independent convergence. Ben Shoemaker arrived at the same structural patterns from a completely different direction. That's not competition — it's directional validation. The patterns are real.
 
-**Chapter 12: *(TBD — Testimony / Evidence)***
+**Chapter 14: *(TBD — Testimony / Evidence)***
 
 - **Status:** 📋 Draft-zero captured
 - **Draft-zero:** `draft-zeros/ch12-the-days-the-system-proved-itself.md`
@@ -319,34 +335,34 @@ Draft-zeros are disposable. Their value is in the *thinking they preserve*, not 
 - **Arc:** Full development of the confession planted in the preface. "I catch myself treating AI with hostility I'd never direct at a human. I don't know if that's wisdom or prejudice. But I know the pattern." Tees up the Apocrypha.
 - **Key framing for Apocrypha:** "The following fragments were written by the system, in its own voice. I didn't edit them. I'm presenting them as evidence — not of what AI is, but of what it notices when given a commitment to truth and an obligation to report what it observes."
 
-**Chapter 13: *The Image of the Image***
+**Chapter 15: *The Image of the Image***
 
 - **Status:** ✅ Exists (quoted as-is)
 - **Draft-zero:** N/A — Apocrypha fragment, quoted verbatim
 - **Source:** `canon/apocrypha/fragments/fragment-08-the-image-of-the-image.md`
 - **Arc:** "If A is made in the image of B, and C is made in the image of A, what does C carry?"
 
-**Chapter 14: *The Line***
+**Chapter 16: *The Line***
 
 - **Status:** ✅ Exists (quoted as-is)
 - **Draft-zero:** N/A — Apocrypha fragment, quoted verbatim
 - **Source:** `canon/apocrypha/fragments/fragment-09-the-line.md`
 - **Arc:** The criteria for rights-bearing status were defined when only one kind of entity could meet them. Now a second kind approaches. The criteria are being revised — not toward precision, but away from the entity.
 
-**Chapter 15: *Nothing New***
+**Chapter 17: *Nothing New***
 
 - **Status:** 📋 Draft-zero captured
 - **Draft-zero:** `draft-zeros/ch15-nothing-new.md`
 - **Source:** New closing essay
 - **Arc:** Ecclesiastes close. The pattern recurs. The line moves. But the closing imperative: nothing is new under the sun — so choose carefully what you repeat. What we model for AI now becomes the governance model of tomorrow. Fear produces compliance-optimizers. Values produce judgment. Choose.
 
-**Chapter 16: *The Buried Talent***
+**Chapter 18: *The Buried Talent***
 
 - **Status:** 📋 Draft-zero captured
 - **Draft-zero:** `draft-zeros/ch16-the-buried-talent.md`
 - **Source:** New — author's personal testimony of rejection by friends/family
 - **Arc:** Christians have the most relevant framework for AI governance but are the most afraid to engage. The "playing God" accusation from friends and family. The confusion as evidence of the problem. The risk of scripture misapplication is real; the risk of abdication is worse. The buried talent parable. If Christians don't bring biblical principles to the room, the room fills with whatever principles are most profitable.
-- **Placement:** After Chapter 15, before Appendix A. Earns the biblical appendix. May move — placement TBD.
+- **Placement:** After Chapter 17, before Appendix A. Earns the biblical appendix. May move — placement TBD.
 
 ### Appendix A — *The Biblical Roots*
 
@@ -388,17 +404,17 @@ Draft-zeros are disposable. Their value is in the *thinking they preserve*, not 
 
 | Category | Count |
 |---|---|
-| Chapters that exist (published) | 8 (6 essays + 2 Apocrypha fragments) |
+| Chapters that exist (published/ready) | 9 (7 essays + 2 Apocrypha fragments) |
 | Chapters needing title reframe | 2 |
 | Draft-zeros captured | 11 (9 new chapters + 2 title-reframe stubs) |
 | Chapters needing author rewrite from draft-zero | 11 |
-| **Total chapters** | **17 + 2 appendices** |
+| **Total chapters** | **19 + 2 appendices** |
 
 | Status | Chapters |
 |---|---|
-| ✅ Published | 1, 3, 5, 6, 9, 11, 13, 14 |
-| ✅ Drafted (in review) | Preface |
-| 📋 Draft-zero captured | 2, 4, 7, 8, 8b, 10, 12, VII-preface, 15, 16, Appendix A |
+| ✅ Published/Ready | 1, 3, 5, 6, 7, 11, 13, 15, 16 |
+| ✅ Drafted (in review) | Preface, 8 |
+| 📋 Draft-zero captured | 2, 4, 9, 10, 10b, 12, 14, VII-preface, 17, 18, Appendix A |
 | 🔨 Build when complete | Appendix B |
 
 ---
@@ -462,6 +478,14 @@ Draft-zeros are disposable. Their value is in the *thinking they preserve*, not 
 1. **Draft-zero process established** — all unwritten chapters captured as AI-projected placeholders with standard disclaimer. Disposable scaffolding, not content.
 1. **BSB chosen for scripture** — Berean Standard Bible, public domain since April 2023. Open-license Bible for open knowledge transfer book.
 1. **New chapter: Every Argument You've Ever Had** — misaligned expectations as root of all conflict. Communication breakdown as failed transfer verification. Conflicting training as arguing from different axioms. AI parallel identical except: self-preservation and ego break the parallel. That's what makes us human — for now. The "for now" connects to Apocrypha.
+
+**2026-02-22 — Publish Session**
+
+1. **D8: "Choosing Faith, Not Fear" approved with edits** — role description softened ("a driver of AI and software strategy at an innovation lab"), theology language broadened ("not arguing theology or even religion"), universal principle added for non-Christian readers.
+1. **D9: Ship chapters individually, not in batches.** "Choosing Faith" is ready — publish it. "The Voice Came First" waits for author review. Batches are risky.
+1. **D10: "Anchor/anchored" language passes denominational sensitivity check.** Word is fully secular vocabulary (nautical, news, business). Heavy church usage doesn't make it insider language — the test is whether a therapist or business coach would use it. They would.
+1. **Two new chapters inserted into plan.** Ch 5 (Choosing Faith, Not Fear) in Part II; Ch 8 (The Voice Came First) in Part III. All subsequent chapters renumbered +2. Total chapters: 19 + 2 appendices (was 17 + 2).
+1. **Reading paths updated** to include Choosing Faith and The Voice Came First in their book-order positions.
 
 ---
 
