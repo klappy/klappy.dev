@@ -46,8 +46,8 @@ derives_from:
   - canon/constraints/guide-posture.md
   - writings/from-bible-translation-to-epistemic-os.md
 related:
-  - uri: klappy://writings/choosing-faith-not-fear
-    label: "Choosing Faith, Not Fear (previous chapter)"
+  - uri: klappy://writings/the-parallel-architecture
+    label: "The Parallel Architecture (previous chapter)"
     relationship: prequel
   - uri: klappy://writings/four-questions-that-change-everything
     label: "Four Questions That Change Everything (next chapter)"
@@ -107,7 +107,7 @@ So when I tell you that I've been writing a book about AI and knowledge transfer
 
 Then something shifted. I stopped writing and started talking. I'd have a conversation with a colleague about what I was trying to say. I'd call my parents and read them a rough draft, then listen to their reactions. I'd talk to my son and let him push back. I'd do a brain dump into my AI assistant — just talking, not composing — and let it shape the raw material into prose.
 
-The chapter you just read before this one — "Choosing Faith, Not Fear" — was written in a single day. Not because I typed faster, but because I stopped typing and started talking. I talked to my parents on the phone. My mom cried in the right places. My dad stayed engaged the whole way through. My son called and pushed back on a key argument — and made it stronger. I talked through my concerns, my theological anxieties, my fear of sounding preachy. All of it went into a transcript. The AI shaped the transcript into a draft. I read the draft aloud to my parents. They gave feedback. The AI incorporated the feedback. By the end of the day, the chapter was done.
+An earlier chapter — "Choosing Faith, Not Fear" — was written in a single day. Not because I typed faster, but because I stopped typing and started talking. I talked to my parents on the phone. My mom cried in the right places. My dad stayed engaged the whole way through. My son called and pushed back on a key argument — and made it stronger. I talked through my concerns, my theological anxieties, my fear of sounding preachy. All of it went into a transcript. The AI shaped the transcript into a draft. I read the draft aloud to my parents. They gave feedback. The AI incorporated the feedback. By the end of the day, the chapter was done.
 
 The entire pipeline was oral. I never sat at a desk composing. I didn't even need a laptop. I talked on the phone while walking around my house, and the system did the rest.
 
