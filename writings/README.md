@@ -20,8 +20,9 @@ tags: ["writings", "index", "essays"]
 | [The Intern](klappy://writings/the-intern) | A practical mental model for people starting with AI — treat it like an intern and grow from there |
 | [Choosing Faith, Not Fear](klappy://writings/choosing-faith-not-fear) | The fear that should keep you up isn't AI replacing your job — it's AI replacing your first conversation of the day |
 | [The Most Expensive Problem](klappy://writings/the-most-expensive-problem) | Why knowledge transfer is mankind's most expensive problem — and why AI made it worse |
+| [The Voice Came First](klappy://writings/the-voice-came-first) | What if writing was never the point — just the best bridge we had until something better came along? |
 | [The Parallel Architecture](klappy://writings/the-parallel-architecture) | Theological roots of the Epistemic OS — appendix to The Most Expensive Problem |
-| [From Bible Translation to Epistemic OS](klappy://writings/from-bible-translation-to-epistemic-os) | How 15 years of Bible translation work became an operating system for AI collaboration |
+| [From Bible Translation to Epistemic OS](klappy://writings/from-bible-translation-to-epistemic-os) | How years of Bible translation work became an operating system for AI collaboration |
 | [The Harness and the Operating System](klappy://writings/the-harness-and-the-operating-system) | Ben Shoemaker's AI Coding Toolkit and the Epistemic OS solve different layers of the same problem — mapped, named, and stacked |
 | [Self-ESE and the Stacking Test](klappy://writings/self-ese-and-the-stacking-test) | Have the AI describe what it actually produced before evaluating against the plan — the delta is the honest assessment checklists skip |
 | [The Project Journal](klappy://writings/the-project-journal) | A practical guide to keeping your AI collaboration honest and cumulative |

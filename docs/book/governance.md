@@ -238,7 +238,7 @@ Draft-zeros are disposable. Their value is in the *thinking they preserve*, not 
 
 **Chapter 5: *Choosing Faith, Not Fear***
 
-- **Status:** ✅ Ready
+- **Status:** ✅ Published
 - **Draft-zero:** N/A — written via oral-first workflow (Feb 21, 2026)
 - **Source:** `writings/choosing-faith-not-fear.md`
 - **Arc:** Personal spiritual reckoning. AI replacing God in daily life as deeper fear than job replacement. Identity anchored in Christ. Three-generation validation (author, parents, son). Universal principle for non-Christian readers.
@@ -263,11 +263,11 @@ Draft-zeros are disposable. Their value is in the *thinking they preserve*, not 
 
 **Chapter 8: *The Voice Came First***
 
-- **Status:** ✅ Drafted, pending author review
-- **Draft-zero:** N/A — written via oral-first workflow (Feb 21, 2026)
-- **Source:** `writings/the-voice-came-first.md` (not yet committed — awaiting author review)
-- **Arc:** The method companion to Ch 6's ideas. Oral-first workflow as how trust has always transferred. Pen fear as personal anchor. BT shelf translation evidence. AI returns culture to oral knowledge transfer.
-- **Review items:** BT shelf translation claims (within direct observation or overclaiming?), colleague "co-write" quote (unnamed but verify permission per D4), xAI/Grok quote accuracy.
+- **Status:** ✅ Ready (pending commit)
+- **Draft-zero:** N/A — written via oral-first workflow (Feb 21-23, 2026)
+- **Source:** `writings/the-voice-came-first.md`
+- **Arc:** Was text ever the point, or always just the most compressed medium we could scale? Traces the question through Bible translation, personal pen fear, the author's oral-first book workflow, and universal evidence (preaching, teaching, remote work, podcasts, video, social media). Reframed from declaration to inquiry after convergent pushback from two independent reviewers. Acknowledges text still has real value while questioning its necessity when AI can produce the same outputs from richer inputs.
+- **Review items:** ✅ All resolved. BT claims softened to observation. Colleague quote removed (D4). xAI/Grok reference removed. Liam story removed (belongs in validation chapter). Expert-first rant removed. Three sections compressed.
 
 ### Part IV — The Principles
 
@@ -404,7 +404,7 @@ Draft-zeros are disposable. Their value is in the *thinking they preserve*, not 
 
 | Category | Count |
 |---|---|
-| Chapters that exist (published/ready) | 9 (7 essays + 2 Apocrypha fragments) |
+| Chapters that exist (published/ready) | 10 (8 essays + 2 Apocrypha fragments) |
 | Chapters needing title reframe | 2 |
 | Draft-zeros captured | 11 (9 new chapters + 2 title-reframe stubs) |
 | Chapters needing author rewrite from draft-zero | 11 |
@@ -412,8 +412,8 @@ Draft-zeros are disposable. Their value is in the *thinking they preserve*, not 
 
 | Status | Chapters |
 |---|---|
-| ✅ Published/Ready | 1, 3, 5, 6, 7, 11, 13, 15, 16 |
-| ✅ Drafted (in review) | Preface, 8 |
+| ✅ Published/Ready | 1, 3, 5, 6, 7, 8, 11, 13, 15, 16 |
+| ✅ Drafted (in review) | Preface |
 | 📋 Draft-zero captured | 2, 4, 9, 10, 10b, 12, 14, VII-preface, 17, 18, Appendix A |
 | 🔨 Build when complete | Appendix B |
 
@@ -486,6 +486,16 @@ Draft-zeros are disposable. Their value is in the *thinking they preserve*, not 
 1. **D10: "Anchor/anchored" language passes denominational sensitivity check.** Word is fully secular vocabulary (nautical, news, business). Heavy church usage doesn't make it insider language — the test is whether a therapist or business coach would use it. They would.
 1. **Two new chapters inserted into plan.** Ch 5 (Choosing Faith, Not Fear) in Part II; Ch 8 (The Voice Came First) in Part III. All subsequent chapters renumbered +2. Total chapters: 19 + 2 appendices (was 17 + 2).
 1. **Reading paths updated** to include Choosing Faith and The Voice Came First in their book-order positions.
+
+**2026-02-23 — Voice Came First Reframe Session**
+
+1. **D11: "The Voice Came First" reframed from declaration to inquiry.** Convergent pushback from two independent reviewers (Tatiana, Logan) identified overclaiming. Chapter now asks "was text ever the point?" instead of asserting "the voice came first, always."
+1. **D12: Thesis upgraded from voice-vs-text to full-bandwidth-vs-compression.** Evidence chain: Scripture (preaching > reading), education (PhD defenses, teaching), remote work (Slack/email drain, fly-in budgets), video calls, relationships (couples prefer calls), market behavior (podcasts, YouTube, TikTok, Instagram eclipsing blogs). Text was the most compressed medium we could scale — AI lets us stop compressing.
+1. **D13: Liam's story removed from "The Voice Came First."** It's a text-discovery story (found written content on GitHub), not a voice-first story. Reserved for validation chapter (Part VI) alongside Ben Shoemaker's independent convergence.
+1. **D14: Three sections compressed.** "Why the Expert-First Approach Keeps Failing" merged as closing paragraph into "This Isn't Just My Book." "My Dad Taught Me This" compressed to one paragraph. "The Author's Toolkit" replaced with "What Exists Now" — voice reader with selectable durations (auto, 10m, 5m, 2m, 1m, 30s) as progressive disclosure applied to delivery.
+1. **D15: Text acknowledged as still valuable.** Chapter explicitly names where text wins (precision, silence, legal, code) and asks whether its necessity — not its value — is dissolving.
+1. **D16: "Fifteen years" reduced to single mention then removed entirely.** Author directed: credential-waving is embarrassing. Other chapters establish career timeline. This chapter says "years."
+1. **D17: "The Voice Came First" approved as ready.** Full DoD audit, writing canon checklist, guide posture verification completed.
 
 ---
 
