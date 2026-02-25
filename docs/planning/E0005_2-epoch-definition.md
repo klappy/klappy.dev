@@ -46,7 +46,7 @@ Day one: connect oddkit, use your AI tools normally, notice they get focused. Th
 
 The journey is the same for a developer, a Bible translator, a PM, or a domain expert. Four steps: observe, bootstrap, capture, deepen. Each step is a complete experience. You never need to advance.
 
-→ Full journey: **developer-journey-ai-augmented-workflows.md**
+→ Full journey: **[The Journey — From First Use to AI That Actually Learns](klappy://writings/the-journey)**
 
 ### For a domain expert with deep knowledge and something to create
 
@@ -58,7 +58,7 @@ The director's chair. Input is multimodal — voice, text, sketches, images. The
 
 Every role runs the same loop — converse, generate, validate, promote or pivot — through the same shared Knowledge Base. Tools don't change. Context loss disappears. The write path means every role can contribute to the KB from their preferred surface.
 
-→ Full mapping: **the-loop-every-role-same-infrastructure.md**
+→ Full mapping: **[The Loop — Every Role, Same Infrastructure](klappy://writings/the-loop)**
 
 ---
 
@@ -89,7 +89,7 @@ Every role runs the same loop — converse, generate, validate, promote or pivot
 
 **Progressive protection** — Git workflow adapts to the user's context. Default branch → branches → PRs → CI enforcement. Layered by pain, not prescribed upfront.
 
-**Durable journal entries** — The cross-cutting capability across every surface. Any team member encodes observations, learnings, decisions, and handoffs in a sentence during natural workflow. `encode` → `oddkit_write` persists them. The most frequent unit of knowledge capture and the primary way the KB grows. → Full description: **horizon-surfaces-where-the-loop-runs-next.md**
+**Durable journal entries** — The cross-cutting capability across every surface. Any team member encodes observations, learnings, decisions, and handoffs in a sentence during natural workflow. `encode` → `oddkit_write` persists them. The most frequent unit of knowledge capture and the primary way the KB grows. → Full description: **[Horizon Surfaces — Where Decisions Go to Die](klappy://writings/the-horizon)**
 
 ---
 
