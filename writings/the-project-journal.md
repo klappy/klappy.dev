@@ -51,7 +51,7 @@ related:
   - uri: klappy://canon/methods/borrow-bend-break-beget-build
     label: "Borrow, Bend, Break, Beget, Build (the method behind cross-tool leverage)"
     relationship: companion
-complements: "writings/the-most-expensive-problem.md, odd/ledger/epistemic-ledger.md, docs/appendices/compiled-memory.md, odd/appendices/cognitive-saturation-threshold.md, writings/from-bible-translation-to-epistemic-os.md, odd/constraint/use-only-what-hurts.md, canon/methods/borrow-bend-break-beget-build.md"
+complements: "writings/the-most-expensive-problem.md, writings/the-journey-from-ai-tasks-to-ai-augmented-workflows.md, writings/every-handoff-drops-context.md, writings/decisions-get-lost.md, odd/ledger/epistemic-ledger.md, docs/appendices/compiled-memory.md, odd/appendices/cognitive-saturation-threshold.md, writings/from-bible-translation-to-epistemic-os.md, odd/constraint/use-only-what-hurts.md, canon/methods/borrow-bend-break-beget-build.md"
 start_here: true
 start_here_order: 6
 start_here_label: "The Project Journal — Getting Started"

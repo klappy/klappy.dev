@@ -40,7 +40,7 @@ og_description: "The planning queue stores implementation-ready specs that any A
 derives_from: "canon/constraints/guide-posture.md, canon/methods/planning-queue.md, canon/constraints/humans-are-variable-inputs.md, odd/constraint/use-only-what-hurts.md, canon/principles/ritual-is-a-smell.md"
 complements: "writings/the-drift-queue.md, writings/the-most-expensive-problem.md, writings/the-project-journal.md, writings/from-bible-translation-to-epistemic-os.md, docs/planning/automated-changelog.md, docs/planning/oddkit-write-access.md"
 start_here: true
-start_here_order: 10
+start_here_order: 12
 start_here_label: "The Planning Queue — Specs That Wait Until They Hurt"
 ---
 

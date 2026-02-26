@@ -51,7 +51,7 @@ related:
     relationship: companion
 complements: "writings/the-most-expensive-problem.md, writings/from-bible-translation-to-epistemic-os.md, docs/architecture/epistemic-os-layers.md, canon/methods/community-checking.md, canon/resonance/ai-coding-toolkit.md"
 start_here: true
-start_here_order: 7
+start_here_order: 10
 start_here_label: "The Harness and the Operating System — Independent Validation"
 ---
 
