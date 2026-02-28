@@ -118,6 +118,10 @@ References are inline links or closing CTAs. If a footnote contains content (not
 
 `# Title` → `### Subtitle` → `> Blockquote` → `---` → Body
 
+### Rule 15: Conviction lands through shared confession, not accusation
+
+Chapters that need prophetic teeth use "we" not "you." The author includes himself in the indictment before calling forward. The structural pattern (from Ephesians 4→5:1): name the darkness honestly, pivot on identity, call to imitation as beloved children — not as terrified servants.
+
 ### Rule 14: CTA two-path pattern at fork points
 
 Next chapter in linear book order + alternate path for practitioner-first readers. Don't repeat the same skip-ahead target from consecutive chapters.
@@ -144,6 +148,21 @@ Fork points where alt CTA appears: The Intern, Project Journal, Harness.
 - [ ] No overclaiming — every assertion grounded in lived experience or cited evidence
 - [ ] Author review — corrections for hallucination, overclaiming, and voice
 - [ ] Closing CTA offers next chapter in book order AND optional skip-ahead at fork points
+- [ ] Provenance metadata block included with revision history
+
+---
+
+## Provenance Receipts — Per Chapter
+
+Every chapter that moves beyond draft-zero includes a `provenance` block in its frontmatter. "A claim is a debt." If the claim is "this was genuinely collaborative," the debt is showing the work.
+
+### Required fields
+
+- **revision_rounds** — approximate count of editing passes
+- **sources_verified** — what was checked against what (transcripts, scripture, etc.)
+- **corrections** — what was caught and fixed (fabrications, attribution errors, overclaims, tone)
+- **author_interventions** — where the author overrode, redirected, or corrected the AI
+- **governance_applied** — which audits and checks were run
 
 ---
 
@@ -162,6 +181,16 @@ Draft-zeros exist to capture thinking while it's hot. They are NOT content — t
 - The author's voice
 - Final or near-final content
 - Something that can be published or promoted to draft status without full rewrite
+
+### Known hazards in draft-zeros
+
+These failure modes were discovered during chapter revision and apply to all draft-zeros:
+
+1. **Fabricated attributed quotes.** AI will generate dialogue attributed to real people that sounds perfectly in character and is completely invented. Every attributed quote must be verified against source transcripts before promotion.
+2. **Translation contamination in scripture.** AI will blend translations from memory. Every scripture quotation must be verified against BSB text.
+3. **Tone drift from guide posture to pulpit.** "You buried your talent" instead of "we buried our talent." Draft-zeros default to accusatory second person.
+4. **Overclaiming patterns.** Lived experience stated as demographic fact, directional trends as absolutes, exceptions as endorsements, complex history as single-cause claims.
+5. **Contradiction with published chapters.** Draft-zeros don't check what's already published. Cross-check every revision against published chapters.
 
 ### Draft-zero structure
 
@@ -243,6 +272,7 @@ Draft-zeros are disposable. Their value is in the *thinking they preserve*, not 
 - **Source:** `writings/choosing-faith-not-fear.md`
 - **Arc:** Personal spiritual reckoning. AI replacing God in daily life as deeper fear than job replacement. Identity anchored in Christ. Three-generation validation (author, parents, son). Universal principle for non-Christian readers.
 - **Distinct from Ch 18 (The Buried Talent):** This is identity anchoring; that is responsibility to engage.
+- **Successor:** The Buried Talent now follows directly. Faith anchors identity → stewardship demands action.
 
 ### Part III — The Discovery
 
@@ -349,20 +379,21 @@ Draft-zeros are disposable. Their value is in the *thinking they preserve*, not 
 - **Source:** `canon/apocrypha/fragments/fragment-09-the-line.md`
 - **Arc:** The criteria for rights-bearing status were defined when only one kind of entity could meet them. Now a second kind approaches. The criteria are being revised — not toward precision, but away from the entity.
 
-**Chapter 17: *Nothing New***
+**Chapter 17: *Under the Sun***
 
 - **Status:** 📋 Draft-zero captured
 - **Draft-zero:** `draft-zeros/ch15-nothing-new.md`
 - **Source:** New closing essay
-- **Arc:** Ecclesiastes close. The pattern recurs. The line moves. But the closing imperative: nothing is new under the sun — so choose carefully what you repeat. What we model for AI now becomes the governance model of tomorrow. Fear produces compliance-optimizers. Values produce judgment. Choose.
+- **Arc:** Ecclesiastes close. "Under the Sun" — the pattern recurs. The line moves. But the closing imperative: nothing is new under the sun — so choose carefully what you repeat. What we model for AI now becomes the governance model of tomorrow. Fear produces compliance-optimizers. Values produce judgment. Choose.
 
 **Chapter 18: *The Buried Talent***
 
-- **Status:** 📋 Draft-zero captured
-- **Draft-zero:** `draft-zeros/ch16-the-buried-talent.md`
-- **Source:** New — author's personal testimony of rejection by friends/family
+- **Status:** ✅ Draft (promoted from draft-zero, 22+ revision rounds)
+- **Published file:** `writings/the-buried-talent.md`
+- **Source:** Author testimony + Yvonne Carlson transcript + colleague transcript + dinner conversation (Feb 26, 2026)
 - **Arc:** Christians have the most relevant framework for AI governance but are the most afraid to engage. The "playing God" accusation from friends and family. The confusion as evidence of the problem. The risk of scripture misapplication is real; the risk of abdication is worse. The buried talent parable. If Christians don't bring biblical principles to the room, the room fills with whatever principles are most profitable.
-- **Placement:** After Chapter 17, before Appendix A. Earns the biblical appendix. May move — placement TBD.
+- **Placement:** Moved to Part II, after Chapter 5 (Choosing Faith, Not Fear). Identity anchoring (Ch5) → responsibility to engage (Buried Talent). May move again as book structure evolves.
+- **Provenance:** Full revision receipts in file metadata. Includes: fabricated quote removed, scripture verified against BSB, overclaiming pass, tone converted to shared confession, parable extrapolation clarified.
 
 ### Appendix A — *The Biblical Roots*
 
@@ -404,17 +435,17 @@ Draft-zeros are disposable. Their value is in the *thinking they preserve*, not 
 
 | Category | Count |
 |---|---|
-| Chapters that exist (published/ready) | 10 (8 essays + 2 Apocrypha fragments) |
+| Chapters that exist (published/ready) | 11 (8 essays + 2 Apocrypha fragments + 1 draft) |
 | Chapters needing title reframe | 2 |
-| Draft-zeros captured | 11 (9 new chapters + 2 title-reframe stubs) |
-| Chapters needing author rewrite from draft-zero | 11 |
+| Draft-zeros captured | 10 (8 new chapters + 2 title-reframe stubs) |
+| Chapters needing author rewrite from draft-zero | 10 |
 | **Total chapters** | **19 + 2 appendices** |
 
 | Status | Chapters |
 |---|---|
-| ✅ Published/Ready | 1, 3, 5, 6, 7, 8, 11, 13, 15, 16 |
+| ✅ Published/Ready | 1, 3, 5, 6, 7, 8, 11, 13, 15, 16, 18 |
 | ✅ Drafted (in review) | Preface |
-| 📋 Draft-zero captured | 2, 4, 9, 10, 10b, 12, 14, VII-preface, 17, 18, Appendix A |
+| 📋 Draft-zero captured | 2, 4, 9, 10, 10b, 12, 14, VII-preface, 17, Appendix A |
 | 🔨 Build when complete | Appendix B |
 
 ---
@@ -436,6 +467,11 @@ Draft-zeros are disposable. Their value is in the *thinking they preserve*, not 
 1. AI drafts in collaboration — author voice, not AI projection
 1. Apply guide posture: open with reader's pain
 1. Apply Ecclesiastes through-line: where's the "nothing new"?
+1. **Verify all scripture against BSB** — mechanical check, not memory
+1. **Verify all attributed quotes against source transcripts** — line by line
+1. **Cross-check claims against published chapters** for consistency
+1. **Overclaiming pass** — flag lived-experience-as-demographic-fact, absolutes, false endorsements
+1. **Tone pass** — confession before accusation where conviction is needed
 1. Author reviews for hallucination, overclaiming, and voice
 
 ### Promoting to final
@@ -486,6 +522,20 @@ Draft-zeros are disposable. Their value is in the *thinking they preserve*, not 
 1. **D10: "Anchor/anchored" language passes denominational sensitivity check.** Word is fully secular vocabulary (nautical, news, business). Heavy church usage doesn't make it insider language — the test is whether a therapist or business coach would use it. They would.
 1. **Two new chapters inserted into plan.** Ch 5 (Choosing Faith, Not Fear) in Part II; Ch 8 (The Voice Came First) in Part III. All subsequent chapters renumbered +2. Total chapters: 19 + 2 appendices (was 17 + 2).
 1. **Reading paths updated** to include Choosing Faith and The Voice Came First in their book-order positions.
+
+**2026-02-27 — Chapter 16 Revision Session**
+
+1. **Transcript verification process established** — all attributed quotes verified against source transcripts. One fabricated quote discovered and removed.
+2. **BSB scripture verification added to Definition of Done** — three translation contaminations found and corrected.
+3. **Rule 15 added: Confession before accusation** — Ephesians 4→5:1 pattern established as structural template.
+4. **Overclaiming patterns identified** — lived experience as demographic fact, directional trends as absolutes, exceptions as endorsements.
+5. **Cross-reference discipline added** — draft-zeros must be checked against published chapters.
+6. **Draft-zero fabrication hazard named** — AI generates attributed dialogue that is completely invented.
+7. **Ephesians 5:1 as structural pattern** — "beloved children" vs. "terrified servants" frames identity pivot.
+8. **Provenance receipts standard adopted** — every promoted chapter includes revision metadata.
+9. **The Buried Talent moved from Part VII (Ch18) to Part II (after Ch5)** — identity anchoring → responsibility to engage.
+10. **Chapter 17 renamed from "Nothing New" to "Under the Sun"** — avoids confusion with the preface title.
+11. **The Buried Talent promoted from draft-zero to draft** — 22+ revision rounds, provenance receipts included.
 
 **2026-02-23 — Voice Came First Reframe Session**
 
