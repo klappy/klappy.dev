@@ -25,6 +25,7 @@ tags: ["writings", "index", "essays"]
 | [The Parallel Architecture](klappy://writings/the-parallel-architecture) | Theological roots of the Epistemic OS — appendix to The Most Expensive Problem |
 | [From Bible Translation to Epistemic OS](klappy://writings/from-bible-translation-to-epistemic-os) | How years of Bible translation work became an operating system for AI collaboration |
 | [The Harness and the Operating System](klappy://writings/the-harness-and-the-operating-system) | Ben Shoemaker's AI Coding Toolkit and the Epistemic OS solve different layers of the same problem — mapped, named, and stacked |
+| [Seeing Like an Agent](klappy://writings/seeing-like-an-agent) | The Claude Code team and the Epistemic OS arrived at the same structural conclusions from opposite directions — and that's an invitation to share, not compete |
 | [Self-ESE and the Stacking Test](klappy://writings/self-ese-and-the-stacking-test) | Have the AI describe what it actually produced before evaluating against the plan — the delta is the honest assessment checklists skip |
 | [The Project Journal](klappy://writings/the-project-journal) | A practical guide to keeping your AI collaboration honest and cumulative |
 | [The Drift Queue](klappy://writings/the-drift-queue) | How one person manages a growing knowledge base without drowning in maintenance |

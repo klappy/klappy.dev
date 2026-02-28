@@ -18,6 +18,25 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
+## 0.34.0 — 2026-02-28
+
+**Seeing Like an Agent — Second Convergence Essay and Resonance Page**
+
+Second convergence analysis mapping Thariq's Claude Code lessons to ODD patterns. Documents the parallel journey from Bible translation to Epistemic OS and the 51-version, 34-day rapid iteration that arrived at the same structural conclusions as a year of agent harness design.
+
+### Added — Writings
+
+- **Essay: Seeing Like an Agent** (`writings/seeing-like-an-agent.md`) — Tier 2, first_person, public. Maps convergence between Claude Code tool design lessons and ODD's axioms, progressive disclosure, and camping risk detection. Centers the author's parallel journey through multiple agentic coding tools and 15 years of BT knowledge transfer patterns.
+
+### Added — Canon
+
+- **Resonance: Seeing Like an Agent** (`canon/resonance/seeing-like-an-agent.md`) — Tier 3, neutral. Canon resonance page documenting specific alignment and divergence points with Thariq's thread. Includes three-practitioner convergence table.
+
+### Updated
+
+- **Writings README** (`writings/README.md`) — Added Seeing Like an Agent to essay index
+- **Resonance README** (`canon/resonance/README.md`) — Added Seeing Like an Agent to resonance index
+
 ## 0.33.0 — 2026-02-18
 
 **Guide Posture, Trust Kernel, Epistemic Ledger, Bible Translation Origin, and Public Writings Expansion**
