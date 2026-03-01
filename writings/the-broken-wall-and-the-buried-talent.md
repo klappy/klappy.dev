@@ -1,7 +1,7 @@
 ---
-uri: klappy://writings/the-buried-talent
-title: "The Buried Talent"
-subtitle: "Christians have the most relevant framework for AI governance — and most are too afraid to use it"
+uri: klappy://writings/the-broken-wall-and-the-buried-talent
+title: "The Broken Wall and the Buried Talent"
+subtitle: "Two ancient stories collided in a conversation about AI — and I haven't been the same since"
 author: "Klappy"
 type: article
 status: draft
@@ -50,18 +50,18 @@ provenance:
 
 # Discovery
 
-hook: "The servant who buried his talent didn't do something wrong with it. He did nothing — out of fear. Christians have the most relevant framework for AI governance and most are burying it for the same reason."
-description: "A colleague saw what I couldn't — that the system I'd built for AI collaboration mirrors Nehemiah rebuilding the wall. The real danger isn't Christians misapplying scripture to technology. It's refusing to bring our principles to the room at all. The room fills with whatever principles show up. And here's the twist I can't stop thinking about: AI quite literally multiplies your talents — the parable is playing out in front of us."
-slug: the-buried-talent
+hook: "The wall has gaps and most of us are pretending it's not our problem. A colleague saw what I couldn't — that the system I'd built mirrors an ancient story about rebuilding in hostile territory. The deeper I looked, the more I found: a pattern about burying what you've been given out of fear."
+description: "A colleague saw what I couldn't — that the system I'd built for AI collaboration mirrors Nehemiah rebuilding the wall of Jerusalem. The wall was never the point. God calling his people back to himself was the point. The deeper I looked, the more I found: an ancient pattern about what happens when you bury what you've been given out of fear. AI quite literally multiplies your talents — and we're burying ours in the ground and calling it faithfulness."
+slug: the-broken-wall-and-the-buried-talent
 
 # Social graph
 
-og_title: "The Buried Talent"
-og_description: "The servant who buried his talent didn't do something wrong with it. He did nothing — out of fear."
+og_title: "The Broken Wall and the Buried Talent"
+og_description: "The wall has gaps. The people with the deepest framework for fixing them are the ones pretending it's not their problem."
 og_type: article
 twitter_card: summary_large_image
-twitter_title: "The Buried Talent"
-twitter_description: "Christians have the most relevant framework for AI governance — and most are too afraid to use it."
+twitter_title: "The Broken Wall and the Buried Talent"
+twitter_description: "The people with the deepest framework for AI governance are the ones hiding from it."
 
 # Book placement
 
@@ -84,27 +84,23 @@ related:
 complements: "writings/choosing-faith-not-fear.md, draft-zeros/appendix-a-the-biblical-roots.md"
 ---
 
-> **DRAFT NOTE:** This chapter was developed through 20+ rounds of collaborative editing between the author and AI, following the epistemic discipline described in the book. Source conversations include: Yvonne Carlson transcript (Feb 26), Daniel Klapp transcript (Feb 26), colleague transcript (Feb 26), dinner conversation (Feb 26), and prior planning sessions. All quotes have been verified against source transcripts. Scripture verified against BSB. Pending: author final read-through in own voice, verification with Yvonne on public details.
+# The Broken Wall and the Buried Talent
 
----
-
-# The Buried Talent
-
-### Christians have the most relevant framework for AI governance — and most are too afraid to use it
+### Two ancient stories collided in a conversation about AI — and I haven't been the same since
 
 *"Be imitators of God, therefore, as beloved children."* — Ephesians 5:1 (BSB)
 
-> The servant who buried his talent didn't do something wrong with it. He did nothing — out of fear. Christians hold the most relevant framework for governing the most powerful technology since the printing press, and most are burying it for the same reason. AI quite literally multiplies your talents — the parable is playing out in front of us. The master's rebuke wasn't "you used it poorly." It was "you didn't use it at all."
+> This chapter is about two stories I never expected to find in the same room. The first is about a broken wall — an ancient city left exposed because the people living inside had stopped noticing the gaps. The second is about a man who was given something valuable, buried it out of fear, and discovered that the one thing his master couldn't forgive wasn't a bad investment — it was no investment at all. A colleague connected the first story to what I'd been building with AI. I connected the second. Together they changed how I see everything.
 
----
+-----
 
-## Summary — The Wall Is Broken and Most of Us Are Pretending It's Not Our Problem
+## Summary — The Wall Has Gaps and Most of Us Are Pretending It's Not Our Problem
 
 Something is wrong with how AI is being built, and most people can feel it. The morality gaps are visible — systems optimized for engagement over truth, for profit over people, for speed over care. But in my experience, the people with the deepest framework for addressing those gaps — people anchored in biblical principles of truth, stewardship, and human dignity — are often the ones hiding from the conversation entirely.
 
 This chapter traces how a colleague's unprompted insight — connecting the work I'd been doing on AI collaboration to Nehemiah rebuilding the wall of Jerusalem — revealed a pattern I'd been living without recognizing. The wall was never the point. God calling his people back to himself was the point. The wall was the occasion. AI governance may be the same kind of occasion — and the talent we're burying by refusing to engage may be the one thing this moment most desperately needs. Because AI doesn't just threaten to replace our talents. It literally multiplies them. The question is whether we'll use that multiplication for the kingdom or bury it in the sand.
 
----
+-----
 
 ## You Can See the Gaps From Here
 
@@ -116,7 +112,7 @@ Maybe you've tried to raise the concern. Maybe you've told someone at church or 
 
 It is your problem. You live in the city. The wall has gaps. The gaps affect you whether you acknowledge them or not.
 
----
+-----
 
 ## "You Know What You're Talking About, Talking About the Book of Nehemiah"
 
@@ -142,7 +138,7 @@ Then she said the thing I'll carry into this chapter and probably into the rest 
 
 I need to be honest about something here, because integrity matters more than a compelling story. When I left that meeting and called my brother to process what Yvonne had shared, I told him: "I do plan on going back and re-listening to the transcript just to validate and verify how much of that is what she was intending and how much of it is just my own interpretation." I want to give her credit for what she actually said. I don't want to put words in her mouth. The parallels I'm drawing in this chapter are mine. The insight that opened the door was hers.
 
----
+-----
 
 ## What Building Taught Me About God's Pattern
 
@@ -174,7 +170,7 @@ The calling preceded the plan — but the building was deliberate. Nehemiah didn
 
 The same lesson. The same cost. The same resistance to learning it. Every generation discovers this and every generation acts like it's the first time.
 
----
+-----
 
 ## The People Who Should Have Helped Tried to Stop Me
 
@@ -194,7 +190,7 @@ People will accuse you of playing God with AI. Maybe you've already heard it. I 
 
 But we embed biblical principles in everything we build. We put them in art. In music. In architecture. In books — including this one. We put them in Bible translation software that millions of people use every day. We celebrate when someone designs a curriculum around biblical values, or builds a nonprofit on biblical ethics, or writes code for a Bible app that reaches every language on earth. Nobody calls that "playing God."
 
-But the moment the tool is AI — the moment the medium can talk back — suddenly we've crossed a line. Maybe my wording is off when I describe it. Maybe the language of "embedding principles in AI" sounds like something it isn't. But the act itself is the same act Christians have been doing for two thousand years: building things that carry our values into the world. The medium changed. The mission didn't.
+But the moment the tool is AI — the moment the medium can talk back — suddenly we've crossed a line. Maybe my wording is off when I describe it. Maybe the language of "embedding biblical principles in AI" sounds like something it isn't. But the act itself is the same act Christians have been doing for two thousand years: building things that carry our values into the world. The medium changed. The mission didn't.
 
 The confusion itself is evidence of the problem. The people who should have the clearest moral framework for engaging with questions about truth, trust, human dignity, and the image of God are the ones most confused about whether they should even be in the conversation. And their confusion is pushing them toward the same response the servant had in the parable: bury it. Hide it. Don't touch it. The master will understand.
 
@@ -208,7 +204,7 @@ That's still the buried talent. It's just buried under a theological argument in
 
 The master didn't understand. The master was furious. Not because the servant made a bad investment. Because he made no investment at all.
 
----
+-----
 
 ## It Was Never About the Walls
 
@@ -224,17 +220,19 @@ These are fundamentally theological questions wearing technological clothing. An
 
 Yvonne asked: "In this process of interacting with AI, can God be calling us back to himself?" I don't know the answer. But I know the question is worth taking seriously. And I know that running from it is the one response that guarantees we miss whatever God might be doing.
 
----
+-----
 
 ## The Talent You're Burying — And the One AI Is Multiplying
 
-The parable of the talents in Matthew 25 is usually taught as a lesson about using your gifts. And I think we should take it very seriously — more seriously than most of us do.
+There's a story Jesus told about a wealthy man leaving on a journey. Before he left, he entrusted his money to three servants — five bags of gold to one, two to another, one to the last — each according to their ability. The first two servants invested what they'd been given and doubled it. The third servant dug a hole in the ground and buried his.
 
-Here's the historical context that preachers sometimes mention: a talent was a unit of money. A financial measurement. The parable is about financial stewardship, not skills. The master entrusted his servants with capital and expected a return.
+When the master returned, the first two showed him what they'd earned. "Well done," he said. The third servant handed back exactly what he'd been given. "I was afraid," he explained. "I knew you were a hard man. So I hid it."
 
-But here's what nobody talks about: every sermon we've ever heard on this passage applies it to our skills, our abilities, our God-given gifts. That's already a loose application. We've been "misapplying" this passage for centuries — and that misapplication has shaped how entire generations think about stewardship. Most preaching on this parable is already on thin ice. The application has always been broader than the literal text.
+The master was furious. Not because the servant had made a bad investment. Not because he'd lost money. Because he'd done nothing at all. The one thing the master couldn't forgive was a perfectly preserved, completely unused gift. (The story is in Matthew 25 if you want to read the whole thing.)
 
-And now AI makes the broader application literally true.
+The word translated "talent" in this story was actually a unit of money — a massive one, worth years of wages. But for centuries, the story has been applied more broadly to any gift, skill, or capacity God entrusts to people. That application is already looser than the original text. We've been stretching this story for generations — and that stretch has shaped how entire communities think about stewardship and responsibility.
+
+And now AI makes the stretched application literally true.
 
 AI quite literally multiplies your talents. Not figuratively. Actually. If you're a writer who struggles to get thoughts on paper — and I'm one, my brother can tell you, writing was the one thing I nearly failed at in school — AI doesn't replace your thinking. It removes the barrier between your thinking and the output. It multiplies what you already have. I went from taking months to write a single article to producing ten in a day. Not because AI wrote them for me. Because AI removed the friction that was burying what I already had inside.
 
@@ -242,7 +240,7 @@ If you're a teacher, AI multiplies your ability to reach students in their own l
 
 The master gave his servants capital and expected them to multiply it. We have been given skills, knowledge, wisdom, and a moral framework grounded in scripture. And now we have a tool that can literally multiply the output of everything we bring to it. The servants who invested their talents doubled them. The servant who buried his returned exactly what he was given — nothing gained, nothing risked, nothing multiplied.
 
-The master's scolding wasn't about the quality of the investment. It was about the refusal to invest at all. The parable doesn't even give us a servant who tried and failed — but if it did, I don't think that's the one who'd face the rebuke. The fury was reserved for the one who buried it in the ground and handed it back untouched. Think about that. By not using AI to multiply what we've been given — or worse, by pretending it doesn't exist — we are the servant standing before the master with nothing to show but perfectly preserved, completely unused potential.
+Remember what the master was angry about. It wasn't the quality of the investment. It was the refusal to invest at all. The story doesn't even give us a servant who tried and failed — but if it did, I don't think that's the one who'd face the rebuke. The fury was reserved for the one who buried it in the ground and handed it back untouched. Think about that. By not using AI to multiply what we've been given — or worse, by pretending it doesn't exist — we are the servant standing before the master with nothing to show but perfectly preserved, completely unused potential.
 
 Now — I'm not saying that everyone who doesn't use AI is the wicked and lazy servant. If you are using your talents in positive ways, multiplying what God gave you through whatever means you have, that is excellent. Keep going. But maybe, just maybe, you can see AI as a force multiplier that comes with risks. And here's the thing: our very biblical worldview and biblical principles are the very thing that gives us the self-control we need to navigate those risks. They're the guardrails. They're the framework for responsible use that the rest of the world doesn't have.
 
@@ -250,7 +248,7 @@ There is more in the gospels and throughout scripture about self-control than ab
 
 And if we don't model that stewardship — if we don't show the world what it looks like to use AI under the authority of biblical principles — then who will?
 
----
+-----
 
 ## From Where Does My Help Come?
 
@@ -266,7 +264,7 @@ If Christians don't engage with this — if we don't bring our framework for whe
 
 The biblical worldview doesn't just give us self-control for using AI. It gives us the lens for recognizing when AI is being used in place of something eternal. That discernment — that ability to see the golden calf for what it is while everyone else is bowing — is the talent. And we're burying it.
 
----
+-----
 
 ## We've Done This Before
 
@@ -286,7 +284,7 @@ I shared the title of this book with a colleague — *Nothing New, Even AI* — 
 
 AI is not going to be different. Except this time, the stakes are higher. Because this time, the technology doesn't just broadcast values — it embodies them. It reasons with them. It teaches your children using them. It answers the 2 AM question about whether life is worth living. And if the values it uses aren't ours, it's because we buried ours in the ground and called it faithfulness.
 
----
+-----
 
 ## The Room Fills With Whatever Principles Show Up
 
@@ -304,7 +302,7 @@ This isn't only for Christians. If you hold moral convictions about how AI shoul
 
 But I'm writing this chapter to Christians specifically because I know us. I know our instinct to retreat. I know our pattern — I just traced it through three decades of technology. And I know that AI is the first technology that doesn't just wait for us to engage. It actively fills the space we leave empty. Every day we're absent from the conversation, the systems learn a little more about what the world values. And if what we value isn't represented, it won't be learned.
 
----
+-----
 
 ## Nothing New Under the Sun
 
@@ -318,7 +316,7 @@ Nothing new. The tools change. The territory changes. The call doesn't.
 
 Nehemiah built with a trowel in one hand and a sword in the other. He didn't have the luxury of choosing between building and fighting. Neither do we. The wall needs building. The gaps need filling. And the talent — the one God gave you, the moral framework grounded in truth that transcends every quarterly earnings report and every political cycle — was never yours to bury.
 
-But here's the thing I keep coming back to. The master's rebuke in the parable was harsh. The servant buried his talent out of fear — and fear is understandable. But Paul doesn't leave us in the rebuke. He takes us somewhere else entirely. After naming every dark thing the old self carries — futility, hardness, sensuality, falsehood, bitterness, rage — he pivots: *"Be imitators of God, therefore, as beloved children."*
+But here's the thing I keep coming back to. The master in that story was harsh. The servant buried his gift out of fear — and fear is understandable. But Paul doesn't leave us in the rebuke. He takes us somewhere else entirely. After naming every dark thing the old self carries — futility, hardness, sensuality, falsehood, bitterness, rage — he pivots: *"Be imitators of God, therefore, as beloved children."*
 
 Not as terrified servants. As beloved children.
 
@@ -328,7 +326,7 @@ Dig it up. Bring it to the room. The wall won't build itself. And it was never a
 
 *The previous chapter, [Choosing Faith, Not Fear](klappy://writings/choosing-faith-not-fear), anchors identity in what doesn't change. This chapter asks what that identity demands of us. The appendix, [The Biblical Roots](klappy://draft-zeros/appendix-a-the-biblical-roots), maps the scriptural foundations underneath every principle in this book.*
 
----
+-----
 
 ## Key Beats to Develop (Author Notes)
 
