@@ -271,13 +271,13 @@ Draft-zeros are disposable. Their value is in the *thinking they preserve*, not 
 - **Draft-zero:** N/A — written via oral-first workflow (Feb 21, 2026)
 - **Source:** `writings/choosing-faith-not-fear.md`
 - **Arc:** Personal spiritual reckoning. AI replacing God in daily life as deeper fear than job replacement. Identity anchored in Christ. Three-generation validation (author, parents, son). Universal principle for non-Christian readers.
-- **Distinct from Ch 6 (The Buried Talent):** This is identity anchoring; that is responsibility to engage.
-- **Successor:** The Buried Talent now follows directly. Faith anchors identity → stewardship demands action.
+- **Distinct from Ch 6 (The Broken Wall and the Buried Talent):** This is identity anchoring; that is responsibility to engage.
+- **Successor:** The Broken Wall and the Buried Talent now follows directly. Faith anchors identity → stewardship demands action.
 
-**Chapter 6: *The Buried Talent***
+**Chapter 6: *The Broken Wall and the Buried Talent***
 
 - **Status:** ✅ Draft (promoted from draft-zero, 22+ revision rounds)
-- **Published file:** `writings/the-buried-talent.md`
+- **Published file:** `writings/the-broken-wall-and-the-buried-talent.md`
 - **Source:** Author testimony + Yvonne Carlson transcript + colleague transcript + dinner conversation (Feb 26, 2026)
 - **Arc:** Christians have the most relevant framework for AI governance but are the most afraid to engage. The "playing God" accusation from friends and family. The confusion as evidence of the problem. The risk of scripture misapplication is real; the risk of abdication is worse. The buried talent parable. If Christians don't bring biblical principles to the room, the room fills with whatever principles are most profitable.
 - **Provenance:** Full revision receipts in file metadata. Includes: fabricated quote removed, scripture verified against BSB, overclaiming pass, tone converted to shared confession, parable extrapolation clarified.
