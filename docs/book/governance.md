@@ -241,6 +241,13 @@ Draft-zeros are disposable. Their value is in the *thinking they preserve*, not 
 - **Source:** `writings/the-most-expensive-problem.md`
 - **Arc:** Civilizational scale. Every generation faced the same bottleneck. AI inverted the cost of production vs. verification.
 
+**Companion Essay: *Copy. Paste.***
+
+- **Status:** ✅ Draft (published to writings/)
+- **Source:** `writings/copy-paste.md`
+- **Arc:** The demeaning last mile of AI-augmented work. AI compressed the creative work to minutes — what remains is the seam between tools, and you are the seam. UX essay with song-like "Copy. Paste." chorus structure. Complements Chapter 1 by naming the lived experience of the problem from the user's seat.
+- **Placement:** Standalone companion essay to Part I. Candidate for book inclusion — author to decide if it becomes a chapter or remains a published companion piece.
+
 **Chapter 2: *Where Words Stop Working***
 
 - **Status:** 📋 Draft-zero captured

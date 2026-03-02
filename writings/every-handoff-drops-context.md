@@ -50,7 +50,7 @@ related:
   - uri: klappy://writings/the-most-expensive-problem
     label: "The Most Expensive Problem (parent essay)"
     relationship: companion
-complements: "writings/the-journey-from-ai-tasks-to-ai-augmented-workflows.md, writings/the-project-journal.md, writings/decisions-get-lost.md, writings/the-most-expensive-problem.md"
+complements: "writings/the-journey-from-ai-tasks-to-ai-augmented-workflows.md, writings/the-project-journal.md, writings/decisions-get-lost.md, writings/the-most-expensive-problem.md, writings/copy-paste.md"
 start_here: true
 start_here_order: 8
 start_here_label: "Every Handoff Drops Context — Team Collaboration"

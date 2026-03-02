@@ -48,7 +48,7 @@ related:
   - uri: klappy://writings/from-bible-translation-to-epistemic-os
     label: "From Bible Translation to Epistemic OS — And Back Again"
     relationship: companion
-complements: "writings/nothing-new-even-ai.md, writings/the-intern.md, writings/the-parallel-architecture.md, writings/the-project-journal.md, writings/from-bible-translation-to-epistemic-os.md, writings/the-journey-from-ai-tasks-to-ai-augmented-workflows.md, writings/every-handoff-drops-context.md, writings/decisions-get-lost.md, canon/values/shared-values-as-trust-proxy.md, canon/values/trust-kernel.md, docs/architecture/epistemic-os-layers.md, odd/appendices/cognitive-saturation-threshold.md, docs/evidence/testimony-2026-02-13.md"
+complements: "writings/nothing-new-even-ai.md, writings/the-intern.md, writings/the-parallel-architecture.md, writings/the-project-journal.md, writings/from-bible-translation-to-epistemic-os.md, writings/the-journey-from-ai-tasks-to-ai-augmented-workflows.md, writings/every-handoff-drops-context.md, writings/decisions-get-lost.md, writings/copy-paste.md, canon/values/shared-values-as-trust-proxy.md, canon/values/trust-kernel.md, docs/architecture/epistemic-os-layers.md, odd/appendices/cognitive-saturation-threshold.md, docs/evidence/testimony-2026-02-13.md"
 start_here: true
 start_here_order: 3
 start_here_label: "The Most Expensive Problem — Why This Exists"

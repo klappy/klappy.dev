@@ -48,7 +48,7 @@ related:
   - uri: klappy://writings/the-project-journal
     label: "The Project Journal"
     relationship: companion
-complements: "writings/nothing-new-even-ai.md, writings/the-project-journal.md, writings/the-most-expensive-problem.md, odd/constraint/use-only-what-hurts.md"
+complements: "writings/nothing-new-even-ai.md, writings/the-project-journal.md, writings/the-most-expensive-problem.md, writings/copy-paste.md, odd/constraint/use-only-what-hurts.md"
 start_here: true
 start_here_order: 2
 start_here_label: "The Intern — Start Here"

@@ -50,7 +50,7 @@ related:
   - uri: klappy://writings/the-most-expensive-problem
     label: "The Most Expensive Problem (parent essay)"
     relationship: companion
-complements: "writings/the-project-journal.md, writings/the-most-expensive-problem.md, writings/every-handoff-drops-context.md, writings/decisions-get-lost.md"
+complements: "writings/the-project-journal.md, writings/the-most-expensive-problem.md, writings/every-handoff-drops-context.md, writings/decisions-get-lost.md, writings/copy-paste.md"
 start_here: true
 start_here_order: 7
 start_here_label: "The Journey — From AI Tasks to AI-Augmented Workflows"

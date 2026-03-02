@@ -49,7 +49,7 @@ related:
   - uri: klappy://writings/the-project-journal
     label: "The Project Journal (getting started)"
     relationship: companion
-complements: "writings/every-handoff-drops-context.md, writings/the-journey-from-ai-tasks-to-ai-augmented-workflows.md, writings/the-project-journal.md, writings/the-most-expensive-problem.md"
+complements: "writings/every-handoff-drops-context.md, writings/the-journey-from-ai-tasks-to-ai-augmented-workflows.md, writings/the-project-journal.md, writings/the-most-expensive-problem.md, writings/copy-paste.md"
 start_here: true
 start_here_order: 9
 start_here_label: "Decisions Get Lost — Meetings, Chat, and Handoffs"
