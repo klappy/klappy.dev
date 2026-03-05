@@ -24,7 +24,7 @@ epoch: E0005
 date: 2026-02-28
 
 # Discovery
-hook: "The Claude Code team spent a year learning to see like an agent. I spent fifteen years learning to see like a translator. We arrived at the same operating principles — and that means we can maximize the work not done."
+hook: "The Claude Code team spent a year learning to see like an agent. I spent fifteen years learning to see like someone guiding teams through Bible translation. We arrived at the same operating principles — and that means we can maximize the work not done."
 description: "Thariq's lessons from building Claude Code and the Epistemic OS converge on the same structural insights from radically different starting points. This essay maps the parallel journeys and argues for sharing the lessons rather than rebuilding them."
 slug: seeing-like-an-agent
 
@@ -58,7 +58,7 @@ start_here: false
 
 ### A year inside the machine and fifteen years outside it led to the same place
 
-> The Claude Code team spent a year learning to see like an agent. I spent fifteen years learning to see like a translator. We arrived at the same operating principles — and that means we can maximize the work not done.
+> The Claude Code team spent a year learning to see like an agent. I spent fifteen years learning to see like someone guiding teams through Bible translation. We arrived at the same operating principles — and that means we can maximize the work not done.
 
 ---
 
@@ -192,7 +192,7 @@ All three arrived at: context on demand beats context upfront. Tools must fit ac
 
 That's not just convergence. That's the shape of the problem becoming visible to anyone willing to look.
 
-See like an agent. Verify like a translator. Share like it matters — because the work not done is the most valuable work of all.
+See like an agent. Verify like a translation team. Share like it matters — because the work not done is the most valuable work of all.
 
 ---
 
