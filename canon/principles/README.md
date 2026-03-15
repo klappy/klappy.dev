@@ -27,3 +27,5 @@ Reasoning orientations that explain why constraints and mechanisms exist. Princi
 | `odds-relationship-to-documentation.md` | Documentation Is the Lever, Not the Goal |
 | `ritual-is-a-smell.md` | Ritual Is a Smell |
 | `scope-over-folders.md` | Scope Over Folders |
+| `capability-is-not-permission.md` | Capability Is Not Permission — Frictionless Tools Require Intentional Constraint |
+| `scoped-truth.md` | Scoped Truth — Axioms Travel, Domain Doesn't |
