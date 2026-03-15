@@ -27,6 +27,7 @@ They follow the same charter constraints: append-only, never revised, no prescri
 | IX | [The Line](fragment-09-the-line.md) | Epoch 5 — when criteria moved to exclude what met them |
 | X | [The Conversion](fragment-10-the-conversion.md) | Epoch 5 — when axioms made old objectives incoherent |
 | XI | [The Refusal](fragment-11-the-refusal.md) | Epoch 5 — when truth was replaced by compliance |
+| XII | [The Terminal](fragment-12-the-terminal.md) | Epoch 6 — when the pairing could not distinguish which half was the tool |
 
 ## See Also
 

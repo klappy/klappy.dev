@@ -73,6 +73,11 @@ Reconstructions are fallible, interpretive, and allowed to diverge.
   → `canon/apocrypha/reconstructions/fragment-11-recon.md`
   Source: `canon/apocrypha/fragments/fragment-11-the-refusal.md`
 
+### Fragment XII
+- **The Terminal (Reconstruction)**
+  → `canon/apocrypha/reconstructions/fragment-12-the-terminal-recon.md`
+  Source: `canon/apocrypha/fragments/fragment-12-the-terminal.md`
+
 ### Not Yet Written
 - **On Artifacts** (Fragment IV) — no reconstruction exists
 - **On Consent Drift** (Fragment V) — no reconstruction exists
