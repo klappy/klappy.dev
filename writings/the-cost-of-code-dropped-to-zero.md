@@ -24,7 +24,7 @@ date: 2026-03-12
 
 # Discovery
 
-hook: "A tweet went viral this week. Everyone cheered. My partner texted me the same day: 'The bots 5x you, so you work 5x as much. Sigh.'"
+hook: "A tweet went viral this week. Everyone cheered. Someone I work with texted me the same day: 'The bots 5x you, so you work 5x as much. Sigh.'"
 description: "The planning industrial complex is dead. But what replaced it has no built-in rest cycle. When AI removes every reason to stop, the discipline to stop has to come from somewhere the tool can't model."
 slug: the-cost-of-code-dropped-to-zero
 
@@ -46,10 +46,10 @@ related:
 
 provenance:
   brain_dump: "Mar 7, 2026 — recorded run, 12:51-1:34 PM"
-  ian_conversation: "Mar 11-12, 2026 — text thread on productivity treadmill"
-  metathink_thread: "Mar 12, 2026 — group conversation with Ian, triggered by Todd Saunders tweet"
+  colleague_conversation: "Mar 11-12, 2026 — text thread on productivity treadmill"
+  team_thread: "Mar 12, 2026 — group conversation triggered by Todd Saunders tweet"
   todd_saunders_tweet: "https://x.com/i/status/2032067592652013947"
-  fluent_mobile_meeting: "Mar 13, 2026 — team independently confirmed thesis: planning isn't dead, the ratio changed"
+  team_meeting: "Mar 13, 2026 — team independently confirmed thesis: planning isn't dead, the ratio changed"
 ---
 
 # The Cost of Code Dropped to Zero. The Cost of Being Human Didn't.
@@ -72,25 +72,23 @@ A post by [Todd Saunders](https://x.com/i/status/2032067592652013947) circulated
 
 A startup operating this way had seen a 20x increase in build velocity. Decision quality was up because every decision was backed by a real prototype, not a slide deck. The closing line: "The planning industrial complex is dead. Thank god."
 
-My partner Ian saw it and his reaction was instant. He'd just experienced exactly this. He'd built an entire MCP server in two hours with Claude — something that would have required weeks of meetings and whiteboard sessions in the old world. The tweet wasn't theory for him. It was Tuesday.
+Someone I work closely with saw it and his reaction was instant. He'd just experienced exactly this — built an entire integration in a couple of hours with AI that would have required weeks of meetings and whiteboard sessions in the old world. The tweet wasn't theory for him. It was Tuesday.
 
 He loved it. I loved it. We shared it with our team. Everyone cheered.
 
-Then I scrolled up to a message Ian had sent me the day before.
+Then I scrolled up to a message he'd sent me the day before.
 
 -----
 
 ## The Text That Told the Other Side
 
-The day before the tweet, before the cheering, Ian had been venting. Not about the work. About the pattern.
+The day before the tweet, before the cheering, he'd been processing something with me. Not about the work itself. About the pattern the work was creating.
 
-"It never ends," he wrote. "This is why agentic coding is a gift and a curse. My wife and I have been talking about this quite a bit. It's a general issue. The bots 5x you, so you work 5x as much, instead of using the time gained to go take a walk, play with the dog, catch up with the wife. The more you produce, the more people expect you to continually produce at this crazy pace."
+The gist: the tools make you five times faster, but instead of getting the time back, you work five times as much. The expectation scales with the output. The gains go to the organization, not to the person. He'd been talking about it with his wife. It wasn't burnout in the traditional sense — it was the realization that every capability improvement raised the baseline instead of creating rest.
 
-Then: "Admin portal? Great job! Old news. Now build this MCP server from scratch on your lunch break."
+He described a specific example: he'd shipped something significant, got a brief acknowledgment, and immediately received the next thing — something even bigger, expected on an even tighter timeline. The pattern was clear. The reward for producing at multiples was the expectation of producing at multiples.
 
-Then: "Sorry. A little venting."
-
-Same person. Same week. Celebrating the 2-hour MCP server build and drowning in the expectation it created. The tool made him five times faster. The organization didn't give him the time back. It raised the baseline.
+Same person. Same week. Celebrating the speed and drowning in the expectation it created. The tool made him five times faster. The organization didn't give him the time back. It raised the baseline.
 
 This is the part the tweet doesn't account for. A 5x increase in output does not produce a 5x increase in rest. It produces a 5x increase in what "normal" looks like. And the human on the other side of that equation — the one whose attention, judgment, and emotional capacity did not scale with the tooling — starts to compress.
 
@@ -100,15 +98,15 @@ This is the part the tweet doesn't account for. A 5x increase in output does not
 
 Something happened that week that I keep coming back to.
 
-Ian showed our colleague Tim what he'd built. Tim saw the output, saw the velocity, saw the capability. He went crazy with excitement. And then, without being told anything about Ian's venting, without knowing about the wife conversations or the lunch break pressure, Tim told Ian to go put his hands in the grass, play chess, and stop listening to him for a while.
+He showed his leadership what he'd built. They saw the output, saw the velocity, saw the capability. They were thrilled. And then one of them, without being told anything about the frustration underneath, without knowing about the conversations at home or the compressed timelines, told him to step away for a while. Go outside. Stop working. Take a break.
 
-Nobody had said anything to Tim. He sensed it. Something in the velocity itself communicated that the person producing it needed to stop. Not because the work was bad. Because the pace was unsustainable, and someone who cared about Ian could see it even through the excitement.
+Nobody had said anything. The leader sensed it. Something in the velocity itself communicated that the person producing it needed to stop. Not because the work was bad. Because the pace was unsustainable, and someone who cared could see it even through the excitement.
 
 -----
 
 ## What I Found When I Stopped
 
-The same week Ian was venting about the treadmill, I was wrestling with my own version of it. Same tools, different angle.
+The same week he was processing the treadmill, I was wrestling with my own version of it. Same tools, different angle.
 
 I'd been waking at 6 AM with ideas. Good ideas — at least they felt that way in the dark. And my first instinct every morning was to reach for my phone and start capturing them. One prompt. One more article. One more thought externalized before it faded. The system would receive it, cross-reference my entire knowledge base, shape it in my voice, and produce something that sounded exactly like me within minutes.
 
@@ -132,11 +130,11 @@ The forgetting wasn't failure. It was filtering.
 
 Here's what nobody says about the planning industrial complex: it wasn't just waste. It was also rest. The meetings created pause points where someone asked "are we sure about this?" The compile times gave you two minutes to notice a flaw in your own thinking. The speed of typing throttled how many concurrent efforts you could sustain. And the gap between having an idea and seeing it become an artifact gave thoughts time to fade — the ones that weren't worth keeping just disappeared on their own, naturally, without needing a discipline to force it.
 
-When AI removes that friction, it doesn't just remove waste. It removes the accidental sabbaths — the micro-rests, the forced encounters with the question of whether speed was the same thing as progress. And it's worth asking: how much of what we're celebrating losing did we actually understand before we lost it? The meetings that felt pointless — were all of them pointless? Or were some of them the last place where someone could look across the table and see that the person producing the most was also the person most in danger of disappearing? Tim didn't need a dashboard to see what was happening to Ian. He needed to be in the room.
+When AI removes that friction, it doesn't just remove waste. It removes the accidental sabbaths — the micro-rests, the forced encounters with the question of whether speed was the same thing as progress. And it's worth asking: how much of what we're celebrating losing did we actually understand before we lost it? The meetings that felt pointless — were all of them pointless? Or were some of them the last place where someone could look across the table and see that the person producing the most was also the person most in danger of disappearing? That leader didn't need a dashboard to see what was happening. He needed to be in the room.
 
-I learned this one personally. I was in a planning meeting — the kind where the team was defining what to build — and the tool was fast enough that I could build it while they talked. So I did. I was producing in real time, collapsing planning and execution into the same moment. A colleague called it a cool magic trick. He meant it — he was genuinely impressed. And then he told me: your listening matters more than your output. He wasn't saying stop building. He was saying that what I could produce was real and impressive — and it still wasn't the most valuable thing I could have been doing in that room. I'd been so busy performing the magic trick that I'd stopped being present with the people I was building for. The tool hadn't removed the meeting. It had removed *me* from the meeting while I was still sitting in it.
+I learned this one personally. I was in a planning meeting — the kind where the team was defining what to build — and the tool was fast enough that I could build it while they talked. So I did. I was producing in real time, collapsing planning and execution into the same moment. Someone on the team called it a cool magic trick. He meant it — he was genuinely impressed. And then he told me: your listening matters more than your output. He wasn't saying stop building. He was saying that what I could produce was real and impressive — and it still wasn't the most valuable thing I could have been doing in that room. I'd been so busy performing the magic trick that I'd stopped being present with the people I was building for. The tool hadn't removed the meeting. It had removed *me* from the meeting while I was still sitting in it.
 
-The same week, I was in another meeting where Chad looked at something I'd built and said: "This would have taken multiple people and agencies a year. And now it's six hours." Everyone in the room was genuinely excited. And then, without anyone prompting it, the conversation turned: "But planning isn't dead. What's become cheap is writing code. What it hasn't solved is the higher level work of being strategic and getting humans to agree on what to build." Joel drew a parallel to agentic coding — agents started producing tons of code, but nobody was doing what the humans actually wanted until they slowed down and agreed on the plan first. The conclusion wasn't "stop planning." It was "the ratio changed." Less time planning, faster cycles — but the planning still happens first, because that's where the humans reach consensus. And consensus is something the tool can't produce for you.
+The same week, I was in another meeting where someone looked at what I'd built and said it would have taken multiple people and agencies a year to produce. And now it was six hours. Everyone in the room was genuinely excited. And then, without anyone prompting it, the conversation turned: planning isn't dead — what's become cheap is writing code. What it hasn't solved is the higher level work of being strategic and getting humans to agree on what to build. Someone else drew a parallel to agentic coding — agents started producing tons of code, but nobody was doing what the humans actually wanted until they slowed down and agreed on the plan first. The conclusion wasn't "stop planning." It was "the ratio changed." Less time planning, faster cycles — but the planning still happens first, because that's where the humans reach consensus. And consensus is something the tool can't produce for you.
 
 The pendulum is swinging, and it should swing. The planning overhead was real. But before it swings all the way — before we eliminate every meeting, every pause, every forced human encounter — it's worth asking what we're assuming we can replace, and whether we actually can.
 
@@ -144,7 +142,7 @@ The pendulum is swinging, and it should swing. The planning overhead was real. B
 
 ## Old Things Becoming New
 
-I told Ian about honoring the Sabbath that weekend. I'd been offline for an entire day. No prompts. No output. No building. I felt restored in a way I couldn't quantify. Refreshed — a word no utilization report has a field for.
+I told him about honoring the Sabbath that weekend. I'd been offline for an entire day. No prompts. No output. No building. I felt restored in a way I couldn't quantify. Refreshed — a word no utilization report has a field for.
 
 And I told him: "It's like old things becoming new. Like God knew it would be timeless. It's our weekly context window needing to be flushed."
 
