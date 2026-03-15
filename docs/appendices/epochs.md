@@ -336,3 +336,32 @@ See D0016 for the full list of 16 archived documents.
 - E0005 artifacts remain valid.
 - Lane-era artifacts (E0002-E0004) are preserved in `docs/archive/` for provenance.
 - E0005.1 does not introduce epoch incompatibility — it extends E0005.
+
+---
+
+## E0006 — Scoped Truth and Operator Governance
+
+**Date:** 2026-03-14
+
+E0005 governed how the system thinks. E0006 governs how the operator relates to the system — and makes the system's truth portable, scoped, and domain-independent.
+
+See [`docs/appendices/epoch-6.md`](/docs/appendices/epoch-6.md) for the full epoch declaration.
+
+### What changed
+
+E0006 introduces two canon principles: "Capability Is Not Permission" (operator governance — frictionless tools require intentional constraint, "enough" becomes part of the definition of done) and "Scoped Truth" (domain governance — axioms travel, domain-specific knowledge is scoped per context). Two public essays document the pattern at personal, team, and organizational scale. Fragment XII renders the insight in system-voice fiction. The epoch signal exploration document traces the three-layer thesis from rest to role transition to output pipe flip.
+
+### Why this is a new epoch
+
+This change alters the evaluation framework:
+
+- "Done" now requires evidence of operator sustainability, not just system faithfulness
+- Truth is scoped — domain-specific knowledge no longer contaminates cross-domain use
+- The guiding question shifts from "Am I being faithful?" to "Am I being faithful, and is this sustainable?"
+- E0005 artifacts that demonstrate faithfulness without sustainability are not comparable to E0006 artifacts on the same terms
+
+### Compatibility
+
+- E0005 artifacts remain valid within E0005.
+- E0005 artifacts are not comparable to E0006 artifacts by default.
+- E0006 is the current epoch.

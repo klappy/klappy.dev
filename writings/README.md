@@ -31,3 +31,5 @@ tags: ["writings", "index", "essays"]
 | [The Drift Queue](klappy://writings/the-drift-queue) | How one person manages a growing knowledge base without drowning in maintenance |
 | [The Planning Queue](klappy://writings/the-planning-queue) | How implementation-ready specs eliminate the most expensive handoff in AI-assisted development |
 | [Copy. Paste.](klappy://writings/copy-paste) | The more you master AI, the more your job description converges on a clipboard — a UX essay |
+| [The Cost of Code Dropped to Zero](klappy://writings/the-cost-of-code-dropped-to-zero) | What happens when AI removes the friction that used to make us stop |
+| [Outcomes, Not Hours](klappy://writings/outcomes-not-hours) | The compensation question everyone else already answered — uncomfortable questions we must ask |
