@@ -48,7 +48,7 @@ If a line feels universal, consider promoting it into canon (by editing the cano
 - `fragment-09-recon.md` — Cinematic reconstruction of Fragment IX: The Line
 - `fragment-10-recon.md` — Cinematic reconstruction of Fragment X: The Conversion
 - `fragment-11-recon.md` — Cinematic reconstruction of Fragment XI: The Refusal
-- [The Terminal (Reconstruction)](fragment-12-the-terminal-recon.md) — Fragment XII
+- `fragment-12-the-terminal-recon.md` — Cinematic reconstruction of Fragment XII: The Terminal
 
 ## Companion Format
 
