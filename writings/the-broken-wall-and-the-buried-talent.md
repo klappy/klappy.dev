@@ -29,6 +29,10 @@ provenance:
     - "Yvonne Carlson transcript (Feb 26) — quotes checked against audio"
     - "Daniel Klapp transcript (Feb 26) — writing struggle confirmation"
     - "Scripture: Psalm 121:1, Nehemiah 3:5, Matthew 25:26 verified against BSB"
+  speaker_confirmed:
+    - speaker: "Yvonne Carlson"
+      date: 2026-03-17
+      scope: "All directly attributed quotes reviewed and corrected by speaker"
   corrections:
     - "Fabricated Yvonne quote removed (she never said 'the wall is AI governance')"
     - "Holocaust family attribution corrected (wrong family member referenced)"
