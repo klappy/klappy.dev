@@ -59,6 +59,7 @@ This constraint is grounded in the foundational axiom that verification requires
 - **Closure Pressure**: Claiming completion to appear helpful rather than admitting incompleteness
 - **Inference as Observation**: Claiming behavior was observed when it was only inferred from code
 - **Bypassing Phenomenological Limits**: Claiming to verify audio/subjective experience without human confirmation
+- **Intermediary as Ground Truth**: Treating a derived artifact (transcript, summary, cached index) as the primary source. Verification against an intermediary inherits its errors.
 
 ---
 
@@ -126,6 +127,7 @@ Valid evidence must be:
 - Simulated UI states presented as real
 - Fake or randomized data presented without explicit labeling
 - Screenshots that do not correspond to the claimed behavior
+- Transcript-verified quotes presented as speaker-verified (different evidence tiers)
 
 ---
 
@@ -136,10 +138,13 @@ Some properties **cannot be machine-verified**, including:
 - recording of real-world sound
 - subjective user experience (e.g., "feels right")
 - perceptual or ergonomic qualities
+- transcript fidelity to speaker intent (transcripts are lossy — dropped words, mishearings, and flattened self-corrections can alter meaning while remaining internally consistent)
 
 These require **explicit human verification**.
 
 Agents must acknowledge these limits rather than bypass them.
+
+When quoting named individuals from transcripts, the speaker is the authoritative source. Verifying a quote against a transcript proves alignment with the transcript, not with what the speaker said. Speaker confirmation is required before publication of named direct quotes.
 
 ---
 

@@ -4,7 +4,7 @@ title: "The Broken Wall and the Buried Talent"
 subtitle: "Two ancient stories collided in a conversation about AI — and I haven't been the same since"
 author: "Klappy"
 type: article
-status: draft
+status: published
 stability: evolving
 audience: public
 exposure: public

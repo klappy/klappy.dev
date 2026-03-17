@@ -48,6 +48,12 @@ Architecture Decision Records (ADRs) specific to the klappy.dev repository imple
 | [D0014](./D0014-e0003-evidence-first-era.md) | E0003 evidence-first era (deployment proof required) | **Active** |
 | [D0015](./D0015-lane-prd-structure-alignment.md) | Lane-root PRD must be authoritative, not an index | **Active** |
 
+### Provenance & Verification
+
+| ID | Decision | Status |
+|----|----------|--------|
+| [D0018](./D0018-transcripts-are-lossy-sources.md) | Transcripts are lossy sources; speaker confirmation required for named quotes | **Active** |
+
 ### Repository Hygiene
 
 | ID | Decision | Status |
