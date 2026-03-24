@@ -210,3 +210,50 @@ Parse and store all YAML frontmatter as a generic object. Scoring reads specific
 - **Additional canon consulted:** anti-cache-lying (revisited), constraint-driven-audits, oddkit_diff implementation doc
 - **Additional code examined:** zip-baseline-fetcher.ts frontmatter parser (field inventory), buildIndex.js full frontmatter storage (line 122)
 
+-----
+
+## Addendum — Write Path Breakthrough (March 24, 2026)
+
+### O8: Claude Code mobile timeout failure
+
+**What:** Claude Code on mobile timed out 7+ times attempting to write a single 287-line markdown file from the handoff document. Even after switching from parallel to sequential file writes, every attempt produced "Request timed out." The handoff document was correct — every file embedded, every path specified, metadata production-ready. The last mile failed because the tool couldn't execute it.
+
+**Evidence:** Screenshots IMG_3191 through IMG_3195.
+
+### O9: Claude.ai with computer use succeeded in 3 minutes
+
+**What:** Claude.ai (this session) cloned the repo, created a branch, copied all 5 files (1158 lines) to their target paths, committed with a descriptive message, pushed to GitHub, and created PR #69 with full description — all via bash/git/curl. Total time from "let's push from here" to PR open: ~3 minutes.
+
+**PR:** https://github.com/klappy/klappy.dev/pull/69
+
+### L6: The write path bottleneck was an environment problem, not a tooling problem
+
+**What:** For months, the plan was to build oddkit_write as a custom MCP action using the GitHub Data API with atomic multi-file commits, IndexedDB as local staging, and branch-and-PR workflows. None of that was needed. Claude.ai with computer use already has bash, git, and network access. The correct workflow is plain git: clone, branch, copy, commit, push, create PR. The engineering instinct was to build infrastructure. The correct instinct was to use what already existed. This is Use Only What Hurts applied to itself — we designed the write path planning doc instead of noticing the capability was already present in a different tool.
+
+### L7: Over-engineering credential management is the same pattern
+
+**What:** When asked how to make the PAT durable and secure, three options were proposed: (1) oddkit MCP action with Cloudflare Worker secret, (2) PAT in project instructions, (3) GitHub App with auto-refreshing tokens. The author correctly identified that options 1 and 3 reinvent the over-engineering nightmare that caused the write path bottleneck in the first place. Option 2 — the simplest possible solution — was chosen. A fine-grained PAT scoped to one repo, stored in project instructions, read at session start. No infrastructure. No deployment. No maintenance.
+
+### D: Write path uses plain git + PAT in project instructions
+
+**Decision:** The write path for klappy.dev uses claude.ai computer use with a fine-grained GitHub PAT stored in project instructions. Scoped to klappy/klappy.dev only (contents:write, pull_requests:write). No custom oddkit action, no GitHub App, no Cloudflare Worker proxy.
+
+**Workflow:** Session produces artifacts → clone repo → create branch → copy files → commit → push → create PR via GitHub API → author reviews and merges.
+
+**Alternatives rejected:** (1) oddkit_commit MCP action — over-engineered for a problem plain git solves. (2) GitHub App — justified only for multi-user scenarios. 
+
+**Reversible:** Yes — upgrading to Worker secret or GitHub App later requires no workflow changes, only auth mechanism changes.
+
+### D: Revoke conversation-exposed PAT, create fine-grained replacement
+
+**Decision:** The PAT pasted into this conversation must be revoked immediately. A new fine-grained PAT should be created at https://github.com/settings/personal-access-tokens/new with: repository access limited to klappy/klappy.dev, permissions limited to contents:write and pull_requests:write. The new PAT is stored in project instructions, never in conversation text.
+
+### Final Session Metadata
+
+- **Total OLDC encodes:** 14 (original 10 + 4 from write path breakthrough)
+- **Total artifacts committed:** 5 files, 1158 lines, PR #69
+- **Write path proven:** claude.ai computer use + git + GitHub API
+- **Credential decision:** Fine-grained PAT in project instructions
+- **Session span:** March 21–24, 2026
+
+
