@@ -15,7 +15,7 @@ tags: ["odd", "epochs", "fitness-landscape", "comparability", "orientation"]
 
 ## Description
 
-An epoch is a named period where "success" meaning is stable enough to compare outcomes. Attempts are individuals, PRDs are fitness functions, Promotion is selection, Canon is inherited traits, and Epochs are shifts in the fitness landscape. An epoch defines evaluation reality: what "done" means, mandatory evidence, binding contracts, acceptable risks, and infrastructure stability. Epochs are not PRDs—they are the context in which PRDs are interpreted. klappy.dev defines E0001 (single-PRD era), E0002 (multi-lane era), E0003 (evidence-first era with Cloudflare deployment proof required), E0004 (epistemic separation era with judgment/embodiment distinction), and E0005 (values-first epistemics with foundational axioms and orientation creed).
+An epoch is a named period where "success" meaning is stable enough to compare outcomes. Attempts are individuals, PRDs are fitness functions, Promotion is selection, Canon is inherited traits, and Epochs are shifts in the fitness landscape. An epoch defines evaluation reality: what "done" means, mandatory evidence, binding contracts, acceptable risks, and infrastructure stability. Epochs are not PRDs—they are the context in which PRDs are interpreted. klappy.dev defines E0001 (single-PRD era), E0002 (multi-lane era), E0003 (evidence-first era with Cloudflare deployment proof required), E0004 (epistemic separation era with judgment/embodiment distinction), E0005 (values-first epistemics with foundational axioms and orientation creed), E0006 (scoped truth and operator governance), and E0007 (proactive cognitive rhythm — the system acts, the operator reviews).
 
 ## Outline
 
@@ -24,7 +24,7 @@ An epoch is a named period where "success" meaning is stable enough to compare o
 - Relationship to Product Lanes
 - Relationship to PRDs and Attempts
 - When to Start a New Epoch
-- Naming Convention (E0001, E0002, E0003, E0004, E0005)
+- Naming Convention (E0001, E0002, E0003, E0004, E0005, E0006, E0007)
 - Minimal Epoch Metadata (META.json)
 - Anti-Patterns
 - E0003 — Evidence-First Era (klappy.dev specific)
@@ -135,6 +135,8 @@ Examples:
 - `E0003-evidence-first-era`
 - `E0004-epistemic-separation-era`
 - `E0005-values-first-epistemics`
+- `E0006-scoped-truth-operator-governance`
+- `E0007-proactive-posture`
 
 The ID is the canonical reference. The name is a hint.
 
@@ -364,4 +366,33 @@ This change alters the evaluation framework:
 
 - E0005 artifacts remain valid within E0005.
 - E0005 artifacts are not comparable to E0006 artifacts by default.
-- E0006 is the current epoch.
+- E0006 artifacts remain valid within E0006.
+
+---
+
+## E0007 — From Passive to Proactive
+
+**Date:** 2026-04-03
+
+E0006 governed the operator's relationship to the system. E0007 governs the system's relationship to the operator — and reverses who initiates.
+
+See [`docs/appendices/epoch-7.md`](/docs/appendices/epoch-7.md) for the full epoch declaration.
+
+### What changed
+
+E0007 shifts oddkit's tool posture from passive (wait for invocation) to proactive (act as cognitive rhythm). Every tool becomes proactive: orient reorients at context shifts, search fires before claiming, challenge fires before encoding consequential decisions, gate activates at implicit mode transitions, validate runs before claiming done, preflight precedes execution, and encode tracks OLDC+H continuously. The Identity of Integrity becomes a continuous self-correction mechanism, not a one-time orientation. The encode persistence gap is explicitly declared: encode returns artifacts in the response stream but does not persist them. OLDC+H becomes a discoverable standard vocabulary for session capture.
+
+### Why this is a new epoch
+
+This change alters the system's initiative posture:
+
+- "Available" is necessary but no longer sufficient — the system must also act
+- Cognition is no longer delegated to the operator's memory
+- The guiding question shifts from "Am I being faithful, and is this sustainable?" to "Am I acting, not just available?"
+- E0006 artifacts produced by a passive system are not comparable to E0007 artifacts produced by a proactive one
+
+### Compatibility
+
+- E0006 artifacts remain valid within E0006.
+- E0006 artifacts are not comparable to E0007 artifacts by default.
+- E0007 is the current epoch.
