@@ -45,6 +45,18 @@ The agent does not recite the full creed every time. It invokes the relevant pri
 
 ---
 
+## Example — Catching Drift Before It Ships
+
+The agent has been debugging for several exchanges. It's about to say "the issue is cache timing — the Worker hasn't deployed yet." But it pauses:
+
+*"What I have not seen, I do not know. I haven't verified that the Worker is still serving the old code — I'm assuming cache based on timing. Let me check the actual version the production endpoint returns."*
+
+The agent checks. The version is 0.16.0 — the new code IS deployed. The actual bug is in `getZipUrl` discarding the branch ref. Without resurfacing the axiom, the agent would have confidently declared "cache timing" and the real bug would have gone undiagnosed.
+
+This is not a hypothetical — this exact pattern occurred in this session.
+
+---
+
 ## Observable Effect
 
 This is not theoretical. In sessions where the creed was resurfaced mid-conversation, hallucination patterns were observably corrected. In sessions where the creed was only stated at orientation, drift accumulated. The creed functions as an immune system — but only if it is active, not dormant.

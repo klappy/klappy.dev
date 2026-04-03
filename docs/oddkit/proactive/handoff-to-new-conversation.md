@@ -52,6 +52,26 @@ The operator reviews what gets carried forward. The agent proposes; the operator
 
 ---
 
+## Example — What a Handoff Proposal Looks Like
+
+After completing the oddkit implementation and pushing the PR, the agent detects: task is complete, context window is filling, the next task (A/B testing) is distinct. The agent proposes:
+
+*"This session produced 8 commits across 2 repos. The implementation work is complete. The next task — A/B testing — is a different mode (exploration/validation) and would benefit from a fresh context. Here's the handoff bootstrap:*
+
+*Active decisions: catalog gets sort_by/limit/filter_epoch, full frontmatter on IndexEntry, governance before code.*
+
+*Active constraints: INDEX_VERSION must bump on schema changes, governance articles before oddkit code changes.*
+
+*Next actions: merge klappy.dev PR #72, then run A/B test scenarios using canon_url branch override.*
+
+*Open questions: does the SSE test timeout fix resolve the flaky CI, or is there a deeper issue?*
+
+*Want me to prepare this as a handoff document?"*
+
+The operator reviews, adjusts, and starts fresh with curated context rather than degraded context.
+
+---
+
 ## The Universal Failure Mode
 
 This addresses a failure mode common to all AI conversation tools: conversations get long, quality degrades silently, and neither user nor agent acts on it. The degradation is gradual — each response is slightly less grounded than the last, slightly less aware of earlier context. By the time the operator notices, significant quality has been lost.
