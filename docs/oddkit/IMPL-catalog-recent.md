@@ -21,7 +21,7 @@ date: 2026-04-03
 
 oddkit already parses and indexes full frontmatter for every document. The `include_metadata` flag on search and get proves the data is there. But catalog — the discovery tool — returns only aggregate counts and categories. It cannot list individual articles or their metadata. And search/get default `include_metadata` to false, hiding the very data that enables temporal discovery, epoch grouping, and audience filtering.
 
-The core feature is metadata exposure: catalog should return an articles list with full frontmatter metadata. Sorting by date and limiting results are convenience parameters, but the foundational change is that article-level metadata becomes a first-class output. Consumers — the klappy.dev site, agents, dashboards — can then sort, filter, and group however they need.
+The core feature is metadata exposure: catalog should return an articles list with full frontmatter metadata. Sorting by date and limiting results are server-side operations — deterministic, cheap, and correct. The server does deterministic work (sort, filter, aggregate) because pushing that to an LLM is slow, expensive, and error-prone. Consumers get pre-sorted, pre-filtered results with full metadata attached — they can do additional grouping for novel queries without repeating the deterministic work.
 
 This principle extends beyond catalog. Every tool that returns document references should expose metadata. The `include_metadata` default should be reconsidered across all tools — but catalog is the immediate priority because it's the discovery entry point.
 
@@ -53,25 +53,38 @@ Maximum number of documents to return in the `articles` array. Only meaningful w
 - Default: `10`
 - Range: `1–100`
 
-### `filter_epoch` and other filters (consumer-side, not server-side)
+### `filter_epoch` (optional, string)
 
-With full metadata exposed, epoch filtering, audience filtering, stability filtering, and tag-based faceting are all consumer concerns. The server returns metadata; the consumer groups and filters. This avoids parameter proliferation on the server and gives every consumer the flexibility to slice the data however they need.
+Filter results to documents with a specific `epoch` value in frontmatter. Filtering is deterministic — the server should do it, not the LLM.
 
-If a specific filter becomes a repeated pain point across multiple consumers, it can be promoted to a server-side parameter. But start with exposure. Filter when it hurts.
+- Example: `"E0007"` returns only documents with `epoch: E0007` in frontmatter.
+- Default: no filter (all documents).
+- Documents without an `epoch` field are excluded when this filter is active.
+- Limit applies after filtering.
 
 ---
 
-## The Broader Principle — Metadata Exposure Across All Tools
+## The Principle — Deterministic Work Belongs Server-Side
+
+Sort and filter are deterministic operations. They belong on the server, not in the LLM. Making an LLM sort 400 articles by date is burning tokens on arithmetic the server can do in microseconds.
+
+The division of labor: the server does deterministic work (sort, filter, aggregate, project metadata). The LLM does judgment work (interpretation, synthesis, recommendation, connecting patterns across results). Full metadata exposure enables the LLM to do its job without also doing the server's job.
+
+Both are required. Metadata exposure without server-side sort/filter forces deterministic work onto the LLM. Server-side sort/filter without metadata exposure prevents the LLM from doing novel analysis. The correct design is both.
+
+---
+
+## Beyond Catalog — Metadata Exposure Across All Tools
 
 This feature addresses catalog specifically, but the principle extends to all oddkit tools that return document references:
 
-**Search** already supports `include_metadata: true` but defaults to false. With metadata defaulting to exposed, agents can answer "which of these results are from E0007?" or "which are tier-1?" without a second round-trip.
+**Search** already supports `include_metadata: true` but defaults to false. With metadata exposed by default, agents get epoch, date, audience, and tier alongside relevance-ranked results — enabling them to interpret results without round-tripping back to get.
 
-**Get** already supports `include_metadata: true`. Same principle.
+**Get** already supports `include_metadata: true`. Same principle — default to exposed.
 
 **Orient, preflight, challenge** all return `canon_refs` — lists of relevant documents. These currently return path and a quote snippet but no metadata. Exposing metadata on these references would let consumers understand what they're looking at without calling get on each one.
 
-The immediate implementation is catalog. The principle applies everywhere. Extend to other tools when the pain signal is clear.
+The immediate implementation is catalog with `sort_by`, `limit`, and `filter_epoch`. Extend metadata exposure to other tools when the pain signal is clear.
 
 ---
 
@@ -151,9 +164,9 @@ When `sort_by` is omitted, the response is unchanged — backward compatible.
 catalog({ sort_by: "date", limit: 15, canon_url: "https://raw.githubusercontent.com/klappy/klappy.dev/e0007-proactive-posture" })
 ```
 
-**Agent — "What was added recently?"**
+**Agent — "What was added in E0007?"**
 ```
-catalog({ sort_by: "date", limit: 20 })
+catalog({ sort_by: "date", filter_epoch: "E0007" })
 ```
 
 **Operator — "Show me recent articles"**
