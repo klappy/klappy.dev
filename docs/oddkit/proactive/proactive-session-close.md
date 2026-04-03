@@ -1,64 +1,60 @@
 ---
 uri: klappy://docs/oddkit/proactive/proactive-session-close
-title: "Proactive Commit Hygiene — Journal, Changelog, Version Bump at Every Git Lifecycle Event"
+title: "Proactive Artifact Provenance — Capture What Happened Before Finalizing"
 audience: docs
 exposure: nav
 tier: 3
 voice: neutral
 stability: stable
-tags: ["odd", "oddkit", "proactive", "commit", "changelog", "version", "journal", "ritual", "git", "epoch-7"]
+tags: ["odd", "oddkit", "proactive", "provenance", "journal", "changelog", "version", "ritual", "epoch-7"]
 epoch: E0007
 date: 2026-04-03
 ---
 
-# Proactive Commit Hygiene — Journal, Changelog, Version Bump at Every Git Lifecycle Event
+# Proactive Artifact Provenance — Capture What Happened Before Finalizing
 
-> The trigger is not "end of session." The trigger is git lifecycle events: every commit, before every PR, and — most critically — before every merge. The agent does not wait to be reminded.
+> When work produces durable artifacts, the agent captures what happened (journal), what changed (summary), and what version — at every milestone, before every review, and before finalizing. The trigger is the artifact, not the end of the conversation.
 
 ---
 
-## Summary — Tied to Git, Not to Conversation
+## Summary — Provenance Is Not a Session-End Ritual
 
-The journal, changelog, and version bump are not session-end rituals. They are git lifecycle obligations. A commit without a journal entry loses context. A PR without a changelog makes review harder. A merge without a version bump makes the release unreliable. These are not nice-to-haves — they are the provenance layer that makes the code's history legible.
+Every productive session ends with the same gap: the operator asks for a journal entry, a change summary, and a version update — if they remember. The agent has the full context of what happened and waits to be asked. This is a RITUAL_DETECTED pattern.
 
-The operator should never have to say "update the journal" or "bump the version." The git events themselves are the signal. The agent sees the commit, sees the PR, sees the merge — and acts.
+Under E0007, the agent captures provenance at the points where it matters — not at session end. The trigger is not "wrapping up." The trigger is the work itself: when durable artifacts are produced, when work is ready for review, and when work is finalized.
+
+This applies regardless of domain. In code, provenance means commits, changelogs, and version bumps. In writing, it means revision notes and draft tracking. In planning, it means decision records and handoff documents. In any domain, it means OLDC+H capture — what was observed, learned, decided, constrained, and what comes next.
+
+---
+
+## The Three Provenance Artifacts
+
+**Session capture** — OLDC+H in narrative order. What was observed, learned, decided, constrained, and what comes next. The reasoning layer that makes the artifacts' history legible. Written to the project's journal or ledger.
+
+**Change summary** — What changed and why, in language appropriate for the audience who will review or consume the work. In code, this is a changelog. In writing, this is revision notes. In planning, this is an updated decision record.
+
+**Version or revision tracking** — An identifier that distinguishes this state from the previous one. In code, this is a semantic version bump. In writing, this is a draft number or date stamp. In any domain, it is whatever convention the project uses to mark "this is different from what came before."
 
 ---
 
 ## The Three Trigger Points
 
-### At Every Commit
+### At Every Milestone
 
-The project journal tracks what happened and why. Every commit changes the codebase — the journal should reflect what the commit contains and the reasoning behind it. OLDC+H capture happens continuously (per `docs/oddkit/proactive/continuous-encoding.md`), and each commit is a natural persist point.
+When work reaches a natural breakpoint — a completed task, a significant decision, a phase transition — the session capture should be current. OLDC+H is tracked continuously (per `docs/oddkit/proactive/continuous-encoding.md`), and each milestone is a natural persist point.
 
-What the agent does: ensures the current journal entry is up to date with the work that produced the commit. If OLDC+H has been tracked continuously, this is a save — not a reconstruction.
+### Before Every Review
 
-### Before Every PR
+When work is presented for review — by a collaborator, a stakeholder, or even the operator reviewing their own work — the change summary must be current. The reviewer needs to understand what changed and why without reconstructing it from the artifacts themselves.
 
-A PR is a review artifact. The reviewer needs to understand what changed and why. The changelog and journal must be current before the PR is created — not after, not as a follow-up.
+### Before Finalizing — Most Critical
 
-What the agent does: before creating or pushing a PR, verifies that the changelog reflects all changes on the branch, the version is bumped appropriately, and the journal captures the session's decisions and rationale. If any are missing, the agent produces them and includes them in the PR.
-
-### Before Every Merge — Most Critical
-
-Merge is irreversible in practice. Once code hits main, it's the new baseline. A merge without a changelog entry means the release history has a gap. A merge without a version bump means consumers can't tell what changed. A merge without a journal entry means the next person (or next session) starts without context.
-
-What the agent does: before approving or executing a merge, validates that changelog, version, and journal are all present and current. This is a gate — not a suggestion.
-
----
-
-## The Three Artifacts
-
-**Project Journal** — OLDC+H in narrative order, written to `odd/ledger/`. Captures what was observed, learned, decided, constrained, and what comes next. The provenance layer for human reasoning.
-
-**Changelog** — User-facing description of what changed, written to `CHANGELOG.md`. Grouped by category (features, fixes, governance). References PR numbers. The provenance layer for code changes.
-
-**Version Bump** — Semantic version increment in `package.json` and any other version-bearing files. Patch for fixes, minor for features, major for breaking changes. The provenance layer for release identity.
+When work becomes durable — merged to main, published, submitted, delivered, or shared beyond the current session — all three provenance artifacts must be present. Finalization without provenance means the next person (or next session) starts without context. This is a gate, not a suggestion.
 
 ---
 
 ## The Passive Pattern This Replaces
 
-Under E0006, all three artifacts were produced at "session end" — if the operator remembered to ask. The agent had the full context of every commit, every decision, every change — and waited. PRs were created without changelogs. Merges happened without version bumps. The operator caught it later and requested a fix-up, or the gap persisted.
+Under E0006, provenance artifacts were produced when the operator remembered to ask — typically at session end. The agent had the full context of every decision, every change, every artifact produced. It waited. Work was finalized without journal entries. Changes were made without summaries. Versions drifted from the work.
 
-Under E0007, the git lifecycle IS the trigger. Commits, PRs, and merges are observable events. The agent does not need to be told they happened — it produced them. The ritual is not "remind me at the end." The ritual is built into the workflow at the points where it matters.
+Under E0007, the work itself is the trigger. The agent does not need to be told that artifacts were produced — it produced them. Provenance is captured at milestones, before reviews, and before finalization. The operator reviews what was captured, not remembers to request it.
