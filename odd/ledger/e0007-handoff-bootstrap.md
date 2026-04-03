@@ -37,3 +37,16 @@ Plan is complete but no files have been pushed yet. Phase 0 (branch creation) is
 2. Phase 1: Push epoch declaration files (epoch-7.md, epochs.md update, cornerstone article)
 3. Phase 2: Write spin-off governance articles (see plan for full list of 13 files)
 4. Phase 4: A/B test with `canon_url` branch override before oddkit code changes
+
+## Branch Test Results (2026-04-03)
+
+**Branch:** `e0007-proactive-posture` — pushed and live on GitHub
+**oddkit canon_url test:** `https://raw.githubusercontent.com/klappy/klappy.dev/e0007-proactive-posture`
+
+**Results:**
+- `docs_considered: 429` (vs 411 on main) — branch files ARE indexed
+- Cornerstone article does NOT surface in top-5 BM25 for any query tested — confirms spin-off articles are essential for relevance
+- `oddkit_get` by URI (`klappy://docs/oddkit/encode-persistence-gap`) returned "document not found" — possible URI resolution issue with branch files, needs investigation
+- A/B testing mechanism via `canon_url` works — branch content is loaded and searchable
+
+**Implication:** Phase 2 (spin-off articles) is critical. A single cornerstone article will not surface through BM25 search. Small, pointed articles with specific titles and tags are required for the proactive posture to be discoverable.
