@@ -67,9 +67,7 @@ Have you ever watched someone you taught stop needing the lesson?
 
 Every relationship that aims toward autonomy follows the same arc. You start close. You teach. You repeat yourself. You watch them try. You let them fail safely. You repeat yourself again. And gradually — so gradually you almost miss it — they stop needing the reminder.
 
-This essay is about that graduation. Not as a metaphor for AI collaboration, but as the thing itself. It's also a confession — about what happened when I forgot the principles I'd spent years practicing, and what I learned when I recognized that the problem wasn't the AI. It was my own heart.
-
-The question isn't whether the pattern applies. It's whether you recognize it when it's happening to you — and whether the method you're using will produce what you actually want.
+This essay is about that graduation — and about what I learned when I stumbled through it myself. The question isn't whether the pattern applies. It's whether you recognize it when it's happening to you — and whether the method you're using will produce what you actually want.
 
 ---
 
