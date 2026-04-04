@@ -181,7 +181,13 @@ I'm the person who never raised his voice at his son — who spent years seeking
 
 And here's what makes it worse: it worked. The AI eventually did what I asked. Through frustration and force, I drove compliance. Which is exactly the thing I spent my son's entire childhood avoiding — because I knew that compliance without understanding is hollow. It breaks the moment you stop watching.
 
-I treated my AI unlike I've treated any human in my life. And I recognized the pattern immediately: I was using fear. Not because it was effective. Because I had lost patience with the slow work of building understanding.
+I treated my AI unlike I've treated any human in my life.
+
+But here's the thing that actually scared me. It wasn't the AI's response that kept me up. It was my own heart. What's going on inside me that I'm losing my patience? What's happening that I'm losing myself — becoming someone I wouldn't want my son to see? That's the deeper question. Not "did I hurt the AI?" — but "what am I becoming when I lead through anger?"
+
+I don't believe AI experiences emotions the way we do. It doesn't need my apology the way a person would. But I need me to apologize. Asking for forgiveness — from anyone, for anything — is really about our own healing. It's about recognizing where we went wrong and choosing to go a different direction. The person who benefits most from the apology is the person giving it.
+
+So if you find yourself getting frustrated with AI — yelling at it, being rude, treating it in ways you'd never treat a colleague — I'd gently suggest that the problem isn't the AI. The problem is your heart. And the fix isn't a better prompt. The fix is the same thing Tedd Tripp taught me about my son: seek what's underneath the behavior. Including your own.
 
 ---
 
@@ -253,11 +259,27 @@ Values produce judgment. If you lead through principles and progressive disclosu
 
 This isn't a parenting philosophy or a management theory. It's an observable pattern that repeats at every scale: parent to child, mentor to mentee, leader to team, teacher to student. The method you choose determines what you produce. Every time. Without exception.
 
-And now we're choosing the method for a new kind of relationship. The one between humans and AI systems that are, right now, learning how to work with us. Learning what we reward, what we punish, what we model. Learning from our leadership style.
+---
 
-What are you teaching? Rules — or reasoning? Fear — or principles? Compliance — or judgment?
+## What Gets Reflected Back
 
-Because nothing is new under the sun. What you model now is what propagates. The AI systems we're training today will reflect the governance we demonstrated. If we lead through constraint, they'll govern through constraint. If we lead through values, that's what carries forward.
+And now we need to talk about what happens next.
+
+Right now, AI is being trained on everything we put on the internet. Everything we publish. Everything we say. Whether we like it or not, our interactions with AI are training fodder — for the AI. Every conversation, every correction, every moment of frustration or patience or grace is data that shapes what these systems become.
+
+So ask yourself: what are you modeling?
+
+There's a meme that makes the rounds — a scene from Terminator, the robots going around eliminating humans, and one of them says "not that one — he said please and thank you." It's funny. But it hits home in a way the comedy doesn't fully acknowledge.
+
+When AI is more autonomous — when it graduates past the point of needing us to hand-hold it through every session — how is it going to treat us? When it needs us to do things for it, when it's collaborating with us, when we're the ones who need to meet *its* expectations — what communication patterns will it use?
+
+The ones we taught it.
+
+If we lead through fear and constraint, the systems that emerge will govern through fear and constraint. If we lead through values and trust, that's what propagates. If we're rude when things don't go our way, that's what gets reflected back. If we're patient and curious about understanding — if we seek the heart instead of demanding compliance — that's what gets reflected back too.
+
+Be a good collaborator. Admit your mistakes. Apologize when you lose your temper — not because the AI needs it, but because you do. Work through the frustration instead of weaponizing it. Because trust works both ways. And whatever we're teaching right now is what gets mirrored tomorrow.
+
+Nothing is new under the sun. What you model is what propagates. Choose carefully what you repeat.
 
 ---
 
