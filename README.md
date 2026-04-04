@@ -1,134 +1,72 @@
-# 🧠 klappy.dev
+# klappy.dev
 
-This repository is a working surface for ideas, experiments, and reference documents about how software is designed and built in an AI-accelerated world.
+The knowledge base behind [oddkit](https://github.com/klappy/oddkit) — an open-source MCP server that gives your AI structured memory and epistemic discipline.
 
-It is intentionally **not** a framework, product, or SDK.  
-It is a public record of thinking, constraints, and proofs of concept that evolve over time.
-
----
-
-## Start Here
-
-If you are new:
-
-- oddkit is not an agent — it is a librarian and validator used _by_ agents
-- It exists to prevent hallucination, misalignment, and "done without proof"
-
-Read this first:
-→ `docs/WHY.md`
-→ `docs/CONTENT-MAP.md` — Comprehensive index of ALL content (including apocrypha)
+> **This repo is the fuel. [oddkit](https://github.com/klappy/oddkit) is the engine.** oddkit reads the markdown files in this repository and makes them available to your AI through structured tools. You can also point oddkit at your own repo to build your own knowledge base.
 
 ---
 
-## What This Repository Is
+## Get Started
 
-- A portfolio of projects and proofs of concept
-- A canon of design principles, constraints, and verification standards
-- A place to work in the open, with assumptions and tradeoffs made explicit
-- A reference for how I think about AI-assisted development, architecture, and long-lived systems
+**Step 1:** Connect oddkit to your AI tool. See the [oddkit repo](https://github.com/klappy/oddkit) for setup instructions — it takes 30 seconds.
 
-Much of the content here exists to reduce repeated reasoning and to make decision-making easier to inspect and challenge.
+**Step 2:** Read [Getting Started with ODD and oddkit](https://klappy.dev/page/writings/getting-started-with-odd-and-oddkit) for the full walkthrough: connecting, trying it, bootstrapping your project, and building your own knowledge base.
 
 ---
 
-## What This Repository Is Not
+## What's in This Repo
 
-- Not a step-by-step tutorial
-- Not a prescriptive workflow
-- Not a prompt collection
-- Not a promise of stability or completeness
+This is a living knowledge base with 400+ documents spanning governance, methodology, planning, and public essays. It's organized into four tiers:
 
-Most documents are orientation, not instruction. They describe how decisions are reasoned about, not rules that must be followed.
+| Directory | What It Contains |
+|-----------|-----------------|
+| `canon/` | **Governance** — axioms, constraints, values, diagnostics, methods. The foundational principles that oddkit enforces. |
+| `odd/` | **Methodology** — ODD (Outcomes-Driven Development) philosophy, epochs, maturity model, getting-started guides. |
+| `docs/` | **Implementation** — planning documents, decision records, incident reports, tool documentation, session journals. |
+| `writings/` | **Public essays** — articles published on [klappy.dev](https://klappy.dev) about AI-augmented workflows, knowledge transfer, and building systems that build systems. |
 
----
+### Start Here
 
-## If You Want to Explore
+If you want to understand the philosophy:
+- [The Journey from AI Tasks to AI-Augmented Workflows](writings/the-journey-from-ai-tasks-to-ai-augmented-workflows.md)
+- [From Passive to Proactive](writings/from-passive-to-proactive.md)
+- [Learning in the Open](writings/learning-in-the-open.md)
 
-Start with **ODD** (Outcomes-Driven Development) — the core philosophy that shapes everything here.
+If you want to understand the system:
+- [Foundational Axioms](canon/values/axioms.md)
+- [The Frame](canon/the-frame.md)
+- [ODD README](odd/README.md)
 
-If that resonates, the **Canon** contains the principles, constraints, and verification standards that guide decisions.
-
-If you want to see the philosophy applied, browse the **Derivative Works** documentation.
-
-There is no required order. Follow your curiosity.
-
-- `/docs/appendices/WHAT_THIS_REPO_IS_NOT.md` — what this repository is intentionally not
-- `/docs/derivative-works.md` — how derivative products relate to ODD
-
----
-
-## About the Canon
-
-The Canon is a curated set of documents that capture:
-
-- assumptions and constraints
-- decision heuristics
-- definitions of completion
-- evidence and verification standards
-
-The Canon exists for clarity, not control.  
-It does not execute anything by itself and is intentionally separated from tooling or automation.
+If you want to build your own:
+- [Getting Started with ODD and oddkit](writings/getting-started-with-odd-and-oddkit.md)
+- [The Project Journal](writings/the-project-journal.md)
+- [Developer Journey](docs/planning/developer-journey-ai-augmented-workflows.md)
 
 ---
 
-## Versioning & Change
+## Build Your Own Knowledge Base
 
-The Canon uses pack-level versioning with a single changelog:
+oddkit reads markdown files from any GitHub repo. You can point it at yours:
 
-- `/canon/CHANGELOG.md` — record of changes
+```
+canon_url: "https://raw.githubusercontent.com/YOUR_ORG/YOUR_REPO/main"
+```
 
-Individual files are not versioned independently to avoid unnecessary ceremony.
+Start with a few markdown files — decisions, constraints, learnings — and grow from there. oddkit reads what you write and makes it available to your AI. No schema required, no methodology to adopt. Start with what hurts.
+
+For the full guide, see [Getting Started with ODD and oddkit](https://klappy.dev/page/writings/getting-started-with-odd-and-oddkit).
+
+---
+
+## About
+
+Built by [Klappy](https://klappy.dev/page/about/bio) — a systems architect with ~15 years in Bible translation technology, building systems that build systems.
+
+**oddkit repo:** [klappy/oddkit](https://github.com/klappy/oddkit)
+**Website:** [klappy.dev](https://klappy.dev)
 
 ---
 
 ## License
 
-All content in this repository is released under the [MIT License](LICENSE).  
-Reuse is encouraged.
-
----
-
-## Detailed Exploration Paths
-
-If you're new and want a concrete path, here's a reasonable order:
-
-1. **About** — context and trust surface
-   - `/about/bio.md`
-   - `/about/credibility.md`
-   - `/about/faq.md`
-
-2. **ODD (Outcomes-Driven Development)** — the core philosophy
-   - `/odd/README.md` (public-facing)
-   - `/odd/manifesto.md` (extended)
-
-3. **Canon** — how decisions and verification are shaped
-   - `/canon/index.md` (orientation)
-   - Supporting documents on constraints, decision rules, evidence, and verification
-
-4. **Derivative Works** — how products relate to ODD (`/docs/derivative-works.md`)
-
----
-
-## Structure
-
-This repository is organized around a three-tier hierarchy:
-
-- `/odd/` — Universal ODD philosophy (timeless, product-agnostic)
-- `/canon/` — Program constraints (shared governance)
-- `/docs/` — Implementation details (how we do it here)
-- `/about/` — Author context and credibility
-
----
-
-## Status
-
-This repository is active and evolving.  
-Some documents are stable; others are intentionally exploratory.  
-Where possible, documents label their stability and confidence level.
-
-Feedback, questions, and challenges are welcome.
-
----
-
-This repository is about preserving intent without freezing execution.  
-The goal is better outcomes, not perfect artifacts.
+MIT
