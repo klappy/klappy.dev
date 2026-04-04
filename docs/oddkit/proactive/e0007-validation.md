@@ -62,7 +62,7 @@ Both conditions use the same proactive tool descriptions (v0.16.0 deployed to pr
 ### Score Analysis
 
 - **Average treatment #1 score:** 23.43
-- **Average control #1 score:** 12.95
+- **Average control #1 score:** 13.00
 - **Average ratio:** 2.01x (excluding the #2 placement on preflight)
 - **Highest ratio:** 3.04x (proactive search)
 - **Lowest ratio:** 1.50x (OLDC+H vocabulary)
