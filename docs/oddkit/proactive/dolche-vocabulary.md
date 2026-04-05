@@ -80,6 +80,18 @@ The storage format is an implementation concern, not a vocabulary concern. DOLCH
 
 ---
 
+## Extensibility — Custom Types Through Governance
+
+DOLCHE's five artifact types and one meta-level action are defaults, not a closed set. The type field is a string, not an enum. Any knowledge base can extend DOLCHE with custom types by adding a governance document that defines them.
+
+A pastoral knowledge base might add "P" for Prayer Requests — entries that track pastoral commitments across sessions. A legal knowledge base might add "R" for Rulings — entries that capture case law citations as they surface. A smart home knowledge base might add "A" for Automations — entries that record governance rules derived from user preferences ("I like the house cooler at night").
+
+The extension mechanism is a governance document in the knowledge base, not a code change in oddkit. The governance document defines: what the new type letter means, when it should be used, what makes a valid entry of that type, and how it relates to the five defaults. oddkit's generic infrastructure — TSV parsing, BM25 search, type-based filtering — handles any type string without modification. The server doesn't need to know about Prayer Requests. It needs to know about type fields.
+
+This is prompt over code applied to the vocabulary itself. The defaults are universal. The extensions are domain-specific. The capability is open. The semantics are governed.
+
+---
+
 ## Usage
 
 When the operator says "encode DOLCHE," "journal this," or "run the gauntlet," the agent captures all six types from the current session. The categories are tags on narrative entries, not section headers — they identify what kind of artifact each entry is without separating the narrative into disconnected lists.
