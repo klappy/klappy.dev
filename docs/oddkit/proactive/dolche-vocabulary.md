@@ -1,6 +1,6 @@
 ---
 uri: klappy://docs/oddkit/proactive/dolche-vocabulary
-title: "DOLCHE — The Six Standard Artifact Types for Session Capture"
+title: "DOLCHE — Six Dimensions of Session Capture"
 audience: docs
 exposure: nav
 tier: 2
@@ -16,25 +16,25 @@ governs: "All session capture, project journal entries, and encode invocations"
 status: active
 ---
 
-# DOLCHE — The Six Standard Artifact Types for Session Capture
+# DOLCHE — Six Dimensions of Session Capture
 
-> Decisions, Observations, Learnings, Constraints, Handoffs, Encodes. Six categories that capture everything significant in a session — what was chosen, what was seen, what was understood, what now governs, what comes next, and the act of crystallization itself. DOLCHE supersedes OLDC+H by adding the sixth type (Encode) and reordering to lead with Decisions. The E closes the loop: the act of encoding is itself a trackable artifact, making the system's own crystallization visible and auditable.
+> Decisions, Observations, Learnings, Constraints, Handoffs, Encodes. Five artifact types and one meta-level action that tracks the crystallization of all the others. DOLCHE supersedes OLDC+H by adding Encode — not as a sixth category of content, but as the act of encoding itself made visible. The E closes the loop: when you encode a Decision, the Encode tracks *that you did it*, when you did it, what quality it achieved, and whether it was persisted. Without the E, you can't distinguish between "this was discussed" and "this was captured."
 
 ---
 
-## Summary — The E Closes the Loop
+## Summary — Five Artifact Types, One Meta-Level Action
 
-OLDC+H (`docs/oddkit/proactive/oldc-h-vocabulary.md`) defined five artifact types for session capture: Observations, Learnings, Decisions, Constraints, Handoffs. These five cover what happened in a session. But they don't cover *what the system did about it*.
+OLDC+H (`docs/oddkit/proactive/oldc-h-vocabulary.md`) defined five artifact types for session capture: Observations, Learnings, Decisions, Constraints, Handoffs. These five cover what happened in a session. But they don't cover *the system's own crystallization work*.
 
-Every time oddkit's encode action is invoked, it produces a structured artifact — a quality score, a status, a persist_required flag, and suggestions for improvement. That encoding action is itself significant. It tells you: this insight was crystallized. This decision was formalized. This constraint was recorded. Without tracking the encoding itself, you can't distinguish between "this was discussed" and "this was captured."
+Every time oddkit's encode action is invoked, it takes one or more of those five artifact types and crystallizes them — producing a quality score, a status, a persist_required flag, and suggestions for improvement. That encoding action is not another artifact type. It is the meta-level act of *processing* the artifacts. But it needs to be tracked, because without it you can't answer: "Did we just discuss this, or did we actually capture it? And if we captured it, did we persist it?"
 
-DOLCHE adds Encode as the sixth type, closing the loop. The system doesn't just track what happened — it tracks that it tracked what happened. This makes the session's own epistemic discipline visible and auditable.
+DOLCHE adds Encode as the meta-level dimension, closing the loop. The system doesn't just track what happened — it tracks that it tracked what happened. This makes the session's own epistemic discipline visible and auditable.
 
 The reordering — from OLDC+H to DOLCHE — leads with Decisions because decisions are the highest-stakes artifacts. A missed observation can be recovered from the transcript. A missed decision may not surface again.
 
 ---
 
-## The Six Types
+## The Five Artifact Types
 
 **Decisions (D)** — What was chosen. Explicit commitments with rationale. Decisions close options and create direction. They are the highest-stakes artifacts because they constrain all subsequent work. A decision without rationale is a debt (Axiom 2). A decision without a constraint test is untested.
 
@@ -46,19 +46,37 @@ The reordering — from OLDC+H to DOLCHE — leads with Decisions because decisi
 
 **Handoffs (H)** — What comes next and what context the next session needs. Explicit transfer of state across conversation boundaries. Handoffs are the artifacts most likely to be lost because they describe what hasn't happened yet. A session without handoffs forces the next session to reconstruct context from scratch.
 
-**Encodes (E)** — What was crystallized and when. The encode action itself as a trackable event. Each encode records that the system attempted to formalize an insight, what quality score it received, whether persistence was required, and what gaps remained. Encodes make the system's own epistemic discipline visible. A session with many observations but no encodes produced raw material that was never refined. A session with encodes that were never persisted produced crystallized artifacts that were then lost.
+---
+
+## The Meta-Level Action — Encode (E)
+
+Encode is not a sixth artifact type. It is the act of crystallizing all the others — the moment where a Decision, Observation, Learning, Constraint, or Handoff is structured, quality-scored, and flagged for persistence. Tracking encodes makes the system's own epistemic work visible.
+
+Each encode event records: what was crystallized, when, what quality score it received, whether persistence was required, and what gaps remained. An encode is not content — it is a receipt that crystallization happened.
+
+This distinction matters operationally. A journal entry tagged D (Decision) tells you what was chosen. An encode event tells you that the decision was formally processed through oddkit's encode action, scored for quality, and flagged to be saved. Without the E, the journal can't distinguish between a decision that was casually mentioned and a decision that was formally captured.
+
+The E is what makes DOLCHE self-auditing. A session journal with five Decisions and zero Encodes says: decisions were made but never crystallized. A journal with five Decisions and five Encodes where none were persisted says: crystallization happened but the artifacts were lost in the response stream. Both gaps are now visible from the journal itself.
 
 ---
 
 ## Why the E Matters
 
-The encode-persistence gap (`docs/oddkit/proactive/encode-does-not-persist.md`) taught a painful lesson: encode does not persist. It returns structured artifacts in the response stream. If the caller doesn't save them, they're lost. Tracking encodes as a first-class artifact type makes this gap visible in the journal itself.
+The encode-persistence gap (`docs/oddkit/proactive/encode-does-not-persist.md`) taught a painful lesson: encode does not persist. It returns structured artifacts in the response stream. If the caller doesn't save them, they're lost. Tracking encodes as a meta-level action makes this gap visible in the journal itself.
 
 When a DOLCHE journal shows three Decisions, two Observations, one Learning — and zero Encodes — the journal is telling you: this session produced insights that were never crystallized. The gap between "discussed" and "captured" is now a measurable distance.
 
 When a journal shows four Encodes with `persist_required: true` — and no corresponding file writes — the journal is telling you: crystallization happened but persistence didn't. The artifacts exist in the encode output but not in durable storage.
 
 The E makes both gaps visible. Without it, you'd need to audit the transcript to discover what was encoded and what was lost. With it, the journal self-reports its own completeness.
+
+---
+
+## Storage at Scale
+
+DOLCHE entries are structured data: each has a type (D/O/L/C/H/E), a timestamp, a summary, a body, and tags. At personal scale — a few entries per session — markdown journals work fine. At production scale — dozens of entries per day across multiple projects — structured tabular formats (TSV, CSV) offer faster parsing, appendability, and git-diffability.
+
+The storage format is an implementation concern, not a vocabulary concern. DOLCHE defines *what* to capture. How entries are stored, indexed, and queried depends on the context: markdown for human-readable journals, tabular formats for machine-queryable session history, or both in parallel. The vocabulary is portable across any storage format.
 
 ---
 
