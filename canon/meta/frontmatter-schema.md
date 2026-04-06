@@ -1,24 +1,24 @@
 ---
-uri: "klappy://canon/meta/frontmatter-schema"
+uri: klappy://canon/meta/frontmatter-schema
 title: "Frontmatter Schema — The Authoritative Reference for All Document Metadata"
-audience: "canon"
-exposure: "nav"
-tier: "1"
-voice: "neutral"
-stability: "semi_stable"
+audience: canon
+exposure: nav
+tier: 1
+voice: neutral
+stability: semi_stable
 tags: ["canon", "meta", "frontmatter", "schema", "YAML", "metadata", "governance", "template", "validation"]
-epoch: "E0007.1"
-date: "2026-04-04"
+epoch: E0007.1
+date: 2026-04-04
 derives_from: "canon/meta/writing-canon.md, canon/values/axioms.md"
 complements: "canon/meta/TEMPLATE.md, docs/TEMPLATE.md, canon/constraints/definition-of-done.md"
 governs: "All YAML frontmatter in all documents across all directories"
-status: "active"
+status: active
 supersedes: "Frontmatter sections in canon/meta/TEMPLATE.md and docs/TEMPLATE.md (those remain as structural templates; this document is the authoritative field reference)"
 ---
 
 # Frontmatter Schema — The Authoritative Reference for All Document Metadata
 
-> Every YAML frontmatter value must be quoted as a string. Every document must include the eight universal fields: uri, title, audience, exposure, tier, voice, stability, tags. Additional fields are required or optional per audience. This document is the single source of truth for frontmatter — not templates, not other documents, not pattern-matching from existing files. When in doubt, consult this document. When this document and another disagree, this document wins.
+> YAML frontmatter values must match the types the site renderer expects: booleans unquoted, integers unquoted, dates unquoted, simple identifiers unquoted, strings with special characters quoted. Every document must include the eight universal fields: uri, title, audience, exposure, tier, voice, stability, tags. Additional fields are required or optional per audience. This document is the single source of truth for frontmatter — not templates, not other documents, not pattern-matching from existing files. When in doubt, consult this document. When this document and another disagree, this document wins.
 
 ---
 
@@ -30,41 +30,49 @@ This document fixes the problem by defining the schema once. Templates (`canon/m
 
 ---
 
-## The Universal Rule — All Values Quoted
+## The Universal Rule — Quote Only What Needs Quoting
 
-Every scalar value in YAML frontmatter must be wrapped in double quotes. No exceptions.
+YAML frontmatter values follow a simple pattern derived from the working corpus: quote strings that contain special characters, leave simple identifiers and native types unquoted.
 
 ```yaml
-# CORRECT
-uri: "klappy://canon/principles/example"
-title: "Example Title"
-audience: "canon"
-tier: "2"
-date: "2026-04-04"
-public: "false"
-epoch: "E0007"
+# Simple identifiers — unquoted
+audience: canon
+exposure: nav
+voice: neutral
+stability: semi_stable
+type: essay
+author: Klappy
+slug: my-article-slug
+epoch: E0007
+status: active
 
-# WRONG — these parse as non-string types
+# Integers — unquoted
+tier: 2
+
+# Booleans — unquoted
+public: true
+archived: false
+
+# Dates — unquoted
+date: 2026-04-04
+
+# URIs — unquoted
 uri: klappy://canon/principles/example
-tier: 2              # parses as integer
-date: 2026-04-04     # parses as date object
-public: false        # parses as boolean
-epoch: E0007         # usually fine but inconsistent
-```
 
-Arrays use inline format with quoted strings:
+# Strings with special characters — quoted
+title: "My Title — With Dashes and Colons: Like This"
+subtitle: "Why it matters"
+description: "A sentence with punctuation, dashes — and other characters."
+hook: "The one-liner that grabs attention."
+derives_from: "canon/values/axioms.md, canon/principles/other.md"
+complements: "docs/path/to/sibling.md"
+governs: "All documents in this scope"
 
-```yaml
-# CORRECT
+# Arrays — inline with quoted strings
 tags: ["canon", "principle", "example"]
-
-# WRONG
-tags:
-  - canon
-  - principle
 ```
 
-This rule exists because YAML silently coerces unquoted values. `2026-04-04` becomes a date object. `false` becomes a boolean. `1` becomes an integer. The site's renderer expects strings. When it gets a date object, the page goes blank. Quoting everything prevents the entire class of error.
+The test is simple: if the value is a single word or simple identifier (no spaces, no special characters), leave it unquoted. If it contains spaces, punctuation, or special characters, quote it. Booleans, integers, and dates are always unquoted — the renderer expects native YAML types, not strings.
 
 ---
 
@@ -212,8 +220,8 @@ Archived documents remain in the knowledge base for history but are excluded fro
 
 ## Smell Test — How to Detect a Frontmatter Violation
 
-- **YAML parse warnings or type coercion.** If a value parses as a non-string type (date, integer, boolean), it's unquoted.
-- **Blank pages in PR previews.** The most common symptom of frontmatter errors. Usually caused by unquoted dates, missing `slug` on public docs, or missing `type` on essays.
+- **Type mismatches.** If a boolean field like `public` is quoted as `"false"` (a truthy string) instead of `false` (a boolean), the renderer behaves incorrectly. If an integer field like `tier` is quoted as `"2"` instead of `2`, type comparisons fail.
+- **Blank pages in PR previews.** The most common symptom of frontmatter errors. Usually caused by quoted booleans/integers that should be native types, missing `slug` on public essays, or missing `type` on essays.
 - **Copying frontmatter from another document.** The smell itself. If the source of truth for frontmatter is "whatever document I found first," the schema is not being consulted. Consult this document instead.
 - **Fields that don't appear in this schema.** If you're adding a field that doesn't appear here, either this schema needs updating (propose the addition) or the field is ad-hoc and shouldn't be added.
 
@@ -221,7 +229,7 @@ Archived documents remain in the knowledge base for history but are excluded fro
 
 ## Required Response When a Violation Is Detected
 
-1. **Quote the value.** Every scalar value must be a quoted string.
+1. **Match the type the renderer expects.** Booleans unquoted (`true`/`false`), integers unquoted (`2`), dates unquoted (`2026-04-04`), simple identifiers unquoted (`canon`, `nav`), complex strings quoted (`"Title — With Special Characters"`).
 2. **Check required fields.** Consult the audience-specific table above. If required fields are missing, add them.
 3. **Consult this document, not other documents.** Do not copy frontmatter from another file to fix the problem. This schema is the source of truth.
 4. **If this schema is incomplete, update it.** If a legitimate field is missing from this schema, add it here first, then use it. The schema must stay current with actual usage.

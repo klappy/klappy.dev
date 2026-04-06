@@ -1,18 +1,18 @@
 ---
-uri: "klappy://canon/principles/maintainability-one-person-indefinitely"
+uri: klappy://canon/principles/maintainability-one-person-indefinitely
 title: "Maintainability — One Person, Indefinitely"
-audience: "canon"
-exposure: "nav"
-tier: "2"
-voice: "neutral"
-stability: "semi_stable"
+audience: canon
+exposure: nav
+tier: 2
+voice: neutral
+stability: semi_stable
 tags: ["canon", "principle", "maintainability", "sustainability", "single-maintainer", "cloudflare-worker", "vodka-architecture", "design-smell"]
-epoch: "E0007.1"
-date: "2026-04-04"
+epoch: E0007.1
+date: 2026-04-04
 derives_from: "canon/principles/vodka-architecture.md, canon/values/axioms.md"
 complements: "canon/principles/ritual-is-a-smell.md, canon/principles/kiss-simplicity-is-the-ceiling.md"
 governs: "All infrastructure sizing and complexity decisions in this program"
-status: "active"
+status: active
 ---
 
 # Maintainability — One Person, Indefinitely

@@ -1,18 +1,18 @@
 ---
-uri: "klappy://canon/principles/vodka-architecture"
+uri: klappy://canon/principles/vodka-architecture
 title: "Vodka Architecture — The Design Pattern for Epistemic Infrastructure"
-audience: "canon"
-exposure: "nav"
-tier: "1"
-voice: "neutral"
-stability: "semi_stable"
+audience: canon
+exposure: nav
+tier: 1
+voice: neutral
+stability: semi_stable
 tags: ["canon", "architecture", "design-pattern", "vodka", "stateless", "thin-layer", "epistemic-infrastructure", "KISS", "DRY", "antifragile", "convention-over-configuration", "maintainability"]
-epoch: "E0007.1"
-date: "2026-04-04"
+epoch: E0007.1
+date: 2026-04-04
 derives_from: "canon/values/axioms.md, canon/principles/ritual-is-a-smell.md, canon/resonance/antifragile.md, docs/appendices/convention-requires-an-enforcer.md"
 complements: "docs/architecture/epistemic-os-layers.md, odd/prompt-architecture.md, canon/constraints/oddkit-prompt-pattern.md"
 governs: "All MCP servers, knowledge base serving infrastructure, and orchestration layers in this program"
-status: "active"
+status: active
 ---
 
 # Vodka Architecture — The Design Pattern for Epistemic Infrastructure

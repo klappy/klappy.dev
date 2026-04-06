@@ -1,18 +1,18 @@
 ---
-uri: "klappy://canon/principles/dry-canon-says-it-once"
+uri: klappy://canon/principles/dry-canon-says-it-once
 title: "DRY — The Canon Says It Once, the Server Never Repeats It"
-audience: "canon"
-exposure: "nav"
-tier: "2"
-voice: "neutral"
-stability: "semi_stable"
+audience: canon
+exposure: nav
+tier: 2
+voice: neutral
+stability: semi_stable
 tags: ["canon", "principle", "DRY", "dont-repeat-yourself", "governance", "drift", "vodka-architecture", "design-smell"]
-epoch: "E0007.1"
-date: "2026-04-04"
+epoch: E0007.1
+date: 2026-04-04
 derives_from: "canon/principles/vodka-architecture.md, canon/constraints/oddkit-prompt-pattern.md"
 complements: "canon/principles/prompt-over-code.md, canon/values/axioms.md"
 governs: "All governance rule placement decisions in this program"
-status: "active"
+status: active
 ---
 
 # DRY — The Canon Says It Once, the Server Never Repeats It

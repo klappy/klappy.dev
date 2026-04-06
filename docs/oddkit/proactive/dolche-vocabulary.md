@@ -1,19 +1,19 @@
 ---
-uri: "klappy://docs/oddkit/proactive/dolche-vocabulary"
+uri: klappy://docs/oddkit/proactive/dolche-vocabulary
 title: "DOLCHE — Six Dimensions of Session Capture"
-audience: "docs"
-exposure: "nav"
-tier: "2"
-voice: "neutral"
-stability: "semi_stable"
+audience: docs
+exposure: nav
+tier: 2
+voice: neutral
+stability: semi_stable
 tags: ["odd", "oddkit", "dolche", "oldc-h", "observations", "learnings", "decisions", "constraints", "handoffs", "encodes", "vocabulary", "session-capture", "project-journal", "epoch-7.1"]
-epoch: "E0007.1"
-date: "2026-04-04"
+epoch: E0007.1
+date: 2026-04-04
 supersedes: "docs/oddkit/proactive/oldc-h-vocabulary.md"
 derives_from: "canon/values/axioms.md, docs/oddkit/proactive/continuous-encoding.md, docs/oddkit/proactive/encode-does-not-persist.md"
 complements: "docs/oddkit/proactive/posture-lapse.md, docs/oddkit/proactive/proactive-session-close.md, odd/ledger/project-journal-best-practices.md"
 governs: "All session capture, project journal entries, and encode invocations"
-status: "active"
+status: active
 ---
 
 # DOLCHE — Six Dimensions of Session Capture
