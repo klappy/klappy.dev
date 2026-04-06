@@ -1,9 +1,12 @@
 ---
 uri: "klappy://writings/the-feature-i-never-shipped"
 title: "The Feature I Never Shipped — And Why It's the Best Thing I've Built"
+subtitle: "How strategic patience became the 6th B"
+author: "Klappy"
+type: "essay"
 audience: "public"
 exposure: "draft"
-public: false
+public: "false"
 tier: "2"
 voice: "first_person"
 stability: "semi_stable"
@@ -12,6 +15,11 @@ epoch: "E0007.1"
 date: "2026-04-04"
 derives_from: "canon/methods/borrow-bend-break-beget-build.md, odd/constraint/use-only-what-hurts.md"
 complements: "writings/learning-in-the-open.md, canon/principles/vodka-architecture.md"
+hook: "I spent months planning a feature. Four sessions. Twenty-five decisions. Two branches. None shipped. Then the problem dissolved on its own."
+description: "The story of oddkit's write path — the most planned feature that never shipped — and why strategic patience is sometimes the best engineering. Introduces Bypass as the 6th B in the 5B method."
+slug: "the-feature-i-never-shipped"
+og_title: "The Feature I Never Shipped — And Why It's the Best Thing I've Built"
+og_description: "I spent months planning a feature. Four sessions. Twenty-five decisions. Two branches. None shipped. Then the problem dissolved on its own."
 ---
 
 # The Feature I Never Shipped — And Why It's the Best Thing I've Built
