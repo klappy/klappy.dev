@@ -1,18 +1,18 @@
 ---
-uri: klappy://canon/principles/prompt-over-code
+uri: "klappy://canon/principles/prompt-over-code"
 title: "Prompt Over Code — Fully Programmable Governance Without Changing the Server"
-audience: canon
-exposure: nav
-tier: 2
-voice: neutral
-stability: semi_stable
+audience: "canon"
+exposure: "nav"
+tier: "2"
+voice: "neutral"
+stability: "semi_stable"
 tags: ["canon", "principle", "prompt-over-code", "convention-over-configuration", "governance", "programmable", "vodka-architecture", "design-smell"]
-epoch: E0007.1
-date: 2026-04-04
+epoch: "E0007.1"
+date: "2026-04-04"
 derives_from: "canon/principles/vodka-architecture.md, docs/appendices/convention-requires-an-enforcer.md, canon/constraints/oddkit-prompt-pattern.md"
 complements: "odd/prompt-architecture.md, canon/principles/ritual-is-a-smell.md, canon/principles/dry-canon-says-it-once.md"
 governs: "All governance rule implementation decisions in this program"
-status: active
+status: "active"
 ---
 
 # Prompt Over Code — Fully Programmable Governance Without Changing the Server

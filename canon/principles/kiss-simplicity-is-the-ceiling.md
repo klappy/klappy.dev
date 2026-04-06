@@ -1,18 +1,18 @@
 ---
-uri: klappy://canon/principles/kiss-simplicity-is-the-ceiling
+uri: "klappy://canon/principles/kiss-simplicity-is-the-ceiling"
 title: "KISS — Simplicity Is the Ceiling, Not the Floor"
-audience: canon
-exposure: nav
-tier: 2
-voice: neutral
-stability: semi_stable
+audience: "canon"
+exposure: "nav"
+tier: "2"
+voice: "neutral"
+stability: "semi_stable"
 tags: ["canon", "principle", "KISS", "simplicity", "design", "composability", "vodka-architecture", "design-smell"]
-epoch: E0007.1
-date: 2026-04-04
+epoch: "E0007.1"
+date: "2026-04-04"
 derives_from: "canon/principles/vodka-architecture.md, canon/values/axioms.md"
 complements: "canon/principles/ritual-is-a-smell.md, canon/principles/maintainability-one-person-indefinitely.md"
 governs: "All MCP servers, tools, and orchestration layers in this program"
-status: active
+status: "active"
 ---
 
 # KISS — Simplicity Is the Ceiling, Not the Floor

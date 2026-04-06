@@ -1,14 +1,14 @@
 ---
-uri: klappy://docs/appendices/epoch-7-1
+uri: "klappy://docs/appendices/epoch-7-1"
 title: "Epoch 7.1 — Vodka Architecture and Principled Governance"
-audience: docs
-exposure: nav
-tier: 2
-voice: neutral
-stability: stable
+audience: "docs"
+exposure: "nav"
+tier: "2"
+voice: "neutral"
+stability: "stable"
 tags: ["odd", "epochs", "vodka-architecture", "design-pattern", "principles", "governance", "posture-lapse", "epoch-7", "epoch-7.1"]
-epoch: E0007.1
-date: 2026-04-04
+epoch: "E0007.1"
+date: "2026-04-04"
 extends: "Epoch 7 (from passive to proactive)"
 forcing_fault: "A proactive system without named architectural principles cannot explain why it works or detect when it stops working"
 new_invariant: "The architecture is named, the principles are formalized, and posture failure is detectable"

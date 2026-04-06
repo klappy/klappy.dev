@@ -1,18 +1,18 @@
 ---
-uri: klappy://docs/oddkit/proactive/posture-lapse
+uri: "klappy://docs/oddkit/proactive/posture-lapse"
 title: "Proactive Posture Lapse — Detecting When the Cognitive Rhythm Breaks Down"
-audience: docs
-exposure: nav
-tier: 2
-voice: neutral
-stability: semi_stable
+audience: "docs"
+exposure: "nav"
+tier: "2"
+voice: "neutral"
+stability: "semi_stable"
 tags: ["oddkit", "proactive", "governance", "lapse", "breakdown", "cognitive-rhythm", "smell", "failure-mode", "orient", "gate", "search", "encode", "challenge", "preflight", "validate", "tool-use", "epoch-7", "design-smell"]
-epoch: E0007.1
-date: 2026-04-04
+epoch: "E0007.1"
+date: "2026-04-04"
 derives_from: "docs/appendices/epoch-7.md, canon/principles/ritual-is-a-smell.md, canon/values/axioms.md"
 complements: "docs/oddkit/proactive/proactive-orient.md, docs/oddkit/proactive/proactive-gate.md, docs/oddkit/proactive/proactive-search.md, docs/oddkit/proactive/proactive-challenge.md, docs/oddkit/proactive/proactive-validate.md, docs/oddkit/proactive/proactive-preflight.md, docs/oddkit/proactive/continuous-encoding.md, docs/oddkit/proactive/proactive-identity-of-integrity.md"
 governs: "All agent behavior in oddkit-powered sessions"
-status: active
+status: "active"
 ---
 
 # Proactive Posture Lapse — Detecting When the Cognitive Rhythm Breaks Down

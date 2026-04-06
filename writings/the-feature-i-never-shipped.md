@@ -1,15 +1,15 @@
 ---
-uri: klappy://writings/the-feature-i-never-shipped
+uri: "klappy://writings/the-feature-i-never-shipped"
 title: "The Feature I Never Shipped — And Why It's the Best Thing I've Built"
-audience: public
-exposure: draft
+audience: "public"
+exposure: "draft"
 public: false
-tier: 2
-voice: first_person
-stability: semi_stable
+tier: "2"
+voice: "first_person"
+stability: "semi_stable"
 tags: ["writings", "essay", "5B", "bypass", "write-path", "oddkit", "use-only-what-hurts", "strategic-patience", "ai-augmented-workflows"]
-epoch: E0007.1
-date: 2026-04-04
+epoch: "E0007.1"
+date: "2026-04-04"
 derives_from: "canon/methods/borrow-bend-break-beget-build.md, odd/constraint/use-only-what-hurts.md"
 complements: "writings/learning-in-the-open.md, canon/principles/vodka-architecture.md"
 ---

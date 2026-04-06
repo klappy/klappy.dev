@@ -1,18 +1,18 @@
 ---
-uri: klappy://canon/principles/antifragile-failures-grow-canon
+uri: "klappy://canon/principles/antifragile-failures-grow-canon"
 title: "Antifragile — Every Failure Grows the Canon, Never the Server"
-audience: canon
-exposure: nav
-tier: 2
-voice: neutral
-stability: semi_stable
+audience: "canon"
+exposure: "nav"
+tier: "2"
+voice: "neutral"
+stability: "semi_stable"
 tags: ["canon", "principle", "antifragile", "antifragility", "failure", "stress", "learning", "incidents", "vodka-architecture", "design-smell"]
-epoch: E0007.1
-date: 2026-04-04
+epoch: "E0007.1"
+date: "2026-04-04"
 derives_from: "canon/principles/vodka-architecture.md, canon/resonance/antifragile.md, canon/values/axioms.md"
 complements: "canon/principles/prompt-over-code.md, canon/principles/ritual-is-a-smell.md"
 governs: "All failure response decisions in this program"
-status: active
+status: "active"
 ---
 
 # Antifragile — Every Failure Grows the Canon, Never the Server

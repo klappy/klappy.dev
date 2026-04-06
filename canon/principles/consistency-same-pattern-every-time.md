@@ -1,18 +1,18 @@
 ---
-uri: klappy://canon/principles/consistency-same-pattern-every-time
+uri: "klappy://canon/principles/consistency-same-pattern-every-time"
 title: "Consistency — Same Pattern, Every Knowledge Base, Every Time"
-audience: canon
-exposure: nav
-tier: 2
-voice: neutral
-stability: semi_stable
+audience: "canon"
+exposure: "nav"
+tier: "2"
+voice: "neutral"
+stability: "semi_stable"
 tags: ["canon", "principle", "consistency", "portability", "MCP", "interface", "vodka-architecture", "design-smell"]
-epoch: E0007.1
-date: 2026-04-04
+epoch: "E0007.1"
+date: "2026-04-04"
 derives_from: "canon/principles/vodka-architecture.md, canon/values/axioms.md"
 complements: "docs/architecture/epistemic-os-layers.md, canon/principles/kiss-simplicity-is-the-ceiling.md"
 governs: "All MCP server interfaces and knowledge base serving patterns in this program"
-status: active
+status: "active"
 ---
 
 # Consistency — Same Pattern, Every Knowledge Base, Every Time
