@@ -13,7 +13,7 @@ extends: "Epoch 7 (from passive to proactive)"
 forcing_fault: "A proactive system without named architectural principles cannot explain why it works or detect when it stops working"
 new_invariant: "The architecture is named, the principles are formalized, and posture failure is detectable"
 core_shift: "Unnamed conventions → named design pattern. Tool-level governance articles → principle-level governance with smell tests, failure modes, and required responses. No posture lapse detection → structural self-assessment."
-documents_introduced: ["canon/principles/vodka-architecture.md", "canon/principles/kiss-simplicity-is-the-ceiling.md", "canon/principles/dry-canon-says-it-once.md", "canon/principles/consistency-same-pattern-every-time.md", "canon/principles/maintainability-one-person-indefinitely.md", "canon/principles/prompt-over-code.md", "canon/principles/antifragile-failures-grow-canon.md", "docs/oddkit/proactive/posture-lapse.md", "docs/appendices/epoch-7-1.md"]
+documents_introduced: ["canon/principles/vodka-architecture.md", "canon/principles/kiss-simplicity-is-the-ceiling.md", "canon/principles/dry-canon-says-it-once.md", "canon/principles/consistency-same-pattern-every-time.md", "canon/principles/maintainability-one-person-indefinitely.md", "canon/principles/prompt-over-code.md", "canon/principles/antifragile-failures-grow-canon.md", "docs/oddkit/proactive/posture-lapse.md", "docs/oddkit/proactive/dolche-vocabulary.md", "canon/meta/frontmatter-schema.md", "docs/appendices/epoch-7-1.md"]
 ---
 
 # Epoch 7.1 — Vodka Architecture and Principled Governance
@@ -71,6 +71,14 @@ A meta-governance article that defines how to detect when the proactive cognitiv
 
 This closes the gap between E0007's tool-level "when to use" articles and the system-level question "is the proactive posture actually working?"
 
+### DOLCHE — Superseding OLDC+H
+
+DOLCHE (Decisions, Observations, Learnings, Constraints, Handoffs, Encodes) supersedes OLDC+H by adding Encode as a meta-level action — not a sixth artifact type, but the act of crystallizing the other five, made visible and trackable. The vocabulary is extensible through governance documents: any knowledge base can add custom types without changing oddkit's server.
+
+### Frontmatter Schema — The Authoritative Reference
+
+A governance document defining every valid frontmatter field per audience, required types, quoting rules, and required vs optional status. Derived from corpus analysis of 389 documents. Supersedes template-based field guidance. Addresses the recurring "blank pages from broken frontmatter" problem by making the schema a preflight checkpoint rather than a copy-from-existing-doc ritual.
+
 ---
 
 ## What E0007.1 Does Not Change
@@ -95,6 +103,8 @@ This closes the gap between E0007's tool-level "when to use" articles and the sy
 | `canon/principles/prompt-over-code.md` | Prompt Over Code principle with smell tests, failure modes, required response |
 | `canon/principles/antifragile-failures-grow-canon.md` | Antifragile principle with smell tests, failure modes, required response |
 | `docs/oddkit/proactive/posture-lapse.md` | Posture lapse detection — system-level governance self-assessment |
+| `docs/oddkit/proactive/dolche-vocabulary.md` | DOLCHE vocabulary — supersedes OLDC+H with meta-level Encode action |
+| `canon/meta/frontmatter-schema.md` | Frontmatter schema — authoritative field reference for all documents |
 | This document | Sub-epoch declaration |
 
 ---
