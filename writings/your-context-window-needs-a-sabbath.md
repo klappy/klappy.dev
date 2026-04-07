@@ -36,7 +36,7 @@ provenance:
   brain_dump: "Apr 7, 2026 — recorded dictation, 11:19 AM–12:23 PM EDT, during DHL errand"
   friend_text_thread: "Apr 4–7, 2026 — text exchange on burnout, Sabbath rhythm, and meeting up"
   external_validation: "Lenny Rachitsky post on cognitive limits of coding agents, shared by friend"
-  predecessor_essay: "writings/the-cost-of-code-dropped-to-zero.md — Mar 12, 2026"
+  predecessor_essays: "writings/the-cost-of-code-dropped-to-zero.md — Mar 12, 2026"
 ---
 
 # Your Context Window Needs a Sabbath
