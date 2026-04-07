@@ -139,7 +139,7 @@ Not every piece requires every pass at equal depth. After draft-zero, the agent 
 
 1. **After draft-zero:** The agent proposes the lens sequence with a brief note on which passes are high-value for this piece.
 2. **One pass at a time:** The agent executes one pass, presents what changed (specific edits, not just descriptions), and waits for author direction.
-3. **Author controls the pace:** The author may say "do the next three" or "skip sensitivity, we'll do that after [person] reviews" or "combine Socratic and confession."
+3. **Author controls the pace:** The author may say "do the next three" or "skip sensitivity, we'll do that after the reviewer reads it" or "combine Socratic and confession."
 4. **Regression check is non-negotiable:** After all content passes, the regression check runs. It exists because the observed failure mode is real: each lens fixes its own concern while occasionally breaking another.
 5. **oddkit gauntlet closes:** Preflight, challenge, validate. This is the formal gate before claiming the document is ready.
 
@@ -160,5 +160,5 @@ The answer: sequential single-lens passes, each a complete read-through with one
 - [Writing Canon](klappy://canon/meta/writing-canon) — the progressive disclosure requirements each pass must preserve
 - [Guide Posture](klappy://canon/constraints/guide-posture) — the constraint governing Passes 1 and 2
 - [Relational Sensitivity](klappy://canon/constraints/relational-sensitivity) — the constraint governing Pass 4
-- [Book Governance Additions](../../docs/book/governance-additions-2026-02-27.md) — the source of Passes 3 and 5
+- [Book Governance Additions](/docs/book/governance-additions-2026-02-27.md) — the source of Passes 3 and 5
 - [Self-Audit Checklist](klappy://canon/self-audit) — the reflection layer this method extends
