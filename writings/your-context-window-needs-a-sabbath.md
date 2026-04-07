@@ -135,6 +135,8 @@ And what if the operating manual for that weekly flush was written before you we
 
 Here's what makes this hard for high performers: the daily flush feels mandatory because your body forces it. You *have* to sleep eventually. But the weekly flush doesn't have a physical override. You can work seven days a week for months before the debt comes due. And when it does, it doesn't arrive as tiredness. It arrives as anger, as broken relationships, as decisions you wouldn't have made if you'd had the capacity to see clearly.
 
+And here's what nobody expects: even the tools prove it. The code reviewer that catches what you missed after nine revision passes — it's not smarter than the agent that wrote it. It's the same model, the same rules, the same governance. But it started fresh. Clean context. One purpose. It found what the authoring agent couldn't see, because the authoring agent had been staring at its own work for too long. Same lenses used to create, same lenses used to evaluate — and the blind spots persisted until someone with fresh eyes walked in. Sound familiar?
+
 -----
 
 ## Holy Non-Work

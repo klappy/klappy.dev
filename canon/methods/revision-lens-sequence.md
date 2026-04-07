@@ -151,7 +151,7 @@ This method was encoded because the author observed the same pattern across mult
 
 The specific trigger was the "Your Context Window Needs a Sabbath" session (April 7, 2026), where the author asked for a Socratic voice pass after the draft-zero and then asked: "How do we address this with governance of multiple passes to address these missed concerns, as it's too much in a single pass but governance of new lenses each pass?"
 
-The answer: sequential single-lens passes, each a complete read-through with one concern, ending with a regression check to catch what earlier passes broke.
+The answer: sequential single-lens passes, each a complete read-through with one concern, ending with a regression check to catch what earlier passes broke. Subsequent observation confirmed that even sequential passes from the same agent have structural blind spots — an independent reviewer with fresh context and the same governance consistently catches what the authoring agent cannot, because the same lenses used to create are the same lenses used to evaluate.
 
 ---
 
