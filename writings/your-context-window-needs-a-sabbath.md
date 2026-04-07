@@ -25,8 +25,12 @@ twitter_description: "Everyone's celebrating AI productivity. Nobody's talking a
 derives_from: "canon/principles/capability-is-not-permission.md, canon/constraints/guide-posture.md, canon/constraints/relational-sensitivity.md"
 complements: "writings/the-cost-of-code-dropped-to-zero.md, canon/principles/capability-is-not-permission.md, docs/explorations/epoch-signal-operator-governance.md"
 related:
-  - canon/principles/persistence-must-be-intentional.md
-  - canon/constraints/boundary-transitions-require-deceleration.md
+  - uri: klappy://canon/principles/persistence-must-be-intentional
+    label: "Persistence Must Be Intentional"
+    relationship: companion
+  - uri: klappy://canon/constraints/boundary-transitions-require-deceleration
+    label: "Boundary Transitions Require Deceleration"
+    relationship: companion
 
 provenance:
   brain_dump: "Apr 7, 2026 — recorded dictation, 11:19 AM–12:23 PM EDT, during DHL errand"
