@@ -23,7 +23,7 @@ og_description: "AI promised 5x productivity would mean finishing sooner. Instea
 twitter_description: "Everyone's celebrating AI productivity. Nobody's talking about the design spec that says you were never meant to run without rest."
 
 derives_from: "canon/principles/capability-is-not-permission.md, canon/constraints/guide-posture.md, canon/constraints/relational-sensitivity.md"
-complements: "writings/the-cost-of-code-dropped-to-zero.md, canon/principles/capability-is-not-permission.md, docs/explorations/epoch-signal-operator-governance.md"
+complements: "writings/the-cost-of-code-dropped-to-zero.md, docs/explorations/epoch-signal-operator-governance.md"
 related:
   - uri: klappy://canon/principles/persistence-must-be-intentional
     label: "Persistence Must Be Intentional"
