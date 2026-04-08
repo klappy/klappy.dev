@@ -23,7 +23,7 @@ og_description: "AI promised 5x productivity would mean finishing sooner. Instea
 twitter_description: "Everyone's celebrating AI productivity. Nobody's talking about the design spec that says you were never meant to run without rest."
 
 derives_from: "canon/principles/capability-is-not-permission.md, canon/constraints/guide-posture.md, canon/constraints/relational-sensitivity.md"
-complements: "writings/the-cost-of-code-dropped-to-zero.md, writings/the-planning-queue.md, docs/explorations/epoch-signal-operator-governance.md"
+complements: "writings/the-cost-of-code-dropped-to-zero.md, writings/the-planning-queue.md, writings/the-same-rules-fresh-eyes.md, docs/explorations/epoch-signal-operator-governance.md"
 related:
   - uri: klappy://canon/principles/persistence-must-be-intentional
     label: "Persistence Must Be Intentional"
@@ -207,4 +207,4 @@ It was the most productive thing any of us did all week.
 
 -----
 
-*Companion essays: [The Cost of Code Dropped to Zero](klappy://writings/the-cost-of-code-dropped-to-zero) — the diagnosis: what happens when AI removes every reason to stop. [The Planning Queue](klappy://writings/the-planning-queue) — what happens after the planning industrial complex dies. [Capability Is Not Permission](klappy://canon/principles/capability-is-not-permission) — the governance principle behind this essay.*
+*Companion essays: [The Cost of Code Dropped to Zero](klappy://writings/the-cost-of-code-dropped-to-zero) — the diagnosis: what happens when AI removes every reason to stop. [The Same Rules, Fresh Eyes](klappy://writings/the-same-rules-fresh-eyes) — why a creator cannot be their own critic, and how fresh context breaks the cycle. [The Planning Queue](klappy://writings/the-planning-queue) — what happens after the planning industrial complex dies. [Capability Is Not Permission](klappy://canon/principles/capability-is-not-permission) — the governance principle behind this essay.*
