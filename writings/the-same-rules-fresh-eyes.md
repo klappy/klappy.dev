@@ -22,7 +22,7 @@ og_title: "The Same Rules, Fresh Eyes"
 og_description: "Nine revision passes. Every governance doc loaded. Still missed the obvious. Here's why."
 twitter_description: "Your AI code reviewer catches writing bugs because governance docs are tokens, not code. The distinction between 'code review' and 'editorial review' is a human framing the model doesn't share."
 
-derives_from: "canon/principles/capability-is-not-permission.md, canon/methods/revision-lens-sequence.md, canon/constraints/relational-sensitivity.md"
+derives_from: "canon/principles/verification-requires-fresh-context.md, canon/principles/capability-is-not-permission.md, canon/methods/revision-lens-sequence.md, canon/constraints/relational-sensitivity.md"
 complements: "writings/your-context-window-needs-a-sabbath.md, writings/the-cost-of-code-dropped-to-zero.md, odd/appendices/quantum-development.md"
 
 provenance:

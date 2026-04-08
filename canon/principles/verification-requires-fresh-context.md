@@ -10,7 +10,7 @@ tags: ["canon", "principles", "verification", "fresh-context", "rest", "qa", "op
 epoch: E0007
 date: 2026-04-07
 derives_from: "canon/values/axioms.md, canon/principles/capability-is-not-permission.md, odd/appendices/quantum-development.md"
-complements: "canon/methods/revision-lens-sequence.md, canon/constraints/relational-sensitivity.md"
+complements: "writings/the-same-rules-fresh-eyes.md, canon/methods/revision-lens-sequence.md, canon/constraints/relational-sensitivity.md"
 governs: "All verification and review processes for public essays, canon documents, and code"
 ---
 
@@ -95,4 +95,5 @@ It reinforces Capability Is Not Permission (E0006): the operator's capacity to c
 - [Capability Is Not Permission](klappy://canon/principles/capability-is-not-permission) — the E0006 principle this reinforces
 - [Revision Lens Sequence](klappy://canon/methods/revision-lens-sequence) — the multi-pass method this principle extends
 - [Quantum Development](klappy://odd/quantum-development) — the execution-variance principle this mirrors for verification
+- [The Same Rules, Fresh Eyes](klappy://writings/the-same-rules-fresh-eyes) — the public essay expressing this principle for a general audience
 - [Your Context Window Needs a Sabbath](klappy://writings/your-context-window-needs-a-sabbath) — the public essay on rest as design spec
