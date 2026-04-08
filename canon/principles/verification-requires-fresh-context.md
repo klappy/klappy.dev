@@ -1,6 +1,6 @@
 ---
 uri: klappy://canon/principles/verification-requires-fresh-context
-title: "Verification Requires Fresh Context — The Creator Cannot Be Their Own Critic"
+title: "Verification Requires Fresh Context — A Creator Cannot Be Their Own Critic"
 audience: canon
 exposure: nav
 tier: 2
@@ -14,7 +14,7 @@ complements: "canon/methods/revision-lens-sequence.md, canon/constraints/relatio
 governs: "All verification and review processes for public essays, canon documents, and code"
 ---
 
-# Verification Requires Fresh Context — The Creator Cannot Be Their Own Critic
+# Verification Requires Fresh Context — A Creator Cannot Be Their Own Critic
 
 > The same lenses used to create an artifact are the same lenses used to evaluate it. This structural blindness persists across multiple sequential passes by the same agent in the same session — not from carelessness, but from accumulated context that makes flaws unremarkable. Verification quality requires fresh context: a clean session, a different reviewer, or rest that flushes the creation state. The model, the governance, and the rules can remain identical. What must change is the context. This principle extends Quantum Development (execution variance) into verification variance, and mirrors the human design spec for rest: accumulated context degrades judgment, and the fix is a clean start. E0007 reinforcing E0006.
 
@@ -42,7 +42,7 @@ This principle does not require a different model or different governance. It re
 
 ## Why This Happens
 
-The creator's context bridges the gap between intent and artifact. When the creator evaluates their own work, they see what they meant — not what they produced. Flaws that would be obvious to a fresh reader are invisible because the creator's accumulated context fills in the gaps automatically.
+A creator's context bridges the gap between intent and artifact. When the creator evaluates their own work, they see what they meant — not what they produced. Flaws that would be obvious to a fresh reader are invisible because the creator's accumulated context fills in the gaps automatically.
 
 This is not a character flaw. It is a structural property of any system that evaluates its own output using the same state that produced it. It applies to assembly line workers checking their own widgets, writers proofreading their own prose, developers reviewing their own code, and AI agents evaluating artifacts they just created.
 

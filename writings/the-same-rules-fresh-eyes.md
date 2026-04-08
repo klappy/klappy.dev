@@ -1,7 +1,7 @@
 ---
 uri: klappy://writings/the-same-rules-fresh-eyes
 title: "The Same Rules, Fresh Eyes"
-subtitle: "Why the creator can never be their own critic — and what that means for how we build with AI"
+subtitle: "Why a creator can never be their own critic — and what that means for how we build with AI"
 author: Klappy
 type: essay
 public: false
@@ -15,7 +15,7 @@ epoch: E0007
 date: 2026-04-07
 
 hook: "Nine revision passes. Every governance doc loaded. I still leaked a name I'd explicitly committed to protecting. The code reviewer caught it in seconds — not because it was smarter, but because it started fresh."
-description: "The creator cannot be their own critic — not from ego, but from structural blindness. The same lenses used to create are used to evaluate. Fresh context is the mechanism that breaks the cycle, and it works identically for humans and AI."
+description: "A creator cannot be their own critic — not from ego, but from structural blindness. The same lenses used to create are used to evaluate. Fresh context is the mechanism that breaks the cycle, and it works identically for humans and AI."
 slug: the-same-rules-fresh-eyes
 
 og_title: "The Same Rules, Fresh Eyes"
@@ -33,7 +33,7 @@ provenance:
 
 # The Same Rules, Fresh Eyes
 
-> The creator cannot be their own critic — not because of ego, but because the same lenses used to create are the same lenses used to evaluate. Nine explicit revision passes with governance loaded, and I still leaked a name I'd committed to protecting. A code reviewer caught it in seconds — same model, same governance documents, fresh context. The variable that changed wasn't intelligence or rules. It was rest. And that principle works identically whether the reviewer is a machine flushing its context window or a human coming back after a night of sleep.
+> A creator cannot be their own critic — not because of ego, but because the same lenses used to create are the same lenses used to evaluate. Nine explicit revision passes with governance loaded, and I still leaked a name I'd committed to protecting. A code reviewer caught it in seconds — same model, same governance documents, fresh context. The variable that changed wasn't intelligence or rules. It was rest. And that principle works identically whether the reviewer is a machine flushing its context window or a human coming back after a night of sleep.
 
 -----
 
@@ -145,7 +145,7 @@ And we're saying this principle isn't new. It's the same principle behind every 
 
 -----
 
-## The Principle — The Creator Cannot Be Their Own Critic
+## The Principle — A Creator Cannot Be Their Own Critic
 
 What if the reason we need rest — real rest, not just a break between tasks — is the same reason we need independent review?
 
