@@ -185,6 +185,18 @@ What if the operator who stops — not because a task completed, not because a m
 
 And if that sounds like a productivity argument dressed up in spiritual language — what if the spiritual language was always describing something real about how we're built, and we just needed a technological crisis to take it seriously?
 
+And here's one more thing to sit with — maybe the most surprising implication of everything we've just walked through.
+
+Every time a new technology arrived that was supposed to eliminate jobs, what actually happened? More jobs. Different jobs. Jobs nobody could have predicted from the near side of the curve. What if AI is doing the same thing right now — and we're living inside the proof?
+
+Think about it. Did AI reduce your workload? Or did you — like everyone else working closely with these tools — find *more* work than you knew what to do with? Did the 5x productivity give you four free days, or did it surface four days' worth of problems you didn't even know you had?
+
+What if that's not a failure of the technology? What if that's the pattern repeating — the same pattern that's repeated with every major technological shift in history? We can't see around the bend. We never can. But the people on this side of the curve, the ones using AI around the clock, aren't running out of work. They're drowning in it. And if the operators closest to the tools can't find the bottom of the work pile, maybe the fear that AI will take everything away is missing the same thing we missed about rest: the assumption that more capability means less demand. It never has. It never does.
+
+So maybe — just maybe — we're going to be okay. The jobs question might answer itself the same way the rest question did: not the way we expected, but in a direction we can work with.
+
+What do you think?
+
 The same week, I texted my colleague — the one from the [previous essay](klappy://writings/the-cost-of-code-dropped-to-zero) who'd been drowning in the 5x expectation. He took the week off with his family. I sent him one question: *are you truly resting this week? My prayer is that you don't even do any side work at all.*
 
 My friend is arriving in town this week. We're going to meet for coffee — not to solve anything, not to build anything, not to optimize anything. Just to be present with each other. Two people who've been running too fast, choosing to stop.
