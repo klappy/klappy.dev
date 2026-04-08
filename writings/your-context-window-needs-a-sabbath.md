@@ -149,7 +149,7 @@ Not stained-glass and organ music. What if holy, in the engineering sense, just 
 
 When God rested on the seventh day, was it because He was tired? Or was He setting a pattern — the way an architect builds a load-bearing wall not because the wall needs to exist for itself, but because everything above it depends on it?
 
-When I sat down with my friend over coffee — the same one who'd been up until four in the morning — he said it before I could. "He wasn't tired on the sixth day, but He knew He was setting up a pattern for us to follow." He'd arrived at it on his own. No prompting. No essay. Just a builder who'd been running too hard, reading his Bible on Good Friday, and recognizing the same design spec from the inside out.
+When I sat down with my friend over coffee — the same one who'd been up until four in the morning — he said it before I could. "He wasn't tired on the sixth day, but He knew He was setting up a pattern for us to follow." He'd arrived at it on his own. No prompting. No essay. Just a builder who'd been running too hard, reading his Bible to find answers, and recognizing the same design spec from the inside out.
 
 Consider what that means. The same God who designed you — who knows the capacity of your attention, the decay rate of your judgment, the refresh cycle your cognition requires — embedded a recurring stop into the operating rhythm of creation. Not as a reward for finishing. Not as permission earned. As architecture.
 
