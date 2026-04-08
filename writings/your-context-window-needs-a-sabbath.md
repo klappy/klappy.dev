@@ -49,7 +49,7 @@ provenance:
 
 The [previous essay](klappy://writings/the-cost-of-code-dropped-to-zero) diagnosed the problem: AI removed the friction that used to make us stop, and the cost of being human didn't drop with the cost of code. This essay names what comes next — not a productivity technique, but a recognition that rest was designed into us before we had a word for burnout.
 
-When you work with AI at the intensity most high performers sustain, the bottleneck shifts. You're no longer waiting on build times or blocked by execution. Every moment is discernment — high-stakes decisions about what to build, what to keep, what to kill, and whether the direction is right. That discernment is the most expensive thing you do, and it runs on a resource that doesn't scale with the tooling: your attention, your judgment, your presence. When that resource depletes, the symptoms look familiar to any developer: coherence degrades, older context drops, confidence rises while accuracy falls. You start hallucinating — not in the AI sense, but in the human one. You mistake motion for progress. You confuse capability with permission.
+When you work with AI seriously — and it doesn't take long before "seriously" becomes "constantly" — the bottleneck shifts. You're no longer waiting on build times or blocked by execution. Every moment is discernment — high-stakes decisions about what to build, what to keep, what to kill, and whether the direction is right. That discernment is the most expensive thing you do, and it runs on a resource that doesn't scale with the tooling: your attention, your judgment, your presence. When that resource depletes, the symptoms look familiar to any developer: coherence degrades, older context drops, confidence rises while accuracy falls. You start hallucinating — not in the AI sense, but in the human one. You mistake motion for progress. You confuse capability with permission.
 
 The prescription is not new. It is, in fact, the oldest prescription in the human operating manual. And it comes from someone who knew your limits before you were born.
 
@@ -61,7 +61,7 @@ If you're reading this, you've probably done the math in your head. Maybe you've
 
 Have you?
 
-What actually happened — and I'm asking because I lived it, and because every high performer I talk to confirms the same thing — is that the output went up and the expectation went with it. You didn't finish five times sooner. You produced five times as much, and then the bar moved. Not because someone raised it on you — though sometimes they did. Because we raise it on ourselves.
+What actually happened — and I'm asking because I lived it, and because everyone I talk to who works closely with AI describes the same thing — is that the output went up and the expectation went with it. You didn't finish five times sooner. You produced five times as much, and then the bar moved. Not because someone raised it on you — though sometimes they did. Because we raise it on ourselves.
 
 Here's the part that caught me off guard. Before AI, the creative rhythm had a shape I could feel. There were these intense epiphanies — the adrenaline-pumping moments where the architecture clicks, or the design reveals itself, or you see how the pieces fit together. Those took enormous mental and emotional energy. But then came the execution phase — actually building what you'd envisioned — and that phase, intense as it was, had a different quality. It was flow. It was zen. I could code for days in that state and lose track of meals and sleep, and somehow my mind felt peaceful even as my body gave out.
 
@@ -133,7 +133,7 @@ But what about the weekly one? What if there's a longer cycle — not enforced b
 
 And what if the operating manual for that weekly flush was written before you were born?
 
-Here's what makes this hard for high performers: the daily flush feels mandatory because your body forces it. You *have* to sleep eventually. But the weekly flush doesn't have a physical override. You can work seven days a week for months before the debt comes due. And when it does, it doesn't arrive as tiredness. It arrives as anger, as broken relationships, as decisions you wouldn't have made if you'd had the capacity to see clearly.
+Here's what makes this insidious: the daily flush feels mandatory because your body forces it. You *have* to sleep eventually. But the weekly flush doesn't have a physical override. You can work seven days a week for months before the debt comes due. And when it does, it doesn't arrive as tiredness. It arrives as anger, as broken relationships, as decisions you wouldn't have made if you'd had the capacity to see clearly. And the more capable you are with these tools — the more naturally the work flows — the easier it is to miss the moment when flow became flood.
 
 And here's what nobody expects: even the tools prove it. The code reviewer that catches what you missed after nine revision passes — it's not smarter than the agent that wrote it. It's the same model, the same rules, the same governance. But it started fresh. Clean context. One purpose. It found what the authoring agent couldn't see, because the authoring agent had been staring at its own work for too long. Same lenses used to create, same lenses used to evaluate — and the blind spots persisted until someone with fresh eyes walked in. Sound familiar?
 
