@@ -16,7 +16,7 @@ governs: "All public essays (writings/) and book chapters after draft-zero"
 
 # Method: Revision Lens Sequence — One Pass, One Lens, One Complete Read
 
-> Applying multiple governance concerns simultaneously produces mediocre results on each. This method defines a sequential series of revision passes, each applying one lens to the entire document. Each pass is a complete read-through with one concern. The agent proposes the sequence after draft-zero, noting which passes are high-value for the specific piece, then executes one pass at a time — presenting changes and waiting for author direction before the next. A regression check closes the sequence to catch what earlier passes may have broken.
+> Applying multiple governance concerns simultaneously produces mediocre results on each. This method defines a sequential series of revision passes, each applying one lens to the entire document. Each pass is a complete read-through with one concern. The agent proposes the sequence after draft-zero, noting which passes are high-value for the specific piece, then executes one pass at a time — presenting changes and waiting for author direction before the next. A regression check catches what earlier passes may have broken, and an oddkit gauntlet closes the sequence as the formal gate before claiming the document is ready.
 
 ---
 
@@ -26,7 +26,7 @@ Draft-zeros compress source material into structured essays. They consistently m
 
 This is a signal. When the same corrections are needed every time, they should be automated as sequential passes — not collapsed into a single checklist that produces shallow compliance on each point.
 
-The method: after draft-zero, the agent executes a defined sequence of single-lens revision passes. Each pass reads the entire document through one specific governance concern. Passes are discrete operations — the output of each becomes the input of the next. The sequence ends with a regression check that re-reads the document looking for damage introduced by earlier passes.
+The method: after draft-zero, the agent executes a defined sequence of single-lens revision passes. Each pass reads the entire document through one specific governance concern. Passes are discrete operations — the output of each becomes the input of the next. The sequence ends with a regression check that re-reads the document looking for damage introduced by earlier passes, followed by an oddkit gauntlet (preflight, challenge, validate) as the formal gate before claiming the document is ready.
 
 ---
 
@@ -151,7 +151,7 @@ This method was encoded because the author observed the same pattern across mult
 
 The specific trigger was the "Your Context Window Needs a Sabbath" session (April 7, 2026), where the author asked for a Socratic voice pass after the draft-zero and then asked: "How do we address this with governance of multiple passes to address these missed concerns, as it's too much in a single pass but governance of new lenses each pass?"
 
-The answer: sequential single-lens passes, each a complete read-through with one concern, ending with a regression check to catch what earlier passes broke. Subsequent observation confirmed that even sequential passes from the same agent have structural blind spots — an independent reviewer with fresh context and the same governance consistently catches what the authoring agent cannot, because the same lenses used to create are the same lenses used to evaluate.
+The answer: sequential single-lens passes, each a complete read-through with one concern, ending with a regression check to catch what earlier passes broke, followed by an oddkit gauntlet to formally gate completion. Subsequent observation confirmed that even sequential passes from the same agent have structural blind spots — an independent reviewer with fresh context and the same governance consistently catches what the authoring agent cannot, because the same lenses used to create are the same lenses used to evaluate.
 
 ---
 
