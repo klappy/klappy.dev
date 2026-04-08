@@ -205,7 +205,7 @@ The same week, I texted my colleague — the one from the [previous essay](klapp
 
 My friend — the one who texted me on Good Friday, the one who searched my site for "rest" and found nothing — flew into town that same week. We met for coffee. Not to solve anything, not to build anything, not to optimize anything. Just to be present with each other. Two people who'd been running too fast, choosing to stop.
 
-It was the most productive thing any of us did all week.
+We just encouraged each other and chose to be present. It was the most important thing either of us could have chosen to do.
 
 -----
 
