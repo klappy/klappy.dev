@@ -69,7 +69,7 @@ So what happens when AI removes that execution phase — the part that felt like
 
 It feels like making high-stakes decisions every few minutes instead of every few days. And wondering why your brain never recovers.
 
-So why does this feel different from the old marathons? Why did you not become full of anger and frustration before, but now you are?
+So why does this feel different from the old marathons? Why didn't the exhaustion turn into frustration before — but now it does?
 
 -----
 
@@ -79,7 +79,7 @@ Where does all that anger come from? What if it always traces back to the same s
 
 What were we expecting? That the efficiency gains from AI would give us peace. More rest. More margin. More presence with the people we love. Instead, we got the same hours — or more — with higher intensity and no margin at all.
 
-Was that expectation unreasonable? Not at all. It was the promise. Every pitch for AI productivity implies it: do more in less time, and the time comes back to you. But did the time come back? Or did it go straight into more output — and the gap between what we expected and what actually happened became the place where the rage lives?
+Was that expectation unreasonable? Not at all. It was the promise. Every pitch for AI productivity implies it: do more in less time, and the time comes back to you. But did the time come back? Or did it go straight into more output — and the gap between what we expected and what actually happened became the place where the frustration lives — sometimes approaching something that feels dangerously close to rage?
 
 If you've navigated any major change before, you know the pattern. Anger shows up when something we assumed turns out not to be true. It's not a character flaw. It's a signal — our nervous system telling us we haven't recalibrated yet.
 
