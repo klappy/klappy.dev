@@ -34,7 +34,9 @@ related:
 
 provenance:
   brain_dump: "Apr 7, 2026 — recorded dictation, 11:19 AM–12:23 PM EDT, during DHL errand"
-  friend_text_thread: "Apr 4–7, 2026 — text exchange on burnout, Sabbath rhythm, and meeting up"
+  friend_text_thread: "Apr 4–8, 2026 — text exchange on burnout, Sabbath rhythm, and meeting up"
+  friend_coffee_meeting: "Apr 8, 2026 — in-person coffee, Orlando FL. Joy-of-discovery burnout, Jonah vulnerability, independent Sabbath theology echo"
+  colleague_beach_rest: "Apr 8, 2026 — colleague on vacation, beach sunset photo captioned 'Now this is a break from AI!'"
   external_validation: "Lenny Rachitsky post on cognitive limits of coding agents, shared by friend"
   predecessor_essays: "writings/the-cost-of-code-dropped-to-zero.md — Mar 12, 2026"
 ---
@@ -103,7 +105,7 @@ But when was the last time an AI system told you that you weren't present? When 
 
 ## A Friend's Text on Good Friday
 
-A few days ago, a friend reached out. He'd been reading my previous essays, and something had hit close to home. He'd been feeling burned out trying to keep pace with his AI workflow — working until the early morning hours, burning tokens and burning himself out alongside them. He put it simply: deliberate boundaries and rest have been difficult to keep.
+A few days ago, a friend reached out. He'd been reading my previous essays, and something had hit close to home. He'd been working until three and four in the morning — not from pressure, not from obligation, but from the sheer joy of discovery. The tools were so good, the breakthroughs so satisfying, that stopping felt like walking away from a gift. But the joy wasn't free. Deliberate boundaries and rest, he told me, have been difficult to keep.
 
 He'd searched my site for an article on rest. No results.
 
@@ -197,11 +199,11 @@ So maybe — just maybe — we're going to be okay. The jobs question might answ
 
 What do you think?
 
-The same week, I texted my colleague — the one from the [previous essay](klappy://writings/the-cost-of-code-dropped-to-zero) who'd been drowning in the 5x expectation. He took the week off with his family. I sent him one question: *are you truly resting this week? My prayer is that you don't even do any side work at all.*
+The same week, I texted my colleague — the one from the [previous essay](klappy://writings/the-cost-of-code-dropped-to-zero) who'd been drowning in the 5x expectation. He took the week off with his family. I sent him one question: *are you truly resting this week? My prayer is that you don't even do any side work at all.* That evening, he sent me a photo of the ocean at sunset. The caption: *Now this is a break from AI!*
 
-My friend — the one who texted me on Good Friday, the one who searched my site for "rest" and found nothing — is arriving in town this week. We're going to meet for coffee — not to solve anything, not to build anything, not to optimize anything. Just to be present with each other. Two people who've been running too fast, choosing to stop.
+My friend — the one who texted me on Good Friday, the one who searched my site for "rest" and found nothing — flew into town that same week. We met for coffee. Not to solve anything, not to build anything, not to optimize anything. Just to be present with each other. Two people who'd been running too fast, choosing to stop.
 
-It might be the most productive thing any of us does all week.
+It was the most productive thing any of us did all week.
 
 -----
 
