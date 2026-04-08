@@ -113,7 +113,7 @@ The same week, he shared something from a well-known voice in tech — an engine
 
 My friend saw that and responded with a single emoji. The kind that says *I feel this in my bones*.
 
-What struck me wasn't just the validation. It was the convergence. Three of us — my colleague from the [previous essay](klappy://writings/the-cost-of-code-dropped-to-zero), my friend, and me — arriving at the same wall from completely different angles. One facing organizational pressure that scaled with his output. One facing the loneliness of an independent builder whose AI team runs twenty-four-seven. And me, the one who wrote about the problem but hadn't written about the solution.
+What struck me wasn't just the validation. It was the convergence. Three of us — arriving at the same wall from completely different angles. My colleague from the [previous essay](klappy://writings/the-cost-of-code-dropped-to-zero), facing organizational pressure that scaled with his output. My friend, the one who texted on Good Friday, facing the loneliness of an independent builder whose AI team runs twenty-four-seven. And me, the one who wrote about the problem but hadn't written about the solution.
 
 When three people hit the same wall from three different directions, is it still a personal problem? Or is it structural? And if it's structural — if the pattern doesn't care whether you work alone or on a team, whether you're self-employed or answering to a boss — then can the solution really be "just try harder to rest"? Or does it have to be something built into how we operate?
 
@@ -199,7 +199,7 @@ What do you think?
 
 The same week, I texted my colleague — the one from the [previous essay](klappy://writings/the-cost-of-code-dropped-to-zero) who'd been drowning in the 5x expectation. He took the week off with his family. I sent him one question: *are you truly resting this week? My prayer is that you don't even do any side work at all.*
 
-My friend is arriving in town this week. We're going to meet for coffee — not to solve anything, not to build anything, not to optimize anything. Just to be present with each other. Two people who've been running too fast, choosing to stop.
+My friend — the one who texted me on Good Friday, the one who searched my site for "rest" and found nothing — is arriving in town this week. We're going to meet for coffee — not to solve anything, not to build anything, not to optimize anything. Just to be present with each other. Two people who've been running too fast, choosing to stop.
 
 It might be the most productive thing any of us does all week.
 
