@@ -133,7 +133,7 @@ The practical test: if your document were loaded alongside `canon/values/axioms.
 
 ---
 
-## Checklist — Before Committing a Canon Document
+## Checklist — Before Committing Any Document or Publishing Any Writing
 
 1. **Title test:** Does the title name the concept and its stance? Could someone decide relevance from the title alone?
 2. **Blockquote test:** Does the blockquote contain the complete compressed argument? Could an agent act on title + blockquote alone?
@@ -142,6 +142,7 @@ The practical test: if your document were loaded alongside `canon/values/axioms.
 5. **Header scan test:** Do the headers tell the document's story when read in sequence? Do structural markers have descriptive subtitles?
 6. **No buried claims:** Is every key assertion present in compressed form at a higher tier? Does the body elaborate rather than introduce?
 7. **Axiom space test:** If loaded in a small context alongside the axioms and creed, does this document amplify the values or crowd them out?
+8. **Ghost writer test:** Does the text sound like the author or like a model? Check for clustering of AI voice patterns: negation parallelism ("It's not X. It's Y."), formulaic transitions, em dash overuse, generic descriptors, uniform pacing. One signal is fine. Multiple signals in the same section means the ghost writer is showing through. See `canon/constraints/ai-voice-cliches.md`.
 
 ---
 
@@ -149,7 +150,7 @@ The practical test: if your document were loaded alongside `canon/values/axioms.
 
 This checklist is not advice. It is a structural requirement integrated into the Definition of Done (`canon/constraints/definition-of-done.md`) and the Self-Audit Checklist (`canon/methods/self-audit.md`).
 
-If the deliverable is a document targeting `canon/`, `odd/`, or `docs/`, the progressive disclosure tiers are Definition of Done requirements. A document that exists but fails these tiers is not complete.
+If the deliverable is a document targeting `canon/`, `odd/`, `docs/`, or `writings/`, the progressive disclosure tiers are Definition of Done requirements. A document that exists but fails these tiers is not complete.
 
 OddKit's preflight and validate actions surface this checklist automatically when the deliverable is a document. Preflight includes the seven-point checklist in the definition of done. Validate checks for blockquote, summary section, and header quality, returning `NEEDS_ARTIFACTS` with specific guidance when checks fail. The gate fires without being asked. See `docs/oddkit/tools/oddkit_preflight.md` and `docs/oddkit/tools/oddkit_validate.md` for behavioral specification, and `docs/oddkit/IMPL-writing-canon-gate.md` for the implementation record.
 
