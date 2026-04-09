@@ -85,15 +85,28 @@ The MOVED vs DEAD distinction matters. An agent should search oddkit by title or
 
 ---
 
-## Agent Configuration
+## Agent Workflow
 
-Same as governance validation (see `canon/methods/governance-validation-via-agents.md`):
+Same infrastructure as governance validation (see `canon/methods/governance-validation-via-agents.md`):
 
-- **Tools:** bash (clone, scan), text editor (read files)
+- **Tools:** bash (clone, scan, git), text editor (read and edit files)
 - **MCP:** oddkit at `https://oddkit.klappy.dev/mcp` — used to search for moved documents and verify URI resolution
-- **Output:** JSON report at a known path, classifying every finding
 
-The agent receives only a task: "Run a reference integrity audit on klappy/klappy.dev." It fetches this method doc via oddkit to learn what to check and how to classify. No methodology hardcoded in the launcher.
+The agent receives a task: "Run a reference integrity audit on klappy/klappy.dev." It fetches this method doc via oddkit to learn what to check and how to classify. No methodology hardcoded in the launcher.
+
+### The workflow is: audit, fix, PR.
+
+1. **Clone** the repo, create a branch (`fix/reference-integrity-YYYY-MM-DD`)
+2. **Scan** for broken references using the taxonomy above
+3. **Classify** each finding (DEAD, MOVED, STALE_INDEX) — search oddkit before calling anything DEAD
+4. **Fix** what can be fixed mechanically:
+   - MOVED → update the reference to the new path/URI
+   - STALE_INDEX → add the missing file to the README listing
+   - DEAD → remove the broken reference, or add a `<!-- TODO: target missing -->` comment if removal would damage the document's meaning
+5. **Commit** with a descriptive message listing findings and fixes
+6. **Push and open a PR** with the full audit summary in the PR body
+
+An audit that only reports is a document that lies about the state of things tomorrow. The PR is the artifact. The JSON report, if produced, lives in the PR description — not as a standalone file.
 
 ---
 
