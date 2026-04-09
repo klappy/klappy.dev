@@ -1,9 +1,8 @@
 ---
-
 uri: klappy://writings/the-voice-came-first
-title: “The Voice Came First”
-subtitle: “What if writing was never the point — just the best bridge we had until something better came along?”
-author: “Klappy”
+title: "The Voice Came First"
+subtitle: "What if writing was never the point — just the best bridge we had until something better came along?"
+author: "Klappy"
 type: article
 status: ready
 public: true
@@ -13,54 +12,47 @@ tier: 1
 voice: first_person
 stability: evolving
 tags:
-
-- writings
-- article
-- oral-first
-- workflow
-- knowledge-transfer
-- bible-translation
-- ai-collaboration
-- book
-  epoch: E0005
-  date: 2026-02-21
+  - writings
+  - article
+  - oral-first
+  - workflow
+  - knowledge-transfer
+  - bible-translation
+  - ai-collaboration
+  - book
+epoch: E0005
+date: 2026-02-21
 
 # Discovery
-
-hook: “Every technology we built for knowledge transfer — writing, printing, digital — was a workaround for the limitations of speech. AI is the first one that might not need the workaround. So was text ever the point?”
-description: “What if every technology we built for knowledge transfer — writing, printing, digital — was a compression we accepted because nothing else scaled? This chapter traces that question through Bible translation, book writing, AI collaboration, and a lifelong fear of blank pages.”
+hook: "Every technology we built for knowledge transfer — writing, printing, digital — was a workaround for the limitations of speech. AI is the first one that might not need the workaround. So was text ever the point?"
+description: "What if every technology we built for knowledge transfer — writing, printing, digital — was a compression we accepted because nothing else scaled? This chapter traces that question through Bible translation, book writing, AI collaboration, and a lifelong fear of blank pages."
 slug: the-voice-came-first
 
 # Social graph
-
-og_title: “The Voice Came First”
-og_description: “What if writing was never the point — just the best bridge we had until something better came along?”
+og_title: "The Voice Came First"
+og_description: "What if writing was never the point — just the best bridge we had until something better came along?"
 og_type: article
 twitter_card: summary_large_image
-twitter_title: “The Voice Came First”
-twitter_description: “What if writing was never the point — just the best bridge we had until something better came along?”
+twitter_title: "The Voice Came First"
+twitter_description: "What if writing was never the point — just the best bridge we had until something better came along?"
 
 # Book placement
-
-book_part: “Part III — The Discovery”
+book_part: "Part III — The Discovery"
 book_chapter: 8
 
 # Relationships
-
 derives_from:
-
-- canon/values/axioms.md
-- canon/constraints/guide-posture.md
-- writings/from-bible-translation-to-epistemic-os.md
-  related:
-- uri: klappy://writings/choosing-faith-not-fear
-  label: “Choosing Faith, Not Fear (previous chapter)”
-  relationship: prequel
-- uri: klappy://writings/four-questions-that-change-everything
-  label: “Four Questions That Change Everything (next chapter)”
-  relationship: sequel
-  complements: “writings/from-bible-translation-to-epistemic-os.md, writings/the-intern.md, writings/choosing-faith-not-fear.md”
-
+  - canon/values/axioms.md
+  - canon/constraints/guide-posture.md
+  - writings/from-bible-translation-to-epistemic-os.md
+related:
+  - uri: klappy://writings/choosing-faith-not-fear
+    label: "Choosing Faith, Not Fear (previous chapter)"
+    relationship: prequel
+  - uri: klappy://writings/four-questions-that-change-everything
+    label: "Four Questions That Change Everything (next chapter)"
+    relationship: sequel
+complements: "writings/from-bible-translation-to-epistemic-os.md, writings/the-intern.md, writings/choosing-faith-not-fear.md"
 ---
 
 # The Voice Came First
