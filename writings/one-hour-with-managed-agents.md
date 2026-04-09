@@ -5,7 +5,7 @@ subtitle: "From announcement to autonomous PR — and what it revealed about epi
 slug: one-hour-with-managed-agents
 author: "Klappy"
 type: essay
-public: false
+public: true
 audience: public
 exposure: public
 tier: 1
@@ -120,6 +120,12 @@ Building something real in someone else's brand-new infrastructure, on launch da
 
 **Inline validation is fast but limited. Agentic validation has overhead but is thorough.** After the first spike, my AI co-author shipped broken frontmatter in the article itself — then shipped it broken again, and again. Four times in one session. Each time, it tried to fix it inline: eyeballing the YAML, comparing fields from memory, patching by hand. Each time, something slipped through. My only signal was the preview site crashing. When I finally told it to stop guessing and spin up a Managed Agent to validate — cloning the repo, fetching the schema from oddkit, diffing against working essays field-by-field — the agent found every issue in one pass. The overhead is real: each agent validation takes two to four minutes, sessions can timeout, containers can die mid-execution. But the thoroughness is worth it. Inline validation catches what you think to check. Agentic validation checks what the schema actually requires. The two are complementary: validate inline for speed, then send an agent when the stakes are high or your co-author's track record is bad.
 
+## The Fix Shipped
+
+By the end of the session, the BM25 fix had been battle-tested against all 465 documents in the canon, deployed to production, and verified live. The query that started the whole chain — "Vodka Architecture" — now returns the right document as the first result, with a score boosted by the phrase match. The index freshness verification caught a stale cache on the very first request after deploy, rebuilt it, and every subsequent request served the fresh 465-document index.
+
+The bug that Birch praised for being honestly reported is now fixed — by a different agent, in the same session, on infrastructure that didn't exist yesterday.
+
 ---
 
-*The agent configuration, event logs, and PR are all public. If you want to see what an oddkit-powered Managed Agent looks like in practice: [PR #72](https://github.com/klappy/oddkit/pull/72).*
+*The agent configurations, event logs, and PRs are all public. [PR #72](https://github.com/klappy/oddkit/pull/72) is the BM25 fix authored by a Managed Agent. [PR #73](https://github.com/klappy/oddkit/pull/73) deployed it to production.*
