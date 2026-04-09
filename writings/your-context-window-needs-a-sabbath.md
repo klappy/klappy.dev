@@ -4,12 +4,12 @@ title: "Your Context Window Needs a Sabbath"
 subtitle: "What happens when the operator ignores the design spec of their own humanity"
 author: Klappy
 type: essay
-public: true
+public: false
 audience: public
-exposure: nav
+exposure: draft
 tier: 1
 voice: first_person
-stability: evolving
+stability: draft
 tags: ["writings", "essay", "rest", "sabbath", "burnout", "operator-governance", "productivity", "discipline", "friction"]
 epoch: E0007
 date: 2026-04-07
