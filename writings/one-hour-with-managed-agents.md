@@ -118,6 +118,8 @@ Building something real in someone else's brand-new infrastructure, on launch da
 
 **Infrastructure you don't build is infrastructure you don't maintain.** Managed Agents handles containers, state, error recovery, and scaling. That's months of work I didn't have to do and won't have to maintain. The Vodka Architecture principle — "thin, clean, stateless over stateful" — applies to the whole stack, not just my code.
 
+**Inline validation is fast but limited. Agentic validation has overhead but is thorough.** After the first spike, I shipped broken frontmatter in the article itself — then shipped it broken again, and again. Four times in one session. Each time, I tried to fix it inline: eyeballing the YAML, comparing fields by memory, patching by hand. Each time, something slipped through. When I finally sent a Managed Agent to validate — cloning the repo, fetching the schema from oddkit, diffing against working essays field-by-field — it found every issue in one pass. The overhead is real: each agent validation takes two to four minutes, sessions can timeout, containers can die mid-execution. But the thoroughness is worth it. Inline validation catches what you think to check. Agentic validation checks what the schema actually requires. The two are complementary: validate inline for speed, then send an agent when the stakes are high or your track record is bad.
+
 ---
 
 *The agent configuration, event logs, and PR are all public. If you want to see what an oddkit-powered Managed Agent looks like in practice: [PR #72](https://github.com/klappy/oddkit/pull/72).*
