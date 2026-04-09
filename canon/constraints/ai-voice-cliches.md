@@ -6,7 +6,7 @@ exposure: nav
 tier: 1
 voice: neutral
 stability: evolving
-tags: [canon, constraints, writing, ai-voice, cliches, editing, quality, wikipedia]
+tags: ["canon", "constraints", "writing", "ai-voice", "cliches", "editing", "quality", "wikipedia"]
 epoch: E0007
 date: 2026-04-09
 derives_from: "canon/meta/writing-canon.md, canon/constraints/guide-posture.md"
@@ -20,7 +20,7 @@ governs: "All public-facing content: essays, articles, social posts, hook fields
 
 ---
 
-## Summary
+## Summary — Ghost Writers Must Disappear, Not Perform
 
 The workflow is: human provides direction, raw material, and editorial judgment. AI drafts, organizes, and formats. The final voice should be the author's — grounded in real experience, specific to the context, unmistakably human in rhythm and stance.
 

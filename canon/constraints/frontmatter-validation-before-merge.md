@@ -6,7 +6,7 @@ exposure: nav
 tier: 1
 voice: neutral
 stability: stable
-tags: [canon, constraints, frontmatter, validation, writings, renderer, quality-gate]
+tags: ["canon", "constraints", "frontmatter", "validation", "writings", "renderer", "quality-gate"]
 epoch: E0007
 date: 2026-04-09
 derives_from: "canon/meta/frontmatter-schema.md, canon/values/axioms.md"
@@ -20,7 +20,7 @@ governs: "All PRs that add or modify files in writings/, canon/, odd/, or docs/"
 
 ---
 
-## Summary
+## Summary — Broken Frontmatter Is a Renderer Crash Waiting to Happen
 
 The klappy.dev renderer expects specific frontmatter fields with specific types. When frontmatter is malformed — wrong types, missing required fields, contradictory flags — the page renders blank or crashes. The author's only signal is a broken preview site.
 
