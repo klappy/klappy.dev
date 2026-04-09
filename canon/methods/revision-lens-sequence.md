@@ -52,7 +52,7 @@ Each pass applies one lens. The agent executes the pass, presents what changed, 
 
 **Lens:** Are assertions presented as declarations or as discoveries the reader makes through guided questions?
 
-**Governing document:** `canon/constraints/guide-posture.md` (Socratic subsection) + observed author preference across all essay sessions
+**Governing document:** `canon/constraints/guide-posture.md` + observed author preference across all essay sessions
 
 **What it catches:** Declarative operator voice where guide voice belongs. Telling the reader what to think instead of asking questions that lead them to the same conclusion. Sermonizing — especially in theological sections.
 
@@ -144,7 +144,7 @@ Not every piece requires every pass at equal depth. After each milestone (draft-
 1. **After each milestone:** The agent proposes the lens sequence with a brief note on which passes are high-value for this piece.
 2. **One pass at a time:** The agent executes one pass, presents what changed (specific edits, not just descriptions), and waits for author direction.
 3. **Author controls the pace:** The author may say "do the next three" or "skip sensitivity, we'll do that after the reviewer reads it" or "combine Socratic and confession."
-4. **Regression check is non-negotiable:** After all content passes, the regression check runs. It exists because the observed failure mode is real: each lens fixes its own concern while occasionally breaking another.
+4. **Regression check is strongly recommended:** After all content passes, the agent runs the regression check unless the author explicitly skips it. It exists because the observed failure mode is real: each lens fixes its own concern while occasionally breaking another.
 5. **oddkit gauntlet closes:** Preflight, challenge, validate. This is the formal gate before claiming the document is ready.
 
 ---
