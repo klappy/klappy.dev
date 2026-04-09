@@ -68,7 +68,7 @@ The agent found the four axioms in canon and presented them accurately. But it *
 
 My colleague Birch captured the significance better than I could: "It admitted what it didn't find and it refused to guess. Very cool."
 
-That's not a feature. That's a value system working.
+The epistemic discipline showed up as behavior, not just configuration.
 
 ## The Bug in the Honest Answer
 
