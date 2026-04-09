@@ -97,6 +97,8 @@ Building something real in someone else's brand-new infrastructure, on launch da
 
 **MCP servers in Managed Agents are first-class.** They're declared at agent creation and available to every session. Permission policies can auto-approve trusted servers. MCP tool calls appear as `agent.mcp_tool_use` events in the session trace — fully observable and auditable.
 
+**Model selection is agent design, not a global default.** All three agents in this session ran on Sonnet 4.6 — deliberately chosen to prove the pattern cheaply before spending Opus tokens. But there's a deeper reason to keep Sonnet in the mix: in practice, Sonnet catches more issues during code review than Opus does. Opus is smart enough to rationalize edge cases away; Sonnet flags them. For review agents and bugbots, you want the paranoid model. For synthesis and creative work, you want the one that sees the big picture. Model selection per agent role — not one size fits all.
+
 **The system prompt is sufficient for proactive behavior — today.** The agent called oddkit tools without being asked, purely from system prompt instructions. Whether that holds under adversarial conditions or at scale is an open question, but for a proof of concept, it works.
 
 **Honest failures are more valuable than plausible successes.** The Vodka Architecture miss led directly to discovering two real bugs. A hallucinated answer would have looked correct and taught me nothing.
