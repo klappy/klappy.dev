@@ -31,7 +31,7 @@ slug: when-skills-arent-enough
 og_description: "Every solution to system prompt bloat becomes the next rabbit hole. Three pressures, one result."
 twitter_description: "Every solution to system prompt bloat becomes the next rabbit hole. Three pressures, one result."
 derives_from: "canon/values/axioms.md, docs/oddkit/positioning.md, canon/principles/vodka-architecture.md"
-complements: "canon/resonance/agent-skills.md, writings/from-passive-to-proactive.md, writings/getting-started-with-odd-and-oddkit.md, writings/the-feature-i-never-shipped.md, writings/the-harness-and-the-operating-system.md"
+complements: "writings/from-passive-to-proactive.md, writings/getting-started-with-odd-and-oddkit.md, writings/the-harness-and-the-operating-system.md"
 
 # Provenance
 
@@ -165,4 +165,4 @@ The knowledge base is yours. The judgment is yours. The model just finally has a
 
 -----
 
-*See also: [The Feature I Never Shipped](klappy://writings/the-feature-i-never-shipped) — when the best engineering is recognizing you don't need to build. [From Passive to Proactive](klappy://writings/from-passive-to-proactive) — the story of how oddkit graduated from tools-on-demand to cognitive rhythm. [The Harness and the Operating System](klappy://writings/the-harness-and-the-operating-system) — why your AI needs an operating system, not just a bigger prompt.*
+*See also: [From Passive to Proactive](klappy://writings/from-passive-to-proactive) — the story of how oddkit graduated from tools-on-demand to cognitive rhythm. [The Harness and the Operating System](klappy://writings/the-harness-and-the-operating-system) — why your AI needs an operating system, not just a bigger prompt.*
