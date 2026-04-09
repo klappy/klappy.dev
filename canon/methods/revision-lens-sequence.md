@@ -11,12 +11,12 @@ epoch: E0007
 date: 2026-04-07
 derives_from: "canon/meta/writing-canon.md, canon/constraints/guide-posture.md, canon/constraints/relational-sensitivity.md, docs/book/governance-additions-2026-02-27.md"
 complements: "canon/methods/self-audit.md, canon/constraints/definition-of-done.md, docs/oddkit/IMPL-writing-canon-gate.md"
-governs: "All public essays (writings/) and book chapters after draft-zero"
+governs: "All public essays (writings/) and book chapters — after draft-zero and after each major revision prior to publishing"
 ---
 
 # Method: Revision Lens Sequence — One Pass, One Lens, One Complete Read
 
-> Quick multi-lens checks are valuable throughout drafting — preflight, inline validation, sanity checks. But when formal verification is required, applying multiple governance concerns simultaneously produces shallow compliance on each. This method defines a sequential series of single-lens revision passes for formal gate checks: each pass is a complete read-through with one concern. The agent proposes the sequence after draft-zero, noting which passes are high-value for the specific piece, then executes one pass at a time — presenting changes and waiting for author direction before the next. A regression check catches what earlier passes may have broken, and an oddkit gauntlet closes the sequence as the formal gate before claiming the document is ready.
+> Quick multi-lens checks are valuable throughout drafting — preflight, inline validation, sanity checks. But when formal verification is required, applying multiple governance concerns simultaneously produces shallow compliance on each. This method defines a sequential series of single-lens revision passes for formal gate checks: each pass is a complete read-through with one concern. The agent proposes the sequence after draft-zero and after each major revision prior to publishing, noting which passes are high-value for the specific piece, then executes one pass at a time — presenting changes and waiting for author direction before the next. A regression check catches what earlier passes may have broken, and an oddkit gauntlet closes the sequence as the formal gate before claiming the document is ready.
 
 ---
 
@@ -28,9 +28,9 @@ This is a signal. When the same corrections are needed every time, they should b
 
 This does not mean multi-lens passes have no value. Quick checks with all lenses active — preflight before execution, inline validation along the way, sanity checks during drafting — are fast, valuable, and appropriate throughout the writing process. They catch obvious issues early and keep the work directionally sound. What they cannot do is substitute for the thorough, single-focus reads that formal verification requires. A quick multi-lens scan might catch that the blockquote is missing. It won't catch that the theological section drifted from Socratic voice into sermonic declaration while maintaining perfect guide posture.
 
-The distinction: multi-lens passes are how you work. Single-lens passes are how you verify. Both have a place. This method governs the verification sequence — the formal gate checks that happen after draft-zero is complete and the document is being prepared for publication.
+The distinction: multi-lens passes are how you work. Single-lens passes are how you verify. Both have a place. This method governs the verification sequence — the formal gate checks that happen after draft-zero and after each major revision prior to publishing.
 
-The method: after draft-zero, the agent executes a defined sequence of single-lens revision passes. Each pass reads the entire document through one specific governance concern. Passes are discrete operations — the output of each becomes the input of the next. The sequence ends with a regression check that re-reads the document looking for damage introduced by earlier passes, followed by an oddkit gauntlet (preflight, challenge, validate) as the formal gate before claiming the document is ready.
+The method: after draft-zero — and again after each major revision — the agent executes a defined sequence of single-lens revision passes. Each pass reads the entire document through one specific governance concern. Passes are discrete operations — the output of each becomes the input of the next. The sequence ends with a regression check that re-reads the document looking for damage introduced by earlier passes, followed by an oddkit gauntlet (preflight, challenge, validate) as the formal gate before claiming the document is ready.
 
 ---
 
@@ -114,7 +114,7 @@ Each pass applies one lens. The agent executes the pass, presents what changed, 
 
 **What it catches:** Socratic voice pass that broke guide posture (e.g., opened with a question about the system instead of the reader's pain). Relational sensitivity pass that introduced declarative voice. Factual verification pass that lost the Socratic framing of a corrected claim. Any pass that solved its own concern while creating a new one.
 
-**The test:** One complete read-through holding all lenses simultaneously — but only looking for *regressions from the draft-zero baseline*, not attempting new improvements. If regressions are found, fix them and note the tension for the author.
+**The test:** One complete read-through holding all lenses simultaneously — but only looking for *regressions introduced by the current pass sequence*, not attempting new improvements. If regressions are found, fix them and note the tension for the author.
 
 ### Pass 9 — oddkit Gauntlet
 
@@ -128,9 +128,9 @@ Each pass applies one lens. The agent executes the pass, presents what changed, 
 
 ## When to Apply
 
-This sequence applies to all public essays (`writings/`) and book chapters after draft-zero. Internal canon documents (`canon/`, `docs/`, `odd/`) follow the Writing Canon gate but do not require the full lens sequence — the Socratic voice, confession-before-accusation, and relational sensitivity passes are specific to public-facing content.
+This sequence applies to all public essays (`writings/`) and book chapters — after draft-zero and again after each major revision prior to publishing. A "major revision" is any change substantial enough that earlier passes may no longer hold: new sections added, source material incorporated, structural reordering, or feedback that reshapes the argument. Minor edits (typos, single-line fixes, frontmatter updates) do not require a full sequence. Internal canon documents (`canon/`, `docs/`, `odd/`) follow the Writing Canon gate but do not require the full lens sequence — the Socratic voice, confession-before-accusation, and relational sensitivity passes are specific to public-facing content.
 
-Not every piece requires every pass at equal depth. After draft-zero, the agent proposes the sequence and notes which passes are high-value for this specific piece. Examples:
+Not every piece requires every pass at equal depth. After each milestone (draft-zero, major revision, feedback incorporation), the agent proposes the sequence and notes which passes are high-value for this specific piece. Examples:
 
 - An essay with theology → Pass 3 (confession) is high-value
 - An essay with named colleagues → Pass 4 (sensitivity) is high-value
@@ -141,7 +141,7 @@ Not every piece requires every pass at equal depth. After draft-zero, the agent 
 
 ## How the Agent Executes
 
-1. **After draft-zero:** The agent proposes the lens sequence with a brief note on which passes are high-value for this piece.
+1. **After each milestone:** The agent proposes the lens sequence with a brief note on which passes are high-value for this piece.
 2. **One pass at a time:** The agent executes one pass, presents what changed (specific edits, not just descriptions), and waits for author direction.
 3. **Author controls the pace:** The author may say "do the next three" or "skip sensitivity, we'll do that after the reviewer reads it" or "combine Socratic and confession."
 4. **Regression check is non-negotiable:** After all content passes, the regression check runs. It exists because the observed failure mode is real: each lens fixes its own concern while occasionally breaking another.
