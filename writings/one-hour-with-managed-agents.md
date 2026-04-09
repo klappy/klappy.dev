@@ -1,22 +1,35 @@
 ---
 uri: klappy://writings/one-hour-with-managed-agents
 title: "One Hour with Claude Managed Agents"
-subtitle: "From 'what is this' to an autonomous PR — and what it revealed about epistemic infrastructure"
+subtitle: "From announcement to autonomous PR — and what it revealed about epistemic infrastructure"
 slug: one-hour-with-managed-agents
-author: Klappy
+author: "Klappy"
 type: essay
-audience: public
 public: false
+audience: public
+exposure: public
+tier: 1
+voice: first_person
+stability: draft
 date: 2026-04-09
 epoch: E0007
 description: "What happens when you wire an epistemic guidance system into Anthropic's new agent infrastructure? A systems architect discovers the answer in sixty minutes."
 hook: "An autonomous agent searched before claiming, admitted what it didn't know, refused to guess — and then filed a PR fixing the bug we discovered together."
 og_title: "One Hour with Claude Managed Agents"
 og_description: "From announcement to autonomous PR in sixty minutes. What happens when epistemic discipline meets managed infrastructure."
+og_type: article
 twitter_card: summary_large_image
 twitter_title: "One Hour with Claude Managed Agents"
-twitter_description: "An agent searched before claiming, refused to guess, and filed a PR fixing its own search bug. Here's what happened."
-tags: [managed-agents, oddkit, epistemic-infrastructure, MCP, proof-of-concept, vodka-architecture]
+twitter_description: "An agent searched before claiming, refused to guess, and filed a PR fixing its own search bug."
+tags:
+  - writings
+  - essay
+  - managed-agents
+  - oddkit
+  - epistemic-infrastructure
+  - MCP
+  - proof-of-concept
+  - vodka-architecture
 derives_from: "canon/values/axioms.md, canon/principles/vodka-architecture.md"
 complements: "writings/when-skills-arent-enough.md"
 ---
