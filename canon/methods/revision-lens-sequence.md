@@ -16,15 +16,19 @@ governs: "All public essays (writings/) and book chapters after draft-zero"
 
 # Method: Revision Lens Sequence — One Pass, One Lens, One Complete Read
 
-> Applying multiple governance concerns simultaneously produces mediocre results on each. This method defines a sequential series of revision passes, each applying one lens to the entire document. Each pass is a complete read-through with one concern. The agent proposes the sequence after draft-zero, noting which passes are high-value for the specific piece, then executes one pass at a time — presenting changes and waiting for author direction before the next. A regression check catches what earlier passes may have broken, and an oddkit gauntlet closes the sequence as the formal gate before claiming the document is ready.
+> Quick multi-lens checks are valuable throughout drafting — preflight, inline validation, sanity checks. But when formal verification is required, applying multiple governance concerns simultaneously produces shallow compliance on each. This method defines a sequential series of single-lens revision passes for formal gate checks: each pass is a complete read-through with one concern. The agent proposes the sequence after draft-zero, noting which passes are high-value for the specific piece, then executes one pass at a time — presenting changes and waiting for author direction before the next. A regression check catches what earlier passes may have broken, and an oddkit gauntlet closes the sequence as the formal gate before claiming the document is ready.
 
 ---
 
-## Summary — Sequential Lenses Outperform Simultaneous Checklists
+## Summary — Quick Checks Keep You Honest; Formal Gates Require Single-Lens Passes
 
 Draft-zeros compress source material into structured essays. They consistently miss the same concerns — not because the author or agent is unaware of them, but because applying all governance lenses at once exceeds what a single pass can hold in focus. The observed pattern: the author asks the same sequence of improvement questions after every draft-zero, and each question improves the output whether or not the author has read the draft.
 
 This is a signal. When the same corrections are needed every time, they should be automated as sequential passes — not collapsed into a single checklist that produces shallow compliance on each point.
+
+This does not mean multi-lens passes have no value. Quick checks with all lenses active — preflight before execution, inline validation along the way, sanity checks during drafting — are fast, valuable, and appropriate throughout the writing process. They catch obvious issues early and keep the work directionally sound. What they cannot do is substitute for the thorough, single-focus reads that formal verification requires. A quick multi-lens scan might catch that the blockquote is missing. It won't catch that the theological section drifted from Socratic voice into sermonic declaration while maintaining perfect guide posture.
+
+The distinction: multi-lens passes are how you work. Single-lens passes are how you verify. Both have a place. This method governs the verification sequence — the formal gate checks that happen after draft-zero is complete and the document is being prepared for publication.
 
 The method: after draft-zero, the agent executes a defined sequence of single-lens revision passes. Each pass reads the entire document through one specific governance concern. Passes are discrete operations — the output of each becomes the input of the next. The sequence ends with a regression check that re-reads the document looking for damage introduced by earlier passes, followed by an oddkit gauntlet (preflight, challenge, validate) as the formal gate before claiming the document is ready.
 
