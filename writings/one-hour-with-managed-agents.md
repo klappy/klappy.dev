@@ -10,7 +10,7 @@ audience: public
 exposure: public
 tier: 1
 voice: first_person
-stability: draft
+stability: evolving
 date: 2026-04-09
 epoch: E0007
 description: "What happens when you wire an epistemic guidance system into Anthropic's new agent infrastructure? A systems architect discovers the answer in sixty minutes."
