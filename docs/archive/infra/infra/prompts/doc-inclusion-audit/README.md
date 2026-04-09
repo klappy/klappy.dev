@@ -42,7 +42,7 @@ cat infra/compile/plans/website/author.json
 
 ## Related Documents
 
-- [Compilation Targets](/docs/appendices/compilation-targets.md) — Pack definitions
+- [Compilation Targets](/docs/archive/compilation-targets.md) — Pack definitions
 - [Canonical Compression](/docs/appendices/canonical-compression.md) — Compression philosophy
 - [Three-Tier Hierarchy](/odd/decisions/D0001-three-tier-conceptual-hierarchy.md) — Tier definitions
-- [Truth Map](/docs/TRUTH_MAP.md) — Authoritative sources
+- [Truth Map](/docs/archive/TRUTH_MAP.md) — Authoritative sources

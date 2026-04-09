@@ -71,6 +71,6 @@ ODD treats antifragility as insufficient on its own. Stress must be captured, in
 
 ## Related Canon
 
-- [Attempts](/docs/appendices/ATTEMPTS.md)
+- [Attempts](/docs/archive/ATTEMPTS.md)
 - [Evolution Not Automation](/odd/appendices/evolution-not-automation.md)
 - [ODD Manifesto](/odd/manifesto.md)

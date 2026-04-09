@@ -7,12 +7,12 @@ tier: 2
 voice: neutral
 stability: archived
 tags: ["apocrypha", "artifacts", "ese", "surface", "ocr", "asr", "video", "promoted"]
-promoted_to: "/canon/epistemic-surface-extraction.md"
+promoted_to: "/canon/methods/epistemic-surface-extraction.md"
 ---
 
 # Epistemic Surface Extraction
 
-> **⚠️ PROMOTED**: This document has been promoted to Canon. See [/canon/epistemic-surface-extraction.md](/canon/epistemic-surface-extraction.md) for the authoritative version.
+> **⚠️ PROMOTED**: This document has been promoted to Canon. See [/canon/methods/epistemic-surface-extraction.md](/canon/methods/epistemic-surface-extraction.md) for the authoritative version.
 
 ---
 

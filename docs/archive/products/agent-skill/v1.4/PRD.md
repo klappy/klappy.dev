@@ -402,7 +402,7 @@ Attempts live at: `v1.4/attempts/attempt-NNN/`
 ## Related Documents
 
 - v1.3.1 Prior: Previous elicitation-focused release
-- v1.2.4 Champion: [H0007](./history/H0007-v1.2.4-champion.md)
+- v1.2.4 Champion: [H0007](../history/H0007-v1.2.4-champion.md)
 - Roadmap: [ROADMAP.md](./ROADMAP.md)
 - Context Packs and Projection Detail: `/docs/context-packs-and-projection-detail.md`
 - Epistemic Obligation and Document Tiers: `/canon/epistemic-obligation-and-document-tiers.md`

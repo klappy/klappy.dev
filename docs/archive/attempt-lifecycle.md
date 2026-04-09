@@ -87,7 +87,7 @@ An **attempt** is a bounded execution of that PRD.
 
 This separation prevents "Phase 1.1" scope creep disguised as iteration.
 
-See [Quantum Development](./quantum-development.md) for the rationale behind multiple attempts.
+See [Quantum Development](/odd/appendices/quantum-development.md) for the rationale behind multiple attempts.
 
 For the single canonical kickoff prompt used to start any new attempt, see: `/docs/ATTEMPT_KICKOFF.md`.
 

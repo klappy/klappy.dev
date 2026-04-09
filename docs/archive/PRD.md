@@ -31,14 +31,14 @@ PRDs define the requirements for each product lane. Each lane has its own PRD wi
 
 | Lane | PRD | Version | Status |
 |------|-----|---------|--------|
-| website | [PRD.md](PRD/website/PRD.md) | v1.2 | Active |
-| ai-navigation | [PRD.md](PRD/ai-navigation/PRD.md) | — | Draft |
+| website | [PRD.md](products/website/PRD.md) | v1.2 | Active |
+| ai-navigation | [PRD.md](products/ai-navigation/PRD.md) | — | Draft |
 
 ---
 
 ## Template
 
-New PRDs should follow [PRD_TEMPLATE.md](PRD/PRD_TEMPLATE.md).
+New PRDs should follow [PRD_TEMPLATE.md](../templates/PRD_TEMPLATE.md).
 
 ---
 
@@ -52,5 +52,5 @@ New PRDs should follow [PRD_TEMPLATE.md](PRD/PRD_TEMPLATE.md).
 
 ## See Also
 
-- [Product Lanes](/docs/appendices/product-lanes.md) — Lane architecture
-- [Attempt Lifecycle](/docs/appendices/attempt-lifecycle.md) — How attempts work
+- [Product Lanes](/docs/archive/product-lanes.md) — Lane architecture
+- [Attempt Lifecycle](/docs/archive/attempt-lifecycle.md) — How attempts work

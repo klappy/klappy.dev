@@ -171,5 +171,5 @@ Lane was created before convention was fully established. The "versioned PRD in 
 ## See Also
 
 - [D0009: Multi-Lane PRD Architecture](./D0009-multi-lane-prd-architecture.md) — Original multi-lane decision
-- [Product Lanes](/docs/appendices/product-lanes.md) — Lane architecture documentation
+- [Product Lanes](/docs/archive/product-lanes.md) — Lane architecture documentation
 - [Fluent Mobile HISTORY.md](/products/fluent-mobile/HISTORY.md) — Example implementation

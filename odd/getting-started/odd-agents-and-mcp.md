@@ -13,7 +13,7 @@ tags: ["agents", "mcp", "oddkit", "getting-started"]
 
 oddkit is the CLI and MCP server for ODD. It lets tools — terminals, IDEs, and Claude — query the ODD canon and get back citations, constraints, and epistemic guidance. It supports judgment; it does not automate decisions.
 
-ODD itself is a thinking system, not a framework. You can use it without any tooling at all — start with the [Epistemic Guide](/docs/agents/odd-epistemic-guide) and apply it manually. oddkit exists for people who want machine-assisted access to that same canon.
+ODD itself is a thinking system, not a framework. You can use it without any tooling at all — start with the [Epistemic Guide](/docs/agents/odd-epistemic-guide.md) and apply it manually. oddkit exists for people who want machine-assisted access to that same canon.
 
 All three interfaces expose the same 11 tools with the same names and behavior. One core, two wrappers:
 
@@ -217,4 +217,4 @@ supersedes: klappy://canon/definition-of-done
 
 *Canon is required conceptually — you need to understand the rules. But you don't need any tool to read it.
 
-**See also:** [Epistemic Guide](/docs/agents/odd-epistemic-guide) · [Canon Index](/canon/README.md) · [oddkit repo](https://github.com/klappy/oddkit) · [MCP Reference](https://github.com/klappy/oddkit/blob/main/docs/MCP.md)
+**See also:** [Epistemic Guide](/docs/agents/odd-epistemic-guide.md) · [Canon Index](/canon/README.md) · [oddkit repo](https://github.com/klappy/oddkit) · [MCP Reference](https://github.com/klappy/oddkit/blob/main/docs/MCP.md)

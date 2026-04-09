@@ -97,5 +97,5 @@ It explains why systems evolve toward isolation as complexity grows.
 
 ## See Also
 
-- [Product Lanes](/docs/appendices/product-lanes.md) — Execution partitioning under pressure
+- [Product Lanes](/docs/archive/product-lanes.md) — Execution partitioning under pressure
 - [ODD Misuse Patterns](/odd/misuse-patterns.md) — Common failure modes (diagnostic)

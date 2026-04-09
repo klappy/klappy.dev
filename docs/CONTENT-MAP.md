@@ -117,7 +117,7 @@ This map provides navigational links to ALL content in the repository, including
 |------|---------|---------------|
 | [on-artifacts.md](/canon/apocrypha/fragments/on-artifacts.md) | On artifacts | *not yet written* |
 | [on-consent-drift.md](/canon/apocrypha/fragments/on-consent-drift.md) | On consent drift | *not yet written* |
-| [when-arbitration-went-global.md](/canon/apocrypha/fragments/when-arbitration-went-global.md) | When arbitration went global | [recon](/canon/apocrypha/reconstructions/when-arbitration-went-global-recon.md) |
+| [when-arbitration-went-global.md](/canon/apocrypha/fragments/fragment-06-when-arbitration-went-global.md) | When arbitration went global | [recon](/canon/apocrypha/reconstructions/fragment-06-recon.md) |
 
 **`/canon/apocrypha/artifacts/`** — Derived media and visual artifacts
 
@@ -147,7 +147,7 @@ This map provides navigational links to ALL content in the repository, including
 | [/canon/apocrypha/reconstructions/fragment-01-recon.md](/canon/apocrypha/reconstructions/fragment-01-recon.md) | Fragment 01 reconstruction |
 | [/canon/apocrypha/reconstructions/fragment-02-recon.md](/canon/apocrypha/reconstructions/fragment-02-recon.md) | Fragment 02 reconstruction |
 | [/canon/apocrypha/reconstructions/fragment-03-recon.md](/canon/apocrypha/reconstructions/fragment-03-recon.md) | Fragment 03 reconstruction |
-| [/canon/apocrypha/reconstructions/when-arbitration-went-global-recon.md](/canon/apocrypha/reconstructions/when-arbitration-went-global-recon.md) | When Arbitration Went Global retelling |
+| [/canon/apocrypha/reconstructions/fragment-06-recon.md](/canon/apocrypha/reconstructions/fragment-06-recon.md) | When Arbitration Went Global retelling |
 
 ---
 

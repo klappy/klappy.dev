@@ -113,7 +113,7 @@ flowchart TB
 }
 ```
 
-**UI Action** (from [PRD.md](docs/PRD.md) Section 10):
+**UI Action** (from [PRD.md](../../docs/archive/PRD.md) Section 10):
 
 ```javascript
 { type: "open", payload: { uri: "klappy://canon/constraints" } }
@@ -207,8 +207,8 @@ interface LLMProvider {
 ## Files to Reference
 
 - `/public/content/manifest.json` - Generated content inventory
-- [PRD.md](docs/PRD.md) - Behavior contract, UI actions (Section 10)
-- [BUILD_PROMPT_PHASE1.md](projects/repo-as-a-system/BUILD_PROMPT_PHASE1.md) - Phase 1 requirements
+- [PRD.md](../../docs/archive/PRD.md) - Behavior contract, UI actions (Section 10)
+- [BUILD_PROMPT_PHASE1.md](../../docs/archive/projects/repo-as-a-system/BUILD_PROMPT_PHASE1.md) - Phase 1 requirements
 
 ## Definition of Done
 

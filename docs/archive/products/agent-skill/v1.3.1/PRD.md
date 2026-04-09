@@ -273,7 +273,7 @@ Attempts live at: `v1.3/attempts/attempt-NNN/`
 
 ## Related Documents
 
-- v1.2.4 Champion: [H0007](./history/H0007-v1.2.4-champion.md)
+- v1.2.4 Champion: [H0007](../history/H0007-v1.2.4-champion.md)
 - v1.2.4 Attempt: `v1.2.4/attempts/attempt-001/`
 - Roadmap: [ROADMAP.md](./ROADMAP.md)
 - External Review: Feedback that identified elicitation gap (provided by user)

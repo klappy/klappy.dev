@@ -180,5 +180,5 @@ The promotion process:
 
 ## See Also
 
-- [ODD Scribe](/canon/agents/odd-scribe.md) — The agent role that records decisions to the ledger
+- [ODD Scribe](/docs/agents/odd-scribe.md) — The agent role that records decisions to the ledger
 - [Models Do Not Mutate Canon](/canon/decisions/models-do-not-mutate-canon.md) — Why models draft, humans commit

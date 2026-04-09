@@ -88,4 +88,4 @@ Sub-agent outputs should be:
 ## See Also
 
 - [Cognitive Partitioning](/odd/cognitive-partitioning.md) — Universal concept
-- [Tool Specialization](/canon/odd/appendices/tool-specialization.md) — General pattern
+- [Tool Specialization](/canon/methods/tool-specialization.md) — General pattern

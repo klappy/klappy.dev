@@ -47,6 +47,6 @@ If the answer is not clearly justified by artifact creation, the change is rejec
 
 ## Related Documents
 
-- [PoC PRD](/docs/guiding-artifacts/epoch-4/klappy-dev-poc-prd.md)
-- [Closure Statement](/docs/klappy-dev/website-closure.md)
-- [Telemetry Spec](/docs/klappy-dev/website-telemetry.md)
+- [PoC PRD](/docs/archive/klappy-dev/guiding-artifacts/klappy-dev-poc-prd.md)
+- [Closure Statement](/docs/archive/klappy-dev/website-closure.md)
+- [Telemetry Spec](/docs/archive/klappy-dev/website-telemetry.md)

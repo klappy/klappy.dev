@@ -65,5 +65,5 @@ The infra folder contains implementation tooling for the klappy.dev repository: 
 ## See Also
 
 - [Build Output Contract](contracts/build-output.md) — What builds must produce
-- [Cloudflare Config](/docs/CLOUDFLARE_CONFIG.md) — Authoritative deploy config
-- [Compilation Targets](/docs/appendices/compilation-targets.md) — Pack definitions
+- [Cloudflare Config](/docs/archive/CLOUDFLARE_CONFIG.md) — Authoritative deploy config
+- [Compilation Targets](/docs/archive/compilation-targets.md) — Pack definitions

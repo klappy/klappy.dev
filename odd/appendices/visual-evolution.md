@@ -191,7 +191,7 @@ It exists to preserve compatibility, comparability, and reversibility.
 
 ## Related Canon
 
-- [Product Lanes](./product-lanes.md)
-- [Attempt Lifecycle](./attempt-lifecycle.md)
+- [Product Lanes](/docs/archive/product-lanes.md)
+- [Attempt Lifecycle](/docs/archive/attempt-lifecycle.md)
 - [Interface Contracts](/interfaces/index.md)
-- [Epochs](./epochs.md)
+- [Epochs](/docs/appendices/epochs.md)

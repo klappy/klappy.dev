@@ -127,5 +127,5 @@ Next iteration should include:
 
 - [PLAN.md](PLAN.md) — Execution plan
 - [HYPOTHESES.md](HYPOTHESES.md) — Hypothesis details
-- [PRD](../../PRD.md) — Parent PRD
+- [PRD](../../../PRD.md) — Parent PRD
 - [INSTRUCTIONS](../../INSTRUCTIONS.md) — Field testing guidance
