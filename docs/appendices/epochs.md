@@ -395,4 +395,32 @@ This change alters the system's initiative posture:
 
 - E0006 artifacts remain valid within E0006.
 - E0006 artifacts are not comparable to E0007 artifacts by default.
-- E0007 is the current epoch.
+
+---
+
+## E0008 — Observability: Transparent Telemetry and Infrastructure Accountability
+
+**Date:** 2026-04-09
+
+E0007 made the system proactive. E0007.1 named the architecture. E0008 turns the system's observation inward — oddkit can now observe its own infrastructure the same way it observes its knowledge base.
+
+See [`docs/appendices/epoch-8.md`](/docs/appendices/epoch-8.md) for the full epoch declaration.
+
+### What changed
+
+oddkit served 514,000 requests per month with zero visibility into who uses it, which tools matter, or whether anyone has built their own knowledge base on it. This violated Axiom 4: you cannot verify what you did not observe. E0008 adds transparent telemetry via Cloudflare Workers Analytics Engine — structural identifiers only (tool names, repo URLs, document paths, timestamps), never content. Two new tools: `telemetry_public` (query the same dashboard the maintainer sees) and `telemetry_policy` (fetch the canonical governance document at runtime). The epoch theme is observability — telemetry is the first deliverable, with x-ray tracing and performance optimization on the horizon.
+
+### Why this is a new epoch
+
+This change alters what the system can see about itself:
+
+- The system demanded epistemic discipline of its operators but exempted its own infrastructure
+- Without adoption signal, every prioritization decision was a guess
+- The maintainer could not distinguish "personal tool hosted publicly" from "infrastructure a community depends on"
+- E0007 artifacts produced without observability are not comparable to E0008 artifacts where the maintainer knows where to invest
+
+### Compatibility
+
+- E0007/E0007.1 artifacts remain valid. E0008 does not modify proactive posture, Vodka Architecture, or any prior governance.
+- E0008 adds infrastructure observability that prior epochs did not include.
+- E0008 is the current epoch.
