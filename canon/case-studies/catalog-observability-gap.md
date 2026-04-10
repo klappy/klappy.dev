@@ -17,7 +17,7 @@ status: active
 
 # Case Study — When the Knowledge Server Cannot See Its Own Knowledge Base
 
-> oddkit serves 500+ documents. The primary public interface for reading those documents could only retrieve 196 of them — not because of a bug, but because oddkit was never designed for a consumer that needed to see everything. The tool that enables epistemic discipline had a blind spot in its own observability. The fix was three lines of substance. The lesson is about what happens when a tool designed for AI consumers meets a human-facing application.
+> oddkit serves 500+ documents. The primary public interface for reading those documents could only retrieve 196 of them — not because of a bug, but because oddkit was never designed for a consumer that needed to see everything. Two fixes shipped the same day: pagination with a raised limit doubled coverage to 389, and a new `sort_by=path` mode closed the remaining gap to 473. Along the way, a second observability failure surfaced: GitHub API rate limiting silently defeated the SHA-based cache, serving a six-day-old index while the system believed it was content-addressed. The fixes were small. The lesson is about what happens when infrastructure works well enough to hide its own blind spots.
 
 ---
 
@@ -27,7 +27,7 @@ klappy.dev is the public website where humans read oddkit's canon — essays, pr
 
 The root cause was not a bug. It was a design assumption: `oddkit_catalog` was built as a discovery menu for AI agents making targeted queries, not as an enumeration surface for programmatic consumers needing completeness. The hard cap of 100 results with no pagination made this assumption structural.
 
-The fix: raise the limit to 500, add an `offset` parameter for pagination, return metadata so consumers know when they have everything. Three lines of substance in the orchestration layer, plus schema updates. PR #74 on klappy/oddkit.
+The fix came in two phases on the same day. First: raise the limit to 500 and add an `offset` parameter for pagination — this doubled coverage from 196 to 389. Second: add `sort_by=path`, which includes all indexed entries regardless of frontmatter presence — this closed the gap to 473. A secondary finding surfaced during verification: GitHub API rate limiting was silently defeating the SHA-based cache, serving a six-day-old index. PRs #74 and #76 on klappy/oddkit.
 
 ---
 
@@ -87,21 +87,33 @@ Three changes to the oddkit Worker (`workers/src/orchestrate.ts` and `workers/sr
 
 The Zod schemas on both the unified `oddkit` tool and the standalone `oddkit_catalog` tool were updated to reflect the new parameter and the raised cap.
 
-What the edge function can now do:
-
-```
-oddkit_catalog({ sort_by: "date", limit: 500 })
-```
-
-One call. All documents. The eighteen-call fan-out becomes unnecessary.
+This immediately doubled coverage — from ~196 documents to 389 in a single call. But 84 documents were still missing. They were indexed by oddkit's build pipeline, present in the category counts, but invisible to `sort_by=date` because they had no date in their frontmatter.
 
 ---
 
-## What Remains
+## Closing the Last Gap
 
-The fix addresses enumeration but leaves one known gap: `sort_by=date` still requires documents to have frontmatter. Documents without any frontmatter — raw markdown files with no YAML header — are indexed by oddkit's build pipeline but excluded from the catalog's article mode. They appear in category counts but not in the articles array.
+The original version of this case study noted the remaining gap and predicted the fix: a `sort_by=path` mode that returns all indexed entries regardless of frontmatter presence. That prediction shipped the same day.
 
-A future `sort_by=path` mode that returns all indexed entries regardless of frontmatter presence would close this gap. For now, any document worth serving to readers should have frontmatter — and if it does not, that is a signal to add it, not a reason to build infrastructure around its absence.
+**Add `sort_by=path`.** Where `sort_by=date` filters to documents with frontmatter and sorts by date, `sort_by=path` includes every indexed entry — regardless of whether it has frontmatter, a date, or any metadata at all — and sorts alphabetically by path. Undated documents get empty metadata but their paths and titles are discoverable.
+
+What the edge function can now do:
+
+```
+oddkit_catalog({ sort_by: "path", limit: 500 })
+```
+
+One call. All 473 documents. The eighteen-call fan-out becomes unnecessary. Consumers needing rich metadata on dated documents can use `sort_by=date`; consumers needing completeness use `sort_by=path`; consumers needing both can merge the two.
+
+---
+
+## A Second Observability Gap: SHA Resolution Under Rate Limiting
+
+During verification, the production index reported 411 documents with a `generated_at` timestamp six days old — despite the cache being content-addressed by commit SHA. Investigation revealed a second Axiom 4 violation in the SHA resolution logic.
+
+The Worker resolves the current commit SHA via an unauthenticated GitHub API call (60 requests/hour limit). When rate-limited, `getLatestCommitSha` returns `null`. The cache match logic then evaluates `!baselineSha || cached.commit_sha === baselineSha` — and since `baselineSha` is null, the condition is trivially true. Any cached index matches, regardless of age.
+
+The system believed its cache was content-addressed. Under rate limiting, it silently degraded to a TTL-free stale cache with no expiration. The index served was truthful for the commit it was built from, but the system had no way to know it was six days behind. This is the same pattern as the catalog gap: not an error, not a crash — silent incompleteness where everything appears to be working.
 
 ---
 
@@ -113,8 +125,15 @@ This is the most dangerous kind of infrastructure gap: one that produces a plaus
 
 ---
 
+## What Remains
+
+The SHA resolution vulnerability identified above has not yet been fixed. Options include authenticating GitHub API calls (raising the limit from 60 to 5,000 requests/hour) or treating a null SHA as a cache miss rather than a universal match. Either fix is small; the hard part was noticing the degradation.
+
+---
+
 ## See Also
 
 - `canon/values/axioms.md` — Axiom 4: You cannot verify what you did not observe
 - `docs/appendices/epochs.md` — E0008 epoch declaration (Observability)
-- oddkit PR #74 — Implementation of catalog pagination
+- oddkit PR #74 — Catalog pagination and limit raise
+- oddkit PR #76 — `sort_by=path` for complete enumeration
