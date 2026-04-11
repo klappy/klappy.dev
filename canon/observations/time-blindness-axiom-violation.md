@@ -65,16 +65,14 @@ Time measurement should be as fundamental to epistemic systems as evidence track
 
 ### In oddkit (now): `server_time` in every response
 
-Every oddkit tool response includes `server_time` in the debug envelope. UTC. ISO 8601. Millisecond precision. Every call.
+Every oddkit tool response includes `server_time` as a top-level field — same rank as `action` and `result`. UTC. ISO 8601. Millisecond precision. Every call.
 
 ```json
 {
   "action": "search",
   "result": { ... },
-  "debug": {
-    "server_time": "2026-04-11T19:47:32.123Z",
-    "duration_ms": 342
-  }
+  "server_time": "2026-04-11T19:47:32.123Z",
+  "assistant_text": "..."
 }
 ```
 

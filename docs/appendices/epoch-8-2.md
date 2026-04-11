@@ -40,18 +40,19 @@ oddkit demands epistemic discipline of its operators but was not providing them 
 
 ## What E0008.2 Introduces
 
-One field in the debug envelope of every OddkitEnvelope:
+One field in every OddkitEnvelope, top-level, same rank as `action` and `result`:
 
 ```json
 {
-  "debug": {
-    "server_time": "2026-04-11T22:47:32.123Z",
-    "duration_ms": 342
-  }
+  "action": "search",
+  "result": { ... },
+  "server_time": "2026-04-11T22:47:32.123Z",
+  "assistant_text": "...",
+  "debug": { ... }
 }
 ```
 
-One line of code: `server_time: new Date().toISOString()`
+One line of code: `{ ...result, server_time: new Date().toISOString() }`
 
 ---
 
