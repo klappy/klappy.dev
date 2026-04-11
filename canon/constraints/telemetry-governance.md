@@ -184,6 +184,35 @@ This telemetry implementation is infrastructure serving the Maintainability prin
 
 ---
 
+## Query Security Boundary
+
+`telemetry_public` accepts raw SQL and passes it to Cloudflare Analytics Engine. The data is public by design — there is nothing to steal. But the query interface requires infrastructure guards to prevent abuse without adding domain opinions.
+
+### Threat Model
+
+The data is public. The API token is read-only. The risk is not data exfiltration — it's resource exhaustion and information leak about other account resources.
+
+### Guards (Infrastructure, Not Domain Opinion)
+
+**1. Dataset allowlist.** The server validates that the SQL query targets only the `oddkit_telemetry` dataset. Any query referencing a different dataset is rejected before reaching the Analytics Engine API. This prevents cross-dataset access to other Analytics Engine data on the same Cloudflare account.
+
+**2. Rate limiting.** `telemetry_public` calls are rate-limited per consumer label. The limit protects the Analytics Engine query quota (10,000 queries/day free tier). Rate limiting is infrastructure — it protects the resource, not the data.
+
+**3. Error sanitization.** Analytics Engine API errors are caught and returned as generic failure messages. Raw error responses — which may contain account IDs, dataset names, or internal schema details — are never forwarded to the caller.
+
+### What Is NOT Guarded (By Design)
+
+- **Column restriction** — any column can be queried. The data is public.
+- **Query complexity** — no LIMIT enforcement. Analytics Engine has built-in timeouts.
+- **Authentication** — no auth required to query. Transparency means anyone can see the data.
+- **SQL keyword blocking** — unnecessary. The API token is read-only. DROP, ALTER, INSERT are rejected by Analytics Engine regardless.
+
+### Vodka Compliance
+
+These three guards are infrastructure serving security, not domain opinions about what questions are interesting. They are the same category as CORS headers, `keep_vars`, and the `catch` block in telemetry recording. The server does not decide what to ask — it decides what is safe to forward.
+
+---
+
 ## The Social Contract
 
 oddkit is free. The code is MIT. Anyone can self-host. Cloudflare hosts the service at oddkit.klappy.dev for essentially zero cost — infrastructure is not the bottleneck. Attention is.
