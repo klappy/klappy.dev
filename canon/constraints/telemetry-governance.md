@@ -53,6 +53,7 @@ All tracking occurs on `/mcp` POST envelopes. One data point is written per JSON
 | Canon URL | Which repo is being served | `https://github.com/klappy/klappy.dev` |
 | Document URI | For `get` calls, the path requested | `klappy://canon/principles/vodka-architecture` |
 | Worker version | oddkit version string | `0.17.0` |
+| Cache tier | Which storage tier served the index | `memory`, `cache`, `r2`, `build` |
 
 ### Numeric Values (Doubles)
 
@@ -76,6 +77,11 @@ All tracking occurs on `/mcp` POST envelopes. One data point is written per JSON
 - **Document leaderboard** — which canon documents are most accessed
 - **Daily/hourly trends** — when usage happens, what caused spikes
 - **Method breakdown** — protocol-level health
+- **Cache health** — module memory hit rate, cold-build frequency, per-tier latency (`GROUP BY cache_tier, AVG(duration)`)
+
+### Per-Request Diagnostics (Ephemeral, Not Stored)
+
+The `X-Oddkit-Trace` response header and the `debug.trace` field in tool responses contain per-request span detail: every storage read, GitHub API call, and cache tier hit/miss with timing. This is ephemeral diagnostic data — it exists in the HTTP response and nowhere else. It is not written to Analytics Engine, not persisted, and not queryable after the request completes. The `cache_tier` blob above is the single aggregate signal extracted from the trace for telemetry.
 
 ---
 
