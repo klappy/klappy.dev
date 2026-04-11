@@ -19,6 +19,12 @@ complements: "canon/constraints/telemetry-governance.md, docs/appendices/epoch-8
 
 ---
 
+## Summary — Time Is Reality, and Models Don't Observe It
+
+Models fabricate timelines from token patterns. The LLM message format — `{role, content}` — carries no timestamps. A model cannot distinguish whether the last message was sent 30 seconds ago or 3 days ago. This violates Axiom 1 (Reality Is Sovereign) and Axiom 4 (You Cannot Verify What You Did Not Observe). The fix has two phases: oddkit adds `server_time` to every response envelope now (one line of code, passive), and TruthKit will inject `elapsed_since_last` into every context window at the harness level (automatic, required). The tool offers. The harness requires.
+
+---
+
 ## The Problem
 
 Every model — voice, text, reasoning — operates on token sequences with no ground truth about when those tokens were produced, how much time passed between turns, or whether the conversation spans minutes or days. The model invents a timeline from contextual signals: message length, topic drift, phrases like "let's continue" or "good morning."
