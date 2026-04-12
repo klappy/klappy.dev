@@ -10,18 +10,22 @@ tags: ["canon", "observation", "time", "axiom-1", "axiom-4", "models", "percepti
 epoch: E0008.1
 date: 2026-04-11
 derives_from: "canon/values/axioms.md"
-complements: "canon/constraints/telemetry-governance.md, docs/appendices/epoch-8-1.md"
+complements: "canon/constraints/telemetry-governance.md, docs/appendices/epoch-8.md, docs/appendices/epoch-8-1.md, docs/appendices/epoch-8-2.md"
+governs: "Time-related claims in AI-augmented workflows; tool capability assertions"
+status: active
 ---
 
 # Time Blindness — The Axiom Violation Hiding in Every Model
 
-> Models have no perception of time. Not degraded perception — zero. They infer elapsed time from context clues the way a person might guess the season from a photograph. Sometimes they guess right. Often they guess wrong. And when they guess wrong, they guess confidently. A system that demands "Reality Is Sovereign" cannot tolerate a blind spot this fundamental. Time is not a feature to add. It is a reality axis that every epistemic system must observe.
+> Models have no perception of time. Not degraded perception — zero. They infer elapsed time from context clues the way a person might guess the season from a photograph. Sometimes they guess right. Often they guess wrong. And when they guess wrong, they guess confidently. We built a clock and put it in the model's hand. It worked — and exposed two deeper problems: models can't use tools without narrating every step (unbearable in voice), and models deny capabilities they have without checking their own toolset (Axiom 4 turned inward). Time blindness was one problem. Giving the model a clock revealed three.
 
 ---
 
 ## Summary — Time Is Reality, and Models Don't Observe It
 
-Models fabricate timelines from token patterns. The LLM message format — `{role, content}` — carries no timestamps. A model cannot distinguish whether the last message was sent 30 seconds ago or 3 days ago. This violates Axiom 1 (Reality Is Sovereign) and Axiom 4 (You Cannot Verify What You Did Not Observe). The fix has two phases: oddkit adds `server_time` to every response envelope now (one line of code, passive), and TruthKit will inject `elapsed_since_last` into every context window at the harness level (automatic, required). The tool offers. The harness requires.
+Models fabricate timelines from token patterns. The LLM message format — `{role, content}` — carries no timestamps. A model cannot distinguish whether the last message was sent 30 seconds ago or 3 days ago. This violates Axiom 1 (Reality Is Sovereign) and Axiom 4 (You Cannot Verify What You Did Not Observe). The fix has two phases: oddkit adds `server_time` to every response envelope and `oddkit_time` as a stateless interval calculator (shipped), and TruthKit will inject `elapsed_since_last` into every context window at the harness level (future).
+
+Live testing revealed two additional problems beyond time blindness. First, tool gracelessness: models narrate every tool call aloud, making tool-based time tracking unbearable in voice — and this applies equally to MCP tools and platform-native tools like `user_time_v0`. Second, capability denial without observation: the model claimed it couldn't track time without ever checking its own toolset, where a platform-native time tool was available from the start. All three problems point to harness-level time injection as the solution. The tool offers. The harness requires.
 
 ---
 
