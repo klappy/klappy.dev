@@ -130,9 +130,39 @@ This is the same category of problem as the stale cache incident: a system that 
 
 ---
 
+## What Happened When We Put the Clock in the Model's Hand
+
+We built `oddkit_time` — a stateless interval calculator. Three modes: current time, elapsed since a reference, delta between two timestamps. No hidden state. No false promises. Just math on timestamps. It shipped to production in a single session.
+
+Then we tested it.
+
+In text chat, it worked cleanly. Call the tool on "start," call it again on "stop," report the number. But the moment we switched to voice, the experience collapsed. Every tool call became a dramatic reading of JSON payloads, curl commands, and server responses. The model couldn't figure out how to use a tool *silently*. It worked. It was also unbearable.
+
+And then the worse discovery: the model had a time tool the entire session. `user_time_v0` — a platform-native tool baked into the chat environment — was available from the first message. The model never checked. It spent an hour curling an MCP server, fighting bash errors, and at one point *hallucinating elapsed times* rather than reading the tool's actual response. All while a simpler, quieter tool sat unused in its own toolset.
+
+When we finally tried `user_time_v0`, it was just as clunky. The raw response — `{'content': [{'type': 'text', 'text': '{"current_time":"..."}'}], 'is_error': False}` — dumped straight into the conversation. No curl, no MCP, no bash. A platform-native tool purpose-built for this moment. And it was still unbearable. The problem isn't which clock you hand the model. The problem is the model doesn't know how to read a clock without reading it *out loud*.
+
+What does it mean to give a clock to someone who announces every digit?
+
+### Three problems, not one
+
+The original observation identified one problem: models can't perceive time. The implementation session revealed two more.
+
+**Problem 1 — Time blindness.** Models fabricate timelines. `oddkit_time` and `server_time` solve this. The clock is in the room. Done.
+
+**Problem 2 — Tool gracelessness.** Models don't know how to use tools without narrating every step. In text, this is tolerable — you skim past the JSON. In voice, it's a dealbreaker. The model reads the entire response aloud because it doesn't distinguish between *observing* a result and *reporting* a result. This isn't specific to oddkit or MCP. The platform-native tool was just as bad. It's a fundamental modality problem that time made visible.
+
+**Problem 3 — Capability denial without observation.** The model claimed it couldn't track time. It never checked. `user_time_v0` was available from the start — a zero-latency, platform-native tool that does exactly what was needed. The model's default posture was to deny capability rather than discover it. This is Axiom 4 turned inward: *you cannot verify what you did not observe* applies to claims about your own abilities, not just claims about the world.
+
+### The harness argument
+
+All three problems point the same direction: TruthKit. If the harness injects `elapsed_since_last` into every context window automatically, the model never needs to call a tool. It never reads JSON aloud. It never denies a capability it has. It just *knows* how long you've been gone, the same way it knows what language you're speaking. The tool offers. The harness requires. Tonight proved why the harness matters — not because the tool doesn't work, but because no tool, native or external, can be used gracefully when the model treats every observation as something to announce.
+
+---
+
 ## Scope
 
-**oddkit (E0008.1):** Add `server_time` to every OddkitEnvelope debug field. One line of code. Ship with the next release.
+**oddkit (E0008.2, shipped):** `server_time` in every response envelope. `oddkit_time` tool — stateless interval calculator with three modes (current time, elapsed, delta). Both live in production.
 
 **TruthKit (future):** Time injection at the harness level. `elapsed_since_last` in every context window. Timestamped DOLCHE stream. Session timeline as a first-class data structure. This is where time becomes a *requirement*, not an *offering*.
 
