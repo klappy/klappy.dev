@@ -5,16 +5,17 @@ subtitle: "How strategic patience became the 6th B"
 author: Klappy
 type: essay
 audience: public
-exposure: draft
-public: false
-tier: 2
-voice: first_person
-stability: semi_stable
+exposure: nav
+public: true
+tier: 3
+voice: personal
+stability: stable
 tags: ["writings", "essay", "5B", "bypass", "write-path", "oddkit", "use-only-what-hurts", "strategic-patience", "ai-augmented-workflows"]
 epoch: E0007.1
 date: 2026-04-04
 derives_from: "canon/methods/borrow-bend-break-beget-build.md, odd/constraint/use-only-what-hurts.md"
 complements: "writings/learning-in-the-open.md, canon/principles/vodka-architecture.md"
+status: active
 hook: "I spent months planning a feature. Four sessions. Twenty-five decisions. Two branches. None shipped. Then the problem dissolved on its own."
 description: "The story of oddkit's write path — the most planned feature that never shipped — and why strategic patience is sometimes the best engineering. Introduces Bypass as the 6th B in the 5B method."
 slug: the-feature-i-never-shipped

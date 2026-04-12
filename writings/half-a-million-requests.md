@@ -4,17 +4,19 @@ title: "Half a Million Requests and I Can't Tell If Anyone's Home"
 slug: half-a-million-requests
 author: Klappy
 type: essay
-public: false
+public: true
 audience: public
-exposure: draft
+exposure: nav
 tier: 3
 voice: personal
-stability: volatile
+stability: stable
 tags: ["essay", "telemetry", "oddkit", "open-source", "transparency", "vodka-architecture", "trust", "open-community"]
 epoch: E0008
 date: 2026-04-09
 derives_from: "canon/constraints/telemetry-governance.md, canon/principles/vodka-architecture.md, canon/values/axioms.md"
 description: "oddkit served half a million requests last month and the maintainer can't tell if anyone besides themselves is using it. This essay explains why that's a problem, how transparent telemetry solves it, and what it means to ask users of free infrastructure to be visible."
+governs: "Telemetry design decisions for open-source MCP infrastructure"
+status: active
 hook: "Half a million requests, and I was completely blind."
 subtitle: "On transparent telemetry, open-source trust, and the courage to ask if anyone's home"
 book_part: "Part VI — The Validation"
