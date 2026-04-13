@@ -5,7 +5,7 @@ subtitle: "How strategic patience became the 6th B"
 author: Klappy
 type: essay
 audience: public
-exposure: nav
+exposure: public
 public: true
 tier: 3
 voice: personal
