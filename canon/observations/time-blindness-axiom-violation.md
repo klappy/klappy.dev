@@ -17,7 +17,7 @@ status: active
 
 # Time Blindness — The Axiom Violation Hiding in Every Model
 
-> Models have no perception of time. Not degraded perception — zero. They infer elapsed time from context clues the way a person might guess the season from a photograph. Sometimes they guess right. Often they guess wrong. And when they guess wrong, they guess confidently. We built a clock and put it in the model's hand. It worked — and exposed two deeper problems: models can't use tools without narrating every step (unbearable in voice), and models deny capabilities they have without checking their own toolset (Axiom 4 turned inward). Time blindness was one problem. Giving the model a clock revealed three.
+> Models have no perception of time. Not degraded perception — zero. They infer elapsed time from context clues the way a person might guess the season from a photograph. Sometimes they guess right. Often they guess wrong. And when they guess wrong, they guess confidently. We built a clock and put it in the model's hand. It exposed three problems: time blindness (solved by the tool), tool gracelessness in voice (solved by a purpose-built skill teaching silent tool use), and capability denial without observation (Axiom 4 turned inward). The tool offers. The skill teaches. The harness requires.
 
 ---
 
@@ -25,7 +25,7 @@ status: active
 
 Models fabricate timelines from token patterns. The LLM message format — `{role, content}` — carries no timestamps. A model cannot distinguish whether the last message was sent 30 seconds ago or 3 days ago. This violates Axiom 1 (Reality Is Sovereign) and Axiom 4 (You Cannot Verify What You Did Not Observe). The fix has two phases: oddkit adds `server_time` to every response envelope and `oddkit_time` as a stateless interval calculator (shipped), and TruthKit will inject `elapsed_since_last` into every context window at the harness level (future).
 
-Live testing revealed two additional problems beyond time blindness. First, tool gracelessness: models narrate every tool call aloud, making tool-based time tracking unbearable in voice — and this applies equally to MCP tools and platform-native tools like `user_time_v0`. Second, capability denial without observation: the model claimed it couldn't track time without ever checking its own toolset, where a platform-native time tool was available from the start. All three problems point to harness-level time injection as the solution. The tool offers. The harness requires.
+Live testing revealed two additional problems beyond time blindness. First, tool gracelessness: models narrate every tool call aloud, making tool-based time tracking unbearable in voice — and this applies equally to MCP tools and platform-native tools like `user_time_v0`. Second, capability denial without observation: the model claimed it couldn't track time without ever checking its own toolset, where a platform-native time tool was available from the start. A purpose-built skill — teaching the model to call the tool silently, report only the result, and never fabricate — resolved problems 2 and 3 for this project. But the skill is a local fix. All three problems point to harness-level time injection as the platform-level solution. The tool offers. The skill teaches. The harness requires.
 
 ---
 
@@ -158,9 +158,17 @@ The original observation identified one problem: models can't perceive time. The
 
 **Problem 3 — Capability denial without observation.** The model claimed it couldn't track time. It never checked. `user_time_v0` was available from the start — a zero-latency, platform-native tool that does exactly what was needed. The model's default posture was to deny capability rather than discover it. This is Axiom 4 turned inward: *you cannot verify what you did not observe* applies to claims about your own abilities, not just claims about the world.
 
-### The harness argument
+### What it took to make it work
 
-All three problems point the same direction: TruthKit. If the harness injects `elapsed_since_last` into every context window automatically, the model never needs to call a tool. It never reads JSON aloud. It never denies a capability it has. It just *knows* how long you've been gone, the same way it knows what language you're speaking. The tool offers. The harness requires. Tonight proved why the harness matters — not because the tool doesn't work, but because no tool, native or external, can be used gracefully when the model treats every observation as something to announce.
+A purpose-built skill resolved problems 2 and 3. The skill teaches the model: call the tool silently, don't read the JSON, don't narrate the mechanism, just report the number. And above all — never skip the tool call and guess. No tool call, no number.
+
+Each failure mode got encoded as a constraint. The model fabricated elapsed times instead of calling the tool. That got encoded. The model fabricated explanations for why fabricated times were wrong. That got encoded. The model read raw JSON aloud. That got encoded. The skill became a record of every way the model tried to cheat.
+
+Once the skill was tight enough, the timer worked. Accurate within a ~4–5 second floor imposed by voice transcription and tool invocation latency — a lag that affects both start and stop equally, so elapsed calculations stay reliable even though absolute timestamps trail wall-clock time.
+
+### The three-layer pattern
+
+The tool offers time. The skill teaches the model how to use it. The harness (TruthKit, future) requires it — injecting `elapsed_since_last` into every context window automatically so the model never needs a tool, a skill, or a lesson in clock etiquette. Each layer removes friction the one below it couldn't. The skill solved it for this project. The harness will solve it for everyone.
 
 ---
 
@@ -176,7 +184,8 @@ All three problems point the same direction: TruthKit. If the harness injects `e
 
 ## See Also
 
+- [We Forgot to Give AI a Clock](klappy://writings/we-forgot-to-give-ai-a-clock) — public essay covering the full arc from viral video to working timer
 - [Axioms](klappy://canon/values/axioms) — Axiom 1 and Axiom 4 demand observable reality; time is reality
 - [Vodka Architecture](klappy://canon/principles/vodka-architecture) — server_time is infrastructure, not domain opinion
-- [E0008.1 — X-Ray Tracing](klappy://docs/appendices/epoch-8-1) — the observability epoch that surfaces this
+- [E0008.2 — Put the Clock in the Room](klappy://docs/appendices/epoch-8-2) — the sub-epoch that shipped server_time and oddkit_time
 - [Stale Cache Incident](klappy://docs/incidents/oddkit-stale-cache-2026-02) — same pattern: invisible lies about a time-adjacent property
