@@ -8,7 +8,7 @@ public: true
 audience: public
 exposure: public
 tier: 3
-voice: personal
+voice: first_person
 stability: stable
 tags: ["writings", "essay", "verification", "rest", "fresh-context", "governance", "qa", "operator-governance", "cognitive-rhythm"]
 epoch: E0007

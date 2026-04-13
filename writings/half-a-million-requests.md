@@ -8,7 +8,7 @@ public: true
 audience: public
 exposure: public
 tier: 3
-voice: personal
+voice: first_person
 stability: stable
 tags: ["essay", "telemetry", "oddkit", "open-source", "transparency", "vodka-architecture", "trust", "open-community"]
 epoch: E0008

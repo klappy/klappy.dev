@@ -8,7 +8,7 @@ audience: public
 exposure: public
 public: true
 tier: 3
-voice: personal
+voice: first_person
 stability: stable
 tags: ["writings", "essay", "5B", "bypass", "write-path", "oddkit", "use-only-what-hurts", "strategic-patience", "ai-augmented-workflows"]
 epoch: E0007.1

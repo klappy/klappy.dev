@@ -8,7 +8,7 @@ public: true
 audience: public
 exposure: public
 tier: 3
-voice: personal
+voice: first_person
 stability: stable
 tags: ["essay", "time", "models", "perception", "oddkit", "truthkit", "epistemic-primitive", "observability", "mcp", "axioms"]
 epoch: E0008.2
