@@ -34,10 +34,11 @@ Before pushing ANY file to `writings/` or creating ANY PR that includes writings
 
 1. Fetch `canon/meta/frontmatter-schema.md` via oddkit
 2. Compare frontmatter field-by-field against the schema's required fields for the document's audience and type
-3. Compare against at least 2 working published essays (`public: true`, `exposure: public`)
-4. Verify no contradictory flags (e.g., `public: false` + `exposure: public`)
-5. **Rendering-readiness check: if the document is intended to appear on the site, verify `public: true` AND `exposure: public`.** The value `nav` means navigable in catalog but NOT published on the site. This distinction is defined in `canon/meta/frontmatter-schema.md` and must be verified against the schema, not assumed from the word.
-6. Fix ALL deviations before pushing
+3. **Enum validation: verify every enum field's value is in the schema's allowed list.** The schema defines valid values for `exposure`, `voice`, `stability`, `tier`, and `audience`. A plausible-sounding value that isn't in the list (e.g., `voice: personal`, `exposure: nav` for publishing) will silently break rendering. Check each value against the schema — do not assume a value is valid because it looks reasonable.
+4. Compare against at least 2 working published essays (`public: true`, `exposure: public`)
+5. Verify no contradictory flags (e.g., `public: false` + `exposure: public`)
+6. **Rendering-readiness check: if the document is intended to appear on the site, verify `public: true` AND `exposure: public`.** The value `nav` means navigable in catalog but NOT published on the site. This distinction is defined in `canon/meta/frontmatter-schema.md` and must be verified against the schema, not assumed from the word.
+7. Fix ALL deviations before pushing
 
 If the authoring agent is uncertain about any field, it MUST spin up a Managed Agent validation pass rather than guess.
 
@@ -50,6 +51,7 @@ These specific combinations have caused renderer crashes or invisible pages in p
 | Pattern | What happens |
 |---------|-------------|
 | `public: true` + `exposure: nav` | **Page never appears on site.** Document is valid, navigable in catalog, but not rendered. The most dangerous pattern because nothing crashes — it just silently doesn't publish. |
+| Invalid enum values (e.g., `voice: personal`) | **Renderer rejects the document.** The value looks plausible but isn't in the schema. The gauntlet passes because it checks field presence, not value validity. Four essays were blocked by `voice: personal` — not a valid value. |
 | `public: false` + `exposure: public` | Renderer builds a route but has no content to serve |
 | Missing `slug` on essay/article type | Renderer cannot generate page URL |
 | Missing `type` on public documents | Renderer cannot select template |
@@ -83,7 +85,7 @@ oddkit's preflight and validate should surface this constraint when the delivera
 
 This constraint was created on 2026-04-09 after broken frontmatter was shipped three times in a single session. Each time, the only signal was the preview site crashing. The pattern is: the AI co-author generates plausible-looking frontmatter that deviates from the schema in subtle ways, and no automated check catches it before merge.
 
-Updated 2026-04-13 after four essays passed a full oddkit gauntlet — 8-point Writing Canon checklist, progressive disclosure verification, AI voice cliché scan, guide posture check — and none of them rendered on the site. The cause: `exposure: nav` instead of `exposure: public`. The value was valid. The value was wrong. The gauntlet checked for field presence but not value correctness against the renderer. The rendering-readiness check (rule 5) was added to close this gap.
+Updated 2026-04-13 after four essays passed a full oddkit gauntlet — 8-point Writing Canon checklist, progressive disclosure verification, AI voice cliché scan, guide posture check — and none of them rendered on the site. Two causes found in sequence: first, `exposure: nav` instead of `exposure: public` (valid value, wrong for publishing). Second, `voice: personal` instead of `voice: first_person` (`personal` is not in the schema's enum at all). Both were introduced by the AI co-author during "gauntlet fixes" — the exact process meant to catch errors created new ones. The rendering-readiness check (rule 6) and enum validation (rule 3) were added to close these gaps.
 
 The fix is not "be more careful." The fix is a gate that cannot be bypassed.
 
