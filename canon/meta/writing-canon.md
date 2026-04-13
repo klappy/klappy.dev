@@ -143,7 +143,6 @@ The practical test: if your document were loaded alongside `canon/values/axioms.
 6. **No buried claims:** Is every key assertion present in compressed form at a higher tier? Does the body elaborate rather than introduce?
 7. **Axiom space test:** If loaded in a small context alongside the axioms and creed, does this document amplify the values or crowd them out?
 8. **Ghost writer test:** Does the text sound like the author or like a model? Check for clustering of AI voice patterns: negation parallelism ("It's not X. It's Y."), formulaic transitions, em dash overuse, generic descriptors, uniform pacing. One signal is fine. Multiple signals in the same section means the ghost writer is showing through. See `canon/constraints/ai-voice-cliches.md`.
-9. **Rendering-readiness test:** If this document is intended to appear on the site, verify: (a) `public: true` AND `exposure: public` — `nav` is valid but means "not published on site." (b) Every enum field (`exposure`, `voice`, `stability`, `tier`, `audience`) contains a value from the schema's allowed list — fetch `canon/meta/frontmatter-schema.md` and check each one. A plausible value that isn't in the schema (e.g., `voice: personal`) will silently block rendering. (c) Compare against 2+ working published essays to verify the full frontmatter shape. See `canon/constraints/frontmatter-validation-before-merge.md`.
 
 ---
 
