@@ -34,9 +34,9 @@ Zero-trust inference scales from 1 agent to N without change. DOLCHE compression
 
 ## Learnings
 
-### L1: The swarm IS the Scan/ESE pipeline — it was always distributed
+### L1: The swarm IS the Scan pipeline — it was always distributed
 
-**Strongest insight in this session.** ESE was always multi-pass — summary, claims, detail, crosslink. Each pass has different focus, output shape, and quality criteria. DOLCHE compression between passes is already DOLCHE-shaped: observations from claims pass feed learnings in crosslink pass. Progressive disclosure tiers map 1:1 to agent slots. The swarm architecture was latent in ESE from the beginning — it was a distributed pattern forced to run on one agent. This reframes the swarm from "new capability" to "correct topology for existing design." The foundation is an architectural insight, not a trend-chase.
+**Strongest insight in this session.** The scan pipeline was always multi-pass — summary, claims, detail, crosslink. Each pass has different focus, output shape, and quality criteria. DOLCHE compression between passes is already DOLCHE-shaped: observations from claims pass feed learnings in crosslink pass. Progressive disclosure tiers map 1:1 to agent slots. The swarm architecture was latent in the scan pipeline from the beginning — it was a distributed pattern forced to run on one agent. This reframes the swarm from "new capability" to "correct topology for existing design." The foundation is an architectural insight, not a trend-chase.
 
 ### L2: Swarm orchestration demands a new vodka layer, not a thicker existing layer
 
@@ -68,11 +68,11 @@ If human operators drift across sessions even with a canonical source available 
 
 ### D2: Spike vertical is klappy.dev dogfooding
 
-Not Bible translation, not pastoral, not recruiting. Run ESE swarm passes against Klappy's own essays and oddkit canon. He is the domain expert, KB owner, and customer simultaneously. No external validation dependency. Immediate utility: enriched KB feeds syndication projections for all platforms. Because lean startup reversal — learn first (manual swarm), measure (did the layers add value?), then build (automate what worked).
+Not Bible translation, not pastoral, not recruiting. Run swarm passes against Klappy's own essays and oddkit canon. He is the domain expert, KB owner, and customer simultaneously. No external validation dependency. Immediate utility: enriched KB feeds syndication projections for all platforms. Because lean startup reversal — learn first (manual swarm), measure (did the layers add value?), then build (automate what worked).
 
 ### D3: Biblical resources → additive layer swarm is a future commercial vertical
 
-A governed swarm producing draft lexical entries, commentary extensions, and crosslinks from authoritative Aquifer sources — giving scholars a first draft worth editing instead of a blank page. This doesn't replace the scholar; it accelerates their work. Evaluate after klappy.dev spike proves the ESE-as-swarm thesis.
+A governed swarm producing draft lexical entries, commentary extensions, and crosslinks from authoritative Aquifer sources — giving scholars a first draft worth editing instead of a blank page. This doesn't replace the scholar; it accelerates their work. Evaluate after klappy.dev spike proves the swarm thesis.
 
 -----
 
@@ -109,7 +109,7 @@ Both documents are now part of the project record. The session DOLCHE above capt
 
 ### H1: Immediate — klappy.dev dogfood spike
 
-Run manual swarm against klappy.dev essays and oddkit canon. No new infrastructure. Manual DOLCHE compression between passes. Compare multi-agent ESE output against single-agent baseline. Measure: did the swarm surface real connections that weren't explicit? Binary signal — a crosslink is valid or it isn't.
+Run manual swarm against klappy.dev essays and oddkit canon. No new infrastructure. Manual DOLCHE compression between passes. Compare multi-agent swarm output against single-agent baseline. Measure: did the swarm surface real connections that weren't explicit? Binary signal — a crosslink is valid or it isn't.
 
 ### H2: Immediate — Fix handoff doc language ✓
 
@@ -125,7 +125,7 @@ If dogfood spike validates, build platform-specific agent profiles (X, LinkedIn,
 
 ### H4: After spike — Biblical resources vertical evaluation
 
-Take spike learnings to Ian. Evaluate whether ESE-as-swarm over Aquifer content would accelerate resource completion. The Aquifer MCP and data already exist. The question is whether the enrichment layers are scholar-grade.
+Take spike learnings to Ian. Evaluate whether swarm-driven enrichment of Aquifer content would accelerate resource completion. The Aquifer MCP and data already exist. The question is whether the enrichment layers are scholar-grade.
 
 ### H5: Architecture — Layer stack needs names
 
