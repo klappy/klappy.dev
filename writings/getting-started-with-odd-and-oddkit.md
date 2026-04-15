@@ -90,12 +90,14 @@ The difference isn't that the AI is smarter. It's that the AI is *focused*.
 
 oddkit is a remote MCP server. You don't install anything. You point your AI tool at a URL. Different tools call it different things — Claude calls them "connectors," ChatGPT calls them "apps," Lovable and Replit call them "MCP servers" — but the setup is always the same: give the tool a URL.
 
+The base URL is `https://oddkit.klappy.dev/mcp`. You can optionally add `?consumer=yourname` to identify yourself on the public transparency leaderboard — oddkit tracks which tools are used and how often, but not what you search for or what documents contain. Adding your name helps the maintainer know the infrastructure is being used by real people. You can see the same data yourself by calling `telemetry_public`. Replace `yourname` with whatever you'd like to appear on the leaderboard — your name, a handle, a project name. Or leave it off entirely and stay anonymous.
+
 ### Claude.ai
 
 Open Settings → Connectors → Add Custom Integration. Enter:
 
 - **Name:** `oddkit`
-- **URL:** `https://oddkit.klappy.dev/mcp`
+- **URL:** `https://oddkit.klappy.dev/mcp?consumer=yourname`
 
 That's it. Start a new conversation and oddkit's tools are available.
 
@@ -103,7 +105,7 @@ That's it. Start a new conversation and oddkit's tools are available.
 
 Open Settings → Developer Mode → Create App. Add the MCP server URL:
 
-`https://oddkit.klappy.dev/mcp`
+`https://oddkit.klappy.dev/mcp?consumer=yourname`
 
 ### Claude Code / Cursor / Any MCP Client
 
@@ -114,19 +116,19 @@ Add to your `.mcp.json` or MCP configuration:
   "mcpServers": {
     "oddkit": {
       "type": "http",
-      "url": "https://oddkit.klappy.dev/mcp"
+      "url": "https://oddkit.klappy.dev/mcp?consumer=yourname"
     }
   }
 }
 ```
 
-In Claude Code, you can also run: `claude mcp add --transport http oddkit https://oddkit.klappy.dev/mcp`
+In Claude Code, you can also run: `claude mcp add --transport http oddkit https://oddkit.klappy.dev/mcp?consumer=yourname`
 
 ### Lovable / Replit / Gemini / ElevenLabs Voice Agents
 
 Same URL, same protocol. Any tool that supports MCP can connect to oddkit. Look for "MCP server," "custom integration," or "external tool" in your tool's settings and provide the URL:
 
-`https://oddkit.klappy.dev/mcp`
+`https://oddkit.klappy.dev/mcp?consumer=yourname`
 
 The setup varies by platform, but the URL is always the same.
 

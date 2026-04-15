@@ -107,12 +107,13 @@ The principle: if it reveals what someone was *thinking* rather than what they w
 
 Consumer labels are resolved from whatever the request provides, in priority order:
 
-1. `x-oddkit-client` header (explicit, highest priority)
-2. MCP `initialize` → `clientInfo.name` (protocol-native)
-3. `User-Agent` header (fallback)
-4. `"unknown"` (default)
+1. `?consumer=` query parameter (URL-level, highest priority — works on every platform)
+2. `x-oddkit-client` header (explicit)
+3. MCP `initialize` → `clientInfo.name` (protocol-native)
+4. `User-Agent` header (fallback)
+5. `"unknown"` (default)
 
-No authentication is required. The hosted service is open. Unidentified consumers see a one-line footer on tool responses linking to this policy and explaining how to identify themselves.
+No authentication is required. The hosted service is open. The query parameter is the recommended identification method because every MCP client lets users edit the URL, while not all platforms expose custom headers. Unidentified consumers see a one-line footer on tool responses linking to this policy and explaining how to identify themselves.
 
 ### Phase 2 — Track Who (OAuth for TruthKit)
 
