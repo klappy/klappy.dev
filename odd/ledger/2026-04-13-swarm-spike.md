@@ -234,25 +234,32 @@ The claims→crosslinks→tensions topology holds for essay-form content, not ju
 
 -----
 
-## Architecture Diagram — Product Stack with Governance Internals
+## Architecture Diagram — Final Product Stack
 
 ```
-Layer 3: Content Hosting (enriched KB output)  ← UNDESIGNED
+Layer 3: DOLCHE Storage (enrichment artifacts per document)
     ↑ enrichment flows up
-Layer 2: Swarm Coordination
+Layer 2: Swarm Coordination (all passes parallel per document)
     ┌───────────────────────────────────────────────┐
-    │  Pass 1: Claims Extraction                    │
+    │  FOUNDATIONAL                                 │
+    │  Pass 1: ESE + DOLCHEO extraction (1–N docs)  │
     │      ↓ DOLCHE compress                        │
-    │  Pass 2: Crosslink Discovery                  │
+    │  Pass 2: Progressive Disclosure (1–N docs)    │
     │      ↓ DOLCHE compress                        │
-    │  Pass 3: Tension/Contradiction Analysis       │
+    │  ANALYTICAL                                   │
+    │  Pass 3: Claims Extraction (1–N docs)         │
+    │      ↓ DOLCHE compress                        │
+    │  Pass 4: Crosslink Discovery (1–N docs)       │
+    │      ↓ DOLCHE compress                        │
+    │  Pass 5: Tension/Contradiction (1–N docs)     │
     │      ↓ DOLCHE compress (analysis→persona)     │
-    │  Pass 4: Community Checking                   │
+    │  Pass 6: Community Checking (1–N personas)    │
     │      ↓                                        │
     │  Convergence Evaluator (→ stop/loop)          │
     │                                               │
-    │  [Orchestrator manages topology + routing]    │
-    │  [Each pass = a governed model call (Layer 1)]│
+    │  [Orchestrator: sequential between passes,    │
+    │   parallel within passes, model routing both] │
+    │  [Each agent = a governed model call (Lyr 1)] │
     └───────────────────────────────────────────────┘
     ↑ governed model calls
 Layer 1: Governed Model Call (Worker)
@@ -260,6 +267,58 @@ Layer 1: Governed Model Call (Worker)
 oddkit MCP + canon
 ```
 
-**Product altitude:** Three layers. Layer 1 is the atomic unit (nearly exists in code). Layer 2 orchestrates four passes, each a governed model call. Layer 3 hosts the enriched output (undesigned — the encode-persist gap at product scale).
+**Product altitude:** Three layers. Layer 1 is the atomic unit (nearly exists in code). Layer 2 orchestrates six passes — two foundational, four analytical — all embarrassingly parallel per document. Layer 3 is DOLCHE storage: the enrichment artifact each document accumulates across all passes.
 
 **Single-agent mode:** Remove Layer 2 entirely. Layer 1 connects directly to the frontend.
+
+-----
+
+## Session DOLCHEO
+
+**D (Decisions):**
+- TruthKit = three-layer product stack (governed model call → swarm coordination → DOLCHE storage)
+- Six passes: ESE, progressive disclosure, claims extraction, crosslink discovery, tension analysis, community checking
+- All six embarrassingly parallel per document; sequential dependency is pass-to-pass, not document-to-document
+- DOLCHE compression is per-document between passes; each document carries its own DOLCHE chain
+- Layer 3 IS the DOLCHE storage — not a separate design concern
+- DOLCHEO-aware ESE is the transformation step that converts any generic KB into a governance canon
+- D1 revised: Orchestrator is operational, not a vodka layer (caught by swarm's own tension pass)
+
+**O (Observations):**
+- ESE was misused all session to mean "multi-pass swarm analysis" — actually means awareness extraction from non-text evidence. Eight instances corrected.
+- Cross-document intelligence comes from oddkit's canon index, not from agents talking to each other within a pass
+- The membrane fires between passes, not between documents
+- Vodka architecture canon doc was assumed missing for three sessions — it existed. Cross-session memory drifts when the canon isn't checked.
+
+**L (Learnings):**
+- The swarm IS the scan pipeline — always a distributed pattern running on one agent
+- DOLCHEO categories are epistemically generic — decisions, observations, learnings, constraints, handoffs, encodes, open items exist in every domain. Zero domain opinion.
+- The difference between a generic KB and a governance canon isn't the content — it's whether the content's DOLCHEO structure has been surfaced
+- TruthKit's commercial thesis: take any knowledge base and make it governable
+- Two altitude framings (product stack vs. governance internals) are both valid but serve different audiences — reconcile before shipping
+
+**C (Constraints):**
+- ESE containment applies: extracted DOLCHEO is interpretive and non-canonical
+- Foundational passes (1–2) skippable for mature KBs
+- "Harness" disambiguated: harness(generation) = coding toolkit; harness(governance) = TruthKit
+- DOLCHE compression profiles vary by membrane type (canon-to-canon vs. analysis-to-persona)
+
+**H (Handoffs):**
+- PR #95 open: harness disambiguation + session journal → klappy.dev repo
+- Decision doc ready for Tim and Ian (with six-pass pipeline and DOLCHEO)
+- Handoff docx ready for Tim and Ian (client-of language corrected)
+- DOLCHEO schema needs canon treatment — load-bearing for ESE, compression, AND storage
+- Vodka doc update batched (fourth constraint question, 16 crosslinks, quantitative corrections)
+- C4a (small model viability) and C4b (membrane fidelity) remain open
+
+**E (Encodes):**
+- Session journal (this document)
+- Harness disambiguation constraint doc
+- Decision doc with reconciled product stack and six-pass pipeline
+
+**O (Open):**
+- Can DOLCHEO extraction be fully automated or does it need human review per document?
+- Does DOLCHEO-aware ESE replace or extend ESE's existing invariant contract?
+- Is DOLCHEO the right schema for Layer 3 storage or does it need a wrapper format?
+- How does the six-pass pipeline interact with the build sequence (model harness → orchestration → DOLCHE storage)?
+- DOLCHEO schema itself — what earns the O? Broader than "questions" or "unknowns" — TBD
