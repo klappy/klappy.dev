@@ -181,6 +181,60 @@ These sections improve the article's value for human readers and model teaching.
 
 ---
 
+## Fallback Behavior — What Happens When No Type Matches
+
+When a paragraph in unstructured input matches no type's trigger regex, the server uses a fallback type. The fallback type is determined by governance, not hardcoded in the server.
+
+A type declares itself as the fallback by including `fallback: true` in its frontmatter:
+
+```yaml
+---
+uri: klappy://odd/encoding-types/observation
+fallback: true
+---
+```
+
+Resolution order:
+1. If exactly one type has `fallback: true`, that type is the fallback
+2. If multiple types declare `fallback: true`, the first one discovered wins (alphabetical by filename)
+3. If no type declares `fallback: true`, the server uses the first type discovered as fallback
+
+The recommended convention is to mark **Observation (O)** as the fallback. An unclassified paragraph is raw content without interpretation — semantically, that's what an Observation is. This convention is followed by the default OLDC+H types.
+
+---
+
+## Scoring Algorithm — How Score Maps to Quality Level
+
+Each type's governance doc defines N quality criteria. Each criterion the artifact satisfies adds 1 to the score, so `max_score` equals the number of criteria.
+
+The server maps score to quality level using these thresholds:
+
+| Condition | Level |
+|---|---|
+| `score == max_score` | strong |
+| `score >= ceil(max_score * 0.6)` | adequate |
+| `score >= ceil(max_score * 0.4)` | weak |
+| otherwise | insufficient |
+
+This algorithm works for any `max_score` value. A type with 4 criteria: strong=4, adequate≥3, weak≥2, insufficient<2. A type with 1 criterion: strong=1, insufficient=0 (the percentage thresholds round up so intermediate levels don't apply).
+
+Individual type docs may include a `## Quality Levels` table showing the specific numbers for that type's `max_score`, but the algorithm itself is defined here once.
+
+---
+
+## Context vs Input — How Supplementary Context Is Handled
+
+The encode action accepts two parameters: `input` (the primary content) and `context` (supplementary background). They serve different purposes:
+
+- **`input`** is parsed into artifacts. Every row or paragraph in `input` generates an encoded artifact.
+- **`context`** is not parsed into separate artifacts. Context supplies information that informs quality scoring — for example, a decision's rationale or alternatives mentioned in context count toward the Decision's quality score — but context itself never becomes a standalone artifact.
+
+The server concatenates `input` and `context` only for quality scoring passes. For type detection and artifact parsing, only `input` is used.
+
+This distinction matters because callers often want to provide background ("the meeting discussed X, Y, and Z") without generating separate artifacts for every background sentence. Context is metadata. Input is content.
+
+---
+
 ## Writing a Custom Encoding Type
 
 Custom types follow this identical structure. A pastoral knowledge base adding "Prayer Request" writes:

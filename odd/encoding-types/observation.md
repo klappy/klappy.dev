@@ -12,6 +12,7 @@ date: 2026-04-15
 derives_from: "docs/oddkit/proactive/dolche-vocabulary.md"
 governs: "oddkit_encode parsing and quality scoring for type O"
 status: active
+fallback: true
 ---
 
 # Encoding Type: Observation (O)
@@ -48,5 +49,5 @@ Observations describe reality as encountered, not reality as theorized. They are
 ## Trigger Words (Fallback Classification)
 
 ```
-observed, noticed, saw, found, measured, detected, appeared, showed
+observed, noticed, saw, measured, detected, appeared, showed
 ```
