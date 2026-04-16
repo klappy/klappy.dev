@@ -6,7 +6,7 @@ exposure: nav
 tier: 1
 voice: neutral
 stability: semi_stable
-tags: ["odd", "oddkit", "encode", "dolche", "encoding-type", "governance", "meta", "tsv", "prompt-over-code", "template"]
+tags: ["odd", "oddkit", "encode", "dolche", "encoding-type-meta", "governance", "meta", "tsv", "prompt-over-code", "template"]
 epoch: E0008
 date: 2026-04-15
 derives_from: "canon/principles/prompt-over-code.md, canon/principles/vodka-architecture.md, docs/oddkit/proactive/dolche-vocabulary.md"
