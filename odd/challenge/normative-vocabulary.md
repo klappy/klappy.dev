@@ -8,21 +8,21 @@ voice: neutral
 stability: semi_stable
 tags: ["odd", "oddkit", "challenge", "normative-vocabulary", "tensions"]
 epoch: E0008
-date: 2026-04-16
+date: 2026-04-17
 derives_from: "canon/constraints/epistemic-challenge.md, odd/challenge-types/how-to-write-challenge-types.md"
-governs: "oddkit_challenge tension detection — the vocabulary that signals a directive or load-bearing claim in retrieved canon quotes"
+governs: "oddkit_challenge detection vocabulary on two surfaces — signal in retrieved canon quotes (tension detection) and noise in user input (BM25 stop-word filter)"
 status: active
 ---
 
 # Challenge Normative Vocabulary
 
-> The words whose presence in a retrieved canon quote signals a tension-bearing directive or a load-bearing architectural claim. When canon says MUST, SHOULD, NEVER, or names something as an invariant, forcing function, or the real cost, the tool should surface that quote as a potential tension with the input being challenged. This vocabulary is governed here, not hardcoded in the server.
+> The vocabulary the challenge tool uses both to detect signal in canon and to detect noise in user input. Two surfaces, one article: when canon says MUST, SHOULD, NEVER, or names something an invariant or forcing function, the tool surfaces that quote as a tension; when user input contains common filler (the, of, in, etc.), the tool filters it before scoring. Both opinions are domain-specific and both belong in canon, not hardcoded in the server.
 
 ---
 
-## Summary — Two Vocabularies, One Table, Case-Sensitive RFC Plus Case-Insensitive Architectural
+## Summary — Two Vocabularies, Two Surfaces, One Governance Article
 
-This article governs the vocabulary oddkit_challenge uses to detect tension-bearing language in retrieved canon quotes. Two sets coexist in one table: RFC 2119 directive language matched case-sensitively (UPPERCASE `MUST`, `SHALL`, `NEVER`, `REQUIRED`, `PROHIBITED`) because capitalization signals intentional directive weight, and architectural-writing load-bearing phrases matched case-insensitively (`invariant`, `forcing function`, `non-negotiable`, `the test is`, `the unlock is`, `pure`) because these phrases carry weight regardless of case. The server compiles these into regex applied to retrieved canon quote previews. Adding domain-specific vocabulary is a canon edit, not a code change — a compliance KB adds `VIOLATES`, a theological KB adds `ANATHEMA`, a contracts KB adds `SHALL CAUSE`. If this article is absent, the server falls back to a minimal built-in set.
+This article governs the full vocabulary `oddkit_challenge` uses for detection, on two surfaces. **Surface one — signal in canon:** RFC 2119 directive language matched case-sensitively (`MUST`, `SHALL`, `NEVER`, `REQUIRED`, `PROHIBITED`) plus architectural-writing load-bearing phrases matched case-insensitively (`invariant`, `forcing function`, `non-negotiable`, `the test is`, `pure`). The server compiles these into regex applied to retrieved canon quote previews — a match becomes a tension entry. **Surface two — noise in user input:** common filler words (`the`, `of`, `in`, `we`) that should be filtered from BM25 detection of the user's claim against challenge-type articles. Modal verbs (`must`, `should`, `shall`, `may`, `not`) are deliberately NOT filtered here because they are the load-bearing trigger words for `strong-claim` and `proposal` types. Adding domain-specific vocabulary on either surface is a canon edit, not a code change — a compliance KB adds `VIOLATES` to the signal table, a different domain may add or remove filler words from the noise list. If this article is absent, the server falls back to a minimal built-in set on both surfaces.
 
 ---
 
@@ -62,19 +62,42 @@ This article governs the vocabulary oddkit_challenge uses to detect tension-bear
 
 ---
 
+## Detection Noise
+
+The words filtered from user input before BM25 scores it against per-type detection text. These are the words this domain treats as filler — present in normal prose, not informative for type matching. Filtering them prevents irrelevant input ("the cat sat on the mat") from accumulating fractional scores against every type that happens to mention "the" in its blockquote.
+
+The list is deliberately conservative. Modal verbs (`must`, `should`, `shall`, `may`, `might`, `can`, `could`, `will`, `would`), negation (`not`, `no`, `never`, `always`), and auxiliary verbs (`do`, `does`, `did`, `have`, `has`, `had`) are NOT in this list — they are signal for the `strong-claim`, `proposal`, and `assumption` types. Removing them would silently break detection for those types.
+
+### Common Filler
+
+```
+a, an, the, is, are, was, were, be, been, being,
+of, in, to, for, with, on, at, by, from, as, into, through,
+and, but, or, nor, if, then, than,
+that, this, it, its, we, you, he, she, they
+```
+
+A KB in a different domain may extend or replace this list. A KB working in formal legal text might add `whereas`, `wherein`, `hereinafter`. A KB working in narrative might keep `we`, `you`, `they` as signal (they identify the actor) and remove them from this list. The choice is local to the canon, not the server.
+
+If this section is absent or empty, the server applies no filter and relies entirely on BM25's IDF weighting to suppress shared filler. That is workable for canons with highly distinctive per-type vocabulary but produces fractional false-positive scores for inputs heavy in common prose words.
+
+---
+
 ## Notes
 
-The server compiles these tables into a case-sensitive word-boundary regex applied to retrieved canon quote previews. A match produces a tension entry with the directive type, citation, and quote.
+**Signal surface (canon quote tension detection):** the server compiles the two `## Normative Vocabulary` tables into a case-sensitive word-boundary regex and a case-insensitive regex, applied to retrieved canon quote previews. A match produces a tension entry with the directive type, citation, and quote.
 
 Case sensitivity is intentional for the RFC 2119 row — UPPERCASE use signals intentional directive language, while lowercase `must` in prose rarely carries the same weight. The architectural-writing phrases are mixed-case and matched case-insensitively; `"the test is"` in a draft essay carries load-bearing weight regardless of capitalization.
 
-The two sections coexist in one table because klappy.dev canon contains both software-engineering governance (where RFC 2119 dominates) and architectural writing (where the load-bearing phrases dominate). A KB focused on a single domain can prune to one section, and a KB in a third domain adds its own.
+**Noise surface (user input matching):** the server reads the `## Detection Noise` code block as a Set of words, passed to the BM25 indexer as the custom stop-word filter. The same Set is then used to tokenize the user's input at search time, ensuring index and query vocabularies stay aligned. Words in this list are dropped before scoring; words not in this list contribute via BM25 (with stemming, IDF, and phrase boost as usual).
 
-Adding domain-specific vocabulary is a canon edit:
+The two surfaces coexist in one article because they are two roles of the same domain vocabulary opinion. A KB focused on a single domain can prune both sections together; a KB in a third domain can extend both together. Keeping them separated would create drift risk — different vocabularies for "what counts as content" vs "what counts as filler" within the same domain rarely makes sense.
 
-- A formal-contracts KB might add `SHALL CAUSE`, `WARRANTS`, `COVENANTS`
-- A compliance KB might add `VIOLATES`, `BREACHES`, `NON-COMPLIANT`
-- A theological KB might add `ANATHEMA`, `HERETICAL`, `commanded`, `forbidden`
-- A thought-leadership-from-books KB might add `the central point`, `the key move`, `load-bearing`
+Adding domain-specific vocabulary on either surface is a canon edit:
 
-If this article is absent, the server falls back to a minimal built-in set of `MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT` only.
+- A formal-contracts KB might add `SHALL CAUSE`, `WARRANTS`, `COVENANTS` to signal; might add `whereas`, `wherein`, `hereinafter` to noise
+- A compliance KB might add `VIOLATES`, `BREACHES`, `NON-COMPLIANT` to signal
+- A theological KB might add `ANATHEMA`, `HERETICAL`, `commanded`, `forbidden` to signal
+- A thought-leadership-from-books KB might add `the central point`, `the key move`, `load-bearing` to signal
+
+If this article is absent, the server falls back to a minimal built-in set on both surfaces: `MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT` for signal; an empty noise filter (no filtering, BM25 IDF only). If the article is present but the `## Detection Noise` section is missing, the server uses the empty noise filter — explicitly opting into IDF-only scoring is a valid governance choice.
