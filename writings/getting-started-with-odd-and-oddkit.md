@@ -201,6 +201,8 @@ Think of it as an employee handbook that you and the AI both agree to. You're no
 
 The [full bootstrap prompt](/page/docs/oddkit/proactive/proactive-bootstrap) includes additional guidance on continuous session capture, artifact provenance, and proactive tool usage — use it when you're ready for the complete version. The compact version above is enough to start.
 
+If you want to see the actual template I use — creed, axioms, time perception, mode discipline, bottleneck respect, and the pointer to the evolving operating contract all in one system prompt — see [Project Instructions Template](/page/docs/examples/project-instructions-template). It's model-agnostic; the same template works for Claude, GPT, Gemini, or any LLM with tool-use and an MCP connection.
+
 ### A Note on Permissions
 
 When you first connect oddkit, your AI tool will ask permission each time oddkit is invoked — "oddkit wants to use orient," "oddkit wants to use search." This is the right default. You should see what oddkit does before trusting it to act freely.
