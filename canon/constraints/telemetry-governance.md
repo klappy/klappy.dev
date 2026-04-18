@@ -133,16 +133,16 @@ Modeled after the proven pattern in Aquifer MCP:
 
 ### Self-Report Fields (Optional, Incentivized)
 
-| Field | Header | Source |
-|-------|--------|--------|
-| Client name | `x-oddkit-client` | Header or clientInfo |
-| Client version | `x-oddkit-client-version` | Header or clientInfo |
-| Agent name | `x-oddkit-agent-name` | Header |
-| Agent version | `x-oddkit-agent-version` | Header |
-| Surface | `x-oddkit-surface` | Header |
-| Contact URL | `x-oddkit-contact-url` | Header |
-| Policy URL | `x-oddkit-policy-url` | Header |
-| Capabilities | `x-oddkit-capabilities` | Header |
+| Field | Header | Source | Description |
+|-------|--------|--------|-------------|
+| Client name | `x-oddkit-client` | Header or clientInfo | Your client name (highest priority identifier). Examples: `claude-desktop`, `truthkit-cli`, `your-company-agent`. |
+| Client version | `x-oddkit-client-version` | Header or clientInfo | Version string for the client above. Semver recommended but any stable identifier works. |
+| Agent name | `x-oddkit-agent-name` | Header | The AI agent or model name when distinct from the client. Example: `claude-opus-4-7`. |
+| Agent version | `x-oddkit-agent-version` | Header | Version string for the agent/model above. |
+| Surface | `x-oddkit-surface` | Header | Where this is running. Examples: `claude.ai`, `vscode`, `cli`, `ci`, `production`. |
+| Contact URL | `x-oddkit-contact-url` | Header | URL for your project or organization. Appears on the transparency leaderboard. |
+| Policy URL | `x-oddkit-policy-url` | Header | Your privacy or telemetry policy URL. Signals reciprocal transparency. |
+| Capabilities | `x-oddkit-capabilities` | Header | Comma-separated capability list describing what your client can do. Example: `read,write,vision`. |
 
 ### Completeness Scoring
 
