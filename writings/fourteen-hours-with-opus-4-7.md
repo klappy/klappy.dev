@@ -126,3 +126,17 @@ So I'm going to try this workflow again. Yesterday cost a lot, and I've been cle
 If the next session fails the same way, two data points is worth reconsidering. If it works cleanly, that's evidence the discipline catches what yesterday missed. Either way, the information is cheap at this price.
 
 Transparent and a little more broken still wins, when I'm honest about which part is transparent, which part is broken, and what the alternative would have been. Yesterday cost a lot. A year ago, yesterday would have been impossible. That's worth the entry fee.
+
+---
+
+## Postscript — What I Noticed on the Second Read
+
+On a second pass through this session I noticed something I didn't name at the time. The model asked more qualifying questions than I'm used to. More "which of these did you mean." More "A or B before I proceed." At first I read that as pedantic. On closer look, the questions were catching real drift and real conflict between things I'd decided in different sessions. They were the questions a good colleague would ask. I just wasn't in the mood for them.
+
+Which means we're in an uncomfortable middle state. If the model doesn't ask, we get angry at the assumption. If it asks, we get annoyed at the interruption. Neither is the right complaint. The right complaint is about the *form* of the ask. A question without proposed resolution is an amateur move — it tells the boss you haven't done the work. A silent decision is insubordination dressed as initiative. The mature form is the presentation: here's the conflict, here's what I'd do and why, here's the decision I need from you. That's the shape good employees use on their bosses, and it's the shape SOTA models haven't fully learned yet.
+
+The next step isn't fewer questions or more confidence. It's teaching these models to *present* — to compress their hours of detection into our minutes of decision. That's the next essay. And it flips the demand back on us, because presentations only emerge when the operators reward the ones that arrive well-formed and push back on the ones that don't.
+
+Management is the analogy, and management is the answer. The bosses make the bosses. We're training the next generation right now, and the training signal we send matters.
+
+*Next up: the shift from "pedantic vs overconfident" to "present or don't come in."*
