@@ -7,8 +7,8 @@ tier: 1
 voice: neutral
 stability: semi_stable
 tags: ["canon", "meta", "frontmatter", "schema", "YAML", "metadata", "governance", "template", "validation"]
-epoch: E0007.1
-date: 2026-04-04
+epoch: E0008.3
+date: 2026-04-19
 derives_from: "canon/meta/writing-canon.md, canon/values/axioms.md"
 complements: "canon/meta/TEMPLATE.md, docs/TEMPLATE.md, canon/constraints/definition-of-done.md"
 governs: "All YAML frontmatter in all documents across all directories"
@@ -106,8 +106,9 @@ Canon documents define program-level constraints.
 | `derives_from` | recommended | `"path/to/source.md, path/to/other.md"` | What this document is grounded in. Full file paths, not floating names. |
 | `complements` | optional | `"path/to/sibling.md"` | Related documents that work alongside this one |
 | `governs` | optional | `"description of what this constrains"` | What behavior or documents this constrains |
-| `status` | optional | `"active"` `"proposed"` `"final"` | Lifecycle status |
+| `status` | optional | `"active"` `"proposed"` `"final"` `"superseded"` | Lifecycle status |
 | `supersedes` | optional | `"path/to/old.md"` | What this replaces |
+| `superseded_by` | optional | `"path/to/replacement.md"` | The replacement document (back-pointer; pair with `status: superseded`) |
 
 ### audience: "docs"
 
@@ -120,7 +121,9 @@ Docs documents define implementation details, planning, and operational guides.
 | `derives_from` | optional | `"path/to/source.md"` | What this is grounded in |
 | `complements` | optional | `"path/to/sibling.md"` | Related documents |
 | `governs` | optional | `"description"` | What this constrains |
+| `status` | optional | `"active"` `"proposed"` `"superseded"` `"archived"` | Lifecycle status |
 | `supersedes` | optional | `"path or description"` | What this replaces |
+| `superseded_by` | optional | `"path/to/replacement.md"` | The replacement document (back-pointer; pair with `status: superseded`) |
 | `forcing_fault` | epoch docs only | `"description"` | What friction triggered this epoch |
 | `new_invariant` | epoch docs only | `"statement"` | What's now true that wasn't before |
 | `core_shift` | epoch docs only | `"old → new"` | What changed |
@@ -200,6 +203,10 @@ ODD documents define universal philosophy and methodology.
 | `epoch` | optional | `"E0005"` | Which epoch |
 | `date` | optional | `"2026-04-04"` | Date |
 | `derives_from` | optional | `"path/to/source.md"` | Grounding |
+| `complements` | optional | `"path/to/sibling.md"` | Related documents |
+| `governs` | optional | `"description of what this handoff/ledger covers"` | What scope this document governs. Common on handoffs and ledgers. |
+| `status` | optional | `"active"` `"draft"` `"superseded"` `"archived"` | Lifecycle status |
+| `session_span` | optional | `"2026-04-19 closed"` or `"2026-04-19 to 2026-04-20"` | For session ledgers and handoffs: which session(s) the document records |
 | `version` | optional | `"1.0"` (quoted) | Document version |
 | `slug` | if site-rendered | `"kebab-case"` | URL slug for public-facing ODD docs |
 
