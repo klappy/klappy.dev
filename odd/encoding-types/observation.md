@@ -51,3 +51,10 @@ Observations describe reality as encountered, not reality as theorized. They are
 ```
 observed, noticed, saw, measured, detected, appeared, showed
 ```
+
+---
+
+## See Also — Open Is the Forward-Pointing Sibling
+
+Observation (closed) and Open (forward-pointing) share letter `O` and are distinguished by section placement and an optional `facet` field. A paragraph inside a section headed `## Open items` is an Open; elsewhere, `[O]` is a closed Observation. For the forward-pointing variant, see `odd/encoding-types/open.md`. For the umbrella vocabulary that defines both, see `canon/definitions/dolcheo-vocabulary.md`.
+
