@@ -241,6 +241,24 @@ Prioritized by urgency and dependency. Each open item carries forward to future 
 
 **O16 — Public essay: teams-over-swarms.** After O4 canon principle lands. Three-anchor structure (proverb, scripture, testimony) reads well for a general audience. Candidate book chapter.
 
+**O19 — Course: "Learning to Work with AI" — chronological walkthrough of the journey.** Distinct product from the book (O14). Book is thesis-first, organized by argument; course is journey-first, organized by chronology. Learners encounter epochs, canon docs, public essays, and pivot moments in the same order the operator did — with forward-references that foreshadow later overrides so the "aha" moments hit when discovered, reinforced by prior priming.
+
+Structural notes:
+- Seven modules likely (one per major epoch or arc): Before-ODD foundations, E0005–E0006 early framework, E0007 proactive shift, E0008 observability, E0008.3 validation + context break + teams-over-swarms, E0009 self-correction, TruthKit capstone.
+- Each module structured as: state of framework entering the epoch → forcing fault → canon produced → public essays written → forward references to future overrides → exercises that make the learner do the thinking.
+- Canon retractions, renames, and epoch bumps become teachable inflection points rather than embarrassments. The mistakes are the lessons.
+- Gated on O11 (E0009 exists) and O14 (book is mostly finalized) — the course is derivative of both. Also gated on TruthKit having enough running state to serve as the capstone module.
+- Pruning is the hard part: public journal has 500+ docs; course needs ~30–50 pivot moments carrying narrative. Everything else linked as reference.
+- Pedagogical frontmatter tagging can start now — identifying "teaching moment" docs while memory is fresh is cheap; reconstructing it later is expensive. Candidate frontmatter field: `pedagogy: teaching-moment | reference | foreshadow-hook`.
+
+Product positioning (four-tier architecture):
+- Book (O14) sells the framework
+- Course (O19) teaches the framework
+- oddkit + klappy.dev demonstrate the framework
+- TruthKit is the framework applied in production
+
+Four audiences, one source, coherent flywheel.
+
 ### Priority 6 — Infrastructure (non-urgent)
 
 **O17 — Social Projector (post.klappy.dev) content calendar.** Auto-loads latest articles from oddkit, generates week-long story arcs for batch approval. Uses oddkit prompt pattern. Not urgent.
@@ -256,6 +274,8 @@ Prioritized by urgency and dependency. Each open item carries forward to future 
 **Q3 — Should validation-as-mode canon doc include a pointer to bugbot-as-validator pattern once O6 canon exists?** Yes, via `complements` frontmatter once the pattern doc lands.
 
 **Q4 — At what volume of open items does a session ledger become its own planning document rather than a retrospective?** Not a blocker tonight but worth noting — this ledger is borderline. Future sessions with 20+ open items might need to split retrospective (DOLCHE) from forward plan (O) into separate documents.
+
+**Q5 — Is the course (O19) a separate product from the book (O14), or a companion to it?** If companion: the course sells alongside the book as a bundled or upsell offering; the book is prerequisite reading. If separate: the course stands alone and the book becomes optional context; they reach different audiences with overlapping source material. Lean toward separate — they have different completion criteria (book: argument complete; course: learner can operate) and different outcomes (book sells the framework; course teaches the framework). Decide before investing significantly in either product's final structure.
 
 ---
 
