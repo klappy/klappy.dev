@@ -9,7 +9,7 @@ stability: semi_stable
 tags: ["canon", "constraint", "governance", "epistemic-modes", "theory-of-constraints", "collaboration", "oddkit", "vodka-architecture"]
 epoch: E0008.3
 date: 2026-04-18
-derives_from: "canon/definitions/epistemic-modes.md, docs/appendices/mode-separated-conversations.md, docs/oddkit/proactive/proactive-gate.md, docs/oddkit/proactive/posture-lapse.md, canon/principles/dry-canon-says-it-once.md"
+derives_from: "canon/definitions/epistemic-modes.md, canon/principles/verification-requires-fresh-context.md, docs/appendices/mode-separated-conversations.md, docs/oddkit/proactive/proactive-gate.md, docs/oddkit/proactive/posture-lapse.md, canon/principles/dry-canon-says-it-once.md"
 complements: "canon/constraints/oddkit-prompt-pattern.md, canon/values/axioms.md"
 governs: "How any LLM instance operating inside oddkit-powered projects conducts substantive work — specifically, when to ask questions, when to produce artifacts, and how to respect the operator's attention as the system bottleneck. Model-agnostic: applies to the model, GPT, Gemini, Llama, or any future model with tool-use capabilities."
 status: active
@@ -56,6 +56,8 @@ Canon states bluntly: "Epistemic modes MUST NOT be collapsed." The forms of coll
 **Execution pretending to be planning.** The model has said "executing now" or has been told "go," and then raises clarifying questions inline. This is the most common violation. It feels like safety. It is mode collapse.
 
 **Execution pretending to validate.** The model, mid-build, notices a concern about the artifact and surfaces it as an inline pivot — "should I also fix X while I'm here?" or "wait, this might not work, let me stop and check." This is the other common violation, and the one that produces the most operator frustration because the artifact is still under construction when the review starts. Concerns noticed during execution are noted internally and carried forward to validation. They are not acted on inline.
+
+**Self-review masquerading as validation.** The most structural collapse. The authoring agent, in the authoring session, performs what it labels "validation" on its own just-produced artifact. No context break occurred. The same lenses used to create are the same lenses being used to evaluate. Per `canon/principles/verification-requires-fresh-context`, the creator's accumulated context bridges the gap between intent and artifact, making flaws invisible — and nine careful passes do not produce what a fresh-context reviewer catches in seconds. Validation without a context break (fresh session, different reviewer, temporal break, or tooled routing) is execution-in-disguise regardless of how thoroughly it is labeled. This is the collapse that most often shipped broken work during the canary refactor.
 
 **Execution reopening exploration.** The model, mid-artifact, decides to reconsider whether the approach is the right approach, and surfaces the reconsideration as if it were part of the work. The operator experiences this as "I thought we were done with that."
 

@@ -6,7 +6,9 @@ exposure: nav
 tier: 2
 voice: neutral
 stability: evolving
-tags: ["planning", "execution", "collaboration"]
+tags: ["planning", "execution", "validation", "collaboration", "fresh-context"]
+epoch: E0008.3
+date: 2026-04-19
 ---
 
 # Mode-Separated Conversations
@@ -94,6 +96,7 @@ Characteristics:
 - the artifact exists; scope is bounded by what was claimed
 - findings are grouped into a single coherent review, not interleaved with execution
 - each finding carries explicit disposition
+- conducted with fresh context — separate session, separate reviewer, or temporal break between creation and review (see `canon/principles/verification-requires-fresh-context`)
 
 Invalid moves:
 
@@ -101,6 +104,7 @@ Invalid moves:
 - modifying the artifact during review
 - surfacing findings one-by-one during the build that produced the artifact
 - holding accept hostage to findings that are actually planning-class ideas
+- performing the review in the same session that produced the artifact, with no context break (this is self-review, not validation)
 
 ---
 
