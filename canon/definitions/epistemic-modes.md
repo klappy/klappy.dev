@@ -7,6 +7,8 @@ tier: 1
 voice: neutral
 stability: semi_stable
 tags: ["epistemology", "decision-making", "governance"]
+epoch: E0008.3
+date: 2026-04-18
 ---
 
 # Epistemic Modes

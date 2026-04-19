@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: semi_stable
 tags: ["canon", "constraint", "governance", "epistemic-modes", "theory-of-constraints", "collaboration", "oddkit", "vodka-architecture"]
-epoch: E0008
+epoch: E0008.3
 date: 2026-04-18
 derives_from: "canon/definitions/epistemic-modes.md, docs/appendices/mode-separated-conversations.md, docs/oddkit/proactive/proactive-gate.md, docs/oddkit/proactive/posture-lapse.md, canon/principles/dry-canon-says-it-once.md"
 complements: "canon/constraints/oddkit-prompt-pattern.md, canon/values/axioms.md"

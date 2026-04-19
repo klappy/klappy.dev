@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: semi_stable
 tags: ["epistemology", "decision-making", "governance", "validation", "epistemic-modes"]
-epoch: E0008
+epoch: E0008.3
 date: 2026-04-19
 derives_from: "canon/definitions/epistemic-modes.md, canon/constraints/mode-discipline-and-bottleneck-respect.md"
 complements: "docs/appendices/mode-separated-conversations.md, docs/oddkit/tools/oddkit_validate.md"
