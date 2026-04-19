@@ -6,17 +6,35 @@ exposure: nav
 tier: 3
 voice: neutral
 stability: stable
-tags: ["odd", "ledger", "session", "epoch-8", "epoch-8.3", "validation", "context-break", "teams-over-swarms", "solo-to-team-transition", "dolche"]
+tags: ["odd", "ledger", "session", "epoch-8", "epoch-8.3", "validation", "context-break", "teams-over-swarms", "solo-to-team-transition", "dolche", "dolcheo"]
 epoch: E0008.3
 date: 2026-04-19
 session_span: "2026-04-18 to 2026-04-19"
-governs: "Durable session record for the multi-day arc that produced E0008.3 canon, integrated the creator-cannot-be-own-critic principle, framed E0009 self-correction as context-separation-dependent, and named teams-over-swarms as the governing architectural preference. Source of truth for what was shared, decided, learned, constrained, and handed off during the session."
+governs: "Durable session record for the multi-day arc that produced E0008.3 canon, integrated the creator-cannot-be-own-critic principle, framed E0009 self-correction as context-separation-dependent, and named teams-over-swarms as the governing architectural preference. Source of truth for what was shared, decided, learned, constrained, and handed off during the session — and for what remains open to carry forward."
 status: active
 ---
 
 # E0008.3 Session — Validation Mode, Context Break, and Teams Over Swarms
 
-> Multi-day session spanning a canary completeness refactor, a user-facing rename (canon_url → knowledge_base_url), the promotion of validation into a first-class epistemic mode, the integration of the creator-cannot-be-own-critic principle into mode discipline, the framing of E0009 self-correction as context-separation-dependent, and the crystallization of teams-over-swarms as a governing ODD principle grounded in 1 Corinthians 12 and the African proverb on going fast alone versus going far together. The session also surfaced and named the operator's solo-to-team transition: oddkit and klappy.dev are complete solo work; TruthKit is the team-driven successor.
+> Multi-day session spanning a canary completeness refactor, a user-facing rename (canon_url → knowledge_base_url), the promotion of validation into a first-class epistemic mode, the integration of the creator-cannot-be-own-critic principle into mode discipline, the framing of E0009 as self-correction enabled by context separation, and the crystallization of teams-over-swarms as a governing ODD principle grounded in 1 Corinthians 12 and the African proverb on going fast alone versus going far together. The session also surfaced and named the operator's solo-to-team transition: oddkit and klappy.dev are complete solo work; TruthKit is the team-driven successor.
+
+---
+
+## Vocabulary: DOLCHEO (not just DOLCHE)
+
+This ledger uses **DOLCHEO**, an extension of DOLCHE that adds a second **O** for Open items / open questions. The two Os read as a pair:
+
+- **O** — Observation (something true we noticed, closed)
+- **L** — Learning (generalized insight, closed)
+- **D** — Decision (choice made with rationale, closed)
+- **C** — Constraint (rule or limit that applies going forward)
+- **H** — Handoff (work transfer to another session, agent, or operator)
+- **E** — Encode (durable record created, closed)
+- **O** — Open item (unresolved thread, question, or planned work; forward-pointing)
+
+DOLCHE alone is retrospective — it captures what happened. DOLCHEO adds the prospective dimension — what is unresolved and must be carried forward. Both Os begin with "observe": one observes what is, the other observes what is unknown. The duality is a feature, not a collision.
+
+This ledger is the first to use the extended notation. Future canon update to `canon/constraints/dolche-tracking.md` (or equivalent) will formalize DOLCHEO as the standard tracking vocabulary.
 
 ---
 
@@ -174,6 +192,70 @@ The canonical encoded artifacts of this session are the canon docs themselves: v
 
 ### E3 — The PRs are the executable encodes
 Every decision in D1–D9 is traceable to a PR (some merged, some open, some planned). PRs are the executable form of encoded decisions for commit-able work. Canon docs are the narrative form. This ledger is the session-contextual form. All three layers together give the decision a durable, retrievable, and verifiable record.
+
+---
+
+## Open Items (O) — Forward-Pointing Threads
+
+Prioritized by urgency and dependency. Each open item carries forward to future sessions until closed.
+
+### Priority 1 — Unblocked, ready to ship
+
+**O1 — oddkit main → prod promotion.** #108 is merged to main. Prod promotion PR from `main` → `prod` is the last step of the canary arc. Smoke test (`workers/test/canon-tool-envelope.smoke.mjs`) re-runs against prod URL once deployed to verify parity with preview. This is the only truly open thread from tonight's work.
+
+**O2 — `oddkit_encode` batch-mode feature.** Encode currently collapses multi-artifact input into a single typed blob — this was surfaced tonight when the session-closing encode produced one weak-quality Constraint instead of 28 typed artifacts. Fix: server-side paragraph splitting plus optional typed prefixes (`[D]`/`[L]`/`[O]`/`[C]`/`[H]`/`[E]`), returning per-artifact array with individual quality scores. Cheap server-side string work. Enables natural LLM usage pattern (dump thinking in paragraph form, encode splits and classifies).
+
+**O3 — DOLCHE → DOLCHEO vocabulary alignment.** Tool currently calls the set "OLDC+H"; canon calls it DOLCHE; this ledger introduces DOLCHEO. Three vocabularies for one concept is two too many. Needs a canon doc (likely `canon/constraints/dolche-tracking.md` or `canon/definitions/dolcheo-vocabulary.md`) establishing DOLCHEO as canonical and updating the encode tool description to match. Tool description update is currently blocked on this resolution.
+
+### Priority 2 — Next canon work
+
+**O4 — `canon/principles/teams-over-swarms.md` (tier 2).** Governing architectural preference. Three anchors: African proverb (tradeoff — fast alone / far together), 1 Corinthians 12 (anatomy — body with many members), operator testimony (witness — oddkit alone, TruthKit together). Sections: blockquote, summary, body-metaphor derivation, when-swarms-are-fine, architectural implications pointing to E0009 and TruthKit. Companion public essay likely follows.
+
+**O5 — Solo-to-team transition canon record.** Durable decision doc. Location TBD (`odd/decisions/solo-to-team-transition.md` or `docs/appendices/solo-to-team-transition.md`). Covers: oddkit/klappy.dev solo arc complete, TruthKit as team successor, open-core positioning, public journal → polished book. Follows O4.
+
+**O6 — Bugbot pattern formalization.** The two-layer team pattern (authoring agent does depth; bugbot / fresh-context reviewer does breadth) proved itself twice in this session. Worth formalizing as canon — "bugbot is E0008.3 validation role, personified." Candidate doc: `canon/patterns/bugbot-as-validator.md` or similar. Could also live as a section inside the teams-over-swarms principle.
+
+**O7 — "Mechanical transformations belong in code, not prompts" principle.** Surfaced tonight via the encode shortcoming. Pattern-level, not one-off — any time oddkit asks the LLM to format or structure mechanically, that work belongs in server code. Candidate canon principle doc. Concrete first application: O2 (encode batch-mode).
+
+### Priority 3 — Cleanup and consistency
+
+**O8 — Internal rename PR for oddkit.** `ZipBaselineFetcher` → `KnowledgeBaseFetcher` (class), `canonUrl` → `knowledgeBaseUrl` (~111 refs in orchestrate.ts, ~9 in telemetry.ts), `BASELINE_URL` → `DEFAULT_KNOWLEDGE_BASE_URL` env var. No user-visible contract change. Deferred tonight to keep #108 focused.
+
+**O9 — oddkit audit doc terminology pass.** `docs/oddkit/audit/governance-anti-pattern-sweep-2026-04-17.md` still uses old `canon_url` terminology. Also mark telemetry_policy canary row as completed — it shipped via #108. Small cleanup commit.
+
+**O10 — Telemetry blob6 naming decision.** Docs now say `knowledge_base_url` but the internal telemetry field is still `canon_url` (historical data continuity). Decide: keep blob6 name for continuity, or rename with a migration note. Either is defensible; the decision should be documented.
+
+### Priority 4 — Larger planning threads (not yet scoped into PRs)
+
+**O11 — E0009 self-correction architecture.** Canon doc + implementation design. Waits on O4 (teams-over-swarms) landing. Central move: self-correcting loops with routed handoffs across role-differentiated agents, context breaks at each handoff. Implicated: harness routing by role, not by parallelism. TruthKit likely first concrete E0009 implementation.
+
+**O12 — TruthKit swarm-vs-team harness decision.** Tim and Ian need to review the team/cell framing since it reshapes commercial positioning. Conway extension packaging (`.cnw.zip`) is a distribution opportunity whose architecture maps onto all three CNW components. Requires conversation, not just doc work.
+
+**O13 — Encode architecture full fix.** Beyond O2's batch mode. Currently pure English regex, four hardcoded types, collapses entire submissions. Full fix: encode reads vocabulary governance from knowledge base at runtime, returns per-type artifacts, mirrors the telemetry_policy canary pattern (live KB fetch with bundled fallback and minimal last-resort). Depends on O3 (vocabulary alignment) landing first.
+
+### Priority 5 — Writing thread
+
+**O14 — Book: *Nothing New, Even AI*.** Seven-part arc, 21 chapters + appendices. Material exists in public journal; work is selection, polish, framing. Closing chapters hand off to TruthKit. Longest-horizon open item.
+
+**O15 — Public essay: creator-cannot-be-own-critic for book chapter.** Expanding the E0008.3 incident into narrative. Companion to existing `writings/the-same-rules-fresh-eyes.md`. Tonight's bugbot story is the empirical anchor.
+
+**O16 — Public essay: teams-over-swarms.** After O4 canon principle lands. Three-anchor structure (proverb, scripture, testimony) reads well for a general audience. Candidate book chapter.
+
+### Priority 6 — Infrastructure (non-urgent)
+
+**O17 — Social Projector (post.klappy.dev) content calendar.** Auto-loads latest articles from oddkit, generates week-long story arcs for batch approval. Uses oddkit prompt pattern. Not urgent.
+
+**O18 — klappy.dev doc-listing edge function cache staleness.** Unauthenticated GitHub API rate limiting can cause SHA-based cache to serve stale index. Not blocking but on the radar.
+
+### Open questions (Q-flagged items)
+
+**Q1 — Does DOLCHEO fully replace DOLCHE, or coexist?** Proposal: DOLCHEO replaces, because DOLCHE was always incomplete — the Open category was missing and we were handling it ad-hoc. Needs explicit decision in O3's canon doc.
+
+**Q2 — Does the second O ("Open item") need a distinguishing letter in the notation to avoid collision with the first O ("Observation")?** Options: keep both as O and rely on section context, use O/OQ, use O/U (for Unresolved), use O/? (for question). Lean: keep both as O. The duality is legible when sections are clearly labeled.
+
+**Q3 — Should validation-as-mode canon doc include a pointer to bugbot-as-validator pattern once O6 canon exists?** Yes, via `complements` frontmatter once the pattern doc lands.
+
+**Q4 — At what volume of open items does a session ledger become its own planning document rather than a retrospective?** Not a blocker tonight but worth noting — this ledger is borderline. Future sessions with 20+ open items might need to split retrospective (DOLCHE) from forward plan (O) into separate documents.
 
 ---
 
