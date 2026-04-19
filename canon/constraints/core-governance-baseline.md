@@ -17,7 +17,7 @@ status: draft
 
 # Core Governance Baseline — What Ships With the Worker, What Lives in Canon
 
-> A canon-driven tool that cannot function without a live canon fetch is a tool that disappears when GitHub throws a 403. A tool that ships its full governance hardcoded is a drift surface by definition. The answer is neither: each oddkit release ships a bundled canon baseline — the minimum set of files every tool requires to function — and fetches fresh canon at runtime to override it. When a custom canon_url is missing a required file, the worker falls back to its bundled baseline and marks the response so the caller knows which tier served them.
+> A knowledge-base-driven tool that cannot function without a live knowledge base fetch is a tool that disappears when GitHub throws a 403. A tool that ships its full governance hardcoded is a drift surface by definition. The answer is neither: each oddkit release ships a bundled canon baseline — the minimum set of files every tool requires to function — and fetches fresh canon at runtime to override it. When a custom knowledge_base_url is missing a required file, the worker falls back to its bundled baseline and marks the response so the caller knows which tier served them.
 
 ---
 
@@ -25,9 +25,9 @@ status: draft
 
 Every oddkit tool that reads governance from canon sits on a three-tier resolution stack: **live canon** (preferred) → **bundled baseline** (fallback) → **fail loud** (if neither source contains a required file). The bundled baseline is a snapshot of core governance files taken at worker build time, shipped inside the worker bundle, and used only when the live fetch cannot serve the required file.
 
-This is the Vodka-compliant answer to the availability tension. Pure canon-driven tools are brittle — a transient GitHub 403 or a custom canon_url missing a file breaks governance silently. Pure hardcoded tools violate `canon/principles/dry-canon-says-it-once` — the server re-encodes rules the canon already defines, creating drift surfaces. The baseline pattern splits the difference: canon is authoritative, baseline is the floor, and the response envelope declares which tier served each call.
+This is the Vodka-compliant answer to the availability tension. Pure knowledge-base-driven tools are brittle — a transient GitHub 403 or a custom knowledge_base_url missing a file breaks governance silently. Pure hardcoded tools violate `canon/principles/dry-canon-says-it-once` — the server re-encodes rules the canon already defines, creating drift surfaces. The baseline pattern splits the difference: canon is authoritative, baseline is the floor, and the response envelope declares which tier served each call.
 
-Three rules govern the pattern. **First, the baseline is a snapshot, never a source.** It is regenerated from canon at every worker build; no file is ever edited in the baseline directory. **Second, the baseline contains only core governance files** — the files every canon-driven tool requires to function at all. Tool-specific governance (encoding types, challenge claim types, etc.) is not baseline; it is canon-only and tools degrade gracefully to minimal behavior without it. **Third, every canon-driven response declares its governance tier** — the response envelope surfaces `{ governance_source: "canon" | "baseline" | "minimal" }` so callers can detect degradation.
+Three rules govern the pattern. **First, the baseline is a snapshot, never a source.** It is regenerated from canon at every worker build; no file is ever edited in the baseline directory. **Second, the baseline contains only core governance files** — the files every knowledge-base-driven tool requires to function at all. Tool-specific governance (encoding types, challenge claim types, etc.) is not baseline; it is canon-only and tools degrade gracefully to minimal behavior without it. **Third, every knowledge-base-driven response declares its governance tier** — the response envelope surfaces `{ governance_source: "knowledge_base" | "bundled" | "minimal" }` so callers can detect degradation.
 
 The failure mode this prevents: PR #100's `1h 39m` production breakage was a canon/code drift — schema said three modes, canon defined nine. Under this contract, drift of that shape cannot silently reach production, because the worker cannot ship without its baseline matching canon at build time, and runtime canon either agrees with baseline or supersedes it visibly.
 
@@ -45,10 +45,10 @@ Finally, this contract rests on one documented failure case (PR #100) and a few 
 
 ## The Resolution Stack
 
-Every canon-driven tool follows this resolution order for every governance file it needs:
+Every knowledge-base-driven tool follows this resolution order for every governance file it needs:
 
 ```
-1. Live canon fetch (canon_url or default baseline_url)
+1. Live canon fetch (knowledge_base_url or default baseline_url)
    ↓ on 404 / 403 / network failure / file missing
 2. Bundled baseline (shipped inside the worker)
    ↓ on file not in baseline either
@@ -57,12 +57,12 @@ Every canon-driven tool follows this resolution order for every governance file 
 
 The response envelope surfaces which tier served the governance:
 
-- `governance_source: "canon"` — live canon fetch succeeded, the file was present
-- `governance_source: "baseline"` — live fetch failed or file was missing; bundled baseline used
+- `governance_source: "knowledge_base"` — live knowledge base fetch succeeded, the file was present
+- `governance_source: "bundled"` — live fetch failed or file was missing; bundled baseline used
 - `governance_source: "minimal"` — neither canon nor baseline had the file; tool degraded to its hardcoded minimum behavior (e.g. challenge falls back to generic "what evidence supports this?")
 - `error: "required_governance_missing"` — the file is required for the tool to function at all; no fallback exists
 
-Callers that need authoritative governance can inspect the envelope and refuse to proceed if `governance_source !== "canon"`. Callers that value availability over strict authority (most humans, most agents) can proceed with the baseline tier knowing they're on the floor, not the surface.
+Callers that need authoritative governance can inspect the envelope and refuse to proceed if `governance_source !== "knowledge_base"`. Callers that value availability over strict authority (most humans, most agents) can proceed with the bundled tier knowing they're on the floor, not the surface.
 
 ### Fail-Loud Error Envelope — Transparency Is Actionable or It Is Nothing
 
@@ -75,11 +75,11 @@ Fail-loud is a service to the operator only if the error tells them how to fix i
   "missing_files": [
     "canon/constraints/definition-of-done.md"
   ],
-  "canon_url_in_use": "https://github.com/someuser/my-canon",
+  "knowledge_base_url_in_use": "https://github.com/someuser/my-canon",
   "is_default_canon": false,
   "resolution": {
     "if_using_default_canon": "The oddkit baseline regeneration failed — the file is required but not bundled. Report at https://github.com/klappy/oddkit/issues.",
-    "if_using_custom_canon_url": "Your canon at https://github.com/someuser/my-canon is missing required governance. Either (a) add the file to your canon, or (b) omit canon_url to use the oddkit-hosted default.",
+    "if_using_custom_knowledge_base_url": "Your canon at https://github.com/someuser/my-canon is missing required governance. Either (a) add the file to your canon, or (b) omit knowledge_base_url to use the oddkit-hosted default.",
     "required_file_spec": "klappy://canon/constraints/core-governance-baseline#required-in-baseline",
     "reference_content_url": "https://raw.githubusercontent.com/klappy/klappy.dev/main/canon/constraints/definition-of-done.md"
   }
@@ -94,14 +94,14 @@ The `reference_content_url` points at the oddkit-hosted canon's version of the m
 
 Operators need a way to check governance health without having to trigger errors through real tool calls. A new tool, `oddkit_baseline_check`, answers the question "is my canon complete?" as a first-class probe.
 
-**Input:** optional `canon_url` (defaults to the standard baseline URL).
+**Input:** optional `knowledge_base_url` (defaults to the standard baseline URL).
 
 **Output:** a manifest-compliance report.
 
 ```json
 {
   "action": "baseline_check",
-  "canon_url": "https://github.com/someuser/my-canon",
+  "knowledge_base_url": "https://github.com/someuser/my-canon",
   "result": {
     "status": "INCOMPLETE",
     "required_files": {
@@ -132,7 +132,7 @@ Three status values:
 
 - `COMPLETE` — every required file is present and schema-valid; no tools will degrade
 - `INCOMPLETE` — one or more required files missing or schema-invalid; lists which tools are affected
-- `UNREACHABLE` — the canon_url itself could not be fetched; operator needs to check the URL or their network
+- `UNREACHABLE` — the knowledge_base_url itself could not be fetched; operator needs to check the URL or their network
 
 The probe is cheap (one index fetch, file existence checks, schema parses) and idempotent. It's the tool an operator runs before trusting their custom canon in production, and the tool a CI job runs to validate a canon branch before merge. It is explicitly not a replacement for the per-tool `governance_source` signal — probe is a before-you-deploy check, `governance_source` is a during-the-call signal.
 
@@ -140,7 +140,7 @@ The probe is cheap (one index fetch, file existence checks, schema parses) and i
 
 ## What Ships in the Baseline
 
-The baseline directory contains *exactly* the files every canon-driven tool requires to function. This is a small set — single digits. The rule is: **if any tool would fail closed without this file, it's baseline. Otherwise, it's canon-only.**
+The baseline directory contains *exactly* the files every knowledge-base-driven tool requires to function. This is a small set — single digits. The rule is: **if any tool would fail closed without this file, it's baseline. Otherwise, it's canon-only.**
 
 ### Required in Baseline (Every Worker Release)
 
@@ -182,21 +182,21 @@ The worker build process must enforce these invariants. A build that violates an
 
 ## Runtime Invariants
 
-Every canon-driven tool must follow these rules. Review is mechanical: grep for any canon fetch and verify each of these holds.
+Every knowledge-base-driven tool must follow these rules. Review is mechanical: grep for any canon fetch and verify each of these holds.
 
 1. **Fetch canon first; fall back to baseline on any failure.** The fetcher exposes a single method that implements the resolution stack. Tools call the fetcher, not `raw.githubusercontent.com` directly.
 
-2. **Declare the tier in every response.** The envelope field `governance_source` is required on every canon-driven response. Missing field is a bug.
+2. **Declare the tier in every response.** The envelope field `governance_source` is required on every knowledge-base-driven response. Missing field is a bug.
 
-3. **Return the full response envelope.** Every canon-driven tool (and every oddkit tool generally) must return `{action, result, server_time, assistant_text, debug}` where `server_time` is ISO 8601 UTC, `assistant_text` is a short human-readable summary, and `debug` contains at minimum `duration_ms`. Partial envelopes are a regression. The time-discipline system depends on `server_time` being on every response — a tool that returns only `{action, result}` silently breaks the model's clock-in-the-room contract.
+3. **Return the full response envelope.** Every knowledge-base-driven tool (and every oddkit tool generally) must return `{action, result, server_time, assistant_text, debug}` where `server_time` is ISO 8601 UTC, `assistant_text` is a short human-readable summary, and `debug` contains at minimum `duration_ms`. Partial envelopes are a regression. The time-discipline system depends on `server_time` being on every response — a tool that returns only `{action, result}` silently breaks the model's clock-in-the-room contract.
 
-4. **Accept `canon_url` as a first-class parameter.** Every canon-driven tool must declare `canon_url: z.string().optional()` in its Zod schema and thread it through to the fetcher. A schema of `{}` causes MCP to strip the parameter silently, defeating the override contract that this entire document is built on. Consumers pointing oddkit at their own canon (TruthKit, private KBs, custom forks) depend on `canon_url` being honored.
+4. **Accept `knowledge_base_url` as a first-class parameter.** Every knowledge-base-driven tool must declare `knowledge_base_url: z.string().optional()` in its Zod schema and thread it through to the fetcher. A schema of `{}` causes MCP to strip the parameter silently, defeating the override contract that this entire document is built on. Consumers pointing oddkit at their own canon (TruthKit, private KBs, custom forks) depend on `knowledge_base_url` being honored.
 
-5. **Baseline path is never user-configurable.** `canon_url` overrides the live canon fetch, not the baseline. Callers cannot point the baseline at an arbitrary URL. The baseline is the floor; the floor does not move.
+5. **Baseline path is never user-configurable.** `knowledge_base_url` overrides the live knowledge base fetch, not the baseline. Callers cannot point the baseline at an arbitrary URL. The baseline is the floor; the floor does not move.
 
 6. **Cache empty results only when the resolution stack succeeded.** The H4 bug in the PR #100 handoff — cache poisoning from 403 — is addressed here: a 403 triggers baseline fallback, not a cached empty result. Empty results are cached only when canon authoritatively returns empty (which is itself unusual and flagged).
 
-7. **Live-smoke against the MCP endpoint is mandatory pre-merge.** Internal parser tests verify parser correctness; they do not verify tool contract. The canary refactor (telemetry_policy) shipped with a broken envelope and a silently-stripped `canon_url` parameter because nothing invoked the MCP tool end-to-end pre-merge. A live-smoke test that curls the MCP endpoint and asserts the full envelope shape, `governance_source` presence, and `canon_url` override behavior is a ship-blocker. Template lives in `workers/test/canon-tool-envelope.smoke.mjs` in the oddkit repo.
+7. **Live-smoke against the MCP endpoint is mandatory pre-merge.** Internal parser tests verify parser correctness; they do not verify tool contract. The canary refactor (telemetry_policy) shipped with a broken envelope and a silently-stripped `knowledge_base_url` parameter because nothing invoked the MCP tool end-to-end pre-merge. A live-smoke test that curls the MCP endpoint and asserts the full envelope shape, `governance_source` presence, and `knowledge_base_url` override behavior is a ship-blocker. Template lives in `workers/test/canon-tool-envelope.smoke.mjs` in the oddkit repo.
 
 ---
 
@@ -206,7 +206,7 @@ The three-tier stack reads like adding server opinion, but it does the opposite.
 
 - **Canon is still the single source of truth.** Baseline is a snapshot of canon, not a fork. Edits happen in canon; baseline regenerates. There is no second source to keep in sync.
 - **The server still contains no governance.** The baseline directory contains canon files, not re-encoded rules. The server reads them the same way it reads live canon.
-- **Drift is structurally impossible.** The build fails if baseline and canon disagree on schema. Runtime fetches override baseline when available. The only drift window is between a canon edit and the next worker deploy — which is the same window every system has, and it's covered by the `governance_source: "baseline"` signal in responses.
+- **Drift is structurally impossible.** The build fails if baseline and canon disagree on schema. Runtime fetches override baseline when available. The only drift window is between a canon edit and the next worker deploy — which is the same window every system has, and it's covered by the `governance_source: "bundled"` signal in responses.
 
 The pattern satisfies `dry-canon-says-it-once` (no duplicated rules, just a cached snapshot), `vodka-architecture` (thin server over stateful canon, with the baseline as the freshness floor), and `maintainability-one-person-indefinitely` (the baseline is generated, never edited — no ongoing maintenance tax on the maintainer).
 
@@ -217,22 +217,22 @@ The pattern satisfies `dry-canon-says-it-once` (no duplicated rules, just a cach
 Every tool in the governance anti-pattern sweep (`docs/oddkit/audit/governance-anti-pattern-sweep-2026-04-17.md`) must conform to this contract as part of its refactor. Seven criteria (see `Runtime Invariants` above):
 
 - Every canon fetch routes through the resolution stack
-- Every response declares `governance_source: "canon" | "baseline" | "minimal"`
+- Every response declares `governance_source: "knowledge_base" | "bundled" | "minimal"`
 - Every response returns the full envelope: `{action, result, server_time, assistant_text, debug}`
-- Every canon-driven tool's Zod schema accepts `canon_url`
+- Every knowledge-base-driven tool's Zod schema accepts `knowledge_base_url`
 - Required baseline files for the tool are enumerated in the manifest
 - The build-time schema check is added for any structured canon file the tool reads
 - A live-smoke test against the MCP endpoint passes pre-merge (template at `workers/test/canon-tool-envelope.smoke.mjs`)
 
-The canary refactor (telemetry_policy self_report_headers) was the first test of this contract. It shipped as two PRs: `klappy/oddkit#106` (original canary — governance_source + canon-fetched headers) and `klappy/oddkit#108` (completeness fix — envelope shape + canon_url schema + live smoke). The split is itself a lesson: the original PR claimed conformance to this contract but met only 2 of the 7 criteria above. Live validation against prod surfaced the gaps; the follow-up closed them. Every subsequent refactor in the sweep runs the 7-point checklist before the PR opens, not after.
+The canary refactor (telemetry_policy self_report_headers) was the first test of this contract. It shipped as two PRs: `klappy/oddkit#106` (original canary — governance_source + canon-fetched headers) and `klappy/oddkit#108` (completeness fix — envelope shape + knowledge_base_url schema + live smoke). The split is itself a lesson: the original PR claimed conformance to this contract but met only 2 of the 7 criteria above. Live validation against prod surfaced the gaps; the follow-up closed them. Every subsequent refactor in the sweep runs the 7-point checklist before the PR opens, not after.
 
 ---
 
 ## Failure Modes Under This Contract
 
-**Canon unreachable, baseline serves.** Transient GitHub outage: tools continue working, every response carries `governance_source: "baseline"`. Operator notices the signal, diagnoses the fetch, canon resolves. No silent degradation.
+**Canon unreachable, baseline serves.** Transient GitHub outage: tools continue working, every response carries `governance_source: "bundled"`. Operator notices the signal, diagnoses the fetch, canon resolves. No silent degradation.
 
-**Custom canon_url missing a required file.** A TruthKit user points oddkit at their private canon that lacks `definition-of-done.md`. `validate` falls back to baseline's version — which reflects the oddkit-hosted canon's definition. Response is marked `baseline`. User sees the tier signal and either adds the file to their canon or accepts the oddkit floor.
+**Custom knowledge_base_url missing a required file.** A TruthKit user points oddkit at their private canon that lacks `definition-of-done.md`. `validate` falls back to baseline's version — which reflects the oddkit-hosted canon's definition. Response is marked `baseline`. User sees the tier signal and either adds the file to their canon or accepts the oddkit floor.
 
 **Schema drift caught at build.** Someone edits `stakes-calibration.md` in canon with a malformed table. The build-time schema check fails. The worker does not deploy. This is the exact failure mode PR #100 needed and didn't have.
 
@@ -246,7 +246,7 @@ The failure modes above are how the contract handles adverse conditions. These a
 
 **Build-time schema check too strict; blocks valid evolution.** The build enforces that baseline schemas match canon schemas. If canon evolves — adding a column to the mode calibration table, restructuring the encoding-types tables — the build fails until the schema check itself is updated. If this happens more than once or twice per epoch, the check is friction, not safety. Retraction signal: canon PRs that are structurally correct but blocked by the build-time check need more than trivial schema updates to land. Mitigation if it happens: relax the schema check to field-presence-only, not full structural match.
 
-**Baseline capture.** Consumers of custom canons come to rely on `governance_source: "baseline"` as acceptable steady state. Instead of adding missing files to their canon, they silently accept the oddkit-hosted baseline's version. The baseline becomes de-facto canon for those consumers — exactly the DRY violation this contract exists to prevent, just shifted from code to baseline. Retraction signal: telemetry shows a persistent non-trivial share of requests returning `governance_source: "baseline"` from non-default canon_urls. Mitigation: make baseline responses come with an explicit "degraded" flag and include the reference URL in every response, not just errors.
+**Baseline capture.** Consumers of custom canons come to rely on `governance_source: "bundled"` as acceptable steady state. Instead of adding missing files to their canon, they silently accept the oddkit-hosted baseline's version. The baseline becomes de-facto canon for those consumers — exactly the DRY violation this contract exists to prevent, just shifted from code to baseline. Retraction signal: telemetry shows a persistent non-trivial share of requests returning `governance_source: "bundled"` from non-default knowledge_base_urls. Mitigation: make baseline responses come with an explicit "degraded" flag and include the reference URL in every response, not just errors.
 
 **Baseline corruption.** The build script regenerates baseline at worker build, but if the regeneration is silently wrong (GitHub returned a stale SHA, the zip was incomplete, a file got truncated), the worker ships with a corrupt baseline. Runtime canon masks this most of the time, but when canon is unreachable, the baseline takes over and serves subtly-broken governance. Retraction signal: `telemetry_policy` or `baseline_check` responses show baseline content that diverges from the canon repo at the recorded `BASELINE_SHA`. Mitigation: content-hash every required-baseline file at build time, verify the hashes match at runtime before serving.
 
