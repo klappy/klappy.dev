@@ -188,9 +188,15 @@ Every canon-driven tool must follow these rules. Review is mechanical: grep for 
 
 2. **Declare the tier in every response.** The envelope field `governance_source` is required on every canon-driven response. Missing field is a bug.
 
-3. **Baseline path is never user-configurable.** `canon_url` overrides the live canon fetch, not the baseline. Callers cannot point the baseline at an arbitrary URL. The baseline is the floor; the floor does not move.
+3. **Return the full response envelope.** Every canon-driven tool (and every oddkit tool generally) must return `{action, result, server_time, assistant_text, debug}` where `server_time` is ISO 8601 UTC, `assistant_text` is a short human-readable summary, and `debug` contains at minimum `duration_ms`. Partial envelopes are a regression. The time-discipline system depends on `server_time` being on every response — a tool that returns only `{action, result}` silently breaks the model's clock-in-the-room contract.
 
-4. **Cache empty results only when the resolution stack succeeded.** The H4 bug in the PR #100 handoff — cache poisoning from 403 — is addressed here: a 403 triggers baseline fallback, not a cached empty result. Empty results are cached only when canon authoritatively returns empty (which is itself unusual and flagged).
+4. **Accept `canon_url` as a first-class parameter.** Every canon-driven tool must declare `canon_url: z.string().optional()` in its Zod schema and thread it through to the fetcher. A schema of `{}` causes MCP to strip the parameter silently, defeating the override contract that this entire document is built on. Consumers pointing oddkit at their own canon (TruthKit, private KBs, custom forks) depend on `canon_url` being honored.
+
+5. **Baseline path is never user-configurable.** `canon_url` overrides the live canon fetch, not the baseline. Callers cannot point the baseline at an arbitrary URL. The baseline is the floor; the floor does not move.
+
+6. **Cache empty results only when the resolution stack succeeded.** The H4 bug in the PR #100 handoff — cache poisoning from 403 — is addressed here: a 403 triggers baseline fallback, not a cached empty result. Empty results are cached only when canon authoritatively returns empty (which is itself unusual and flagged).
+
+7. **Live-smoke against the MCP endpoint is mandatory pre-merge.** Internal parser tests verify parser correctness; they do not verify tool contract. The canary refactor (telemetry_policy) shipped with a broken envelope and a silently-stripped `canon_url` parameter because nothing invoked the MCP tool end-to-end pre-merge. A live-smoke test that curls the MCP endpoint and asserts the full envelope shape, `governance_source` presence, and `canon_url` override behavior is a ship-blocker. Template lives in `workers/test/canon-tool-envelope.smoke.mjs` in the oddkit repo.
 
 ---
 
@@ -208,14 +214,17 @@ The pattern satisfies `dry-canon-says-it-once` (no duplicated rules, just a cach
 
 ## Refactor Implications
 
-Every tool in the governance anti-pattern sweep (`docs/oddkit/audit/governance-anti-pattern-sweep-2026-04-17.md`) must conform to this contract as part of its refactor:
+Every tool in the governance anti-pattern sweep (`docs/oddkit/audit/governance-anti-pattern-sweep-2026-04-17.md`) must conform to this contract as part of its refactor. Seven criteria (see `Runtime Invariants` above):
 
 - Every canon fetch routes through the resolution stack
-- Every response declares `governance_source`
+- Every response declares `governance_source: "canon" | "baseline" | "minimal"`
+- Every response returns the full envelope: `{action, result, server_time, assistant_text, debug}`
+- Every canon-driven tool's Zod schema accepts `canon_url`
 - Required baseline files for the tool are enumerated in the manifest
 - The build-time schema check is added for any structured canon file the tool reads
+- A live-smoke test against the MCP endpoint passes pre-merge (template at `workers/test/canon-tool-envelope.smoke.mjs`)
 
-The canary refactor (telemetry_policy self_report_headers) is the first test of this contract. Its acceptance criteria include: adding `telemetry-governance.md` to the baseline manifest, adding a build-time check that the header table parses, and verifying that a custom canon_url pointing at a repo without the header table falls back to baseline with `governance_source: "baseline"` and returns the stable 8-header list.
+The canary refactor (telemetry_policy self_report_headers) was the first test of this contract. It shipped as two PRs: `klappy/oddkit#106` (original canary — governance_source + canon-fetched headers) and `klappy/oddkit#108` (completeness fix — envelope shape + canon_url schema + live smoke). The split is itself a lesson: the original PR claimed conformance to this contract but met only 2 of the 7 criteria above. Live validation against prod surfaced the gaps; the follow-up closed them. Every subsequent refactor in the sweep runs the 7-point checklist before the PR opens, not after.
 
 ---
 
