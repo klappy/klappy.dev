@@ -5,7 +5,7 @@ audience: canon
 exposure: nav
 tier: 1
 voice: neutral
-stability: stable
+stability: semi_stable
 tags: ["epistemology", "decision-making", "governance"]
 ---
 

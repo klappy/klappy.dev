@@ -126,6 +126,22 @@ The instinct to surface issues as they arise feels like transparency. It is not.
 
 ---
 
+## Prior Art — What This Inherits and What Is Specific
+
+Validation as a distinct phase is not new. What this canon contributes is its integration into the epistemic-mode framework with non-collapse obligations — not the idea of reviewing work against its claims.
+
+**Deming's PDCA cycle** (Plan, Do, Check, Act) separates the doing from the checking and the adjustment. The "Check" phase in PDCA is the direct ancestor of this document's validation mode. What this canon adds beyond PDCA is the truth-condition framing — a validation is valid if findings are grounded in the produced artifact, not in retroactive preferences.
+
+**Software QA practice** has long treated validation as a role separated from development — the tester reviews against requirements, reports defects, and does not silently edit the code to fix them. The fix/pivot/accept disposition inherits directly from defect-triage practice. What this canon adds is the specific execution-into-validation collapse: the builder who validates mid-build is running QA inside development, producing the same dysfunction that organizational separation-of-duties exists to prevent.
+
+**Agile retrospectives** institutionalize periodic review of produced work. The whole-artifact-before-findings obligation echoes the retrospective convention of reviewing the sprint before planning the next. What this canon adds is the frame that validation is not a time-based ritual but a mode — it happens whenever execution produces something, not on a fixed cadence.
+
+**What is specific to ODD.** The integration with exploration/planning/execution as a four-mode system with formal non-collapse obligations is specific. So is the Theory of Constraints framing that ties validation discipline to operator-attention throughput, and the `oddkit_validate` tool's built-in enforcement of the mode's shape (requires artifact references, returns VERIFIED or NEEDS_ARTIFACTS, does not return questions). These are not re-inventions of QA or PDCA — they are the specific operationalization of validation inside a canon-driven, model-collaborator workflow where the operator's attention is the scarce resource.
+
+**Retraction condition.** This canon should be revised if: (a) a four-mode framing creates more collapse opportunities than it prevents in practice, (b) a validator role distinct from executor role proves impractical for single-operator workflows, or (c) prior-art sources reveal a more precise distinction we should inherit. Until then, treat as a working operationalization, not a final one.
+
+---
+
 ## Applied to `oddkit_validate`
 
 The `oddkit_validate` tool already encodes this mode in its contract. Its input is a completion claim with artifact references. Its output is VERIFIED or NEEDS_ARTIFACTS. The call signature enforces separation: validation requires an artifact to exist and a claim about it, and produces a judgment. There is no shape in the tool for "validate a thing that is partially built" — that is by design.
