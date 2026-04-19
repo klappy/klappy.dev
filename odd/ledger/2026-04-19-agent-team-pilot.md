@@ -58,7 +58,7 @@ Entries added in order. Each timestamp is observed (from oddkit server_time or b
 - **[O] 2026-04-19T13:33Z** — Clean re-dispatch: new session `sesn_011CaDDTQfjDxohsSis6nTK2`, task text verified to start with `'You are the execution agent for Option A...'` (6030 chars, 116 lines).
 - **[O] 2026-04-19T13:33Z** — Agent running within 5s of dispatch. First 6 tool calls are MCP (the 6 canon fetches listed in the spec's §0). Canon-first discipline observed in the agent's opening moves — good signal.
 
-### Open items (forward-pointing)
+### Session-open queue (planned)
 - **[O-open P1]** Poll Option A execution to `idle`; capture PR URL + HEAD SHA + smoke result from the final `agent.message`.
 - **[O-open P1]** Spawn validation agent (Sonnet 4.6, fresh session) with the PR URL and canon URIs. Context break enforced by using a different agent object with no execution history.
 - **[O-open P1]** Iterate or accept per rhythm. Merge + promote + prod smoke only if VERIFIED.
