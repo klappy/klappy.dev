@@ -12,11 +12,14 @@ date: 2026-04-20
 session_span: "2026-04-19 closed"
 derives_from: "odd/ledger/2026-04-19-validator-closeout-and-0.17.0.md, odd/handoffs/2026-04-20-fresh-session-continuation.md, odd/handoffs/2026-04-20-p1-2-encode-canary.md"
 governs: "Fresh-session continuation after the 2026-04-19 validator closeout and 0.17.0 release. Points the next session at the unblocked P1.2 work with minimal prerequisites to re-read."
-status: active
+status: superseded
+superseded_by: "odd/handoffs/2026-04-20-p1-3-challenge-canary"
 supersedes: "odd/handoffs/2026-04-20-fresh-session-continuation.md"
 ---
 
 # Handoff — Post-Closeout State
+
+> **Superseded 2026-04-19 by `klappy://odd/handoffs/2026-04-20-p1-3-challenge-canary`.** P1.2 landed (oddkit 0.18.0 in prod — encode envelope now declares `governance_source`, DOLCHEO batch prefixes work, letter dedup in place). Next session resumes on P1.3.1 (challenge canary retrofit). The ledger for the P1.2 arc is at `klappy://odd/ledger/2026-04-19-p1-2-encode-dolcheo-landed`. The content below is preserved for provenance.
 
 > The 2026-04-19 validator closeout arc is complete. klappy.dev #116 extended the frontmatter schema (closes the sole validator open item). oddkit #112 + #113 shipped 0.17.0 to prod (CHANGELOG backfill, version bump, main → prod promotion). Prod at `oddkit.klappy.dev` reports 0.17.0, envelope smoke 24 / 24. **Next work unit is P1.2** (`oddkit_encode` batch-mode + canary refactor). The P1.2-specific handoff at `klappy://odd/handoffs/2026-04-20-p1-2-encode-canary` is still the authoritative scope spec. This doc is a thin pointer — read the P1.2 handoff and start there.
 
