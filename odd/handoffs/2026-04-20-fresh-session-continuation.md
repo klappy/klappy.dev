@@ -12,10 +12,13 @@ date: 2026-04-20
 session_span: "2026-04-19 closed"
 derives_from: "odd/ledger/2026-04-19-agent-team-pilot.md, odd/handoffs/2026-04-19-fresh-session-continuation.md"
 governs: "Fresh-session continuation context after tonight's agent-team pilot arc. Captures what shipped, what's in open PRs awaiting merge, what work is queued next, and the agent-team pattern lessons that now govern remaining tool-refactor work."
-status: active
+status: superseded
+superseded_by: "odd/handoffs/2026-04-20-post-closeout.md"
 ---
 
 # Handoff — Fresh Session Continuation from 2026-04-19
+
+> **Superseded 2026-04-19 by `klappy://odd/handoffs/2026-04-20-post-closeout`.** The P2.1 (0.17.0 release) and O-open P1 (frontmatter schema gap) items from this handoff have shipped. The content below is preserved as historical record and remains the authoritative reference for operating-rhythm notes, path 3 constraint, and the agent-team pattern lessons that still govern remaining tool-refactor work. For current state, read the successor document.
 
 > Tonight's session tested the role-differentiated managed-agent pattern on a mechanical internal rename. The pattern works, with a significant caveat the pilot surfaced that changes how the remaining prompt-over-code refactor arc should run. Read this instead of the transcript. Companion is `klappy://odd/ledger/2026-04-19-agent-team-pilot` (the retrospective record); this doc is the forward-pointing one. Start here.
 
