@@ -21,7 +21,7 @@ status: active
 
 ---
 
-## Where we are — P1.1 is done, P1.2 is next
+## Summary — P1.1 Is Shipped and Live; P1.2 Is the Next Arc
 
 **Shipped to production this session (2026-04-19):**
 
