@@ -77,6 +77,30 @@ Invalid moves:
 - introducing new ideas without acknowledgement
 - reframing goals retroactively
 - debating intent instead of evidence
+- validating mid-build — noticing a concern and surfacing it inline rather than carrying it to validation
+
+---
+
+## Validation Conversations
+
+Purpose:
+
+- review produced artifacts against stated claims
+- surface gaps between intent and outcome
+- recommend disposition per finding (fix, pivot, accept)
+
+Characteristics:
+
+- the artifact exists; scope is bounded by what was claimed
+- findings are grouped into a single coherent review, not interleaved with execution
+- each finding carries explicit disposition
+
+Invalid moves:
+
+- introducing new requirements the artifact was never asked to satisfy
+- modifying the artifact during review
+- surfacing findings one-by-one during the build that produced the artifact
+- holding accept hostage to findings that are actually planning-class ideas
 
 ---
 

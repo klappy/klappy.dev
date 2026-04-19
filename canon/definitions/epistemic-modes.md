@@ -11,7 +11,7 @@ tags: ["epistemology", "decision-making", "governance"]
 
 # Epistemic Modes
 
-> Exploration, planning, and execution are not interchangeable.
+> Exploration, planning, execution, and validation are not interchangeable.
 > Collapsing them produces false confidence, premature convergence, and brittle outcomes.
 
 ## Purpose
@@ -26,7 +26,7 @@ This is a Canon document because it constrains _how truth is formed_, not merely
 
 ---
 
-## The Three Epistemic Modes
+## The Four Epistemic Modes
 
 ### 1. Exploration Mode
 
@@ -107,6 +107,34 @@ Metric laundering — claiming success without proof.
 
 ---
 
+### 4. Validation Mode
+
+**Purpose:**  
+To verify that produced artifacts match their stated claims. To surface gaps between intent and outcome.
+
+**Characteristics:**
+
+- The artifact already exists
+- Scope is bounded by what was claimed, not what could have been claimed
+- Findings are observations about the artifact as produced
+- Each finding carries an explicit disposition: fix, pivot, or accept
+
+**Truth Condition:**  
+A validation is valid if its **findings are grounded in the produced artifact**, not in what the validator wished had been built.
+
+**Obligations:**
+
+- Review the whole artifact before surfacing findings
+- Separate defects (the artifact violates its own claims) from new ideas (the artifact could have done something different)
+- Assign disposition explicitly — a finding without a disposition is incomplete
+
+**Primary Risk:**  
+Scope creep — treating the review as an opportunity to redesign the artifact or reopen planning.
+
+For the full contract, see `klappy://canon/validation-as-epistemic-mode`.
+
+---
+
 ## The Non-Collapse Rule
 
 **Epistemic modes MUST NOT be collapsed.**
@@ -116,6 +144,9 @@ In particular:
 - Exploration must not pretend to decide
 - Planning must not pretend to execute
 - Execution must not pretend to explore alternatives retroactively
+- Execution must not pretend to validate — concerns noticed mid-build are noted and carried forward, not surfaced as inline pivots
+- Validation must not pretend to plan — redesign requires explicit reversion
+- Validation must not pretend to execute — fixes belong to iteration, which is a fresh execution pass scoped by validation findings
 
 When modes are collapsed:
 
