@@ -47,7 +47,7 @@ This tool operationalizes two canon constraints: boundary transitions require de
       "type": "string",
       "description": "Optional. What has been decided so far — prior decisions, artifacts, or evidence."
     },
-    "canon_url": {
+    "knowledge_base_url": {
       "type": "string",
       "description": "Optional. GitHub repo URL for canon override."
     }

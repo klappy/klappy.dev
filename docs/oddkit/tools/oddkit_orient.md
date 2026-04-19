@@ -42,7 +42,7 @@ This tool applies the epistemic modes defined in Canon (`klappy://canon/epistemi
       "type": "string",
       "description": "The goal, idea, or situation to assess. Describe what you are trying to achieve or understand."
     },
-    "canon_url": {
+    "knowledge_base_url": {
       "type": "string",
       "description": "Optional. GitHub repo URL for canon override. Defaults to the configured baseline."
     }

@@ -38,7 +38,7 @@ The baseline URL indicates the remote source of truth. When OddKit behavior seem
 {
   "type": "object",
   "properties": {
-    "canon_url": {
+    "knowledge_base_url": {
       "type": "string",
       "description": "Optional. GitHub repo URL for canon override. Defaults to the configured baseline."
     }

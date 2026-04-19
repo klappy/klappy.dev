@@ -48,7 +48,7 @@ This tool operationalizes the epistemic challenge constraint (`klappy://canon/ep
       "enum": ["exploration", "planning", "execution"],
       "description": "Optional. Epistemic mode for proportional challenge."
     },
-    "canon_url": {
+    "knowledge_base_url": {
       "type": "string",
       "description": "Optional. GitHub repo URL for canon override."
     }

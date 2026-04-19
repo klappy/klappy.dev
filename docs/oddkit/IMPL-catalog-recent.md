@@ -134,7 +134,7 @@ When `sort_by` is omitted, the response is unchanged — backward compatible.
 2. **Full metadata, not cherry-picked fields.** The `metadata` object in each article is the complete parsed frontmatter — the same data `include_metadata: true` returns on search and get. No field filtering. Consumers decide what to use.
 3. **Documents without dates sort last.** Not all documents have a `date` field. Those without it appear at the end of the sorted list, not at the beginning.
 4. **Limit caps response size.** Without a limit, a sorted catalog of 400+ documents would be unwieldy. The default of 10 serves the most common use case.
-5. **Respect canon_url.** The temporal discovery works with branch overrides. `catalog({ sort_by: "date", limit: 10, canon_url: "...branch..." })` returns the 10 newest articles on that branch.
+5. **Respect knowledge_base_url.** The temporal discovery works with branch overrides. `catalog({ sort_by: "date", limit: 10, knowledge_base_url: "...branch..." })` returns the 10 newest articles on that branch.
 
 ---
 
@@ -161,7 +161,7 @@ When `sort_by` is omitted, the response is unchanged — backward compatible.
 
 **klappy.dev site — "What's new on this branch?"**
 ```
-catalog({ sort_by: "date", limit: 15, canon_url: "https://raw.githubusercontent.com/klappy/klappy.dev/e0007-proactive-posture" })
+catalog({ sort_by: "date", limit: 15, knowledge_base_url: "https://raw.githubusercontent.com/klappy/klappy.dev/e0007-proactive-posture" })
 ```
 
 **Agent — "What was added in E0007?"**

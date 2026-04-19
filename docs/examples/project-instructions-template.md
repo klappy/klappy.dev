@@ -32,7 +32,7 @@ The template is model-agnostic. It works for Claude, GPT, Gemini, Llama, or any 
 
 1. Copy the template below into your project's system prompt / project instructions field. In Claude.ai, that's **Project Instructions**. In Claude Code, it's `CLAUDE.md`. In Cursor, it's your rules file. In a custom system prompt, it's wherever the prompt lives.
 2. Add your own credentials block at the bottom if your workflow requires the AI to use tokens — GitHub PATs, API keys, or whatever your project uses. This template's real version includes a GitHub PAT scoped to the project repos. **Do not publish credentials; this example has them omitted.**
-3. The `canon_url` in your oddkit MCP server configuration determines which canon is fetched. The `klappy://` URIs in the template assume the klappy.dev canon; if you point at your own canon repo, the same URIs will resolve against yours, or you can rewrite them to match your canon's structure.
+3. The `knowledge_base_url` in your oddkit MCP server configuration determines which canon is fetched. The `klappy://` URIs in the template assume the klappy.dev canon; if you point at your own canon repo, the same URIs will resolve against yours, or you can rewrite them to match your canon's structure.
 
 ---
 

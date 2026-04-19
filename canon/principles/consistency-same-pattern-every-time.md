@@ -33,7 +33,7 @@ The moment a server introduces a special case for a specific knowledge base, it 
 
 - **"But for THIS knowledge base we need..."** The most common consistency smell. Every special-case argument sounds reasonable in isolation. Collectively, they make the server opinionated.
 - **Domain terms in server code.** If the server source contains words like "Bible," "pastoral," "legal," or any domain-specific vocabulary, it has acquired knowledge it shouldn't have.
-- **Different behavior for different `canon_url` values.** If the server checks which repo it's serving and adjusts behavior accordingly, consistency is violated. The server should be blind to content.
+- **Different behavior for different `knowledge_base_url` values.** If the server checks which repo it's serving and adjusts behavior accordingly, consistency is violated. The server should be blind to content.
 - **Onboarding friction for new knowledge bases.** If adding a new KB requires server-side configuration, custom endpoints, or domain-specific setup beyond pointing at a repo URL, the interface isn't consistent.
 - **Tools that work with one KB but break with another.** If an agent workflow built against the software canon fails when pointed at the theology KB, the interface promised consistency it didn't deliver.
 

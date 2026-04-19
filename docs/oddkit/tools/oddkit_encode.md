@@ -48,7 +48,7 @@ This tool operationalizes the canon constraint that epistemic decisions must be 
       "type": "string",
       "description": "Optional. Supporting context — goal, phase, alternatives considered, or constraints."
     },
-    "canon_url": {
+    "knowledge_base_url": {
       "type": "string",
       "description": "Optional. GitHub repo URL for canon override."
     }

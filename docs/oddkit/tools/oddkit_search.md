@@ -45,7 +45,7 @@ Results include both hits (ranked document summaries with scores) and evidence (
       "type": "string",
       "description": "Natural language query or tags to search for. Describe what you are looking for in plain language."
     },
-    "canon_url": {
+    "knowledge_base_url": {
       "type": "string",
       "description": "Optional. GitHub repo URL for canon override. Defaults to the configured baseline."
     }

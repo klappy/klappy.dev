@@ -42,7 +42,7 @@ The content hash is a short, stable identifier derived from the document's conte
       "type": "string",
       "description": "A klappy:// URI identifying the document to fetch (e.g., 'klappy://canon/values/axioms')."
     },
-    "canon_url": {
+    "knowledge_base_url": {
       "type": "string",
       "description": "Optional. GitHub repo URL for canon override. Defaults to the configured baseline."
     }

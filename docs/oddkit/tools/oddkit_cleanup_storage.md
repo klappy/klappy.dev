@@ -39,7 +39,7 @@ This tool evolved from the former `invalidate_cache` action, which was a correct
 {
   "type": "object",
   "properties": {
-    "canon_url": {
+    "knowledge_base_url": {
       "type": "string",
       "description": "Optional. GitHub repo URL for canon override. If not provided, uses the default configured canon repository."
     }

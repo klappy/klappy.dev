@@ -81,7 +81,7 @@ Dataset name: `oddkit_telemetry`
 | blob3 | tool_name | oddkit action name (empty for non-tool events) | `"orient"`, `"search"` |
 | blob4 | consumer_label | Best-effort caller identity | `"Claude-User"`, `"Deno/2.1.4"` |
 | blob5 | consumer_source | How label was resolved | `"x-oddkit-client"`, `"user-agent"` |
-| blob6 | canon_url | Which repo is being served (from tool args or env default) | `"https://github.com/klappy/klappy.dev"` |
+| blob6 | knowledge_base_url | Which knowledge base is being served (from tool args or env default) | `"https://github.com/klappy/klappy.dev"` |
 | blob7 | document_uri | For `get` calls, the URI requested (empty otherwise) | `"klappy://canon/principles/vodka-architecture"` |
 | blob8 | worker_version | oddkit version string | `"0.16.0"` |
 
@@ -119,9 +119,9 @@ GROUP BY consumer, source ORDER BY calls DESC LIMIT 20
 
 ### Knowledge bases served (the adoption signal)
 ```sql
-SELECT blob6 AS canon_url, SUM(_sample_interval) AS calls
+SELECT blob6 AS knowledge_base_url, SUM(_sample_interval) AS calls
 FROM oddkit_telemetry WHERE blob1 = 'tool_call'
-GROUP BY canon_url ORDER BY calls DESC
+GROUP BY knowledge_base_url ORDER BY calls DESC
 ```
 
 ### Daily trend

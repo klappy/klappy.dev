@@ -44,7 +44,7 @@ This tool answers both "what exists?" (default mode) and "give me everything" (w
 {
   "type": "object",
   "properties": {
-    "canon_url": {
+    "knowledge_base_url": {
       "type": "string",
       "description": "Optional. GitHub repo URL for canon override. Defaults to the configured baseline."
     },
