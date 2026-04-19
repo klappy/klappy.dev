@@ -247,7 +247,7 @@ With frontmatter tag `encoding-type`, a Type Identity table with `Letter: P`, a 
 
 **Conventions for custom types:**
 
-- Letter should not collide with existing types (D, O, L, C, H, E)
+- Letter should not collide with existing types (D, O, L, C, H, E). One intentional exception exists in the default set: Observation and Open both register letter `O` and disambiguate by facet (`facet: open` on the Open doc) plus section placement in ledgers (`## Open items` sections). See `odd/encoding-types/open.md` and the DOLCHEO umbrella (`canon/definitions/dolcheo-vocabulary.md`) for how the collision is resolved. Custom types should not introduce new collisions unless they follow the same facet-based disambiguation pattern.
 - Letter should be a single uppercase character
 - Including all recommended sections produces the best results
 - Custom types are scoped to the knowledge base that defines them — they don't affect other KBs

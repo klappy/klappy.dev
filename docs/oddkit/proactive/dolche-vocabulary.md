@@ -13,10 +13,15 @@ supersedes: "docs/oddkit/proactive/oldc-h-vocabulary.md"
 derives_from: "canon/values/axioms.md, docs/oddkit/proactive/continuous-encoding.md, docs/oddkit/proactive/encode-does-not-persist.md"
 complements: "docs/oddkit/proactive/posture-lapse.md, docs/oddkit/proactive/proactive-session-close.md, odd/ledger/project-journal-best-practices.md"
 governs: "All session capture, project journal entries, and encode invocations"
-status: active
+status: superseded
+superseded_by: "canon/definitions/dolcheo-vocabulary.md"
 ---
 
 # DOLCHE — Six Dimensions of Session Capture
+
+> **Superseded by [DOLCHEO](klappy://canon/definitions/dolcheo-vocabulary)** (2026-04-19). DOLCHEO extends DOLCHE with a seventh artifact type — Open, the forward-pointing thread that stays with the current owner — and promotes the vocabulary to canon at tier 2. This document remains for historical reference and as the canonical description of the six-dimension pattern. New work should reference the DOLCHEO umbrella.
+
+---
 
 > Decisions, Observations, Learnings, Constraints, Handoffs, Encodes. Five artifact types and one meta-level action that tracks the crystallization of all the others. DOLCHE supersedes OLDC+H by adding Encode — not as a sixth category of content, but as the act of encoding itself made visible. The E closes the loop: when you encode a Decision, the Encode tracks *that you did it*, when you did it, what quality it achieved, and whether it was persisted. Without the E, you can't distinguish between "this was discussed" and "this was captured."
 
