@@ -33,8 +33,8 @@ Four declared transitions cover the mode-discipline cycle: opening planning afte
 |---|---|---|---|---|
 | `planning-to-execution` | planning | execution | decisions_locked, dod_defined, irreversibility_assessed, constraints_satisfied | ready to build, ready to implement, start building, let's code, start coding, moving to execution, moving to build |
 | `exploration-to-planning` | exploration | planning | problem_defined, constraints_reviewed | ready to plan, start planning, let's plan, time to plan, move to planning, moving to planning, ready, let's go, proceed, move forward, next step |
-| `execution-to-exploration` | execution | exploration |  | back to exploration, need to rethink, step back, reconsider |
-| `execution-to-completion` | execution | completion | dod_met, artifacts_present | ship, deploy, release, go live, push to prod |
+| `execution-to-exploration` | execution | exploration |  | back to exploration, need to rethink, step back, stepped back, stepping back, reconsider |
+| `execution-to-completion` | execution | completion | dod_met, artifacts_present | ship, shipping, shipped, deploy, release, go live, push to prod |
 
 ---
 
@@ -42,7 +42,9 @@ Four declared transitions cover the mode-discipline cycle: opening planning afte
 
 Row order is the tiebreaker priority when two transitions score identically under BM25. BM25 naturally prefers specific-phrase matches over single-word matches — an input like "ready to build my feature" scores the multi-term match against `planning-to-execution` above the single-term match against `exploration-to-planning` — so row order rarely decides the winner. The ordering is kept stable regardless to produce deterministic output on genuine ties.
 
-Detection terms are stemmed at parse time using the Porter-style stemmer in the server. Stemming covers the common inflection suffixes `ies`, `ied`, `ed`, `ing`, `tion`, `ment`, `ness`, `able`, `ible`, and `s`, which means variations like `shipping`, `shipped`, `deploying`, `released`, `started building`, `building`, `stepped back`, `stepping back`, and `reconsidering` match their canonical transitions even though the exact phrases are not listed. Terms that already appear in their stemmed base form — `ship`, `build`, `reconsider` — match themselves directly.
+Detection terms are stemmed at parse time using the Porter-style stemmer in the server. Stemming covers the common inflection suffixes `ies`, `ied`, `ed`, `ing`, `tion`, `ment`, `ness`, `able`, `ible`, and `s`, which means variations like `deploying`, `released`, `started building`, `building`, and `reconsidering` match their canonical transitions even though the exact phrases are not listed. Terms that already appear in their stemmed base form — `build`, `reconsider` — match themselves directly.
+
+The stemmer does not currently handle doubled-consonant gemination — `shipping` stems to `shipp` rather than `ship`, and `stepped` stems to `stepp` rather than `step`. For the small number of geminating words gate cares about (`ship`, `step`), the inflected forms are listed in the detection column directly so the match is by direct vocabulary rather than relying on the stemmer. This is a deliberate choice: adding a handful of explicit inflections is cheaper and more auditable than extending the stemmer, and keeps the vocabulary editable at canon rather than at the code level.
 
 The `execution-to-exploration` transition has no prerequisites because reversion is explicitly permitted under the mode-discipline contract at `klappy://canon/constraints/mode-discipline-and-bottleneck-respect`. Reversion requires only that the operator name the specific unknown that drove the reversion, which is a behavioral expectation enforced by the operator's own discipline rather than by a gated prereq check.
 
