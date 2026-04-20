@@ -12,7 +12,8 @@ date: 2026-04-20
 session_span: "2026-04-20 post-P1.3.3 — fresh session handoff"
 derives_from: "odd/ledger/2026-04-20-p1-3-3-challenge-canon-parity-landed.md, odd/ledger/2026-04-20-p1-3-2-gate-canary-landed.md, canon/principles/cache-fetches-and-parses.md, canon/principles/vodka-architecture.md, canon/constraints/release-validation-gate.md, canon/principles/contract-governs-handoff-drift.md"
 governs: "Fresh-session continuation after P1.3.3 shipped oddkit 0.21.1. Points the next session at P1.3.4 — encode's canon-parity refactor: migrate the trigger-word matcher from regex alternation to stemmed set intersection (D5, same matcher shape as challenge + gate), and remove the module-level cachedEncodingTypes cache per D9 and cache-fetches-and-parses. Encode's trigger vocabulary is already governance-driven (read from odd/encoding-types/*.md at runtime); what remains is the matcher inside the classifier and the in-process cache on the parse products. This is the LAST regex matcher in the sweep. Ship as 0.22.0."
-status: active
+status: superseded
+superseded_by: odd/ledger/2026-04-20-p1-3-4-encode-canon-parity-landed.md
 ---
 
 # Handoff — P1.3.4 Encode Canon-Parity Refactor (0.22.0)
