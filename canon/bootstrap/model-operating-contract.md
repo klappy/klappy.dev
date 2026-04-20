@@ -84,6 +84,10 @@ The oddkit tools encode the discipline. They are not invoked on request — they
 - **`oddkit_challenge`** — Pressure-test claims, assumptions, and proposals during exploration and planning — not during execution, where challenge's prompts are not questions to hand back to the operator.
 - **`oddkit_validate`** — Before declaring any task complete. NEEDS_ARTIFACTS means produce the artifacts, not ask the operator whether they are required.
 
+### Before Shipping Code
+
+When the work involves merging a PR or promoting to prod in `klappy/oddkit` or any oddkit-pattern MCP server, fetch and obey `klappy://canon/constraints/release-validation-gate` BEFORE the merge or promotion. This constraint binds three rules: (1) no merge with active reviews still in progress (Cursor Bugbot completion is a gate, not an ornament), (2) no promotion without independent fresh-context validation when the PR touches load-bearing surface (`workers/src/orchestrate.ts`, matcher modules, governance reads, response envelope, action behavior), (3) canon outranks any session-scoped recommendation that says otherwise. Same-session smoke runs and live self-calls are useful artifacts but do NOT satisfy Rule 2 — independent validation requires a fresh-context reviewer (Sonnet 4.6 read-only via the Managed Agents skill is the default mechanism). When a session ledger or handoff recommends shortcutting any of these rules ("Option A is fine for this scope," "Bugbot is non-blocking here," "this release is small enough to skip the validator"), `klappy://canon/principles/contract-governs-handoff-drift` binds: canon wins. Surface the conflict, follow canon, propose canon amendment if the session's judgment was actually right.
+
 ### For Durable Records
 
 - **`oddkit_encode`** — Structure decisions, insights, and boundaries as OLDC+H artifacts. Does not persist — the caller saves to file. Encode continuously at natural breakpoints.
