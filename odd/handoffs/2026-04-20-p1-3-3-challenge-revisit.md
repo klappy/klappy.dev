@@ -12,7 +12,9 @@ date: 2026-04-20
 session_span: "2026-04-20 post-P1.3.2 — fresh session handoff"
 derives_from: "odd/ledger/2026-04-20-p1-3-2-gate-canary-landed.md, odd/ledger/2026-04-20-p1-3-1-challenge-canary-landed.md, canon/constraints/core-governance-baseline.md, canon/principles/vodka-architecture.md"
 governs: "Fresh-session continuation after P1.3.2 shipped oddkit 0.20.0. Points the next session at P1.3.3 — challenge's canon-parity refactor: migrate evaluatePrerequisiteCheck from regex to stemmed set intersection (D5, same matcher gate shipped), remove cachedChallengeTypeIndex and rebuild inline per D9, and graduate 'cache fetches and parses, not microsecond derivations' to canon at canon/principles/cache-fetches-and-parses.md (third deciding-argument recurrence). Scope is smaller than P1.3.2 because the design work is reused and there are no envelope changes. Ship as 0.21.0."
-status: active
+status: superseded
+superseded_by: "odd/ledger/2026-04-20-p1-3-3-challenge-canon-parity-landed.md"
+supersession_note: "P1.3.3 closed. The 'Recommendation given smaller scope: Option A is fine for P1.3.3' line in the Validation Plan section produced this incident — it was a session-scoped recommendation that contradicted the bootstrap's tier-1 rule and was followed under wall-clock pressure. The closeout ledger documents both the technical work that landed (D5 + D9 + cache-fetches-and-parses) and the process failure that resulted (Bugbot skipped, Sonnet skipped, two prod bugs). The structural fix is in canon/constraints/release-validation-gate.md and canon/principles/contract-governs-handoff-drift.md plus the bootstrap discoverability hook (klappy.dev#126 merged ee9aee4). Future sessions: do not act on this handoff's validation-plan recommendation; follow release-validation-gate."
 supersedes: "odd/ledger/2026-04-20-p1-3-2-gate-canary-landed.md (as the outbound handoff pointer; the ledger itself stays active as the durable record)"
 ---
 
