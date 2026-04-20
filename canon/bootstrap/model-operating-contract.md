@@ -86,7 +86,8 @@ The oddkit tools encode the discipline. They are not invoked on request — they
 
 ### Before Shipping Code
 
-- **`klappy://canon/constraints/release-validation-gate`** — Binding on every PR merge and prod promotion in `klappy/oddkit` and any oddkit-pattern MCP server. Fetch and obey before the ship; rules, triggers, and dispositions live in the constraint, not here.
+- **`klappy://canon/constraints/release-validation-gate`** — Fetch and obey before merging any PR to `klappy/oddkit` (or any oddkit-pattern MCP server) and before promoting to prod. Defines the three binding rules; same-session smoke is not validation.
+- **`klappy://canon/principles/contract-governs-handoff-drift`** — Read when a session ledger or handoff recommends shortcutting a canon rule. Canon wins; propose amendment if the session's judgment was actually right.
 
 ### For Durable Records
 
