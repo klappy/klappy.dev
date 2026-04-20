@@ -12,7 +12,8 @@ date: 2026-04-20
 session_span: "2026-04-20 phase-1 closed"
 derives_from: "odd/handoffs/2026-04-21-p1-3-2-gate-canary.md, odd/ledger/2026-04-20-p1-3-1-challenge-canary-landed.md, canon/constraints/core-governance-baseline.md, canon/principles/vodka-architecture.md"
 governs: "Phase 2 continuation after Phase 1 canon docs landed. Points the next session at the klappy/oddkit 0.20.0 refactor consuming odd/gate/transitions.md and odd/gate/prerequisites.md. Split by fit (BM25 for transitions, set intersection for prereqs) per D5 in the Phase 1 session's PRD. Canon-first prerequisite satisfied — both files retrievable from canon at commit 86a7194 on klappy.dev main."
-status: active
+status: superseded
+superseded_by: "odd/ledger/2026-04-20-p1-3-2-gate-canary-landed.md"
 supersedes: "odd/handoffs/2026-04-21-p1-3-2-gate-canary.md"
 ---
 
