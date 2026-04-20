@@ -12,7 +12,8 @@ date: 2026-04-20
 session_span: "2026-04-19 closed"
 derives_from: "odd/ledger/2026-04-19-p1-2-encode-dolcheo-landed.md, odd/handoffs/2026-04-20-post-closeout.md, odd/handoffs/2026-04-20-p1-2-encode-canary.md, canon/constraints/core-governance-baseline.md"
 governs: "Fresh-session continuation after P1.2 landed. Points the next session at P1.3.1 — retrofit oddkit_challenge to declare governance_source in its envelope, mirroring the encode + telemetry_policy canary shape. First PR in the post-encode sweep."
-status: active
+status: superseded
+superseded_by: "odd/handoffs/2026-04-21-p1-3-2-gate-canary.md"
 supersedes: "odd/handoffs/2026-04-20-post-closeout.md"
 ---
 
