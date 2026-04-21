@@ -1,6 +1,6 @@
 ---
-uri: klappy://odd/backlog/seven-weeks-essay-stub
-title: "Backlog — Seven Weeks: When the Wish Came True (Celebration Essay Stub)"
+uri: klappy://odd/backlog/wish-came-true-essay-stub
+title: "Backlog — The Wish Came True (Celebration Essay Stub)"
 audience: backlog
 exposure: nav
 tier: 3
@@ -11,9 +11,10 @@ date: 2026-04-21
 status: queued
 priority: when-time-allows
 derives_from: "writings/copy-paste.md, writings/fourteen-hours-with-opus-4-7.md, writings/shifting-bottlenecks-climbing-ladders.md, writings/the-rhythm-emerged.md"
+naming_constraint: "Avoid 'Seven Weeks' as the title — that phrase is already load-bearing in writings/seven-weeks-to-southeast-asia.md (different essay, different topic)."
 ---
 
-# Backlog — Seven Weeks: When the Wish Came True
+# Backlog — The Wish Came True
 
 > Queued essay celebrating that the *Copy. Paste.* essay aged poorly on the timeline it wished for. Captured here so it does not get lost. Not yet drafted.
 
@@ -35,12 +36,17 @@ Three essays in a trilogy:
 
 The celebration essay is the meta piece. It does not introduce a new framework. It names what the trilogy demonstrates: a repeatable method for catching rituals in flight, watching them die on schedule, and catching the successor ritual before it fossilizes.
 
+## Naming Constraint — Do Not Title This "Seven Weeks"
+
+The phrase *seven weeks* is already load-bearing in `writings/seven-weeks-to-southeast-asia.md` — a different essay about how a year of methodology work translated into a working software deployment in seven weeks of implementation. Reusing the headline phrase risks collision and dilutes both essays. The seven-week timeline can appear *inside* this celebration essay as evidence; it should not headline it.
+
 ## Candidate Titles
 
-- *Seven Weeks*
 - *The Wish Came True*
 - *Aging Poorly on Schedule*
-- *The Trilogy and the Method*
+- *Two Rituals, One Workflow*
+- *Punchcard Purgatory, Closed*
+- *I Can Finally Not Imagine It*
 
 ## Candidate Hook
 
@@ -49,9 +55,10 @@ The celebration essay is the meta piece. It does not introduce a new framework. 
 ## What the Essay Should Do
 
 - Open with the *Copy. Paste.* closing line and the date stamp.
-- Walk through what changed in the seven weeks: native containers, end-to-end shipping in chat, the iOS Claude app workflow.
+- Walk through what changed in the weeks between: native containers, end-to-end shipping in chat, the iOS Claude app workflow.
 - Name the lineage: *Copy. Paste.* → *Fourteen Hours* → *Shifting Bottlenecks* as one continuous argument.
-- Land the celebration honestly: this kind of wish coming true on schedule is rare. Most predictions of "this will be obsolete soon" are wrong, or take a decade. This one came true in seven weeks.
+- Land the celebration honestly: this kind of wish coming true on schedule is rare. Most predictions of "this will be obsolete soon" are wrong, or take a decade. This one came true on the timeline the wish was written for, in the workflow the operator actually uses.
+- Acknowledge the disconfirmer: the ritual died in *the operator's* workflow on the hardware and tools the operator actually uses. The broader community's experience varies. *Copy. Paste.* as a description still applies wherever native containers haven't reached yet.
 - Close with the meta-pattern: the method works. Catch a ritual in flight, name it, watch it die. Catch the successor before it ossifies. Repeat.
 
 ## What the Essay Should Not Do
@@ -60,6 +67,7 @@ The celebration essay is the meta piece. It does not introduce a new framework. 
 - Not gloat. The wish coming true is worth naming, not bragging about.
 - Not pretend the work is done. The swipe-tap rhythm is the next instance, and there will be another after it.
 - Not become a "look at how I called it" piece. The point is the method, not the prediction.
+- Not title itself "Seven Weeks" — see naming constraint above.
 
 ## When To Write It
 
