@@ -21,7 +21,7 @@ derives_from: "writings/copy-paste.md, writings/fourteen-hours-with-opus-4-7.md,
 
 ## Summary — The Deferred Celebration
 
-After the post-4.7-adaptation PR landed, Klappy named the celebration he wanted to have: the *Copy. Paste.* essay (March 2026) wished it would age poorly, and seven weeks later it had. The native-container coding experience in the Claude iOS app delivered on the wish faster than expected. This is the stub for the essay that names that moment, the trilogy it completes, and the pattern it demonstrates.
+While assembling the post-4.7-adaptation PR, Klappy named the celebration he wanted to have: the *Copy. Paste.* essay (March 2026) wished it would age poorly, and seven weeks later it had. The native-container coding experience in the Claude iOS app delivered on the wish faster than expected. This is the stub for the essay that names that moment, the trilogy it completes, and the pattern it demonstrates.
 
 Klappy said: "Not sure when we get to B." This file exists to make sure B does not get lost.
 
