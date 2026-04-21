@@ -7,7 +7,7 @@ tier: 2
 voice: neutral
 stability: stable
 tags: ["docs", "oddkit", "release-notes", "post-4.7-adaptation", "ritual-is-a-smell", "proactive-frequency", "non-diff-review", "usage-impact"]
-epoch: E0008
+epoch: E0008.4
 date: 2026-04-20
 derives_from: "canon/principles/ritual-is-a-smell.md, writings/copy-paste.md, odd/ledger/2026-04-20-post-4-7-proactive-loop-experience.md"
 governs: "Operator and agent behavior after PR #133 merges"
@@ -22,11 +22,13 @@ related_pr: "https://github.com/klappy/klappy.dev/pull/133"
 
 ## Summary — Behavior Change Is the Deliverable, Artifacts Are the Means
 
-The post-4.7-adaptation suite is six artifacts shipped together because they only make sense together. They were authored from one observation: six sessions on Opus 4.7 with the proactive posture in full effect produced trustworthy work *and* a new bottleneck nobody had named yet. Every artifact in this release exists to either change behavior, set new direction, or capture lineage so the change does not get unwound later.
+The post-4.7-adaptation suite is eight artifacts shipped together because they only make sense together. They were authored from one observation: six sessions on Opus 4.7 with the proactive posture in full effect produced trustworthy work *and* a new bottleneck nobody had named yet. Every artifact in this release exists to either change behavior, set new direction, or capture lineage so the change does not get unwound later.
 
-This document frames the release by **what changes after it lands**, not by what is in it. A file inventory is in the PR description and the commit message. This document answers the question: *why ship these together, and what should be different about how oddkit gets used afterward?*
+This release ships under **Canon 0.35.0** and establishes **Epoch 8.4 — Operator-Attention Calibration** (see `docs/appendices/epoch-8-4.md`). The version and epoch bumps were almost missed; the discipline that catches that miss in future PRs is itself part of this release (`canon/constraints/governance-change-discipline.md`).
 
-The short version: oddkit gets called *less per turn but more deliberately*. The continue-tap rhythm gets flagged as a smell instead of accepted as workflow. Operators get a public-facing trilogy they can point colleagues at when explaining why a written curriculum is the work, not the tool. And the validation surface count grows from two (Bugbot, Sonnet validator) to three (with a standing exploration agent), with a roadmap toward five.
+This document frames the release by **what changes after it lands**, not by what is in it. A file inventory is in the PR description and the commit history. This document answers the question: *why ship these together, and what should be different about how oddkit gets used afterward?*
+
+The short version: oddkit gets called *less per turn but more deliberately*. The continue-tap rhythm gets flagged as a smell instead of accepted as workflow. Operators get a public-facing trilogy they can point colleagues at when explaining why a written curriculum is the work, not the tool. And the validation surface count grows from two (Bugbot, Sonnet validator) to three (with a standing exploration agent), with a roadmap toward five. Future behavior-affecting governance changes must carry version bumps, changelog entries, release notes, and epoch annotations — the discipline that this release establishes for itself.
 
 ---
 
@@ -34,10 +36,14 @@ The short version: oddkit gets called *less per turn but more deliberately*. The
 
 For operators trying to decide whether to read the release notes carefully or just merge and move on, here is the impact in one sentence per file:
 
+### One-sentence impact per artifact
+
 - **`canon/constraints/proactive-frequency-calibration.md`** — Agents will run the gauntlet at mode boundaries instead of every turn. Per-turn tool counts drop. Continue-tap rhythms get diagnosed as ritual smells.
+- **`canon/constraints/governance-change-discipline.md`** — Future behavior-affecting changes must carry four markers: version bump, changelog entry, release notes framed by impact, epoch bump when posture shifts. Self-governance for governance changes.
 - **`writings/shifting-bottlenecks-climbing-ladders.md`** — Public framing for why operators write the curriculum. Reshapes the demand funnel toward operators ready to climb the management ladder.
 - **`writings/the-rhythm-emerged.md`** — Case study showing the harness rules that earned their place across sessions 2–6. Lowers activation energy for skeptical adopters.
 - **`docs/oddkit/architecture/non-diff-review-surfaces.md`** — Roadmap for adding system-scoped review alongside the diff-scoped surfaces. Phase 1 (standing exploration agent) is the immediate next build.
+- **`docs/appendices/epoch-8-4.md`** — Names E0008.4 (Operator-Attention Calibration) as the active sub-epoch. Forcing fault: adaptation beats detection when friction is small enough. New invariant: sustained micro-rhythms get flagged before adaptation.
 - **`odd/ledger/2026-04-20-post-4-7-proactive-loop-experience.md`** — Source-of-truth ledger so future drift on these decisions can be traced and reverted.
 - **`odd/backlog/wish-came-true-essay-stub.md`** — Queued celebration essay capturing the *Copy. Paste.* lineage and the trilogy framing for whenever it gets written.
 
@@ -190,17 +196,20 @@ The rest of this document elaborates on each impact and names the success and fa
 
 ---
 
-## Why Ship These Six Together
+## Why Ship These Eight Together
 
 These artifacts are not separable.
 
-- The observation ledger is the input the other five derive from. Without it, future readers cannot trace why these decisions exist together.
+- The observation ledger is the input the other seven derive from. Without it, future readers cannot trace why these decisions exist together.
 - The framework essay and the field report are companions. The essay names the principle; the field report shows the practice. Either alone is weaker.
-- The canon constraint is the policy version of what the essays describe. Without it, the essays are observations without authority.
+- The proactive-frequency canon constraint is the policy version of what the essays describe. Without it, the essays are observations without authority.
+- The governance-change-discipline constraint is the meta-policy. Without it, the next behavior-affecting change ships unmarked, and the system trains itself to skip the four markers this release establishes.
 - The architecture doc is the system design for the validation gap the observation named. Without it, the gap stays a known issue with no roadmap.
+- The release notes frame the whole release by usage impact. Without them, the PR description carries the weight alone, and the framing fades from canon search after merge.
+- The epoch appendix names what posture shifted. Without it, the epoch number drifts in artifact frontmatter without a canonical reference.
 - The backlog stub queues the deferred celebration piece so it does not get lost. Without it, the trilogy framing risks fading.
 
-Splitting into six PRs would obscure the dependency chain and make each piece harder to evaluate. Shipping them together makes the structure of the change visible.
+Splitting into eight PRs would obscure the dependency chain and make each piece harder to evaluate. Shipping them together makes the structure of the change visible.
 
 ---
 

@@ -7,7 +7,7 @@ tier: 2
 voice: neutral
 stability: evolving
 tags: ["docs", "oddkit", "architecture", "review", "validation", "non-diff", "system-scoped", "exploration-agent", "tool-contract", "canon-parity"]
-epoch: E0008
+epoch: E0008.4
 date: 2026-04-20
 derives_from: "odd/ledger/2026-04-20-post-4-7-proactive-loop-experience.md, odd/ledger/2026-04-19-validator-closeout-and-0.17.0.md, odd/ledger/journal/2026-04-17-pr100-rage-quit-handoff.md"
 complements: "canon/methods/self-audit.md, canon/constraints/release-validation-gate.md"

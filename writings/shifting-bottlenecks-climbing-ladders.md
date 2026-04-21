@@ -7,10 +7,14 @@ tier: 3
 voice: first_person
 stability: evolving
 tags: ["essay", "ai-augmented-workflow", "bottleneck", "management-ladder", "delegation", "opus-4-7", "oddkit"]
-epoch: E0008
+epoch: E0008.4
 date: 2026-04-20
 derives_from: "writings/copy-paste.md, writings/fourteen-hours-with-opus-4-7.md, odd/ledger/2026-04-20-post-4-7-proactive-loop-experience.md, canon/principles/ritual-is-a-smell.md"
 slug: shifting-bottlenecks-climbing-ladders
+book_chapter: true
+book_part: practice
+book_position: after-the-intern
+book_chapter_note: "When assembling Nothing New, Even AI: this essay is the next-stage mental model after writings/the-intern.md. The Intern is the starting model (you and a brilliant part-time intern); this is the growing model (you and a team that includes agents). Hersey-Blanchard situational leadership applied to AI-augmented work. Convert lived 4.7-specific references to footnotes pointing at writings/fourteen-hours-with-opus-4-7.md and writings/the-rhythm-emerged.md when manuscript assembly happens."
 author: Klappy
 type: essay
 public: true

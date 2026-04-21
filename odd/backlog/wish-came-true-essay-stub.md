@@ -8,6 +8,7 @@ voice: first_person
 stability: stub
 tags: ["backlog", "essay-idea", "copy-paste", "celebration", "trilogy", "ritual-aging-poorly"]
 date: 2026-04-21
+epoch: E0008.4
 status: queued
 priority: when-time-allows
 derives_from: "writings/copy-paste.md, writings/fourteen-hours-with-opus-4-7.md, writings/shifting-bottlenecks-climbing-ladders.md, writings/the-rhythm-emerged.md"

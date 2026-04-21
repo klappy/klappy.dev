@@ -18,7 +18,45 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
-## 0.34.0 — 2026-02-28
+## 0.35.0 — 2026-04-20
+
+**Post-4.7 Adaptation Suite — Operator-Attention Calibration (Epoch 8.4)**
+
+Eight artifacts shipped together as PR #133. Establishes E0008.4 (Operator-Attention Calibration) as a sub-epoch of the active observability work. Adds two tier-1 and tier-2 canon constraints — one recalibrating the proactive posture's cadence to mode boundaries, one establishing self-governance discipline for future behavior-affecting changes. Adds two public writings (framework essay and companion field report) extending the lineage from `writings/copy-paste.md` (March 2026) and `writings/fourteen-hours-with-opus-4-7.md` (April 17, 2026). Adds an architecture doc for non-diff review surfaces, a release-notes pattern for impact-first framing, and a session ledger documenting the lived experience this sub-epoch was authored from.
+
+The behavior change is the deliverable. Per-turn tool counts should drop from ~10 to ~2-3 most turns. Continue-tap rhythms should be flagged as ritual smells before operators adapt to them. Future behavior-affecting governance changes must carry version bumps, changelog entries, release notes, and epoch annotations.
+
+### Added — Canon
+
+- **Constraint: Proactive Frequency Calibration** (`canon/constraints/proactive-frequency-calibration.md`) — Tier 2, neutral, evolving. Five rules recalibrating the E0007 proactive posture's cadence: gauntlet at mode boundaries (not every turn), checkpoint format every turn, phase-clumped tool spending, straight-line work without asking, continued continue-tapping as smell. Applies the existing `canon/principles/ritual-is-a-smell.md` to the specific case of continue-tap rhythms. Complements (does not replace) `docs/oddkit/proactive/posture-lapse.md` and `canon/constraints/mode-discipline-and-bottleneck-respect.md`.
+
+- **Constraint: Governance Change Discipline** (`canon/constraints/governance-change-discipline.md`) — Tier 1, neutral, stable. Self-governance for canon, ODD, and `docs/oddkit/` changes. Behavior-affecting changes must carry four markers: canon version bump, changelog entry, release notes framed by impact, and epoch bump when posture shifts. Authored from a near-miss in PR #133 itself, where the suite almost shipped without these markers.
+
+### Added — Writings
+
+- **Essay: Shifting Bottlenecks, Climbing Ladders** (`writings/shifting-bottlenecks-climbing-ladders.md`) — Tier 3, first_person, public, evolving. Sequel to *Fourteen Hours with Opus 4.7* and direct descendant of *Copy. Paste.*. Three nested frames: pendulum (operator vs agent), assistant ladder (hands → thumbs → attention), agentic management ladder (do-it-yourself → orchestrating delegation). Burger King story bookends opening and close. Acknowledges Hersey-Blanchard situational leadership as prior art.
+
+- **Essay: The Rhythm Emerged** (`writings/the-rhythm-emerged.md`) — Tier 3, first_person, public, evolving. Companion field report covering Opus 4.7 sessions 2-6. Walks through the three rules that earned their place (question gating by mode, checkpoint format every turn, honest accounting of trust deferred) and the two patterns that failed (pre-emptive long preflights, treating continue as a feature). Names the swipe-tap-continue rhythm as the next instance of the *Copy. Paste.* pattern.
+
+### Added — Docs
+
+- **Architecture: Non-Diff Review Surfaces** (`docs/oddkit/architecture/non-diff-review-surfaces.md`) — Tier 2, neutral, evolving. Names the diff-scoped (Bugbot, Sonnet validator) vs system-scoped review distinction. Ranks five candidate non-diff surfaces by setup cost and confidence. Phase 1 (standing exploration agent) is the immediate next build.
+
+- **Release Notes: Post-4.7 Adaptation** (`docs/oddkit/release-notes/2026-04-20-post-4-7-adaptation.md`) — Tier 2, neutral, stable. First release notes document under the new pattern: frames release by usage impact, not file inventory. Establishes `docs/oddkit/release-notes/` as the canonical directory for future release notes.
+
+- **Appendix: Epoch 8.4 — Operator-Attention Calibration** (`docs/appendices/epoch-8-4.md`) — Tier 2, neutral, stable. Names the new sub-epoch's forcing fault (adaptation beats detection when friction is small enough), new invariant (sustained micro-rhythms get flagged before adaptation), and core shift (frequency calibration plus self-governance).
+
+### Added — ODD
+
+- **Ledger: Post-4.7 Proactive-Loop Experience** (`odd/ledger/2026-04-20-post-4-7-proactive-loop-experience.md`) — Tier 2. Session observation documenting the six-session Opus 4.7 stretch that this sub-epoch was authored from. Source-of-truth for the lineage.
+
+- **Backlog: Wish Came True Essay Stub** (`odd/backlog/wish-came-true-essay-stub.md`) — Tier 3. Queued celebration essay framing for whenever the deferred trilogy-completion piece gets written. Includes naming constraint to avoid collision with `writings/seven-weeks-to-southeast-asia.md`.
+
+### Changed
+
+- **Canon Changelog** (`canon/CHANGELOG.md`) — This entry. Version bumped from 0.34.0 to 0.35.0.
+
+
 
 **Seeing Like an Agent — Second Convergence Essay and Resonance Page**
 

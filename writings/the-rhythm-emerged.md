@@ -7,10 +7,14 @@ tier: 3
 voice: first_person
 stability: evolving
 tags: ["essay", "claude", "opus-4-7", "ai-augmented-workflow", "oddkit", "field-report", "adaptation", "rhythm"]
-epoch: E0008
+epoch: E0008.4
 date: 2026-04-20
 derives_from: "writings/copy-paste.md, writings/fourteen-hours-with-opus-4-7.md, odd/ledger/2026-04-20-post-4-7-proactive-loop-experience.md, writings/shifting-bottlenecks-climbing-ladders.md, canon/principles/ritual-is-a-smell.md"
 slug: the-rhythm-emerged
+book_chapter: candidate
+book_part: practice
+book_position: field-report-after-shifting-bottlenecks
+book_chapter_note: "When assembling Nothing New, Even AI: candidate companion field report alongside writings/fourteen-hours-with-opus-4-7.md, sitting after the Shifting Bottlenecks chapter. Both field reports ground the mental models in lived experience. Decide during manuscript assembly whether both are full chapters or one becomes a sidebar."
 author: Klappy
 type: essay
 public: true

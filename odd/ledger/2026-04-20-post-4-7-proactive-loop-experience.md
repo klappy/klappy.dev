@@ -14,6 +14,7 @@ tags:
   - bottleneck-inversion
 tier: 2
 public: true
+epoch: E0008.4
 ---
 
 # Observation — Six Sessions of Proactive Loop Since Opus 4.7
