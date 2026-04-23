@@ -65,7 +65,10 @@ All tracking occurs on `/mcp` POST envelopes. One data point is written per JSON
 | 4 | `bytes_out` | UTF-8 byte length of the response body. `0` for streamed (SSE) responses where the body cannot be measured without consuming the stream |
 | 5 | `tokens_in` | `cl100k_base` token count of the request body. See *Tokenizer Choice* below for rationale. `0` when tokenization was skipped or failed |
 | 6 | `tokens_out` | `cl100k_base` token count of the response body. `0` for streamed responses or tokenizer failure |
-| 7 | `tokenize_ms` | Wall-clock cost of tokenizing both payloads, measured in the `waitUntil` background task. **Distinct from `duration_ms`** — tokenization happens after the response is sent, so it never adds user-facing latency. A value of `0` alongside non-zero bytes signals a measurement skip. Resolution is **1 ms** (uses `Date.now`), not sub-millisecond. Cloudflare Workers' `performance.now` does not advance during synchronous CPU work as a timing-side-channel mitigation, so it cannot measure pure-CPU tokenization. Sub-millisecond tokenizations therefore round to `0`; the bench-vs-prod comparison is lower-bounded at 1 ms |
+
+#### Why no `tokenize_ms`
+
+A previous iteration shipped a `double7: tokenize_ms` field intended to capture the wall-clock cost of tokenization for bench-vs-prod comparison. It was removed after live-smoke verification confirmed it always reads `0` in production. The cause is a Cloudflare Workers runtime constraint, not a bug: both `performance.now()` and `Date.now()` are frozen between network I/O events as a timing-side-channel mitigation. Tokenization is pure CPU work, so any sub-request timing of it is unmeasurable from inside a Worker request handler. The bench at `workers/test/tokenize.test.mjs` characterized the cost curve once (cl100k handles 50 KB in ~1.3 ms on Node v22, which is the same V8 the Workers runtime uses); future per-call cost can be predicted from `bytes_out` and `tokens_out` against that curve.
 
 #### Tokenizer Choice
 
@@ -92,7 +95,6 @@ The methodology behind this choice is documented separately in `klappy://canon/c
 - **Method breakdown** — protocol-level health
 - **Cache health** — module memory hit rate, cold-build frequency, per-tier latency (`GROUP BY cache_tier, AVG(duration)`)
 - **Payload shape** — average and percentile bytes/tokens per tool, response-size distribution, token-cost-per-tool ranking. Lets the maintainer see which tools produce verbose responses and where trimming would actually move the needle (`GROUP BY tool_name, AVG(double6) AS avg_tokens_out`)
-- **Tokenization cost in production** — `tokenize_ms` distribution measured against bench predictions. The bench said cl100k handles 50 KB in ~1.3 ms; the prod `tokenize_ms` column says whether reality matched. Confirming or falsifying the bench is itself part of the operating discipline (`klappy://canon/constraints/measure-before-you-object`)
 
 ### Per-Request Diagnostics (Ephemeral, Not Stored)
 
