@@ -6,7 +6,7 @@ exposure: nav
 tier: 1
 voice: neutral
 stability: semi_stable
-tags: [canon, constraint, engineering, measurement, axiom-1, axiom-4, optimization, prudence, collaboration, both-audiences]
+tags: ["canon", "constraint", "engineering", "measurement", "axiom-1", "axiom-4", "optimization", "prudence", "collaboration", "both-audiences"]
 epoch: E0008
 date: 2026-04-23
 derives_from: "canon/values/axioms.md"

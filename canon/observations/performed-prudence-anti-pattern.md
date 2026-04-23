@@ -6,7 +6,7 @@ exposure: nav
 tier: 1
 voice: neutral
 stability: semi_stable
-tags: [canon, observation, anti-pattern, engineering-culture, axiom-1, axiom-4, optimization, code-review, collaboration, both-audiences]
+tags: ["canon", "observation", "anti-pattern", "engineering-culture", "axiom-1", "axiom-4", "optimization", "code-review", "collaboration", "both-audiences"]
 epoch: E0008
 date: 2026-04-23
 derives_from: "canon/values/axioms.md, canon/observations/time-blindness-axiom-violation.md"
