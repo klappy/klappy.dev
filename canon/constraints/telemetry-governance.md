@@ -65,7 +65,7 @@ All tracking occurs on `/mcp` POST envelopes. One data point is written per JSON
 | 4 | `bytes_out` | UTF-8 byte length of the response body. `0` for streamed (SSE) responses where the body cannot be measured without consuming the stream |
 | 5 | `tokens_in` | `cl100k_base` token count of the request body. See *Tokenizer Choice* below for rationale. `0` when tokenization was skipped or failed |
 | 6 | `tokens_out` | `cl100k_base` token count of the response body. `0` for streamed responses or tokenizer failure |
-| 7 | `tokenize_ms` | Wall-clock cost of tokenizing both payloads, measured in the `waitUntil` background task. **Distinct from `duration_ms`** — tokenization happens after the response is sent, so it never adds user-facing latency. A value of `0` alongside non-zero bytes signals a measurement skip |
+| 7 | `tokenize_ms` | Wall-clock cost of tokenizing both payloads, measured in the `waitUntil` background task. **Distinct from `duration_ms`** — tokenization happens after the response is sent, so it never adds user-facing latency. A value of `0` alongside non-zero bytes signals a measurement skip. Resolution is **1 ms** (uses `Date.now`), not sub-millisecond. Cloudflare Workers' `performance.now` does not advance during synchronous CPU work as a timing-side-channel mitigation, so it cannot measure pure-CPU tokenization. Sub-millisecond tokenizations therefore round to `0`; the bench-vs-prod comparison is lower-bounded at 1 ms |
 
 #### Tokenizer Choice
 
