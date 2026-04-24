@@ -13,7 +13,7 @@ derives_from: "canon/principles/contract-governs-handoff-drift.md, canon/princip
 complements: "canon/principles/type-contract-plus-adversarial-review.md, canon/principles/partial-data-with-transparency-and-background-warm.md"
 governs: "The graduation arc for the two canon principles promoted 2026-04-24 from the aquifer-mcp J-002 → H11b session handoff."
 status: active
-session_span: "2026-04-24"
+session_span: "2026-04-24 closed"
 ---
 
 # Ledger — Two Canon Principles Graduated From The aquifer-mcp J-002 → H11b Session

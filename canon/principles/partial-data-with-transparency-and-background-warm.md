@@ -9,7 +9,7 @@ stability: semi_stable
 tags: ["canon", "principle", "architecture", "latency", "partial-response", "background-warm", "cache", "user-blocking-path", "vodka-architecture", "axiom-4"]
 epoch: E0008.3
 date: 2026-04-24
-derives_from: "canon/values/axioms.md, canon/principles/vodka-architecture.md, canon/principles/cache-fetches-and-parses.md, odd/ledger/2026-04-24-aquifer-session-principles-graduated.md"
+derives_from: "canon/values/axioms.md, canon/principles/vodka-architecture.md, canon/principles/cache-fetches-and-parses.md"
 complements: "canon/principles/cache-fetches-and-parses.md, canon/principles/type-contract-plus-adversarial-review.md"
 governs: "Any tool handler, MCP server endpoint, or user-facing operation whose natural shape is 'scan a corpus to produce complete data.' Binding on all oddkit-pattern MCP servers in this program when deciding where expensive work runs relative to the user-blocking path."
 status: active
