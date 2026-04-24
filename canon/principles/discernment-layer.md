@@ -137,6 +137,7 @@ Honest answers to these questions reveal whether the operator has moved their ex
 ## See Also
 
 - [The Dream House Principle](klappy://canon/principles/dream-house-principle) — the sequencing principle that pairs with discernment; draw first, cut from contact, and discernment is what makes the cut correct
+- [Canon-Integration Audit](klappy://canon/constraints/canon-integration-audit) — the meta-constraint whose concept audit would have canonized this principle at rev 5 of the sibling essay instead of rev 23
 - [Measure Before You Object](klappy://canon/constraints/measure-before-you-object) — the rule the discerning expert calls on; theoretical concerns require empirical falsification
 - [Performed Prudence Anti-Pattern](klappy://canon/observations/performed-prudence-anti-pattern) — the failure mode that resembles discernment but is its opposite; objection-without-measurement is not expertise, it is its costume
 - [Capability Is Not Permission](klappy://canon/principles/capability-is-not-permission) — the cost-structure shift that moved expertise up the stack

@@ -138,6 +138,7 @@ The lived account is `writings/the-dream-house-and-pre-optimization`. The princi
 ## See Also
 
 - [Measure Before You Object](klappy://canon/constraints/measure-before-you-object) — the rule that prevents pre-optimizing objections from blocking the drawing of the full version
+- [Canon-Integration Audit](klappy://canon/constraints/canon-integration-audit) — the meta-constraint whose concept audit would have canonized this principle at rev 5 of the sibling essay instead of rev 23
 - [Performed Prudence Anti-Pattern](klappy://canon/observations/performed-prudence-anti-pattern) — the failure mode that the Dream House sequencing structurally prevents
 - [Capability Is Not Permission](klappy://canon/principles/capability-is-not-permission) — the cost structure that makes draw-first tractable; when production cost drops below deliberation cost, drawing is cheap and cutting-first loses its justification
 - [The Discernment Layer](klappy://canon/principles/discernment-layer) — what the operator's judgment does during Step 2 (cut from contact); discernment is the expensive resource after drawing becomes cheap
