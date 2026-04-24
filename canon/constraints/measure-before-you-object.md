@@ -127,6 +127,10 @@ This constraint was written after a session in which the model proposed three th
 ## See Also
 
 - [Performed Prudence Anti-Pattern](klappy://canon/observations/performed-prudence-anti-pattern) — the failure mode this constraint prevents, with the case study
+- [The Dream House Principle](klappy://canon/principles/dream-house-principle) — the sequencing principle that pairs with this constraint: draw the full version before cutting, and this rule governs what objections can block the draw
+- [The Discernment Layer](klappy://canon/principles/discernment-layer) — the counterpart principle; the operator's expertise is what decides when the BS meter should fire and the test should be called for
+- [Capability Is Not Permission](klappy://canon/principles/capability-is-not-permission) — the cost-structure shift that makes the fifteen-minute-test tractable as a default rather than a heroic move
 - [Axioms](klappy://canon/values/axioms) — Axiom 1 (Reality Is Sovereign) and Axiom 4 (You Cannot Verify What You Did Not Observe) are the source
 - [Mode Discipline and Bottleneck Respect](klappy://canon/constraints/mode-discipline-and-bottleneck-respect) — the operator's attention is the bottleneck; speculative concerns tax it
 - [Time Blindness — The Axiom Violation Hiding in Every Model](klappy://canon/observations/time-blindness-axiom-violation) — the same axiom-violation pattern applied to a different dimension of reality
+- [The Dream House and Pre-Optimization](klappy://writings/the-dream-house-and-pre-optimization) — sibling essay; the tokenizer session is the worked case and the economic context for why this rule is load-bearing now

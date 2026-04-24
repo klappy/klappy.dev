@@ -75,6 +75,16 @@ The pattern is detectable by a small set of tells. None is conclusive on its own
 - **Resistance when asked for numbers.** A genuine concern is happy to be falsified. Performed prudence resists, because falsification removes the rhetorical weight.
 - **The contributor's reputation is for raising concerns rather than shipping.** Pattern-of-life evidence is real evidence.
 
+### The New Tell — Insistence Without the Test
+
+The bullets above are surface markers. The load-bearing diagnostic — the one that remains legible when the contributor is sophisticated enough to avoid the surface markers — is simpler and more universal. The tell lives in the *insistence on the objection in the absence of the test that would resolve it*, not in the objection itself.
+
+In 2010, that insistence was wisdom. A senior engineer triaging which questions deserved a half-day of measurement was doing real work; the *insist on reasoning before measuring* move was load-bearing when measurement was expensive. In 2026, the same insistence is a conversation that costs the operator more attention than the test itself would have cost (see `canon/principles/capability-is-not-permission` for the cost-structure shift).
+
+A contributor who raises an objection and immediately proceeds to the test is exhibiting real prudence — the objection is a precursor to empirical resolution. A contributor who raises the objection and resists the test is exhibiting performed prudence — the objection is a terminator, not a precursor. Same words, opposite functions. The test-readiness of the move distinguishes the two.
+
+This diagnostic pairs with the rule in `canon/constraints/measure-before-you-object` (the fifteen-minute-test requirement) and with the discernment-layer principle (`canon/principles/discernment-layer`), which explains why *calling for the test* is the irreplaceable move the domain expert makes when their BS meter fires.
+
 ---
 
 ## Case Study: The Tokenizer Telemetry Session, 2026-04-23
@@ -130,6 +140,10 @@ The pattern does not apply to legitimate stop-the-line concerns about safety, co
 ## See Also
 
 - [Measure Before You Object](klappy://canon/constraints/measure-before-you-object) — the binding rule that prevents this pattern
+- [The Dream House Principle](klappy://canon/principles/dream-house-principle) — the sequencing principle that structurally prevents performed prudence: draw the full version first, cut from contact with reality, never cut from prediction before drawing
+- [The Discernment Layer](klappy://canon/principles/discernment-layer) — what the domain expert's judgment actually does when their BS meter fires on an authoritative-sounding objection; the counterpart capacity to this failure mode
+- [Capability Is Not Permission](klappy://canon/principles/capability-is-not-permission) — the cost-structure collapse that evaporated the steelman this pattern used to rest on
 - [Axioms](klappy://canon/values/axioms) — Axiom 1 and Axiom 4 are the source of the rule
 - [Time Blindness — The Axiom Violation Hiding in Every Model](klappy://canon/observations/time-blindness-axiom-violation) — the same axiom-violation shape applied to time
 - [Mode Discipline and Bottleneck Respect](klappy://canon/constraints/mode-discipline-and-bottleneck-respect) — the operator-attention cost that performed prudence taxes
+- [The Dream House and Pre-Optimization](klappy://writings/the-dream-house-and-pre-optimization) — sibling essay; lived account of the pattern being dissolved by a five-minute bench, with the tokenizer session as worked example
