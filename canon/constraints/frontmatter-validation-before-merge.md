@@ -87,6 +87,7 @@ The fix is not "be more careful." The fix is a gate that cannot be bypassed.
 
 ## See Also
 
+- [Canon-Integration Audit](klappy://canon/constraints/canon-integration-audit) — extends this rule with the validator-completeness audit: the validator relied on for this gate must implement the full schema's type discipline, not just field presence
 - [Frontmatter Schema](klappy://canon/meta/frontmatter-schema) — the authoritative reference
 - [Writing Canon](klappy://canon/meta/writing-canon) — the quality checklist (item 8: ghost writer test)
 - [Definition of Done](klappy://canon/constraints/definition-of-done) — structural requirements for all deliverables

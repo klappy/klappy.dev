@@ -161,6 +161,7 @@ The answer: sequential single-lens passes, each a complete read-through with one
 
 ## See Also
 
+- [Canon-Integration Audit](klappy://canon/constraints/canon-integration-audit) — the three checks this method is missing: concept audit, adjacent-canon audit, validator-completeness audit; extends the lens sequence with integration-layer gates
 - [Writing Canon](klappy://canon/meta/writing-canon) — the progressive disclosure requirements each pass must preserve
 - [Guide Posture](klappy://canon/constraints/guide-posture) — the constraint governing Passes 1 and 2
 - [Relational Sensitivity](klappy://canon/constraints/relational-sensitivity) — the constraint governing Pass 4
