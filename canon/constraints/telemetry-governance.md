@@ -53,7 +53,8 @@ All tracking occurs on `/mcp` POST envelopes. One data point is written per JSON
 | Canon URL | Which repo is being served | `https://github.com/klappy/klappy.dev` |
 | Document URI | For `get` calls, the path requested | `klappy://canon/principles/vodka-architecture` |
 | Worker version | oddkit version string | `0.17.0` |
-| Cache tier | Which storage tier served the index | `memory`, `cache`, `r2`, `build` |
+
+> Slot 9 (formerly `cache_tier`) is retired. The single-tier interpreter that picked one storage tier as the "winner" of a multi-fetch request was the source of repeated bugs across PRs #137–#139; it has been replaced by per-fetch records in the trace and aggregate counts in `cache_hits` / `cache_lookups` (doubles 7 and 8). The slot stays unused — no reuse — per the "no deprecation, nobody uses them yet" rule established in PR #137.
 
 ### Numeric Values (Doubles)
 
@@ -65,6 +66,8 @@ All tracking occurs on `/mcp` POST envelopes. One data point is written per JSON
 | 4 | `bytes_out` | UTF-8 byte length of the response body. `0` for streamed (SSE) responses where the body cannot be measured without consuming the stream |
 | 5 | `tokens_in` | `cl100k_base` token count of the request body. See *Tokenizer Choice* below for rationale. `0` when tokenization was skipped or failed |
 | 6 | `tokens_out` | `cl100k_base` token count of the response body. `0` for streamed responses or tokenizer failure |
+| 7 | `cache_hits` | Count of per-fetch records in the request whose `cached` flag was true. Sourced from `tracer.cacheStats.hits` |
+| 8 | `cache_lookups` | Total per-fetch records in the request — the denominator for hit-rate. Sourced from `tracer.cacheStats.total` |
 
 #### Why no `tokenize_ms`
 
@@ -93,12 +96,12 @@ The methodology behind this choice is documented separately in `klappy://canon/c
 - **Document leaderboard** — which canon documents are most accessed
 - **Daily/hourly trends** — when usage happens, what caused spikes
 - **Method breakdown** — protocol-level health
-- **Cache health** — module memory hit rate, cold-build frequency, per-tier latency (`GROUP BY cache_tier, AVG(duration)`)
+- **Cache effectiveness** — hit rate as `SUM(cache_hits) / SUM(cache_lookups)` over any time window or grouping; cold-start frequency as `WHERE cache_hits = 0`. Per-tier latency and per-tier breakdown are visible in each response's `debug.trace.fetches[]` for ad-hoc investigation, but are not aggregated into Analytics Engine — the dashboard does the math, the tracer reports the facts
 - **Payload shape** — average and percentile bytes/tokens per tool, response-size distribution, token-cost-per-tool ranking. Lets the maintainer see which tools produce verbose responses and where trimming would actually move the needle (`GROUP BY tool_name, AVG(double6) AS avg_tokens_out`)
 
 ### Per-Request Diagnostics (Ephemeral, Not Stored)
 
-The `X-Oddkit-Trace` response header and the `debug.trace` field in tool responses contain per-request span detail: every storage read, GitHub API call, and cache tier hit/miss with timing. This is ephemeral diagnostic data — it exists in the HTTP response and nowhere else. It is not written to Analytics Engine, not persisted, and not queryable after the request completes. The `cache_tier` blob above is the single aggregate signal extracted from the trace for telemetry.
+The `X-Oddkit-Trace` response header and the `debug.trace` field in tool responses contain per-request span detail: every storage read and GitHub API call as a per-fetch record (`url`, `duration_ms`, `cached`, optional `status`/`size`), plus action and SHA spans. The trace also exposes `cacheStats` (`hits`, `misses`, `total`) — the same arithmetic that feeds the `cache_hits` / `cache_lookups` doubles. This is ephemeral diagnostic data — it exists in the HTTP response and nowhere else. It is not written to Analytics Engine, not persisted, and not queryable after the request completes. The retired `tracer.indexSource` getter and `index_source` field on `toJSON()` no longer exist; consumers that read either should switch to `cacheStats` for arithmetic or `fetches[]` for per-tier detail.
 
 ---
 
