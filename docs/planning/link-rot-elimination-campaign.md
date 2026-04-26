@@ -42,12 +42,17 @@ Phase 1 — Foundation (3 PRs, parallelizable)
                   this campaign doc)
 
 Phase 2 — Implementation (3 PRs, serial)
-    ├── PR-2.1 — Implement oddkit_resolve action
+    ├── PR-2.1 — Implement oddkit_resolve action [klappy/oddkit]
     │           ⚠️  Release-validation-gate per E0008.3
-    ├── PR-2.2 — Convert legacy patterns in writings/ to klappy:// URIs
-    │           Re-audit the 49 from April-9 audit; fix or delete
-    └── PR-2.3 — Implement oddkit_audit action
+    │           ⚠️  Plus separate promote PR: main → prod (CF auto-deploys from prod)
+    ├── PR-2.2 — Convert legacy patterns in writings/ to klappy:// URIs [klappy/klappy.dev]
+    │           Validates each new URI against the live resolver before commit.
+    │           (The 49 from the April-9 audit are correctly classified as
+    │           intentional/template/route placeholders and out-of-scope here;
+    │           see docs/audits/reference-integrity-audit-2026-04-09.md.)
+    └── PR-2.3 — Implement oddkit_audit action [klappy/oddkit]
                  ⚠️  Release-validation-gate per E0008.3
+                 ⚠️  Plus separate promote PR: main → prod
 
 Phase 3 — Enforcement (2 PRs, serial after observation)
     ├── PR-3.1 — canon-quality.yml workflow (soft-block this cycle)
@@ -55,7 +60,7 @@ Phase 3 — Enforcement (2 PRs, serial after observation)
                  (config flip after observation cycle)
 ```
 
-Eight PRs total. Critical path is six PRs (PR-1.1 → PR-1.2 → PR-2.1 → PR-2.3 → PR-3.1 → PR-3.2). The other two (PR-1.3, PR-2.2) ship in parallel.
+Eight PRs total in klappy/klappy.dev plus two in klappy/oddkit, plus two promote PRs (main→prod) for the oddkit changes that touch load-bearing surface. Critical path is the same six-PR sequence; the promote PRs are mechanical follow-ups (head=main → base=prod, single commit, zero diff vs main) but **must** be opened explicitly because CF deploys from `prod`, not `main`.
 
 ## Dependencies
 
@@ -115,3 +120,5 @@ Each of these is a real concern with a real revisit condition. None is in this c
 ## Origin
 
 Drafted on 2026-04-26 as the v2 KISS revision of the campaign. The v1 version had six phases and ~15 PRs and violated Vodka principles by pre-building infrastructure for hypothetical pain. v2 cuts to three phases, eight PRs, and the four-artifact minimum. The cut work moved to the deferred-concerns ledger with explicit revisit triggers. Operator's framing: "Vodka principles, KISS, antifragile, maintainable, consistent."
+
+**v2.1 amendment (2026-04-26, end of PR-2.1):** Added explicit promote-PR step (main → prod) for any oddkit change touching load-bearing surface. The original draft elided this because the author hadn't observed the prod-branch convention; PR-2.1 surfaced it when prod stayed on 0.24.0 after merging to main. Also corrected PR-2.2's scope: the "re-audit the 49" task was dropped on inspection — the April 9 audit's 49 remaining items are correctly classified as intentional template placeholders, deployed site routes, and historical archive references that fall outside writings/ scope. Both amendments preserve the campaign's KISS shape; neither adds new artifacts.

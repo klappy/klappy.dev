@@ -174,7 +174,7 @@ And a bootstrap prompt — the system prompt that teaches the AI its posture fro
 
 ## Honesty About Mistakes
 
-This wouldn't be a [Learning in the Open](/page/writings/learning-in-the-open) companion if I didn't include the parts that went wrong.
+This wouldn't be a [Learning in the Open](klappy://writings/learning-in-the-open) companion if I didn't include the parts that went wrong.
 
 During implementation, the governance articles didn't appear in oddkit's search results. I assumed it was a caching issue — the Cloudflare Worker caches the search index, and propagation takes time. I waited. Checked again. Still missing.
 
@@ -206,7 +206,7 @@ The A/B test proves that governance articles surface when agents search for proa
 
 A BM25 score of 29 means the article will be found. It does not mean the agent will read it, follow it, or apply the technique correctly. Behavioral testing — observing real agents in real sessions with real operators — is required to validate outcomes. That testing hasn't happened yet.
 
-I'm publishing this essay before that testing is complete, deliberately. [Learning in the open](/page/writings/learning-in-the-open) means publishing the messy version — the one with open questions and incomplete validation — rather than waiting for the polished version that never ships.
+I'm publishing this essay before that testing is complete, deliberately. [Learning in the open](klappy://writings/learning-in-the-open) means publishing the messy version — the one with open questions and incomplete validation — rather than waiting for the polished version that never ships.
 
 ---
 
@@ -222,7 +222,7 @@ His words: *"I was reading page after page of it selling it and I was like, I fe
 
 The system I built to be proactive and participatory had no getting-started page. No install instructions. No link from the public site to the GitHub repos. The irony was sharp: the canon already said all the right things about progressive disclosure, zero-config onramps, and vocabulary emerging from use. Those principles hadn't been applied to oddkit's own onboarding.
 
-Joshua's gap analysis became the spec for a companion article: [Getting Started with ODD and oddkit](/page/writings/getting-started-with-odd-and-oddkit). The proactive posture and the onboarding gap are the same problem seen from different directions — a system that requires the user to figure things out on their own has delegated its cognition to the wrong party, whether that's remembering to invoke tools or remembering how to install them.
+Joshua's gap analysis became the spec for a companion article: [Getting Started with ODD and oddkit](klappy://writings/getting-started-with-odd-and-oddkit). The proactive posture and the onboarding gap are the same problem seen from different directions — a system that requires the user to figure things out on their own has delegated its cognition to the wrong party, whether that's remembering to invoke tools or remembering how to install them.
 
 ---
 
@@ -250,4 +250,4 @@ What I know now: if you build a system and find yourself performing the same rit
 
 The system acts. The operator reviews. Start wherever it hurts.
 
-*For the practical getting-started guide, see [Getting Started with ODD and oddkit](/page/writings/getting-started-with-odd-and-oddkit). For the previous essay in this series, see [Learning in the Open](/page/writings/learning-in-the-open).*
+*For the practical getting-started guide, see [Getting Started with ODD and oddkit](klappy://writings/getting-started-with-odd-and-oddkit). For the previous essay in this series, see [Learning in the Open](klappy://writings/learning-in-the-open).*

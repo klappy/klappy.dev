@@ -239,7 +239,7 @@ So what do we do?
 
 We build anyway. Frontier models will swallow anything we build. [I build anyway.](klappy://writings/learning-in-the-open) Because if I do not, I wait forever. And if I do, I have a window — however small — where I know we made a difference.
 
-[There is nothing new under the sun.](klappy://writings/nothing-new-even-ai) Not even AI. The principles are ancient. The tools are new. The question is the same one it has always been: will you engage with integrity, or will you bury what you have been given?
+[There is nothing new under the sun.](klappy://writings/preface-nothing-new-even-ai) Not even AI. The principles are ancient. The tools are new. The question is the same one it has always been: will you engage with integrity, or will you bury what you have been given?
 
 Everything I have referenced is available at klappy.dev. You can read every article. You can listen to AI-generated podcasts of each one — in my voice, because yes, we built that too. You can open the fireside chat and ask my AI questions. And if — only if — the pain is real for you, you can connect oddkit and the Aquifer MCP server to your own tools and see if they help.
 
