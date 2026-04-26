@@ -57,7 +57,7 @@ When terminological drift, projection staleness, or epoch gaps cause concrete pa
 }
 ```
 
-- `scope.paths` — repo-relative path prefixes. Default: full repo excluding `docs/archive/`.
+- `scope.paths` — repo-relative path prefixes. **Default: `["writings/"]`** — the actual link-rot pain surface. Other paths (`canon/`, `odd/`, `docs/`) are explicit opt-in. v2.1 amendment: cold-cache fetching ~560 files exceeded a typical 120s CI curl budget; the smaller default ships in v0.26.0. Reversal is one-line if a real consumer demonstrates wider need.
 - `scope.since_commit` — limit findings to files changed since this ref. Default: full audit. PR-mode CI sets this to merge-base.
 
 No `checks` field. There's one check; it always runs. No `severity_floor`. Workflow decides what to fail on.
@@ -176,3 +176,5 @@ Net-new action. No existing callers.
 ## Origin
 
 Drafted on 2026-04-26 alongside `oddkit_resolve` (DRAFT v4). v1 of this spec proposed four checks (dead-reference + terminological-drift + projection-staleness + epoch-gaps) plus a deprecated-terms registry, epoch-completeness rules, and an `audit_allow:` frontmatter field. v2 (this revision) cut to one check and one allowlist mechanism per the operator's Vodka discipline. The other three checks and supporting registries moved to the deferred-concerns ledger with explicit revisit triggers.
+
+**v2.1 amendment (2026-04-26, end of PR-2.3a)**: default scope narrowed from "full repo excluding `docs/archive/`" to `["writings/"]`. Surfaced when the v0.26.0 implementation's CF Preview test 14j (default-scope audit) timed out at 120s — cold-cache fetching ~560 files via the worker's zip-extract path exceeded the curl budget. Real reasons the smaller default is honest: PR-2.2's actual cleanup was writings-only; the April-9 audit classified non-writings broken refs as intentional templates/site-routes/historical-archive (Classes A–E); writings is where authors write `klappy://` URIs as body links most often. Wider scope is one explicit `scope.paths` arg away. If a real consumer demonstrates wider need, the default broadens (or parallelized fetching graduates from the deferred-concerns ledger). Reversal is one-line.
