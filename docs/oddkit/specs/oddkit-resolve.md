@@ -85,8 +85,8 @@ That's it. One field. Required.
 1. Look up `uri` directly in the index.
 2. If found and `superseded_by` is unset → `FOUND`, no chain.
 3. If found and `superseded_by` is set → walk the chain to terminus, return terminus, populate `supersession_chain`. Transparent redirect.
-4. If not found → `NOT_FOUND`. No candidates, no fallback, no fuzziness — that's deferred.
-5. If the index is partially warm and the URI isn't in cache → `PARTIAL_INDEX` with `resolved` omitted and `index_state` showing the warming gap. Caller may retry.
+4. If not found and the index is partially warm → `PARTIAL_INDEX` with `resolved` omitted and `index_state` showing the warming gap. Caller may retry.
+5. If not found and the index is fully warm → `NOT_FOUND`. No candidates, no fallback, no fuzziness — that's deferred.
 
 ### Error modes
 
