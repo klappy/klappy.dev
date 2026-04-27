@@ -1,6 +1,6 @@
 ---
 uri: klappy://docs/oddkit/specs/oddkit-audit
-title: "oddkit_audit — Action Specification (DRAFT v2 — KISS)"
+title: "oddkit_audit — Action Specification (DRAFT v2.2 — KISS)"
 audience: docs
 exposure: nav
 tier: 2
@@ -8,17 +8,17 @@ voice: neutral
 stability: draft
 tags: ["spec", "oddkit", "audit", "dead-references", "ci-gate", "vodka", "kiss"]
 epoch: E0008
-date: 2026-04-26
+date: 2026-04-27
 derives_from:
   - "canon/methods/reference-integrity-audit.md"
   - "canon/principles/partial-data-with-transparency-and-background-warm.md"
   - "canon/principles/ritual-is-a-smell.md"
   - "docs/oddkit/specs/oddkit-resolve.md"
 governs: "Mechanical detection of dead klappy:// references at PR time"
-supersedes: "DRAFT v1 (2026-04-26, four-check version)"
+supersedes: "DRAFT v2.1 (2026-04-26, default-scope narrowed); DRAFT v1 (2026-04-26, four-check version)"
 ---
 
-# oddkit_audit — Action Specification (DRAFT v2 — KISS)
+# oddkit_audit — Action Specification (DRAFT v2.2 — KISS)
 
 > Walk every `klappy://` URI in canon. Call `oddkit_resolve` on each. Report the ones that don't resolve. That's the entire job.
 
@@ -68,7 +68,7 @@ No `checks` field. There's one check; it always runs. No `severity_floor`. Workf
 {
   "action": "audit",
   "result": {
-    "status": "OK" | "FINDINGS" | "PARTIAL_INDEX",
+    "status": "OK" | "FINDINGS",
     "summary": {
       "total_findings": 12,
       "by_severity": { "error": 11, "warning": 1 }
@@ -88,13 +88,9 @@ No `checks` field. There's one check; it always runs. No `severity_floor`. Workf
         "occurrence": "/page/writings/some-slug",
         "message": "Use a klappy:// URI instead of /page/ path"
       }
-    ],
-    "index_state": {
-      "warm_count": 552,
-      "warming_count": 0
-    }
+    ]
   },
-  "server_time": "2026-04-26T02:50:00.000Z"
+  "server_time": "2026-04-27T02:55:26.000Z"
 }
 ```
 
@@ -135,13 +131,13 @@ Per the partial-data principle:
 
 1. User-blocking path bounded by cache lookups.
 2. Background warm via `ctx.waitUntil`.
-3. Concrete disclosure via `index_state`.
+3. Concrete disclosure via `index_state` — **DEFERRED in v2.2 (see Origin)**.
 
-When `status: PARTIAL_INDEX`, findings are best-effort. CI workflow handles this by treating partial-index runs as non-blocking (warning, retry on next push).
+The `PARTIAL_INDEX` status and the `index_state.warming_count` mechanism are deferred. The shipped v0.26.0 implementation does not emit them: the worker's audit path hits the resolver synchronously per URI and treats unresolvable URIs as `dead-reference` regardless of warm-state. If a real consumer demonstrates the need to distinguish "URI is dead" from "URI couldn't be checked because the index wasn't warm yet," the deferred mechanism graduates from this section back into the Output schema. Until then the Use Only What Hurts principle keeps the envelope minimal.
 
 ## Disconfirmers — What Would Falsify This
 
-1. **The resolver has bugs that produce false `NOT_FOUND` responses.** Audit findings would be false positives. Mitigation: workflow respects `index_state.warming_count`; release-validation-gate on the resolver catches this before audit ships.
+1. **The resolver has bugs that produce false `NOT_FOUND` responses.** Audit findings would be false positives. Mitigation: release-validation-gate on the resolver catches this before audit ships. The `index_state.warming_count` mitigation referenced in v2.0 is deferred (see Partial-Data Compliance and Origin v2.2 amendment).
 2. **Findings volume on first run is so high authors disable the gate.** Mitigation: workflow ships in soft-block mode; one observation cycle to assess before hard-block.
 3. **The line-level allowlist proves insufficient (e.g., a template file legitimately has 30 placeholder URIs).** Triggers reconsideration of file-level allowlist (the deferred frontmatter field).
 
@@ -178,3 +174,5 @@ Net-new action. No existing callers.
 Drafted on 2026-04-26 alongside `oddkit_resolve` (DRAFT v4). v1 of this spec proposed four checks (dead-reference + terminological-drift + projection-staleness + epoch-gaps) plus a deprecated-terms registry, epoch-completeness rules, and an `audit_allow:` frontmatter field. v2 (this revision) cut to one check and one allowlist mechanism per the operator's Vodka discipline. The other three checks and supporting registries moved to the deferred-concerns ledger with explicit revisit triggers.
 
 **v2.1 amendment (2026-04-26, end of PR-2.3a)**: default scope narrowed from "full repo excluding `docs/archive/`" to `["writings/"]`. Surfaced when the v0.26.0 implementation's CF Preview test 14j (default-scope audit) timed out at 120s — cold-cache fetching ~560 files via the worker's zip-extract path exceeded the curl budget. Real reasons the smaller default is honest: PR-2.2's actual cleanup was writings-only; the April-9 audit classified non-writings broken refs as intentional templates/site-routes/historical-archive (Classes A–E); writings is where authors write `klappy://` URIs as body links most often. Wider scope is one explicit `scope.paths` arg away. If a real consumer demonstrates wider need, the default broadens (or parallelized fetching graduates from the deferred-concerns ledger). Reversal is one-line.
+
+**v2.2 amendment (2026-04-27, post-promote of v0.26.0)**: `index_state` field and `PARTIAL_INDEX` status removed from the documented Output schema. Surfaced when the post-promote validator (klappy/oddkit#146 RV-gate) flagged F-3 (spec mandated `index_state: {warm_count, warming_count}`; shipped omits it) and F-5 (spec listed `PARTIAL_INDEX` in the status enum; shipped omits it). Both were intentional drifts in the v0.26.0 implementation: the worker's audit path is synchronous-per-URI against the resolver and does not currently distinguish warming from terminal states. Rather than carry permanent spec-vs-shipped drift, the spec graduates to v2.2 with both fields marked deferred and the Use Only What Hurts principle invoked. If a real consumer demonstrates need to distinguish "URI is dead" from "URI couldn't be checked because the index wasn't warm yet," the deferred mechanism graduates back into the schema. F-4 (`suppressed_findings` returns full objects vs spec's "count only") was dispositioned by the validator as `no action — additive, not harmful` and remains unchanged in v2.2; if alignment becomes useful, a separate small amendment can land.
