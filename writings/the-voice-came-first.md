@@ -241,4 +241,5 @@ Maybe text was always just the compression. Maybe we’re watching the reason fo
 
 Nothing new under the sun. The oldest method. The newest technology. The same question.
 
+<!-- audit-allow: dead-reference reason="forward-ref to upcoming Ch.7; drafted at draft-zeros/ch07-four-questions-that-change-everything; auto-heals on promote to writings/" -->
 *The next chapter, [Four Questions That Change Everything](klappy://writings/four-questions-that-change-everything), takes the pattern you just saw — voice first, artifact last, verify everything — and compresses it into four axioms that govern every kind of collaboration. Or if you’d rather see the system in action first, [Your AI Collaboration’s Memory](klappy://writings/the-project-journal) shows you how to stop losing what you’ve already figured out.*
