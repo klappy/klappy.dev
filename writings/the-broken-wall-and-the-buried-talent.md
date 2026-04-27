@@ -331,5 +331,5 @@ Dig it up. Bring it to the room. The wall won't build itself. And it was never a
 
 *The previous chapter, [Choosing Faith, Not Fear](klappy://writings/choosing-faith-not-fear), anchors identity in what doesn't change. This chapter asks what that identity demands of us.*
 
-<!-- audit-allow: dead-reference reason="forward-ref to Appendix A; drafted at draft-zeros/appendix-a-the-biblical-roots; auto-heals on promote to writings/ or whichever published path the appendix lands at" -->
-*The appendix, [The Biblical Roots](klappy://draft-zeros/appendix-a-the-biblical-roots), maps the scriptural foundations underneath every principle in this book.*
+<!-- audit-allow: dead-reference reason="forward-ref to Appendix A; drafted at draft-zeros/appendix-a-the-biblical-roots.md with canonical uri klappy://writings/the-biblical-roots; auto-heals on promote to writings/" -->
+*The appendix, [The Biblical Roots](klappy://writings/the-biblical-roots), maps the scriptural foundations underneath every principle in this book.*
