@@ -49,9 +49,11 @@ jobs:
     steps:
       - name: Resolve scope
         id: scope
+        env:
+          INPUT_SCOPE_PATHS: ${{ github.event.inputs.scope_paths }}
         run: |
-          if [ -n "${{ github.event.inputs.scope_paths }}" ]; then
-            PATHS='${{ github.event.inputs.scope_paths }}'
+          if [ -n "$INPUT_SCOPE_PATHS" ]; then
+            PATHS="$INPUT_SCOPE_PATHS"
           else
             PATHS='["writings/"]'
           fi
@@ -189,7 +191,10 @@ jobs:
               lines.append('')
               lines.append(f'No dead `klappy://` references or legacy link patterns found in `{paths_label}`. {summary.get("files_scanned", 0)} files scanned.')
           else:
-              icon = '⚠️' if mode == 'soft' else '❌'
+              # Per the audit spec, PARTIAL_INDEX is non-blocking even in hard mode
+              # (best-effort findings, retry on next push). Only FINDINGS fails in hard.
+              will_fail = mode == 'hard' and status == 'FINDINGS'
+              icon = '❌' if will_fail else '⚠️'
               lines.append(f'### Canon Quality — `oddkit_audit` {icon}')
               lines.append('')
               total = summary.get('total_findings', len(findings))
@@ -229,6 +234,8 @@ jobs:
               lines.append('')
               if mode == 'soft':
                   lines.append('> **Soft-block mode** — this status is informational. The job will not fail. Hard-block ships in PR-3.2 after the observation cycle.')
+              elif status == 'PARTIAL_INDEX':
+                  lines.append('> **Hard-block mode** — `PARTIAL_INDEX` is non-blocking per the audit spec (best-effort findings, retry on next push). The job will not fail on this status.')
               else:
                   lines.append('> **Hard-block mode** — this PR will fail until findings are resolved. Fix the dead references or add a line-level allowlist directive (`<!-- audit-allow: dead-reference reason="..." -->`) above the offending link.')
 
