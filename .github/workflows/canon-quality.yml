@@ -1,0 +1,293 @@
+name: Canon Quality
+
+# Calls oddkit_audit against prod and reports/blocks based on findings.
+# Spec: klappy://docs/oddkit/specs/oddkit-audit (DRAFT v2.2)
+# Mode is controlled by repo variable AUDIT_ENFORCEMENT_MODE:
+#   - 'soft' (default): comment with findings, never fail the job
+#   - 'hard': fail the job when status != OK
+# Set the variable at https://github.com/klappy/klappy.dev/settings/variables/actions
+# PR-3.1 ships in soft. PR-3.2 will flip to hard after the observation cycle.
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'writings/**'
+      - 'canon/**'
+      - 'odd/**'
+      - 'docs/**'
+      - '.github/workflows/canon-quality.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'writings/**'
+      - 'canon/**'
+      - 'odd/**'
+      - 'docs/**'
+      - '.github/workflows/canon-quality.yml'
+  workflow_dispatch:
+    inputs:
+      scope_paths:
+        description: 'JSON array of scope paths (default ["writings/"])'
+        required: false
+        default: '["writings/"]'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+env:
+  ODDKIT_MCP_URL: https://oddkit.klappy.dev/mcp
+  ENFORCEMENT_MODE: ${{ vars.AUDIT_ENFORCEMENT_MODE || 'soft' }}
+  USER_AGENT: 'klappy.dev-canon-quality/1.0 (+github-actions; ${{ github.repository }}#${{ github.run_id }})'
+
+jobs:
+  audit:
+    name: Reference integrity audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Resolve scope
+        id: scope
+        run: |
+          if [ -n "${{ github.event.inputs.scope_paths }}" ]; then
+            PATHS='${{ github.event.inputs.scope_paths }}'
+          else
+            PATHS='["writings/"]'
+          fi
+          echo "Scope paths: $PATHS"
+          echo "paths=$PATHS" >> "$GITHUB_OUTPUT"
+
+      - name: Call oddkit_audit (with one retry on transient failure)
+        id: audit
+        env:
+          SCOPE_PATHS: ${{ steps.scope.outputs.paths }}
+        run: |
+          set -uo pipefail
+
+          # Build JSON-RPC payload. The 'input' arg is a JSON string per the action's schema.
+          INNER=$(python3 -c "import json,os; print(json.dumps({'scope':{'paths':json.loads(os.environ['SCOPE_PATHS'])}}))")
+          PAYLOAD=$(python3 -c "
+          import json, sys
+          inner = sys.argv[1]
+          print(json.dumps({
+            'jsonrpc': '2.0',
+            'id': 1,
+            'method': 'tools/call',
+            'params': {'name': 'oddkit_audit', 'arguments': {'input': inner}}
+          }))
+          " "$INNER")
+          echo "$PAYLOAD" > /tmp/req.json
+
+          AUDIT_OK=false
+          HTTP_CODE=000
+          for attempt in 1 2; do
+            HTTP_CODE=$(curl -sS -o /tmp/resp.raw -w '%{http_code}' \
+              -X POST \
+              -H 'Content-Type: application/json' \
+              -H 'Accept: application/json, text/event-stream' \
+              -H "User-Agent: $USER_AGENT" \
+              --max-time 120 \
+              -d @/tmp/req.json \
+              "$ODDKIT_MCP_URL" || echo 000)
+            echo "Attempt $attempt -> HTTP $HTTP_CODE"
+            if [ "$HTTP_CODE" = "200" ]; then
+              AUDIT_OK=true
+              break
+            fi
+            if [ "$attempt" -lt 2 ]; then
+              echo "Transient failure; sleeping 8s before retry"
+              sleep 8
+            fi
+          done
+
+          if [ "$AUDIT_OK" != "true" ]; then
+            echo "Audit could not be completed after 2 attempts."
+            echo "Response (first 500 bytes):"
+            head -c 500 /tmp/resp.raw || true
+            echo ""
+            echo "audit_failed=true" >> "$GITHUB_OUTPUT"
+            echo "http_code=$HTTP_CODE" >> "$GITHUB_OUTPUT"
+            exit 0   # don't fail the step; the report step will surface this
+          fi
+
+          # Parse the SSE response. The MCP server returns event-stream with a final
+          # 'data: { ... }' line containing the JSON-RPC envelope.
+          python3 - <<'PY'
+          import json, sys
+          with open('/tmp/resp.raw') as f:
+              raw = f.read()
+          data_lines = [l[6:] for l in raw.splitlines() if l.startswith('data: ')]
+          if not data_lines:
+              sys.stderr.write("No SSE 'data: ' lines in response\n")
+              sys.stderr.write(raw[:500])
+              sys.exit(1)
+          envelope = json.loads(data_lines[-1])
+          if 'error' in envelope:
+              sys.stderr.write(f"JSON-RPC error: {envelope['error']}\n")
+              sys.exit(1)
+          # Extract the action envelope from content[0].text
+          content = envelope.get('result', {}).get('content', [])
+          texts = [c.get('text','') for c in content if c.get('type') == 'text']
+          if not texts:
+              sys.stderr.write("No text content in tool-call result\n")
+              sys.exit(1)
+          inner = json.loads(texts[0])
+          with open('/tmp/audit-result.json','w') as f:
+              json.dump(inner, f, indent=2)
+          # Surface a tiny diagnostic to logs
+          r = inner.get('result', {})
+          print(f"status={r.get('status')} findings={r.get('summary',{}).get('total_findings',0)} files={r.get('summary',{}).get('files_scanned',0)}")
+          PY
+
+          echo "audit_failed=false" >> "$GITHUB_OUTPUT"
+
+      - name: Upload audit response artifact
+        if: always() && steps.audit.outputs.audit_failed == 'false'
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-response
+          path: /tmp/audit-result.json
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: Render comment body
+        id: render
+        if: github.event_name == 'pull_request' && steps.audit.outputs.audit_failed != 'true'
+        env:
+          MODE: ${{ env.ENFORCEMENT_MODE }}
+        run: |
+          python3 - <<'PY'
+          import json, os
+
+          with open('/tmp/audit-result.json') as f:
+              d = json.load(f)
+          r = d.get('result', {})
+          status = r.get('status', '?')
+          summary = r.get('summary', {})
+          findings = r.get('findings', [])
+          suppressed = r.get('suppressed_findings', [])
+          scope = r.get('scope', {})
+          mode = os.environ.get('MODE', 'soft')
+          paths_label = ', '.join(scope.get('paths', []))
+
+          lines = []
+          if status == 'OK':
+              lines.append('### Canon Quality — `oddkit_audit` ✅')
+              lines.append('')
+              lines.append(f'No dead `klappy://` references or legacy link patterns found in `{paths_label}`. {summary.get("files_scanned", 0)} files scanned.')
+          else:
+              icon = '⚠️' if mode == 'soft' else '❌'
+              lines.append(f'### Canon Quality — `oddkit_audit` {icon}')
+              lines.append('')
+              total = summary.get('total_findings', len(findings))
+              lines.append(f'**{total} finding(s)** in `{paths_label}` ({summary.get("files_scanned", 0)} files scanned). Mode: `{mode}`.')
+              lines.append('')
+
+              # Group by file, cap at 50 rendered to keep PR comment manageable
+              CAP = 50
+              by_file = {}
+              for f in findings[:CAP]:
+                  loc = f.get('location', {})
+                  by_file.setdefault(loc.get('path', '?'), []).append(
+                      (loc.get('line'), f.get('rule_id'), f.get('occurrence'), f.get('message'))
+                  )
+
+              for path, items in sorted(by_file.items()):
+                  lines.append(f'<details><summary><code>{path}</code> — {len(items)} finding(s)</summary>')
+                  lines.append('')
+                  lines.append('| Line | Rule | Occurrence | Message |')
+                  lines.append('|---:|---|---|---|')
+                  for line, rule, occ, msg in items:
+                      occ_safe = (occ or '').replace('|', '\\|')
+                      msg_safe = (msg or '').replace('|', '\\|')
+                      lines.append(f'| {line} | `{rule}` | `{occ_safe}` | {msg_safe} |')
+                  lines.append('')
+                  lines.append('</details>')
+
+              if len(findings) > CAP:
+                  lines.append('')
+                  lines.append(f'_… and {len(findings) - CAP} more finding(s). See the `audit-response` workflow artifact for the full list._')
+
+              if suppressed:
+                  s_count = len(suppressed) if isinstance(suppressed, list) else suppressed
+                  lines.append('')
+                  lines.append(f'_{s_count} finding(s) suppressed via `<!-- audit-allow: ... -->` directives._')
+
+              lines.append('')
+              if mode == 'soft':
+                  lines.append('> **Soft-block mode** — this status is informational. The job will not fail. Hard-block ships in PR-3.2 after the observation cycle.')
+              else:
+                  lines.append('> **Hard-block mode** — this PR will fail until findings are resolved. Fix the dead references or add a line-level allowlist directive (`<!-- audit-allow: dead-reference reason="..." -->`) above the offending link.')
+
+          lines.append('')
+          lines.append('<sub>Spec: `klappy://docs/oddkit/specs/oddkit-audit` · Workflow: `.github/workflows/canon-quality.yml` · Run: [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})</sub>')
+
+          with open('/tmp/comment.md', 'w') as f:
+              f.write('\n'.join(lines))
+          PY
+
+      - name: Sticky comment — audit results
+        if: github.event_name == 'pull_request' && steps.audit.outputs.audit_failed != 'true'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: canon-quality-audit
+          path: /tmp/comment.md
+
+      - name: Sticky comment — audit infrastructure failure
+        if: github.event_name == 'pull_request' && steps.audit.outputs.audit_failed == 'true'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: canon-quality-audit
+          message: |
+            ### Canon Quality — `oddkit_audit` ⚠️ (infrastructure)
+
+            The audit could not be completed (HTTP `${{ steps.audit.outputs.http_code }}` from `${{ env.ODDKIT_MCP_URL }}` after retry). This run produces no signal about reference integrity — re-run the workflow if the failure was transient.
+
+            The job does not fail on infrastructure issues; persistent failures should be tracked separately.
+
+            <sub>Workflow: `.github/workflows/canon-quality.yml` · Run: [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})</sub>
+
+      - name: Workflow step summary
+        if: always()
+        run: |
+          {
+            echo "## Canon Quality — \`oddkit_audit\`"
+            echo ""
+            echo "- **Mode**: \`$ENFORCEMENT_MODE\`"
+            echo "- **Endpoint**: \`$ODDKIT_MCP_URL\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [ "${{ steps.audit.outputs.audit_failed }}" = "true" ]; then
+            echo "- **Result**: infrastructure failure (HTTP \`${{ steps.audit.outputs.http_code }}\`)" >> "$GITHUB_STEP_SUMMARY"
+          elif [ -f /tmp/audit-result.json ]; then
+            python3 - <<'PY'
+          import json, os
+          with open('/tmp/audit-result.json') as f:
+              d = json.load(f)
+          r = d.get('result', {})
+          s = r.get('summary', {})
+          out_path = os.environ['GITHUB_STEP_SUMMARY']
+          with open(out_path, 'a') as f:
+              f.write(f"- **Status**: `{r.get('status')}`\n")
+              f.write(f"- **Total findings**: {s.get('total_findings', 0)}\n")
+              f.write(f"- **By severity**: `{s.get('by_severity', {})}`\n")
+              f.write(f"- **Files scanned**: {s.get('files_scanned', 0)}\n")
+              f.write(f"- **Scope**: `{r.get('scope', {})}`\n")
+              if s.get('truncated'):
+                  f.write(f"- **Truncated**: yes (response was capped)\n")
+          PY
+          else
+            echo "- **Result**: no audit result file produced" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Enforcement gate
+        if: steps.audit.outputs.audit_failed != 'true'
+        run: |
+          STATUS=$(python3 -c "import json; print(json.load(open('/tmp/audit-result.json'))['result']['status'])")
+          echo "Enforcement mode: $ENFORCEMENT_MODE | Audit status: $STATUS"
+          if [ "$ENFORCEMENT_MODE" = "hard" ] && [ "$STATUS" != "OK" ]; then
+            echo "::error::Hard-block mode: oddkit_audit returned status=$STATUS. Failing job — fix the dead references or add explicit allowlist directives."
+            exit 1
+          fi
+          echo "Not failing the job (mode=$ENFORCEMENT_MODE, status=$STATUS)."
