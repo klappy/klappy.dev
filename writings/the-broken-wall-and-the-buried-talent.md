@@ -86,7 +86,7 @@ related:
   - uri: klappy://writings/the-biblical-roots
     label: "The Biblical Roots (appendix)"
     relationship: related
-complements: "writings/choosing-faith-not-fear.md, writings/the-biblical-roots.md"
+complements: "writings/choosing-faith-not-fear.md, draft-zeros/appendix-a-the-biblical-roots.md"
 ---
 
 # The Broken Wall and the Buried Talent
