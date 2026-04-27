@@ -49,9 +49,11 @@ jobs:
     steps:
       - name: Resolve scope
         id: scope
+        env:
+          INPUT_SCOPE_PATHS: ${{ github.event.inputs.scope_paths }}
         run: |
-          if [ -n "${{ github.event.inputs.scope_paths }}" ]; then
-            PATHS='${{ github.event.inputs.scope_paths }}'
+          if [ -n "$INPUT_SCOPE_PATHS" ]; then
+            PATHS="$INPUT_SCOPE_PATHS"
           else
             PATHS='["writings/"]'
           fi
@@ -113,7 +115,10 @@ jobs:
 
           # Parse the SSE response. The MCP server returns event-stream with a final
           # 'data: { ... }' line containing the JSON-RPC envelope.
-          python3 - <<'PY'
+          # Guard with `if !` so any parse failure (sys.exit / unhandled exception)
+          # is routed through the same audit_failed=true path used for HTTP failures,
+          # rather than aborting the step under bash -e and skipping the comment steps.
+          if ! python3 - <<'PY'
           import json, sys
           with open('/tmp/resp.raw') as f:
               raw = f.read()
@@ -139,6 +144,15 @@ jobs:
           r = inner.get('result', {})
           print(f"status={r.get('status')} findings={r.get('summary',{}).get('total_findings',0)} files={r.get('summary',{}).get('files_scanned',0)}")
           PY
+          then
+            echo "Failed to parse audit response."
+            echo "Response (first 500 bytes):"
+            head -c 500 /tmp/resp.raw || true
+            echo ""
+            echo "audit_failed=true" >> "$GITHUB_OUTPUT"
+            echo "http_code=parse_error" >> "$GITHUB_OUTPUT"
+            exit 0   # don't fail the step; the report step will surface this
+          fi
 
           echo "audit_failed=false" >> "$GITHUB_OUTPUT"
 
