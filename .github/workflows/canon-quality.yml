@@ -84,6 +84,10 @@ jobs:
           AUDIT_OK=false
           HTTP_CODE=000
           for attempt in 1 2; do
+            # `|| true` guards against curl exit codes (DNS, connection refused,
+            # TLS errors, --max-time timeout) tripping bash -e via the command
+            # substitution and aborting the retry loop. `-w '%{http_code}'` still
+            # emits "000" on transport failure, which the loop already handles.
             HTTP_CODE=$(curl -sS -o /tmp/resp.raw -w '%{http_code}' \
               -X POST \
               -H 'Content-Type: application/json' \
@@ -91,7 +95,7 @@ jobs:
               -H "User-Agent: $USER_AGENT" \
               --max-time 120 \
               -d @/tmp/req.json \
-              "$ODDKIT_MCP_URL")
+              "$ODDKIT_MCP_URL" || true)
             echo "Attempt $attempt -> HTTP $HTTP_CODE"
             if [ "$HTTP_CODE" = "200" ]; then
               AUDIT_OK=true
