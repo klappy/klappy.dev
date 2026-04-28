@@ -48,6 +48,11 @@ Results include both hits (ranked document summaries with scores) and evidence (
     "knowledge_base_url": {
       "type": "string",
       "description": "Optional. GitHub repo URL for canon override. Defaults to the configured baseline."
+    },
+    "result_grouping": {
+      "type": "string",
+      "enum": ["merged", "overlay_first", "grouped"],
+      "description": "Optional. Ranking policy for results when an overlay (knowledge_base_url) is set. \"merged\" preserves pure BM25 score order. \"overlay_first\" promotes overlay (canon) hits above baseline hits while preserving BM25 score order within each tier. \"grouped\" additionally returns separate overlay_hits and baseline_hits arrays. Conditional default: knowledge_base_url unset → \"merged\" (no behavior change); knowledge_base_url set → \"overlay_first\"."
     }
   },
   "required": ["input"]
@@ -69,20 +74,34 @@ Results include both hits (ranked document summaries with scores) and evidence (
         "tags": ["string — tags from frontmatter"],
         "score": "number — relevance score (higher is more relevant)",
         "snippet": "string — excerpt from the document",
-        "source": "baseline"
+        "source": "canon | baseline"
       }
     ],
+    "overlay_hits": "array — only present when result_grouping is \"grouped\"; same shape as hits, restricted to source=\"canon\"",
+    "baseline_hits": "array — only present when result_grouping is \"grouped\"; same shape as hits, restricted to source=\"baseline\"",
     "evidence": [
       {
         "quote": "string — direct quote from the document",
         "citation": "string — path#Section Name",
-        "source": "baseline"
+        "source": "canon | baseline"
       }
     ],
     "docs_considered": "number — total documents in the search index"
   }
 }
 ```
+
+## Result Grouping (Knowledge Base Overlay)
+
+When `knowledge_base_url` is set, the search index merges the project's overlay docs (`source: "canon"`) with the configured baseline (`source: "baseline"`). Without ranking guidance, baseline content can outrank project-specific docs simply because the baseline is larger — a contamination shape `klappy://canon/principles/scoped-truth` names as the anti-pattern.
+
+`result_grouping` controls how this is resolved:
+
+- **`"merged"`** — Pure BM25 score order. No partition. The previous default for all calls; remains the default when `knowledge_base_url` is unset.
+- **`"overlay_first"`** — Stable partition: all `source: "canon"` hits precede all `source: "baseline"` hits. BM25 score order is preserved within each tier, so a uniquely-relevant baseline doc still surfaces — just below the overlay's hits. **This is the default when `knowledge_base_url` is set.**
+- **`"grouped"`** — Same ranking as `overlay_first`, plus the response carries explicit `overlay_hits` and `baseline_hits` arrays so callers can render the tiers separately.
+
+The candidate pool is widened to 50 BM25 results when `result_grouping !== "merged"`, partitioned, then truncated to the response cap of 5. This ensures overlay docs ranked at BM25 position 6+ are visible to the partition rather than truncated before it.
 
 ## Behavioral Rules
 
@@ -96,5 +115,6 @@ Results include both hits (ranked document summaries with scores) and evidence (
 ## Canon References
 
 - `klappy://canon/values/axioms` — Axiom 1 (Reality Is Sovereign) requires retrieval over fabrication
+- `klappy://canon/principles/scoped-truth` — The contamination shape that motivated `result_grouping`; ranking precedence between overlay and baseline is the implementation answer
 - `klappy://canon/constraints/definition-of-done` — Evidence standards that search helps satisfy
 - `klappy://docs/agents/librarian/trusted-sources` — Citation rules governing how search results should be used

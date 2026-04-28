@@ -44,6 +44,15 @@ For document deliverables, preflight includes the Writing Canon (`klappy://canon
     "input": {
       "type": "string",
       "description": "Description of what you are about to implement. Be specific — the more detail provided, the more precisely relevant the returned docs and constraints will be."
+    },
+    "knowledge_base_url": {
+      "type": "string",
+      "description": "Optional. GitHub repo URL for canon override. Defaults to the configured baseline."
+    },
+    "result_grouping": {
+      "type": "string",
+      "enum": ["merged", "overlay_first", "grouped"],
+      "description": "Optional. Ranking policy for start_here when an overlay (knowledge_base_url) is set. \"merged\" preserves pure relevance ranking. \"overlay_first\" promotes overlay (canon) docs above baseline docs. \"grouped\" additionally returns separate start_here_overlay and start_here_baseline arrays. Conditional default: knowledge_base_url unset → \"merged\"; knowledge_base_url set → \"overlay_first\"."
     }
   },
   "required": ["input"]
@@ -60,6 +69,8 @@ For document deliverables, preflight includes the Writing Canon (`klappy://canon
     "start_here": [
       "string — file paths to docs ranked by relevance to the described task"
     ],
+    "start_here_overlay": "array — only present when result_grouping is \"grouped\"; subset of start_here restricted to overlay (source=\"canon\") docs",
+    "start_here_baseline": "array — only present when result_grouping is \"grouped\"; subset of start_here restricted to baseline docs",
     "dod": "string — path to the definition of done document",
     "constraints": [
       "string — paths to constraint documents applicable to this task"
@@ -68,6 +79,16 @@ For document deliverables, preflight includes the Writing Canon (`klappy://canon
   }
 }
 ```
+
+## Result Grouping (Knowledge Base Overlay)
+
+When `knowledge_base_url` is set, `start_here` and `constraints` are partitioned the same way `oddkit_search` partitions hits: overlay (`source: "canon"`) docs surface above baseline docs by default. Without this, project-specific governance can be displaced from the top of `start_here` by larger baseline corpora — the contamination shape that `klappy://canon/principles/scoped-truth` names.
+
+`result_grouping` accepts the same three values as `oddkit_search`:
+
+- **`"merged"`** — Pure relevance ranking, no partition. Default when `knowledge_base_url` is unset.
+- **`"overlay_first"`** — Overlay docs ranked above baseline docs in `start_here` and `constraints`, BM25 ordering preserved within each tier. **Default when `knowledge_base_url` is set.**
+- **`"grouped"`** — Adds explicit `start_here_overlay` and `start_here_baseline` arrays so callers can render or reason about the tiers separately.
 
 ## Behavioral Rules
 
@@ -117,3 +138,4 @@ The Progressive Disclosure Failure incident (February 2026) proved that agents w
 - `klappy://canon/constraints/README` — Index of all constraints, returned when broadly applicable
 - `klappy://canon/meta/writing-canon` — Progressive disclosure checklist, included for document deliverables
 - `klappy://canon/epistemic-modes` — Mode obligations that inform what "ready to implement" means
+- `klappy://canon/principles/scoped-truth` — The contamination shape that motivated `result_grouping`; ranking precedence between overlay and baseline applies to start_here and constraints
