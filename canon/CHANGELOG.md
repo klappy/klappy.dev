@@ -18,6 +18,18 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
+## 0.36.1 — 2026-04-29
+
+**Search-Corpus Boundary — Framing Refit (E0008.5)**
+
+Substance unchanged from 0.36.0. The §"Search-Corpus Boundary" framing is rewritten to position E0008.5 as the search-corpus expression of E0008's observability posture, rather than as a stand-alone scoping feature. The technical contract (default scope, opt-in flag, affected-tools table, cache key, telemetry fields) is identical.
+
+The new framing makes one proposition explicit: **observability requires discoverable and reliable document retrieval.** A project's own canon buried under hundreds of unrelated baseline documents is operationally indistinguishable from that canon being missing — both produce the same agent-seat outcome. E0008 made oddkit observable from the inside (traces, cache decisions, server time on every envelope); E0008.5 extends that posture outward to the search corpus, so the canon a project authored is the canon the agent can find.
+
+### Changed — Canon
+
+- **Core Governance Baseline — §"Search-Corpus Boundary"** (`canon/constraints/core-governance-baseline.md`) — Heading repromoted from "Scoped Retrieval When `knowledge_base_url` Is Set" to "Project-KB Visibility Is an Observability Property." Lead paragraph rewritten to thread the section into E0008's observability lineage. §"Why Scoping Defaults to On" repromoted to "Why Scoping Defaults to On — Buried Is Indistinguishable from Absent" with an opening that derives the default from the observability framing. §"Telemetry" repromoted to "Telemetry — The Property Has to Be Checkable from Outside" and connected to the existing §"Fail-Loud Error Envelope" pattern. No tool-facing surface changed; no parameter, default, or behavior is altered.
+
 ## 0.36.0 — 2026-04-29
 
 **Search-Corpus Boundary — Project-KB Visibility (Epoch 8.5)**

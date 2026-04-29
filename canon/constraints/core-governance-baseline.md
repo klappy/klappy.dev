@@ -166,15 +166,19 @@ The split test: if a tool cannot return a coherent response without the file, it
 
 ---
 
-## Search-Corpus Boundary — Scoped Retrieval When `knowledge_base_url` Is Set
+## Search-Corpus Boundary — Project-KB Visibility Is an Observability Property
 
 The split between *required-baseline* (§"Required in Baseline") and *canon-only* (§"Canon-Only (Never Bundled)") classifies what the worker bundles. It also classifies what the **search corpus** indexes when a project KB is set.
 
-When `knowledge_base_url` is set, the search corpus default is **overlay + required-baseline only** — not overlay + the entire baseline repo. The required-baseline files are the floor every tool needs; the canon-only files (`writings/`, `apocrypha/`, `odd/ledger/`, encoding-types, challenge-types, gate variants) belong only to the project that authored them. Indexing them into a third-party project KB drowns the project's own canon in unrelated noise — the failure shape `klappy://canon/principles/scoped-truth` names as the anti-pattern of unscoped governance.
+E0008 made oddkit observable from the inside — every subrequest traced, every cache decision recorded, every envelope carrying its own time. E0008.5 extends that posture outward: **observability requires discoverable and reliable document retrieval.** When a project's own canon is buried under hundreds of unrelated documents from a co-located baseline, the project KB is not observable from the agent's seat. The documents exist; they cannot be found. That is the same failure shape as a missing trace span — present in the system, absent from the view that decisions are made from. The boundary defined in this section is the search-corpus expression of that posture.
 
-### Why Scoping Defaults to On
+When `knowledge_base_url` is set, the search corpus default is **overlay + required-baseline only** — not overlay + the entire baseline repo. The required-baseline files are the floor every tool needs; the canon-only files (`writings/`, `apocrypha/`, `odd/ledger/`, encoding-types, challenge-types, gate variants) belong only to the project that authored them. Indexing them into a third-party project KB drowns the project's own canon in unrelated noise — the failure shape `klappy://canon/principles/scoped-truth` names as the anti-pattern of unscoped governance, and the failure shape this document's §"Failure Modes OF This Contract" anticipates as silent baseline capture. Both reduce to the same root: a corpus the agent cannot see clearly is a corpus the agent cannot reason about.
 
-A project KB exists because the project has its own canon. The agent searches it because the project's canon is the right answer to the project's questions. Merging the entire baseline into that search corpus inverts the design: in measured probes against `klappy/ptxprint-mcp`, the 566 baseline docs outranked the project's 21 canon docs in BM25 for queries the project's canon was authored to answer. The project KB's content was present and correct; it was simply outvoted.
+### Why Scoping Defaults to On — Buried Is Indistinguishable from Absent
+
+The observability framing makes the design choice automatic: a default that hides a project's own canon under unrelated baseline content fails the discoverability half of the property — and a corpus that cannot be discovered cannot be reliably retrieved from. From the agent's seat, a top-ranked unrelated document is functionally indistinguishable from the relevant document being missing. Both produce the same outcome: the right answer is not on the screen. The default must be the configuration where the project's own canon shows up first when its own canon is the right answer.
+
+A project KB exists because the project has its own canon. The agent searches it because the project's canon is the right answer to the project's questions. Merging the entire baseline into that search corpus inverts the design: in measured probes against `klappy/ptxprint-mcp`, the 566 baseline docs outranked the project's 21 canon docs in BM25 for queries the project's canon was authored to answer. The project KB's content was present and correct; it was simply outvoted. From the agent's seat that is operationally equivalent to the project KB not being there at all — which is exactly the unobservability the boundary is designed to remove.
 
 Scoping is a default, not a hard wall. Required-baseline still travels with every project KB — `axioms.md`, `orientation.md`, `definition-of-done.md`, `writing-canon.md`, `telemetry-governance.md`, and `stakes-calibration.md` are present in the search index for every consumer. Tools that depend on those files (orient, challenge, validate, preflight, telemetry_policy) keep working unchanged. What stops surfacing in scoped mode is the broader baseline: another project's writings, another project's session ledgers, another project's apocrypha. Those were never required for tool function — this document already classifies them as canon-only — they just happened to be inside the same baseline repo and to land in the search index by accident of co-location.
 
@@ -205,9 +209,9 @@ This separation is what keeps Runtime Invariant #5 (`baseline path is never user
 
 The compiled search index is content-addressed by `(baselineSha, knowledgeBaseSha, scope)`. A scoped index and a merged index against the same KB have distinct cache keys; neither poisons the other.
 
-### Telemetry
+### Telemetry — The Property Has to Be Checkable from Outside
 
-The telemetry envelope adds `search_scope`, `overlay_doc_count`, and `baseline_doc_count` on ranked actions. The maintainer can detect (a) whether scoped is the dominant default in the wild, (b) whether `include_full_baseline=true` is being adopted intentionally, and (c) whether any consumer is silently capturing baseline content into their search corpus — the failure shape §"Failure Modes OF This Contract" already names.
+The telemetry envelope adds `search_scope`, `overlay_doc_count`, and `baseline_doc_count` on ranked actions. Without these, the boundary would be a contract the maintainer has to take on faith — observable from inside the worker's logs but invisible to the consumer reading the response. With them, every ranked response carries the evidence of which corpus it was drawn from, in numbers anyone can read without running a smoke test. The maintainer can detect (a) whether scoped is the dominant default in the wild, (b) whether `include_full_baseline=true` is being adopted intentionally, and (c) whether any consumer is silently capturing baseline content into their search corpus — the failure shape §"Failure Modes OF This Contract" already names. This is the §"Fail-Loud Error Envelope" pattern applied to ranking provenance: the envelope tells you what corpus it came from so you do not have to guess.
 
 ---
 
