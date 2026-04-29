@@ -18,6 +18,18 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
+## 0.36.0 — 2026-04-29
+
+**Search-Corpus Boundary — Project-KB Visibility (Epoch 8.5)**
+
+One canon section ships ahead of the corresponding `klappy/oddkit` code change. Establishes E0008.5 (Search-Corpus Boundary) as a sub-epoch of E0008. Defines what the search corpus indexes when `knowledge_base_url` is set, restricts the default to overlay + required-baseline, and names `include_full_baseline: true` as the explicit opt-in to merged. The companion code change in `klappy/oddkit` follows in a separate PR that cites this section.
+
+The behavior the next code release targets is project-KB visibility: a project's own canon stops being outranked in BM25 by hundreds of unrelated baseline documents from a co-located repo. The measurements driving this change are recorded in `klappy/ptxprint-mcp` at `canon/handoffs/oddkit-kb-isolation-feature-request.md`. Reproduction in the present session against `oddkit` v0.26.0 confirmed those numbers (catalog total 586 with 21 overlay vs 566 baseline; klappy.dev-only queries surfaced klappy.dev hits ranked above the project's own canon).
+
+### Changed — Canon
+
+- **Core Governance Baseline — added §"Search-Corpus Boundary — Scoped Retrieval When `knowledge_base_url` Is Set"** (`canon/constraints/core-governance-baseline.md`) — Tier 1, neutral, semi-stable. New section between §"What Ships in the Baseline" and §"Build-Time Invariants" with six sub-sections: why scoping defaults to on, opt-in to merged, scope-vs-resolution boundary, affected-tools table, cache-key rule, telemetry fields. Cross-references `klappy://canon/principles/scoped-truth` (the principle this operationalizes), `klappy://canon/principles/dry-canon-says-it-once` (which the prior unscoped behavior violated), and Runtime Invariant #5 of this same document (which scoping must preserve).
+
 ## 0.35.0 — 2026-04-20
 
 **Post-4.7 Adaptation Suite — Operator-Attention Calibration (Epoch 8.4)**

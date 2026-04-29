@@ -166,6 +166,51 @@ The split test: if a tool cannot return a coherent response without the file, it
 
 ---
 
+## Search-Corpus Boundary — Scoped Retrieval When `knowledge_base_url` Is Set
+
+The split between *required-baseline* (§"Required in Baseline") and *canon-only* (§"Canon-Only (Never Bundled)") classifies what the worker bundles. It also classifies what the **search corpus** indexes when a project KB is set.
+
+When `knowledge_base_url` is set, the search corpus default is **overlay + required-baseline only** — not overlay + the entire baseline repo. The required-baseline files are the floor every tool needs; the canon-only files (`writings/`, `apocrypha/`, `odd/ledger/`, encoding-types, challenge-types, gate variants) belong only to the project that authored them. Indexing them into a third-party project KB drowns the project's own canon in unrelated noise — the failure shape `klappy://canon/principles/scoped-truth` names as the anti-pattern of unscoped governance.
+
+### Why Scoping Defaults to On
+
+A project KB exists because the project has its own canon. The agent searches it because the project's canon is the right answer to the project's questions. Merging the entire baseline into that search corpus inverts the design: in measured probes against `klappy/ptxprint-mcp`, the 566 baseline docs outranked the project's 21 canon docs in BM25 for queries the project's canon was authored to answer. The project KB's content was present and correct; it was simply outvoted.
+
+Scoping is a default, not a hard wall. Required-baseline still travels with every project KB — `axioms.md`, `orientation.md`, `definition-of-done.md`, `writing-canon.md`, `telemetry-governance.md`, and `stakes-calibration.md` are present in the search index for every consumer. Tools that depend on those files (orient, challenge, validate, preflight, telemetry_policy) keep working unchanged. What stops surfacing in scoped mode is the broader baseline: another project's writings, another project's session ledgers, another project's apocrypha. Those were never required for tool function — this document already classifies them as canon-only — they just happened to be inside the same baseline repo and to land in the search index by accident of co-location.
+
+### Opt-In to Merged
+
+Callers who genuinely want the merged corpus pass `include_full_baseline: true` on the relevant action. This restores the prior behavior: overlay + full baseline indexed together, with arbitration favoring overlay on path/URI conflicts. Use cases include a project that intentionally wants to surface cross-domain hits, a debugging session reproducing a prior result, and the default-KB consumer where there is no overlay to scope to (in which case the parameter is a no-op).
+
+When `knowledge_base_url` is unset, default behavior is unchanged: the baseline is the canon, `include_full_baseline` defaults to `true`, and there is nothing to scope.
+
+### Scope Applies Only to the Search Index — Not to Per-File Resolution
+
+The boundary defined here applies to the **search corpus** — the set of documents the worker BM25-indexes for ranked retrieval. It does **not** override the per-required-file resolution stack defined in §"The Resolution Stack." `oddkit_get` for a required-baseline URI still walks live-canon → bundled-baseline → fail-loud as documented. `oddkit_orient`, `oddkit_challenge`, and `oddkit_validate` still read their required governance files via the resolver, not the search index. The fact that `writings/the-intern.md` is excluded from a scoped search corpus does not mean it disappears from `oddkit_get`'s resolution surface; it means it does not compete for ranking slots against the project KB's own canon.
+
+This separation is what keeps Runtime Invariant #5 (`baseline path is never user-configurable`) intact. The baseline floor — the files that must always be available regardless of caller — is unchanged. Only the search corpus, which is a derived surface assembled per-call from canon and baseline together, becomes scope-sensitive.
+
+### Affected Tools
+
+| Tool | Default when `knowledge_base_url` is set | Accepts `include_full_baseline`? |
+|---|---|---|
+| `oddkit_search` | Overlay + required-baseline | Yes |
+| `oddkit_catalog` | Overlay + required-baseline (counts and category aggregations scoped accordingly) | Yes |
+| `oddkit_preflight` | Overlay + required-baseline | Yes |
+| `oddkit_orient` | Unchanged — governance reads, not search index | No |
+| `oddkit_get` | Unchanged — per-file resolution stack | No |
+| `oddkit_challenge`, `oddkit_validate`, `oddkit_gate`, `oddkit_encode` | Unchanged — governance reads only | No |
+
+### Cache Key Includes Scope
+
+The compiled search index is content-addressed by `(baselineSha, knowledgeBaseSha, scope)`. A scoped index and a merged index against the same KB have distinct cache keys; neither poisons the other.
+
+### Telemetry
+
+The telemetry envelope adds `search_scope`, `overlay_doc_count`, and `baseline_doc_count` on ranked actions. The maintainer can detect (a) whether scoped is the dominant default in the wild, (b) whether `include_full_baseline=true` is being adopted intentionally, and (c) whether any consumer is silently capturing baseline content into their search corpus — the failure shape §"Failure Modes OF This Contract" already names.
+
+---
+
 ## Build-Time Invariants
 
 The worker build process must enforce these invariants. A build that violates any of them fails before produce.
