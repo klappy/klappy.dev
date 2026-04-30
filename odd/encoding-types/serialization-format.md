@@ -6,7 +6,7 @@ exposure: nav
 tier: 2
 voice: neutral
 stability: semi_stable
-tags: ["odd", "oddkit", "encode", "dolche", "tsv", "format", "serialization", "governance", "storage"]
+tags: ["odd", "oddkit", "encode", "dolche", "tsv", "format", "serialization", "encoding-type", "governance", "storage"]
 epoch: E0008
 date: 2026-04-15
 derives_from: "docs/oddkit/proactive/dolche-vocabulary.md, odd/encoding-types/how-to-write-encoding-types.md, canon/principles/prompt-over-code.md"
