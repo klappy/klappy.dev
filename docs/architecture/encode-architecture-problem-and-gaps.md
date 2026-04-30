@@ -13,8 +13,22 @@ derives_from: "canon/definitions/dolcheo-vocabulary.md, canon/principles/prompt-
 complements: "odd/encoding-types/decision.md, odd/encoding-types/observation.md, odd/encoding-types/learning.md, odd/encoding-types/constraint.md, odd/encoding-types/handoff.md, odd/encoding-types/open.md, odd/encoding-types/encode.md"
 governs: "Implementation brief for the oddkit_encode vodka refactor (Phase 2 of E0008.4). Names the problem, evaluates alternatives, recommends Alternative D — Governance-defined field schemas with format-agnostic serialization."
 provenance: "Originated in klappy/truthkit-kb at docs/architecture/encode-architecture-problem-and-gaps.md (commit prior to 2026-04-16). Migrated verbatim to klappy.dev as the implementation brief for the oddkit encode refactor, with frontmatter added for canon discoverability. The TruthKit-KB origin is preserved in repo history; this doc is now the oddkit-canonical version."
-status: active
+status: superseded
+superseded_by: "docs/architecture/encode-current-state-2026-04-30.md"
+supersession_addendum_at: 2026-04-30
+supersession_reason: "Audit 2026-04-30 — described code state that PR #96 retired on 2026-04-16; failed canon/principles/code-claims-require-code-observation"
 ---
+
+> **STATUS — SUPERSEDED BY AUDIT 2026-04-30.** This document was published in PR #157 (E0008.4 Phase 1, merged 2026-04-30T05:08:53Z) but described code state that PR #96 in `klappy/oddkit` had retired on 2026-04-16T02:14:13Z. The architectural problem this document analyzes was already resolved before this document was published. See `klappy://canon/principles/code-claims-require-code-observation` for the principle this failure earned, and `klappy://docs/architecture/encode-current-state-2026-04-30` for what the worker actually does today. This document is preserved for postmortem value, not removed.
+
+**What was wrong:** This brief diagnoses six gaps in the encode parser. As of 2026-04-30 (the day this brief was migrated into klappy.dev canon), five of those six gaps were already resolved in `klappy/oddkit@workers/src/orchestrate.ts` by PR #96 — which had merged two weeks prior, on the same day this brief was authored in `klappy/truthkit-kb`. The brief became stale on arrival and was cited authoritatively across multiple subsequent canon documents and a user-memory entry without any reader verifying against current code state. The audit on 2026-04-30 (afternoon) caught the propagation chain and shipped this supersession.
+
+**What's still true:** Gap 1's framing ("the parser hardcodes four English keywords against a vocabulary of seven dimensions") is accurate for the Node CLI surface (`klappy/oddkit src/tasks/encode.js`). The CLI is queued for deprecation per `klappy://odd/handoffs/2026-04-30-cli-encode-deprecation` rather than backport.
+
+**What you should read instead:** `klappy://docs/architecture/encode-current-state-2026-04-30` is the accurate current-state description. `klappy://odd/handoffs/2026-04-30-encode-vodka-refactor-alternative-d-revised` scopes the actual remaining Phase 2 work.
+
+---
+
 
 # Encode Architecture: Problem, Gaps, and Alternatives Analysis
 
