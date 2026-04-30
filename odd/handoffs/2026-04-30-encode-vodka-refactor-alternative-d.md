@@ -12,8 +12,22 @@ date: 2026-04-30
 derives_from: "docs/architecture/encode-architecture-problem-and-gaps.md, odd/encoding-types/decision.md, odd/encoding-types/observation.md, odd/encoding-types/learning.md, odd/encoding-types/constraint.md, odd/encoding-types/handoff.md, odd/encoding-types/open.md, odd/encoding-types/serialization-format.md, odd/encoding-types/how-to-write-encoding-types.md, canon/definitions/dolcheo-vocabulary.md, canon/constraints/release-validation-gate.md, canon/constraints/core-governance-baseline.md, odd/ledger/2026-04-20-p1-3-4-encode-canon-parity-landed.md"
 complements: "odd/handoffs/2026-04-21-p1-3-2-gate-canary.md, odd/handoffs/2026-04-20-p1-3-4-encode-canon-parity.md"
 governs: "Phase 2 implementation gate for the oddkit_encode vodka refactor: the parser must read encoding-type and serialization-format governance from canon at runtime, parse TSV input against governance-defined field schemas, score per-type quality from governance criteria, return per-type artifacts in a markdown stream, and declare governance_source + governance_uris in the response envelope."
-status: active
+status: superseded
+superseded_by: "odd/handoffs/2026-04-30-encode-vodka-refactor-alternative-d-revised.md"
+supersession_addendum_at: 2026-04-30
+supersession_reason: "Audit 2026-04-30 — described code state that PR #96 retired on 2026-04-16; failed canon/principles/code-claims-require-code-observation"
 ---
+
+> **STATUS — SUPERSEDED BY AUDIT 2026-04-30.** This document was published in PR #157 (E0008.4 Phase 1, merged 2026-04-30T05:08:53Z) but described code state that PR #96 in `klappy/oddkit` had retired on 2026-04-16T02:14:13Z. The architectural problem this document analyzes was already resolved before this document was published. See `klappy://canon/principles/code-claims-require-code-observation` for the principle this failure earned, and `klappy://docs/architecture/encode-current-state-2026-04-30` for what the worker actually does today. This document is preserved for postmortem value, not removed.
+
+**What was wrong:** This handoff scoped a Phase 2 refactor of work that PR #96 had already shipped to `klappy/oddkit` main on 2026-04-16. The acceptance criteria, validator checklist, and pitfalls listed below describe a desired end-state that the worker had largely already reached. The audit on 2026-04-30 (afternoon) traced the citation chain — this handoff inherited its framing from the architecture brief, which inherited it from a state-of-the-world snapshot taken before PR #96.
+
+**What's still true:** The release-validation-gate requirements named here (Bugbot to completed, Sonnet 4.6 read-only validator via Managed Agents, canon outranks session shortcuts) remain mandatory for Phase 2. The pitfall list (stop-word filters, derivation caches, set-intersection matchers, parallel-release version collisions) remains accurate.
+
+**What you should read instead:** `klappy://odd/handoffs/2026-04-30-encode-vodka-refactor-alternative-d-revised` is the accurate Phase 2 handoff. It scopes five small worker items (envelope plural alignment, dedup-by-letter bug, fallback baseline gap, self-teaching surface, schema-driven check evaluator) plus the Open dedup bug surfaced by the audit.
+
+---
+
 
 # Handoff — oddkit_encode Vodka Refactor (Alternative D, Governance-Driven Parser, E0008.4 Phase 2)
 
