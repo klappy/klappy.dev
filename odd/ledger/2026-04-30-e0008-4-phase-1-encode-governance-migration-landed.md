@@ -12,8 +12,22 @@ date: 2026-04-30
 derives_from: "docs/architecture/encode-architecture-problem-and-gaps.md, odd/handoffs/2026-04-30-encode-vodka-refactor-alternative-d.md, odd/ledger/2026-04-20-p1-3-4-encode-canon-parity-landed.md, canon/definitions/dolcheo-vocabulary.md, canon/constraints/release-validation-gate.md"
 complements: "odd/handoffs/2026-04-30-encode-vodka-refactor-alternative-d.md, odd/encoding-types/decision.md, odd/encoding-types/observation.md, odd/encoding-types/learning.md, odd/encoding-types/constraint.md, odd/encoding-types/handoff.md, odd/encoding-types/open.md"
 governs: "Closeout for Phase 1 of E0008.4 (encode governance migration from truthkit-kb into oddkit canon). Records the canon-only ship that prepares Phase 2 (parser refactor in klappy/oddkit). PR klappy/klappy.dev#157."
-status: active
+status: superseded
+superseded_by: "odd/ledger/2026-04-30-audit-cleanup-encode-artifacts-landed.md"
+supersession_addendum_at: 2026-04-30
+supersession_reason: "Audit 2026-04-30 — described code state that PR #96 retired on 2026-04-16; failed canon/principles/code-claims-require-code-observation"
 ---
+
+> **STATUS — SUPERSEDED BY AUDIT 2026-04-30.** This document was published in PR #157 (E0008.4 Phase 1, merged 2026-04-30T05:08:53Z) but described code state that PR #96 in `klappy/oddkit` had retired on 2026-04-16T02:14:13Z. The architectural problem this document analyzes was already resolved before this document was published. See `klappy://canon/principles/code-claims-require-code-observation` for the principle this failure earned, and `klappy://docs/architecture/encode-current-state-2026-04-30` for what the worker actually does today. This document is preserved for postmortem value, not removed.
+
+**What was wrong:** This ledger's Observations section (specifically [O-04]) claimed that "the parser still hardcodes the four English keywords... runtime read and parser logic are decoupled in the current implementation." Both halves are wrong as stated. The worker parser was governance-driven via PR #96 (merged 2026-04-16) and its runtime governance reads ARE wired into its parsing logic. The ledger inherited the error from the handoff and the architecture brief, both of which were authored against pre-#96 state.
+
+**What's still true:** The procedural lessons graduated in this ledger remain valid — L-01 (verbatim migration with provenance frontmatter), L-02 (release-validation-gate's three rules don't apply uniformly to canon-only PRs), L-03 (persist-to-project-storage means canon repo, not download storage), and the C-03 graduation of L-03 to constraint. The Phase 1 ship itself was real — five enriched encoding-type articles, one enriched in place (open.md), one tag sync (serialization-format.md), one architecture brief, one handoff, one ledger. The work landed; the framing of why was wrong.
+
+**What you should read instead:** `klappy://odd/ledger/2026-04-30-audit-cleanup-encode-artifacts-landed` is the accurate closeout ledger for the cleanup PR that supersedes this one and adds the new constraint that prevents the same chain from forming again.
+
+---
+
 
 # E0008.4 Phase 1 Closeout — Encode Governance Migration from TruthKit-KB
 
