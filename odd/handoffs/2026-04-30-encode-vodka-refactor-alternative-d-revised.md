@@ -13,8 +13,9 @@ describes_state_at: "klappy/oddkit@1a1f093 (main, 2026-04-29) and klappy/klappy.
 derives_from: "docs/architecture/encode-current-state-2026-04-30.md, canon/principles/code-claims-require-code-observation.md, canon/constraints/release-validation-gate.md, canon/constraints/core-governance-baseline.md"
 complements: "docs/architecture/encode-current-state-2026-04-30.md, odd/handoffs/2026-04-30-cli-encode-deprecation.md"
 supersedes: "odd/handoffs/2026-04-30-encode-vodka-refactor-alternative-d.md"
+superseded_by: "odd/ledger/2026-04-30-encode-vodka-refactor-phase-2-landed.md"
 governs: "Phase 2 implementation gate for the oddkit_encode worker — the five small remaining items (envelope plural alignment, dedup-by-letter bug, fallback baseline gap, self-teaching surface, schema-driven check evaluator) plus the dedup bug surfaced by Audit 2026-04-30. CLI deprecation is out of scope per separate handoff. Replaces the predecessor handoff, which scoped against pre-PR-#96 state."
-status: active
+status: superseded
 ---
 
 # Handoff (Revised) — oddkit_encode Phase 2
