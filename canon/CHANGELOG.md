@@ -18,6 +18,22 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
+## 0.37.0 — 2026-04-30
+
+**Specs Lock at Implementation — A Spec Is a Contract; Don't Change It Mid-Build (E0008.6)**
+
+A new tier-2 principle. A spec is a contract between author and implementer. Once implementation begins, the spec is locked. Forward-looking changes ship as `vN+1`, not as edits to the locked spec. The locked spec describes what was built; the new spec describes what's being built. This preserves an auditable spec-to-code mapping and protects the implementer's reasoning from being invalidated mid-build.
+
+The principle is the spec-level analog of the gate-lock pattern that mode discipline applies inside a single execution turn (`canon/principles/contract-governs-handoff-drift.md`). At turn scale: when the operator says "go," the scope is locked for the duration of the execution mode. At spec scale: when implementation begins, the contract is locked for the duration of that version. Both protect the same thing — the implementer's reasoning — at different time horizons.
+
+Establishes E0008.6 (Spec-Lifecycle Discipline) as a sub-epoch of E0008. Sits adjacent to E0008.4 (governance-change-discipline) — both are governance disciplines for documents that bind implementer behavior — and operationalizes the contract-stability theme that contract-governs-handoff-drift opened in E0008.3.
+
+The deciding-argument case was H-T3 of `klappy/ptxprint-mcp/canon/encodings/telemetry-feature-planning-ledger.md` (2026-04-30): operator was asked whether to amend the implemented v1.2 spec to add two new tools or to ship a new v1.3 spec. Answer: *"Specs shouldn't be changed after implementation. V1.3 is the right call."* A retroactive realization in the same session: an earlier in-session commit had edited v1.2 spec to add references to the not-yet-built telemetry tools — a principle violation. The operator confirmed the revert. The principle was already governing the next decision before it was named.
+
+### Added — Canon
+
+- **Principle: Specs Lock at Implementation** (`canon/principles/specs-lock-at-implementation.md`) — Tier 2, neutral, working. New principle. Defines the lock point (code committed, autonomous run kicked off, spec handed to a human implementer, or spec shipped in a release artifact). Catalogs the three pressures that quietly violate the principle (the "small fix" pressure, the "keep it current" pressure, the "no one will notice" pressure) and the failure modes they produce (ghost contracts, auditable-mapping erosion, re-validation churn, forward-looking changes losing their venue). Documents the practical pattern (vN+1 with `supersedes:` frontmatter and a "What changed" preamble), edge cases (pre-implementation changes are fine; cross-cutting current-state docs follow different rules; errata and bug-fix typos are gray and prefer vN+1 with an errata note; implementation-time discoveries default to "stop and re-spec" or "defer and document," with inline clarification as the temptation that erodes the principle). Companion-pattern table places the principle in the family of contract-stability patterns operating at different time horizons (mode discipline within a turn, spec lock across one spec lifecycle, canon authority across many sessions, canon versioning across program epochs).
+
 ## 0.36.1 — 2026-04-29
 
 **Search-Corpus Boundary — Framing Refit (E0008.5)**
