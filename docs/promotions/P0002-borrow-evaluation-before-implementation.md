@@ -7,7 +7,7 @@ tier: 3
 voice: neutral
 stability: evolving
 tags: ["promotions", "proposed", "6B", "borrow", "bide", "build", "preflight", "planning", "agent-execution", "theory-of-constraints", "ai-collaboration", "vision-fit", "reversibility"]
-promotion_status: proposed
+promotion_status: accepted
 ---
 
 # P0002: Promote a Planning-Mode Borrow Evaluation as Agent-Binding Governance, Add Bide as the Sixth B, and Surface Reversibility
@@ -159,23 +159,21 @@ Full proposed text is staged at `canon/bootstrap/model-operating-contract.diff.m
 
 ## Status
 
-`proposed`
+`accepted` (2026-05-05)
 
 ## Review Notes
 
-(To be filled during review)
-
-- **Reviewer**:
-- **Decision**:
-- **Date**:
-- **Notes**:
-- **Naming decision (Bide / other)**:
-- **Inspection criteria — additions or refinements**:
-- **Reversibility format — keep "forward | backward" or refine**:
+- **Reviewer**: klappy (operator)
+- **Decision**: `accepted`
+- **Date**: 2026-05-05
+- **Notes**: Decision recorded during the recurrence-escalation conversation immediately following verification that agent-messaging-service PR #33 (D0023, 2026-05-04) shipped the hosted `/mcp` wrapper as 1003 lines of handrolled JSON-RPC dispatch with no MCP SDK dependency — the sixth occurrence of the pattern this promotion documents, and the second within agent-messaging-service (at the wrapper layer; the wire layer remains correctly framed as the `inspected-and-rejected → Build = minimal` success case). The recurrence inside a project where the day-3 journal Constraint row had explicitly named the SDK one day prior is the empirical disproof of "proposal alone is sufficient" and the empirical proof that the three coordinated canon edits this promotion proposes must reach `executed` to bind future fresh agent sessions on new MCP server projects.
+- **Naming decision (Bide / other)**: Bide retained — operator's coinage; semantics, position, three resolution paths, inspection criteria, and reversibility treatment are the load-bearing parts and are unchanged.
+- **Inspection criteria — additions or refinements**: None this round. The six criteria (vision conflict, foundational gap, gross overcomplication, opinionated stack imposition, improper authority, persistent gap after multiple field iterations) cover the AMS-wrapper failure case under "improper authority" (the agent extended SPEC §11's stale default beyond its proper scope) and "persistent gap" (the day-3 journal Constraint row was on disk; the executing session did not surface it). Both criteria already existed; no additions needed.
+- **Reversibility format — keep "forward | backward" or refine**: Keep. The format proved useful in the AMS-local manifestation (`ams://canon/constraints/mcp-build-side-governance`) where reversibility is named explicitly as a one-line section.
 
 ## Execution Record
 
-(To be filled after acceptance, executed by operator per `AGENTS.md` canon-read-only rule)
+(To be filled by operator per `AGENTS.md` canon-read-only rule. Acceptance does not imply execution; the three coordinated canon edits are still pending operator commits.)
 
 - **Commit**:
 - **Method doc updated (Edit 1)**: `canon/methods/borrow-bend-break-beget-build.md` (consider rename to `borrow-bend-break-beget-bide-build`)
