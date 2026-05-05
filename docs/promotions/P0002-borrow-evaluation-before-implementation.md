@@ -7,7 +7,7 @@ tier: 3
 voice: neutral
 stability: evolving
 tags: ["promotions", "proposed", "6B", "borrow", "bide", "build", "preflight", "planning", "agent-execution", "theory-of-constraints", "ai-collaboration", "vision-fit", "reversibility"]
-promotion_status: proposed
+promotion_status: accepted
 ---
 
 # P0002: Promote a Planning-Mode Borrow Evaluation as Agent-Binding Governance, Add Bide as the Sixth B, and Surface Reversibility
@@ -43,16 +43,19 @@ This promotion canonizes all of the above so the agent's evaluation can reproduc
 | Project: aquifer-mcp              | 2026          | FAIL (handrolled transport)   | Custom server framing reinvented                                     |
 | Project: ptxprint-mcp             | 2026          | FAIL (handrolled transport)   | Same pattern recurred                                                |
 | Project: app-builder-mcp          | 2026          | FAIL (handrolled transport)   | Same pattern recurred                                                |
+| Project: agent-messaging-service — hosted `/mcp` wrapper (PR #33, D0023) | 2026-05-04 | FAIL (handrolled transport)   | `worker/src/mcp.ts` shipped 1003 lines of hand-implemented Streamable HTTP + JSON-RPC dispatch + initialize handshake + tools/list / tools/call dispatch + notifications, with zero MCP SDK dependencies. Direct contradiction of the binding journal Constraint row at `journal/2026-05-03-day3-mcp-sdk-migration.tsv` which named Cloudflare `agents/mcp` McpAgent for this exact endpoint. Distinct altitude from the AMS-wire success case below — same project, different layer. |
 
-**Total failure observations**: 5
-**Independent occurrences**: 5 (distinct repositories, distinct sessions, distinct project goals)
+**Total failure observations**: 6
+**Independent occurrences**: 6 (distinct repositories OR distinct layers within a repository, distinct sessions, distinct project goals)
+
+**Recurrence note (added 2026-05-05):** The sixth failure landed three days after this promotion artifact was opened, while the three coordinated canon edits this artifact proposes remained `proposed` and unexecuted. The next session's preflight did not surface the rule because the rule does not yet exist in canon — only in this proposal. The recurrence is itself evidence for accelerating the canon-execution step that this promotion's `Edit 1` / `Edit 2` / `Edit 3` describe; an AMS-local manifestation of the constraint has been landed at `ams://canon/constraints/mcp-build-side-governance` to bind future MCP wrapper work in that one repository pending upstream canon execution.
 
 ### Success cases — both outcomes of the Bide fork
 
 | Project                          | Period        | 6B Resolution Path                    | Notes                                                                                                |
 | -------------------------------- | ------------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | oddkit (write layer)             | Jan–Feb 2026  | `Bide → inspected-and-adopted`        | Specific bet: connector-style integrations would mature into native connectors across major AI tools (GitHub MCP server). Manual fallback: humans as the wire/bus during the wait. Field caught up; adopted; Build = `none` |
-| agent-messaging-service          | 2026          | `Borrow → Bend → Break → Bide → inspected-and-rejected → Build = minimal` | Used connectors (Borrow); bent them; observed gaps (Break); waited for those specific gaps to close; inspection found persistent gaps + opinionated stack imposition + improper authority + foundational gap; Build was correct by exclusion |
+| agent-messaging-service — wire layer | 2026          | `Borrow → Bend → Break → Bide → inspected-and-rejected → Build = minimal` | Used connectors (Borrow); bent them; observed gaps (Break); waited for those specific gaps to close; inspection found persistent gaps + opinionated stack imposition + improper authority + foundational gap; Build was correct by exclusion. Note: scoped to the AMS *wire* (the dumb-pipe broker substrate). The AMS *wrapper* layer failed the rule independently — see failure row #6 above. The pattern recurs at finer altitudes; the wire's correct Bide outcome did not propagate to the wrapper above it. |
 
 **Total success cases**: 2
 **Significance:** The success cases are not edge cases or fallback paths. They are the existing operator discipline that this promotion is canonizing. Both `inspected-and-adopted` (oddkit) and `inspected-and-rejected → Build` (AMS) are success outcomes of the same disciplined Bide fork, resolved correctly to different answers based on what the field actually produced and how it inspected against the vision. Treating one as the "main" path and the other as a "fallback" misframes the rule.
@@ -63,7 +66,7 @@ All implementation tasks where a maintained upstream substrate exists, OR where 
 
 ### Operator cost
 
-Five explanatory conversations for the failure cases, plus the unmeasured but real cost of carrying the discernment work alone for the success cases (the Bide inspection criteria and reversibility considerations currently live only in operator judgment).
+Six explanatory conversations for the failure cases (the sixth on 2026-05-05, escalating during the recurrence inside agent-messaging-service itself), plus the unmeasured but real cost of carrying the discernment work alone for the success cases (the Bide inspection criteria and reversibility considerations currently live only in operator judgment).
 
 ## Current Handling
 
@@ -76,7 +79,7 @@ There is no operational guard. Canon already covers the principle:
 
 But none of these get *operationally surfaced* at the planning step where the agent decides what to implement. The 5B method is meta — read once at the strategic layer and not re-evaluated per task. Preflight returns constraints but does not require a Borrow inventory. Mode discipline frames *where* questions belong but not *which* questions are mandatory. Bide — including its inspection criteria — is not in the method at all. Reversibility is not in canon at all.
 
-The result: the rule is honored on principle and violated in execution, while the inspection discipline and reversibility reasoning that distinguishes legitimate Build (AMS) from sloppy Build (the five MCP servers) live only in operator judgment.
+The result: the rule is honored on principle and violated in execution, while the inspection discipline and reversibility reasoning that distinguishes legitimate Build (AMS-wire) from sloppy Build (the six MCP server / wrapper handrolls) live only in operator judgment. The 2026-05-04 recurrence inside AMS itself — at the wrapper layer, three days after this promotion landed and one day after the day-3 journal Constraint row named the SDK explicitly — is the strongest evidence that proposal-without-execution does not bind a fresh agent session. The proposal must reach `executed` status for the rule to do its job.
 
 ## Proposed Promotion
 
@@ -156,23 +159,21 @@ Full proposed text is staged at `canon/bootstrap/model-operating-contract.diff.m
 
 ## Status
 
-`proposed`
+`accepted` (2026-05-05)
 
 ## Review Notes
 
-(To be filled during review)
-
-- **Reviewer**:
-- **Decision**:
-- **Date**:
-- **Notes**:
-- **Naming decision (Bide / other)**:
-- **Inspection criteria — additions or refinements**:
-- **Reversibility format — keep "forward | backward" or refine**:
+- **Reviewer**: klappy (operator)
+- **Decision**: `accepted`
+- **Date**: 2026-05-05
+- **Notes**: Decision recorded during the recurrence-escalation conversation immediately following verification that agent-messaging-service PR #33 (D0023, 2026-05-04) shipped the hosted `/mcp` wrapper as 1003 lines of handrolled JSON-RPC dispatch with no MCP SDK dependency — the sixth occurrence of the pattern this promotion documents, and the second within agent-messaging-service (at the wrapper layer; the wire layer remains correctly framed as the `inspected-and-rejected → Build = minimal` success case). The recurrence inside a project where the day-3 journal Constraint row had explicitly named the SDK one day prior is the empirical disproof of "proposal alone is sufficient" and the empirical proof that the three coordinated canon edits this promotion proposes must reach `executed` to bind future fresh agent sessions on new MCP server projects.
+- **Naming decision (Bide / other)**: Bide retained — operator's coinage; semantics, position, three resolution paths, inspection criteria, and reversibility treatment are the load-bearing parts and are unchanged.
+- **Inspection criteria — additions or refinements**: None this round. The six criteria (vision conflict, foundational gap, gross overcomplication, opinionated stack imposition, improper authority, persistent gap after multiple field iterations) cover the AMS-wrapper failure case under "improper authority" (the agent extended SPEC §11's stale default beyond its proper scope) and "persistent gap" (the day-3 journal Constraint row was on disk; the executing session did not surface it). Both criteria already existed; no additions needed.
+- **Reversibility format — keep "forward | backward" or refine**: Keep. The format proved useful in the AMS-local manifestation (`ams://canon/constraints/mcp-build-side-governance`) where reversibility is named explicitly as a one-line section.
 
 ## Execution Record
 
-(To be filled after acceptance, executed by operator per `AGENTS.md` canon-read-only rule)
+(To be filled by operator per `AGENTS.md` canon-read-only rule. Acceptance does not imply execution; the three coordinated canon edits are still pending operator commits.)
 
 - **Commit**:
 - **Method doc updated (Edit 1)**: `canon/methods/borrow-bend-break-beget-build.md` (consider rename to `borrow-bend-break-beget-bide-build`)
@@ -186,6 +187,8 @@ Full proposed text is staged at `canon/bootstrap/model-operating-contract.diff.m
 
 This artifact exists because the operator surfaced the recurrence of the handroll failure on the fifth occurrence (escalated during the sixth project, agent-messaging-service), framed the rationale in *The Goal* / theory-of-constraints terms, named the missing step (Bide) by describing the oddkit-write-layer proof case (with its specific bet on connector-pattern maturity and humans as the manual wire/bus during the wait), corrected the framing of agent-messaging-service from "sixth failure" to "worked example of the `Borrow → Bend → Break → Bide → inspected-and-rejected → Build = minimal` path", surfaced the inspection criteria (vision conflict, foundational gap, gross overcomplication, opinionated stack imposition, improper authority), and introduced reversibility as a load-bearing planning-time criterion that varies per application.
 
-By the rules of `klappy://docs/promotions` § "Promotion Review Triggers," this satisfies *Repeated validation failures* (≥2) by a wide margin (5) and *Rules require explanation* (the 5B method exists but isn't operationally crisp at the agent's planning-to-execution boundary, lacks the Bide step entirely, has no vocabulary for the inspection criteria the operator already applies in practice, and has no treatment of reversibility cost).
+By the rules of `klappy://docs/promotions` § "Promotion Review Triggers," this satisfies *Repeated validation failures* (≥2) by a wide margin (now 6, with the AMS hosted `/mcp` wrapper added 2026-05-05 as the sixth) and *Rules require explanation* (the 5B method exists but isn't operationally crisp at the agent's planning-to-execution boundary, lacks the Bide step entirely, has no vocabulary for the inspection criteria the operator already applies in practice, and has no treatment of reversibility cost).
+
+**Recurrence update — 2026-05-05.** The original artifact framed agent-messaging-service as "worked example of the `Borrow → Bend → Break → Bide → inspected-and-rejected → Build = minimal` path" — and that framing remains correct *for the AMS wire layer*. However, on 2026-05-04 the same project shipped its hosted `/mcp` wrapper (PR #33, D0023) at the layer above the wire, and that wrapper is 1003 lines of handrolled JSON-RPC dispatch with no MCP SDK dependency — directly contradicting the binding journal Constraint row dated 2026-05-03 that named Cloudflare `agents/mcp` McpAgent for this exact endpoint. The pattern recurred at finer altitude inside a project that had correctly applied the rule at coarser altitude. This is the sharpest possible evidence that proposal-without-execution does not bind a fresh agent session: P0002 was on disk three days, the day-3 journal Constraint row was on disk one day, the highest-altitude SPEC §11 still defaulted the next agent to handroll, and the next agent followed SPEC. An AMS-local manifestation of the rule has been landed at `ams://canon/constraints/mcp-build-side-governance` (and the contradicting SPEC §11 line patched) to bind the next AMS MCP wrapper session pending upstream canon execution. The upstream canon execution — Edits 1, 2, 3 of this promotion — remains the load-bearing prevention for the next *new* MCP server project.
 
 Per `docs/promotions/README.md` and `AGENTS.md`, agents propose; humans decide; canon is read-only to agents. This is a proposal. The drafted constraint doc and diff documents for the method and bootstrap are delivered alongside this promotion as working drafts so review has the actual proposed text — not just descriptions — and so execution after acceptance is a copy/paste operation, not a re-derivation.
