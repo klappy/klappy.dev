@@ -6,8 +6,8 @@ exposure: nav
 tier: 3
 voice: neutral
 stability: evolving
-tags: ["promotions", "proposed", "definition-of-done", "spec-convention", "agent-observable", "amendment"]
-promotion_status: proposed
+tags: ["promotions", "accepted", "definition-of-done", "spec-convention", "agent-observable", "amendment"]
+promotion_status: accepted
 ---
 
 # P0007: Spec DoD Must Be 5–7 Agent-Observable Behaviors, Not Implementation Milestones
@@ -109,16 +109,14 @@ The convention pairs naturally with `canon/principles/specs-lock-at-implementati
 
 ## Status
 
-`proposed`
+`accepted` (2026-05-05)
 
 ## Review Notes
 
-(To be filled during review)
-
-- **Reviewer**:
-- **Decision**:
-- **Date**:
-- **Notes**:
+- **Reviewer**: klappy (operator)
+- **Decision**: `accepted`
+- **Date**: 2026-05-05
+- **Notes**: Accepted in the 8-proposal sweep. P0007 is the spec-side complement to P0001's runtime-side rule: P0001 says completion claims need artifacts; P0007 says specs must phrase completion in consumer-observable terms so artifacts can verify them. Section appended before the project-status marker `## ✅ Status` so the convention lives with the rest of the canonical content. Format constraint adopted verbatim: 5–7 entries, each in the form "`<consumer>` can `<action>` and observe `<outcome>`."
 
 ## Execution Record
 
