@@ -6,8 +6,8 @@ exposure: nav
 tier: 3
 voice: neutral
 stability: evolving
-tags: ["promotions", "proposed", "dolcheo", "vocabulary", "anti-pattern", "amendment"]
-promotion_status: proposed
+tags: ["promotions", "accepted", "dolcheo", "vocabulary", "anti-pattern", "amendment"]
+promotion_status: accepted
 ---
 
 # P0009: DOLCHEO+H Is Not the Vocabulary — Explicit Anti-Pattern Callout
@@ -104,16 +104,14 @@ The PTXprint PR-30 ledger's malformed instance is also flagged as a receipt so a
 
 ## Status
 
-`proposed`
+`accepted` (2026-05-05)
 
 ## Review Notes
 
-(To be filled during review)
-
-- **Reviewer**:
-- **Decision**:
-- **Date**:
-- **Notes**:
+- **Reviewer**: klappy (operator)
+- **Decision**: `accepted`
+- **Date**: 2026-05-05
+- **Notes**: Accepted in the same session that surfaced eight stuck `proposed` proposals (P0001 + P0003–P0009) sitting behind the just-merged P0002 promotion chain (PRs #163 → #165 → #166). The "DOLCHEO+H" hallucination is operator-named recurring frustration ("It's minor but I'm frustrated at it resurfacing every conversation"), and the proposed canon edit is a single appended section with one paragraph of net-new prose plus receipts — the smallest possible surface to kill the recurrence at the source. Accepted as drafted; execution committed in the same PR.
 
 ## Execution Record
 
