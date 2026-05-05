@@ -158,6 +158,48 @@ The full session post-mortem is at `klappy://odd/ledger/2026-04-20-p1-3-3-challe
 
 ---
 
+## Validator Deliverable Convention — The PR-NN Fresh-Validator Ledger
+
+A fresh-session validator running under this gate MUST produce two artifacts as part of accepting or rejecting a PR. Both committed to the repo.
+
+### 1. The Ledger
+
+**Path**: `canon/encodings/pr-NN-fresh-validator-ledger.md` (or repo-equivalent)
+**Structure**: DOLCHEO per `canon/definitions/dolcheo-vocabulary`
+
+Sections (in order):
+
+- **Decisions (D)** — the verdict (`SAFE TO MERGE` | `NOT SAFE`) with one-paragraph reason
+- **Observations Closed (O)** — per-DoD-item PASS/FAIL with file:line evidence
+- **Learnings (L)** — patterns the validator wants future readers to internalize
+- **Constraints (C)** — deviations from spec accepted as platform/library constraints. Each accepted-as-constraint deviation MUST be paired with either "permanent" or "v+1 revisit candidate" — never silently accepted as permanent without explicit naming
+- **Handoff (H)** — nits-grade follow-ups for the next session
+- **Opens (O-open)** — still-open questions, each numbered for back-reference from future sessions
+
+### 2. The Companion Review
+
+**Path**: `canon/handoffs/pr-NN-fresh-validator-review.md` (or repo-equivalent)
+
+Free-form prose attribution and summary. May reference the ledger's numbered observations directly. Names the validator (model + session ID), date, scope.
+
+### Both committed to the repo
+
+In the same PR or as a follow-up commit on the validation branch. Frontmatter declares `reviewer:` and `reviews:`. Date in frontmatter `date:`.
+
+### Why a Canon-Resident Ledger Is the Deliverable
+
+GitHub PR comments are ephemeral — filtered, paginated, hidden on thread collapse, not searchable across repos. A canon-resident ledger is searchable via oddkit, indexed by the validator's repo, and forms the long-term record of what was checked, what was accepted as a platform constraint with v+1 candidate, and what nits remain. Future PRs that reopen the same ground can cite the ledger directly.
+
+### Failure Mode
+
+Without this convention: findings live in PR comments that are read once and forgotten. The same deviation gets re-discovered three PRs later. The same "platform constraint" gets re-litigated each session because no one knows whether it was already accepted. The ledger creates the system memory the gate's enforcement-by-convention-plus-enforcer shape requires.
+
+### Receipts
+
+- `klappy/PTXprint-MCP` PR #30 v1.3 telemetry — `canon/encodings/pr-30-fresh-validator-ledger.md` + `canon/handoffs/pr-30-fresh-validator-review.md`. Re-validation produced `pr-30-revalidation-addendum.md` referencing the original ledger's numbered observations.
+
+---
+
 ## Related Canon
 
 - **[Verification Requires Fresh Context](klappy://canon/principles/verification-requires-fresh-context)** — the principle this constraint operationalizes for the release pipeline specifically.
