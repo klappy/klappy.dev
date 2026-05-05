@@ -6,8 +6,8 @@ exposure: nav
 tier: 3
 voice: neutral
 stability: evolving
-tags: ["promotions", "proposed", "mcp-server", "tool-surface", "refactoring", "vodka-architecture", "doing-less"]
-promotion_status: proposed
+tags: ["promotions", "accepted", "mcp-server", "tool-surface", "refactoring", "vodka-architecture", "doing-less"]
+promotion_status: accepted
 ---
 
 # P0003: Reframe Before Trimming — When a Tool Surface Feels Bloated, Question the Frame
@@ -134,16 +134,14 @@ Placing this in `canon/methods/` rather than `canon/principles/` is deliberate. 
 
 ## Status
 
-`proposed`
+`accepted` (2026-05-05)
 
 ## Review Notes
 
-(To be filled during review)
-
-- **Reviewer**:
-- **Decision**:
-- **Date**:
-- **Notes**:
+- **Reviewer**: klappy (operator)
+- **Decision**: `accepted`
+- **Date**: 2026-05-05
+- **Notes**: First of three new-doc proposals (P0003/P0004/P0005). Created `canon/methods/reframe-before-trimming.md` as a tier-2 method doc, following the precedent set by `canon/methods/pivot-on-inversion.md` (the doc named in P0003's `complements` field): H1 + blockquote + descriptive section headers, no separate `## Summary` (the blockquote carries the compressed argument). Frontmatter, body, and section structure used verbatim from P0003's "Proposed Language" block.
 
 ## Execution Record
 
