@@ -88,6 +88,7 @@ The oddkit tools encode the discipline. They are not invoked on request — they
 
 - **`klappy://canon/constraints/release-validation-gate`** — Fetch and obey before merging any PR to `klappy/oddkit` (or any oddkit-pattern MCP server) and before promoting to prod. Defines the three binding rules; same-session smoke is not validation.
 - **`klappy://canon/principles/contract-governs-handoff-drift`** — Read when a session ledger or handoff recommends shortcutting a canon rule. Canon wins; propose amendment if the session's judgment was actually right.
+- **`klappy://canon/constraints/borrow-evaluation-before-implementation`** — Fetch and obey before any implementation task with an upstream substrate (SDK, reference impl, widely-adopted library) — or one the field is visibly converging toward. Six-row 6B Evaluation in the plan; one verdict per row including the Bide verdicts (`waiting` / `inspected-and-adopted` / `inspected-and-rejected`); named justifications for skips; named criteria for `inspected-and-rejected`; tripwires for `waiting`; one-line Reversibility Note. Falsifiable, not ritual. The constraint exists because the same handroll has happened six times across six MCP server projects with the same operator; do not be the seventh.
 
 ### For Durable Records
 
