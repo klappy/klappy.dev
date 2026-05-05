@@ -6,8 +6,8 @@ exposure: nav
 tier: 3
 voice: neutral
 stability: evolving
-tags: ["promotions", "proposed", "validation", "evidence"]
-promotion_status: proposed
+tags: ["promotions", "accepted", "validation", "evidence"]
+promotion_status: accepted
 ---
 
 # P0001: Completion Claims Require Artifacts
@@ -85,16 +85,14 @@ Add to Failure Modes:
 
 ## Status
 
-`proposed`
+`accepted` (2026-05-05)
 
 ## Review Notes
 
-(To be filled during review)
-
-- **Reviewer**:
-- **Decision**:
-- **Date**:
-- **Notes**:
+- **Reviewer**: klappy (operator)
+- **Decision**: `accepted`
+- **Date**: 2026-05-05
+- **Notes**: Oldest backlog item in the `proposed` queue. The Validation Agent (`infra/orchestrator/services/validation.js`) already enforces this at code level via `determineVerdict()` — this canon edit aligns the written constraint with the enforced behavior. Accepted as drafted; execution committed in the same PR appends two MUST bullets to `## Operating Constraints` and one new entry to `## Failure Modes` of `canon/constraints/definition-of-done.md`.
 
 ## Execution Record
 

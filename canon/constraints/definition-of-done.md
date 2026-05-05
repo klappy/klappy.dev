@@ -47,6 +47,8 @@ This policy is a specific application of the foundational axiom that every claim
 - MUST NOT claim "done" without evidence; the correct response is "This is not complete yet"
 - MUST label partial completion explicitly with what was verified and what remains
 - MUST validate document deliverables against the Writing Canon checklist (`canon/meta/writing-canon.md`) before claiming completion
+- MUST NOT mark a claim as verified without at least one artifact that demonstrates the claimed outcome
+- MUST return `NEEDS_ARTIFACTS` (not `PASS`) when a completion claim exists but the supporting evidence is absent
 
 ---
 
@@ -68,6 +70,7 @@ This policy is a specific application of the foundational axiom that every claim
 - **"I reviewed the code"**: Treating inspection as observation of behavior
 - **"I didn't have time to test"**: Treating explanation as exemption from evidence
 - **"The document exists"**: Treating file creation as completion without validating progressive disclosure structure
+- **"Unverified Completion"**: Accepting a "done" / "finished" / "shipped" claim without corresponding artifacts (screenshots, logs, links, command output). The validation pathway MUST return `NEEDS_ARTIFACTS`, not `PASS`
 
 ---
 
