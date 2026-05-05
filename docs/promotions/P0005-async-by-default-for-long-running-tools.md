@@ -6,8 +6,8 @@ exposure: nav
 tier: 3
 voice: neutral
 stability: evolving
-tags: ["promotions", "proposed", "mcp-server", "async", "long-running", "job-id", "polling", "latency"]
-promotion_status: proposed
+tags: ["promotions", "accepted", "mcp-server", "async", "long-running", "job-id", "polling", "latency"]
+promotion_status: accepted
 ---
 
 # P0005: Async by Default — Long-Running MCP Tools Return an Identifier, Never Block
@@ -132,16 +132,14 @@ The principle is distinct from `partial-data-with-transparency-and-background-wa
 
 ## Status
 
-`proposed`
+`accepted` (2026-05-05)
 
 ## Review Notes
 
-(To be filled during review)
-
-- **Reviewer**:
-- **Decision**:
-- **Date**:
-- **Notes**:
+- **Reviewer**: klappy (operator)
+- **Decision**: `accepted`
+- **Date**: 2026-05-05
+- **Notes**: Last of the 8-proposal sweep (P0001 + P0003–P0009 behind the just-merged P0002 chain). Created `canon/principles/async-by-default-for-long-running-tools.md` as a tier-2 principle doc. Action-side complement to `partial-data-with-transparency-and-background-warm` (which is the read-side rule). Codifies the three-tool triad (`<verb>`, `get_<verb>_status`, `cancel_<verb>`) and the four latency budgets. Receipts: PTXprint v1.2 typesetting + AMS hosted /mcp.
 
 ## Execution Record
 
