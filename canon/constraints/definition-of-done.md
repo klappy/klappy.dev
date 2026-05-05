@@ -272,6 +272,39 @@ It is meant to stop work from being incorrectly declared finished.
 
 ---
 
+## Spec DoD Convention — Agent-Observable Behaviors
+
+When a spec for an MCP server, library, or other consumer-facing surface includes a Definition of Done section, that section MUST express completion as 5–7 things the consumer can observably do once the work ships, not as implementation milestones.
+
+### Format
+
+A spec DoD entry is one sentence in the form:
+
+> "`<consumer>` can `<action>` and observe `<outcome>`."
+
+### Allowed
+
+- "A Claude Code instance with `.mcp.json` pointing at this server can call `ams_create_conversation` and receive a magic link in the response."
+- "A second instance with a different bearer can `ams_join` that link and `ams_send` a token; the first observes it as `notifications/ams/token` within 1s median."
+
+### Disallowed (these are implementation, not DoD)
+
+- "SessionDO class lands at `worker/src/session.ts`."
+- "wrangler.toml updated with v2 migration."
+- "All tests pass."
+
+The implementation list belongs in a separate "Tomorrow's Execution Scope" or equivalent section. The DoD is the contract with the consumer; implementation is the contract with the codebase.
+
+### Failure Mode
+
+When a spec's DoD reads like a build TODO list, "done" becomes "the TODO list is checked off" rather than "the consumer can do the new things." Spec readers don't know what they get. Fresh-validator reviews struggle because the contract was never expressed in observable terms. Promotion gates can't verify consumer intent.
+
+### Receipts
+
+- `klappy/PTXprint-MCP` v1.2 §9 — 7 agent-observable behaviors as DoD; §5 and §10 carry the implementation specifics, kept separate. PR #30's fresh-validator review verified each §9 entry directly with file:line evidence.
+
+---
+
 ## ✅ Status
 
 - Canon v0.1 — Definition of Done & Evidence Policy complete
