@@ -6,8 +6,8 @@ exposure: nav
 tier: 3
 voice: neutral
 stability: evolving
-tags: ["promotions", "proposed", "mcp-server", "docs-proxy", "canon", "vodka-architecture", "consumer-experience"]
-promotion_status: proposed
+tags: ["promotions", "accepted", "mcp-server", "docs-proxy", "canon", "vodka-architecture", "consumer-experience"]
+promotion_status: accepted
 ---
 
 # P0004: Docs Proxy — Canon-as-Tool So Consumers Wire One MCP, Not Two
@@ -131,16 +131,14 @@ The placement under `canon/patterns/` rather than `canon/principles/` is deliber
 
 ## Status
 
-`proposed`
+`accepted` (2026-05-05)
 
 ## Review Notes
 
-(To be filled during review)
-
-- **Reviewer**:
-- **Decision**:
-- **Date**:
-- **Notes**:
+- **Reviewer**: klappy (operator)
+- **Decision**: `accepted`
+- **Date**: 2026-05-05
+- **Notes**: Accepted in the 8-proposal sweep. Created `canon/patterns/docs-proxy-canon-as-tool.md` as a tier-2 pattern doc. **Note for review:** this is the first doc under a new top-level subdirectory `canon/patterns/` — the existing canon hierarchy has bootstrap, case-studies, constraints, decisions, defaults, definitions, diagnostics, instructions, meta, methods, observations, principles, resonance, values. The proposal explicitly names this path; if you want this relocated under `methods/` or `principles/` instead, the file is small (one move + one frontmatter `uri:` edit + zero downstream consumers).
 
 ## Execution Record
 
