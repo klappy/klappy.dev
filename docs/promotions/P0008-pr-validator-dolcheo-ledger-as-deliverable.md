@@ -6,8 +6,8 @@ exposure: nav
 tier: 3
 voice: neutral
 stability: evolving
-tags: ["promotions", "proposed", "release-validation-gate", "dolcheo", "validator-ledger", "fresh-context", "amendment"]
-promotion_status: proposed
+tags: ["promotions", "accepted", "release-validation-gate", "dolcheo", "validator-ledger", "fresh-context", "amendment"]
+promotion_status: accepted
 ---
 
 # P0008: Fresh-Validator Deliverable Is a DOLCHEO Ledger Committed to the Repo
@@ -117,16 +117,14 @@ Joining `release-validation-gate` + `dolcheo-vocabulary` at the deliverable laye
 
 ## Status
 
-`proposed`
+`accepted` (2026-05-05)
 
 ## Review Notes
 
-(To be filled during review)
-
-- **Reviewer**:
-- **Decision**:
-- **Date**:
-- **Notes**:
+- **Reviewer**: klappy (operator)
+- **Decision**: `accepted`
+- **Date**: 2026-05-05
+- **Notes**: Accepted in the 8-proposal sweep (P0001 + P0003–P0009) sitting behind P0002's just-merged chain. P0008 is prioritised as third in the queue because it directly affects the release-validation-gate workflow that PRs ship under daily. The proposed language is appended verbatim before `## Related Canon`. Two structural choices ratified: (1) the canon-resident ledger is the validator's deliverable, not PR comments; (2) accepted-as-constraint deviations MUST be paired with permanent / v+1-revisit-candidate framing — silent acceptance is the failure mode being prevented.
 
 ## Execution Record
 
