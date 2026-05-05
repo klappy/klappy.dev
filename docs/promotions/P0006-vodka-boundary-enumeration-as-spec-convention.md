@@ -6,8 +6,8 @@ exposure: nav
 tier: 3
 voice: neutral
 stability: evolving
-tags: ["promotions", "proposed", "vodka-architecture", "spec-convention", "boundary", "non-goals", "amendment"]
-promotion_status: proposed
+tags: ["promotions", "accepted", "vodka-architecture", "spec-convention", "boundary", "non-goals", "amendment"]
+promotion_status: accepted
 ---
 
 # P0006: Vodka Boundary Enumeration — Specs Must List What the Server Knows, Doesn't Know, and Is NOT
@@ -103,16 +103,14 @@ Placed at the end of vodka-architecture.md (near "See Also" but above it) so the
 
 ## Status
 
-`proposed`
+`accepted` (2026-05-05)
 
 ## Review Notes
 
-(To be filled during review)
-
-- **Reviewer**:
-- **Decision**:
-- **Date**:
-- **Notes**:
+- **Reviewer**: klappy (operator)
+- **Decision**: `accepted`
+- **Date**: 2026-05-05
+- **Notes**: Accepted in the 8-proposal sweep. P0006 sharpens vodka-architecture from philosophy to spec convention by requiring three enumerated sections in any compliant spec ("What This Server Knows", "What This Server Does NOT Know", "What This Server Is NOT"). Section appended before `## See Also` so the convention sits as the operationalization closure of the principle. Last of the small append-style amendments in this sweep — P0003/P0004/P0005 next create whole new canon docs.
 
 ## Execution Record
 

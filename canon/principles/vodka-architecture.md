@@ -145,6 +145,35 @@ Before any change to a vodka-architecture server, answer these three questions:
 
 ---
 
+## Spec Convention — The Boundary Must Be Enumerated
+
+A server claiming to follow vodka-architecture MUST include three enumerated sections in its spec:
+
+### Boundary Section
+
+`## What This Server Knows` — bullet list of every state, schema, or external resource the server understands or holds.
+
+`## What This Server Does NOT Know` — bullet list of the domain semantics this server defers to canon or the consumer environment. **This list IS the vodka boundary, written down.**
+
+### Non-Goals Section
+
+`## What This Server Is NOT` — bullet list of the categories of responsibility this server explicitly refuses. Each item is a statement future PR authors must rebut to expand scope.
+
+### Why Enumeration Matters
+
+A boundary kept in author intuition gets violated when the author rotates out. A boundary written down survives the rotation. PR authors proposing a new tool must argue against an enumerated non-property — asymmetrically harder than arguing for a useful-sounding addition.
+
+### Failure Mode
+
+Implicit boundaries drift. After a few PRs, the server has accumulated "small additions" that each individually felt fine but cumulatively violate the original vodka frame. The next vodka rewrite has to undo those additions one by one. Enumeration prevents the drift at the PR-review surface, where it is cheapest to catch.
+
+### Receipts
+
+- `klappy/PTXprint-MCP` v1.2 §1 — enumerated boundary + non-goals, with explicit attribution that the v1.0 → v1.1 sprawl happened because the v1.0 boundary was implicit.
+- *(Each subsequent vodka-compliant spec adds a row pointing at its boundary section.)*
+
+---
+
 ## See Also
 
 ### Design Heritage — Full Articles
