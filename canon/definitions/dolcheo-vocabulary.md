@@ -216,6 +216,27 @@ This article exists so that any search for "DOLCHEO," "DOLCHE," "OLDC+H," "sessi
 
 ---
 
+## Anti-Pattern — Do Not Write "DOLCHEO+H"
+
+The vocabulary is **DOLCHEO**. The seven letters are D-O-L-C-**H**-E-O — Handoffs is the fifth letter, already inside the acronym. Writing **DOLCHEO+H** is malformed:
+
+- It doubles the H (once inside the acronym, once as the suffix).
+- It is residue from the superseded `OLDC+H` vocabulary (`docs/oddkit/proactive/oldc-h-vocabulary.md`), in which Handoffs were appended with `+H` because the original four letters did not include them. DOLCHEO absorbed Handoffs into the acronym; the suffix is no longer needed.
+- It propagates because agents see "OLDC+H" in canon-adjacent context (this doc's See Also, ledger headers in older artifacts) and pattern-match the suffix onto the new vocabulary by mistake.
+
+When tagging or describing session capture, write **DOLCHEO**. The Handoff section is named with the letter `H` inside the acronym, just like Decision is `D` and Encode is `E`.
+
+### If you are reading an older artifact that uses "DOLCHEO+H"
+
+Treat it as a typo equivalent to "DOLCHEO." Do not propagate the form into new artifacts. If editing the older artifact, correct it.
+
+### Receipts
+
+- `klappy/PTXprint-MCP/canon/encodings/pr-30-fresh-validator-ledger.md` line ~12 — contains "DOLCHEO+H encoding of findings." Marked here as the propagation source for at least one downstream session's hallucination chain.
+- 2026-05-03 slate-authoring session — agent propagated the form 8 times across two synthesis documents before operator correction. Direct stimulus for this anti-pattern callout.
+
+---
+
 ## See Also
 
 - [DOLCHE (superseded)](klappy://docs/oddkit/proactive/dolche-vocabulary) — the prior six-dimension vocabulary this document extends
