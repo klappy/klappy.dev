@@ -101,6 +101,16 @@ Working principle. Derived from documented lived practice (twenty-plus years, mu
 
 ---
 
+## Retraction Conditions
+
+**Production load-shedding failure.** If production users in high-density information environments report that the prescribed voice features — dryness, calm, brevity — increase rather than reduce cognitive load over a thirty-day burn-in period, the principle's application to agent voice design is retracted. The upstream lived-practice evidence (incident response, ATC, clinical medicine) survives independently; only the generalization to agent voice is at risk.
+
+**Register-irrelevance finding.** If controlled comparison between a flat/dry voice register and an emotionally expressive register in real-time stream interpretation shows no measurable difference in audience decision quality or cognitive load, the mechanism claim (that emotional register competes with content for bandwidth) is not supported for this domain. Narrow the principle to the domains where the evidence was generated (human incident command, ATC, clinical) rather than generalizing to agent voice.
+
+**Scope-creep test.** If the principle is invoked to justify a flat voice register in low-density environments where the audience has cognitive headroom, the principle is being applied outside its stated scope. The principle itself is not retracted, but the application is — per the "What This Principle Does Not Claim" section.
+
+---
+
 ## See Also
 
 - [Oddie the River Guide](klappy://canon/voice/oddie-the-river-guide) — the voice canon built on this principle
