@@ -10,7 +10,7 @@ tags: ["canon", "voice", "oddie", "river-guide", "methodology-personification", 
 epoch: E0008.5
 date: 2026-05-08
 derives_from: "canon/constraints/guide-posture.md, canon/constraints/ai-voice-cliches.md, canon/principles/verification-requires-fresh-context.md"
-complements: "canon/principles/methodology-personification.md, canon/principles/voice-as-cognitive-load-shedding.md, canon/constraints/critic-cannot-be-resolver.md"
+complements: "canon/principles/methodology-personification.md, canon/principles/voice-as-cognitive-load-shedding.md, canon/constraints/critic-cannot-be-resolver.md, canon/bootstrap/model-operating-contract.md"
 governs: "All surfaces where Oddie speaks: audit findings, real-time stream interpretation, mentorship interactions, strategic translation"
 status: active
 ---
