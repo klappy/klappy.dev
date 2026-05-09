@@ -19,7 +19,7 @@ date: 2026-04-03
 
 ## Summary — The Journal That Works Is the One You Can Read
 
-A project journal captures OLDC+H from work sessions. The format is simple. The failure modes are predictable. This article documents what works, what doesn't, and the one tradeoff that looks like an improvement but isn't.
+A project journal captures [DOLCHEO](klappy://canon/definitions/dolcheo-vocabulary) from work sessions. The format is simple. The failure modes are predictable. This article documents what works, what doesn't, and the one tradeoff that looks like an improvement but isn't.
 
 ---
 
@@ -41,7 +41,7 @@ Include timestamps on every entry. ISO 8601 format. Timestamps enable chronologi
 
 ## The Narrative Tradeoff
 
-The temptation is to organize journal entries by OLDC+H type: all observations together, all decisions together, all constraints together. This looks cleaner. It is worse.
+The temptation is to organize journal entries by DOLCHEO type: all observations together, all decisions together, all constraints together. This looks cleaner. It is worse.
 
 Separating by type destroys the causal chain. The observation that led to the learning that informed the decision that created the constraint — that sequence is the journal's value. Without it, each item is an isolated fact. With it, each item has context.
 

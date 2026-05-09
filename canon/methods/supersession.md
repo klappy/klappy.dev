@@ -33,7 +33,7 @@ The foundation is Axiom 3: Integrity Is Non-Negotiable Efficiency. Overwriting a
 
 The five responses form a spectrum from least to most action: tolerate, observe, graduate, replace, regenerate. Each has a place. None is universally correct. Applying graduation where replacement is needed produces ceremony without value. Applying replacement where graduation is needed destroys provenance. The taxonomy exists so the response matches the situation.
 
-Every drift response produces OLDC artifacts (observations, learnings, decisions, constraints) that belong in the epistemic ledger — not in conversation history that evaporates between sessions.
+Every drift response produces [DOLCHEO](klappy://canon/definitions/dolcheo-vocabulary) artifacts (decisions, observations, learnings, constraints, handoffs, encodes, opens) that belong in the epistemic ledger — not in conversation history that evaporates between sessions.
 
 -----
 
@@ -53,11 +53,11 @@ This is the right response when the drift causes no confusion in practice — no
 
 The drift is real. The tension is real. But action is premature — the system hasn't resolved the underlying question yet, or the pain hasn't surfaced in practice.
 
-This maps to the drift value's "acknowledge" response and to the OLDC model's observation entry. The observation names the tension, classifies the drift type, identifies the documents in conflict, and sits in the ledger. It waits. When the pain arrives — when an agent follows the wrong document, when a reader gets confused, when the tension blocks progress — the observation already exists and the decision about what to do next starts from documented ground, not from re-discovery.
+This maps to the drift value's "acknowledge" response and to the DOLCHEO model's observation entry. The observation names the tension, classifies the drift type, identifies the documents in conflict, and sits in the ledger. It waits. When the pain arrives — when an agent follows the wrong document, when a reader gets confused, when the tension blocks progress — the observation already exists and the decision about what to do next starts from documented ground, not from re-discovery.
 
 **When to use:** Two documents with overlapping governance surface but no clear winner. An emphasis shift that might reverse as understanding matures. A tension between E0005 and E0006 concepts where forcing resolution would lose something important.
 
-**What to record:** OLDC ledger entry: what drifted, what type (terminological, structural, emphasis, scope, value), which documents are in tension, why action is deferred.
+**What to record:** DOLCHEO ledger entry: what drifted, what type (terminological, structural, emphasis, scope, value), which documents are in tension, why action is deferred.
 
 ### 3. Graduate
 
@@ -67,7 +67,7 @@ Graduation retires the document from active governance to historical evidence. T
 
 **When to use:** Governance drift where the amendment would fundamentally rewrite the document's framing. Epoch transitions that introduce new governance concepts replacing the previous epoch's approach. New documents that cover the same governance surface with clearer, more accurate treatment.
 
-**What to record:** Full OLDC ledger entry plus bidirectional frontmatter pointers (`stability: superseded`, `superseded_by`, `supersedes`) and a `supersession_reason` field on the successor. See "Graduation Mechanics" below.
+**What to record:** Full DOLCHEO ledger entry plus bidirectional frontmatter pointers (`stability: superseded`, `superseded_by`, `supersedes`) and a `supersession_reason` field on the successor. See "Graduation Mechanics" below.
 
 ### 4. Replace
 
@@ -79,7 +79,7 @@ Replacing a derived document is not forced coherence. It's maintenance of a livi
 
 **When to use:** Index files (READMEs that list contents). Outlines and navigational summaries. Metadata aggregations. Any document whose sole purpose is to point to other documents or reflect their current state.
 
-**What to record:** Minimal — the git commit that made the change is the record. No OLDC entry needed unless the replacement reveals a systemic issue.
+**What to record:** Minimal — the git commit that made the change is the record. No DOLCHEO entry needed unless the replacement reveals a systemic issue.
 
 ### 5. Regenerate — The Default for Projections
 
@@ -205,9 +205,9 @@ oddkit's drift audit can run on new document entry, comparing against existing d
 
 -----
 
-## The Supersession Record — OLDC for the Epistemic Ledger
+## The Supersession Record — DOLCHEO for the Epistemic Ledger
 
-Every graduation creates a record. This is not optional — it is the evidence that the system grew. Per the epistemic ledger model (`odd/ledger/epistemic-ledger.md`), the record follows OLDC structure:
+Every graduation creates a record. This is not optional — it is the evidence that the system grew. Per the epistemic ledger model (`odd/ledger/epistemic-ledger.md`), the record follows DOLCHEO structure:
 
 **Observation:** What drifted? Name the specific tension. Classify the drift type and layer.
 
@@ -217,7 +217,7 @@ Every graduation creates a record. This is not optional — it is the evidence t
 
 **Constraint:** What must the successor honor that the predecessor did not? What new invariant does the supersession introduce?
 
-The compressed version lives in the successor's `supersession_reason` frontmatter field. The full OLDC record lives in the epistemic ledger. The frontmatter is the pointer; the ledger is the substance.
+The compressed version lives in the successor's `supersession_reason` frontmatter field. The full DOLCHEO record lives in the epistemic ledger. The frontmatter is the pointer; the ledger is the substance.
 
 Replace and regenerate responses produce minimal records — the git commit for replacements, the derivation function and content hash for regenerations. Tolerate and observe responses produce ledger entries proportional to the significance of the drift.
 
@@ -233,7 +233,7 @@ Replace and regenerate responses produce minimal records — the git commit for 
 
 **Compiled Memory** (`docs/appendices/compiled-memory.md`) — The original "wipeable artifacts" model. Regeneration extends this concept from context packs to any derived document.
 
-**Self-Audit** (`canon/methods/self-audit.md`) — Should include checking whether a deliverable supersedes existing documents, and if so, whether bidirectional pointers and OLDC records are in place.
+**Self-Audit** (`canon/methods/self-audit.md`) — Should include checking whether a deliverable supersedes existing documents, and if so, whether bidirectional pointers and DOLCHEO records are in place.
 
 **Writing Canon** (`canon/meta/writing-canon.md`) — Applies to successor documents. Superseded documents are not required to pass the current checklist retroactively — they are historical artifacts whose structure reflects their epoch's standards.
 
@@ -277,7 +277,7 @@ All drift layers are treated as governance drift. Every format inconsistency tri
 - The `supersession_reason` field SHOULD be present on successor documents. Its absence degrades the evolution narrative.
 - Format, style, and preference drift SHOULD be tolerated unless the format communicates false governance. The test: wrong decisions vs. dated appearance.
 - Regeneratable documents MUST declare their sources in frontmatter (`derived_from: [source URIs]`) to enable automation and staleness detection.
-- Every graduation MUST produce an OLDC ledger entry. Replace and regenerate produce minimal records (git commit, content hash).
+- Every graduation MUST produce a DOLCHEO ledger entry. Replace and regenerate produce minimal records (git commit, content hash).
 
 -----
 

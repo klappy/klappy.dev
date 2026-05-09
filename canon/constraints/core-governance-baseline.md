@@ -157,7 +157,7 @@ These files MUST be present in the baseline snapshot. The worker build fails if 
 
 These files enhance tool behavior but their absence degrades to sensible minimums rather than failing:
 
-- Every file in `odd/encoding-types/` — encode falls back to OLDC+H defaults
+- Every file in `odd/encoding-types/` — encode falls back to [DOLCHEO](klappy://canon/definitions/dolcheo-vocabulary) defaults
 - Every file in `odd/challenge-types/` — challenge falls back to generic pressure questions
 - Every file in `odd/gate/` — gate falls back to structural prereqs
 - All `writings/`, `docs/`, `apocrypha/` content — only relevant for search/get/catalog, not governance

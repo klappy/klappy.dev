@@ -42,7 +42,7 @@ The test: would a fresh conversation with a curated bootstrap produce better res
 
 Bootstrapping the next conversation means curating what transfers. Not the entire conversation history — that's the problem handoff solves. Instead:
 
-- **Project journal** — the accumulated OLDC+H from this session.
+- **Project journal** — the accumulated [DOLCHEO](klappy://canon/definitions/dolcheo-vocabulary) from this session.
 - **Active decisions** — what was decided and what governs.
 - **Active constraints** — what rules apply going forward.
 - **Handoff items** — explicit next actions and open questions.

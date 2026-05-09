@@ -23,13 +23,13 @@ Every productive session ends with the same gap: the operator asks for a journal
 
 Under E0007, the agent captures provenance at the points where it matters — not at session end. The trigger is not "wrapping up." The trigger is the work itself: when durable artifacts are produced, when work is ready for review, and when work is finalized.
 
-This applies regardless of domain. In code, provenance means commits, changelogs, and version bumps. In writing, it means revision notes and draft tracking. In planning, it means decision records and handoff documents. In any domain, it means OLDC+H capture — what was observed, learned, decided, constrained, and what comes next.
+This applies regardless of domain. In code, provenance means commits, changelogs, and version bumps. In writing, it means revision notes and draft tracking. In planning, it means decision records and handoff documents. In any domain, it means [DOLCHEO](klappy://canon/definitions/dolcheo-vocabulary) capture — what was decided, observed, learned, constrained, handed off, encoded, and what remains open.
 
 ---
 
 ## The Three Provenance Artifacts
 
-**Session capture** — OLDC+H in narrative order. What was observed, learned, decided, constrained, and what comes next. The reasoning layer that makes the artifacts' history legible. Written to the project's journal or ledger.
+**Session capture** — DOLCHEO in narrative order. What was decided, observed, learned, constrained, handed off, encoded, and what remains open. The reasoning layer that makes the artifacts' history legible. Written to the project's journal or ledger.
 
 **Change summary** — What changed and why, in language appropriate for the audience who will review or consume the work. In code, this is a changelog. In writing, this is revision notes. In planning, this is an updated decision record.
 
@@ -41,7 +41,7 @@ This applies regardless of domain. In code, provenance means commits, changelogs
 
 ### At Every Milestone
 
-When work reaches a natural breakpoint — a completed task, a significant decision, a phase transition — the session capture should be current. OLDC+H is tracked continuously (per `docs/oddkit/proactive/continuous-encoding.md`), and each milestone is a natural persist point.
+When work reaches a natural breakpoint — a completed task, a significant decision, a phase transition — the session capture should be current. DOLCHEO is tracked continuously (per `docs/oddkit/proactive/continuous-encoding.md`), and each milestone is a natural persist point.
 
 ### Before Every Review
 

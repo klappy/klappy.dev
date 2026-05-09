@@ -199,7 +199,7 @@ Resolution order:
 2. If multiple types declare `fallback: true`, the first one discovered wins (alphabetical by filename)
 3. If no type declares `fallback: true`, the server uses the first type discovered as fallback
 
-The recommended convention is to mark **Observation (O)** as the fallback. An unclassified paragraph is raw content without interpretation — semantically, that's what an Observation is. This convention is followed by the default OLDC+H types.
+The recommended convention is to mark **Observation (O)** as the fallback. An unclassified paragraph is raw content without interpretation — semantically, that's what an Observation is. This convention is followed by the default DOLCHEO types.
 
 ---
 

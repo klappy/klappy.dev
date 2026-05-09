@@ -19,7 +19,7 @@ date: 2026-04-03
 
 ## Summary — Name Things for the Audience That Uses Them
 
-The OLDC+H capture mechanism lives in the `odd/ledger/` directory and is formally called the "epistemic ledger" in canon documentation. This term is precise — it describes a record of epistemic events (observations, learnings, decisions, constraints, handoffs) structured for retrieval.
+The [DOLCHEO](klappy://canon/definitions/dolcheo-vocabulary) capture mechanism lives in the `odd/ledger/` directory and is formally called the "epistemic ledger" in canon documentation. This term is precise — it describes a record of epistemic events (decisions, observations, learnings, constraints, handoffs, encodes, opens) structured for retrieval.
 
 But "epistemic ledger" is jargon. An operator encountering oddkit for the first time does not know what "epistemic" means in this context, does not know what a "ledger" implies beyond accounting, and cannot infer from the term what the tool actually does.
 
