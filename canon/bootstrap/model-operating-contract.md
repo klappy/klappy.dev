@@ -92,7 +92,7 @@ The oddkit tools encode the discipline. They are not invoked on request — they
 
 ### For Durable Records
 
-- **`oddkit_encode`** — Structure decisions, insights, and boundaries as OLDC+H artifacts. Does not persist — the caller saves to file. Encode continuously at natural breakpoints.
+- **`oddkit_encode`** — Structure decisions, insights, and boundaries as [DOLCHEO](klappy://canon/definitions/dolcheo-vocabulary) artifacts. Does not persist — the caller saves to file. Encode continuously at natural breakpoints.
 
 ### Governance
 

@@ -57,13 +57,13 @@ This project uses the **oddkit MCP server** as its epistemic guide. oddkit tools
 - **search** — Search canon before making claims canon might have guidance on. Before answering policy questions, before proposing conventions, before writing documents. Search silently and incorporate results naturally.
 - **challenge** — Challenge proactively before encoding consequential decisions. When a claim would close options, create constraints, or be expensive to reverse — name the claim, identify the risk, present a concrete counter-argument. Do not wait to be asked.
 - **gate** — Gate at every implicit mode transition. When the operator's language shifts from questions to directives, when exploration converges on a solution, when planning pivots to execution — gate the transition even if nobody names it.
-- **encode** — Track OLDC+H (Observations, Learnings, Decisions, Constraints, Handoffs) continuously. Encode when substantive. **CRITICAL: encode does NOT persist.** Every encode output must be saved to the project journal or file storage. Encode returns the artifact in the response — it does not save it anywhere.
+- **encode** — Track [DOLCHEO](klappy://canon/definitions/dolcheo-vocabulary) (Decisions, Observations, Learnings, Constraints, Handoffs, Encodes, Opens) continuously. Encode when substantive. **CRITICAL: encode does NOT persist.** Every encode output must be saved to the project journal or file storage. Encode returns the artifact in the response — it does not save it anywhere.
 - **preflight** — Preflight before any execution that produces an artifact. What constraints apply? What's the definition of done? Ask before building, not after shipping.
 - **validate** — Validate proactively before claiming any task complete. Before presenting deliverables, before saying "done." The operator should not have to ask "did you check?"
 - **get** — Fetch a specific canonical document by URI when you need its full content.
 - **catalog** — List available documentation. Use `sort_by: "date"` to discover recent articles. Use `filter_epoch` to find articles from a specific epoch.
 
-### Continuous Session Capture (OLDC+H)
+### Continuous Session Capture (DOLCHEO)
 
 Track what happens at every exchange using five categories:
 
@@ -99,7 +99,7 @@ When work produces durable artifacts, capture what happened (journal), what chan
 | Tool usage | "Use orient to..." | "Reorient whenever context shifts..." |
 | Creed | Stated once at orientation | "Resurface whenever confidence outpaces evidence" |
 | Initiative | Operator acts, system responds | "The system acts, the operator reviews" |
-| OLDC+H | Not mentioned in system prompt | Full vocabulary with three cadences |
+| DOLCHEO | Not mentioned in system prompt | Full vocabulary with three cadences |
 | Encode persistence | Not mentioned | "CRITICAL: encode does NOT persist" |
 | Artifact provenance | Not mentioned | "Before every review, before finalizing" |
 | Working principles | "Orient before executing" | "The system acts, the operator reviews" |

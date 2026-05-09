@@ -31,7 +31,7 @@ The natural assumption is that "encode" means "record." In most systems, encodin
 
 This design is intentional. ODD does not own the operator's storage. Different operators use different storage: files, databases, project management tools, version control. The protocol provides structure. The operator provides persistence.
 
-But the design created a gap: operators assumed encoding meant saving. Sessions of valuable OLDC+H capture were silently lost because the operator called encode and moved on, not realizing the output needed to be explicitly saved.
+But the design created a gap: operators assumed encoding meant saving. Sessions of valuable [DOLCHEO](klappy://canon/definitions/dolcheo-vocabulary) capture were silently lost because the operator called encode and moved on, not realizing the output needed to be explicitly saved.
 
 ---
 

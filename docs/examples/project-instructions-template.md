@@ -168,7 +168,7 @@ All tools are available individually and via the `oddkit` router (pass `action` 
 
 **Durable records**
 
-- **`oddkit_encode`** — Structure decisions, insights, boundaries as OLDC+H artifacts. Does NOT persist — save output to file. Encode continuously at natural breakpoints.
+- **`oddkit_encode`** — Structure decisions, insights, boundaries as [DOLCHEO](klappy://canon/definitions/dolcheo-vocabulary) artifacts. Does NOT persist — save output to file. Encode continuously at natural breakpoints.
 
 **Governance & transparency**
 
@@ -190,7 +190,7 @@ All tools are available individually and via the `oddkit` router (pass `action` 
 - **Preflight before building.** Call `oddkit_preflight` before any artifact-producing step.
 - **Challenge before encoding.** Pressure-test consequential decisions before `oddkit_encode`.
 - **Validate before declaring done.** Run `oddkit_validate` with artifact references before any "complete" claim.
-- **Track OLDC+H continuously.** Encode what was shared and what was done. Save encoded artifacts to file — `oddkit_encode` does not persist.
+- **Track DOLCHEO continuously.** Encode what was shared and what was done. Save encoded artifacts to file — `oddkit_encode` does not persist.
 
 ## Credentials
 
