@@ -10,7 +10,7 @@ tags: ["canon", "constraints", "epistemic-modes", "handoff-contract", "journal",
 epoch: E0008.5
 date: 2026-05-10
 derives_from: "canon/principles/sessions-mirror-modes.md, canon/definitions/epistemic-modes.md, canon/constraints/critic-cannot-be-resolver.md, canon/principles/verification-requires-fresh-context.md"
-complements: "canon/methods/persona-shaped-agent-runtime.md, docs/mode-separated-conversations.md, docs/oddkit/proactive/oldc-h-vocabulary.md"
+complements: "canon/methods/persona-shaped-agent-runtime.md, docs/mode-separated-conversations.md, canon/definitions/dolcheo-vocabulary.md"
 governs: "Every transition between epistemic modes — exploration, planning, execution, validation, resolution — across all surfaces (agent runtime, human conversation, mixed teams)"
 status: proposed
 ---
@@ -27,7 +27,7 @@ Every legitimate transition between epistemic modes produces two artifacts:
 
 ### 1. Journal Entry — Universal, No Exception
 
-Every transition produces a journal entry recording what happened. The format is DOLCHEO+H per [the canonical vocabulary](klappy://docs/oddkit/proactive/oldc-h-vocabulary): observations, learnings, decisions, constraints, encodes, handoffs. The journal entry captures:
+Every transition produces a journal entry recording what happened. The format is DOLCHEO per [the canonical vocabulary](klappy://canon/definitions/dolcheo-vocabulary): decisions, observations, learnings, constraints, handoffs, encodes, opens. The journal entry captures:
 
 - The mode transition itself (from → to, with timestamp)
 - What was completed in the prior mode (obligations met)
@@ -184,7 +184,7 @@ A receiving session that cannot proceed on a handoff has the right to refuse wit
 
 ## Confidence
 
-**Working belief.** The journal-entry requirement extends an already-canonical practice (DOLCHEO+H entries on every session per [oldc-h-vocabulary](klappy://docs/oddkit/proactive/oldc-h-vocabulary)) to mode transitions specifically. The transition-specific handoff requirements extend already-canonical practice for individual transitions (P0008 for validator deliverables, plan documents for execution work, etc.) into a uniform contract.
+**Working belief.** The journal-entry requirement extends an already-canonical practice (DOLCHEO entries on every session per [the dolcheo-vocabulary](klappy://canon/definitions/dolcheo-vocabulary)) to mode transitions specifically. The transition-specific handoff requirements extend already-canonical practice for individual transitions (P0008 for validator deliverables, plan documents for execution work, etc.) into a uniform contract.
 
 **Retraction conditions:**
 
@@ -200,7 +200,7 @@ A receiving session that cannot proceed on a handoff has the right to refuse wit
 
 - [Sessions Mirror Modes](klappy://canon/principles/sessions-mirror-modes) — the principle this constraint operationalizes
 - [Epistemic Modes](klappy://canon/epistemic-modes) — the parent canon defining the modes whose transitions this constraint governs
-- [DOLCHEO+H Vocabulary](klappy://docs/oddkit/proactive/oldc-h-vocabulary) — the journal entry format required at every transition
+- [DOLCHEO Vocabulary](klappy://canon/definitions/dolcheo-vocabulary) — the journal entry format required at every transition
 - [Verification Requires Fresh Context](klappy://canon/principles/verification-requires-fresh-context) — the principle motivating the encoded handoff for execution → validation specifically
 - [Critic Cannot Be Resolver](klappy://canon/constraints/critic-cannot-be-resolver) — the constraint motivating the encoded handoff for validation → resolution specifically
 - [P0008 — Fresh-Validator Deliverable Is a DOLCHEO Ledger](klappy://docs/promotions/P0008-pr-validator-dolcheo-ledger-as-deliverable) — the operationalized handoff pattern for the validator role
