@@ -163,6 +163,27 @@ Plus the $5/month Workers Paid base fee, which amortizes to a meaningful per-ses
 
 ---
 
+## Cursor Bugbot — Third-Party Bundled Substrate (Prior Art)
+
+Cursor's Bugbot is the spawned-agent-session-for-PR-review pattern shipped as a closed commercial bundle. On every PR, Bugbot spawns an agent session in a Cursor-hosted VM, the session reviews the diff and posts inline findings, and (with Autofix) a second agent pushes fix commits to the branch. The pattern matches `klappy://canon/constraints/audit-gates-are-spawned-agent-sessions` on the spawn-clean-agent-session axes but breaks the canon-at-runtime requirement: review rules are authored inside Cursor's dashboard ("Bugbot Rules"), not fetched from a versioned external knowledge base when the session runs. It is prior art for the substrate primitive, not for Vodka-Architecture governance.
+
+**Billing dimensions** (current as of May 2026, mid-transition):
+
+- **Bugbot Pro**: $40/month, up to 200 reviews/month, drawing inference from the Pro plan's $20/month included usage allocation; consumption beyond that allocation falls through to pay-per-token at frontier API rates.
+- **Bugbot Teams**: historically $40/user/month, transitioning per Cursor's late-April 2026 announcement to usage-based billing tied to on-demand spend with no per-seat fee.
+- **Per-run cost** (Cursor's own published estimate): $1.00–$1.50 per Bugbot review, varying with PR size and a configurable "effort level" knob.
+- **Model selection is opaque.** Cursor's documentation states Bugbot uses "a combination of frontier and in-house models." The frontier set spans Anthropic (Opus 4.6/4.7), GPT-5, and Gemini; the operator does not pin a specific model.
+
+**Locks and constraints:**
+
+- Substrate, harness, model orchestration, and the GitHub integration are all bundled into Cursor's stack. The team connects an org and picks repos; the rest is closed.
+- No subscription-passthrough lever. Even when Bugbot routes a review through an Anthropic model, that inference call cannot be billed against the operator's own Anthropic Pro/Max subscription — the Cursor pricing path is the only billing surface, in contrast to the §Mixing Tools Across Vendors arrangement above.
+- Review rules live in Cursor's UI rather than in a versioned external source the operator owns. This makes Bugbot a strong bug-finder but disqualifies it as a governance audit substrate where canon-at-runtime is non-negotiable.
+
+**What this teaches about pattern portability.** The spawned-agent-session-as-PR-reviewer is a productized commercial primitive with multiple competing implementations: Cursor Bugbot, GitHub Copilot Code Review, Greptile, CodeRabbit, and Anthropic's own Code Review for Claude Code all implement the same shape against the same trigger. The pattern is portable, in-market, and competitive across vendors — the constraint at `klappy://canon/constraints/audit-gates-are-spawned-agent-sessions` names a category that already has commercial precedent. What separates governance audits from commercial bug review is canon-at-runtime: the audit must fetch its rules from a versioned external source rather than configure them inside a vendor's dashboard. None of the bundled commercial offerings expose that surface today; the mixing-tools architecture above is what reaches it.
+
+---
+
 ## Things That Do Not Vary by Substrate
 
 Substrate choice does not change:
@@ -277,4 +298,5 @@ If a fourth substrate enters the market and meets the spawn-clean / agentic / ca
 - Cloudflare blog: "Dynamic, identity-aware, and secure Sandbox auth" (2026-04-13) — outbound Workers as zero-trust credential injection.
 - Cloudflare blog: "Agents have their own computers with Sandboxes GA" (2026-04-13) — the GA announcement.
 - Anthropic Managed Agents docs at https://docs.claude.com — current beta API surface and pricing.
+- Cursor Bugbot product page at https://cursor.com/bugbot and pricing at https://docs.cursor.com/en/account/pricing — third-party bundled implementation cited as prior art.
 - `skills/managed-agents/SKILL.md` — the operational skill for using Anthropic Managed Agents specifically.
