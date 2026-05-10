@@ -41,6 +41,22 @@ The principle itself is unchanged. The matrix at `canon/observations/quality-att
 
 ---
 
+## Observability and the Observation Encoding Type Are Siblings Under Axiom 4
+
+There is a deeper structural reason observability earns its own extension before any of the other ilities ODD might absorb. It is the system-level expression of an axiom ODD already operationalizes at the session level. The two faces share parentage; naming the parallel makes the canon's underlying architecture visible.
+
+**At the session level**, ODD operationalizes Axiom 4 ("You Cannot Verify What You Did Not Observe") through the `O` encoding type in DOLCHEO — see `klappy://odd/encoding-types/observation`. An Observation captures what was seen during work, separated from what it means. "The deploy took 47 seconds" is an observation; "the deploy is too slow" is a Learning. Keeping the layers separate is what makes the rest of the framework — Decisions, Learnings, Constraints — defensible. Observations that nobody recorded are, in the encoding doc's phrasing, observations that never happened for the system's purposes.
+
+**At the runtime system level**, observability — the quality attribute mapped in this extension — is the same discipline applied to the system's own operation. The system reports its state in primary form (telemetry, traces, structured logs) rather than requiring its operators to infer state from secondary signals. Stability, maintainability, and debugability all build on top. A system that nobody can observe is, structurally, a system whose claims about its own behavior cannot be verified.
+
+**The two failure modes are the same.** When the catalog-observability-gap case study (`klappy://canon/case-studies/catalog-observability-gap`) names oddkit serving 500+ documents while its primary interface could only retrieve 196, that is the runtime-system version of an unrecorded observation: the team had a model of the system's behavior that the system itself had no way to corroborate. The Observation encoding type exists to prevent the same failure at the session scale, where a team can hold a confident interpretation of work that was never grounded in recorded evidence.
+
+**The two principles reinforce each other.** Sessions that capture rich Observations are sessions that produce defensible Learnings, Decisions, and Constraints. Systems that are richly observable are systems whose stability, maintainability, and debugability are defensible. Both stand or fall on the same axiom: claims unsupported by observation are debts the system carries until something forces them to be paid.
+
+This sibling relationship is why this extension was the first one written. Other ilities — auditability, securability, accessibility, portability — will earn their own extensions as projects need them and as ODD canon accumulates. Observability earns its place at the front of the queue because the parallel is already explicit in the canon's foundations, and naming the parallel strengthens both faces of it.
+
+---
+
 ## Tensions Between Observability and the Canonical Ten
 
 Each entry: relationship type, phase weighting, operating dynamic, and the canon evidence for the claim.

@@ -108,3 +108,4 @@ A strong Observation answers: what was seen, where it was seen, and whether it's
 - [DOLCHE Vocabulary](klappy://docs/oddkit/proactive/dolche-vocabulary) — the six-dimension framework this type belongs to
 - [Encoding Type: Learning](klappy://odd/encoding-types/learning) — the companion type that interprets observations
 - [Prompt Over Code](klappy://canon/principles/prompt-over-code) — why this governance doc exists instead of server code
+- [Observability Tension Extension](klappy://canon/observations/observability-tension-extension) — the same axiom (Axiom 4 — You Cannot Verify What You Did Not Observe) operationalized at the runtime-system level. This encoding type is its session-level sibling.
