@@ -1,3 +1,16 @@
+---
+archived: true
+archived_reason: "E0005.1 — superseded by OddKit dynamic routing"
+uri: klappy://docs/archive/infra/infra/orchestrator/README
+title: "Orchestrator Infrastructure"
+audience: docs
+exposure: nav
+tier: 3
+voice: neutral
+stability: stable
+tags: ["docs", "archive", "orchestrator", "infrastructure", "router", "librarian", "pre-vodka"]
+---
+
 # Orchestrator Infrastructure
 
 Runtime components for agent coordination and enforcement.
