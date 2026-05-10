@@ -161,6 +161,127 @@ The whole artifact is typically under 500 words. Surveys longer than that are us
 
 ---
 
+## The Survey Is a Personality Test for the Product
+
+The cleanest way to think about the survey output is not as a list of constraints but as a personality profile. The same shape humans use to map traits onto a person — a radar chart with one axis per trait — maps naturally onto a project. Each ility is a trait; the project's ranking on each ility is its score; the polygon connecting the scores is the project's *shape*. Two products can have similar functions and entirely different personalities, and that personality difference is the most important thing a stakeholder, a reviewer, or an inheriting agent needs to know about the project up front.
+
+This framing earns the radar chart for free. It is also the framing that lets the survey reach audiences who would never read a method doc — "what's your product's personality?" is a question that gets answered; "have you completed your quality-attribute tension survey?" is a question that gets ignored.
+
+### Format — Tension-Adjacent Axis Ordering, MoSCoW Scale, Sortable
+
+The default radar has one axis per ility in the project's selected set, ordered such that ilities with strong mutual tension sit next to each other on the chart. The visual benefit: the polygon's spikes and valleys directly show what the project trades against what. A spike on Stability adjacent to a valley on Urgency makes the tradeoff legible at a glance — the project chose stability over urgency. An arbitrary ordering buries the same fact.
+
+The default tension-adjacent ordering for the canonical ten (clockwise from top): **Usability → Originality → Stability → Urgency → Maintainability → Efficiency → Versatility → Interoperability → Affordability → Reality.** This walks the natural-tension chain through the matrix's strongest mutual pairs and closes the loop on the meta-virtues. Extensions slot in adjacent to whichever canonical ility they have the strongest tension with — observability, for example, slots between Stability and Urgency (its strongest synergy and tension respectively).
+
+The scale is **MoSCoW** — 1 (Won't), 2 (Could), 3 (Should), 4 (Must) — matching the elicitation method the 2018 source article surfaced and the categorical level at which Phase 2 produces its rankings. Quantitative 0–100 scoring is rejected as false precision; the categorical level matches the level at which decisions are actually made.
+
+Renderers that present this radar interactively should support **axis reordering** so a viewer can flip from tension-adjacent to alphabetical to type-grouped (synergistic ilities together, mutually tense ilities together) without losing the underlying data. The static SVG below is one ordering; the data is the same regardless of which ordering renders.
+
+### Worked Example — A Pilot-Stage Authentication Service
+
+A hypothetical authentication service for a vertical SaaS product, scoped at the Pilot stage. The survey output produces this profile:
+
+| Ility | Rank | Why |
+|---|:---:|---|
+| Usability | 1 | Developer-facing API, not an end-user UI |
+| Originality | 1 | Auth is a solved problem; proven patterns are good |
+| Stability | 4 | Auth failures are product failures |
+| Urgency | 1 | Don't rush auth; the cost of getting it wrong is too high |
+| Maintainability | 3 | Long-term maintainers will rotate through this code |
+| Efficiency | 2 | Latency matters at every request, but the bar is moderate |
+| Versatility | 1 | Auth is auth; widening the scope erodes everything else |
+| Interoperability | 4 | OAuth, SAML, OIDC, partner integrations |
+| Affordability | 3 | Per-user cost model determines viable price points |
+| Reality | 4 | Compliance and regulatory constraints are non-negotiable |
+
+The radar:
+
+<svg viewBox="0 0 600 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="radar-title radar-desc" style="max-width: 600px; background: white;">
+  <title id="radar-title">Project Personality Radar — Pilot-stage Authentication Service</title>
+  <desc id="radar-desc">Radar chart with ten axes showing the priority profile of a hypothetical pilot-stage authentication service. Strong spikes on Stability, Interoperability, and Reality at level 4 (Must); medium spikes on Maintainability and Affordability at level 3 (Should); a moderate dip to Efficiency at level 2 (Could); valleys on Usability, Originality, Urgency, and Versatility at level 1 (Won't). Axes ordered tension-adjacent clockwise from top: Usability, Originality, Stability, Urgency, Maintainability, Efficiency, Versatility, Interoperability, Affordability, Reality.</desc>
+
+  <!-- Scale rings -->
+  <g fill="none" stroke="#d0d0d0" stroke-width="0.7">
+    <polygon points="300.0,212.5 322.0,219.7 335.7,238.4 335.7,261.6 322.0,280.3 300.0,287.5 278.0,280.3 264.3,261.6 264.3,238.4 278.0,219.7" />
+    <polygon points="300.0,175.0 344.1,189.3 371.3,226.8 371.3,273.2 344.1,310.7 300.0,325.0 255.9,310.7 228.7,273.2 228.7,226.8 255.9,189.3" />
+    <polygon points="300.0,137.5 366.1,159.0 407.0,215.2 407.0,284.8 366.1,341.0 300.0,362.5 233.9,341.0 193.0,284.8 193.0,215.2 233.9,159.0" />
+    <polygon points="300.0,100.0 388.2,128.6 442.7,203.6 442.7,296.4 388.2,371.4 300.0,400.0 211.8,371.4 157.3,296.4 157.3,203.6 211.8,128.6" stroke="#999" stroke-width="1" />
+  </g>
+
+  <!-- Axis lines -->
+  <g stroke="#999" stroke-width="0.5">
+    <line x1="300" y1="250" x2="300.0" y2="100.0" />
+    <line x1="300" y1="250" x2="388.2" y2="128.6" />
+    <line x1="300" y1="250" x2="442.7" y2="203.6" />
+    <line x1="300" y1="250" x2="442.7" y2="296.4" />
+    <line x1="300" y1="250" x2="388.2" y2="371.4" />
+    <line x1="300" y1="250" x2="300.0" y2="400.0" />
+    <line x1="300" y1="250" x2="211.8" y2="371.4" />
+    <line x1="300" y1="250" x2="157.3" y2="296.4" />
+    <line x1="300" y1="250" x2="157.3" y2="203.6" />
+    <line x1="300" y1="250" x2="211.8" y2="128.6" />
+  </g>
+
+  <!-- Project profile polygon -->
+  <polygon points="300.0,212.5 322.0,219.7 442.7,203.6 335.7,261.6 366.1,341.0 300.0,325.0 278.0,280.3 157.3,296.4 193.0,215.2 211.8,128.6"
+           fill="rgba(0,100,200,0.18)" stroke="#0064C8" stroke-width="2" />
+
+  <!-- Profile vertices (small dots) -->
+  <g fill="#0064C8">
+    <circle cx="300.0" cy="212.5" r="3" />
+    <circle cx="322.0" cy="219.7" r="3" />
+    <circle cx="442.7" cy="203.6" r="3" />
+    <circle cx="335.7" cy="261.6" r="3" />
+    <circle cx="366.1" cy="341.0" r="3" />
+    <circle cx="300.0" cy="325.0" r="3" />
+    <circle cx="278.0" cy="280.3" r="3" />
+    <circle cx="157.3" cy="296.4" r="3" />
+    <circle cx="193.0" cy="215.2" r="3" />
+    <circle cx="211.8" cy="128.6" r="3" />
+  </g>
+
+  <!-- Axis labels -->
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#333">
+    <text x="300.0" y="75.0" text-anchor="middle">Usability</text>
+    <text x="402.9" y="108.4" text-anchor="middle">Originality</text>
+    <text x="466.4" y="199.9" text-anchor="start">Stability</text>
+    <text x="466.4" y="308.1" text-anchor="start">Urgency</text>
+    <text x="402.9" y="395.6" text-anchor="middle">Maintainability</text>
+    <text x="300.0" y="429.0" text-anchor="middle">Efficiency</text>
+    <text x="197.1" y="395.6" text-anchor="middle">Versatility</text>
+    <text x="133.6" y="308.1" text-anchor="end">Interoperability</text>
+    <text x="133.6" y="199.9" text-anchor="end">Affordability</text>
+    <text x="197.1" y="108.4" text-anchor="middle">Reality</text>
+  </g>
+
+  <!-- Scale labels (along the top axis) -->
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" fill="#999">
+    <text x="305" y="216">1</text>
+    <text x="305" y="178">2</text>
+    <text x="305" y="141">3</text>
+    <text x="305" y="103">4</text>
+  </g>
+
+  <!-- Title -->
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" fill="#222">
+    <text x="300" y="30" text-anchor="middle" font-size="14" font-weight="600">Pilot-Stage Authentication Service</text>
+    <text x="300" y="48" text-anchor="middle" font-size="11" fill="#666">Personality Radar — MoSCoW scale (1=Won't, 2=Could, 3=Should, 4=Must)</text>
+  </g>
+</svg>
+
+The shape is legible at a glance. Strong spikes on Stability (top right), Interoperability (left), and Reality (top left) — this product *is* its reliability, its integration surface, and its compliance posture. Sharp valleys on Usability, Originality, Urgency, and Versatility — this product is deliberately not its UX, not its novelty, not its time-to-market, not its breadth. Affordability and Maintainability sit at Should — important enough to defend, not so important that they deform the shape.
+
+Two more points the radar makes visible that the table buries:
+
+- **The axis pairs that carry mutual tension are adjacent** — Stability sits next to Urgency on the right side, and the spike-then-valley pattern between them shows the project chose stability over urgency. Same pattern Originality-vs-Usability (top), Maintainability-vs-Efficiency (bottom right), Versatility-vs-Interoperability (bottom left). The polygon's silhouette *is* the tradeoff record.
+- **An honest profile is asymmetric.** A radar that is roughly circular — every axis at roughly the same value — is a profile that has not actually prioritized anything. If the survey produces a near-circle, Phase 2 (ranking) was rubber-stamped rather than worked through. The auth service's profile is asymmetric on purpose; that is the survey doing its job.
+
+Extensions for additional ilities slot in adjacent to whichever canonical ility they have strongest tension with — observability between Stability and Urgency (its strongest synergy and tension respectively); auditability between Reality and Usability (the compliance-and-evidence pair); accessibility adjacent to Usability; etc. The renderer should let the viewer toggle ordering (alphabetical, type-grouped, tension-adjacent) and the survey itself should default to tension-adjacent for the reasons above.
+
+A standalone article framing the personality-test view for a non-technical audience is forthcoming; this section is the technical specification it will reference.
+
+---
+
 ## How the Method Was Built — The 6B Borrow Evaluation
 
 This method was not invented in isolation. The borrow evaluation below names the prior art and the verdict for each item, per `canon/constraints/borrow-evaluation-before-implementation`.

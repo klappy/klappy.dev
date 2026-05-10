@@ -135,6 +135,12 @@ Method doc lands as `canon/methods/quality-attribute-tension-survey.md` (~207 li
 
 **New observation (O5).** Web search of operator's Medium author page surfaced *Lean Expectations* (Sep 8, 2018) as the day-prior precursor to the Software Virtues article. The two articles were published 24 hours apart and explicitly cross-reference each other; both are sibling seeds to the canon package built today.
 
+**New decision (D7).** Personality-radar visualization added to the method doc (~120 lines, including inline SVG worked example). Operator framing locked: "the survey is a personality test for the product." Tension-adjacent axis ordering as default; MoSCoW scale (1-4); renderers expected to support reordering. Worked example: hypothetical Pilot-stage authentication service rendered as inline SVG with axis labels, scale rings, and project polygon. Asymmetric polygon shape ("an honest profile is asymmetric") named as a quality signal — circular profiles indicate Phase 2 rubber-stamping.
+
+**New observation (O6).** The personality-test framing earns the radar visualization for free — same shape humans already use for personality traits — and gives the survey a public-facing entry point that "have you completed your quality-attribute tension survey?" never could. The framing reframes the operational artifact (a constraint set) as something stakeholders, reviewers, and inheriting agents can grasp at a glance.
+
+**New open (O-open P5).** Standalone article framing the survey as a personality test for non-technical audiences. Method doc points forward to it; not drafted this session. Provisional title direction: something like "Your Product Has a Personality, and You Should Know What It Is." **Disposition: banked.** Lead with the radar, let readers self-discover the rigor underneath.
+
 ---
 
 ## Lineage
