@@ -13,7 +13,7 @@ date: 2026-04-18
 
 # Epistemic Modes
 
-> Exploration, planning, execution, and validation are not interchangeable.
+> Exploration, planning, execution, validation, and resolution are not interchangeable.
 > Collapsing them produces false confidence, premature convergence, and brittle outcomes.
 
 ## Purpose
@@ -28,7 +28,7 @@ This is a Canon document because it constrains _how truth is formed_, not merely
 
 ---
 
-## The Four Epistemic Modes
+## The Five Epistemic Modes
 
 ### 1. Exploration Mode
 
@@ -137,6 +137,35 @@ For the full contract, see `klappy://canon/validation-as-epistemic-mode`.
 
 ---
 
+### 5. Resolution Mode
+
+**Purpose:**  
+To produce a revised artifact scoped strictly by validation findings.
+
+**Characteristics:**
+
+- Findings exist with explicit dispositions (fix, pivot, accept)
+- Scope is bounded by the findings, not by reopening planning
+- Each finding has a remediation action (or is accepted as-is)
+- The revised artifact is the deliverable; new requirements are not introduced
+
+**Truth Condition:**  
+A resolution is valid if it **addresses the findings without expanding scope**.
+
+**Obligations:**
+
+- Address each finding per its disposition (fix what was marked fix; redirect what was marked pivot; document what was marked accept)
+- Do not introduce requirements the findings did not surface
+- Document remediation per finding — what was changed, what was not changed and why
+- Hand off to validation again — the resolver does not certify their own fix
+
+**Primary Risk:**  
+Scope creep — using remediation as cover for redesign or for introducing changes outside the findings.
+
+For the role-and-session expression of this mode, see `klappy://canon/principles/sessions-mirror-modes`.
+
+---
+
 ## The Non-Collapse Rule
 
 **Epistemic modes MUST NOT be collapsed.**
@@ -148,7 +177,10 @@ In particular:
 - Execution must not pretend to explore alternatives retroactively
 - Execution must not pretend to validate — concerns noticed mid-build are noted and carried forward, not surfaced as inline pivots
 - Validation must not pretend to plan — redesign requires explicit reversion
-- Validation must not pretend to execute — fixes belong to iteration, which is a fresh execution pass scoped by validation findings
+- Validation must not pretend to execute or resolve — findings produce a separate resolution pass, not inline fixes during the same review
+- Resolution must not pretend to plan — new requirements that emerge during remediation require explicit reversion to planning
+- Resolution must not pretend to validate — the resolver does not certify their own fix; re-validation is a separate session
+- Resolution must not pretend to be a fresh execution — its scope is bounded by findings, not by the original plan
 
 When modes are collapsed:
 
