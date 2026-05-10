@@ -116,6 +116,27 @@ After initial validate and present, a fourth set of operator inputs arrived (SMS
 
 ---
 
+## Method Doc Drafted Same Session (Update)
+
+After initial bank, operator chose to draft the method doc in-session rather than wait. The borrow-evaluation that was proposed as next-session work was completed in-session and embedded directly in the method doc. Six prior-art rows evaluated:
+
+1. **Klappy 2018 — Software Virtues** (origin) — borrow.
+2. **Klappy 2018 — Lean Expectations: PoC, Prototype, MVP** (lifecycle phases, the article cross-referenced by the Software Virtues piece itself) — borrow. Surfaced via web search of operator's Medium author page.
+3. **agent-skill v1.3 PRD elicitation loop** (`klappy://docs/archive/products/agent-skill/v1.3.1/PRD`) — bend. Loop spirit borrowed (agent-as-elicitor, stage typing, asset intake); loop architecture (lanes, pack compilation, Pages distribution) rejected as brittle and lacking update propagation per operator.
+4. **SEI ATAM** — bend. Scenario-driven tradeoff identification borrowed; workshop format compressed to single-turn agent-runnable shape.
+5. **ISO/IEC 25010** — inspected-and-adopted as vocabulary anchor.
+6. **Bass / Clements / Kazman *Software Architecture in Practice*** — inspected-and-rejected at this scope; tripwire is quantitative tactic mapping.
+
+Bide candidates: SEI QAW, NFR Framework (Chung et al). Reversibility note: high — canon prose, no SDK or architecture lock-in.
+
+Method doc lands as `canon/methods/quality-attribute-tension-survey.md` (~207 lines) on the same PR (#192) rather than a stacked PR. Decision rationale: keeps the canon package coherent as one merge; method doc depends on the principle file in the same branch so dependency resolves naturally; review cost is one Bugbot re-run.
+
+**New decision (D6).** Method doc landed in the same PR as the canon trio + observability extension + essay rather than a stacked follow-on PR. PR scope expanded by ~207 lines.
+
+**New observation (O5).** Web search of operator's Medium author page surfaced *Lean Expectations* (Sep 8, 2018) as the day-prior precursor to the Software Virtues article. The two articles were published 24 hours apart and explicitly cross-reference each other; both are sibling seeds to the canon package built today.
+
+---
+
 ## Lineage
 
 Session triggered by Klappy sharing the original 2018 Medium article and three SMS screenshots of the conversation with Ian Lindsley earlier the same day. A fourth screenshot and direct message arrived after initial delivery, surfacing the vocabulary correction and the constraints-survey reframe. Modeled the canon work on existing patterns: definition style follows `canon/definitions/dolcheo-vocabulary`; principle style follows other tier-1 principles in `canon/principles/`; matrix style is novel (no existing matrix doc in canon to model from); essay style follows `writings/agentic-software-development`. Phase axis cross-links `klappy://odd/maturity`. External link to original Medium article preserved as canonical origin throughout the package.
