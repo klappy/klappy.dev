@@ -188,6 +188,90 @@ A subscribed session needs: connection management, multi-output channels (per-ch
 
 ---
 
+### 6. Honor the Engagement Contract
+
+Sessions invoke the runtime under one of two engagement modes — *assistant* or *agent* — and the runtime enforces different turn-control and bottleneck-respect contracts for each. This dimension is orthogonal to mode, role, and surface. The same persona in the same mode and role can be invoked under either engagement; what changes is who controls the turn and how the session terminates.
+
+**`assistant`** — turn-based dialogue with the caller. The session emits a response and yields turn-control back to the caller. Clarifying questions are valid output. State persists across turns. The caller's attention is in the loop; the session paces itself to that. Pair-programming surfaces, sidebar chat, mentorship interactions, and any conversational use case are typically assistant-engagement.
+
+**`agent`** — autonomous run-to-completion. The session does not yield turn-control until the task is complete or a named failure terminates it. Clarifying questions are forbidden per [Mode Discipline and Bottleneck Respect](klappy://canon/constraints/mode-discipline-and-bottleneck-respect) — they pull the bottleneck (caller's attention) into work the caller was not in the loop for. The runtime wraps any clarifying-question emission as a named failure rather than a valid output. Stuck or under-specified sessions terminate with the failure named, allowing the caller to fix the input and retry rather than respond to mid-flight questions. Audit gates, scheduled jobs, fan-out workers, and any background dispatch are typically agent-engagement.
+
+The distinction matters because the caller's consent to interruption differs. An assistant session implies *"I will be here to answer questions when they come up."* An agent session implies *"I have given you everything you need; come back when you have a result or a clean failure."* Conflating the two corrupts both: assistant-shaped agents produce output the caller didn't ask for; agent-shaped assistants accumulate questions the caller never sees.
+
+The engagement field is part of the session-invocation parameter set:
+
+```
+runtime.invoke(
+  persona="oddie",
+  role="validator",
+  surface="audit",
+  engagement="agent",       # autonomous; no clarifying questions
+  task="..."
+)
+```
+
+Most consumer patterns map cleanly: scheduled audits are `agent`; sidebar Q&A is `assistant`; pair-programming with an assistant persona is `assistant`. A few patterns are rare-but-legitimate: planning under `agent` engagement (autonomous canonical planning when the planner-persona has enough context to produce a complete plan without dialogue) is allowed but requires the persona to be confident the input is complete. The runtime supports the rare combinations; consumers choose which to use.
+
+---
+
+### 7. Support Parallelism and Operator Override
+
+Two patterns the runtime needs to handle that are orthogonal to role enforcement: concurrent sessions in the same mode, and operator-declared mode collapse for urgency.
+
+#### Parallelism
+
+Per [Sessions Mirror Modes §Parallelism Patterns](klappy://canon/principles/sessions-mirror-modes), the runtime supports three of four parallelism patterns:
+
+- **Within-mode fan-out.** Multiple sessions of the same role spawned concurrently — multiple explorers on different angles, multiple validators with different lenses, multiple builders on independent scope. The runtime spawns N concurrent sessions; the consumer is responsible for fan-in (consolidating outputs into a single encoded handoff for the next mode).
+- **Multi-participant single session.** Multiple agents collaborating within one role-bound session, sharing context, producing a joint deliverable. The runtime treats this as one session with multiple participant identities. The session is bound to one mode; participants share the mode's tool restrictions.
+- **Cross-mode parallelism on different artifacts.** Independent work streams running concurrently. The runtime spawns and tracks them independently; no coordination is required because the streams do not share artifacts.
+
+The runtime *refuses* the fourth pattern: cross-mode sessions on the same artifact. A validator session cannot be invoked on an artifact whose builder session has not yet produced an encoded handoff (artifact + claims declaration). This is enforced at submit time — the runtime checks the artifact's handoff state before accepting a downstream-role invocation.
+
+Fan-in is a consumer concern, not a runtime feature. The runtime spawns parallel sessions and returns their outputs; consolidating those outputs into a single handoff for the next mode is the consumer's job. The runtime can support this with conventions (e.g., a fan-in helper that takes N session outputs and produces a consolidated DOLCHEO ledger), but the conventions are layered above the core runtime.
+
+#### Operator Override
+
+Per [Mode Transitions Require Encoded Handoff §Operator Override](klappy://canon/constraints/mode-transitions-require-encoded-handoff), the runtime accepts an explicit override declaration that collapses mode boundaries into a single session. Sketched:
+
+```
+runtime.invoke(persona="...", task="...", override={
+  type: "operator_collapsed_modes",
+  modes_collapsed: ["exploration", "planning", "execution", "validation"],
+  reason: "production incident — patch needed in 30 min",
+  acknowledged_risks: [
+    "validator shares context with builder; findings biased toward what builder framing surfaced",
+    "no fresh planning context; speculative certainty propagates into build",
+    "no fresh exploration; tensions not surfaced before convergence"
+  ]
+})
+```
+
+When an override is present, the runtime:
+
+1. **Records a journal entry at session start** naming the override, modes collapsed, reason, and acknowledged risks.
+2. **Relaxes role enforcement** for the collapsed modes. Tool sets are unioned; fresh-context guarantees are suspended for the collapsed transitions.
+3. **Records a journal entry at session end** naming what actually happened — work performed, decisions made, tradeoffs that materialized.
+4. **Tags the session's outputs as override-produced** in any downstream metadata, so consumers can see that subsequent work was built on overridden-session output and apply appropriate skepticism.
+
+The override is *not* the same as the `general` role escape hatch. The general role is a persona-profile-level declaration that some sessions of this persona never had the constraints in the first place. The override is a runtime-invocation-level declaration that this specific session has the constraints temporarily suspended for declared reasons. Both produce relaxed sessions; the audit trail is different, and the override's audit trail names the urgency-driven choice explicitly.
+
+The runtime cannot override the journal entry requirement itself. The override is a journal-worthy event; the journal entry is what makes the corruption visible later. A runtime that allowed override sessions to skip journaling would be silently undoing the constraint's audit-trail purpose.
+
+#### What Conversational-Mode Orchestration Looks Like
+
+The principle's note that "in conversational mode this should feel seamless" is a consumer pattern that composes parallelism and override support with session-spawning. A chat-facing consumer that wants to present unified continuity to a human user while respecting session-per-mode discipline orchestrates the runtime as follows:
+
+- Detects mode transitions in the conversation (the human signals "okay let's plan it" or "start building").
+- Spawns a fresh role-bound session at each transition, with the prior session's encoded handoff as input.
+- Presents the new session's output as continuation of the conversation.
+- Records journal entries at each transition invisibly to the human.
+- Surfaces an explicit override prompt when the human wants to collapse modes ("you're asking me to skip planning and start building — do you want to declare an override, or take a moment to plan?").
+
+The runtime does not implement this orchestration; it provides the primitives the orchestrator composes. This is a consumer pattern that warrants its own canon doc once a working orchestrator exists to point at; for now it is a deferred follow-up.
+
+---
+
 ## What This Method Is Not
 
 **Not orchestration.** The runtime invokes one persona per request. It does not chain personas, route between them, or maintain workflows that span multiple invocations. Orchestration belongs to consumers, not to the runtime. (A consumer can call the runtime multiple times in sequence; that is the consumer's workflow.)
