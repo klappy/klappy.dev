@@ -33,6 +33,36 @@ The method's economic argument: the operator's attention is the system bottlenec
 
 ---
 
+## Runtime Contract — How oddkit Governs the Survey
+
+> The seven phases each have a governance handle on the oddkit MCP server, and the boundary between phases is a gate rather than a transition by convention. Five oddkit actions wire the method to existing canon machinery: `oddkit_preflight` opens the survey, `oddkit_gate` enforces every phase boundary, `oddkit_challenge` pressure-tests sacrifices in Phase 4, `oddkit_encode` produces Phase 5's typed output, and `oddkit_validate` closes the survey. The contract mechanizes canon. It adds none.
+
+The section follows the per-dimension contract pattern from `klappy://canon/methods/spawned-agent-session-runtime-contract` (same-day canon, 2026-05-10). That doc maps the five canonical epistemic modes to runtime configurations; this section maps the survey's seven phases to oddkit actions. Both treat the runtime as a mechanizer of existing rules rather than a source of new ones.
+
+### The governance handles
+
+| Action | What it guarantees | Where it fires | Failure response |
+|---|---|---|---|
+| `oddkit_preflight` | Loads canon prerequisites (principle, matrix, vocabulary, maturity prior) plus the survey's definition of done | Once, before Phase 0 opens | `NO_CANON_FOUND`: name the missing canon, either fix it or run the survey with the gap explicitly recorded |
+| `oddkit_gate` | Confirms the preceding phase's output is present and well-formed before the next phase opens | Six gates: 0→1, 1→2, 2→3, 3→4, 4→5, 5→6 | `NEEDS_PREREQ`: stay in the current phase. Placeholders are not acceptable substitutes |
+| `oddkit_challenge` | Pressure-tests each predicted sacrifice against canon constraints and the matrix's recorded relationship types | Inside Phase 4, once per sacrifice | `CHALLENGE_FOUND`: revert to Phase 2 with the failing sacrifice's tension as the named cause |
+| `oddkit_encode` | Produces typed DOLCHEO artifacts (Constraints, Observations, Opens) from Phase 4's accepted outputs | Inside Phase 5, after Phase 4 closes | Encode does not persist (per `klappy://canon/definitions/dolcheo-vocabulary`); the caller saves the output explicitly |
+| `oddkit_validate` | Verifies all seven Output Format artifacts exist before the survey is declared complete | Once, after Phase 6 closes | `NEEDS_ARTIFACTS`: keep the survey open; do not claim completion |
+
+### Session discipline
+
+A survey run is a **planning-mode** artifact per `klappy://canon/epistemic-modes`. The seven phases live within a single planning-mode session. Per `klappy://canon/principles/sessions-mirror-modes`, planning hands off to execution through the Constraint set saved at the end of Phase 5; the survey itself does not need to be re-entered for downstream work to consume it.
+
+Phase 4 reversion to Phase 2 stays inside planning. The prior ranking is what the reversion pressure-tests; the next ranking is the new output. Per `klappy://canon/constraints/mode-discipline-and-bottleneck-respect`, this is reversion-as-designed; the method anticipates the loop. A reversion *out of the survey itself* — back into planning at the project level — happens when an unsurfaced tension forces the project's scope to be renamed rather than its ilities re-ranked. The runtime detects this case when `oddkit_gate` at the Phase 2 → 3 boundary cannot validate the ility set against the freshly renamed scope.
+
+### What the contract does not promise
+
+The wiring is mechanical at the phase-boundary level. Content-level drift inside a phase — a fabricated ility, a mislabeled tension relationship, an unjustifiable sacrifice that survives the challenge — can still pass each gate's prerequisite check. Phase 4's `oddkit_challenge` is the deepest content-level pressure this contract guarantees. Everything finer (peer review, downstream validation against produced artifacts, operator inspection) lives outside the contract.
+
+**Retraction condition.** If the gates fire false-positives (blocking on prerequisites that exist in non-standard formats) or false-negatives (passing outputs downstream agents cannot consume), this section retracts and the wiring is rewritten with the failure mode as the new design constraint.
+
+---
+
 ## When to Run the Survey
 
 The survey is the right move at four entry points:
@@ -60,6 +90,8 @@ Each phase has an entry condition, a question, an output artifact, and a transit
 
 **Transition.** If the stage cannot be classified within the listed types, the method reverts to planning and the operator names the missing stage. Continuing without a stage is not allowed; every other phase depends on it.
 
+**Governance.** `oddkit_preflight` is called once at survey entry, just before Phase 0 opens, to load canon prerequisites and the survey's definition of done. Phase 0 has no internal oddkit handle; stage classification is a single observation. Transition to Phase 1 fires `oddkit_gate` against the existence and validity of the stage classification.
+
 ### Phase 1 — Ility Selection
 
 **Entry.** Stage from Phase 0.
@@ -69,6 +101,8 @@ Each phase has an entry condition, a question, an output artifact, and a transit
 **Output.** A pair of lists with explicit removals. The canonical ten from `canon/definitions/software-virtues-vocabulary.md` are the starting set; additions come from the broader universe (observability has its own extension at `canon/observations/observability-tension-extension.md`; auditability, securability, accessibility, portability, etc., may apply). Each ility is tagged with a current-state inclusion flag and a desired-state inclusion flag. Removals are listed explicitly for each state: "this project does not optimize for X today because Y" and "this project will not optimize for X going forward because Z." Differences between the lists are the *scope-shift* component of the roadmap.
 
 **Transition.** When both lists are stable — every retained ility has a reason in both states, every removed ility has a reason in the state where it was removed. Aim for between four and twelve ilities in either list. Fewer than four usually means the project is too narrowly framed; more than twelve usually means the survey will not converge.
+
+**Governance.** Entry is gated by `oddkit_gate` against Phase 0's stage classification. Inside the phase, `oddkit_search` is the supported method for discovering ilities outside the canonical ten; observability, auditability, accessibility, and similar extensions are sourced from canon rather than improvised. Transition to Phase 2 fires `oddkit_gate` against the dual-state ility set's completeness: every retained ility has a reason in both states, every removed ility has a reason in the state where it was removed.
 
 ### Phase 2 — Phase-Weighted Ranking
 
@@ -80,6 +114,8 @@ Each phase has an entry condition, a question, an output artifact, and a transit
 
 **Transition.** The phase-weighting prior at `odd/maturity.md` gives the default shape for the *desired* column (PoC tolerates more originality and less stability; Production demands more stability and tighter affordability; etc.). The *current* column comes from observation — code investments, telemetry, contributor surveys, spec compliance, lived experience of the team. Both columns may override the prior, but every override should be named. If the override list is longer than three items in either column, the project is doing something genuinely unusual and the operator should pause.
 
+**Governance.** Entry is gated by `oddkit_gate` against Phase 1's ility sets. Inside the phase, `oddkit_get` retrieves the maturity-stage prior at `klappy://odd/maturity` for the desired column's default; the current column comes from observation, not from canon. Transition to Phase 3 fires `oddkit_gate` against rank-pair completeness: every selected ility has both a current and a desired rank, every override against the prior is named.
+
 ### Phase 3 — Tension Surfacing
 
 **Entry.** Dual-state ranked list (current + desired) from Phase 2.
@@ -89,6 +125,8 @@ Each phase has an entry condition, a question, an output artifact, and a transit
 **Output.** Two tension sets — desired-state tensions (what the project is *committing to* live with) and current-state tensions (what the project is *already* living with) — plus a delta noting any tensions that change between them. For ility pairs within the canonical ten, consult `canon/observations/quality-attribute-tension-matrix.md` directly. For pairs that include observability, consult `canon/observations/observability-tension-extension.md`. For pairs outside the canonical ten and the worked extensions, generate the tension graph dynamically against the principle at `canon/principles/quality-attributes-are-in-tension.md`. The dynamic-generation step is described in the next subsection.
 
 **Transition.** When every tension involving a top-three-ranked ility (in either state) has been named with a relationship type (mutual / asymmetric / synergy / cost gravity), a phase tag, and a one-sentence operating dynamic, this phase is complete. The remaining tensions — those involving lower-ranked ilities — are surfaced as background but not analyzed in detail.
+
+**Governance.** Entry is gated by `oddkit_gate` against Phase 2's dual-state rankings. Inside the phase, `oddkit_get` retrieves the tension matrix (`klappy://canon/observations/quality-attribute-tension-matrix`) and the observability extension (`klappy://canon/observations/observability-tension-extension`) for canonical pairs; `oddkit_search` against the principle is the supported method for the dynamic-generation step covering non-canonical pairs (procedure in the subsection below). Transition to Phase 4 fires `oddkit_gate` against tension-set completeness: every tension involving a top-three-ranked ility (in either state) has been named with a relationship type, a phase tag, and a one-sentence operating dynamic.
 
 #### Dynamic Generation for Ilities Outside the Canonical Ten
 
@@ -113,6 +151,8 @@ Future tooling (a potential `oddkit tensions(...)` action) will codify steps 1�
 
 **Transition.** This phase commonly produces one or two reversions. That is healthy. A survey that runs straight through Phase 4 without any reversion is suspicious; either the rankings were trivially obvious or the survey is rubber-stamping rather than surveying.
 
+**Governance.** Entry is gated by `oddkit_gate` against Phase 3's tension sets. **Inside the phase, `oddkit_challenge` pressure-tests each predicted sacrifice** against canon constraints and the matrix's recorded relationship types. A `CHALLENGE_FOUND` response on any sacrifice triggers reversion to Phase 2 with the failing sacrifice's tension as the named cause; the prior ranking is the problem, not the sacrifice. Transition to Phase 5 fires `oddkit_gate` only after every sacrifice carries an `accept` or `reject` disposition for both states.
+
 ### Phase 5 — Output Encoding
 
 **Entry.** Accepted dual-state ranking from Phase 2, accepted sacrifices from Phase 4.
@@ -133,6 +173,8 @@ All three sets are saved to the project's session, ledger, or whichever persiste
 
 **Transition.** When every desired-state decision has produced at least one Constraint, every selected ility has at least one Observation recording its current level, every non-zero gap has produced one Open, and all three sets are saved (encoded artifacts do not persist on their own — see `klappy://canon/definitions/dolcheo-vocabulary`), the survey is complete.
 
+**Governance.** Entry is gated by `oddkit_gate` against Phase 4's accepted sacrifices. **Inside the phase, `oddkit_encode` produces the three DOLCHEO artifact sets** (Constraints, Observations, Opens). Per `klappy://canon/definitions/dolcheo-vocabulary`, encode does not persist; the caller must save the encoded output to the project's session, ledger, or comparable persistence layer before Phase 6 opens. Transition to Phase 6 fires `oddkit_gate` against the persistence step's completion, not just the encode call's success.
+
 ### Phase 6 — Re-Run Triggers
 
 **Entry.** Saved Constraint set, Observation set, and Open (gap/roadmap) set from Phase 5.
@@ -148,6 +190,8 @@ All three sets are saved to the project's session, ledger, or whichever persiste
 - **Drift detection** — if observed behavior (telemetry, code investments, contributor surveys) shows the current state has drifted measurably from the prior Observation set, re-survey Phases 1–2 minimum.
 
 **Transition.** This phase produces a short paragraph attached to the artifact set, describing the trigger conditions. The paragraph is itself a Constraint that the agent inherits.
+
+**Governance.** Entry is gated by `oddkit_gate` against Phase 5's saved DOLCHEO artifact set. Inside the phase, `oddkit_encode` produces the re-run-trigger paragraph as itself a Constraint (saved alongside the Phase 5 set). **Survey completion fires `oddkit_validate`** against the seven Output Format artifacts (Stage, Ility set, Rankings, Tension list, Accepted sacrifices, Constraint set, Re-run triggers). A `NEEDS_ARTIFACTS` response keeps the survey open; a `VERIFIED` response closes it.
 
 ---
 

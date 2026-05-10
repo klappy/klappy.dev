@@ -10,7 +10,7 @@ tags: ["odd", "handoff", "session", "pr-192", "quality-attribute-tension-survey"
 date: 2026-05-10
 derives_from: "canon/methods/quality-attribute-tension-survey.md, odd/ledger/2026-05-10-software-virtues-canon-package.md"
 governs: "Continuation of PR #192 (canon/software-virtues-tension-matrix). The next session's lane is wiring the quality-attribute-tension-survey method to oddkit's existing governance machinery (preflight, gate, challenge, validate, encode) following the persona-shaped / runtime-contract pattern landed in PR #187. The next session must read canon merged in PRs #179, #180, #186, #187 before editing the method doc."
-status: active
+status: closed
 ---
 
 > **Lane is narrow.** Wire the existing survey method to oddkit governance machinery using the runtime-contract pattern from PR #187. Do not add new product surfaces. Do not draft Oddie content — Oddie already exists in canon. Do not reframe the seven phases or the dual-state radar. Both are locked and stakeholder-validated.
@@ -94,3 +94,9 @@ These are real items but they belong on different lanes. Do not pull them in:
 **[C]** Next session reads required canon BEFORE editing the method doc. Non-negotiable.
 
 **[H]** This handoff. Lane: survey governance wiring per #187 runtime-contract pattern. Scope: method doc + ledger update on existing PR #192 branch.
+
+---
+
+## Closeout — 2026-05-10T22:00Z
+
+Lane closed cleanly. Branch `canon/software-virtues-tension-matrix` rebased on `main` to pull in PR #187's runtime-contract canon (no file overlap). The method doc at `canon/methods/quality-attribute-tension-survey.md` now carries a `## Runtime Contract — How oddkit Governs the Survey` section between `## Summary` and `## When to Run the Survey`, plus a `**Governance.**` final bullet on each of Phases 0 through 6. Five oddkit actions wired to the seven phases: `oddkit_preflight` (entry), `oddkit_gate` (every phase boundary), `oddkit_challenge` (Phase 4), `oddkit_encode` (Phase 5), `oddkit_validate` (completion). Ledger amended with a "Governance-Wiring Pass (Continuation)" section capturing D10–D11, O9–O10, L5, C4, H4, and E3. No new opens; banked items (P5, P6, P7, P11) untouched. The four Do-Not boundaries (no Oddie content, no phase reframing, no radar changes, no `oddkit_tensions(...)` work) held throughout.

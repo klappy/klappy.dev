@@ -193,6 +193,31 @@ Operator directive (verbatim): *"the dynamic oddkit survey is governance driven.
 
 ---
 
-## Lineage
+## Governance-Wiring Pass (Continuation)
+
+A second working pass on PR #192 wired the method doc to oddkit governance machinery, following the runtime-contract pattern landed by PR #187 (same-day canon merge, 2026-05-10). Lane scope per `klappy://odd/handoffs/2026-05-10-survey-governance-wiring`: add a Runtime Contract section after `## Summary`, and a `**Governance.**` line on each of Phases 0–6. Branch rebased on `main` to pull #187 into the working set before editing; clean rebase, no file overlap.
+
+**New decision (D10 — Runtime Contract section).** A `## Runtime Contract — How oddkit Governs the Survey` section sits between `## Summary` and `## When to Run the Survey`. Five oddkit actions are named with explicit responsibilities, fire points, and failure responses: `oddkit_preflight` (survey entry), `oddkit_gate` (six phase boundaries: 0→1 through 5→6), `oddkit_challenge` (Phase 4 sacrifice pressure-test), `oddkit_encode` (Phase 5 artifact production), `oddkit_validate` (survey completion). The section explicitly mechanizes existing canon rather than coining new rules — same posture as `klappy://canon/methods/spawned-agent-session-runtime-contract` (the Tier-2 spec doc whose pattern this section follows).
+
+**New decision (D11 — per-phase Governance bullet).** Each of Phases 0 through 6 gained a `**Governance.**` line as the final sub-bullet (after `**Transition.**`), naming the oddkit handle that governs phase entry, the handle that governs in-phase work, and the handle that fires at the transition to the next phase. The handoff specified "entry, transition, and exit"; the line as drafted covers all three in a single sentence per phase.
+
+**New observation (O9 — five-mode alignment).** The wiring uses planning-mode language consistent with `klappy://canon/epistemic-modes` (five modes: exploration, planning, execution, validation, resolution per #186) and treats a survey run as a planning-mode artifact whose Phase 4 reversion to Phase 2 stays inside planning. No three-mode legacy language survives in the new section; the runtime-contract template's framing is preserved.
+
+**New observation (O10 — content drift not promised).** The contract explicitly disclaims content-level coverage. A fabricated ility, a mislabeled tension relationship, or an unjustifiable sacrifice that survives `oddkit_challenge` will still pass each gate's prerequisite check. The wiring catches phase-boundary violations; peer review, downstream validation, and operator inspection remain the deepest-pressure surfaces outside the contract.
+
+**New learning (L5 — runtime-contract pattern is reusable).** The Tier-2 contract shape from `klappy://canon/methods/spawned-agent-session-runtime-contract` adapts cleanly to a method-level governance wiring: rename "dimensions" → "phases", swap the five-mode runtime configurations for the seven survey phases, keep the action-by-action table and the "what this does not promise" disclaimer, and add per-phase `Governance.` bullets. The pattern's portability is itself evidence that the runtime-contract framing is not specific to spawned agent sessions; it works for any process with named phase boundaries and oddkit-callable governance.
+
+**New constraint (C4 — retraction condition for the wiring).** The Runtime Contract section retracts if the gates fire false-positives (blocking on prerequisites present in non-standard formats) or false-negatives (passing outputs that downstream agents cannot consume). The retraction trigger is itself in the section; no separate handoff is required to revisit the wiring.
+
+**New handoff (H4 — closeout of #192).** PR #192 lands the survey method, the matrix, the principle, the vocabulary, the observability extension, the essay, the ledger, and now the governance wiring as a single canon package. Next surface beyond this PR: Oddie pack design (banked O-open P6), standalone personality-test article (banked O-open P5), and the `oddkit_tensions(...)` action work in `klappy/oddkit` (banked O-open P7). None are part of this PR.
+
+**New encode (E3 — wiring artifacts).**
+
+- `canon/methods/quality-attribute-tension-survey.md` updated: +1 H2 section (Runtime Contract, lines 36–64), +7 Governance bullets across Phase 0–6. Final line count 422 (was 379).
+- This ledger amended with the present section.
+
+**No new opens.** Lane closes cleanly. Bank list (P5, P6, P7, P11) unchanged.
+
+
 
 Session triggered by Klappy sharing the original 2018 Medium article and three SMS screenshots of the conversation with Ian Lindsley earlier the same day. A fourth screenshot and direct message arrived after initial delivery, surfacing the vocabulary correction and the constraints-survey reframe. Modeled the canon work on existing patterns: definition style follows `canon/definitions/dolcheo-vocabulary`; principle style follows other tier-1 principles in `canon/principles/`; matrix style is novel (no existing matrix doc in canon to model from); essay style follows `writings/agentic-software-development`. Phase axis cross-links `klappy://odd/maturity`. External link to original Medium article preserved as canonical origin throughout the package.
