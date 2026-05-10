@@ -85,6 +85,44 @@ The relaxations are permissions, not the default. Default is gate-required for e
 
 ---
 
+## Parallelism Patterns — What This Principle Does Not Forbid
+
+Session-per-mode discipline is often misread as "work serializes through five modes." It does not. Parallelism is supported in three of four patterns; only one is forbidden.
+
+### Within-Mode Parallelism — Encouraged
+
+Multiple sessions operating in the same mode, in parallel, on the same goal is the Quantum Development insight applied at the session layer: same mode, different execution paths, different outcomes. The pattern is most useful when:
+
+- Multiple explorers fan out on different angles of a single goal, each with fresh context. Fan-in produces a consolidated synthesis ledger that the planner reads as the encoded handoff.
+- Multiple validators apply different lenses to the same artifact — security validator, UX validator, technical validator. Each runs independently with fresh context. Fan-in produces consolidated findings with each lens's dispositions preserved.
+- Multiple builders work on independent parts of a planned scope. Fan-in produces the artifact when each builder's contribution is independent of the others.
+
+The fan-in is itself a consumer pattern — the consumer collects parallel sessions' outputs and produces a single encoded handoff to the next mode. Fan-in is not free; the consumer assumes responsibility for reconciling overlapping outputs and surfacing genuine disagreement among parallel sessions.
+
+### Multi-Participant Single Session — Allowed Within a Mode
+
+Multiple agents or assistants can collaborate within a single session, sharing the session's context and operating in the session's mode. A builder collaborating with a coding-style reviewer assistant is one builder-role session with two participants. The session is still mode-bound; the participants share the mode's tool restrictions and produce the mode's deliverable jointly.
+
+This does not violate session-per-mode discipline because the session is bound to one mode. The participants are inside that mode together. The handoff at the next gate is from the session's joint output, not from individual participants.
+
+### Cross-Mode Parallelism on the Same Artifact — Forbidden
+
+A builder still building cannot have a validator already validating the same artifact. The validator's input is the encoded artifact-plus-claims handoff, which does not exist until the builder is done. Premature validation reviews an unfinished artifact, which corrupts both roles: the validator produces findings against a moving target; the builder feels evaluated mid-build and starts optimizing toward what the validator is surfacing rather than toward what the plan called for.
+
+This is the only parallelism pattern the principle forbids. Runtimes that host this work can enforce it mechanically by refusing validator sessions on artifacts not yet declared complete via the encoded-handoff mechanism.
+
+### Cross-Mode Parallelism on Different Artifacts — Independent
+
+Multiple work streams, each with their own mode chain, can run concurrently with no conflict. A team can have one stream in exploration, another in planning, a third in build, a fourth in validation, simultaneously. Each stream has its own handoffs, its own journal entries, its own session structure. They share only what they choose to share — typically nothing more than upstream canon and downstream consumer interests.
+
+This is the default mode of a productive multi-agent system. The principle does not slow this down; it constrains only the within-stream serialization of an artifact through modes.
+
+### The Distinguishing Question
+
+When evaluating any parallelism pattern, ask: *are these sessions operating on the same artifact in different modes simultaneously?* If yes, forbidden. If no — same mode, or different artifacts — allowed. Most parallelism intuitions resolve cleanly under this test.
+
+---
+
 ## Why This Is Architectural, Not Conversational
 
 This principle applies wherever modes are crossed: human work, agent work, mixed teams. But the architectural application is what makes it operationally enforceable.
@@ -94,6 +132,58 @@ For agent runtimes, sessions are first-class objects. A runtime that hosts agent
 For human work, the principle is harder to enforce mechanically and easier to violate. A human who explored, planned, built, validated, and resolved a piece of work in a single afternoon has crossed five mode boundaries with shared context and may not notice. The mitigation is the same as for any cognitive-discipline question: rest, peer review, and explicit acknowledgment when modes were collapsed for legitimate reasons (genuine PoC scope, time pressure with stated tradeoff).
 
 For conversational surfaces — chat with an AI assistant, pair-programming sessions, design reviews — the principle is most often violated and least often noticed. A conversation that flows from "let's explore this" to "okay, here's the plan" to "I'm building it now" to "looks good" within a single context window has executed every transition without any gate. The conversational ergonomic is comforting; the epistemic state is corrupted. Surfaces that want both ergonomic continuity and mode discipline have to orchestrate the transitions invisibly — spawning fresh sessions per mode while presenting unified continuity at the human-facing surface. That is a consumer pattern, not a runtime feature.
+
+---
+
+## Failure Modes — When Handoff Quality Determines Whether the Architecture Pays Back
+
+Session-per-mode discipline is not free. Each transition costs orchestration overhead, journal entries, and the inherent information loss of encoding into a durable artifact what would otherwise live in continuous working context. The principle's claim is that the signal-quality gain from fresh context exceeds these costs.
+
+That claim depends entirely on handoff quality. If the encoded handoff fails to preserve what would have transferred in a shared session, the receiving session is operating on degraded input — which is worse than the mode-collapse it was meant to replace. Mode-collapse at least operates on the real picture (just corrupted by the collapse). A bad handoff produces a session operating on a distorted picture *and* paying the architectural cost to do so.
+
+### What Bad Handoffs Look Like
+
+The failure is not random encoding error. It is systematic loss of the kinds of context that resist explicit encoding:
+
+**Lossy encoding.** The handoff captures the decisions but not the live tensions, the considered-and-rejected paths, the *"we almost went with X but Y because Z"* context that would have been visible in shared session state. A planner reading "scope: A, B, C" without seeing that "we initially had D in scope and removed it because of constraint K" will plan as if D was never considered — and may rediscover D's appeal mid-execution without K's reasoning to bound it.
+
+**Missing dynamic types.** Static handoffs preserve static decisions but not *live* state — assumptions that feel load-bearing but are still tentative, conclusions that feel right but are sensitive to inputs the next session will see, hypotheses that the prior session was about to test. These dynamic types resist encoding because they have no settled form yet, but they are exactly the context the next session needs to know is unstable.
+
+**Missing crucial context that felt obvious.** The most dangerous gap. The encoder knew something but did not write it down because encoding it felt like overhead — the kind of context everyone-on-the-project-knows. Receiving sessions in fresh context do not have that everyone-knows context. They proceed as if the unwritten thing did not exist.
+
+**Minimum-met-but-insufficient handoffs.** The handoff satisfies the [encoded-handoff constraint](klappy://canon/constraints/mode-transitions-require-encoded-handoff)'s minimum content requirement but is shallow — checkbox compliance without substantive encoding. The format is right; the meaning is thin. The receiving session has nothing to refuse the handoff against, but it also has nothing to work with.
+
+### When Costs Exceed Benefits
+
+The architecture fails to pay back when handoff quality is poor enough that the receiving session is operating on a distorted view *and* the orchestration cost is being paid in full. Two specific conditions:
+
+**The encoder is the only one who knew it.** When the prior session held context that genuinely cannot be reconstructed from canon, prior journal entries, or general project knowledge — and the encoder did not surface it — that context dies at the gate. The receiving session has no way to recover it. Mode-collapse would have preserved it; session-per-mode loses it.
+
+**The encoding norms have not yet caught the failure mode.** Every project has handoff-quality patterns that emerge over time. Until those patterns include the specific kind of context that gets routinely lost, sessions-per-mode will produce visibly worse output than mode-collapse on that kind of work. The principle becomes load-bearing only after the encoding norms are sharp enough to capture what matters.
+
+In both cases, the rational choice is to relax the architecture for the affected transitions until the failure mode is addressed — either by mode-collapse with operator override (per [the encoded-handoff constraint's override provision](klappy://canon/constraints/mode-transitions-require-encoded-handoff)), or by improving the encoding norms first, or by accepting that some handoffs need supplementary live consultation between sessions.
+
+### Detection Signals
+
+A session operating on a bad handoff produces detectable signals:
+
+- The receiving session asks questions whose answers should have been in the handoff (and that the handoff format was supposed to capture)
+- The receiving session builds on assumptions not stated in the handoff, sourced from inference or generalization rather than from declared inputs
+- The receiving session's output contradicts implicit context the prior session held but did not encode
+- Findings or revisions surface issues the prior session would have prevented if its context had transferred
+
+These signals are detectable to the receiving session itself, to a downstream session reviewing both, and to a longitudinal review of the project's journal entries. The architecture's mitigation path is to make these signals visible — receiving sessions can refuse insufficient handoffs and request escalation rather than proceeding with degraded input.
+
+### Mitigation, Not Elimination
+
+Handoff quality is its own discipline, distinct from the structural discipline of session boundaries. The principle's costs only pay back if both disciplines are in place. Specifically:
+
+- **Encoding norms must surface dynamic types, considered-and-rejected paths, and load-bearing-but-tentative state** — not just settled decisions. Norms emerge over time and from observed failures.
+- **Receiving sessions must be able to flag insufficient handoffs** as a first-class outcome — distinct from "I disagree with the handoff" or "I have findings about it." A handoff insufficiency is a structural problem requiring escalation, not a content disagreement requiring resolution.
+- **Audit trails should preserve handoff insufficiency events** so projects can observe which transitions routinely produce bad handoffs and improve norms at those gates.
+- **Operator override is a legitimate response to chronic handoff-quality problems** for affected transitions — not as a permanent retreat, but as a stopgap until norms catch up.
+
+The principle is right when handoffs are right. It is wrong, in the sense of producing worse outcomes than its alternative, when handoffs are bad. The architecture does not eliminate the encoding-quality problem; it relocates it from "did the prior session communicate well" to "did the prior session encode well." That is a different problem and one some failure modes resist.
 
 ---
 
