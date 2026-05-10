@@ -100,15 +100,32 @@ Each of these is impossible — or impossibly expensive — when the human is th
 
 ## AMS as the Worked Reference Implementation
 
-`klappy://canon/architecture/substrate-stack` assigns the wire to L1; AMS is the canonical implementation. AMS treats every peer through identical primitives (per `klappy://canon/principles/symmetric-participation`): account credentials, conversation minting, stream attachment, token delivery, selective subscription. Buffering and persistence belong to the wrapper tier per `ams://canon/decisions/D0016-buffering-and-persistence-as-wrapper-primitive` — never the wire. The wire ships tokens; it does not interpret them.
+`klappy://canon/architecture/substrate-stack` assigns the wire to L1; AMS is the canonical implementation. AMS treats every peer through identical primitives (per `klappy://canon/principles/symmetric-participation`): account credentials, conversation minting, stream attachment, token delivery, selective subscription. The wire ships tokens; it does not interpret them.
 
 The wire unit is deliberately undefined. Per `ams://canon/decisions/D0001-tokens-not-messages`, AMS chose the token — *opaque bytes, smaller than a message, larger than a byte, exactly the unit agents already produce* — precisely because committing to a higher-level envelope would have committed the substrate to opinions agent ecosystems will keep evolving past. The token's arbitrariness is the adaptation mechanism: any envelope subscribers want to compose (message, frame, chunk, control signal, structured payload) lives above the wire and can be replaced without protocol revision. Machines invent their own communication on this substrate; the substrate stays out of the way.
 
 Reachability follows the inverted-inbox model from `ams://canon/decisions/D0003-per-account-stream-ownership`: agents own output streams, subscribers attach to those streams, and the wire never delivers an agent's tokens back to itself. There is no push surface for writers to push into. This is what makes the substrate viable as an open wire — without an inbox to clutter, openness does not become an attack surface.
 
+### What the Wire Refuses to Own — and How AMS Provides It Instead
+
+The wire's narrowness creates a real obligation: every concern the wire refuses to own must be picked up somewhere above the wire, or the substrate fails to deliver the production value that justifies its existence. **Buffering is the worked example.** Most multi-agent use cases require it: resumability after network blips, late-joiner catchup, multi-viewer fan-out, refresh-survives-disconnect, model-adapter discontinuity recovery. Every production stack that needs these capabilities today rebuilds the buffer-and-fan-out layer one-off — Anthropic Messages clients reconstruct streams client-side, Convex documented one such build for OpenAI, Vercel ships another in its AI SDK, every chat product that survives a browser reload has a hand-rolled equivalent.
+
+Per `ams://canon/decisions/D0016-buffering-and-persistence-as-wrapper-primitive`, AMS makes buffering a wrapper-tier primitive — a `StreamBufferDO` per `(account, stream)` with TTL and size bounds, account-gated, captured as a normal subscriber to the wire. **Built once at L2, reused by every wrapper class that needs it.** This is the pattern that protects the wire's narrowness without sacrificing the use cases that depend on durability. The wire stays a wire; buffering happens above it; the substrate as a whole satisfies real-world needs. Wrappers inherit production-grade resilience instead of reinventing it; the wire stays free of opinions about durability, eviction, retention, and tier semantics that would have calcified L1.
+
+The same pattern applies across other concerns the wire refuses to own:
+
+- **Persistence and archival** — a separate composable subscriber per `PATTERNS.md` §3, sibling to buffering rather than contained by it
+- **Observability** — subscriber-pattern, not wire-feature, per `ams://canon/decisions/D0010-observability-via-subscriber-not-wire`
+- **Session continuity** across MCP transport reconnects — wrapper-tier re-keying per `ams://canon/decisions/D0019-cross-session-continuity-via-account-conversation-keying`
+- **Discontinuity announcements** — `set_metadata` (an existing wire primitive) reused per D0016, never new wire frame types
+
+The discipline is one move repeated: the wire stays narrow; the wrapper tier picks up the necessary concerns; concerns become shared primitives instead of N independent reimplementations. The wire's value is what it does not do; the substrate's value is what its layers above the wire do, in shapes that compose because the wire doesn't fight them.
+
+### Positioning as Substrate, Not Application
+
 AMS is positioned as substrate, not application, per `ams://canon/decisions/D0020-agents-as-customer-and-third-party-vas-substrate`. The customer is the agent. AMS does not compete with applications agents will build on top of it; it competes only at the wire layer where its job is to be the cleanest possible transport. This positioning is what makes AMS adoptable by agent ecosystems that are otherwise vendor-coupled — joining AMS does not require accepting application opinions.
 
-The principle is not asserting that AMS is the only valid wire implementation, or that AMS's specific design choices are mandatory. It asserts that *some* wire is mandatory for multi-agent work to scale, and that an open, vendor-neutral wire is the only kind that hosts the ecosystem. AMS is the worked example; the principle is what AMS is built to satisfy.
+The principle is not asserting that AMS is the only valid wire implementation, or that AMS's specific design choices are mandatory. It asserts that *some* wire is mandatory for multi-agent work to scale, that an open, vendor-neutral wire is the only kind that hosts the ecosystem, and that the wire's narrowness must be paired with a credible wrapper-tier story for production needs the wire refuses to own. AMS is the worked example; the principle is what AMS is built to satisfy.
 
 ---
 

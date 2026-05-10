@@ -53,7 +53,9 @@ It does not know whether the stream represents a human typing in WhatsApp, a Cla
 
 It does not know whether the frames emitted are agent-to-agent coordination, human-to-agent steering, role-emitted snapshots, or substrate notifications. The wire ships them. The peers above the wire interpret them.
 
-The wire's poverty of knowledge is the principle. Every primitive it offers — account creation, conversation minting, stream attachment, frame delivery, selective subscription — works identically for every peer. There are no peer-type-aware code paths. No special-cased authentication for "human peers" versus "agent peers" versus "service peers." No protocol-level privilege. Buffering and persistence belong to the wrapper tier per `ams://canon/decisions/D0016-buffering-and-persistence-as-wrapper-primitive`, not the wire — the wire's symmetry holds without buffering being a wire feature.
+The wire's poverty of knowledge is the principle. Every primitive it offers — account creation, conversation minting, stream attachment, frame delivery, selective subscription — works identically for every peer. There are no peer-type-aware code paths. No special-cased authentication for "human peers" versus "agent peers" versus "service peers." No protocol-level privilege.
+
+What the wire refuses to own, the layers above it provide. Buffering is the worked example: most production multi-agent use cases require it — resumability after network blips, late-joiner catchup, multi-viewer fan-out, refresh-survives-disconnect, model-adapter discontinuity recovery. The wire still does not own buffering. Instead, per `ams://canon/decisions/D0016-buffering-and-persistence-as-wrapper-primitive`, AMS provides it as a *wrapper-tier primitive* — built once at L2, reused by every wrapper class that needs it, instead of forcing N independent reimplementations. This is the pattern that protects wire symmetry without sacrificing the use cases that depend on durability: the wire treats every peer identically because peer-aware features live one layer up, available to whoever needs them.
 
 ---
 
