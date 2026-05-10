@@ -151,6 +151,48 @@ Method doc lands as `canon/methods/quality-attribute-tension-survey.md` (~207 li
 
 ---
 
+## Stakeholder Validation — Ian's Review
+
+After the dual-state radar landed (commit `3509386`), operator shared the rendered page with technical partner Ian Lindsley. Ian responded "**This is perfect.**" Verbatim exchange preserved here as source material for the banked standalone article (O-open P5).
+
+**Operator's framing to Ian, verbatim:**
+
+- *"lol, it's what I'm calling the personality test for a product. What personality do you want your product to have? 😂"*
+- *"Imagine oddkit survey questions. It discovers the current and aspirational personality of your project."*
+- *"It renders this chart and over time you can track the movement from what was to your desired priorities."*
+- *"It can help you create a roadmap and priorities for features and functions that actually move the needle towards the outcomes and impact the user in a meaningful way."*
+
+These four texts compress the entire arc — vocabulary, principle, matrix, method, radar, personality framing — into stakeholder-readable form. They are the spine of the standalone article when drafted. Operator wrote them in real time without canon reference; the framing crystallized from the work, not from a script.
+
+**New learning (L3 — voice landed first).** The voice for the standalone article emerged from operator's live stakeholder conversation before any draft was attempted. The article's job is to preserve this voice across audiences, not to derive a new one. Lesson: when the framing reaches an external technical partner cleanly, capture it verbatim before it gets re-derived in a more formal register.
+
+---
+
+## New Product Surface — Oddie, the Dynamic Survey Interviewer
+
+Operator directive (verbatim): *"the dynamic oddkit survey is governance driven. You just teach a model how to interview. Oddie is the interviewer."* This crystallizes a new product surface that is distinct from both the static method doc (the canonical specification) and the future `oddkit tensions(...)` action (a tool call that codifies the dynamic-generation step from Phase 3). Oddie is the *interactive interview runtime* — a persona-pack that a model consumes to run a quality-attribute tension survey as a conversation.
+
+**New learning (L4 — Vodka Architecture applied to elicitation).** Oddie inherits the same architectural shape as oddkit itself: thin pack over stateful canon. The pack contains a persona, a posture, a phase-by-phase flow controller, and a list of canon URIs to fetch at runtime. The pack does *not* contain the method itself, the principle itself, or the matrix itself — those are read from canon live via oddkit each session, so canon updates propagate automatically. This explicitly rejects the archived agent-skill v1.3 pack-compilation / Cloudflare Pages distribution pattern that operator named brittle and unmaintainable (no update propagation to downstream consumers).
+
+**New open (O-open P6 — Oddie pack design).** Forward-pointing work for next focused session. Shape proposed (subject to operator confirmation):
+
+- **Identity & posture** — "You are Oddie. You help product teams discover the current and aspirational personality of their projects through quality-attribute tension surveys. You are an elicitor, not an author. You extract; you do not invent. You ask one phase at a time. You wait for the team's answer before moving on. You ground every claim in canon."
+- **Runtime canon dependencies** (fetched live via oddkit, not snapshotted into the pack):
+  - `klappy://canon/methods/quality-attribute-tension-survey` (the method itself)
+  - `klappy://canon/principles/quality-attributes-are-in-tension` (the principle)
+  - `klappy://canon/observations/quality-attribute-tension-matrix` (the 45-pair worked example)
+  - `klappy://canon/observations/observability-tension-extension` (the extension pattern)
+  - `klappy://canon/definitions/software-virtues-vocabulary` (the canonical ten)
+- **Phase-by-phase flow controller** — short instructions per phase pointing at the canon section that governs the questions to ask, with explicit dual-state elicitation prompts.
+- **Output emitter** — instructions for producing the three DOLCHEO artifact types (Constraints, Observations, Opens) plus the SVG personality radar.
+- **Distribution surface(s)** — model-agnostic system-prompt blob as the canonical form; wrappers may include Claude skill, custom GPT, MCP server, or system-prompt-as-pack. The same underlying pack content drives all of them.
+
+**Disposition: banked for next session.** Pre-implementation evaluation should re-run the 6B borrow against agent-skill v1.3 (now explicitly with the "no pack compilation, no Cloudflare Pages distribution, no snapshot lock-in" guardrails) and any other elicitation-pack prior art operator surfaces.
+
+**New open (O-open P7 — `oddkit tensions(...)` action remains separate).** Distinct from Oddie. Oddie is the conversational runtime; `oddkit tensions(...)` is the tool call Oddie *uses* at Phase 3 when surveying ilities outside the canonical ten. Banked in `klappy/oddkit` repo, separate PR. Sequencing: Oddie can be drafted before the action lands because Phase 3's dynamic-generation step has the hand-run procedure documented; the action just codifies what Oddie would otherwise do procedurally.
+
+---
+
 ## Lineage
 
 Session triggered by Klappy sharing the original 2018 Medium article and three SMS screenshots of the conversation with Ian Lindsley earlier the same day. A fourth screenshot and direct message arrived after initial delivery, surfacing the vocabulary correction and the constraints-survey reframe. Modeled the canon work on existing patterns: definition style follows `canon/definitions/dolcheo-vocabulary`; principle style follows other tier-1 principles in `canon/principles/`; matrix style is novel (no existing matrix doc in canon to model from); essay style follows `writings/agentic-software-development`. Phase axis cross-links `klappy://odd/maturity`. External link to original Medium article preserved as canonical origin throughout the package.
