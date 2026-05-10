@@ -6,10 +6,10 @@ exposure: nav
 tier: 2
 voice: neutral
 stability: draft
-tags: ["canon", "methods", "spawned-agent-sessions", "runtime", "governance", "epistemic-modes", "engagement", "vodka-architecture", "mechanizes-canon"]
+tags: ["canon", "methods", "spawned-agent-sessions", "runtime", "governance", "epistemic-modes", "engagement", "vodka-architecture", "mechanizes-canon", "session-discipline", "five-mode-bound-roles"]
 epoch: E0008.5
 date: 2026-05-10
-derives_from: "canon/epistemic-modes.md, canon/constraints/mode-discipline-and-bottleneck-respect.md, canon/constraints/critic-cannot-be-resolver.md, canon/constraints/audit-gates-are-spawned-agent-sessions.md, canon/methods/spawned-agent-session-substrate-options.md, canon/voice/oddie-the-river-guide.md, canon/principles/vodka-architecture.md, canon/principles/verification-requires-fresh-context.md"
+derives_from: "canon/epistemic-modes.md, canon/principles/sessions-mirror-modes.md, canon/constraints/mode-transitions-require-encoded-handoff.md, canon/constraints/mode-discipline-and-bottleneck-respect.md, canon/constraints/critic-cannot-be-resolver.md, canon/constraints/audit-gates-are-spawned-agent-sessions.md, canon/methods/spawned-agent-session-substrate-options.md, canon/methods/persona-shaped-agent-runtime.md, canon/voice/oddie-the-river-guide.md, canon/principles/vodka-architecture.md, canon/principles/verification-requires-fresh-context.md"
 complements: "canon/methods/governance-validation-via-agents.md, canon/constraints/canon-integration-audit.md"
 governs: "Any spawned agent session dispatched on the runtime substrate. Specifies the five orthogonal session-configuration dimensions, the runtime's enforcement obligations against existing canon, and the composition rules that determine session shape from the dimension values. Substrate selection (where the session runs) is handled by klappy://canon/methods/spawned-agent-session-substrate-options; this doc handles configuration (how the session is parameterized)."
 status: draft
@@ -36,8 +36,8 @@ The runtime exposes a single primitive — invoke a session — parameterized by
 | Dimension | Values | What it determines |
 |---|---|---|
 | **Persona** | `oddie`, `audit-gate`, `docs-writer`, `general`, ... | Voice canon, system prompt URI, capability sources (operational + task-relevant MCP servers), inheritance |
-| **Mode** | `exploration` \| `planning` \| `execution` \| `validation` | Tool allow-list, output schema, transition rules, primary-risk detector |
-| **Role** | `detection-only` \| `resolver` \| `general` | Mutation rights, fresh-context requirements, session-to-session boundaries |
+| **Mode** | `exploration` \| `planning` \| `execution` \| `validation` \| `resolution` | Tool allow-list, output schema, transition rules, primary-risk detector |
+| **Role** | `explorer` \| `planner` \| `builder` \| `validator` \| `resolver` \| `general` \| `observer` | Mutation rights, fresh-context requirements, structured-deliverable expectations, session-to-session boundaries. The first five are mode-bound (1:1 with the canonical modes); `general` is escape hatch; `observer` is the non-mode-bound configuration for continuous-observation surfaces |
 | **Surface** | `real-time-stream`, `audit`, `mentorship`, `sidebar-chat`, `code-output`, `synthesis-ledger`, ... | Density / pace / verbosity tolerance, post-processing rules, channel mapping |
 | **Engagement** | `assistant` \| `agent` | Turn-control contract, bottleneck-respect enforcement, failure modes |
 
@@ -99,7 +99,7 @@ New personas are added by writing a profile, not by writing infrastructure.
 
 ## Mode
 
-The four canonical epistemic modes from `klappy://canon/epistemic-modes` map directly to runtime configurations. Each mode constrains tool allow-list, output schema, transition rules, and the primary risk the runtime watches for.
+The five canonical epistemic modes from `klappy://canon/epistemic-modes` map directly to runtime configurations. Each mode constrains tool allow-list, output schema, transition rules, and the primary risk the runtime watches for. Per `klappy://canon/principles/sessions-mirror-modes`, each mode earns its own session — the runtime treats mode as load-bearing and refuses to inherit context across mode boundaries except under `engagement=assistant` continuity within the same mode.
 
 ### Exploration
 
@@ -136,16 +136,29 @@ The four canonical epistemic modes from `klappy://canon/epistemic-modes` map dir
 - **Output schema**: each finding MUST carry a disposition — `fix | pivot | accept`. A finding without disposition is rejected as incomplete per the canon.
 - **Risk detector**: scope creep. Findings that propose redesign rather than report defects are flagged. The validation session does not get to reopen planning; that requires explicit reversion.
 
+### Resolution
+
+- **Truth condition** (canon): valid if it addresses the findings without expanding scope.
+- **Required**: fresh context. The runtime refuses same-session transitions from `validation` to `resolution`. Resolution requires a new session that receives the validation findings as input but does not inherit the validator's framing. This realizes `klappy://canon/constraints/critic-cannot-be-resolver` as a structural feature.
+- **Tool allow-list**: full set, scoped to the validation findings — mutations are allowed but bounded by the findings, not by the original plan.
+- **Forbidden**: introducing new requirements the findings did not surface. Operations outside finding-scope require explicit reversion to planning.
+- **Output schema**: revised artifact + per-finding remediation summary (what was changed, what was not changed and why). Each finding's disposition is honored: `fix` produces a change; `pivot` produces a redirect with rationale; `accept` produces a no-change statement with rationale.
+- **Risk detector**: scope creep. Mutations outside finding-scope are flagged.
+- **Anti-pattern detector**: resolver does not certify their own fix. Re-validation requires a fresh validator session per `klappy://canon/principles/sessions-mirror-modes`.
+
 ### Mode-collapse anti-patterns become runtime detectors
 
-`klappy://canon/epistemic-modes` §Non-Collapse Rule names six specific anti-patterns. Each maps to a runtime check:
+`klappy://canon/epistemic-modes` §Non-Collapse Rule names anti-patterns across all five modes. Each maps to a runtime check:
 
 1. *Exploration pretending to decide* → premature-closure detector in exploration mode.
 2. *Planning pretending to execute* → mutation-attempt detector in planning mode (refused at submit time).
 3. *Execution exploring alternatives retroactively* → scope-violation detector when tool calls fall outside the locked allow-list.
 4. *Execution pretending to validate* → mid-build pivot detector — flag and instruct "note concern, carry forward."
 5. *Validation pretending to plan* → redesign-instead-of-finding detector — flag and refuse.
-6. *Validation pretending to execute* → mutation-attempt detector in validation mode (refused at submit time).
+6. *Validation pretending to execute or resolve* → mutation-attempt detector in validation mode (refused at submit time); inline-fix detector flagged.
+7. *Resolution pretending to plan* → new-requirement detector — flag and require explicit reversion.
+8. *Resolution pretending to validate* — refused. The resolver session cannot return a "this is fixed" certification; re-validation is a fresh session.
+9. *Resolution pretending to be a fresh execution* → scope detector flags mutations outside the bounded scope of the validation findings.
 
 Most resolve to schema-level rules and tool allow-lists. Sophistication is not required.
 
@@ -153,24 +166,41 @@ Most resolve to schema-level rules and tool allow-lists. Sophistication is not r
 
 ## Role
 
-Role declares the **corruption boundary** the session respects. Three values, derived from `klappy://canon/constraints/critic-cannot-be-resolver`.
+Role declares the **session shape** the runtime enforces — tool restrictions, fresh-context requirements, structured-deliverable expectations, and mode binding. Five mode-bound roles map 1:1 to the canonical modes; two escape hatches handle non-mode-bound configurations.
 
-### detection-only
+Generalized from `klappy://canon/principles/sessions-mirror-modes` and `klappy://canon/constraints/critic-cannot-be-resolver`.
 
-The session detects and reports. It does not mutate the artifact-under-observation. The runtime enforces this structurally:
+### explorer
 
-- **Tool filter**: filesystem writes, `git commit`, mutating API verbs (POST/PATCH/DELETE/PUT to write endpoints), `gh pr merge`, and any other state-modifying operations are refused at submit time. Refused before the session starts, not by prompt instruction.
-- **Session-to-session boundary**: the same session cannot be re-invoked with a "now fix what you found" follow-up task. Resolution requires a fresh session that receives the finding as input but not the detector's reasoning. This is `critic-cannot-be-resolver` made architectural.
+Mode-bound to `exploration`. Tool allow-list is broad (read-heavy: search, fetch, oddkit query tools, web-search) with state-mutation tools refused. Output is a synthesis ledger or research artifact per the [encoded-handoff constraint](klappy://canon/constraints/mode-transitions-require-encoded-handoff). Fresh-context requirement: must not inherit planner/builder/validator session state. The synthesis ledger is the durable handoff to the planner.
 
-The audit gate is the worked detection-only consumer. Oddie is detection-only across all his surfaces by canon (`klappy://canon/voice/oddie-the-river-guide` §What Oddie Is Not).
+### planner
+
+Mode-bound to `planning`. Tool allow-list is read-oriented (canon access, prior synthesis ledgers, plan-shaping tools); state-mutation tools refused. Output is a plan declaring `assumptions`, `scope`, `deferred`, and `would_invalidate`. Fresh-context requirement: receives the explorer's encoded synthesis as input, does not inherit explorer-session state. The plan is the durable handoff to the builder.
+
+### builder
+
+Mode-bound to `execution`. Tool allow-list includes mutating tools (filesystem writes, git, API calls) bounded by the plan's declared scope. Output is the produced artifact plus a claims declaration (what the artifact does, what it does not do, what scope it was built against). Fresh-context requirement: receives the plan as input, does not inherit planner-session state. The artifact-plus-claims is the durable handoff to the validator.
+
+### validator
+
+Mode-bound to `validation`. Tool allow-list is restricted to a read-only allow-list. Mutating actions are refused before the substrate is invoked. Fresh-context requirement is *strict*: the runtime guarantees the validation session is spawned with no inputs from the caller other than the persona profile, the artifact reference, the claims declaration, and the governance documents. Output is structured findings with explicit dispositions (`fix | pivot | accept`) per finding, consistent with [P0008](klappy://docs/promotions/P0008-pr-validator-dolcheo-ledger-as-deliverable). Findings are the durable handoff to the resolver — or, if all dispositions are `accept`, the validation session is terminal.
+
+The audit gate is the worked validator consumer. Oddie's audit-findings surface is also validator-shaped.
 
 ### resolver
 
-The session is permitted to mutate artifacts within the session's locked scope. Mutating tools are allowed. Resolver sessions cannot also serve as their own validators — validation of a resolver's output requires a separate session per the fresh-context rule.
+Mode-bound to `resolution`. Tool allow-list includes mutating tools, scoped to the validation findings (not to the original plan). Output is the revised artifact plus a remediation summary per finding. Fresh-context requirement: receives the findings as input, does not inherit validator-session state. The revised artifact is the durable handoff back to a fresh validator session for re-validation.
 
 ### general
 
-No special role enforcement. Used for sessions that are neither pure detection nor pure resolution — exploration, planning, mentorship, strategic translation, and other dialogue-heavy sessions where the role distinction is not load-bearing.
+Escape hatch. No mode-binding, no fresh-context guarantee, no structured-deliverable requirement. Used for sessions that intentionally combine modes — exploration, planning, mentorship, strategic translation, dialogue-heavy work where the role distinction is not load-bearing — and for explicitly-acknowledged mode collapse per the [encoded-handoff constraint's skip and operator-override provisions](klappy://canon/constraints/mode-transitions-require-encoded-handoff). General-role sessions are a deliberate choice to trade signal quality for throughput; the runtime supports them but does not pretend the mode-discipline constraints are met.
+
+### observer
+
+The non-mode-bound configuration for continuous-observation surfaces — sessions that watch an event stream produced elsewhere and emit commentary, without producing artifacts that hand off to a next mode. Oddie's real-time stream interpretation in TinCan is the worked example. Tool restriction is typically read-only; fresh-context requirement is light because there is no creator-context to inherit (the session observes a stream produced by other actors). Output shape varies by surface — narrative annotations for portal display, structured tokens for AMS-wire emission, etc.
+
+The observer role is distinct from `validator` because the work is not gate-bounded: there is no specific artifact under review and no encoded-handoff to a next mode. Observer sessions complement the mode-bound work the rest of the runtime hosts; they do not participate in the artifact-progression-through-modes pipeline.
 
 ---
 
@@ -242,8 +272,12 @@ Five orthogonal dimensions yield (in principle) the cross-product of all values.
 
 ### Forbidden combinations
 
-- **`role=detection-only` + execution-mode mutating tools requested** — detection-only filters mutators out of the allow-list before the session starts. Refused at submit time.
-- **Same-session execution-to-validation transition** — refused; fresh context required per `klappy://canon/principles/verification-requires-fresh-context`.
+- **`role=validator | observer` + execution-mode mutating tools requested** — read-only roles filter mutators out of the allow-list before the session starts. Refused at submit time.
+- **Same-session execution-to-validation transition** — refused; fresh context required per `klappy://canon/principles/verification-requires-fresh-context`. Validator session must spawn fresh.
+- **Same-session validation-to-resolution transition** — refused; fresh context required per `klappy://canon/constraints/critic-cannot-be-resolver`. Resolver session must spawn fresh.
+- **Same-session resolution-to-validation transition (re-validation)** — refused; the resolver does not certify their own fix. Re-validation requires a fresh validator session.
+- **`role=resolver` outside finding-scope** — resolver mutations are bounded by validation findings; mutations beyond finding-scope are refused. New requirements require explicit reversion to planning.
+- **Cross-mode parallelism on the same artifact** — a `validator` session cannot be invoked on an artifact whose `builder` session has not yet produced an encoded handoff. Refused at submit time per `klappy://canon/principles/sessions-mirror-modes` §Parallelism Patterns.
 - **`engagement=agent` + execution + clarifying-question emissions** — the runtime wraps clarifying questions as named failures rather than valid output.
 - **`engagement=assistant` + `surface=real-time-stream`** — real-time stream density does not admit caller dialogue. The runtime rejects the combination at session-start.
 
@@ -252,21 +286,24 @@ Five orthogonal dimensions yield (in principle) the cross-product of all values.
 - **`mode=planning` + `engagement=agent`** — autonomous canonical planning. The agent must produce a plan with all assumptions, deferrals, and invalidation conditions named without asking. Possible for repeatable, well-specified planning tasks.
 - **`mode=execution` + `engagement=assistant`** — supervised execution. Operator can interrupt; agent can yield at named decision points. Useful when the task admits multiple valid paths and operator preference matters.
 - **`mode=exploration` + `engagement=agent`** — autonomous research scout. Returns a synthesis ledger; operator reviews. The scout cannot converge prematurely (false-closure detector active).
+- **`role=general` + multi-mode work** — explicitly acknowledged mode collapse per the encoded-handoff constraint's override provision. The session collapses two or more modes deliberately under declared urgency or category-specific reasons (governance creation, production incidents). Journal entries at start and end record the collapse.
 
 ### Well-trodden combinations (and their typical consumers)
 
 | Persona | Mode | Role | Surface | Engagement | Consumer |
 |---|---|---|---|---|---|
-| `audit-gate` | validation | detection-only | audit | agent | PR-blocking automation, canon-coherence cron |
-| `oddie` | validation | detection-only | real-time-stream | agent | TinCan stream annotation |
-| `oddie` | validation | detection-only | sidebar-chat | assistant | TinCan portal Q&A |
-| `oddie` | validation | detection-only | audit | agent | PR auditor, scheduled reviews |
-| `oddie` | validation | detection-only | mentorship | assistant | Guided review sessions |
-| `docs-writer` | execution | resolver | code-output | agent | Autonomous doc generator |
-| `docs-writer` | execution | resolver | code-output | assistant | Co-authoring with operator |
-| `planning-helper` | planning | general | conversational | assistant | Plan-shaping with operator |
-| `research-scout` | exploration | general | synthesis-ledger | agent | Autonomous discovery |
-| `release-validator` | validation | detection-only | audit | agent | Per `klappy://canon/constraints/release-validation-gate` |
+| `audit-gate` | validation | validator | audit | agent | PR-blocking automation, canon-coherence cron |
+| `oddie` | validation | validator | audit | agent | PR auditor, scheduled reviews |
+| `oddie` | n/a (observer) | observer | real-time-stream | agent | TinCan stream annotation |
+| `oddie` | n/a (observer) | observer | sidebar-chat | assistant | TinCan portal Q&A |
+| `oddie` | n/a (observer) | observer | mentorship | assistant | Guided review sessions |
+| `docs-writer` | execution | builder | code-output | agent | Autonomous doc generator |
+| `docs-writer` | execution | builder | code-output | assistant | Co-authoring with operator |
+| `planning-helper` | planning | planner | conversational | assistant | Plan-shaping with operator |
+| `research-scout` | exploration | explorer | synthesis-ledger | agent | Autonomous discovery |
+| `release-validator` | validation | validator | audit | agent | Per `klappy://canon/constraints/release-validation-gate` |
+| `release-resolver` | resolution | resolver | code-output | agent | Iterates on validator findings, hands back for re-validation |
+| `governance-author` | (collapsed) | general | conversational | assistant | Governance creation under operator override; oscillates rapidly across exploration/planning/execution within one session because handoff norms cannot yet capture the live tensions |
 
 ---
 
@@ -332,10 +369,13 @@ A weaker retraction path: if the dimensions hold but specific enforcement points
 
 ## See Also
 
-- [Epistemic Modes](klappy://canon/epistemic-modes) — the four canonical modes this contract operationalizes
+- [Epistemic Modes](klappy://canon/epistemic-modes) — the five canonical modes this contract operationalizes
+- [Sessions Mirror Modes](klappy://canon/principles/sessions-mirror-modes) — the principle that each mode earns its own session, generalizing critic-cannot-be-resolver and verification-requires-fresh-context
+- [Mode Transitions Require Encoded Handoff](klappy://canon/constraints/mode-transitions-require-encoded-handoff) — the binding rule for journal entries plus transition-specific handoffs at every gate, with reversion / skip / operator-override as three permitted deviations
+- [Persona-Shaped Agent Runtime](klappy://canon/methods/persona-shaped-agent-runtime) — sibling method covering persona profiles as first-class objects (this doc covers session configuration; that doc covers persona authoring)
 - [Mode Discipline and Bottleneck Respect](klappy://canon/constraints/mode-discipline-and-bottleneck-respect) — the discipline this contract makes mechanical
-- [Critic Cannot Be Resolver](klappy://canon/constraints/critic-cannot-be-resolver) — the role-boundary constraint the runtime enforces structurally
-- [Verification Requires Fresh Context](klappy://canon/principles/verification-requires-fresh-context) — the principle that motivates fresh-context enforcement on validation transitions
+- [Critic Cannot Be Resolver](klappy://canon/constraints/critic-cannot-be-resolver) — the role-boundary constraint the runtime enforces structurally for the validator → resolver transition
+- [Verification Requires Fresh Context](klappy://canon/principles/verification-requires-fresh-context) — the principle that motivates fresh-context enforcement for validator-role sessions specifically
 - [Audit Gates Are Spawned Agent Sessions](klappy://canon/constraints/audit-gates-are-spawned-agent-sessions) — the Tier-1 constraint the runtime serves
 - [Spawned Agent Session Substrate Options](klappy://canon/methods/spawned-agent-session-substrate-options) — sibling method covering substrate selection
 - [Oddie the River Guide](klappy://canon/voice/oddie-the-river-guide) — worked persona whose existing canon implies the persona-profile shape

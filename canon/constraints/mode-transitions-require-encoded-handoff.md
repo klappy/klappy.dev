@@ -99,6 +99,18 @@ This differs from skip: a skip declares that a mode will not be entered at all. 
 - **Journal entry at session start** naming all of the above.
 - **Journal entry at session end** naming what actually happened — what was built, what was validated under the override, what was skipped, what tradeoffs materialized in practice.
 
+### Worked Use Cases — When the Override Earns Its Keep
+
+Two categories where operator override is operationally legitimate, not a degradation of discipline:
+
+**Production incidents.** A bug landed in production; the patch needs to ship in the next thirty minutes. The cost of moving through five clean sessions with handoffs at each gate exceeds the cost of context corruption — production downtime is not an acceptable tradeoff for epistemic hygiene at this moment. The operator declares the override, names the incident, acknowledges that the validator will share context with the builder, and accepts the corruption. The journal entries make the corruption visible later, so any code shipped under override gets flagged for proper post-incident review.
+
+**Governance creation.** Authoring canonical principles, constraints, and methods is inherently oscillating work. A draft principle implies a constraint; drafting the constraint surfaces a refinement to the principle; the refinement reveals an unexamined assumption that needs an exploration pass. The work moves between modes faster than handoff norms can encode. Until handoff norms catch up — until a project has been through enough governance-creation cycles to know which dynamic types its synthesis ledgers must capture — this category may regularly justify override. The signal is not that discipline is being abandoned; the signal is that the encoding norms are still maturing. An override-with-record produces governance with full audit trail of *how the governance was made*; clean sessions with poor handoffs would produce governance whose drafting context died at every gate.
+
+The honest framing: the architecture's value depends on handoffs being good enough to preserve what would have transferred in shared context. For categories of work where the encoding norms are still being learned, override-with-record is the correct operational response — not a permanent retreat, but a stopgap until norms catch up. The aspiration is that with explicit handoffs and forced same-branch work, encoding eventually becomes detailed enough that clean sessions become *transient, ephemeral, and transparent to the operator* — but reaching that state requires contact with reality, including the experience of trying and failing to encode well.
+
+This use case is itself a worked example: this constraint document was drafted in a single collapsed session under operator-acknowledged override, because the explorer-planner-builder-validator-resolver oscillation was faster than the handoff norms could yet capture. The journal entries record the override; future iterations will improve the handoff norms; eventually governance creation may be doable in clean sessions. Until then, override is the rational choice.
+
 ### What an Override Is Not
 
 - Not the `general` role escape hatch. The general role is a planned escape declared at persona-profile authoring time. The operator override is a reactive escape declared at session-invocation time. Different declaration point, different audit trail.
