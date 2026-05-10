@@ -247,7 +247,7 @@ Six tools, two servers, one week. Hope it ages like milk.
 
 ## I Babysat Agents from Ten to Two
 
-Most evenings of the hackathon went like this. I had meetings during the day with the SIL team and the cohort. I came home, decompressed for an hour or two, had dinner with my wife, who was working on her own social media campaigns at the kitchen table after the dishes. Then around ten at night I'd open the laptop and pick up where the day's transcripts had left off.
+Most evenings of the hackathon went like this. I had meetings during the day with the SIL team and the cohort. I came home, decompressed for an hour or two, had dinner with my wife, who was working on her own social media campaigns at the kitchen table after the dishes. Then around ten at night I'd pick up the phone and continue where the day's transcripts had left off.
 
 For about four hours each evening, I babysat agents.
 
@@ -259,7 +259,7 @@ I have been asked, more than once: *why don't you just automate that?* The answe
 
 But this round, the playbook itself is being written. The cost of getting that wrong, on autopilot, is much higher than the cost of an extra four hours a night for a week.
 
-The instinct to call this *manual* is a residue of an older era of automation, where automation meant *removing the human*. The kind of automation I am building treats the human as the fixed asset — the constrained, expensive, un-scalable thing — and the AI as the elastic compute that wraps around the human's instincts. *Babysitting* makes the work sound passive, and the framing has annoyed me for months, but I have stopped trying to find a better word for it. What I am actually doing is making sure the agent's exuberance never accidentally locks the architecture into something I will spend a year regretting. The price of one of those regrets is much higher than the price of an evening on the couch with a laptop.
+The instinct to call this *manual* is a residue of an older era of automation, where automation meant *removing the human*. The kind of automation I am building treats the human as the fixed asset — the constrained, expensive, un-scalable thing — and the AI as the elastic compute that wraps around the human's instincts. *Babysitting* makes the work sound passive, and the framing has annoyed me for months, but I have stopped trying to find a better word for it. What I am actually doing is making sure the agent's exuberance never accidentally locks the architecture into something I will spend a year regretting. The price of one of those regrets is much higher than the price of an evening on the couch with a phone in hand.
 
 Hope it ages like milk.
 
