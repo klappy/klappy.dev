@@ -1,0 +1,121 @@
+---
+uri: klappy://odd/ledger/2026-05-10-software-virtues-canon-package
+title: "Ledger — Software Virtues Canon Package + Essay (Session 2026-05-10)"
+audience: ledger
+exposure: nav
+tier: 3
+voice: neutral
+stability: stable
+tags: ["ledger", "session-journal", "dolcheo", "software-virtues", "quality-attributes", "tension-matrix", "epoch-8.4"]
+epoch: E0008.4
+date: 2026-05-10
+session_start: 2026-05-10T17:09Z
+session_end: 2026-05-10T17:30Z
+governance_source: knowledge_base
+governs: "Audit trail for the four-artifact canon package + essay produced in this session. Reading this ledger should reproduce the operator's view of what was decided, observed, learned, constrained, handed off, encoded, and left open."
+status: active
+---
+
+# Ledger — Software Virtues Canon Package + Essay (Session 2026-05-10)
+
+> Session journal capturing the production of a four-artifact canon package and accompanying essay around Klappy's 2018 Medium article "Software Virtues — How to Prioritize". Triggered by SMS conversation between Klappy and partner Ian Lindsley earlier the same day, in which Klappy promised Ian "a massive table" expanding the article's per-section tension paragraphs into a full systematic map. Locks: vocabulary preserves "virtues" rhetorically and "quality attributes" operationally (option C); matrix is 3D — virtue × virtue × phase weighting per cell (option ii); canon and essay developed in parallel (option Z). Four drafts staged in working dir for operator PR review, not merged this session.
+
+---
+
+## Summary — Four Drafts Produced; Operator Holds the Merge
+
+A planning-mode session that gated cleanly into execution and produced four coherent drafts. The trigger was Ian Lindsley's question about which "-ility tradeoffs" get maximized and which get minimized by which choices. Klappy's first answer was the answer he always gives: the balance changes by project and by phase. Ian sent 💯. Klappy then sent the 2018 Medium article and noticed mid-conversation that the article only listed tensions per-virtue and never built the full table. He committed to Ian to build it. This session is the build.
+
+The article enumerates twenty-one directed natural-enemy tensions across ten virtues. Ten virtues produce forty-five unique unordered pairs. Twenty-four pairs were unaddressed in the original article; this session filled them in, classifying each by relationship type (mutual tension / asymmetric grounding / synergy / cost gravity) and tagging each with the project phase at which the tension bites hardest (PoC / pilot / production).
+
+Outputs: definition (vocabulary), principle (axiomatic, tier 1), observation (the 10×10 matrix and 45-pair detail), and an essay framing the matrix as the systematic completion of the 2018 article. All four pass the eight-point Writing Canon checklist. Operator handles PR creation; no direct commits this session.
+
+---
+
+## Decisions
+
+- **D1.** Produce coordinated four-artifact package: canon definition + canon principle + canon observation (matrix) + writings essay. All four developed in parallel rather than sequentially. Vocabulary preserves "virtues" rhetorically and "quality attributes" operationally as the same set. Matrix is 3D: virtue × virtue × phase weighting per cell.
+- **D2.** Pair-relationship taxonomy locked at four types: Mutual tension (M), Asymmetric grounding (A), Synergy (S), Cost gravity ($). Article-named pairs tagged M; gap-filled pairs tagged M*. Phase weighting tags align with `klappy://odd/maturity` Levels 0/1/2 mapped to PoC/pilot/production.
+- **D3.** Drafts staged in `/home/claude/work/canon-package/` rather than directly committed to a clone of `klappy/klappy.dev`. Operator handles PR scoping (likely canon docs first as one or three PRs, essay second once cross-links resolve).
+
+## Observations
+
+- **O1.** The 2018 Medium article enumerates twenty-one directed natural-enemy tensions across ten virtues, distributed as per-virtue paragraphs. The article never assembles a full N×N pair map. Ten virtues produce forty-five unique unordered pairs; twenty-four pairs were unaddressed in the original. The "massive table" Klappy promised Ian (per SMS screenshots, 2026-05-10 ~13:10 local) is exactly this systematic completion.
+- **O2.** Canon already partially absorbed the 2018 article: `klappy://odd/maturity` is the modern descendant of the article's "Lifecycle Priorities" section, with Level 0/1/2 mapping to PoC/pilot/production. The article seeded canon nearly a decade ago and went unmined for the rest. The new package completes the absorption.
+- **O3.** The Resonance pattern (`canon/resonance/`) does not fit Klappy's own prior writing — it is reserved for external works ODD diverges from. Klappy's 2018 article is origin/lineage, not resonance. Captured in `derives_from` frontmatter pointing at the Medium URL.
+
+## Learnings
+
+- **L1.** When investigation reveals new context (Ian's external validation, the table promise), planning shape must update before execution. Locks confirmed in writing before gating: vocabulary C, matrix dimensionality ii, sequencing Z. Four prerequisites met (decisions_locked, dod_defined, irreversibility_assessed, constraints_satisfied) before transition to execution.
+- **L2.** Writing Canon checklist (`canon/meta/writing-canon`) is eight-point not seven-point. Items: title, blockquote, metadata, summary, header scan, no buried claims, axiom space, ghost writer / AI voice clichés. The eighth item was added with the Progressive Disclosure Failure incident (February 2026).
+
+## Constraints
+
+- **C1.** Files staged in `/home/claude/work/canon-package/` only. **Must not** be committed directly to `klappy/klappy.dev` or `klappy/oddkit` this session — operator handles PR creation.
+- **C2.** Two repos always require separate PRs (per project memory). Only `klappy/klappy.dev` is affected this session — no `klappy/oddkit` changes.
+- **C3.** 2018 article cited via external Medium URL in `derives_from` (full URL preserved, not abbreviated). The article is origin-of-record for the package; canon **must** treat it as such rather than as a resonance entry or external citation requiring divergence.
+
+## Handoffs
+
+- **H1.** Operator review needed on twenty-four gap-filled pair entries — particularly the seven Synergy classifications (stability↔maintainability, efficiency↔affordability, efficiency↔reality, maintainability↔affordability, maintainability↔reality, versatility↔interoperability, interoperability↔reality, affordability↔reality). Some Synergy calls may be debated; operator's intuition is the authoritative source.
+- **H2.** Essay voice review for ghost-writer signals. Despite checking against `canon/constraints/ai-voice-cliches`, the draft may contain AI clichés (negation parallelism, formulaic transitions, generic descriptors). Operator may want to revise toward pure Klappy voice or accept current state.
+- **H3.** PR sequencing decision: canon docs as one PR or three? Essay as a fourth PR after cross-links resolve, or bundled with the matrix PR? Operator's call.
+
+## Encodes
+
+- **E1.** Four canon package drafts at `/home/claude/work/canon-package/`:
+  - `canon/definitions/software-virtues-vocabulary.md` (132 lines)
+  - `canon/principles/quality-attributes-are-in-tension.md` (85 lines, tier 1)
+  - `canon/observations/quality-attribute-tension-matrix.md` (294 lines)
+  - `writings/software-virtues-revisited.md` (141 lines)
+- **E2.** This ledger itself, capturing the session DOLCHEO. The encode action does not persist; this file is the persistence.
+
+## Opens
+
+- **O-open P1.** Should the matrix include observability-class virtues (auditability, securability, debugability, deployability, recoverability, observability)? The 2018 article punted on these as "secondary virtues" for engineering teams to add. Phase 2 expansion candidate. **Disposition pending operator review.**
+- **O-open P2.** The essay's "Article Lacked an Operator" section claims ODD is the answer. Operator may want stronger or weaker tie depending on essay strategy: is this a klappy.dev essay that converts readers to ODD, or a stand-alone reflective piece that mentions ODD by reference only? **Disposition pending operator review.**
+- **O-open P3.** MoSCoW and Hundred Dollar Method elicitation methods from the 2018 article: surface as "starting points, not endorsed" (current treatment in vocabulary doc) or write a separate canon doc that takes a stronger position? The current package is silent on elicitation methods at the operational level. **Disposition pending operator review.**
+
+---
+
+## Process Trace
+
+| Step | Tool | Result |
+|------|------|--------|
+| 1 | `oddkit_time` | Initial timestamp 17:09Z |
+| 2 | `oddkit_get` (`klappy://canon/bootstrap/model-operating-contract`) | Bootstrap fetched |
+| 3 | `oddkit_search` ("software virtues ilities quality attributes tradeoffs") | No existing canon on the topic |
+| 4 | `oddkit_search` ("phases of project maturity") | Found `klappy://odd/maturity` as canon descendant of article's Lifecycle Priorities section |
+| 5 | `oddkit_get` (`klappy://canon/resonance/README`) | Resonance pattern is for external works; doesn't fit |
+| 6 | `oddkit_orient` | Mode: planning |
+| 7 | (Operator turn — SMS screenshots arrived; picture sharpened around table promise) | — |
+| 8 | (Operator turn — locks: vocabulary C, matrix ii, sequencing Z) | — |
+| 9 | `oddkit_preflight` | DoD surfaced |
+| 10 | `oddkit_search` ("writing canon checklist") | Found `klappy://canon/meta/writing-canon` (8-point) |
+| 11 | `oddkit_get` (`klappy://canon/meta/writing-canon`) | Internalized checklist |
+| 12 | `oddkit_get` (`klappy://writings/agentic-software-development#Summary`) | Voice reference for essay |
+| 13 | `oddkit_gate` | PASS planning → execution |
+| 14 | `create_file` ×4 | Four artifacts produced |
+| 15 | `oddkit_validate` | NEEDS_ARTIFACTS (visual proof, session capture, version tracking) |
+| 16 | `oddkit_encode` | 15 DOLCHEO artifacts encoded |
+| 17 | `create_file` (this ledger) | Session capture saved |
+| 18 | (Operator turn — fourth SMS arrived; vocabulary correction and dynamic-generation reframe) | — |
+| 19 | `git mv` + `str_replace` ×N | Sweep: rename principle to `quality-attributes-are-in-tension`; "natural enemies" → "tensions" across all files; "adversarial" → "tensions"/"tradeoff space"; matrix reframed as worked example not master; vocabulary updated to note universe is larger; essay closing pivoted to constraints-survey framing |
+
+---
+
+## Late-Session Corrections
+
+After initial validate and present, a fourth set of operator inputs arrived (SMS screenshots + direct message). Two corrections, executed in-session:
+
+**Vocabulary correction (D4).** "Language should always be tensions." The 2018 article's "natural enemies" framing is preserved only when explicitly quoting the article. Canon vocabulary is now **tensions** throughout. Principle file renamed: `quality-attributes-have-natural-enemies.md` → `quality-attributes-are-in-tension.md`. URI: `klappy://canon/principles/quality-attributes-are-in-tension`. All cross-links updated.
+
+**Architectural reframe (O4 / D5).** The static 10-virtue matrix cannot scale — there are dozens of quality attributes the worked example does not cover. The future is dynamic generation: the principle holds for any set of quality attributes; the matrix is the canonical worked example demonstrating what good looks like; project-specific tension graphs are generated on demand against the principle. Operator's framing: "It can be our constraints survey for new work with agents." Matrix doc reframed accordingly (blockquote + Summary + Completeness section); vocabulary doc updated to call out that ten is a worked example not the universe; principle updated to assert universal applicability; essay adds a closing "What This Becomes Next" section pivoting to the constraints-survey use.
+
+**Open lifted from O-open list (P4).** New: a method doc — `canon/methods/quality-attribute-tension-survey` (provisional) — operationalizes the matrix as a survey instrument for project scope-setting. Includes the dynamic-generation step: pick the ilities for this project, generate the tension graph against the principle, encode chosen priorities as constraints the agents inherit. **Disposition: banked for next session per operator's lean toward focused planning.** Borrow-evaluation against operator-named "prior art" recommended before drafting.
+
+---
+
+## Lineage
+
+Session triggered by Klappy sharing the original 2018 Medium article and three SMS screenshots of the conversation with Ian Lindsley earlier the same day. A fourth screenshot and direct message arrived after initial delivery, surfacing the vocabulary correction and the constraints-survey reframe. Modeled the canon work on existing patterns: definition style follows `canon/definitions/dolcheo-vocabulary`; principle style follows other tier-1 principles in `canon/principles/`; matrix style is novel (no existing matrix doc in canon to model from); essay style follows `writings/agentic-software-development`. Phase axis cross-links `klappy://odd/maturity`. External link to original Medium article preserved as canonical origin throughout the package.
