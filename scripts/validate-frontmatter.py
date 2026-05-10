@@ -42,7 +42,6 @@ itself a violation — the script's own tests verify the mirror is in sync.
 from __future__ import annotations
 import argparse
 import json
-import os
 import re
 import sys
 from pathlib import Path
