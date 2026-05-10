@@ -64,7 +64,7 @@ ENUMS: dict[str, set] = {
     "voice":    {"first_person", "neutral", "direct", "narrative",
                  "conversational", "authoritative"},
     "tier":     {1, 2, 3, 4},
-    "audience": {"public", "canon", "docs", "odd", "internal"},
+    "audience": {"canon", "docs", "public", "odd", "operators", "apocrypha"},
 }
 
 # The eight universal fields. Every document, regardless of audience, must
@@ -199,7 +199,11 @@ def validate_file(path: str) -> list[dict[str, Any]]:
             ))
 
     # 5. Contradictory flags (Known Crash Pattern from canon constraint)
-    if fm.get("public") is False and fm.get("exposure") == "public":
+    public_val = fm.get("public")
+    public_is_false = public_val is False or (
+        isinstance(public_val, str) and public_val.strip().lower() == "false"
+    )
+    if public_is_false and fm.get("exposure") == "public":
         findings.append(finding(
             "frontmatter-contradictory", "error", path,
             "public: false + exposure: public",
