@@ -1,0 +1,85 @@
+#!/usr/bin/env python3
+"""
+Smoke tests for validate-frontmatter.py.
+
+Run from the repo root:
+    python3 scripts/tests/test_validator.py
+"""
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[2]
+SCRIPT = REPO / "scripts" / "validate-frontmatter.py"
+FIXTURES = REPO / "scripts" / "tests" / "fixtures"
+
+
+def run(*paths) -> dict:
+    proc = subprocess.run(
+        [sys.executable, str(SCRIPT), "--json", *paths],
+        capture_output=True, text=True, cwd=REPO,
+    )
+    return json.loads(proc.stdout), proc.returncode
+
+
+def expect(rule_ids: set[str], findings: list, msg: str) -> None:
+    actual = {f["rule_id"] for f in findings}
+    missing = rule_ids - actual
+    if missing:
+        print(f"FAIL: {msg}: missing rules {missing}; got {actual}")
+        sys.exit(1)
+    print(f"  OK: {msg} — {sorted(actual)}")
+
+
+def main() -> None:
+    # 1. Valid essay → no findings, exit 0
+    d, rc = run(str(FIXTURES / "writings" / "valid.md"))
+    assert rc == 0 and not d["findings"], f"valid case failed: {d}"
+    print("  OK: valid public essay → 0 findings, exit 0")
+
+    # 2. Missing universal + invalid enums + quoted booleans
+    d, rc = run(str(FIXTURES / "broken-missing-universal.md"))
+    assert rc == 1, f"expected exit 1, got {rc}"
+    expect(
+        {"frontmatter-missing-required",
+         "frontmatter-invalid-enum",
+         "frontmatter-type-mismatch"},
+        d["findings"],
+        "broken-missing-universal: 3 rule classes fire",
+    )
+
+    # 3. Contradictory flags + essay discovery missing
+    d, rc = run(str(FIXTURES / "writings" / "broken-contradictory.md"))
+    assert rc == 1, f"expected exit 1, got {rc}"
+    expect(
+        {"frontmatter-contradictory",
+         "frontmatter-missing-required"},
+        d["findings"],
+        "broken-contradictory: contradictory + missing-essay-critical fire",
+    )
+
+    # 4. No frontmatter block at all
+    d, rc = run(str(FIXTURES / "broken-no-frontmatter.md"))
+    assert rc == 1, f"expected exit 1, got {rc}"
+    expect(
+        {"frontmatter-missing-block"},
+        d["findings"],
+        "broken-no-frontmatter: missing-block fires",
+    )
+
+    # 5. Real writings/ directory must be clean (this enforces that we never
+    #    ship the validator with existing breakage)
+    d, rc = run("writings/")
+    assert rc == 0, (
+        f"writings/ failed validation with {len(d['findings'])} finding(s): "
+        f"{[(f['location']['path'], f['rule_id']) for f in d['findings']]}"
+    )
+    print(f"  OK: writings/ clean ({d['scanned']} files)")
+
+    print("\nAll validator smoke tests passed.")
+
+
+if __name__ == "__main__":
+    main()
