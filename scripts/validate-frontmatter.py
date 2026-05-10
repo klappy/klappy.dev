@@ -164,7 +164,13 @@ def validate_file(path: str) -> list[dict[str, Any]]:
         v = fm.get(field)
         if v is None:
             continue
-        if v not in allowed:
+        # bool is a subclass of int in Python, so `True in {1, 2, 3, 4}` is
+        # True. Reject booleans where the enum contains no booleans (e.g.
+        # `tier: true` must not pass as `tier: 1`).
+        bool_mismatch = isinstance(v, bool) and not any(
+            isinstance(a, bool) for a in allowed
+        )
+        if bool_mismatch or v not in allowed:
             allowed_repr = ", ".join(sorted(repr(a) for a in allowed))
             findings.append(finding(
                 "frontmatter-invalid-enum", "error", path,
