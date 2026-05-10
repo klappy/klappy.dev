@@ -8,7 +8,7 @@ voice: neutral
 stability: semi_stable
 tags: ["canon", "principle", "substrate", "wire-layer", "L1", "vodka-architecture", "BYOA", "BYOC", "open-substrate", "constitutional"]
 epoch: E0008.5
-date: 2026-05-09
+date: 2026-05-10
 derives_from: "canon/values/axioms.md, canon/architecture/substrate-stack.md, canon/principles/vodka-architecture.md, canon/principles/doing-less-enables-more.md, ams://canon/decisions/D0020-agents-as-customer-and-third-party-vas-substrate, ams://canon/decisions/D0006-dream-house-wire-edge-wrappers"
 complements: "canon/principles/magical-first-run.md, canon/principles/creators-get-paid.md, canon/principles/dream-house-principle.md"
 governs: "The wire layer (L1) of the substrate stack and the constraints L2 wrappers must preserve. Forbids any feature that would special-case the substrate by peer type. Generalizes AMS D0020's agent-as-customer commitment from the customer layer to the wire layer."
@@ -53,7 +53,7 @@ It does not know whether the stream represents a human typing in WhatsApp, a Cla
 
 It does not know whether the frames emitted are agent-to-agent coordination, human-to-agent steering, role-emitted snapshots, or substrate notifications. The wire ships them. The peers above the wire interpret them.
 
-The wire's poverty of knowledge is the principle. Every primitive it offers — account creation, conversation minting, stream attachment, frame delivery, selective subscription, buffering — works identically for every peer. There are no peer-type-aware code paths. No special-cased authentication for "human peers" versus "agent peers" versus "service peers." No protocol-level privilege.
+The wire's poverty of knowledge is the principle. Every primitive it offers — account creation, conversation minting, stream attachment, frame delivery, selective subscription — works identically for every peer. There are no peer-type-aware code paths. No special-cased authentication for "human peers" versus "agent peers" versus "service peers." No protocol-level privilege. Buffering and persistence belong to the wrapper tier per `ams://canon/decisions/D0016-buffering-and-persistence-as-wrapper-primitive`, not the wire — the wire's symmetry holds without buffering being a wire feature.
 
 ---
 

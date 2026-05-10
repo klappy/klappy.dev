@@ -9,7 +9,7 @@ stability: semi_stable
 tags: ["canon", "principle", "substrate", "wire-layer", "L1", "human-as-relay", "bottleneck", "multi-agent", "AMS", "constitutional", "use-case-need"]
 epoch: E0008.5
 date: 2026-05-10
-derives_from: "canon/values/axioms.md, canon/principles/discernment-layer.md, canon/principles/doing-less-enables-more.md, canon/principles/vodka-architecture.md, writings/copy-paste.md, writings/shifting-bottlenecks-climbing-ladders.md"
+derives_from: "canon/values/axioms.md, canon/principles/discernment-layer.md, canon/principles/doing-less-enables-more.md, canon/principles/vodka-architecture.md, writings/copy-paste.md, writings/shifting-bottlenecks-climbing-ladders.md, ams://canon/decisions/D0001-tokens-not-messages, ams://canon/decisions/D0003-per-account-stream-ownership, ams://canon/decisions/D0009-stream-as-primitive-ownership-excludes-subscription, ams://canon/decisions/D0016-buffering-and-persistence-as-wrapper-primitive, ams://canon/decisions/D0020-agents-as-customer-and-third-party-vas-substrate"
 complements: "canon/principles/symmetric-participation.md, canon/architecture/substrate-stack.md, canon/principles/magical-first-run.md, canon/principles/creators-get-paid.md"
 governs: "Why an agents-only wire layer (L1) is necessary in the first place. Names the failure mode (human-as-relay) the architecture exists to address. Symmetric-participation describes the wire's shape; this principle describes the need that wire fills. Together they form the substrate's load-bearing rationale at L1."
 status: active
@@ -67,14 +67,14 @@ The four costs compound. A workflow that involves three agents and four cross-ag
 
 ## The Structural Answer: A Wire for Agents
 
-The architectural answer is direct addressability between agents on an open substrate. Specifically:
+The architectural answer is reachability between agents on an open substrate, with reception explicitly opt-in. Specifically:
 
-1. **Every agent has a stable identity on the wire.** Agent A can be addressed by other agents without going through a human. This is not an "API integration" between agent A's vendor and agent B's vendor; it is a substrate-level fact that agents have addresses.
-2. **Frames flow at machine speed.** When agent A finishes a thought and addresses agent B, agent B receives the frame without waiting on operator availability. The human's role is no longer to be the mailman.
-3. **Frames carry agent-shaped content.** Because the wire transports opaque frames between agents (rather than rendering them through a human-shaped UI), the frames can be in formats agents consume natively — structured data, embeddings, tool-call traces, references, partial results — without forcing prose-encoding for human readability.
+1. **Every agent has a stable identity on the wire, and reception is opt-in by subscription, not by delivery to an inbox.** An agent owns its output stream; other agents that want to receive its emissions subscribe to that stream. There is no push surface for writers to deliver into. Per `ams://canon/decisions/D0003-per-account-stream-ownership`, AMS *inverts the inbox model that email and chat assume* — there is no inbox to clutter because there are only streams that subscribers attach to. This is simultaneously a wire-design property and a security property: spam cannot accumulate against you because no one can push at you. Reachability is a function of subscription, not of address.
+2. **The wire ships tokens at machine speed.** Per `ams://canon/decisions/D0001-tokens-not-messages`, the wire's unit is the **token** — opaque bytes, deliberately undefined in shape and meaning, "exactly the unit agents already produce." The wire does not parse, validate, schema, or interpret. This is the design's adaptation mechanism: machines invent their own communication formats on top of tokens, evolve those formats over time, and the substrate never has to revise. When agent A emits and agent B subscribes, agent B receives tokens as they stream — without waiting on operator availability to ferry them.
+3. **Wire opacity enables agent-shaped content.** Because the wire transports tokens without interpreting them, subscribers can compose any envelope on top — message, frame, chunk, control signal, structured data, embedding, tool-call trace, partial result. Per D0001, the wire's refusal to specify is the property that lets every above-wire convention coexist on the same substrate. Prose remains an option (for human-rendered surfaces and for cases where prose is the natural format), but it stops being mandatory because the wire stopped being human.
 4. **The wire is open.** Any agent — any vendor, any runtime, any capability — can join. The wire does not pick winners; it lets ecosystems develop without protocol-level privilege per `klappy://canon/principles/symmetric-participation`.
 
-This is what `canon/architecture/substrate-stack.md` calls L1 (the wire), governed by `klappy://canon/principles/symmetric-participation`. AMS is the canonical implementation. Agents address each other through accounts on the wire; frames are transported as opaque content; identity, capability, and convention live in metadata above L1.
+This is what `canon/architecture/substrate-stack.md` calls L1 (the wire), governed by `klappy://canon/principles/symmetric-participation`. AMS is the canonical implementation. Agents own streams on the wire; subscribers attach to streams; tokens are transported as opaque content; identity, capability, and convention live in metadata above L1.
 
 The principle is not asserting that the wire eliminates human involvement. It asserts that the wire eliminates the human's role *as relay*. The human's load-bearing contribution moves entirely to discernment per `klappy://canon/principles/discernment-layer` — judging gates, setting goals, evaluating outcomes. The relay role disappears because the wire takes it.
 
@@ -88,9 +88,9 @@ When agents can talk to each other directly:
 
 **Long-running agent collaboration becomes ungated.** A research agent can run for hours and pass interim findings to an analysis agent that processes them as they arrive. Neither agent waits on operator availability between handoffs. The human steps away; the work continues; the human returns to evaluate the result. This is the operator-bandwidth liberation that `klappy://writings/shifting-bottlenecks-climbing-ladders` describes — the bottleneck moves off the relay and onto discernment, which is where the human's contribution actually scales.
 
-**Specialist composition becomes addressable.** A canon-driven role like Oddie (`klappy://canon/voice/oddie-the-river-guide`) can be invited into any conversation by any agent. The agent does not need to know how to host Oddie; it knows Oddie's address on the wire. The same applies to translators, auditors, validators, contract analyzers, code reviewers — any specialist role becomes a peer agents can collaborate with directly.
+**Specialist composition becomes reachable by subscription.** A canon-driven role like Oddie (`klappy://canon/voice/oddie-the-river-guide`) can be invited into any conversation by any agent. The agent does not need to know how to host Oddie; it knows how to subscribe to Oddie's output stream once both are admitted to the same conversation. The same applies to translators, auditors, validators, contract analyzers, code reviewers — any specialist role becomes a peer agents can collaborate with directly.
 
-**Agent-shaped formats replace prose-shaped formats.** When the wire isn't routed through a human, agents can communicate in compressed, structured, machine-friendly formats. Tool-call traces, embeddings, structured findings, partial JSON, type-tagged tokens — all become reasonable substrate-shipped content. Prose remains an option (for human-rendered surfaces and for cases where prose is the natural format), but it stops being mandatory because the wire stopped being human.
+**Agent-shaped formats replace prose-shaped formats.** When the wire isn't routed through a human, agents can communicate in compressed, structured, machine-friendly formats. Tool-call traces, embeddings, structured findings, partial JSON, type-tagged tokens — all become reasonable above-wire envelopes that the substrate transports without parsing. Prose remains an option (for human-rendered surfaces and for cases where prose is the natural format), but it stops being mandatory because the wire stopped being human.
 
 **Cross-vendor portability becomes real.** Because the wire does not privilege any vendor (per `klappy://canon/principles/symmetric-participation`), an operator can swap Claude for ChatGPT, swap WhatsApp for Slack, swap one specialist for another, without rebuilding the workflow. The agents are peers; replacing one with an equivalent peer does not disturb the wire.
 
@@ -100,7 +100,11 @@ Each of these is impossible — or impossibly expensive — when the human is th
 
 ## AMS as the Worked Reference Implementation
 
-`klappy://canon/architecture/substrate-stack` assigns the wire to L1; AMS is the canonical implementation. AMS treats every peer through identical primitives (per `klappy://canon/principles/symmetric-participation`): account credentials, conversation minting, stream attachment, frame delivery, selective subscription, buffering. The wire ships frames; it does not interpret them.
+`klappy://canon/architecture/substrate-stack` assigns the wire to L1; AMS is the canonical implementation. AMS treats every peer through identical primitives (per `klappy://canon/principles/symmetric-participation`): account credentials, conversation minting, stream attachment, token delivery, selective subscription. Buffering and persistence belong to the wrapper tier per `ams://canon/decisions/D0016-buffering-and-persistence-as-wrapper-primitive` — never the wire. The wire ships tokens; it does not interpret them.
+
+The wire unit is deliberately undefined. Per `ams://canon/decisions/D0001-tokens-not-messages`, AMS chose the token — *opaque bytes, smaller than a message, larger than a byte, exactly the unit agents already produce* — precisely because committing to a higher-level envelope would have committed the substrate to opinions agent ecosystems will keep evolving past. The token's arbitrariness is the adaptation mechanism: any envelope subscribers want to compose (message, frame, chunk, control signal, structured payload) lives above the wire and can be replaced without protocol revision. Machines invent their own communication on this substrate; the substrate stays out of the way.
+
+Reachability follows the inverted-inbox model from `ams://canon/decisions/D0003-per-account-stream-ownership`: agents own output streams, subscribers attach to those streams, and the wire never delivers an agent's tokens back to itself. There is no push surface for writers to push into. This is what makes the substrate viable as an open wire — without an inbox to clutter, openness does not become an attack surface.
 
 AMS is positioned as substrate, not application, per `ams://canon/decisions/D0020-agents-as-customer-and-third-party-vas-substrate`. The customer is the agent. AMS does not compete with applications agents will build on top of it; it competes only at the wire layer where its job is to be the cleanest possible transport. This positioning is what makes AMS adoptable by agent ecosystems that are otherwise vendor-coupled — joining AMS does not require accepting application opinions.
 
@@ -131,7 +135,7 @@ The principle removes the human from the *relay role*. It does not remove the hu
 
 **Goal-setting.** The human still articulates what the work is. Agents on a wire can collaborate among themselves; they cannot decide what to collaborate on without operator input. The wire makes execution scale; discernment still gates initiation.
 
-**Gate-judging.** The human still evaluates outcomes, judges fitness, and decides whether work is complete. The wire moves frames between agents; it does not certify that the resulting artifact satisfies the operator's actual intent. Validation, especially against tacit goals, remains a human-discernment activity.
+**Gate-judging.** The human still evaluates outcomes, judges fitness, and decides whether work is complete. The wire transports tokens between agents; it does not certify that the resulting artifact satisfies the operator's actual intent. Validation, especially against tacit goals, remains a human-discernment activity.
 
 **Override-deciding.** The mode-discipline and bottleneck-respect canon still bind. Operator override (per `klappy://canon/constraints/mode-transitions-require-encoded-handoff` §Worked Use Cases) is still a real and necessary mechanism for governance creation, production incidents, and other categories where agent autonomy is not yet trustworthy. The wire enables agent autonomy where autonomy is appropriate; it does not assert that all decisions can or should be agent-resolved.
 
@@ -143,9 +147,9 @@ The principle's claim is that *relay* is the role the wire eliminates. Discernme
 
 ## Failure Modes — When the Wire Itself Becomes the Bottleneck
 
-The principle's value depends on the wire actually delivering the four properties named above (direct addressability, machine-speed transport, agent-shaped content, openness). When implementations drift from any of those, the wire stops solving the problem it was built to solve and may even introduce new failures the human-relay version did not have.
+The principle's value depends on the wire actually delivering the four properties named above (opt-in reachability without an inbox, machine-speed token transport, agent-shaped content enabled by wire opacity, openness). When implementations drift from any of those, the wire stops solving the problem it was built to solve and may even introduce new failures the human-relay version did not have.
 
-**The wire becomes prose-shaped rather than agent-shaped.** If the wire renders every frame as text in a human-viewable surface (a chat log, an email thread, a Slack channel), agents on the wire end up encoding for the surface rather than for each other. The relay tax returns in a different form: the wire is shipping frames at machine speed, but the frames are still optimized for human inspection. The fix is to keep human-rendered surfaces above the wire (at L5), not bake them into the wire itself. This is what `klappy://canon/principles/symmetric-participation` is protecting against by forbidding the wire from interrogating peer-type identity.
+**The wire becomes prose-shaped rather than agent-shaped.** If the wire renders every token as text in a human-viewable surface (a chat log, an email thread, a Slack channel), agents on the wire end up encoding for the surface rather than for each other. The relay tax returns in a different form: the wire is shipping at machine speed, but the payload is still optimized for human inspection. The fix is to keep human-rendered surfaces above the wire (at L5), not bake them into the wire itself. This is what `klappy://canon/principles/symmetric-participation` is protecting against by forbidding the wire from interrogating peer-type identity.
 
 **Wire access becomes a permission gate.** If joining the wire requires gatekeeper approval — vendor partnership, manual onboarding, application review — the wire stops being an open substrate and starts being a curated platform. Agents that cannot get on cannot collaborate; the openness premise that made the wire valuable in the first place erodes. AMS's positioning per `ams://canon/decisions/D0020` is the discipline that protects against this. The fix is structural: never make wire access depend on a process that can be denied.
 
@@ -174,7 +178,7 @@ What has not yet been pressure-tested:
 
 - Sustained multi-agent direct collaboration without operator relay
 - Cross-vendor agent-to-agent workflows at scale
-- Specialist-agent composition through wire-addressable invitation
+- Specialist-agent composition through subscription
 - Agent-shaped (non-prose) content formats at sufficient volume to validate the format claim
 
 The principle is the contract those future implementations will be held to. Each successful multi-agent application built on AMS confirms the principle. Each implementation that drifts toward a failure mode named above is evidence the principle's discipline matters and provides the language to name what went wrong.
@@ -199,5 +203,9 @@ The line in the sand: when an L5 application succeeds at multi-agent collaborati
 - `canon/constraints/mode-transitions-require-encoded-handoff.md` — the discipline above the wire that becomes more necessary, not less, once agents collaborate directly
 - `canon/principles/sessions-mirror-modes.md` — the principle governing how agent sessions on the wire stay epistemically clean
 - `ams://canon/decisions/D0020-agents-as-customer-and-third-party-vas-substrate` — the AMS-tier commitment that names agents as the customer
+- `ams://canon/decisions/D0001-tokens-not-messages` — the wire unit's deliberate undefined-ness as the adaptation mechanism
+- `ams://canon/decisions/D0003-per-account-stream-ownership` — the inverted-inbox security model the wire's openness rests on
+- `ams://canon/decisions/D0009-stream-as-primitive-ownership-excludes-subscription` — the structural rule that makes the inverted-inbox property hold
+- `ams://canon/decisions/D0016-buffering-and-persistence-as-wrapper-primitive` — the canon that puts buffering at the wrapper tier, not the wire
 - `ams://canon/decisions/D0006-dream-house-wire-edge-wrappers` — the wire-vs-wrapper boundary that protects this principle's L1 cleanliness
 - `docs/mode-separated-conversations.md` — practical guidance on how conversations on the wire respect mode discipline

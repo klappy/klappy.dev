@@ -8,8 +8,8 @@ voice: neutral
 stability: evolving
 tags: ["canon", "principle", "architecture", "layered-model", "substrate", "vodka-architecture", "orthogonality", "OSI-equivalent", "ams", "tincan", "oddie"]
 epoch: E0008.5
-date: 2026-05-09
-derives_from: "canon/principles/vodka-architecture.md, canon/principles/doing-less-enables-more.md, canon/principles/dream-house-principle.md, ams://canon/decisions/D0020-agents-as-customer-and-third-party-vas-substrate, ams://canon/decisions/D0006-dream-house-wire-edge-wrappers"
+date: 2026-05-10
+derives_from: "canon/principles/vodka-architecture.md, canon/principles/doing-less-enables-more.md, canon/principles/dream-house-principle.md, ams://canon/decisions/D0020-agents-as-customer-and-third-party-vas-substrate, ams://canon/decisions/D0006-dream-house-wire-edge-wrappers, ams://canon/decisions/D0016-buffering-and-persistence-as-wrapper-primitive"
 complements: "canon/principles/magical-first-run.md, canon/principles/symmetric-participation.md, canon/principles/creators-get-paid.md, canon/voice/oddie-the-river-guide.md"
 governs: "Where any concern, feature, decision, or product lives in the program. The canonical lookup that replaces opinion-fights about which layer should own a responsibility. Applies to AMS substrate work, TinCan and other applications, role-runtimes like Oddie, channel adapters, and economic mechanisms."
 status: active
@@ -47,9 +47,9 @@ The model is named "Substrate Stack" rather than copying OSI verbatim because th
 
 ### L1 — Wire
 
-The transport layer for frames between accounts. Knows nothing about who, why, or what the frames mean. Ships only the primitives every consumer needs and benefits from being centralized: account credentials, conversation minting, stream attachment, frame delivery, selective subscription, buffering as a substrate primitive. Vodka by definition.
+The transport layer for frames between accounts. Knows nothing about who, why, or what the frames mean. Ships only the primitives every consumer needs and benefits from being centralized: account credentials, conversation minting, stream attachment, frame delivery, selective subscription. Vodka by definition.
 
-Canonical implementation: AMS. Governing decisions: `ams://canon/decisions/D0006-dream-house-wire-edge-wrappers`, `ams://canon/decisions/D0017-selective-subscription`, `ams://canon/decisions/D0018-multi-stream-per-account-per-conversation`.
+Canonical implementation: AMS. Governing decisions: `ams://canon/decisions/D0006-dream-house-wire-edge-wrappers`, `ams://canon/decisions/D0017-selective-subscription`, `ams://canon/decisions/D0018-multi-stream-per-account-per-conversation`. Buffering and persistence are explicitly NOT wire primitives — they live at L2 per `ams://canon/decisions/D0016-buffering-and-persistence-as-wrapper-primitive`.
 
 ### L2 — Wrapper / Adapter
 
