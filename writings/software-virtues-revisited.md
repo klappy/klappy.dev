@@ -1,14 +1,41 @@
 ---
 uri: klappy://writings/software-virtues-revisited
 title: "Software Virtues, Revisited — What I Wrote in 2018, What I Stand By, and What I Owed the Reader"
+subtitle: "What I Wrote in 2018, What I Stand By, and What I Owed the Reader"
+author: "Klappy"
+type: essay
+public: true
 audience: public
-exposure: published
+exposure: public
 tier: 3
-voice: klappy
+voice: first_person
 stability: stable
-tags: ["writings", "essay", "software-virtues", "quality-attributes", "tradeoffs", "ilities", "tension-matrix", "revisit"]
+tags:
+  - writings
+  - essay
+  - software-virtues
+  - quality-attributes
+  - tradeoffs
+  - ilities
+  - tension-matrix
+  - revisit
 epoch: E0008.4
 date: 2026-05-10
+
+# Discovery
+hook: "Eight years later, a partner asked me which '-ilities' actually trade off against which. I sent him the article and told him I still stand by it — then realized it never built the full map."
+description: "Eight years ago I wrote about ten software virtues and the tensions among them. A partner asked today which actually trade off against which, in which use cases — and I realized the article I'd been recommending for a decade had only listed tensions per-virtue and never assembled the full map. So I built it, and then realized the map was a worked example of something larger: a constraints survey for new work with agents."
+slug: software-virtues-revisited
+
+# Social graph
+og_title: "Software Virtues, Revisited"
+og_description: "Eight years later, a partner asked me which '-ilities' actually trade off against which. I sent him the article and told him I still stand by it — then realized it never built the full map."
+og_type: article
+twitter_card: summary_large_image
+twitter_title: "Software Virtues, Revisited"
+twitter_description: "Eight years later, a partner asked me which '-ilities' actually trade off against which. I sent him the article and told him I still stand by it — then realized it never built the full map."
+
+# Relationships
 derives_from: "https://medium.com/@klappy/what-are-software-virtues-and-how-to-prioritize-them-f0b583741afe (2018-09-09 — original article), canon/observations/quality-attribute-tension-matrix.md, canon/principles/quality-attributes-are-in-tension.md, canon/definitions/software-virtues-vocabulary.md, odd/maturity.md"
 complements: "writings/agentic-software-development.md"
 status: active
