@@ -141,6 +141,14 @@ Method doc lands as `canon/methods/quality-attribute-tension-survey.md` (~207 li
 
 **New open (O-open P5).** Standalone article framing the survey as a personality test for non-technical audiences. Method doc points forward to it; not drafted this session. Provisional title direction: something like "Your Product Has a Personality, and You Should Know What It Is." **Disposition: banked.** Lead with the radar, let readers self-discover the rigor underneath.
 
+**New decision (D8 — axis ordering correction).** Operator overrode the prior tension-adjacent ordering with **tension-opposite / synergy-adjacent**. Rationale (operator quote): "Across makes more sense. Similar parallel virtues beside each other show a natural gravity." Right half of the radar is the synergy chain (Stability → Maintainability → Reality → Affordability → Efficiency); left half is the tension cluster mirrored across the diameter (Urgency, Versatility, Originality, Usability, Interoperability). Every adjacent pair on the right is S (synergy) per the matrix; every diameter-opposite pair is M or A per the matrix.
+
+**New decision (D9 — dual-state survey, one flow).** Operator directive: "The survey asks you to respond with what is and what do you want it to be for each question in the survey. One flow." Survey reframed so that Phases 1, 2, 3, and 4 each elicit both current and desired state in the same pass. Phase 5 (renamed *Output Encoding*) now produces three DOLCHEO artifact types from one survey run: Constraints (desired state — what the agent inherits), Observations (current state — falsifiable baseline), Opens (the gaps — prioritized roadmap items ranked by gap magnitude). Radar shows two polygons (Desired solid, Current dashed); gap segments between them are the visible roadmap.
+
+**New observation (O7).** The tension-opposite ordering produces three audit signals in the radar that the tension-adjacent ordering buried: (1) the polygon's *lean* toward prioritized ilities is visible at the chart's diameter; (2) the right-side contour smoothness indicates how synergy-coherent the project's priorities are; (3) the gap between current and desired polygons is interpretable directly as roadmap.
+
+**New observation (O8).** The dual-state framing collapses what would have been a separate "audit pass" or "current-state assessment" into the same survey instrument. One flow, two answers per question, three artifact types out. Architecturally cleaner; operationally cheaper.
+
 ---
 
 ## Lineage
