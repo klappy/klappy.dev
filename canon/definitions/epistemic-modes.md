@@ -7,8 +7,8 @@ tier: 1
 voice: neutral
 stability: semi_stable
 tags: ["epistemology", "decision-making", "governance"]
-epoch: E0008.3
-date: 2026-04-18
+epoch: E0008.5
+date: 2026-05-10
 ---
 
 # Epistemic Modes
@@ -206,6 +206,10 @@ Reverting to an earlier mode is always allowed.
 Skipping modes is allowed only when explicitly acknowledged.
 
 For practical guidance on mode transitions in conversation, see **Mode-Separated Conversations**.
+
+For the principle that each mode earns its own session, see [Sessions Mirror Modes](klappy://canon/principles/sessions-mirror-modes).
+
+For the binding rule that every transition requires a journal entry plus a transition-specific durable handoff artifact, see [Mode Transitions Require Encoded Handoff](klappy://canon/constraints/mode-transitions-require-encoded-handoff).
 
 ---
 

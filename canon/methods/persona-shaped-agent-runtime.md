@@ -272,6 +272,46 @@ The runtime does not implement this orchestration; it provides the primitives th
 
 ---
 
+### 8. Support Handoff-Insufficiency Signaling
+
+Per [Sessions Mirror Modes §Failure Modes](klappy://canon/principles/sessions-mirror-modes), the architecture's cost only pays back when handoffs preserve what would have transferred in shared sessions. The runtime cannot guarantee handoff quality — that is an encoding-norms discipline upstream of any runtime feature. But the runtime can ensure that bad handoffs are detectable and that receiving sessions can refuse to proceed on them.
+
+The runtime supports a structured "handoff insufficient" outcome distinct from a session's normal deliverable:
+
+```
+session.outcome = {
+  type: "handoff_insufficient",
+  missing: [
+    "the synthesis ledger lists three options but does not capture the tradeoff considerations",
+    "scope item 'X' is named but its boundaries are unclear",
+    "implicit assumption that {Y is true} appears load-bearing but is not declared"
+  ],
+  proposed_resolution: "request fresh upstream session" | "request clarification from upstream author" | "operator override decision"
+}
+```
+
+When a receiving session returns this outcome instead of a normal deliverable, the runtime:
+
+1. **Records the insufficiency in the journal** alongside the originating handoff URI. Audit trails accumulate; chronic insufficiency at a specific gate signals norm gaps that the project's encoding discipline should address.
+2. **Does not produce a downstream handoff.** The receiving session cannot proceed; therefore there is no handoff to the next mode. The work blocks at this gate until resolution.
+3. **Surfaces the resolution path to the consumer.** The consumer chooses among: (a) spawn a fresh upstream session with refined task scope to produce a better handoff, (b) request live clarification from the upstream session author and append the clarification to the handoff, (c) operator override declaring that the work proceeds despite the insufficient handoff.
+
+This outcome is *not* the same as "I disagree with the handoff content" or "I have findings about the handoff." Disagreement is content-level; findings have a normal disposition. Handoff insufficiency is structural — the receiving session structurally cannot do its job because the input does not contain what its mode requires.
+
+The signal is also a learning input. A project that observes its planner-role sessions routinely flagging explorer-handoffs as insufficient on a specific dimension — *"missing dynamic tensions that surfaced during exploration"* — has evidence that its synthesis-ledger encoding norms need to be extended. The runtime does not fix the norms; it surfaces the failure pattern that drives norm refinement.
+
+#### Quality vs. Presence
+
+To be explicit about what this feature does and does not do:
+
+- The runtime *requires* handoff presence per [the encoded-handoff constraint](klappy://canon/constraints/mode-transitions-require-encoded-handoff). Sessions without complete handoffs are refused at submit time.
+- The runtime *cannot validate* handoff quality before invocation. Quality is judged by the receiving session, in context, against the actual work it is being asked to do.
+- The runtime *does support* the receiving session's structured refusal when quality is insufficient. The signal is the runtime's contribution to the quality-discipline problem; the discipline itself lives in encoding norms.
+
+This is the same pattern as type-checking versus runtime validation in any system: the type system catches some classes of errors statically; runtime validation catches the rest. The encoded-handoff constraint is the type system. Handoff-insufficiency signaling is the runtime check.
+
+---
+
 ## What This Method Is Not
 
 **Not orchestration.** The runtime invokes one persona per request. It does not chain personas, route between them, or maintain workflows that span multiple invocations. Orchestration belongs to consumers, not to the runtime. (A consumer can call the runtime multiple times in sequence; that is the consumer's workflow.)
