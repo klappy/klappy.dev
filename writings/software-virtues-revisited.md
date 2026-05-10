@@ -65,7 +65,7 @@ When Ian said he was interested in "which ones are maximized and which are minim
 
 I told him: "I am sure using that doc as a template we could expand this to all tensions in a massive table." He sent the heart. I said: "That isn't a bad idea! That sounds like a great Klappy.dev article!"
 
-So this is that article. And the table — the systematic completion — is now [in canon](klappy://canon/observations/quality-attribute-tension-matrix.md).
+So this is that article. And the table — the systematic completion — is now [in canon](klappy://canon/observations/quality-attribute-tension-matrix).
 
 ## What the Matrix Looks Like
 
@@ -151,10 +151,10 @@ That last layer is what I am building next. The article is staying load-bearing 
 
 If you have not read the original, [start there](https://medium.com/@klappy/what-are-software-virtues-and-how-to-prioritize-them-f0b583741afe). It still holds.
 
-If you want the systematic map: [Quality Attribute Tension Matrix](klappy://canon/observations/quality-attribute-tension-matrix.md).
+If you want the systematic map: [Quality Attribute Tension Matrix](klappy://canon/observations/quality-attribute-tension-matrix).
 
-If you want the principle behind the map: [Quality Attributes Are In Tension](klappy://canon/principles/quality-attributes-are-in-tension.md).
+If you want the principle behind the map: [Quality Attributes Are In Tension](klappy://canon/principles/quality-attributes-are-in-tension).
 
-If you want the vocabulary the canon uses: [Software Virtues Vocabulary](klappy://canon/definitions/software-virtues-vocabulary.md).
+If you want the vocabulary the canon uses: [Software Virtues Vocabulary](klappy://canon/definitions/software-virtues-vocabulary).
 
 If you want the discipline that makes the map worth carrying: [the rest of klappy.dev](https://klappy.dev).
