@@ -6,9 +6,9 @@ exposure: nav
 tier: 2
 voice: neutral
 stability: evolving
-tags: ["planning", "execution", "validation", "collaboration", "fresh-context"]
-epoch: E0008.3
-date: 2026-04-19
+tags: ["exploration", "planning", "execution", "validation", "resolution", "collaboration", "fresh-context", "session-discipline"]
+epoch: E0008.5
+date: 2026-05-10
 ---
 
 # Mode-Separated Conversations
@@ -19,9 +19,11 @@ date: 2026-04-19
 
 This document operationalizes:
 
-- **Canon: Epistemic Modes**
+- **Canon: Epistemic Modes** (`klappy://canon/epistemic-modes`) — the five canonical modes
+- **Canon: Sessions Mirror Modes** (`klappy://canon/principles/sessions-mirror-modes`) — the principle that each mode earns its own session
+- **Canon: Mode Transitions Require Encoded Handoff** (`klappy://canon/constraints/mode-transitions-require-encoded-handoff`) — the binding rule for journals + transition-specific handoffs at every gate
 
-It does not redefine modes.
+It does not redefine the modes or the constraints.
 It describes how conversations respect them.
 
 ---
@@ -30,11 +32,35 @@ It describes how conversations respect them.
 
 Confusion and mistrust arise when:
 
+- exploration conversations pretend to decide
 - planning conversations pretend to execute
 - execution conversations reopen exploration
-- critique is misinterpreted as obstruction
+- validation conversations modify the artifact under review
+- resolution conversations expand scope beyond findings
 
 Separating conversations by epistemic mode reduces friction without reducing rigor.
+
+---
+
+## Exploration Conversations
+
+Purpose:
+
+- surface possibilities
+- identify tensions and competing frames
+- map the territory before deciding what to build
+
+Characteristics:
+
+- questions outnumber answers
+- no convergence required
+- assumptions are surfaced rather than acted on
+
+Invalid moves:
+
+- claiming a decision has been made
+- treating one option as already chosen
+- moving to artifact production before the territory is mapped
 
 ---
 
@@ -136,6 +162,45 @@ Invalid moves:
 
 ---
 
+## Multiple Participants
+
+Multiple agents or assistants may participate in a single conversation, with one constraint: every participant in a conversation operates in the same mode.
+
+- **Within-mode parallelism is encouraged.** Multiple explorers, multiple validators with different lenses, multiple builders working on different scoped artifacts — all valid. Conversations grow richer; the mode stays clean.
+- **Cross-mode parallelism on the same artifact is forbidden.** A validator and a builder cannot share a conversation about the same artifact at the same time — that is mode collapse, not parallelism. The fix is to let each finish their mode and hand off via encoded handoff per `canon/constraints/mode-transitions-require-encoded-handoff`.
+- **Cross-mode work on different artifacts is independent.** Two conversations in different modes on different artifacts run in parallel without coordination.
+
+The distinguishing question: are the participants operating on the same artifact in different modes? If yes, separate the conversations. If no, the parallelism is fine.
+
+---
+
+## Operator Override — When Conversations Deliberately Collapse Modes
+
+Operator override is a permitted deviation per `canon/constraints/mode-transitions-require-encoded-handoff`. In conversation, this looks like the operator declaring: *"skipping the gate, here's why, accepting the risks."*
+
+Two categories where override is operationally legitimate:
+
+- **Production incidents.** Urgency exceeds the cost of mode-clean handoffs. The operator collapses modes deliberately and accepts the corruption.
+- **Governance creation.** Authoring principles, constraints, and methods is inherently oscillating; drafting a principle implies a constraint, drafting a constraint surfaces a principle refinement. Until handoff norms mature for this category, override-with-record produces work that clean sessions with poor handoffs cannot.
+
+What override is not: a way to skip discipline because it feels heavy in the moment. The override is recorded; the corruption it accepts is acknowledged; the journal entry shows the trail. The override gives the operator a real escape hatch and binds them to declaring the escape explicitly.
+
+---
+
+## Handoff Insufficiency — When the Receiving Conversation Cannot Proceed
+
+A conversation receiving an encoded handoff may discover the handoff is insufficient: missing dynamic context, missing crucial framing the prior session held implicitly, scope items named without bounded definition. Per `canon/methods/persona-shaped-agent-runtime` §Support Handoff-Insufficiency Signaling, this is a structural problem, not a content disagreement.
+
+The receiving participant should:
+
+1. Name the insufficiency explicitly — *"this handoff is insufficient; specifically X is missing"* — distinct from disagreement with the handoff's content
+2. Propose a resolution: spawn a fresh upstream conversation, request clarification from the upstream author, or accept under operator override
+3. Block on resolution rather than proceeding with degraded input
+
+A conversation that proceeds on a bad handoff produces output worse than mode-collapse would have. Naming the insufficiency is signal; proceeding silently is failure.
+
+---
+
 ## Mode Signaling
 
 Mode MAY be signaled explicitly:
@@ -143,6 +208,7 @@ Mode MAY be signaled explicitly:
 - "Let's stay in planning for now"
 - "Switching to execution"
 - "This is exploratory"
+- "Resolving the validator findings now"
 
 Explicit signaling prevents accidental collapse.
 

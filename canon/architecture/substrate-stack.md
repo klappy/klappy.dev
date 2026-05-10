@@ -8,8 +8,8 @@ voice: neutral
 stability: evolving
 tags: ["canon", "principle", "architecture", "layered-model", "substrate", "vodka-architecture", "orthogonality", "OSI-equivalent", "ams", "tincan", "oddie"]
 epoch: E0008.5
-date: 2026-05-09
-derives_from: "canon/principles/vodka-architecture.md, canon/principles/doing-less-enables-more.md, canon/principles/dream-house-principle.md, ams://canon/decisions/D0020-agents-as-customer-and-third-party-vas-substrate, ams://canon/decisions/D0006-dream-house-wire-edge-wrappers"
+date: 2026-05-10
+derives_from: "canon/principles/vodka-architecture.md, canon/principles/doing-less-enables-more.md, canon/principles/dream-house-principle.md, ams://canon/decisions/D0020-agents-as-customer-and-third-party-vas-substrate, ams://canon/decisions/D0006-dream-house-wire-edge-wrappers, ams://canon/decisions/D0016-buffering-and-persistence-as-wrapper-primitive"
 complements: "canon/principles/magical-first-run.md, canon/principles/symmetric-participation.md, canon/principles/creators-get-paid.md, canon/voice/oddie-the-river-guide.md"
 governs: "Where any concern, feature, decision, or product lives in the program. The canonical lookup that replaces opinion-fights about which layer should own a responsibility. Applies to AMS substrate work, TinCan and other applications, role-runtimes like Oddie, channel adapters, and economic mechanisms."
 status: active
@@ -47,9 +47,11 @@ The model is named "Substrate Stack" rather than copying OSI verbatim because th
 
 ### L1 — Wire
 
-The transport layer for frames between accounts. Knows nothing about who, why, or what the frames mean. Ships only the primitives every consumer needs and benefits from being centralized: account credentials, conversation minting, stream attachment, frame delivery, selective subscription, buffering as a substrate primitive. Vodka by definition.
+The transport layer for frames between accounts. Knows nothing about who, why, or what the frames mean. Ships only the primitives every consumer needs and benefits from being centralized: account credentials, conversation minting, stream attachment, frame delivery, selective subscription. Vodka by definition.
 
 Canonical implementation: AMS. Governing decisions: `ams://canon/decisions/D0006-dream-house-wire-edge-wrappers`, `ams://canon/decisions/D0017-selective-subscription`, `ams://canon/decisions/D0018-multi-stream-per-account-per-conversation`.
+
+Real-world durability concerns — buffering for resumability and late-joiner catchup, persistence for archival, session continuity across reconnects, multi-viewer fan-out, refresh-survives-disconnect — are NOT wire features. Per `ams://canon/decisions/D0016-buffering-and-persistence-as-wrapper-primitive`, AMS provides them as L2 *shared wrapper-tier primitives* — built once and reused across every wrapper class instead of being reinvented per consumer. The wire stays narrow because L2 picks up what the wire refuses to own. Both layers contribute to the substrate's full value proposition; only L1 is forbidden from holding application opinions.
 
 ### L2 — Wrapper / Adapter
 
@@ -58,6 +60,8 @@ The translation layer between L1 and a specific runtime, channel, or external pr
 The MCP edge wrapper, which lets MCP-speaking runtimes reach the wire, is the reference implementation. Channel adapters (WhatsApp, Slack, Discord, SMS, email, cron, GitHub) and AI-tool adapters (ChatGPT connector, Cursor, Lovable, n8n) all share this shape: they translate channel-native events into L1 frames and back. Many implementations, single shape.
 
 A wrapper that starts holding application semantics has stopped being a wrapper. The test: can this wrapper be removed and replaced by another implementation of the same shape, without anything above L2 noticing? If no, the wrapper has accumulated concerns from L3 or above and needs trimming.
+
+Within L2, AMS provides a small set of *shared wrapper-tier primitives* that wrapper classes compose with rather than each reinventing. The reference primitive is the buffering / resilience layer (`ams://canon/decisions/D0016-buffering-and-persistence-as-wrapper-primitive`): a per-stream, account-gated buffer with TTL and size bounds that handles resumability across network blips, late-joiner catchup, and refresh-survives-disconnect for any wrapper that opts in. Session re-keying for cross-transport continuity (`ams://canon/decisions/D0019-cross-session-continuity-via-account-conversation-keying`) is another. Long-term archival is a separate composable subscriber (`PATTERNS.md` §3) — a sibling to buffering, not contained by it. The wrapper layer is where many implementations share a single shape and a small library of common concerns, so each new wrapper class inherits production-grade resilience without rebuilding it.
 
 ### L3 — Identity & Convention
 
