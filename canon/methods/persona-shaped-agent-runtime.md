@@ -10,7 +10,7 @@ tags: ["canon", "methods", "agent-runtime", "persona-profile", "substrate", "vod
 epoch: E0008.5
 date: 2026-05-10
 derives_from: "canon/methods/spawned-agent-session-substrate-options.md, canon/principles/sessions-mirror-modes.md, canon/constraints/mode-transitions-require-encoded-handoff.md, canon/constraints/critic-cannot-be-resolver.md, canon/principles/verification-requires-fresh-context.md, canon/voice/oddie-the-river-guide.md, canon/principles/vodka-architecture.md"
-complements: "canon/principles/methodology-personification.md, canon/principles/voice-as-cognitive-load-shedding.md, canon/principles/participation-replaces-integration.md"
+complements: "canon/methods/spawned-agent-session-runtime-contract.md, canon/principles/methodology-personification.md, canon/principles/voice-as-cognitive-load-shedding.md, canon/principles/participation-replaces-integration.md"
 governs: "Any service that hosts spawned agent sessions on behalf of multiple consumers and multiple personas"
 status: proposed
 ---
@@ -18,6 +18,17 @@ status: proposed
 # Persona-Shaped Agent Runtime — Building a Reusable Substrate for Many Personas
 
 > A spawned-agent-session substrate (CF Sandboxes, Anthropic Managed Agents, etc.) hosts one session at a time. A *runtime* sits on top of a substrate and turns it into a service: many consumers can call it with many tasks, and the substrate stays opinion-free underneath. This method documents how to shape that runtime so it composes with **personas as first-class objects** — Oddie, an audit reviewer, a release validator, a docs mentor — without coupling the runtime to any specific persona's identity or any specific consumer's workflow. The pattern keeps the substrate vodka, makes critic-cannot-be-resolver mechanically enforceable, and turns voice canon into something the runtime honors automatically rather than something the agent inside has to remember.
+
+---
+
+## Companion Documents
+
+This doc and [Spawned Agent Session Runtime Contract](klappy://canon/methods/spawned-agent-session-runtime-contract) are sibling layers, deliberately split:
+
+- **This doc (Tier-1 method)** — the architectural shape. Why personas are first-class, what a persona profile contains, how the runtime composes with substrates, deployment sequencing, prior art, inheritance, and worked examples. Reads top-down: "what is this thing and why."
+- **Runtime-contract (Tier-2 spec)** — the per-session-shape contract every spawned session satisfies. Per-mode tool allow-lists, output schemas, risk detectors, anti-pattern detectors; per-role boundaries; per-surface post-processing rules; per-engagement turn-control; the composition rules table with forbidden / rare / well-trodden combinations. Reads as a reference: "what does the runtime do at submit time."
+
+When this doc names a runtime responsibility (resolve profile, enforce role, post-process by surface, honor mode toggles, honor engagement, support session types, support parallelism, support handoff-insufficiency signaling), the implementation contract for that responsibility lives in runtime-contract. This doc says *what* the runtime does and *why*; runtime-contract says *exactly how it behaves* per-dimension. Keep the layer distinction: changes to architecture land here; changes to per-dimension mechanics land there.
 
 ---
 
@@ -133,15 +144,13 @@ Generalized to all mode transitions per [Sessions Mirror Modes](klappy://canon/p
 
 Each role corresponds to one of the five canonical [epistemic modes](klappy://canon/epistemic-modes). The role declares the session's mode; the runtime enforces the role's constraints structurally.
 
-**`explorer`** — operates in exploration mode. Tool set is broad (read-only access to canon, web search, conversational tools, hypothesis-shaping tools); state-mutation tools are refused. Output is a synthesis ledger or research artifact per the [encoded-handoff constraint](klappy://canon/constraints/mode-transitions-require-encoded-handoff). Fresh-context requirement is light — explorers can build on prior exploration but should not inherit planning-context.
+- **`explorer`** — exploration mode. Read-broad tool set, no mutators. Output is a synthesis ledger; the durable handoff to a `planner`.
+- **`planner`** — planning mode. Read-oriented tool set, no mutators. Output is a plan declaring assumptions, scope, deferred items, and invalidating conditions; the durable handoff to a `builder`.
+- **`builder`** — execution mode. Mutating tools allowed, scoped to the plan. Output is the artifact plus a claims declaration; the durable handoff to a `validator`.
+- **`validator`** — validation mode. Read-only on the artifact under test, fresh-context required (per [verification-requires-fresh-context](klappy://canon/principles/verification-requires-fresh-context)). Output is structured findings with explicit dispositions per [P0008](klappy://docs/promotions/P0008-pr-validator-dolcheo-ledger-as-deliverable); the durable handoff to a `resolver`, or terminal if all findings accept.
+- **`resolver`** — resolution mode. Mutating tools allowed, scoped to the findings. Output is the revised artifact plus a per-finding remediation summary; the durable handoff back to a fresh `validator` for re-validation.
 
-**`planner`** — operates in planning mode. Tool set is read-oriented (canon access, prior synthesis ledgers, plan-shaping tools); state-mutation tools are refused. Output is a plan declaring assumptions, scope, deferred items, and invalidating conditions. Fresh-context requirement: must not inherit explorer-session state directly; reads the explorer's encoded synthesis as input. The plan is the durable handoff to the builder.
-
-**`builder`** — operates in execution mode. Tool set includes mutating tools (filesystem writes, git commits, API calls, etc.) bounded by the plan's declared scope. Output is the produced artifact plus a claims declaration (what the artifact does, what it does not do, what scope it was built against). Fresh-context requirement: must not inherit planner-session state; reads the plan as input. The artifact plus claims is the durable handoff to the validator.
-
-**`validator`** — operates in validation mode. Tool set is restricted to a read-only allow-list. Mutating actions are refused before the substrate is invoked. Fresh-context requirement is *strict*: the runtime guarantees the validation session is spawned with no inputs from the caller other than the persona profile, the artifact reference, the claims declaration, and the governance documents. No prior conversation, no handoff context beyond the encoded artifact-and-claims, no "we discussed X earlier" framing. Output is structured findings with explicit dispositions (fix, pivot, accept) per finding, consistent with [P0008](klappy://docs/promotions/P0008-pr-validator-dolcheo-ledger-as-deliverable). The findings are the durable handoff to the resolver (or, if all findings are accepted, the validation session is the terminal session).
-
-**`resolver`** — operates in resolution mode. Tool set includes mutating tools, but bounded by the validator's findings. The runtime can validate that mutations stay within finding-scope when the implementation supports it; at minimum, the resolver session is briefed that scope is bounded. Fresh-context requirement: must not inherit validator-session state; reads the findings as input. Output is the revised artifact plus a remediation summary per finding (what was changed, what was not changed and why). The revised artifact is the durable handoff back to a fresh validator session for re-validation.
+The per-role tool allow-lists, output schemas, risk detectors, anti-pattern detectors, and the same-session transitions the runtime refuses live in [Runtime Contract §Mode](klappy://canon/methods/spawned-agent-session-runtime-contract#mode) and [§Role](klappy://canon/methods/spawned-agent-session-runtime-contract#role). This doc names the role taxonomy; the contract specifies the per-role behavior.
 
 #### Escape Hatch and Observer Sessions
 
@@ -159,23 +168,15 @@ Per [Mode Transitions Require Encoded Handoff](klappy://canon/constraints/mode-t
 
 ### 3. Apply Surface-Profile Output Post-Processing
 
-The runtime tags every output field as `machine` (parsed by code) or `human` (read by people). Surface profiles constrain what reaches each tag:
+Voice and brand are mechanically enforceable at the runtime layer. The agent inside speaks naturally; the runtime cleans before delivery — persona emoji stripped from machine fields, density caps enforced as retry-shorter loops, format contracts (structured-output vs narrative) honored at parse time.
 
-- **Persona emoji stripped from machine fields.** If the voice canon bans 🦦 in JSON / YAML / commit messages / status titles / URIs, the runtime enforces that ban at output time, not at prompt time. The agent inside can speak naturally; the runtime cleans before delivery.
-- **Density caps applied.** If a `real_time_stream` surface declares `max_tokens_per_emission: 60`, an emission that exceeds the cap fails validation and the runtime requests a shorter retry. Brevity-under-pressure becomes structural.
-- **Format contracts honored.** If `structured_output: required`, the runtime parses fenced JSON from the agent's response and rejects free-form text. If `narrative: true`, prose is expected and structure is optional.
-
-Voice and brand are mechanically enforceable at this layer. The agent does not have to police itself; the runtime does.
+The exact post-processing rules — which fields get tagged `machine` vs `human`, which emoji set survives the `neutral` and `strict` toggles, which output kinds get classified, how density caps trigger retries — live in [Runtime Contract §Surface](klappy://canon/methods/spawned-agent-session-runtime-contract#surface). This doc names the responsibility; the contract specifies the rules.
 
 ### 4. Honor Mode Toggles
 
-Personas have voice modes — `persona`, `neutral`, `strict` — declared per invocation:
+Personas have three voice modes — `persona`, `neutral`, `strict` — declared per invocation. The runtime applies the toggle uniformly across all output fields; the agent inside does not need to know which mode is active. Functional status emoji (`✅ ⚠️ 🔴`) survive across all toggles per voice canon — they are information, not character.
 
-- **persona**: full voice canon applies (signature emoji, vocabulary, register).
-- **neutral**: persona emoji and vocabulary suppressed; functional status emoji (✅ ⚠️ 🔴) survive because they carry information rather than character.
-- **strict**: even functional emoji minimized; output is purely text. Useful for environments that strip emoji entirely (parser-sensitive contexts, accessibility-first surfaces).
-
-The mode is a runtime parameter, applied uniformly across all output fields. The agent inside does not need to know which mode is active.
+The exact suppression rules per toggle live in [Runtime Contract §Surface](klappy://canon/methods/spawned-agent-session-runtime-contract#surface) under "Surface drives output post-processing."
 
 ### 5. Support Session Types
 
@@ -190,15 +191,11 @@ A subscribed session needs: connection management, multi-output channels (per-ch
 
 ### 6. Honor the Engagement Contract
 
-Sessions invoke the runtime under one of two engagement modes — *assistant* or *agent* — and the runtime enforces different turn-control and bottleneck-respect contracts for each. This dimension is orthogonal to mode, role, and surface. The same persona in the same mode and role can be invoked under either engagement; what changes is who controls the turn and how the session terminates.
+Sessions invoke the runtime under one of two engagement modes — *assistant* (turn-based dialogue with the caller; clarifying questions are valid output; state persists across turns) or *agent* (autonomous run-to-completion; clarifying questions are forbidden per [bottleneck-respect canon](klappy://canon/constraints/mode-discipline-and-bottleneck-respect); stuck sessions terminate with named failures rather than mid-flight questions).
 
-**`assistant`** — turn-based dialogue with the caller. The session emits a response and yields turn-control back to the caller. Clarifying questions are valid output. State persists across turns. The caller's attention is in the loop; the session paces itself to that. Pair-programming surfaces, sidebar chat, mentorship interactions, and any conversational use case are typically assistant-engagement.
+Engagement is orthogonal to persona, mode, role, and surface — the same persona at the same surface in the same mode and role can be invoked under either engagement, with the caller's consent to interruption being what differs. The dimension exists at the runtime layer because it is the natural place to enforce turn-control and bottleneck-respect mechanically rather than by prompt discipline.
 
-**`agent`** — autonomous run-to-completion. The session does not yield turn-control until the task is complete or a named failure terminates it. Clarifying questions are forbidden per [Mode Discipline and Bottleneck Respect](klappy://canon/constraints/mode-discipline-and-bottleneck-respect) — they pull the bottleneck (caller's attention) into work the caller was not in the loop for. The runtime wraps any clarifying-question emission as a named failure rather than a valid output. Stuck or under-specified sessions terminate with the failure named, allowing the caller to fix the input and retry rather than respond to mid-flight questions. Audit gates, scheduled jobs, fan-out workers, and any background dispatch are typically agent-engagement.
-
-The distinction matters because the caller's consent to interruption differs. An assistant session implies *"I will be here to answer questions when they come up."* An agent session implies *"I have given you everything you need; come back when you have a result or a clean failure."* Conflating the two corrupts both: assistant-shaped agents produce output the caller didn't ask for; agent-shaped assistants accumulate questions the caller never sees.
-
-The engagement field is part of the session-invocation parameter set:
+The full spec — turn-control markers, output-kind classification, how `engagement=agent` wraps clarifying-question emissions as named failures, the rare-but-legitimate combinations like `planning + agent` — lives in [Runtime Contract §Engagement](klappy://canon/methods/spawned-agent-session-runtime-contract#engagement). The engagement parameter appears in the invocation sketch alongside persona, role, surface, and task:
 
 ```
 runtime.invoke(
@@ -209,8 +206,6 @@ runtime.invoke(
   task="..."
 )
 ```
-
-Most consumer patterns map cleanly: scheduled audits are `agent`; sidebar Q&A is `assistant`; pair-programming with an assistant persona is `assistant`. A few patterns are rare-but-legitimate: planning under `agent` engagement (autonomous canonical planning when the planner-persona has enough context to produce a complete plan without dialogue) is allowed but requires the persona to be confident the input is complete. The runtime supports the rare combinations; consumers choose which to use.
 
 ---
 
@@ -454,6 +449,7 @@ The retraction conditions are weak by design. The first deployment (audit gate) 
 
 ## See Also
 
+- [Spawned Agent Session Runtime Contract](klappy://canon/methods/spawned-agent-session-runtime-contract) — the per-session-shape spec this method's runtime responsibilities are implemented against (Tier-2 sibling)
 - [Sessions Mirror Modes](klappy://canon/principles/sessions-mirror-modes) — the principle this runtime is the architectural expression of
 - [Mode Transitions Require Encoded Handoff](klappy://canon/constraints/mode-transitions-require-encoded-handoff) — the binding rule this runtime enforces mechanically
 - [Spawned Agent Session Substrate Options](klappy://canon/methods/spawned-agent-session-substrate-options) — the catalog of substrates this runtime sits on top of

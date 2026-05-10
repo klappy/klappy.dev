@@ -10,7 +10,7 @@ tags: ["canon", "methods", "spawned-agent-sessions", "runtime", "governance", "e
 epoch: E0008.5
 date: 2026-05-10
 derives_from: "canon/epistemic-modes.md, canon/principles/sessions-mirror-modes.md, canon/constraints/mode-transitions-require-encoded-handoff.md, canon/constraints/mode-discipline-and-bottleneck-respect.md, canon/constraints/critic-cannot-be-resolver.md, canon/constraints/audit-gates-are-spawned-agent-sessions.md, canon/methods/spawned-agent-session-substrate-options.md, canon/methods/persona-shaped-agent-runtime.md, canon/voice/oddie-the-river-guide.md, canon/principles/vodka-architecture.md, canon/principles/verification-requires-fresh-context.md"
-complements: "canon/methods/governance-validation-via-agents.md, canon/constraints/canon-integration-audit.md"
+complements: "canon/methods/persona-shaped-agent-runtime.md, canon/methods/governance-validation-via-agents.md, canon/constraints/canon-integration-audit.md"
 governs: "Any spawned agent session dispatched on the runtime substrate. Specifies the five orthogonal session-configuration dimensions, the runtime's enforcement obligations against existing canon, and the composition rules that determine session shape from the dimension values. Substrate selection (where the session runs) is handled by klappy://canon/methods/spawned-agent-session-substrate-options; this doc handles configuration (how the session is parameterized)."
 status: draft
 ---
@@ -18,6 +18,17 @@ status: draft
 # Spawned Agent Session Runtime Contract — Five Orthogonal Dimensions That Mechanize Existing Canon
 
 > A spawned agent session is fully characterized by five orthogonal dimensions: **persona** (voice and methodology), **mode** (epistemic state — exploration / planning / execution / validation), **role** (detection-only / resolver / general), **surface** (output context — real-time / audit / mentorship / sidebar-chat / etc.), and **engagement** (assistant / agent — turn-based dialogue or autonomous run-to-completion). The runtime's contribution is *mechanization*: the existing canon — epistemic modes, mode discipline, critic-cannot-be-resolver, voice and brand discipline, bottleneck respect — is enforced architecturally rather than left to prompt discipline. This doc specifies the dimensions, the runtime's enforcement obligations, and the composition rules that determine session shape from dimension values. The runtime adds no governance; it operationalizes existing governance for the agent surface.
+
+---
+
+## Companion Documents
+
+This doc and [Persona-Shaped Agent Runtime](klappy://canon/methods/persona-shaped-agent-runtime) are sibling layers, deliberately split:
+
+- **Persona-shape (Tier-1 method)** — the architectural shape: persona-as-noun framing, the persona profile schema (canonical home), the runtime's responsibilities at the architecture level, deployment sequencing, prior art, inheritance from canonical commitments, worked examples. Reads top-down: "what is this thing and why."
+- **This doc (Tier-2 spec)** — the per-session-shape contract: per-mode tool allow-lists, output schemas, risk detectors, anti-pattern detectors; per-role boundaries; per-surface post-processing rules; per-engagement turn-control; the composition rules with forbidden / rare / well-trodden combinations; the explicit enforcement points list. Reads as a reference: "what does the runtime do at submit time."
+
+The persona profile schema lives in persona-shape's [§The Persona Profile](klappy://canon/methods/persona-shaped-agent-runtime#the-persona-profile). This doc treats personas as one of five session-configuration dimensions and specifies how the runtime resolves them; the profile shape itself is the method's content. Architecture changes land in persona-shape; per-dimension mechanics changes land here.
 
 ---
 
@@ -53,29 +64,7 @@ A persona declares **who is speaking** in a session — voice, methodology, and 
 
 ### Persona profile shape
 
-```yaml
-persona: oddie
-version: 1
-system_prompt_uri: klappy://canon/voice/oddie-the-river-guide
-role_default: detection-only
-mcp_servers:
-  operational:    # always-on for this persona, regardless of task
-    - oddkit
-  task_relevant:  # added per invocation based on task
-    []
-knowledge_bases:
-  - klappy://
-surface_profiles:
-  real_time_stream:     { density: high,   max_tokens_per_emission: 60 }
-  audit:                { density: medium, structured_output: required }
-  mentorship:           { density: low,    narrative: true }
-  strategic_translation:{ density: medium, bidirectional: true }
-brand_discipline_uri: klappy://canon/voice/oddie-the-river-guide#brand-guide
-inheritance:
-  - klappy://canon/constraints/guide-posture
-  - klappy://canon/constraints/ai-voice-cliches
-retraction_conditions: klappy://canon/voice/oddie-the-river-guide#retraction-conditions
-```
+The persona profile schema (fields, inheritance chain, retraction conditions, surface-profiles map, the operational-vs-task-relevant MCP split) is the canonical content of [Persona-Shaped Agent Runtime §The Persona Profile](klappy://canon/methods/persona-shaped-agent-runtime#the-persona-profile). This doc treats the profile as a resolved input to the runtime and specifies how the runtime acts on it.
 
 ### Operational vs task-relevant MCP servers
 
@@ -369,10 +358,10 @@ A weaker retraction path: if the dimensions hold but specific enforcement points
 
 ## See Also
 
+- [Persona-Shaped Agent Runtime](klappy://canon/methods/persona-shaped-agent-runtime) — the Tier-1 method this contract operationalizes; canonical home of the persona profile schema, deployment sequencing, prior art, and worked examples
 - [Epistemic Modes](klappy://canon/epistemic-modes) — the five canonical modes this contract operationalizes
 - [Sessions Mirror Modes](klappy://canon/principles/sessions-mirror-modes) — the principle that each mode earns its own session, generalizing critic-cannot-be-resolver and verification-requires-fresh-context
 - [Mode Transitions Require Encoded Handoff](klappy://canon/constraints/mode-transitions-require-encoded-handoff) — the binding rule for journal entries plus transition-specific handoffs at every gate, with reversion / skip / operator-override as three permitted deviations
-- [Persona-Shaped Agent Runtime](klappy://canon/methods/persona-shaped-agent-runtime) — sibling method covering persona profiles as first-class objects (this doc covers session configuration; that doc covers persona authoring)
 - [Mode Discipline and Bottleneck Respect](klappy://canon/constraints/mode-discipline-and-bottleneck-respect) — the discipline this contract makes mechanical
 - [Critic Cannot Be Resolver](klappy://canon/constraints/critic-cannot-be-resolver) — the role-boundary constraint the runtime enforces structurally for the validator → resolver transition
 - [Verification Requires Fresh Context](klappy://canon/principles/verification-requires-fresh-context) — the principle that motivates fresh-context enforcement for validator-role sessions specifically
