@@ -9,7 +9,7 @@ stability: stable
 tags: ["canon", "principles", "quality-attributes", "software-virtues", "tradeoffs", "tensions", "ilities"]
 epoch: E0008.4
 date: 2026-05-10
-derives_from: "canon/definitions/software-virtues-vocabulary.md, canon/observations/quality-attribute-tension-matrix.md, canon/values/axioms.md"
+derives_from: "canon/definitions/software-virtues-vocabulary.md, canon/values/axioms.md, https://medium.com/@klappy/what-are-software-virtues-and-how-to-prioritize-them-f0b583741afe"
 complements: "odd/maturity.md, canon/constraints/mode-discipline-and-bottleneck-respect.md"
 governs: "How tradeoffs between competing software properties are reasoned about across canon. Holds for any set of quality attributes, not only the canonical ten. Forbids reasoning that flattens the tradeoff space into a single objective function. Requires phase-aware weighting rather than universal rankings."
 status: active
