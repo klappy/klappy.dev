@@ -108,6 +108,34 @@ Invalid moves:
 
 ---
 
+## Resolution Conversations
+
+Purpose:
+
+- address validation findings per their explicit dispositions (fix, pivot, accept)
+- produce a revised artifact scoped strictly by the findings
+- hand off to a fresh re-validation conversation
+
+Characteristics:
+
+- findings exist with explicit dispositions before the conversation begins
+- scope is bounded by the findings, not by reopening planning
+- each finding has a remediation action (or is accepted as-is, with reasoning)
+- conducted in a fresh session per session-per-mode discipline (see `canon/principles/sessions-mirror-modes`)
+- the revised artifact plus a remediation summary per finding is the durable handoff
+- re-validation is performed in a separate session that does not inherit the resolver's reasoning
+
+Invalid moves:
+
+- introducing requirements the findings did not surface — that requires explicit reversion to planning
+- using remediation as cover for redesign or for changes outside the findings
+- self-validating the fix in the same session that produced it (the resolver does not certify their own work)
+- ignoring findings rather than disposing of them explicitly
+- treating validation findings as suggestions rather than as scoped work items
+- handing off to re-validation without a remediation summary
+
+---
+
 ## Mode Signaling
 
 Mode MAY be signaled explicitly:
