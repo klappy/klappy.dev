@@ -42,6 +42,141 @@ env:
   USER_AGENT: 'klappy.dev-canon-quality/1.0 (+github-actions; ${{ github.repository }}#${{ github.run_id }})'
 
 jobs:
+  frontmatter:
+    name: Frontmatter schema validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    # Hard-block from day one. The schema is unambiguous; canon
+    # (klappy://canon/constraints/frontmatter-validation-before-merge) mandates
+    # this gate "No Exceptions". No soft-observation cycle — the renderer's
+    # silent-drop failure mode (the May 10 incident) is exactly what this
+    # prevents.
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install --quiet pyyaml
+
+      - name: Run validator
+        id: validate
+        run: |
+          python3 scripts/validate-frontmatter.py --json writings/ > /tmp/fm-result.json || true
+          python3 - <<'PY'
+          import json
+          d = json.load(open('/tmp/fm-result.json'))
+          print(f"scanned={d['scanned']} status={d['status']} findings={len(d['findings'])}")
+          PY
+
+      - name: Upload findings artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontmatter-findings
+          path: /tmp/fm-result.json
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: Render PR comment
+        id: render
+        if: github.event_name == 'pull_request'
+        run: |
+          python3 - <<'PY'
+          import json, collections
+          d = json.load(open('/tmp/fm-result.json'))
+          findings = d['findings']
+          scanned = d['scanned']
+          lines = []
+          if not findings:
+              lines.append('### Canon Quality — Frontmatter Schema ✅')
+              lines.append('')
+              lines.append(f'All {scanned} file(s) in `writings/` conform to '
+                           f'`klappy://canon/meta/frontmatter-schema`.')
+          else:
+              lines.append('### Canon Quality — Frontmatter Schema ❌')
+              lines.append('')
+              lines.append(f"**{len(findings)} violation(s)** across "
+                           f"`writings/` ({scanned} files scanned). "
+                           f"Mode: **hard-block** (canon mandate, no exceptions).")
+              lines.append('')
+              by_file = collections.defaultdict(list)
+              for f in findings:
+                  by_file[f['location']['path']].append(f)
+              for path, items in sorted(by_file.items()):
+                  lines.append(f'<details><summary><code>{path}</code> — '
+                               f'{len(items)} finding(s)</summary>')
+                  lines.append('')
+                  lines.append('| Rule | Occurrence | Message |')
+                  lines.append('|---|---|---|')
+                  for it in items:
+                      occ = (it['occurrence'] or '').replace('|', '\\|')
+                      msg = (it['message'] or '').replace('|', '\\|')
+                      lines.append(f"| `{it['rule_id']}` | `{occ}` | {msg} |")
+                  lines.append('')
+                  lines.append('</details>')
+              lines.append('')
+              lines.append('> **What to do**')
+              lines.append('> - Compare the offending file against `canon/meta/frontmatter-schema.md` (the source of truth) and a known-good essay like `writings/reverse-engineer-the-future.md`.')
+              lines.append('> - For enum violations: pick a value from the allowed set named in the message.')
+              lines.append('> - For type mismatches: remove the surrounding quotes on booleans and integers.')
+              lines.append('> - For missing essay-discovery fields: backfill `type`, `slug`, `hook`, `description` from your own opening — do not invent content.')
+              lines.append('> - There is no allowlist for these violations. They cause the renderer to silently drop the page from the homepage.')
+          lines.append('')
+          lines.append('<sub>Validator: `scripts/validate-frontmatter.py` · Canon: `klappy://canon/constraints/frontmatter-validation-before-merge` · Run: [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})</sub>')
+          open('/tmp/fm-comment.md', 'w').write('\n'.join(lines))
+          PY
+
+      - name: Sticky comment
+        if: github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: canon-quality-frontmatter
+          path: /tmp/fm-comment.md
+
+      - name: Workflow step summary
+        if: always()
+        run: |
+          {
+            echo "## Canon Quality — Frontmatter Schema"
+            echo ""
+            python3 - <<'PY'
+          import json
+          try:
+              d = json.load(open('/tmp/fm-result.json'))
+              n = len(d['findings'])
+              if n == 0:
+                  print(f"- **Status**: ✅ OK")
+                  print(f"- **Files scanned**: {d['scanned']}")
+              else:
+                  print(f"- **Status**: ❌ FINDINGS")
+                  print(f"- **Files scanned**: {d['scanned']}")
+                  print(f"- **Total findings**: {n}")
+                  from collections import Counter
+                  by_rule = Counter(f['rule_id'] for f in d['findings'])
+                  print(f"- **By rule**: `{dict(by_rule)}`")
+          except Exception as e:
+              print(f"- **Result**: validator did not produce output ({e})")
+          PY
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Enforcement gate (hard-block)
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          d = json.load(open('/tmp/fm-result.json'))
+          if d['findings']:
+              print(f"::error::Frontmatter validation found {len(d['findings'])} violation(s). "
+                    f"Fix the offending fields per canon/meta/frontmatter-schema.md "
+                    f"or see the PR comment for per-finding guidance.")
+              sys.exit(1)
+          print(f"Frontmatter OK ({d['scanned']} file(s) scanned).")
+          PY
+
   audit:
     name: Reference integrity audit
     runs-on: ubuntu-latest

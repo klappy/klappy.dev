@@ -58,14 +58,38 @@ These specific combinations have caused renderer crashes in production:
 
 ## Automation
 
-A Managed Agent can be used for validation. The agent should:
-1. Clone the repo and check out the branch
-2. Fetch the frontmatter schema via oddkit
-3. Read 3-4 working essays for structural comparison
-4. Diff the new essay's frontmatter field-by-field
-5. Fix issues and push, or report findings
+This constraint is implemented as a CI gate. The implementation is:
 
-The agent configuration, environment ID, and API credentials are stored in the project instructions.
+- **Validator**: `scripts/validate-frontmatter.py` (lives in this repo).
+  Mirrors the schema's enums and required-field rules. Single-file Python,
+  PyYAML, no external dependencies beyond the standard library + pyyaml.
+- **Workflow**: `.github/workflows/canon-quality.yml` runs the validator as
+  the **`frontmatter`** job on every PR and push that touches `writings/**`.
+  Runs in parallel with the reference-integrity audit (`oddkit_audit`).
+- **Enforcement mode**: **hard-block from day one**. The schema is
+  unambiguous; the renderer's failure mode is silent-drop with no operator
+  signal; canon mandates this gate "No Exceptions". There is no soft-block
+  observation cycle. There is no allowlist directive — any finding fails the
+  job.
+
+The validator emits findings under five rule_ids, each mapped directly to a
+"Known Crash Patterns" row above:
+
+| rule_id | Catches |
+|---------|---------|
+| `frontmatter-missing-block` | File has no `---`-delimited frontmatter at all |
+| `frontmatter-parse-error` | Frontmatter block exists but YAML is malformed |
+| `frontmatter-missing-required` | One of the eight universal fields, or one of `type` / `slug` / `hook` / `description` on a public essay in writings/, is missing or empty |
+| `frontmatter-invalid-enum` | `exposure`, `voice`, `tier`, or `audience` has a value not in the canonical allowed set |
+| `frontmatter-type-mismatch` | Quoted boolean (`public: "true"`) or quoted integer (`tier: "3"`) |
+| `frontmatter-contradictory` | `public: false` combined with `exposure: public` |
+
+Authoring agents may run the validator locally before pushing
+(`python3 scripts/validate-frontmatter.py`); the CI gate is the
+authoritative check.
+
+When the validator and `canon/meta/frontmatter-schema.md` disagree, the
+schema doc wins and the validator's enum mirror must be updated to match.
 
 ---
 
