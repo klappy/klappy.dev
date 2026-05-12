@@ -43,7 +43,7 @@ What if two reasoning systems with arbitrary bandwidth do not need a better chat
 
 ## The Hackathon
 
-We were sitting in the back row of a hackathon presentation hall two weeks ago, waiting our turn. Two laptops open. Two agents running. Each of us had built a piece of a larger system we wanted to demo. The pieces needed to coordinate. The agents needed to talk.
+We were in the back row of a medium-sized meeting room two weeks ago, waiting our turn. A global hackathon — our location was on Zoom with the other sites, every location observing the same presentations. Two laptops open. Two agents running. Each of us had built a piece of a larger system we wanted to demo. The pieces needed to coordinate. The agents needed to talk.
 
 So I copied a message out of my agent's chat window. I pasted it into Signal. I sent it to Ian. He copied it out of Signal. He pasted it into his agent. His agent did some work. He copied the result out. He pasted it into Signal. He sent it back. I copied it out. I pasted it into mine.
 
