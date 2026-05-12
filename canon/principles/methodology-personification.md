@@ -7,7 +7,7 @@ tier: 2
 voice: neutral
 stability: evolving
 tags: ["canon", "principles", "personification", "methodology", "voice", "accessibility", "oddie", "borrow-evaluation"]
-epoch: E0008.5
+epoch: E0009
 date: 2026-05-08
 derives_from: "canon/constraints/guide-posture.md, canon/values/axioms.md"
 complements: "canon/voice/oddie-the-river-guide.md, canon/principles/voice-as-cognitive-load-shedding.md, canon/observations/clone-klappy-to-oddie-recognition.md"

@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: semi_stable
 tags: ["canon", "principle", "substrate", "wire-layer", "L1", "vodka-architecture", "BYOA", "BYOC", "open-substrate", "constitutional"]
-epoch: E0008.5
+epoch: E0009
 date: 2026-05-10
 derives_from: "canon/values/axioms.md, canon/architecture/substrate-stack.md, canon/principles/vodka-architecture.md, canon/principles/doing-less-enables-more.md, ams://canon/decisions/D0020-agents-as-customer-and-third-party-vas-substrate, ams://canon/decisions/D0006-dream-house-wire-edge-wrappers"
 complements: "canon/principles/magical-first-run.md, canon/principles/creators-get-paid.md, canon/principles/dream-house-principle.md"

@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: evolving
 tags: ["canon", "principle", "architecture", "layered-model", "substrate", "vodka-architecture", "orthogonality", "OSI-equivalent", "ams", "tincan", "oddie"]
-epoch: E0008.5
+epoch: E0009
 date: 2026-05-10
 derives_from: "canon/principles/vodka-architecture.md, canon/principles/doing-less-enables-more.md, canon/principles/dream-house-principle.md, ams://canon/decisions/D0020-agents-as-customer-and-third-party-vas-substrate, ams://canon/decisions/D0006-dream-house-wire-edge-wrappers, ams://canon/decisions/D0016-buffering-and-persistence-as-wrapper-primitive"
 complements: "canon/principles/magical-first-run.md, canon/principles/symmetric-participation.md, canon/principles/creators-get-paid.md, canon/voice/oddie-the-river-guide.md"

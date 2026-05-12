@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: evolving
 tags: ["canon", "methods", "agent-runtime", "persona-profile", "substrate", "vodka-architecture", "oddie", "spawned-agent-session", "role-enforcement", "surface-profile"]
-epoch: E0008.5
+epoch: E0009
 date: 2026-05-10
 derives_from: "canon/methods/spawned-agent-session-substrate-options.md, canon/principles/sessions-mirror-modes.md, canon/constraints/mode-transitions-require-encoded-handoff.md, canon/constraints/critic-cannot-be-resolver.md, canon/principles/verification-requires-fresh-context.md, canon/voice/oddie-the-river-guide.md, canon/principles/vodka-architecture.md"
 complements: "canon/methods/spawned-agent-session-runtime-contract.md, canon/principles/methodology-personification.md, canon/principles/voice-as-cognitive-load-shedding.md, canon/principles/participation-replaces-integration.md"

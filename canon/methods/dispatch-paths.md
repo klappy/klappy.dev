@@ -7,7 +7,7 @@ tier: 2
 voice: neutral
 stability: draft
 tags: ["canon", "methods", "spawned-agent-sessions", "dispatch", "assistant-orchestrated", "autonomous-trigger", "agent-runtime", "vodka-architecture"]
-epoch: E0008.5
+epoch: E0009
 date: 2026-05-11
 derives_from: "canon/methods/spawned-agent-session-runtime-contract.md, canon/methods/persona-shaped-agent-runtime.md, canon/methods/trigger-source-taxonomy.md, canon/principles/agents-need-their-own-wire.md, canon/constraints/mode-discipline-and-bottleneck-respect.md"
 complements: "canon/methods/trigger-source-taxonomy.md, canon/methods/spawned-agent-session-substrate-options.md"

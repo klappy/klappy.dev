@@ -7,7 +7,7 @@ tier: 2
 voice: neutral
 stability: evolving
 tags: ["canon", "principles", "voice", "cognitive-load", "incident-response", "calm", "brevity", "information-density"]
-epoch: E0008.5
+epoch: E0009
 date: 2026-05-08
 derives_from: "canon/values/axioms.md, canon/constraints/guide-posture.md"
 complements: "canon/voice/oddie-the-river-guide.md, canon/constraints/ai-voice-cliches.md"

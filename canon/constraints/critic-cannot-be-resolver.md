@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: semi_stable
 tags: ["canon", "constraints", "mode-discipline", "agent-design", "detection", "remediation", "separation-of-concerns", "context-corruption"]
-epoch: E0008.5
+epoch: E0009
 date: 2026-05-08
 derives_from: "canon/principles/verification-requires-fresh-context.md, canon/values/axioms.md"
 complements: "canon/voice/oddie-the-river-guide.md, canon/constraints/mode-discipline-and-bottleneck-respect.md"

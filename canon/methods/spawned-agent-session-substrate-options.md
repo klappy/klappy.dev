@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: evolving
 tags: ["canon", "methods", "spawned-agent-sessions", "substrate", "cost-shape", "vendor-portability", "anthropic", "cloudflare", "vodka-architecture"]
-epoch: E0008.5
+epoch: E0009
 date: 2026-05-09
 derives_from: "canon/constraints/audit-gates-are-spawned-agent-sessions.md, canon/principles/vodka-architecture.md, canon/principles/doing-less-enables-more.md, canon/constraints/borrow-evaluation-before-implementation.md"
 complements: "canon/methods/governance-validation-via-agents.md"

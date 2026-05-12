@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: semi_stable
 tags: ["canon", "bootstrap", "oddkit", "governance", "mode-discipline", "vodka-architecture", "prompt-over-code"]
-epoch: E0008.3
+epoch: E0009
 date: 2026-05-08
 derives_from: "canon/values/orientation.md, canon/values/axioms.md, canon/definitions/epistemic-modes.md, canon/validation-as-epistemic-mode.md, canon/constraints/oddkit-prompt-pattern.md, canon/constraints/mode-discipline-and-bottleneck-respect.md, canon/principles/dry-canon-says-it-once.md, canon/principles/verification-requires-fresh-context.md, canon/observations/time-blindness-axiom-violation.md"
 complements: "docs/oddkit/proactive/posture-lapse.md, docs/oddkit/proactive/proactive-gate.md, docs/appendices/mode-separated-conversations.md, canon/voice/oddie-the-river-guide.md"

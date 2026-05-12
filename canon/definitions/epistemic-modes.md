@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: semi_stable
 tags: ["epistemology", "decision-making", "governance"]
-epoch: E0008.5
+epoch: E0009
 date: 2026-05-10
 ---
 

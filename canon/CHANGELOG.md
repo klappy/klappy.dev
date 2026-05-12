@@ -18,6 +18,60 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
+## 0.38.0 — 2026-05-12
+
+**Substrate Becomes the Wire (E0009)**
+
+A new epoch. Epoch 8 made validation observable (E0008.3), encoding-types governed (E0008.4), operator-attention defended (E0008.4), and specs locked at implementation (E0008.6). Epoch 9 retires the integration pattern those disciplines were defending against: human-as-wire. The substrate stack is named end-to-end (`canon/architecture/substrate-stack`); persona-shaped runtimes are specified (`canon/methods/persona-shaped-agent-runtime`); the per-session contract is bounded (`canon/methods/spawned-agent-session-runtime-contract`); dispatch paths are bounded into a binary (`canon/methods/dispatch-paths`); trigger sources are taxonomized (`canon/methods/trigger-source-taxonomy`); audit gates are spawned agent sessions, not pattern matchers (`canon/constraints/audit-gates-are-spawned-agent-sessions`); and the first production-grade exercise of the runtime — the audit-gate migration onto Cloudflare's Agents Week primitives — landed its planning artifact in `klappy/agent-messaging-service` PR #77 (merged 2026-05-12) with the multi-PR migration in flight.
+
+The narrative form of the epoch's central argument — "We Were the Wire" — lands in `writings/` as a public-facing essay. The spine is imported from `klappy/agent-messaging-service:ESSAY.md` (the hackathon scene that originally named the problem); the expansion covers the broader Epoch 9 themes (the wire problem is never just agent-to-agent; the substrate stack is the answer; the dispatch-path question settles everything else; R2-drop-a-file-get-knowledge as the canonical autonomous-trigger pipeline; audits-as-spawned-sessions; Oddie as the first deployable L4 persona).
+
+Behavior change: from this version forward, when canon describes a workflow that includes a human in an integration role, it is describing a design smell unless the role is explicitly direction-setting or pivot-decisioning. The operator is a director, not a relay. Validators are spawned agent sessions. Audits are spawned agent sessions. Ingestion is autonomous-trigger pipelines. The wire is no longer a person.
+
+### Added — Canon Surface
+
+- **Appendix: Epoch 9 — Substrate Becomes the Wire** (`docs/appendices/epoch-9.md`) — Tier 2, neutral, stable. Names the forcing fault (the operator was the wire), the new invariant (substrate is the wire), the core shift (director, not relay), and the six-layer receipt table (what "done" looks like at each of L1–L6, which canon already covers it, what remains).
+- **Essay: We Were the Wire** (`writings/we-were-the-wire.md`) — Tier 3, first-person, stable. Public-facing essay form of the argument. Spine imported from `klappy/agent-messaging-service:ESSAY.md` (~2,300 words preserved); expansion (~1,500 words) covers the substrate stack, dispatch-paths binary, R2-ESE pipeline worked example, audits-as-spawned-sessions, and Oddie-as-L4-peer.
+- **Release Notes: Epoch 9 — Substrate Becomes the Wire** (`docs/oddkit/release-notes/2026-05-12-epoch-9-substrate-becomes-the-wire.md`) — Tier 2, neutral, stable. Frames the release by behavior change, not file inventory. Names what changes for operators, what changes for agents, what does not change, and how to recognize operator-as-wire (and replace it).
+
+### Retagged — Frontmatter `epoch:` field
+
+Substrate-shaped canon retagged from `E0008.5` to `E0009` (per-doc verification against `governs` field confirmed substrate / agentic-runtime / persona-shaped subject matter):
+
+- `canon/architecture/substrate-stack.md`
+- `canon/methods/persona-shaped-agent-runtime.md`
+- `canon/methods/spawned-agent-session-runtime-contract.md`
+- `canon/methods/spawned-agent-session-substrate-options.md`
+- `canon/methods/dispatch-paths.md`
+- `canon/methods/trigger-source-taxonomy.md`
+- `canon/principles/agents-need-their-own-wire.md`
+- `canon/principles/symmetric-participation.md`
+- `canon/principles/sessions-mirror-modes.md`
+- `canon/principles/creators-get-paid.md`
+- `canon/principles/magical-first-run.md`
+- `canon/principles/methodology-personification.md`
+- `canon/principles/voice-as-cognitive-load-shedding.md`
+- `canon/constraints/mode-transitions-require-encoded-handoff.md`
+- `canon/constraints/critic-cannot-be-resolver.md`
+- `canon/constraints/audit-gates-are-spawned-agent-sessions.md` (addition beyond the planning session's candidate list; per its own `governs` field this constraint directly governs the L4 substrate work)
+- `canon/observations/clone-klappy-to-oddie-recognition.md`
+- `canon/definitions/epistemic-modes.md`
+- `docs/appendices/mode-separated-conversations.md`
+
+Bootstrap operating contract receives a frontmatter-only bump (E0008.3 → E0009):
+
+- `canon/bootstrap/model-operating-contract.md` — content update for E0009-specific disciplines (dispatch-path discipline, autonomous-trigger error-routing, runtime-contract awareness) is deferred to a separate session.
+
+Not retagged (verified out of scope by per-doc inspection): `canon/voice/oddie-the-river-guide` (voice spec; predates substrate push), `canon/methods/borrow-bend-break-beget-build` (generic 6B methodology), `canon/constraints/borrow-evaluation-before-implementation` (generic governance), `writings/reverse-engineer-the-future` (bible-translation theme), and the E0008.4 software-virtues package and the E0008.6 specs-lock-at-implementation (own sub-epochs, not part of the substrate push).
+
+### Related
+
+- `klappy/agent-messaging-service` #77 (audit-gate runtime migration — plan landed 2026-05-12; multi-PR migration in flight)
+- `klappy://odd/handoffs/2026-05-12-epoch-9-trio` (execution spec)
+- `klappy://odd/ledger/2026-05-12-epoch-9-planning` (planning session audit trail)
+
+---
+
 ## 0.37.0 — 2026-04-30
 
 **Specs Lock at Implementation — A Spec Is a Contract; Don't Change It Mid-Build (E0008.6)**
