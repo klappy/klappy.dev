@@ -35,6 +35,8 @@ Four observations shape every substrate decision:
 
 **Vendor portability lives at the harness, not the substrate.** Cloudflare Sandboxes can host Claude Code (Anthropic-tied), OpenCode (multi-vendor), Aider, or a custom loop. Anthropic Managed Agents is locked to Anthropic models. Substrate choice constrains harness choice; harness choice constrains model choice. A repo that wants reversibility on model provider needs both a substrate that admits multiple harnesses and a harness that admits multiple model providers.
 
+**Substrate properties matter beyond price.** Substrates differ on hibernation (whether idle time is free), trigger surface (what wakes a session — HTTP, WebSocket, alarm, email, RPC, queue, push), session shape support (one-shot dispatch vs subscribed long-lived), and composition (whether the substrate can spawn sub-substrates or sub-agents). These properties determine *what dispatch shapes the substrate can host*, not just *what each session costs*. A substrate cheap at one shape may be unable to host another; comparing substrates requires comparing the shapes each enables.
+
 ---
 
 ## The Cost Composition of a Spawned Agent Session
@@ -135,6 +137,122 @@ Plus the $5/month Workers Paid base fee, which amortizes to a meaningful per-ses
 
 ---
 
+## Cloudflare Durable Objects with the Agents SDK
+
+**Billing dimensions** (current as of May 2026, with CF Agents Week launches April 2026):
+
+- **Workers Paid plan**: $5/month prerequisite, shared with the Sandboxes section above.
+- **Durable Object requests**: $0.15 per 1M requests above the included tier (1M/month included on Workers Paid).
+- **Durable Object duration**: $12.50 per 1M GB-seconds of wall-clock time the DO is in memory and active. Billing stops when the DO hibernates (no active work, WebSocket connections in hibernation mode).
+- **Durable Object SQLite storage**: ~$0.20/GB-month for SQLite-backed state; rows and reads have separate small charges.
+- **Inference**: paid separately to the model provider; same rates as direct API access, subject to the same subscription-vs-API-billing distinction described in §Mixing Tools Across Vendors.
+
+**Hibernation is the defining property.** A DO consumes zero compute while hibernated; it wakes on event (HTTP fetch, WebSocket message, scheduled alarm, inbound email, sub-agent RPC) and bills duration only while active. A session that waits 24 hours for human approval, then runs for 30 seconds, pays for 30 seconds of duration plus the wake-trigger request — not for 24 hours of provisioned anything.
+
+**Trigger surface — first-class diversity.** DOs natively support multiple trigger types: HTTP fetch (webhook handler), WebSocket message (live chat, real-time stream), scheduled alarm (cron-style timing), inbound email (workflow trigger), typed RPC from other DOs (sub-agent dispatch), and queue consumer messages — and object-store events (R2 bucket notifications, equivalents on S3/GCS/Azure Blob, filesystem watchers) route through Queues or Worker handlers to wake the DO. This is structurally different from Sandboxes, which spawn-on-explicit-dispatch and have one trigger shape — being asked to spawn. The trigger-surface diversity is what makes DOs a fit for autonomous-trigger dispatch paths (cf. `klappy://canon/methods/trigger-source-taxonomy` for the dispatch-routing convention these triggers feed).
+
+**The Cloudflare Agents SDK** is a base class for building canon-conformant agents on DOs. It bundles persistent identity (each agent has its own DO instance keyed by name), SQLite-backed state, hibernation-aware WebSocket support, scheduled alarms, sub-agent dispatch via Durable Object Facets (colocated child DOs with their own SQLite), and durable execution primitives (fibers, `runFiber()` with checkpointing for crash recovery).
+
+**Project Think** is an opinionated harness on top of the Agents SDK that bundles the full chat lifecycle — agentic loop, message persistence via Session API (tree-structured messages, forking, compaction, FTS5 search), streaming, tool execution with lifecycle hooks (`beforeTurn`, `beforeToolCall`, `afterToolCall`, `onStepFinish`, `onChatResponse`), and an execution ladder (Workspace → Dynamic Worker → npm → headless browser → Sandbox) for code execution. It is preview as of late April 2026.
+
+**Worked example — subscribed observer session** (a persona attached to a live conversation, observing for 8 hours of wall-clock time with ~2 minutes of cumulative active duration across event-driven wakes):
+
+- Requests: ~200 wakes (WebSocket messages + alarm checks) × negligible per-request cost = **~$0.0003**
+- Duration: 120 seconds × ~0.128 GB × $12.50/1M GB-s = **~$0.0002**
+- Storage: ~10 KB of SQLite state = negligible
+- Inference (paid to model provider, depends on what the observer does): variable, often the dominant cost stream as with any session
+- **Substrate runtime: under $0.001 for 8 hours of wall-clock presence.** Compare to a Sandbox or container that would bill the full 8 hours at provisioned-resource rates.
+
+**Worked example — one-shot dispatch via DO** (a validator session triggered by a webhook, runs for 5 minutes, then hibernates):
+
+- Requests: ~1 (the wake) + a few internal = **~$0.000001**
+- Duration: 300 seconds × ~0.128 GB × $12.50/1M GB-s = **~$0.0005**
+- Storage: negligible
+- Inference: same as the Sandbox example
+- **Substrate runtime: ~$0.0005 for the dispatch.** Slightly cheaper than Sandboxes on substrate runtime for short bursts; equivalent or slightly more expensive for long-running CPU-heavy work where Sandbox container resources fit better.
+
+**Locks and constraints:**
+
+- Cloudflare-platform lock at the substrate layer (same as Sandboxes).
+- Project Think is preview status; API may change.
+- The DO programming model is event-driven; long-running synchronous work either runs in a DO (consuming duration billing throughout) or dispatches to a Sandbox/Dynamic Worker for the heavy step.
+- Hibernation-aware WebSocket pattern requires care — only specific WebSocket APIs participate in hibernation; misuse keeps the DO awake and incurs duration billing.
+
+**Strengths:**
+
+- Zero idle cost. Subscribed sessions with long wall-clock windows but sparse active work pay nothing for the wait.
+- Native trigger-surface diversity — the same DO class can serve webhooks, scheduled checks, inbound email, and live conversation participants without separate infrastructure per trigger type.
+- Sub-agent pattern via DO Facets is structurally clean — child DOs are colocated with the parent, have their own SQLite, and communicate via typed RPC.
+- Durable execution (fibers, `runFiber()`) survives crashes, deploys, and platform restarts mid-task. Stash points are explicit, recovery is canonical, no project-level checkpointing code required.
+- Project Think provides a higher-altitude harness than Claude Code or OpenCode — closer to the canon-defined runtime contract (`klappy://canon/methods/spawned-agent-session-runtime-contract`) shape.
+
+**Weaknesses:**
+
+- Newer than Sandboxes; production patterns are still emerging. Project Think specifically is preview and will evolve.
+- Best fit is subscribed/long-lived sessions; one-shot dispatch is *possible* but Sandboxes are often a cleaner shape for "spawn, run, return, destroy."
+- Hibernation correctness is a discipline — keeping a DO truly idle requires using the right APIs (hibernation-aware WebSocket, alarm-based scheduling rather than `setInterval`). Easy to accidentally leave a DO awake and pay duration for hours.
+- Subscription-billing path is harness-conditional: if Project Think uses an Anthropic model and authenticates via OAuth subscription, the same subscription lever from §Mixing Tools Across Vendors applies; if it uses Workers AI or another provider, the cost story is different.
+
+---
+
+## Cloudflare Dynamic Workflows
+
+**Billing dimensions** (current as of May 2026, library released May 2026, runs on top of Cloudflare Workflows GA):
+
+- **Workflows** (the underlying durable execution engine): instances and step counts have their own billing, included to a tier on Workers Paid.
+- **Dynamic Worker dispatch**: the per-tenant workflow code runs in a Dynamic Worker isolate, which boots in milliseconds and is billed per request + active CPU time.
+- **Durable Object** under the hood: each workflow instance is backed by a DO for state and resumability.
+- **Inference**: paid separately to the model provider; subscription-vs-API lever applies as elsewhere.
+
+**Dispatch-time code injection is the defining property.** Dynamic Workflows lets a single Worker Loader route every `WORKFLOWS.create()` call to a different tenant's code, and the Workflows engine dispatches `run(event, step)` back to that same code when execution actually happens (seconds, hours, or days later). The platform doesn't know what's in the workflow ahead of time; the workflow code is dispatched at runtime per request.
+
+For agent workflows specifically, this means: each persona, each project, or each PR can ship its own `run(event, step)` function — the canon-defined audit gate, validator → resolver loop, multi-step build pipeline — and the runtime dispatches it dynamically. The platform owns the dispatcher; the customer owns the workflow.
+
+**Worked example — validator → resolver → re-validator loop** (canon-described pattern; same token shape as the audit example, plus a resolver step on findings and a re-validation step):
+
+- Workflow steps: 3 steps (validate → resolve → re-validate); each step pauses, the DO hibernates between, wakes on next step. Hibernation-billed cost across all steps is roughly the same as a single audit's DO duration.
+- Inference: 3× the per-audit inference cost (or 2× if re-validation is shorter than initial validation).
+- Substrate runtime overhead: minimal — the workflow primitive is engineered for hibernation-between-steps.
+
+**Locks and constraints:**
+
+- Cloudflare-platform lock.
+- Library is open beta on Workers Paid as of late April / early May 2026; API and pricing may shift before GA.
+- Each workflow is its own per-tenant code module; the dispatcher (Worker Loader) is fixed, but the per-tenant logic is fully owned by the consumer.
+
+**Strengths:**
+
+- Native fit for canon-described patterns that involve multi-step durable workflows with pauses (`step.do`, `step.sleep`, `step.waitForEvent`).
+- Hibernation between steps is free; long-running workflows that wait for approvals or external events pay nothing during the wait.
+- Per-tenant code dispatched at runtime means a single dispatcher can serve many distinct persona × workflow combinations without redeploying.
+- The CI/CD pattern (webhook → clone → lint/test/build → review/approve → deploy) maps directly onto this primitive. The CF blog's example is structurally identical to the canon-described audit-gate → resolver loop.
+
+**Weaknesses:**
+
+- More complex programming model than a single Sandbox dispatch. Best suited to multi-step durable workflows, not to one-shot tasks (use a Sandbox or a DO + Fiber for those).
+- Open beta; patterns are still being established.
+- The per-tenant code dispatch requires careful credential and tenant-isolation handling — Cloudflare provides the primitives (Worker Loader's `metadata` parameter); the consumer is responsible for using them safely.
+
+---
+
+## Cloudflare Dynamic Workers
+
+**Billing dimensions** (current as of May 2026):
+
+- **Workers requests + duration**: standard Workers billing applies to Dynamic Worker invocations. Cheaper than Sandboxes for short, CPU-light tasks because of millisecond-boot isolates vs container provisioning.
+- No separate prerequisite beyond Workers Paid.
+
+**Millisecond-boot isolates are the defining property.** A Dynamic Worker spins up a fresh V8 isolate in single-digit milliseconds, runs untrusted code in a sandboxed environment with default-deny capability model (no network access, no ambient authority — bindings are added explicitly), and tears it down. Suited for ephemeral tool execution: an agent writes a program, the runtime executes it in a Dynamic Worker, the result returns to the agent loop.
+
+**Use cases distinct from Sandboxes:**
+
+- Sandboxes are for tasks needing a full filesystem, package install, multi-process execution, or persistent disk — `git clone && npm test`, Docker build, integration suites with Postgres.
+- Dynamic Workers are for code-mode-style agent operations — LLM writes a program, the program runs against workspace tools, the program returns a result. No package install needed; no filesystem persistence; no multi-process.
+
+The two compose: a DO-based subscribed session dispatches a Dynamic Worker for code-mode tool execution; if heavier exec is needed, the same session dispatches a Sandbox.
+
+---
+
 ## Self-Hosted (DIY Sandbox + Custom Loop)
 
 **Billing dimensions** (illustrative, varies by deployment):
@@ -192,6 +310,7 @@ Substrate choice does not change:
 - **Model choice within the harness.** A harness that supports multiple model providers (OpenCode does; Claude Code does not currently) lets the operator swap models without swapping substrate. A harness that supports one model provider locks the model regardless of substrate.
 - **The audit task itself.** Canon defines what to check. Substrate defines where the check runs. The check shape is the same.
 - **Constraint conformance.** Any of these substrates can satisfy `klappy://canon/constraints/audit-gates-are-spawned-agent-sessions` if it spawns clean per cycle, runs an agentic loop, fetches canon at runtime, and emits structured findings. None of them automatically conforms; conformance is verified per implementation.
+- **The canonical session contract.** `klappy://canon/methods/spawned-agent-session-runtime-contract` specifies a substrate-independent contract — persona, mode, role, surface, engagement — that any substrate hosting the session must respect. Substrate determines *how* the contract is enforced (mechanically vs by prompt discipline) and *what dispatch paths* it can support (one-shot vs subscribed), but the contract itself does not vary.
 
 ---
 
@@ -251,6 +370,31 @@ The mixing strategy is not unique to Anthropic-and-Cloudflare. The same pattern 
 
 ---
 
+## Substrate Composition — The Execution Ladder
+
+Substrates compose. A subscribed session running on a Durable Object can dispatch one-shot work to a Dynamic Worker isolate for ephemeral tool execution, dispatch heavier execution (git clone, package install, full test suites) to a Sandbox, and orchestrate multi-step durable workflows via Dynamic Workflows. Cloudflare names this pattern the **execution ladder**:
+
+- **Tier 0**: Durable Object (the long-lived control loop, agentic state, conversation memory)
+- **Tier 1**: Dynamic Worker isolate (millisecond-boot code execution, no network unless explicitly granted)
+- **Tier 2**: Dynamic Worker + npm (same as Tier 1 plus package resolution at runtime)
+- **Tier 3**: Headless browser (web automation when MCP or APIs aren't enough)
+- **Tier 4**: Sandbox container (full OS access, git, compilers, test runners)
+
+The principle generalizes beyond Cloudflare: substrate composition lets the operator match cost shape to task shape. Hibernate the long-lived control loop; spin up ephemeral compute only for the bursty work that actually needs it. The agent is useful at Tier 0 alone; each tier is additive capability, not required overhead.
+
+For the catalog: a single substrate choice usually answers the question of where the *control loop* lives. The execution ladder is the pattern for what compute the control loop dispatches downward. Different control-loop substrates (DO vs Sandbox vs Managed Agents) have different abilities to dispatch downward; the table below names them.
+
+| Control-loop substrate | Can dispatch to Sandbox? | Can dispatch to Dynamic Worker? | Can orchestrate via Dynamic Workflows? |
+|---|---|---|---|
+| Cloudflare Durable Object (Agents SDK / Project Think) | Yes (RPC) | Yes (native) | Yes (Workflows + DOs compose) |
+| Cloudflare Sandbox (Claude Code / OpenCode in-container) | Limited (Sandbox spawns subprocesses, not other Sandboxes) | No (Worker dispatch is Worker-side) | Limited |
+| Anthropic Managed Agents | No (bundled, no escape to other substrates) | No | No |
+| Self-Hosted | Whatever you build | Whatever you build | Whatever you build |
+
+The Sandbox + DO + Workflows + Dynamic Workers stack composes natively on Cloudflare; Managed Agents does not compose with anything outside its own bundle. This is the same vendor-by-layer logic the §Mixing Tools section names — composition is a benefit of choosing a substrate that doesn't refuse to host other substrates.
+
+---
+
 ## When To Pick Which
 
 The decision tree, in priority order:
@@ -262,6 +406,10 @@ The decision tree, in priority order:
 3. **Lowest implementation effort, single-vendor acceptable** — Anthropic Managed Agents. Native loop, native tool execution, native observability; nothing to wire. The session-hour premium and the inability to leverage subscription billing are the price of operational simplicity. Right answer when the team's bottleneck is engineer-time, not substrate cost.
 
 4. **Multi-vendor portability is a hard commitment** — Cloudflare Sandboxes with a multi-vendor harness (OpenCode, custom loop). The harness layer absorbs model-provider swaps. Adopt this if the team wants to be able to flip from Claude to GPT to Gemini without changing substrate. Subscription-billing path is harness-dependent — OpenCode against Anthropic still works under the Anthropic subscription if the harness supports OAuth subscription auth.
+
+4a. **Subscribed / long-lived session shape (observer, lurking assistant, real-time stream interpretation)** — **Cloudflare Durable Objects with the Agents SDK** (or Project Think if the chat-shaped harness opinion fits). Hibernation makes idle wall-clock time free; trigger surfaces (WebSocket, alarm, email, RPC) are native. Sandboxes and Managed Agents both struggle here — Sandboxes don't naturally hibernate; Managed Agents bills session-hour throughout. This is the path for personas that join a conversation and stay for its lifetime.
+
+4b. **Multi-step durable workflow with pauses (validator → resolver → re-validator loop, multi-stage CI with approval gates, long-running cascades)** — **Cloudflare Dynamic Workflows on Durable Objects**. Hibernation between steps means a workflow that waits 24 hours for human approval pays nothing during the wait. Per-tenant code dispatched at runtime means a single workflow dispatcher can host many distinct persona × pipeline combinations. The CF blog's CI pipeline example is structurally identical to the canon-described validator → resolver loop.
 
 5. **Existing Cloudflare ecosystem (Workers, R2, KV, D1)** — Cloudflare Sandboxes integrates natively via outbound Workers and bindings. Stronger fit; reinforces (1), (2), or (4).
 
@@ -281,6 +429,8 @@ When a substrate's rate card changes meaningfully, this doc gets a §Implementat
 
 If a fourth substrate enters the market and meets the spawn-clean / agentic / canon-at-runtime / structured-findings test, it gets a new section. The doc structure is additive.
 
+**Dating note**: This doc was substantively updated on 2026-05-11 to add the Cloudflare Durable Objects / Agents SDK / Project Think / Dynamic Workflows / Dynamic Workers substrates introduced during Cloudflare Agents Week (April 2026). Pricing and product surface for those additions are dated to May 2026 and will age. The substrate-property framing — hibernation as cost shape, trigger-surface diversity as capability, composition via execution ladder — is the durable contribution.
+
 ---
 
 ## Relationship to Other Canon
@@ -290,6 +440,7 @@ If a fourth substrate enters the market and meets the spawn-clean / agentic / ca
 - `klappy://canon/principles/vodka-architecture` — the principle that makes substrate substitution viable. Governance fetched at runtime, not hardcoded in the launcher.
 - `klappy://canon/principles/doing-less-enables-more` — the substrate refusing to own the harness layer is the same shape as TCP/IP refusing to own the application layer. Sandboxes wins by being agnostic about what runs inside.
 - `klappy://canon/constraints/borrow-evaluation-before-implementation` — the constraint that argues for adopting a managed substrate before building a custom one. Self-hosted is a Build choice; the managed substrates are Borrow choices.
+- `klappy://canon/methods/spawned-agent-session-runtime-contract` — the per-session contract the substrate hosts. Substrate selection from this doc; per-session configuration from that doc.
 
 ---
 
@@ -300,3 +451,7 @@ If a fourth substrate enters the market and meets the spawn-clean / agentic / ca
 - Anthropic Managed Agents docs at https://docs.claude.com — current beta API surface and pricing.
 - Cursor Bugbot product page at https://cursor.com/bugbot and pricing at https://docs.cursor.com/en/account/pricing — third-party bundled implementation cited as prior art.
 - `skills/managed-agents/SKILL.md` — the operational skill for using Anthropic Managed Agents specifically.
+- Cloudflare blog: "Introducing Dynamic Workflows: durable execution that follows the tenant" (2026-05-01) — per-tenant durable workflow dispatch.
+- Cloudflare blog: "Project Think: building the next generation of AI agents on Cloudflare" (2026-04-15) — Agents SDK primitives and Think base class.
+- Cloudflare Agents docs: https://developers.cloudflare.com/agents/ — Agent base class, Workspace, Session API, execution ladder.
+- Cloudflare blog: "Dynamic Workers Open Beta" (2026-04) — millisecond-boot isolate dispatch.
