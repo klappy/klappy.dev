@@ -7,7 +7,7 @@ tier: 2
 voice: neutral
 stability: draft
 tags: ["canon", "methods", "spawned-agent-sessions", "runtime", "governance", "epistemic-modes", "engagement", "vodka-architecture", "mechanizes-canon", "session-discipline", "five-mode-bound-roles"]
-epoch: E0008.5
+epoch: E0009
 date: 2026-05-10
 derives_from: "canon/epistemic-modes.md, canon/principles/sessions-mirror-modes.md, canon/constraints/mode-transitions-require-encoded-handoff.md, canon/constraints/mode-discipline-and-bottleneck-respect.md, canon/constraints/critic-cannot-be-resolver.md, canon/constraints/audit-gates-are-spawned-agent-sessions.md, canon/methods/spawned-agent-session-substrate-options.md, canon/methods/persona-shaped-agent-runtime.md, canon/voice/oddie-the-river-guide.md, canon/principles/vodka-architecture.md, canon/principles/verification-requires-fresh-context.md"
 complements: "canon/methods/persona-shaped-agent-runtime.md, canon/methods/governance-validation-via-agents.md, canon/constraints/canon-integration-audit.md"

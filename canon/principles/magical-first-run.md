@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: semi_stable
 tags: ["canon", "principle", "ux", "first-run", "non-technical-users", "L5", "applications", "tincan", "magic", "60-seconds", "constitutional"]
-epoch: E0008.5
+epoch: E0009
 date: 2026-05-09
 derives_from: "canon/values/axioms.md, canon/architecture/substrate-stack.md, canon/principles/vodka-architecture.md, canon/principles/maintainability-one-person-indefinitely.md"
 complements: "canon/principles/symmetric-participation.md, canon/principles/creators-get-paid.md, canon/voice/oddie-the-river-guide.md, canon/principles/methodology-personification.md"

@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: semi_stable
 tags: ["canon", "constraint", "governance", "validation", "audit", "spawned-agent-sessions", "vodka-architecture", "anti-pattern", "ci", "drift", "sync"]
-epoch: E0008.5
+epoch: E0009
 date: 2026-05-07
 derives_from: "canon/methods/governance-validation-via-agents.md, canon/methods/reference-integrity-audit.md, canon/constraints/canon-integration-audit.md, canon/principles/vodka-architecture.md, canon/values/axioms.md"
 complements: "canon/constraints/borrow-evaluation-before-implementation.md, canon/constraints/no-irreversible-action-without-epistemic-justification.md, canon/methods/spawned-agent-session-substrate-options.md"

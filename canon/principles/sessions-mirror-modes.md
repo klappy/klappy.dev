@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: evolving
 tags: ["canon", "principles", "epistemic-modes", "session-discipline", "context-corruption", "mode-discipline", "agent-design", "fresh-context"]
-epoch: E0008.5
+epoch: E0009
 date: 2026-05-10
 derives_from: "canon/definitions/epistemic-modes.md, canon/principles/verification-requires-fresh-context.md, canon/constraints/critic-cannot-be-resolver.md, canon/constraints/mode-discipline-and-bottleneck-respect.md"
 complements: "canon/constraints/mode-transitions-require-encoded-handoff.md, canon/methods/persona-shaped-agent-runtime.md, docs/mode-separated-conversations.md"

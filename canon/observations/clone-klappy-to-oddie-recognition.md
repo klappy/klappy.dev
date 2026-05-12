@@ -7,7 +7,7 @@ tier: 2
 voice: neutral
 stability: semi_stable
 tags: ["canon", "observation", "oddie", "methodology", "personification", "clone-klappy", "recognition", "longitudinal"]
-epoch: E0008.5
+epoch: E0009
 date: 2026-05-08
 derives_from: "canon/values/axioms.md"
 complements: "canon/voice/oddie-the-river-guide.md, canon/principles/methodology-personification.md"

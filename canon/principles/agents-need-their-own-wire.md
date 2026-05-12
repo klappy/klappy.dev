@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: semi_stable
 tags: ["canon", "principle", "substrate", "wire-layer", "L1", "human-as-relay", "bottleneck", "multi-agent", "AMS", "constitutional", "use-case-need"]
-epoch: E0008.5
+epoch: E0009
 date: 2026-05-10
 derives_from: "canon/values/axioms.md, canon/principles/discernment-layer.md, canon/principles/doing-less-enables-more.md, canon/principles/vodka-architecture.md, writings/copy-paste.md, writings/shifting-bottlenecks-climbing-ladders.md, ams://canon/decisions/D0001-tokens-not-messages, ams://canon/decisions/D0003-per-account-stream-ownership, ams://canon/decisions/D0009-stream-as-primitive-ownership-excludes-subscription, ams://canon/decisions/D0016-buffering-and-persistence-as-wrapper-primitive, ams://canon/decisions/D0020-agents-as-customer-and-third-party-vas-substrate"
 complements: "canon/principles/symmetric-participation.md, canon/architecture/substrate-stack.md, canon/principles/magical-first-run.md, canon/principles/creators-get-paid.md"

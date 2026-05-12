@@ -7,7 +7,7 @@ tier: 2
 voice: neutral
 stability: draft
 tags: ["canon", "methods", "spawned-agent-sessions", "trigger-source", "dispatch-routing", "autonomous-trigger", "agent-runtime", "vodka-architecture", "substrate-agnostic", "ese", "r2-events", "ams-frames"]
-epoch: E0008.5
+epoch: E0009
 date: 2026-05-11
 derives_from: "canon/methods/spawned-agent-session-runtime-contract.md, canon/methods/persona-shaped-agent-runtime.md, canon/methods/spawned-agent-session-substrate-options.md, canon/constraints/mode-discipline-and-bottleneck-respect.md, canon/epistemic-surface-extraction.md, canon/principles/symmetric-participation.md, canon/principles/vodka-architecture.md"
 complements: "canon/methods/spawned-agent-session-runtime-contract.md, canon/methods/persona-shaped-agent-runtime.md"

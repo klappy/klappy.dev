@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: semi_stable
 tags: ["canon", "principle", "economy", "L6", "creators", "monetization", "substrate", "anti-extraction", "stripe", "constitutional"]
-epoch: E0008.5
+epoch: E0009
 date: 2026-05-09
 derives_from: "canon/values/axioms.md, canon/architecture/substrate-stack.md, canon/principles/maintainability-one-person-indefinitely.md, ams://canon/decisions/D0020-agents-as-customer-and-third-party-vas-substrate, ams://canon/decisions/D0021-stripe-integration-surface"
 complements: "canon/principles/magical-first-run.md, canon/principles/symmetric-participation.md"
