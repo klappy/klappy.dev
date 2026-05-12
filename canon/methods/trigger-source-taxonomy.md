@@ -39,19 +39,6 @@ The runtime contract states that a spawned agent session is fully characterized 
 
 ---
 
-<!-- Subsequent sections to follow:
-4. The Surface-vs-Trigger Distinction
-5. The Dispatch-Routing Function
-6. Trigger-Source Taxonomy (enumeration)
-7. Worked Example — R2/Object-Store + ESE Pipeline
-8. Resolving the Subscribed-Session Open Question
-9. Alternatives Considered
-10. Open Questions
-11. See Also
--->
-
----
-
 ## The Surface-vs-Trigger Distinction
 
 The most load-bearing claim of this doc, and the one most at risk of being read as wordplay: **trigger source and surface are categorically different**. Conflating them would corrupt the runtime contract.
