@@ -42,8 +42,8 @@ Sample size is one per tool per surface. Increase it for operator margin if desi
 **Procedure:**
 
 1. Enumerate every `server.tool()` registration in `workers/src/index.ts`. This is the smoke target list.
-2. Drive one synthetic call per tool through the surface's `/mcp` endpoint. Record the exact request body sent and the exact response body received.
-3. For each call, compute the expected values locally: `bytes_in = utf8_byte_length(request_body)`, `bytes_out = utf8_byte_length(response_body)`, `tokens_in = cl100k_count(request_body)`, `tokens_out = cl100k_count(response_body)`. For SSE-streamed responses, expected `bytes_out = 0` and `tokens_out = 0` per the Emission Contract.
+2. Drive one synthetic call per tool through the surface's `/mcp` endpoint. Record the exact `args` object sent (the JSON-RPC `params.arguments` payload) and the exact `{ content: [...] }` envelope returned by the handler — not the full HTTP request/response bodies, which include JSON-RPC framing the wrapper does not see.
+3. For each call, compute the expected values locally against the same in-memory values the wrapper measures per `klappy://canon/constraints/telemetry-governance` Rule 2: `bytes_in = utf8_byte_length(JSON.stringify(args))`, `bytes_out = utf8_byte_length(JSON.stringify(content_envelope))`, `tokens_in = cl100k_count(JSON.stringify(args))`, `tokens_out = cl100k_count(JSON.stringify(content_envelope))`. For SSE-streamed responses, expected `bytes_out = 0` and `tokens_out = 0` per the Emission Contract.
 4. Query `oddkit_telemetry` with `event_type = 'tool_call'`, `worker_version = <surface-version>`, and a timestamp window covering the smoke run.
 5. Match each emitted row to the corresponding smoke call (by tool name and timing). Compare emitted versus expected on all four fields.
 
