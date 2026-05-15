@@ -105,6 +105,45 @@ The `X-Oddkit-Trace` response header and the `debug.trace` field in tool respons
 
 ---
 
+## Emission Contract — Per-Tool Wrapper at Registration Site
+
+> This is the load-bearing rule for *how* telemetry is emitted. The "What Is Tracked" section above documents *which* dimensions are recorded. This section documents *where in the code* and *at what granularity* the recording happens. The two sections together define the full telemetry surface.
+
+Every `server.tool()` registration in `workers/src/index.ts` is wrapped with `withTelemetry(toolName, handler)` at registration time. The wrapper is the single emission point for tool-call telemetry. No other code in the worker writes `event_type='tool_call'` data points. Wire-edge instrumentation in the `/mcp` POST handler does not exist — it was removed when this contract was adopted.
+
+### Mandatory Rules
+
+1. **One emission point per tool.** Every `server.tool()` call must pass its handler through `withTelemetry`. New tools without the wrapper are a CI failure and a release blocker. The wrapper name (`toolName` parameter) must match the `server.tool()` first-argument name exactly.
+
+2. **In-memory measurement, never wire-edge.** The wrapper measures the `args` object on entry (after Zod validation, before handler invocation) and the returned `{ content: [...] }` envelope on exit (after handler resolution, before MCP transport framing). Both measurements operate on in-memory JavaScript values, serialized via `JSON.stringify`. The wrapper never reads `request.body` or `response.body` streams.
+
+3. **Per `tools/call` granularity.** One Analytics Engine data point is written per individual `tools/call` JSON-RPC message. For batches, each message in the batch produces its own data point with its own per-call shape. Batches do not share rows. Earlier emission paths that attributed full HTTP payload shape to every message in a batch are non-compliant with this contract.
+
+4. **Failure swallowed, never propagated.** If measurement throws (tokenizer load failure, JSON serialization edge case, `writeDataPoint` rejection), the error is caught inside the wrapper and the row is silently dropped. The tool result is returned to the caller unchanged. Telemetry must never break MCP requests. This contract is identical to the prior wire-edge swallow behavior, applied per-call.
+
+5. **No domain opinion in the wrapper.** The wrapper records what passes through it. It does not interpret tool arguments, inspect content shape, or apply tool-specific logic. Anything that requires domain knowledge (extracting `document_uri` for `get` calls, `result_grouping` for `search`) is handled by helpers the wrapper calls, not by the wrapper itself. The wrapper stays at one screen of code.
+
+### Why This Contract
+
+Three failure modes in the prior wire-edge instrumentation motivated this contract:
+
+- **Streaming-response race.** Reading `response.clone().text()` against MCP SSE bodies inside `ctx.waitUntil` produced empty strings on ~27% of calls in the 30 days preceding adoption, biased toward heavy-response tools. See `klappy://canon/observations/2026-05-14-telemetry-coverage-gap-quantified` for the diagnostic.
+- **Dispatcher bypass.** Tools that built their response envelopes inline in `createServer` (notably `telemetry_policy` at 93% missing) inherited the same race exposure but had no shared chokepoint to instrument.
+- **Batch attribution fiction.** The recording function attributed full HTTP payload shape to every JSON-RPC message in a batch, multiplying the recorded usage by the batch fan-out. Documented as a known imprecision in the code.
+
+The wrapper resolves all three because it measures per-call on in-memory objects. The full architectural rationale and alternatives considered are recorded in `klappy://canon/decisions/DR-20260514-0001-telemetry-wrapper-pattern`.
+
+### Cutover Boundary
+
+When the wrapper contract was adopted (date recorded in the linked observation), the emission semantics changed in two ways simultaneously:
+
+- **Per-call, not per-HTTP-request.** Each `tools/call` produces its own row with its own shape. Batches stop multiplying.
+- **In-memory, not wire-edge.** Heavy-response tools that previously recorded zero shape now record their actual shape.
+
+Historical Analytics Engine data crossing the cutover date mixes two different units of measurement. Queries that compare time windows spanning the cutover must treat it as a data-accuracy boundary. The 3-month Analytics Engine retention ages this out naturally — three months after cutover, all queryable data uses the post-cutover semantics.
+
+---
+
 ## What Is Excluded (Safety Boundary)
 
 The following are never collected under any circumstance:
@@ -268,6 +307,8 @@ This is not the standard telemetry social contract. The standard contract is: a 
 
 ## See Also
 
+- [DR-20260514-0001 — Telemetry Wrapper Pattern](klappy://canon/decisions/DR-20260514-0001-telemetry-wrapper-pattern) — Decision record for the Emission Contract section
+- [Telemetry Coverage Gap Quantified](klappy://canon/observations/2026-05-14-telemetry-coverage-gap-quantified) — The diagnostic that motivated the Emission Contract
 - [Vodka Architecture](klappy://canon/principles/vodka-architecture) — The design pattern telemetry must not violate
 - [Maintainability — One Person, Indefinitely](klappy://canon/principles/maintainability-one-person-indefinitely) — The principle telemetry serves
 - [KISS — Simplicity Is the Ceiling](klappy://canon/principles/kiss-simplicity-is-the-ceiling) — Why two tools, not twenty
