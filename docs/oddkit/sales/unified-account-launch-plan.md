@@ -202,18 +202,20 @@ CREATE TABLE referrals (
 
 ```sql
 CREATE TABLE credit_ledger (
-  id          BIGSERIAL PRIMARY KEY,
-  user_id     UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
-  kind        TEXT NOT NULL CHECK (kind IN ('bonus_tokens','signup_bonus','adjustment')),
-  amount      BIGINT NOT NULL,        -- positive = credit, negative = consumption
-  source      TEXT NOT NULL,          -- 'referral:<id>', 'admin:<reason>', etc.
-  consumed_at TIMESTAMPTZ,
-  created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
+  id            BIGSERIAL PRIMARY KEY,
+  user_id       UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  kind          TEXT NOT NULL CHECK (kind IN ('bonus_tokens','signup_bonus','adjustment')),
+  amount        BIGINT NOT NULL,        -- positive = credit, negative = consumption
+  source        TEXT NOT NULL,          -- 'referral:<id>', 'admin:<reason>', etc.
+  usable_after  TIMESTAMPTZ,            -- NULL = usable immediately; set to first metered cycle start for pre-metering credits
+  expires_at    TIMESTAMPTZ,            -- end of the billing cycle this credit applies to; set when usable_after is reached
+  consumed_at   TIMESTAMPTZ,
+  created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
 );
-CREATE INDEX idx_credit_ledger_user ON credit_ledger(user_id, consumed_at);
+CREATE INDEX idx_credit_ledger_user ON credit_ledger(user_id, consumed_at, expires_at);
 ```
 
-Awarded tonight; consumption deferred until metering exists. Customers do not lose anything.
+Awarded tonight; consumption deferred until metering exists. Credits awarded before metering is live carry `usable_after` set to the start of the user's first metered billing cycle, and `expires_at` is set to the end of that same cycle when the clock starts. Credits awarded after metering is live (the normal case once metering ships) attach to the user's next bill — `usable_after = NULL`, `expires_at = end of the bill cycle they apply to`. Customers do not lose anything earned during the pre-metering window; the expiry clock simply does not start until they have a bill against which to consume.
 
 ### Triggers
 
@@ -321,12 +323,17 @@ Note that "Personal launches when Personal launches" is a future event in the or
 - On the new user's first paid subscription, a trigger:
   - Inserts a `referrals` row with `converted_at = now()`.
   - Awards `bonus_tokens`: 1,000,000 (or 2,000,000 if referrer is mission-rate approved).
-  - Inserts a `credit_ledger` row for the referrer.
+  - Inserts a `credit_ledger` row for the referrer with the appropriate `usable_after` and `expires_at` per the policy below.
   - If this is the referrer's 2nd, 4th, 6th… conversion in a rolling year, applies a 1-month-free coupon to the referrer's active subscription via Stripe Customer Portal API.
-- Cap: 12 free months per rolling year per referrer.
-- Credits expire 6 months from issuance.
+- Cap: 12 free months per rolling year per referrer. Enforced at coupon-application time via a `COUNT` over `referrals.free_months_credited` in the trailing 365 days.
 
-**Bonus tokens are awarded tonight but consumed nowhere.** When metering ships, the meter reads `credit_ledger` and decrements unconsumed credit before charging. This is documented in the ToS Early Access Addendum.
+**Credit expiry policy.** Credits expire at the end of each billing cycle — they apply to the bill they attach to, and any unused portion is gone when that bill closes. The clock starts at metering launch, not at issuance:
+
+- **Pre-metering (the window we are in tonight and until metering ships).** Credits awarded sit in `credit_ledger` with `usable_after = NULL` and `expires_at = NULL`. They are unconsumable but indestructible. No expiry clock is running.
+- **At metering launch for a given user.** All of that user's pre-metering credits get `usable_after` set to the start of their first metered billing cycle and `expires_at` set to the end of that same cycle. They become usable on the same day they start expiring; unused portion at cycle end is gone.
+- **Post-metering steady state.** Credits awarded after metering is live attach to the user's next bill. `usable_after = NULL`, `expires_at = end of the next bill cycle`.
+
+**Bonus tokens are awarded tonight but consumed nowhere.** When metering ships, the meter reads `credit_ledger` and decrements unconsumed credit before charging, respecting the `usable_after` and `expires_at` semantics above. This expiry policy is documented in the ToS Early Access Addendum.
 
 ---
 
