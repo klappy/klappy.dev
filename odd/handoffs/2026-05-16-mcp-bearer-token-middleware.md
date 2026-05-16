@@ -167,9 +167,12 @@ export async function validateBearerToken(
     const { payload } = await jwtVerify(token, getJWKS(env), {
       audience: env.SUPABASE_JWT_AUDIENCE,
     });
+    const appMetadata = payload.app_metadata as
+      | { entitlements?: string[] }
+      | undefined;
     return {
       user: { id: payload.sub as string, email: payload.email as string },
-      entitlements: (payload.entitlements as string[]) ?? [],
+      entitlements: appMetadata?.entitlements ?? [],
       via: 'jwt',
     };
   } catch {
@@ -200,6 +203,7 @@ CREATE OR REPLACE FUNCTION validate_pat(token TEXT)
 RETURNS TABLE(user_id UUID, email TEXT, entitlements JSONB)
 LANGUAGE plpgsql
 SECURITY DEFINER
+SET search_path = extensions, public
 AS $$
 BEGIN
   RETURN QUERY
@@ -207,12 +211,13 @@ BEGIN
   FROM pats p
   JOIN auth.users u ON u.id = p.user_id
   WHERE p.revoked_at IS NULL
+    AND p.prefix = LEFT(token, 16)
     AND p.hash = crypt(token, p.hash);
 END;
 $$;
 ```
 
-The `crypt(token, p.hash)` comparison is constant-time within pgcrypto.
+The prefix filter narrows the candidate set to a single row via the `idx_pats_prefix` index before the bcrypt verify (`crypt()` returns a per-row salted hash, so the `hash` column is not index-seekable). The remaining `crypt(token, p.hash)` comparison is constant-time within pgcrypto. The pinned `search_path` prevents `SECURITY DEFINER` shadowing of `crypt` (CVE-2007-2138).
 
 ---
 

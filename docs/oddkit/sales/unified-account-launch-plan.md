@@ -76,7 +76,7 @@ CREATE TABLE profiles (
                       'church-or-ministry-network','other'
                     )),
   heard_via         TEXT,
-  referral_code     TEXT UNIQUE NOT NULL DEFAULT encode(gen_random_bytes(6),'base64url'),
+  referral_code     TEXT UNIQUE NOT NULL DEFAULT replace(replace(rtrim(encode(gen_random_bytes(6),'base64'),'='),'+','-'),'/','_'),
   referred_by       UUID REFERENCES auth.users(id),
   created_at        TIMESTAMPTZ NOT NULL DEFAULT now()
 );
@@ -160,12 +160,12 @@ CREATE TABLE pats (
   user_id       UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
   label         TEXT NOT NULL,
   hash          TEXT NOT NULL,
-  prefix        TEXT NOT NULL,         -- first 8 chars for display ("oddkit_ab12...")
+  prefix        TEXT NOT NULL,         -- first 16 chars of the token; used for indexed lookup before bcrypt verify, also shown for display ("oddkit_ab12cd34...")
   last_used_at  TIMESTAMPTZ,
   revoked_at    TIMESTAMPTZ,
   created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
 );
-CREATE INDEX idx_pats_hash ON pats(hash) WHERE revoked_at IS NULL;
+CREATE INDEX idx_pats_prefix ON pats(prefix) WHERE revoked_at IS NULL;
 ```
 
 Hashing uses `pgcrypto.crypt()` with a bcrypt salt. Comparison is constant-time. **Never store the plaintext.** Return plaintext once at creation; show prefix thereafter.
@@ -217,7 +217,7 @@ Awarded tonight; consumption deferred until metering exists. Customers do not lo
 
 ### Triggers
 
-- **On Stripe webhook `customer.subscription.created` or `.updated`:** upsert `tier_interests` row to `status='active'`, set `stripe_subscription_id`, and write JWT custom claim `entitlements` to `auth.users.raw_app_meta_data` via `auth.admin.updateUserById`. JWT claim format: `{"entitlements": ["personal_active","pro_active","fa_personal_comped","mission_50pct"]}` — additive list, MCP servers ignore unknown claims today.
+- **On Stripe webhook `customer.subscription.created` or `.updated`:** upsert `tier_interests` row to `status='active'`, set `stripe_subscription_id`, and write the entitlements list to `auth.users.raw_app_meta_data` via `auth.admin.updateUserById`. Stored shape: `{"entitlements": ["personal_active","pro_active","fa_personal_comped","mission_50pct"]}`. Supabase surfaces `raw_app_meta_data` in the issued JWT under the `app_metadata` claim, so consumers read it as `app_metadata.entitlements` (not as a top-level `entitlements` claim). Additive list; MCP servers ignore unknown entries today.
 - **On Stripe webhook `customer.subscription.deleted`:** flip the row to `status='cancelled'`, remove the corresponding entitlement claim.
 - **On `referrals.converted_at` set:** insert `credit_ledger` row for the referrer (+1M tokens, or +2M if referrer's profile has mission status); if this is the 2nd, 4th, 6th, etc. conversion for that referrer, also apply a Stripe coupon for 1 free month on their active subscription via Customer Portal API.
 
