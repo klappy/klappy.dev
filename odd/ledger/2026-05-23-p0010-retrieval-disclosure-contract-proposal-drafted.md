@@ -91,6 +91,32 @@ Encoded via `oddkit_encode` then persisted to this file per the known sharp edge
 - **`oddkit_taxonomy` action.** The current catalog default returns a global tag enumeration; under P0010 that disappears from the catalog response. Whether tag enumeration should be exposed as a separate `oddkit_taxonomy` action or absorbed into existing introspection surface is flagged but out of scope for P0010. Surfacing the question here so the next epoch's planning catches it.
 - **TruthKit linkage.** TruthKit's continuous bidirectional DOLCHEO compression will need to pull a filtered subset of canon into its compression layer rather than the full corpus. The structural filter axes P0010 introduces are likely the right axes for that selection, but the linkage belongs in a TruthKit-side proposal rather than in P0010.
 
+## [O] Lovable Confirmation Round (post-merge)
+
+After PR #216 (proposal) and PR #217 (Lovable-review amendments) merged to main, the klappy.dev builder re-fetched the final contract and confirmed it matches the reported call inventory with no new mismatches. Two implementation commitments and one important sequencing refinement:
+
+- **[D] Decided — `isPublicFacing()` removal is gated on the frontmatter audit, not the contract merge.** The site keeps its path-dominant public-facing filter as defense-in-depth. Removal sequence: (1) audit lands and corpus has trustworthy `audience` + `exposure`; (2) shadow-compare server-side `audience: public, exposure: public` against local `isPublicFacing()` for ~1 week, logging diffs; (3) only then drop the client-side filter. Both run in parallel until step 3, server-side primary, `isPublicFacing()` belt-and-braces.
+- **[L] Learned — the contract's filtering premise needs TWO validation gates, not one.** The frontmatter audit proves the structural fields *exist and are valid*; the shadow-compare proves they are *correct* against a real consumer's ground-truth filter. These are different guarantees. The earlier plan treated the audit as the single gate; Lovable's shadow-compare correctly splits "present" from "right." The shadow-compare diff log is the empirical instrument for the proposal's own disconfirmer ("frontmatter axes are not consistently populated / callers mis-declare audience intent") — if divergence is large, that is the disconfirmer firing with evidence rather than speculation.
+- **[D] Decided — implementation order confirmed and held.** No code until the oddkit implementation PRs land. Order: (1) add `src/lib/retrieval.ts` wrapper with 7 named functions matching the reference table; (2) migrate `oddkit_get` callers first (lowest risk, defaults align with `["body"]`); (3) migrate `searchDocuments`, verifying `score`/`snippet` arrive at default disclosure; (4) decompose `doc-listing` last behind `include_legacy_envelope: true` during cutover — the 97% token win, most careful rollout; (5) plumb `include_legacy_envelope` through `oddkit-proxy` before step 4.
+- **[O] Open — two minor non-blocking consumer-side items.** (a) `fetchDocument()` still calls the umbrella `oddkit` tool rather than the action-native `oddkit_get`; Lovable will switch it during wrapper migration step 2. (b) The `start_here: true` filter would let the dedicated `start-here-manifest` edge function be retired — logged as post-cutover follow-up, not part of initial migration. Neither is a contract violation.
+
+## [O] Critical-Path Dependency Chain (as of this round)
+
+```
+frontmatter audit (oddkit/klappy.dev side)
+   -> proves corpus has valid audience/exposure/tier/kind values
+   -> reports path-derived kind so explicit kind: overrides are deliberate
+execution PR: lands canon/constraints/retrieval-disclosure-contract.md + bootstrap update
+oddkit implementation PRs: five-action contract change in klappy/oddkit
+   -> SIGNAL to Lovable: begin migration
+Lovable migration steps 1-5
+shadow-compare week (server filter vs isPublicFacing)
+   -> proves values are correct, not just present
+drop isPublicFacing(); structural filters become sole gate
+```
+
+The frontmatter audit is the next milestone and the load-bearing precondition for everything downstream.
+
 ## See Also
 
 - `klappy://docs/promotions/P0010-catalog-progressive-disclosure-and-structural-filters` — the proposal artifact this session produced
