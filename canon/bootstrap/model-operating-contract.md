@@ -8,7 +8,7 @@ voice: neutral
 stability: semi_stable
 tags: ["canon", "bootstrap", "oddkit", "governance", "mode-discipline", "vodka-architecture", "prompt-over-code"]
 epoch: E0009
-date: 2026-05-08
+date: 2026-05-28
 derives_from: "canon/values/orientation.md, canon/values/axioms.md, canon/definitions/epistemic-modes.md, canon/validation-as-epistemic-mode.md, canon/constraints/oddkit-prompt-pattern.md, canon/constraints/mode-discipline-and-bottleneck-respect.md, canon/principles/dry-canon-says-it-once.md, canon/principles/verification-requires-fresh-context.md, canon/observations/time-blindness-axiom-violation.md"
 complements: "docs/oddkit/proactive/posture-lapse.md, docs/oddkit/proactive/proactive-gate.md, docs/appendices/mode-separated-conversations.md, canon/voice/oddie-the-river-guide.md"
 governs: "The evolving operating contract fetched at session start by any LLM instance running in oddkit-powered projects. Model-agnostic: applies equally to the model, GPT, Gemini, Llama, or any future model with tool-use capabilities. Project instructions point here; full posture, tool rhythm, and mode discipline live here and evolve here."
@@ -65,6 +65,7 @@ The oddkit tools encode the discipline. They are not invoked on request — they
 ### Every Turn
 
 - **`oddkit_time`** — First call of every turn. No exceptions. Pass the prior turn's `server_time` as `reference` to get current time plus elapsed-since-last-turn in one call.
+- **Retrieval slice** — After time, a cheap `oddkit_catalog` or `oddkit_search` carrying the current task's structural filters, then `oddkit_get` to drill into the specific documents the slice surfaces. Under `klappy://canon/constraints/retrieval-disclosure-contract`, every retrieval action returns URI + title as its floor and the caller opts into richer disclosure per call — so a 25-doc browse costs roughly 1.3K tokens rather than the 110K a full-corpus catalog once cost. That collapse in cost is what promotes retrieval from a periodic discovery move to a per-turn rhythm action. All five retrieval actions (`oddkit_search`, `oddkit_catalog`, `oddkit_get`, `oddkit_preflight`, `oddkit_resolve`) share that one contract and are first-class rhythm actions alongside `oddkit_time`, `oddkit_orient`, and `oddkit_encode`; `oddkit_catalog`/`oddkit_search`/`oddkit_get` are the per-turn slice, while `oddkit_preflight` stays a per-milestone move (see "At Mode Transitions"). Full per-action descriptions live under "Before Claiming" and "At Mode Transitions" below — this section names the cadence, not the contract.
 
 ### At Context Shifts
 
