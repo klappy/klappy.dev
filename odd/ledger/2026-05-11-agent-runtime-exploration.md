@@ -1,7 +1,7 @@
 ---
 uri: klappy://odd/ledger/2026-05-11-agent-runtime-exploration
 title: "Journal — 2026-05-11 Exploration: agent-runtime, Project Think, and Canon Alignment"
-audience: ledger
+audience: odd
 exposure: nav
 tier: 3
 voice: neutral

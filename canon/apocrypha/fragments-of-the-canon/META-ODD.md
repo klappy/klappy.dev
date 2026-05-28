@@ -1,9 +1,10 @@
 ---
 uri: klappy://canon/apocrypha/fragments-of-the-canon/meta-odd
 title: "Meta-ODD: Writing Constraints for Fragments of the Canon"
+tier: 3
 voice: neutral
 stability: stable
-audience: internal
+audience: apocrypha
 purpose: guardrails
 exposure: hidden
 ---

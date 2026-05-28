@@ -1,7 +1,8 @@
 ---
 uri: klappy://odd/ledger/2026-05-07-pr177-validation-review
 title: "PR #177 Validation Review — Audit Gates Are Managed Agents (klappy.dev)"
-audience: ledger
+tier: 3
+audience: odd
 exposure: nav
 voice: neutral
 stability: stable

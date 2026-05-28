@@ -1,7 +1,7 @@
 ---
 uri: klappy://odd/ledger/2026-05-10-software-virtues-canon-package
 title: "Ledger — Software Virtues Canon Package + Essay (Session 2026-05-10)"
-audience: ledger
+audience: odd
 exposure: nav
 tier: 3
 voice: neutral

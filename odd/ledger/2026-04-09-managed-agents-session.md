@@ -1,3 +1,14 @@
+---
+uri: klappy://odd/ledger/2026-04-09-managed-agents-session
+title: "2026 04 09 Managed Agents Session"
+audience: odd
+exposure: nav
+tier: 3
+voice: neutral
+stability: stable
+tags: ["odd", "ledger", "session", "managed-agents"]
+---
+
 # DOLCHE — One Hour with Claude Managed Agents
 
 **Date:** 2026-04-09

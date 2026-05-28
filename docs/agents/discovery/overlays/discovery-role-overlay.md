@@ -4,6 +4,9 @@ version: v0
 stability: experimental
 applies_to: agent
 uri: klappy://agent-skill/overlays/discovery-role
+audience: docs
+exposure: nav
+tier: 3
 ---
 
 # Discovery Role Overlay

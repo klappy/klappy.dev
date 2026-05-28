@@ -1,6 +1,8 @@
 ---
 uri: klappy://docs/oddkit/epistemic-instructions
 title: "oddkit Epistemic Instructions"
+exposure: nav
+tier: 2
 audience: docs
 stability: stable
 ---

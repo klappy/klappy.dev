@@ -4,7 +4,7 @@ title: "Book Governance — Nothing New, Even AI"
 subtitle: "Editorial rules, chapter plan, distribution model, and definition of done"
 author: "Klappy"
 type: governance
-audience: internal
+audience: docs
 exposure: internal
 tier: 1
 voice: neutral

@@ -1,3 +1,14 @@
+---
+uri: klappy://odd/ledger/2026-04-03-e0007-the-gauntlet-should-run-itself
+title: "2026 04 03 E0007 The Gauntlet Should Run Itself"
+audience: odd
+exposure: nav
+tier: 3
+voice: neutral
+stability: stable
+tags: ["odd", "ledger", "session", "epoch-7"]
+---
+
 # OLDC+H — 2026-04-03 — E0007 Declared: The Gauntlet Should Run Itself
 
 ## Observations

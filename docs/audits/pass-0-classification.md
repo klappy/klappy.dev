@@ -1,3 +1,14 @@
+---
+uri: klappy://docs/audits/pass-0-classification
+title: "Pass 0 Classification"
+audience: docs
+exposure: nav
+tier: 3
+voice: neutral
+stability: stable
+tags: ["docs", "audit", "classification"]
+---
+
 # Pass 0: Legacy Classification Table
 
 **Audit Date:** 2026-01-31 (T+0)

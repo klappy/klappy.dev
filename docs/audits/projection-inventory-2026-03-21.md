@@ -1,5 +1,8 @@
 ---
 title: "Projection Inventory — Files That Should Be Generated, Not Hardcoded"
+audience: docs
+exposure: nav
+tier: 3
 type: audit
 date: 2026-03-21
 epoch: E0006

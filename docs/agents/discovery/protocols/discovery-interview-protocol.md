@@ -1,4 +1,7 @@
 ---
+audience: docs
+exposure: nav
+tier: 3
 protocol: discovery-interview
 version: v0
 stability: experimental

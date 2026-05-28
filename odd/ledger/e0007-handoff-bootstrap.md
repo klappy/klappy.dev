@@ -1,3 +1,14 @@
+---
+uri: klappy://odd/ledger/e0007-handoff-bootstrap
+title: "E0007 Handoff Bootstrap"
+audience: odd
+exposure: nav
+tier: 3
+voice: neutral
+stability: stable
+tags: ["odd", "ledger", "handoff", "epoch-7", "bootstrap"]
+---
+
 # E0007 Handoff Bootstrap — From Passive to Proactive
 
 ## What happened

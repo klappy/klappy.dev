@@ -1,7 +1,7 @@
 ---
 uri: klappy://odd/ledger/2026-04-30-encode-vodka-refactor-phase-2-landed
 title: "E0008.4 Phase 2 Closeout — Encode Items 1–4 (governance_uris Plural, (letter,facet) Dedup, Open in Fallback, governance_extended Self-Teaching), Item 5 Deferred to 0.29.0, Two Bugbot Findings Autofix-Forwarded, Validator PASS, Prod Promotion Outstanding"
-audience: ledger
+audience: odd
 exposure: nav
 tier: 3
 voice: neutral

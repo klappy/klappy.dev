@@ -1,7 +1,7 @@
 ---
 uri: klappy://odd/ledger/2026-04-20-p1-3-4-encode-canon-parity-landed
 title: "P1.3.4 Closeout — Encode Canon-Parity (D5 Phrase-Subset Matcher + D9 cachedEncodingTypes Removal), Plus Second Application of Release-Validation-Gate Canon, Plus the 0.22.0-Parallel-Release Version Collision"
-audience: ledger
+audience: odd
 exposure: nav
 tier: 3
 voice: neutral

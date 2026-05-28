@@ -1,8 +1,9 @@
 ---
 uri: klappy://odd/ledger/2026-03-21-drift-audit-session
 title: "Session Ledger — Drift Audit, Supersession Method, and Learning in Public"
+tier: 3
 type: ledger
-audience: internal
+audience: odd
 exposure: internal
 epoch: E0006
 date: 2026-03-21

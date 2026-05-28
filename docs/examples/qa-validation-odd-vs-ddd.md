@@ -1,8 +1,8 @@
 ---
 uri: klappy://docs/examples/qa-validation-odd-vs-ddd
 title: "From Execution to Outcome: A QA Validation Case Study"
-audience: practitioners
-exposure: examples
+audience: docs
+exposure: nav
 tier: 2
 stability: evolving
 voice: neutral

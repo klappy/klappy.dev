@@ -1,7 +1,7 @@
 ---
 uri: klappy://docs/planning/oddkit-full-frontmatter-and-drift-audit
 title: "Planning: Stop Filtering Frontmatter — Full Metadata Indexing and Automated Drift Detection"
-audience: internal
+audience: docs
 exposure: internal
 tier: 2
 voice: neutral

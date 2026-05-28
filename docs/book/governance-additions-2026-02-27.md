@@ -1,3 +1,14 @@
+---
+uri: klappy://docs/book/governance-additions-2026-02-27
+title: "Governance Additions 2026 02 27"
+audience: docs
+exposure: nav
+tier: 3
+voice: neutral
+stability: stable
+tags: ["docs", "book", "governance", "session-notes"]
+---
+
 # Proposed Governance Additions — From Ch16 Session (2026-02-27)
 
 These additions encode process learnings from the first full chapter revision session.

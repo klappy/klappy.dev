@@ -1,3 +1,14 @@
+---
+uri: klappy://docs/planning/e0007-implementation-plan
+title: "E0007 Implementation Plan"
+audience: docs
+exposure: nav
+tier: 3
+voice: neutral
+stability: stable
+tags: ["docs", "planning", "epoch-7", "implementation"]
+---
+
 # E0007 Implementation Plan — From Passive to Proactive
 
 ## The Big Picture
