@@ -1,3 +1,14 @@
+---
+uri: klappy://docs/agents/discovery/README
+title: "Readme"
+audience: docs
+exposure: nav
+tier: 3
+voice: neutral
+stability: stable
+tags: ["docs", "agents", "discovery", "index"]
+---
+
 # Discovery Agent Behavior
 
 Contracts and protocols for maturity-aware discovery sessions.

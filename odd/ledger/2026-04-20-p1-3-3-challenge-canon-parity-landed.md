@@ -1,7 +1,7 @@
 ---
 uri: klappy://odd/ledger/2026-04-20-p1-3-3-challenge-canon-parity-landed
 title: "P1.3.3 Closeout — Challenge Canon-Parity (D5 + D9 + Cache-Fetches-and-Parses), Plus the Process Failure That Made the Release-Validation-Gate Canon Necessary"
-audience: ledger
+audience: odd
 exposure: nav
 tier: 3
 voice: neutral

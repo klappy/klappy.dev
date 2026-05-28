@@ -1,3 +1,14 @@
+---
+uri: klappy://docs/oddkit/evidence/challenge-governance-articles-commit
+title: "Challenge Governance Articles Commit"
+audience: docs
+exposure: nav
+tier: 3
+voice: neutral
+stability: stable
+tags: ["docs", "oddkit", "evidence", "gauntlet"]
+---
+
 # Gauntlet Evidence — Challenge Governance Articles Commit
 
 **Branch:** `feat/challenge-governance-articles`

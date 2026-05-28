@@ -1,3 +1,14 @@
+---
+uri: klappy://docs/agents/README
+title: "Readme"
+audience: docs
+exposure: nav
+tier: 3
+voice: neutral
+stability: stable
+tags: ["docs", "agents", "index"]
+---
+
 # Agent Behavior & Contracts
 
 How agents think and behave in this system.

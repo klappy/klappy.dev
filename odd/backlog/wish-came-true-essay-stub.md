@@ -1,7 +1,7 @@
 ---
 uri: klappy://odd/backlog/wish-came-true-essay-stub
 title: "Backlog — The Wish Came True (Celebration Essay Stub)"
-audience: backlog
+audience: odd
 exposure: nav
 tier: 3
 voice: first_person

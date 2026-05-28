@@ -1,7 +1,7 @@
 ---
 uri: klappy://odd/handoffs/2026-05-14-telemetry-coverage-completeness
 title: "Handoff — Telemetry Coverage Completeness (Phase 1)"
-audience: handoff
+audience: odd
 exposure: nav
 tier: 2
 voice: terse

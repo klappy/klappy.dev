@@ -1,6 +1,7 @@
 ---
 uri: klappy://writings
 title: "Writings"
+tier: 3
 audience: public
 exposure: nav
 tags: ["writings", "index", "essays"]

@@ -1,8 +1,10 @@
 ---
 title: ODD Orchestrator
+exposure: nav
+tier: 3
 uri: klappy://docs/agents/odd-orchestrator
 status: authoritative
-audience: agents
+audience: docs
 tags: [agent, guide, scribe, orchestrator]
 ---
 

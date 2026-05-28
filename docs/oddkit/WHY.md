@@ -1,7 +1,7 @@
 ---
 uri: oddkit://why
 title: "Why oddkit Exists"
-audience: human
+audience: operators
 exposure: nav
 tier: 1
 voice: neutral

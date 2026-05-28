@@ -1,7 +1,7 @@
 ---
 uri: klappy://odd/ledger/2026-05-14-telemetry-coverage-planning-session
 title: "Session Journal — Telemetry Coverage Completeness Planning"
-audience: journal
+audience: odd
 exposure: nav
 tier: 3
 voice: terse

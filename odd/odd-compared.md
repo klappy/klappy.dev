@@ -1,3 +1,14 @@
+---
+uri: klappy://odd/odd-compared
+title: "Odd Compared"
+audience: odd
+exposure: nav
+tier: 2
+voice: neutral
+stability: stable
+tags: ["odd", "comparison", "methodology", "overview"]
+---
+
 # ODD Compared: What It Is, What It Isn't, and How It Relates to Everything Else
 
 > ODD is about preserving intent without freezing execution. The measure of success is not how elegant the artifact is, but whether the outcome holds up in the real world.

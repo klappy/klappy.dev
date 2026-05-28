@@ -1,8 +1,8 @@
 ---
 uri: klappy://odd/constraint/use-only-what-hurts
 title: "Use Only What Hurts"
-audience: system
-exposure: constraint
+audience: odd
+exposure: nav
 tier: 1
 voice: direct
 stability: constrained

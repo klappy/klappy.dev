@@ -1,3 +1,14 @@
+---
+uri: klappy://odd/ledger/2026-04-13-swarm-spike
+title: "2026 04 13 Swarm Spike"
+audience: odd
+exposure: nav
+tier: 3
+voice: neutral
+stability: stable
+tags: ["odd", "ledger", "session", "swarm", "truthkit"]
+---
+
 # Session Journal — April 13, 2026
 
 ## TruthKit Swarm Architecture Review & Spike Planning
