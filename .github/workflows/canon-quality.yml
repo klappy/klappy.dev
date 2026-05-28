@@ -449,3 +449,111 @@ jobs:
             exit 1
           fi
           echo "Not failing the job (mode=$ENFORCEMENT_MODE, status=$STATUS)."
+
+  retrieval-readiness:
+    name: P0010 retrieval-readiness (soft)
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    # Soft-only report for the P0010 retrieval disclosure contract precursor.
+    # Pure-Python file parsing (no oddkit_audit call) — deterministic, so not
+    # subject to oddkit/oddkit#149 audit non-determinism. Reports corpus
+    # readiness for structural filters + kind resolution; never fails the job
+    # until the corpus is cleaned and the contract is ready to enforce.
+    # Spec: klappy://canon/constraints/retrieval-disclosure-contract
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install --quiet pyyaml
+
+      - name: Run retrieval-readiness audit
+        run: |
+          python3 scripts/audit-retrieval-readiness.py --json > /tmp/rr-result.json || true
+          python3 - <<'PY'
+          import json
+          d = json.load(open('/tmp/rr-result.json'))
+          s = d['summary']
+          print(f"scanned={d['scanned']} status={d['status']} "
+                f"blocking={s['blocking']} warning={s['warning']} info={s['informational']}")
+          print(f"kinds={s['kind_distribution']}")
+          PY
+
+      - name: Upload findings artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: retrieval-readiness-findings
+          path: /tmp/rr-result.json
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: Render PR comment
+        id: render
+        if: github.event_name == 'pull_request'
+        run: |
+          python3 - <<'PY'
+          import json
+          d = json.load(open('/tmp/rr-result.json'))
+          s = d['summary']
+          lines = []
+          icon = '✅' if s['blocking'] == 0 else '⚠️'
+          lines.append(f"### Canon Quality — P0010 Retrieval-Readiness {icon}")
+          lines.append('')
+          lines.append(f"Soft report for `klappy://canon/constraints/retrieval-disclosure-contract`. "
+                       f"{d['scanned']} files scanned. **Never blocks** — informational until the corpus is ready to enforce.")
+          lines.append('')
+          lines.append(f"- **Blocking-class findings**: {s['blocking']} (structural fields the contract would filter on)")
+          lines.append(f"- **Warnings**: {s['warning']} (kind resolves to `unknown`)")
+          lines.append(f"- **Informational**: {s['informational']} (exempt templates/archive/drafts)")
+          lines.append('')
+          lines.append(f"**Kind distribution**: `{s['kind_distribution']}`")
+          lines.append(f"**Kind source**: `{s['kind_source_distribution']}` (frontmatter-primary, path-secondary)")
+          lines.append(f"**Default-include visibility**: {s['default_include_visible']} visible, "
+                       f"{s['default_include_hidden']} hidden (journals/apocrypha/unknown)")
+          lines.append('')
+          lines.append(f"**By rule**: `{s['by_rule']}`")
+          lines.append('')
+          lines.append('> These are not schema violations (see the Frontmatter Schema job for those on `writings/`). '
+                       'They are corpus-readiness signals for the retrieval contract: invalid/missing `audience`, '
+                       '`exposure`, `tier`, and docs whose `kind` cannot be resolved. Fix in a corpus-cleanup PR before '
+                       'the contract flips to enforcing. See the `retrieval-readiness-findings` artifact for the full list.')
+          lines.append('')
+          lines.append('<sub>Validator: `scripts/audit-retrieval-readiness.py` · Constraint: '
+                       '`klappy://canon/constraints/retrieval-disclosure-contract` · Run: '
+                       '[#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})</sub>')
+          open('/tmp/rr-comment.md','w').write('\n'.join(lines))
+          PY
+
+      - name: Sticky comment
+        if: github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: canon-quality-retrieval-readiness
+          path: /tmp/rr-comment.md
+
+      - name: Workflow step summary
+        if: always()
+        run: |
+          {
+            echo "## Canon Quality — P0010 Retrieval-Readiness (soft)"
+            echo ""
+            python3 - <<'PY'
+          import json
+          try:
+              d = json.load(open('/tmp/rr-result.json'))
+              s = d['summary']
+              print(f"- **Status**: {d['status']}")
+              print(f"- **Scanned**: {d['scanned']}")
+              print(f"- **Blocking-class**: {s['blocking']}")
+              print(f"- **Warnings**: {s['warning']}")
+              print(f"- **Kind distribution**: `{s['kind_distribution']}`")
+          except Exception as e:
+              print(f"- **Result**: audit did not produce output ({e})")
+          PY
+          } >> "$GITHUB_STEP_SUMMARY"
