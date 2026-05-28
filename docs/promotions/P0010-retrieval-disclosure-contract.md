@@ -7,7 +7,7 @@ tier: 3
 voice: neutral
 stability: evolving
 tags: ["promotions", "proposed", "retrieval", "disclosure", "catalog", "search", "get", "preflight", "resolve", "progressive-disclosure", "frontmatter", "structural-filters", "vodka-architecture", "telemetry"]
-promotion_status: proposed
+promotion_status: accepted
 ---
 
 # P0010: Retrieval Disclosure Contract — A Canonical Shape for All Document Retrieval Actions
@@ -441,21 +441,18 @@ The strongest case against this constraint is: *"keep the per-action contracts a
 
 ## Status
 
-`proposed` (2026-05-23)
+`accepted` (2026-05-28) — landed as active canon via #221
 
 ## Review Notes
 
-(To be filled during review)
-
 - **Reviewer**: klappy (operator)
-- **Decision**:
-- **Date**:
-- **Notes**:
+- **Decision**: Accepted; canon doc lands `status: active`
+- **Date**: 2026-05-28
+- **Notes**: Handoff framed the open decision as `active` vs `accepted`. `accepted` is not a legal `status` for `audience: canon` (schema enum: active/proposed/final/superseded), so the real fork was `active` vs `proposed`. Operator chose `active` on canon-first grounds (governance leads code; the doc is the source of truth the oddkit implementation targets).
 
 ## Execution Record
 
-(To be filled after acceptance)
-
-- **Commit**:
-- **Canon doc updated**: `canon/constraints/retrieval-disclosure-contract.md`
-- **Backlink added**: Yes / No
+- **Commit**: landed via #221 (branch `p0010-exec-retrieval-disclosure-active`, pre-squash `b24fae2`; squash SHA recorded by the merge of #221)
+- **Canon doc created**: `canon/constraints/retrieval-disclosure-contract.md` (`status: active`, `date: 2026-05-28`, tier 1) — lifted verbatim from the embedded fenced block in this proposal
+- **Bootstrap updated**: `canon/bootstrap/model-operating-contract.md` — per-turn retrieval slice added to the Every Turn rhythm
+- **Backlink added**: No — canon doc lifted verbatim per the execution handoff; provenance carried by the doc's `derives_from`/`complements` frontmatter
