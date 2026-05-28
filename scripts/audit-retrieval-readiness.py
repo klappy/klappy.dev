@@ -132,11 +132,13 @@ def is_exempt(rel_path: str) -> bool:
 def resolve_kind(rel_path: str, fm: dict[str, Any]) -> tuple[str, str]:
     """Return (kind, source) where source is 'frontmatter' or 'path' or 'none'."""
     fk = fm.get("kind")
-    if isinstance(fk, str) and fk in KIND_ENUM:
-        return fk, "frontmatter"
-    if isinstance(fk, str) and fk:  # declared but invalid
-        return "invalid", "frontmatter"
-    if fk is not None:  # declared but non-string (e.g. int, bool, list)
+    if isinstance(fk, str):
+        if fk in KIND_ENUM:
+            return fk, "frontmatter"
+        if fk:  # declared but invalid
+            return "invalid", "frontmatter"
+        # empty string: treat as unspecified, fall through to path-based resolution
+    elif fk is not None:  # declared but non-string (e.g. int, bool, list)
         return "invalid", "frontmatter"
     for prefix, kind in PATH_KIND_MAP:
         if rel_path.startswith(prefix):
@@ -216,7 +218,7 @@ def audit_file(path: Path, root: Path) -> tuple[list[dict], dict]:
         findings.append(finding("kind-invalid", sev, rel, str(fm.get("kind")),
                                 f"frontmatter kind {fm.get('kind')!r} not in {sorted(KIND_ENUM)}."))
     elif kind == "unknown":
-        findings.append(finding("kind-unresolvable", "warning", rel, rel.split("/")[0] + "/",
+        findings.append(finding("kind-unresolvable", sev, rel, rel.split("/")[0] + "/",
                                 "No frontmatter kind and no path-prefix match; resolves to 'unknown'. "
                                 "Add an explicit `kind:` field or extend the path map."))
 
