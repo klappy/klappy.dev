@@ -162,6 +162,19 @@ The base shape (URI + title) MUST always be present in every response, regardles
 
 The caps are not arbitrary. They are designed so that any single response, at any combination of flags, stays well under 30K tokens — small enough to consume responsibly inside a single LLM context window. A caller who needs a larger slice at richer disclosure MUST paginate. The friction is the design; the request boundary makes the cost legible.
 
+### Action-Native Fields Are Outside the Disclosure Axis
+
+Some fields are intrinsic to what an action *does* and are not document-disclosure tiers. These are always present in the relevant action's response and are NOT governed by the `disclosure` parameter:
+
+| Field | Action(s) | Why it is action-native |
+| --- | --- | --- |
+| `score` | `search` | The relevance ranking is the search result, not a disclosure tier of the document. A search hit without its score is not a search hit. |
+| `snippet` | `search` | The query-matched excerpt is computed from the query against the document; it is a property of the *match*, not of the *document*. It is distinct from `blockquote` (which is the document's own summary, independent of any query). Both may appear together: `snippet` shows why the doc matched, `blockquote` shows what the doc is about. |
+| `total` | `search`, `catalog`, `preflight` | The post-filter result count is a property of the query, not of any document. |
+| ordering position | `catalog` | The position under the active `sort_by` is a property of the listing, not of the document. |
+
+`snippet` is NOT a substitute for `blockquote` and `blockquote` is NOT a substitute for `snippet`. A caller that renders search results with a "why this matched" excerpt reads `snippet` (always present on search hits); a caller that wants the document's own summary adds `disclosure: ["blockquote"]`. Existing search consumers that depend on `score` and `snippet` therefore continue to work under the default `disclosure: []` for search, because those fields live outside the disclosure axis entirely.
+
 ## Per-Action Allowances — Which Flags Each Action Supports
 
 Each retrieval action declares which `disclosure` flags it permits. The contract is universal; the allowances are action-specific because the actions' semantics differ.
@@ -199,13 +212,22 @@ Beyond the universal frontmatter axes, the query-shaped retrieval actions MUST a
 
 The canonical kind enumeration:
 
-| Kind | Maps to | Examples |
+| Kind | Default path mapping | Examples |
 | --- | --- | --- |
 | `canon` | `canon/` path prefix | principles, constraints, methods, meta-canon |
 | `docs` | `docs/` path prefix | operational documentation, audits, promotions |
 | `journals` | `odd/` path prefix | handoffs, session ledgers, encodings, working notes |
 | `essays` | `writings/` path prefix | public essays, articles, published prose |
 | `apocrypha` | `apocrypha/` path prefix | explicitly out-of-canon material |
+
+**How `kind` is resolved**: a document's kind is determined by a two-tier rule, frontmatter-primary and path-secondary:
+
+1. **Frontmatter is authoritative.** If a document declares a `kind:` field in its frontmatter, that value wins. The value MUST be one of the canonical enumeration members.
+2. **Path is the fallback.** If a document does not declare `kind:`, the action derives it from the document's path prefix using the default path mapping above.
+
+Frontmatter wins on conflict — a document at `writings/foo.md` that declares `kind: journals` is a journal, regardless of where it lives. This two-tier rule is deliberate: it lets different repositories that oddkit serves (klappy.dev, oddkit-kb, aquifer-mcp, and future repos) organize their directories however suits them while still resolving to a consistent kind vocabulary. The path mapping is the convention; the frontmatter field is the override for repos whose layout diverges from it.
+
+The default path mapping is per-repo configurable (oddkit may carry a different prefix→kind table for a repo whose top-level layout differs), but the canonical kind *enumeration* is fixed across all repos — a repo cannot invent a sixth kind. The enumeration is the shared vocabulary; the path mapping and the frontmatter override are the per-repo resolution mechanics.
 
 **Default behavior**: when neither `include` nor `exclude` is passed, the action returns documents of kind `canon`, `docs`, and `essays`. Documents of kind `journals` and `apocrypha` are excluded by default. This is the only opinionated default in the disclosure contract, and it is justified by the primacy distinction: when a caller asks "what does the project say about X," the answer is governance documents and published essays, not the chronological record of how that governance came to be. Journals are operationally critical but secondary in primary retrieval.
 
@@ -254,18 +276,22 @@ Every caller has an audience and SHOULD declare it. When a caller's audience is 
 
 ## klappy.dev as the Reference Consumer
 
-The `klappy.dev` site is the largest catalog consumer (97.4% of pre-constraint token volume) and the reference implementation for the post-constraint contract. The site has four distinct retrieval use cases, each with a declared filter + disclosure declaration:
+The `klappy.dev` site is the largest catalog consumer (97.4% of pre-constraint token volume) and the reference implementation for the post-constraint contract. The use cases below were verified against the site's actual call inventory (a Lovable-side review of `supabase/functions/doc-listing/`, `src/lib/oddkit.ts`, and the search edge functions, 2026-05). Rows marked **(today)** map to call sites that exist now; rows marked **(aspirational)** describe intended shapes the site does not yet implement.
 
-| Use case | Action | Filter | Disclosure | Limit | Approx tokens |
-| --- | --- | --- | --- | ---: | ---: |
-| Homepage start-here carousel | `catalog` | `start_here: true, exposure: public` | `["blockquote"]` | 12 | ~1.8K |
-| Full essays/articles index | `catalog` | `audience: public, exposure: public` | `["blockquote"]` | 100 | ~15K |
-| Canon governance index | `catalog` | `audience: canon, tier: [1, 2]` | `["metadata"]` | 100 | ~25K |
-| Sitemap / SEO crawl manifest | `catalog` | (no filter) | (no flags) | 500 (paginated) | ~25K per page |
-| Session history viewer (operator-facing) | `catalog` | `include: ["journals"], path_prefix: "odd/handoffs/"` | `["blockquote"]` | 25 | ~3.8K |
-| Individual essay page (server-rendered) | `get` | (URI) | `["body"]` | 1 (URI fetch) | ~3K–25K (one doc) |
+| Use case | Status | Action | Filter | Disclosure | Limit | Approx tokens |
+| --- | --- | --- | --- | --- | ---: | ---: |
+| Full essays/articles index | today | `catalog` | `audience: public, exposure: public` | `["blockquote"]` | 100 | ~15K |
+| Canon governance index | today | `catalog` | `audience: canon, tier: [1, 2]` | `["metadata"]` | 100 | ~25K |
+| Notebook (single path-prefix view) | today | `catalog` | `path_prefix: <notebook prefix>` | `["blockquote"]` | 100 | ~8K |
+| Sitemap / SEO crawl manifest | today | `catalog` | (no filter) | (no flags) | 500 (paginated) | ~25K per page |
+| Global search (⌘K, related, auto-link) | today | `search` | (no filter) | `["blockquote", "metadata"]` + native `score`/`snippet` | 25 | ~8K |
+| Individual essay page (server-rendered) | today | `get` | (URI) | `["body"]` (schema default) | 1 | ~3K–25K |
+| Homepage start-here carousel | aspirational | `catalog` | `start_here: true, exposure: public` | `["blockquote"]` | 12 | ~1.8K |
+| Session history viewer (operator-facing) | aspirational | `catalog` | `include: ["journals"], path_prefix: "odd/handoffs/"` | `["blockquote"]` | 25 | ~3.8K |
 
-Pre-constraint, the site pulled all 566 documents at full frontmatter on every page render (~112K tokens × 4 calls/hour = 76M tokens/week). Post-constraint, the heaviest single call is the canon governance index at ~25K tokens, called on-demand rather than on every page render — and most renders use the homepage carousel call at ~1.8K tokens.
+The two aspirational rows reflect known gaps the Lovable review surfaced. The homepage start-here carousel is today served by a dedicated `start-here-manifest` edge function rather than by a `start_here: true` catalog filter; adopting the filter is optional and would let the dedicated function be retired. The session history viewer does not exist — the site's `isPublicFacing()` filter actively excludes `odd/handoffs/`, `odd/ledger/`, and journal paths — so the operator-facing journals view is a future build, not a current consumer. Neither aspirational row blocks the constraint; they document intended adoption, not current behavior.
+
+Pre-constraint, the site pulled all 566 documents at full frontmatter on every page render (~112K tokens × 4 calls/hour = 76M tokens/week) through a single `doc-listing` edge function whose output was filtered client-side into several of the use cases above. Post-constraint, that single fat call decomposes into the per-use-case calls in the table, the heaviest of which (canon governance index, ~25K tokens) is called on-demand rather than on every render.
 
 The site SHOULD additionally cache catalog responses at its edge layer with a TTL appropriate to canon's update tempo (canon updates on the order of days; a 5-minute TTL amortizes cost across hundreds of requests per minute). Edge caching compounds with the constraint: the constraint reduces per-call cost; edge caching reduces call volume. With both stacked, the site's catalog token cost drops from 76.65M/week to a low-thousands figure.
 
@@ -347,7 +373,9 @@ A retrieval action's response complies with this constraint when:
 6. A request whose `disclosure` includes a flag the action does not allow returns `DISCLOSURE_FLAG_NOT_PERMITTED`
 7. A request whose `limit` exceeds the most restrictive active flag's cap returns `LIMIT_EXCEEDS_FLAG_CAP`
 8. Unfiltered query-shaped responses do NOT contain documents of kind `journals` or `apocrypha` (the default `include` set excludes them); journals appear in responses only when the caller passes `include: ["journals"]` or an equivalent explicit declaration
-9. The aggregate token cost across a representative sample of caller workloads decreases by an order of magnitude relative to the pre-constraint baseline
+9. A document's resolved kind respects the two-tier rule: frontmatter `kind:` when present, path-prefix mapping otherwise; a document whose frontmatter `kind:` conflicts with its path resolves to the frontmatter value
+10. Action-native fields (`score` and `snippet` on search; `total` and ordering on listings) are present independent of `disclosure`; a search response at default `disclosure: []` still carries `score` and `snippet`
+11. The aggregate token cost across a representative sample of caller workloads decreases by an order of magnitude relative to the pre-constraint baseline
 
 Production telemetry SHOULD confirm the order-of-magnitude reduction within thirty days of the constraint landing. If the reduction is not observed, the implementation is non-compliant or a major caller is bypassing the contract; both are bugs.
 
@@ -391,6 +419,7 @@ The filename `catalog-progressive-disclosure-and-structural-filters.md` is long 
 - The `body` flag is permitted only on the URI-shaped actions (`get`, `resolve`), never on the query-shaped or list-shaped actions (`search`, `catalog`, `preflight`) — this is a deliberate archival safeguard, not an arbitrary restriction. Full-body retrieval flows through `oddkit_get` one document at a time, making bulk extraction observable in telemetry as N separate get calls and rate-limitable per worker version
 - The five retrieval actions are migrated in coordinated PRs but the contract is the same across all of them — there is no per-action drift to manage, by design. Documentation for each action lives in `docs/oddkit/` and is updated in the same execution arc
 - Per `canon/constraints/oddkit-action-registration-completeness.md`, each action's contract change MUST update both the dispatch switch AND the `VALID_ACTIONS` registry in oddkit. The execution PR's checklist MUST verify both updates for all five actions; partial registration ships an action the validator rejects before runtime
+- The precursor frontmatter audit SHOULD additionally report each document's path-derived kind, so any document whose path mapping produces a surprising kind can be given an explicit `kind:` frontmatter override before the constraint enforces. Kind resolution is frontmatter-primary, path-secondary; the audit makes the path-derived fallback visible so overrides are a deliberate choice, not a silent surprise
 
 The migration is broader than a catalog-only fix but is structurally bounded: one production consumer to migrate (`klappy.dev-doc-listing`), one CI script to add, one oddkit minor version to ship, one frontmatter audit to confirm clean, and five action surfaces to bring onto the new contract in lockstep. The lockstep is itself the safeguard against drift.
 
