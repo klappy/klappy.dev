@@ -65,7 +65,7 @@ import argparse
 import json
 import re
 import sys
-from collections import Counter, defaultdict
+from collections import Counter
 from pathlib import Path
 from typing import Any
 
@@ -136,6 +136,8 @@ def resolve_kind(rel_path: str, fm: dict[str, Any]) -> tuple[str, str]:
         return fk, "frontmatter"
     if isinstance(fk, str) and fk:  # declared but invalid
         return "invalid", "frontmatter"
+    if fk is not None:  # declared but non-string (e.g. int, bool, list)
+        return "invalid", "frontmatter"
     for prefix, kind in PATH_KIND_MAP:
         if rel_path.startswith(prefix):
             return kind, "path"
@@ -192,19 +194,19 @@ def audit_file(path: Path, root: Path) -> tuple[list[dict], dict]:
     # audience
     if audience is None:
         findings.append(finding("audience-missing", sev, rel, "", "Missing audience."))
-    elif audience not in AUDIENCE_ENUM:
+    elif isinstance(audience, (list, dict)) or audience not in AUDIENCE_ENUM:
         findings.append(finding("audience-invalid", sev, rel, str(audience),
                                 f"audience {audience!r} not in {sorted(AUDIENCE_ENUM)}."))
     # exposure
     if exposure is None:
         findings.append(finding("exposure-missing", sev, rel, "", "Missing exposure."))
-    elif exposure not in EXPOSURE_ENUM:
+    elif isinstance(exposure, (list, dict)) or exposure not in EXPOSURE_ENUM:
         findings.append(finding("exposure-invalid", sev, rel, str(exposure),
                                 f"exposure {exposure!r} not in {sorted(EXPOSURE_ENUM)}."))
     # tier
     if tier is None:
         findings.append(finding("tier-missing", sev, rel, "", "Missing tier."))
-    elif isinstance(tier, bool) or tier not in TIER_ENUM:
+    elif isinstance(tier, (bool, list, dict)) or tier not in TIER_ENUM:
         findings.append(finding("tier-invalid", sev, rel, str(tier),
                                 f"tier {tier!r} not in {sorted(TIER_ENUM)} (must be unquoted int 1-4)."))
 
