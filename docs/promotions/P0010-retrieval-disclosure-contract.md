@@ -172,7 +172,7 @@ Each retrieval action declares which `disclosure` flags it permits. The contract
 | `oddkit_catalog` | `blockquote`, `metadata`, `summary` | No | List-shaped: returns documents matching the filter slice at the requested disclosure. Same bulk-extraction reasoning as search. |
 | `oddkit_preflight` | `blockquote`, `metadata`, `summary` | No | Task-shaped: returns relevant docs + constraints + DoD at the requested disclosure. Caller no longer receives an opinionated bundle; they declare what shape they want. |
 | `oddkit_resolve` | `blockquote`, `metadata`, `summary`, `body` | Yes | URI-shaped (single result): returns the resolved canonical document at the requested disclosure. Body is permitted because resolve is single-result by construction; the limit cap is 1. |
-| `oddkit_get` | `blockquote`, `metadata`, `summary`, `body` | Yes | URI-shaped (single result): returns the requested document at the requested disclosure. Body is the default purpose; when no `disclosure` is passed, `get` returns body by convention for backward compatibility. |
+| `oddkit_get` | `blockquote`, `metadata`, `summary`, `body` | Yes | URI-shaped (single result): returns the requested document at the requested disclosure. Body retrieval is the action's purpose, but callers MUST opt in by passing `disclosure: ["body"]`; the default response is URI + title only, consistent with the universal contract. |
 
 The actions where `body` is forbidden (`search`, `catalog`, `preflight`) MUST return an error envelope if `body` is passed in the `disclosure` array — the error is the contract enforcement, not silent omission.
 
