@@ -545,12 +545,15 @@ jobs:
             echo ""
             python3 - <<'PY'
           import json
-          d = json.load(open('/tmp/rr-result.json'))
-          s = d['summary']
-          print(f"- **Status**: {d['status']}")
-          print(f"- **Scanned**: {d['scanned']}")
-          print(f"- **Blocking-class**: {s['blocking']}")
-          print(f"- **Warnings**: {s['warning']}")
-          print(f"- **Kind distribution**: `{s['kind_distribution']}`")
+          try:
+              d = json.load(open('/tmp/rr-result.json'))
+              s = d['summary']
+              print(f"- **Status**: {d['status']}")
+              print(f"- **Scanned**: {d['scanned']}")
+              print(f"- **Blocking-class**: {s['blocking']}")
+              print(f"- **Warnings**: {s['warning']}")
+              print(f"- **Kind distribution**: `{s['kind_distribution']}`")
+          except Exception as e:
+              print(f"- **Result**: audit did not produce output ({e})")
           PY
           } >> "$GITHUB_STEP_SUMMARY"

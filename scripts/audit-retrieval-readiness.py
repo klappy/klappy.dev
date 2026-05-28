@@ -204,7 +204,7 @@ def audit_file(path: Path, root: Path) -> tuple[list[dict], dict]:
     # tier
     if tier is None:
         findings.append(finding("tier-missing", sev, rel, "", "Missing tier."))
-    elif tier not in TIER_ENUM:
+    elif isinstance(tier, bool) or tier not in TIER_ENUM:
         findings.append(finding("tier-invalid", sev, rel, str(tier),
                                 f"tier {tier!r} not in {sorted(TIER_ENUM)} (must be unquoted int 1-4)."))
 
