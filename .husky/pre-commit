@@ -12,7 +12,7 @@
 #
 # Requires python3 + pyyaml. Degrades to a warning if python3 is unavailable.
 
-staged_writings=$(git diff --cached --name-only --diff-filter=ACM | grep -E '^writings/.*\.md$' | grep -vE '^writings/_' || true)
+staged_writings=$(git diff --cached --name-only --diff-filter=ACM | grep -E '^writings/.*\.md$' | grep -vE '/_[^/]*\.md$' || true)
 
 if [ -z "$staged_writings" ]; then
   exit 0
