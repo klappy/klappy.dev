@@ -557,3 +557,70 @@ jobs:
               print(f"- **Result**: audit did not produce output ({e})")
           PY
           } >> "$GITHUB_STEP_SUMMARY"
+
+  surfacing:
+    name: Homepage surfacing report (soft)
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    # Soft-only. Reports where each writings/ essay surfaces (homepage feed /
+    # nav / hidden) and flags anything not on the homepage. The HARD field gate
+    # lives in the `frontmatter` job; this job exists to make the legitimate-
+    # but-easy-to-miss `exposure: nav` state LOUD instead of silent. Never fails.
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install --quiet pyyaml
+
+      - name: Run surfacing report
+        run: |
+          python3 scripts/surfacing-report.py --json writings/ > /tmp/surface.json || true
+          python3 scripts/surfacing-report.py writings/ || true
+
+      - name: Render PR comment
+        if: github.event_name == 'pull_request'
+        run: |
+          python3 - <<'PY'
+          import json
+          d = json.load(open('/tmp/surface.json'))
+          essays = d['essays']
+          off = d['not_on_homepage']
+          lines = []
+          icon = '✅' if not off else 'ℹ️'
+          lines.append(f"### Canon Quality — Homepage Surfacing {icon}")
+          lines.append('')
+          lines.append(f"{len(essays)} essay(s) scanned. **Soft report** — never blocks; "
+                       f"the hard field gate is the Frontmatter Schema job.")
+          lines.append('')
+          if off:
+              lines.append(f"**{len(off)} essay(s) are NOT on the homepage feed** "
+                           f"(confirm this is intentional):")
+              lines.append('')
+              lines.append('| Essay | Surface |')
+              lines.append('|---|---|')
+              by = {e['path']: e for e in essays}
+              for p in off:
+                  e = by[p]
+                  lines.append(f"| `{p}` | {e['surface']} — {e['explanation']} |")
+              lines.append('')
+              lines.append('> To promote to the homepage: set `public: true` and `exposure: public`.')
+          else:
+              lines.append('All published essays resolve to the homepage feed.')
+          lines.append('')
+          lines.append('<sub>Report: `scripts/surfacing-report.py` · Canon: '
+                       '`klappy://canon/constraints/frontmatter-validation-before-merge`</sub>')
+          open('/tmp/surface-comment.md', 'w').write('\n'.join(lines))
+          PY
+
+      - name: Sticky comment
+        if: github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: canon-quality-surfacing
+          path: /tmp/surface-comment.md

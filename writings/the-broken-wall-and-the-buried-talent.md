@@ -1,6 +1,7 @@
 ---
 uri: klappy://writings/the-broken-wall-and-the-buried-talent
 title: "The Broken Wall and the Buried Talent"
+public: true
 subtitle: "Two ancient stories collided in a conversation about AI — and I haven't been the same since"
 author: "Klappy"
 type: article
