@@ -43,7 +43,7 @@ You don't need every layer. You need the one nobody can take from you because th
 
 What you shouldn't have to keep pouring months into is the layer underneath your vertical: the governance, the memory, the part that makes an AI tell the truth and remember what it decided yesterday. That floor is the same under almost every vertical, and rebuilding it yourself is the work that quietly eats your head start.
 
-That floor is what I build. Not a product that competes with yours — a substrate that produces things like yours. A substrate earns its place by refusing to have opinions about the layers above it; TCP/IP never cared what your application was, which is exactly why everything got built on top of it. I would rather be that floor under your work than a rival standing beside it.
+That floor is what I build. Not a product that competes with yours — a substrate that produces things like yours. This stacking works when the layers are genuinely distinct: when your vertical's IP lives in the market relationships and the living thing you build, and the substrate's IP lives in the floor beneath it. If the layers bleed into each other, that's a different conversation. A substrate earns its place by refusing to have opinions about the layers above it; TCP/IP never cared what your application was, which is exactly why everything got built on top of it. I would rather be that floor under your work than a rival standing beside it.
 
 ## Why I won't compete with you
 

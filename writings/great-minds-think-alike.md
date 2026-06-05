@@ -37,7 +37,7 @@ Your next thought decides a lot. Most people's next thought is some flavor of "w
 
 ## When building gets cheap, judgment becomes the bottleneck
 
-Here's what changed underneath all of us. The cost of producing software fell toward zero. The friction that used to gate building — the hours, the syntax, the waiting for something to compile — mostly evaporated. When that happens, the scarce resource moves. It stops being the ability to build and becomes the ability to *judge*: what's worth building, whether the confident output in front of you is actually correct, when to throw the work away. Production got cheap. Discernment got expensive.
+Here's what changed underneath all of us. The cost of producing software fell toward zero. The friction that used to gate building — the hours, the syntax, the waiting for something to compile — mostly evaporated. When that happens, the scarce resource moves. It stops being the ability to build and becomes the ability to *judge*: what's worth building, whether the confident output in front of you is actually correct, when to throw the work away. Production got cheap. Discernment got expensive. I've seen this pattern hold across domain shifts — medicine, media, software — but I'm making the full claim here only for AI builders, where I can see it directly. Outside that scope, I'd want more cases before asserting it's universal.
 
 ## People with judgment draw the same map
 
