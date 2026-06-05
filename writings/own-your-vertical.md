@@ -4,8 +4,8 @@ title: "Own Your Vertical. Let Me Carry the Layer Beneath It."
 audience: public
 exposure: nav
 tier: 2
-voice: klappy
-status: draft
+voice: first_person
+stability: draft
 epoch: E0009
 date: 2026-06-05
 hook: "You don't have to win every layer. Own the one only you can own, and let someone carry the floor under it."
