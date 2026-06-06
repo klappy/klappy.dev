@@ -69,6 +69,25 @@ def main() -> None:
         "broken-no-frontmatter: missing-block fires",
     )
 
+    # 4b. REGRESSION: the recurring "merged but invisible" bug. A writings
+    #     essay on exposure=nav with missing public/type/slug used to pass the
+    #     old conditional gate (which only checked exposure=public). It must
+    #     now fail. This fixture must produce a `public` finding AND `type`/
+    #     `slug` discovery findings regardless of its nav exposure.
+    d, rc = run(str(FIXTURES / "writings" / "broken-nav-missing-discovery.md"))
+    assert rc == 1, f"expected exit 1 for nav-missing-discovery, got {rc}"
+    occurrences = {f["occurrence"] for f in d["findings"]}
+    for required in ("public", "type", "slug"):
+        assert required in occurrences, (
+            f"nav-missing-discovery should flag missing {required!r}; "
+            f"got occurrences {occurrences}"
+        )
+    expect(
+        {"frontmatter-missing-required"},
+        d["findings"],
+        "broken-nav-missing-discovery: nav essay missing public/type/slug fails",
+    )
+
     # 5. Real writings/ directory must be clean (this enforces that we never
     #    ship the validator with existing breakage)
     d, rc = run("writings/")

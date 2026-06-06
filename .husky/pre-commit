@@ -1,5 +1,39 @@
 #!/usr/bin/env sh
+#
+# Catch frontmatter problems at WRITE time, before they ever reach CI.
+#
+#   1. validate-frontmatter.py (HARD): blocks the commit if any staged
+#      writings/ essay has missing/malformed renderer-critical fields. Same
+#      gate CI runs — running it here gives you the failure in seconds instead
+#      of after a push.
+#   2. surfacing-report.py (SOFT): prints where each staged essay will surface
+#      (homepage / nav / hidden) so an essay quietly on `nav` instead of the
+#      homepage is visible immediately. Never blocks.
+#
+# Requires python3 + pyyaml. Degrades to a warning if python3 is unavailable.
 
-# E0005.1: Pre-commit hooks for defunct pipeline removed.
-# sync-content, export-book, and build-docs-index scripts
-# were part of the lane-era pipeline (see D0016).
+staged_writings=$(git diff --cached --name-only --diff-filter=ACM | grep -E '^writings/.*\.md$' | grep -vE '/_[^/]*\.md$' || true)
+
+if [ -z "$staged_writings" ]; then
+  exit 0
+fi
+
+if ! command -v python3 >/dev/null 2>&1; then
+  echo "pre-commit: python3 not found — skipping frontmatter validation." >&2
+  exit 0
+fi
+
+echo "pre-commit: validating frontmatter for staged essays…"
+# shellcheck disable=SC2086
+if ! python3 scripts/validate-frontmatter.py $staged_writings; then
+  echo "" >&2
+  echo "Commit blocked: frontmatter validation failed. Fix the fields above" >&2
+  echo "(or copy writings/_TEMPLATE.md for the full required set), then re-commit." >&2
+  exit 1
+fi
+
+# Soft surfacing heads-up — informational only.
+# shellcheck disable=SC2086
+python3 scripts/surfacing-report.py $staged_writings || true
+
+exit 0

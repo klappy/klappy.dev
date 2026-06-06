@@ -16,9 +16,12 @@ violations from the canon constraint):
     parses these as strings, which the renderer rejects
   - Contradictory flags (`public: false` + `exposure: public`) — renderer
     builds a route with no content
-  - Public essays in writings/ missing renderer-critical discovery fields
-    (type, slug, hook, description) — homepage card renders empty without
-    them; the May 10 incident that motivated this gate
+  - ANY essay in writings/ missing renderer-critical fields (public, type,
+    slug, hook, description) — regardless of exposure. The card renders empty
+    (or the essay silently never surfaces) without them. This is unconditional:
+    the old gate only checked exposure=public essays, which let nav essays slip
+    through with missing fields and then vanish from the homepage — the
+    recurring "merged but invisible" bug.
 
 What this does NOT catch (deferred — separate concerns):
   - Terminological drift, projection staleness, epoch gaps
@@ -217,17 +220,48 @@ def validate_file(path: str) -> list[dict[str, Any]]:
             f"Set both consistently. Canon: {CONSTRAINT_REF}",
         ))
 
-    # 6. Essay-critical discovery fields (only for writings/ with exposure=public)
+    # 6. Renderer-critical fields for ALL essays in writings/ (regardless of
+    #    exposure). The OLD gate only fired for exposure=public, which let an
+    #    essay sit on exposure=nav with missing type/slug/public and pass
+    #    clean — then silently never appear on the homepage. That conditional
+    #    blind spot is the recurring "merged but invisible" bug. Every essay in
+    #    writings/ needs these fields to render a card on ANY surface (the
+    #    homepage feed at exposure=public, or the nav list at exposure=nav), so
+    #    require them unconditionally.
     is_writing = path.startswith("writings/") or "/writings/" in path
-    if is_writing and fm.get("exposure") == "public":
+    if is_writing:
+        # 6a. `public` must be PRESENT and a real boolean. Its absence is the
+        #     exact shape of the silent-drop bug: the essay merges, CI is
+        #     green, and it never surfaces. Every published essay in the corpus
+        #     already carries `public: true`; the only files that omit it are
+        #     the ones that vanished.
+        if "public" not in fm or fm.get("public") is None:
+            findings.append(finding(
+                "frontmatter-missing-required", "error", path, "public",
+                f'Essay in writings/ is missing the "public" field. Every '
+                f"essay must declare `public: true` (a real published essay) "
+                f"or `public: false` (draft/internal). Its absence is the "
+                f"silent-drop pattern — the essay merges but never surfaces. "
+                f"Canon: {CONSTRAINT_REF}",
+            ))
+        elif not isinstance(fm.get("public"), bool):
+            findings.append(finding(
+                "frontmatter-type-mismatch", "error", path,
+                f"public: {fm.get('public')!r}",
+                f'Field "public" must be an unquoted boolean (true/false); '
+                f"got a {type(fm.get('public')).__name__}. Canon: {CANON_REF}",
+            ))
+
+        # 6b. Discovery fields required for EVERY essay, not just public ones.
         for field in ESSAY_DISCOVERY_REQUIRED:
             v = fm.get(field)
             if v is None or v == "" or v == []:
                 findings.append(finding(
                     "frontmatter-missing-required", "error", path, field,
-                    f'Public essay in writings/ is missing renderer-critical '
-                    f'field "{field}". Without it the homepage card renders '
-                    f"empty. Required for exposure=public writings: "
+                    f'Essay in writings/ is missing renderer-critical field '
+                    f'"{field}". Without it the card renders empty on whatever '
+                    f"surface lists it (homepage feed or nav). Required for "
+                    f"ALL writings essays: "
                     f"{', '.join(ESSAY_DISCOVERY_REQUIRED)}. "
                     f"Canon: {CONSTRAINT_REF}",
                 ))
@@ -239,7 +273,11 @@ def discover_targets(args_paths: list[str]) -> list[str]:
     """Resolve CLI args to a list of .md files to scan. README.md files are
     skipped as they are section indexes with a different shape from articles."""
     def keep(p: Path) -> bool:
-        return p.suffix == ".md" and p.name != "README.md"
+        # Skip README indexes and underscore-prefixed files (templates,
+        # partials, scaffolds like writings/_TEMPLATE.md).
+        return (p.suffix == ".md"
+                and p.name != "README.md"
+                and not p.name.startswith("_"))
 
     if args_paths:
         out: list[str] = []

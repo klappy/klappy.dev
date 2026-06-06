@@ -53,6 +53,8 @@ These specific combinations have caused renderer crashes in production:
 | Missing `type` on public documents | Renderer cannot select template |
 | Quoted booleans (`"true"` instead of `true`) | YAML parses as string, renderer expects boolean |
 | Missing `hook` or `description` | Social card generation fails silently |
+| Missing `public` field entirely | Essay is treated as unpublished — it merges, CI is green, and it is silently absent from the homepage |
+| `exposure: nav` + missing `type` / `slug` / `public` | The silent-drop bug. Passed the OLD gate (which only checked `exposure: public`), then never surfaced anywhere |
 
 ---
 
@@ -79,7 +81,7 @@ The validator emits findings under five rule_ids, each mapped directly to a
 |---------|---------|
 | `frontmatter-missing-block` | File has no `---`-delimited frontmatter at all |
 | `frontmatter-parse-error` | Frontmatter block exists but YAML is malformed |
-| `frontmatter-missing-required` | One of the eight universal fields, or one of `type` / `slug` / `hook` / `description` on a public essay in writings/, is missing or empty |
+| `frontmatter-missing-required` | One of the eight universal fields, or one of `public` / `type` / `slug` / `hook` / `description` on **any** essay in writings/ (regardless of exposure), is missing or empty |
 | `frontmatter-invalid-enum` | `exposure`, `voice`, `tier`, or `audience` has a value not in the canonical allowed set |
 | `frontmatter-type-mismatch` | Quoted boolean (`public: "true"`) or quoted integer (`tier: "3"`) |
 | `frontmatter-contradictory` | `public: false` combined with `exposure: public` |
@@ -90,6 +92,55 @@ authoritative check.
 
 When the validator and `canon/meta/frontmatter-schema.md` disagree, the
 schema doc wins and the validator's enum mirror must be updated to match.
+
+---
+
+## Homepage Surfacing — Where Essays Appear, and Why They Vanish
+
+Two distinct frontmatter signals decide where a writings/ essay shows up. Per
+`canon/meta/frontmatter-schema.md` (the source of truth):
+
+- **Homepage feed** — `public: true` **and** `exposure: public`. This is the
+  default published surface.
+- **Curated reading path** — `start_here: true` (ordered by `start_here_order`).
+  An additional, editorial "start here" path on the homepage. Independent of
+  the feed; set it deliberately, not by default.
+- **Navigation only** — `public: true` **and** `exposure: nav`. Reachable
+  through site navigation but **not** promoted on the homepage. This is a
+  legitimate, intentional state for some essays — it is NOT an error.
+- **Hidden / draft** — `public: false`/absent, or `exposure` in
+  `draft` / `hidden` / `internal`.
+
+### The recurring failure this prevents
+
+An essay authored with `exposure: nav` and missing `public` / `type` / `slug`
+**merges clean and then never appears on the homepage.** The original gate only
+required the renderer-critical fields when `exposure: public`, so a `nav` essay
+sailed through with a green check and vanished silently. "Be more careful" does
+not fix a blind spot in the gate; widening the gate does.
+
+### The strengthened rule (no exceptions)
+
+`public`, `type`, `slug`, `hook`, and `description` are required on **every**
+essay in writings/, **regardless of exposure**. An essay cannot exist in
+writings/ without declaring `public` explicitly. This is enforced
+unconditionally by `scripts/validate-frontmatter.py`.
+
+Because `public: true` + `exposure: nav` is legitimate, the gate cannot
+hard-fail it. Instead, `scripts/surfacing-report.py` makes the state **loud**:
+it reports, per essay, exactly which surface it lands on and flags anything not
+on the homepage feed — so "I meant to publish and it landed on nav" is visible
+at write time, not discovered in production.
+
+### Caught at every layer
+
+| Layer | Mechanism |
+|-------|-----------|
+| Writing (scaffold) | `writings/_TEMPLATE.md` ships the complete required field set; copy it to start a new essay correct |
+| Writing (commit) | `.husky/pre-commit` runs the validator (hard) + surfacing report (soft) on staged writings/ essays |
+| Validating | `scripts/validate-frontmatter.py` — fields required for all essays unconditionally |
+| Challenging | This constraint; oddkit `preflight`/`challenge`/`validate` surface it when a deliverable includes writings/ |
+| CI/CD | `.github/workflows/canon-quality.yml` `frontmatter` job hard-blocks; the surfacing report runs as a soft PR comment |
 
 ---
 

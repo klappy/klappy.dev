@@ -1,8 +1,11 @@
 ---
 uri: klappy://writings/great-minds-think-alike
 title: "Great Minds Think Alike. Here's What That's Actually Telling You."
+public: true
+type: "essay"
+slug: "great-minds-think-alike"
 audience: public
-exposure: nav
+exposure: public
 tier: 2
 voice: first_person
 stability: draft

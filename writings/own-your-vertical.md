@@ -1,8 +1,11 @@
 ---
 uri: klappy://writings/own-your-vertical
 title: "Own Your Vertical. Let Me Carry the Layer Beneath It."
+public: true
+type: "essay"
+slug: "own-your-vertical"
 audience: public
-exposure: nav
+exposure: public
 tier: 2
 voice: first_person
 stability: draft
