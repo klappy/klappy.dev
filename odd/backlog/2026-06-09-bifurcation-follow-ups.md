@@ -38,6 +38,8 @@ Adjudication criteria (maintainer calibration, recorded 2026-06-09):
 
 3. **Exposed tension without a ruling is core; the ruling itself is overlay.** When a principle, constraint, or method names a tension — "it could be this or this, with a range between" — and does not make the maintainer's judgment call about where on the range to land, that exposure is universal fodder for outcomes-driven-development. The test per doc: does it adjudicate, or does it only surface what you need to think through? Adjudication is klappy-specific; the tension travels.
 
+4. **oddkit the repo is a user manual and a maintenance manual — nothing else.** If a doc is not about creating, maintaining, or using oddkit specifically, it does not belong in the oddkit repo. Principles and methods that oddkit merely embodies are ODD core; the engine being the proof does not make the principle engine documentation. Ruled in-session: 7 docs moved oddkit → core (the principles cluster + audit-gates-are-spawned-agent-sessions). Open: some user-manual content may itself need a different home — review when the manuals are next touched.
+
 ## P2 — Worker auth for private knowledge bases
 
 GitHub App or scoped-PAT worker secret so oddkit can read private repos. Enables flipping ODD private later if monetization positioning demands it.

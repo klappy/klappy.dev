@@ -13,7 +13,7 @@ derives_from: "canon/principles/vodka-architecture.md, canon/principles/dry-cano
 complements: "canon/constraints/oddkit-prompt-pattern.md, canon/principles/ritual-is-a-smell.md"
 governs: "All caching decisions in oddkit and any oddkit-pattern MCP server — which derived values get cached, which get rebuilt per request"
 status: active
-target_repo: "oddkit"
+target_repo: "outcomes-driven-development"
 ---
 
 # Cache Fetches and Parses — Not Microsecond Derivations
