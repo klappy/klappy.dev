@@ -13,7 +13,7 @@ derives_from: "canon/meta/triangle-of-yaps.md, canon/constraints/guide-posture.m
 complements: "canon/methods/choosing-the-right-narrative-container.md, canon/constraints/ai-voice-cliches.md, docs/audits/guide-posture-audit.md"
 governs: "How any topic is introduced and presented at the entry layer for klappy.dev — the weekly audio overview, the opening of an essay or section, a talk intro, a tool or onboarding intro. Governs the entry and the handoff, not the proof the handoff points to."
 constraint: "Subordinate to canon/meta/triangle-of-yaps.md, canon/constraints/guide-posture.md, canon/meta/writing-canon.md, and the axioms. Where any of those conflict with this method, they govern."
-target_repo: "outcomes-driven-development"
+target_repo: "undecided"
 ---
 
 # The Triangle Pass — Introduce a Topic as a Door Into the Proof, Not a Replacement for It
