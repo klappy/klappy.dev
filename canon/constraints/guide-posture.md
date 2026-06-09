@@ -12,7 +12,6 @@ date: 2026-02-17
 derives_from: "canon/values/trust-kernel.md, canon/values/axioms.md"
 complements: "docs/oddkit/positioning.md, canon/meta/writing-canon.md"
 governs: "All public-facing content: websites (klappy.dev, odd.klappy.dev), voice agents, documentation with audience: public, tool descriptions, onboarding flows, and marketing copy"
-target_repo: "undecided"
 ---
 
 # Guide Posture — We Enter Their Story, Not the Other Way Around
