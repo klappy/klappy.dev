@@ -36,6 +36,8 @@ Adjudication criteria (maintainer calibration, recorded 2026-06-09):
 1. **Topic is not the routing criterion.** A doc is not pulled from core because of what it talks about; canon principles route on whether the principle itself is portable. Ruled in-session: `canon/principles/methodology-personification` and `canon/principles/voice-as-cognitive-load-shedding` are core despite being voice/communication-flavored.
 2. **Provisional found-frameworks stay overlay.** A framework the maintainer found and is still personally validating ("applied as working practice, retired when disconfirmed") does not ship to adopters as core canon until proven. Ruled in-session: `canon/methods/triangle-pass` returned to the overlay (klappy.dev #233, outcomes-driven-development #3) — it derives from `canon/meta/triangle-of-yaps` (undecided).
 
+3. **Exposed tension without a ruling is core; the ruling itself is overlay.** When a principle, constraint, or method names a tension — "it could be this or this, with a range between" — and does not make the maintainer's judgment call about where on the range to land, that exposure is universal fodder for outcomes-driven-development. The test per doc: does it adjudicate, or does it only surface what you need to think through? Adjudication is klappy-specific; the tension travels.
+
 ## P2 — Worker auth for private knowledge bases
 
 GitHub App or scoped-PAT worker secret so oddkit can read private repos. Enables flipping ODD private later if monetization positioning demands it.
