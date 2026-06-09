@@ -70,8 +70,10 @@ The classification is deterministic from the live tree, not a stored list:
 3. Movers = core + tool ≈ **232 markdown** files + ~11 non-markdown (sidecar).
 
 ### Confident routing (folder-level)
-- `"outcomes-driven-development"`: `canon/values/`, `canon/definitions/`, `canon/diagnostics/`, `canon/defaults/`, most `canon/constraints/` and `canon/principles/` and `canon/methods/` (the universal subset — see manifest), `canon/bootstrap/`, all structural `odd/` (manifesto, contract, maturity, terminology, prompt-architecture, gate/, challenge/, challenge-types/, encoding-types/, getting-started/, appendices/, constraint/).
-- `"oddkit"`: `docs/oddkit/`, `interfaces/mcp|manifest|canon-frontmatter/`, `canon/meta/pack.json` (sidecar), `canon/constraints/{retrieval-disclosure-contract, oddkit-action-registration-completeness, release-validation-gate, telemetry-governance, telemetry-validation-gate, core-governance-baseline, canon-integration-audit, audit-gates-are-spawned-agent-sessions, frontmatter-validation-before-merge}`, `canon/principles/{vodka-architecture (see fork), dry-canon-says-it-once, consistency-same-pattern-every-time, cache-fetches-and-parses, envelope-time-fields, partial-data-..., async-by-default, identity-resolved-by-protocol}`, governance tooling in `scripts/` (except `surfacing-report.py`, which is klappy.dev-only → untagged).
+**Precedence:** the contested-forks section below overrides any confident routing here. Any path listed in a fork is tagged `"undecided"` until the fork is resolved, regardless of folder-level rules.
+
+- `"outcomes-driven-development"`: `canon/values/`, `canon/definitions/`, `canon/diagnostics/`, `canon/defaults/`, most `canon/constraints/` and `canon/principles/` and `canon/methods/` (the universal subset — see manifest; minus anything listed in a fork), `canon/bootstrap/`, all structural `odd/` (manifesto, contract, maturity, terminology, prompt-architecture, gate/, challenge/, challenge-types/, encoding-types/, getting-started/, appendices/, constraint/).
+- `"oddkit"`: `docs/oddkit/`, `interfaces/mcp|manifest|canon-frontmatter/`, `canon/meta/pack.json` (sidecar), `canon/constraints/{retrieval-disclosure-contract, oddkit-action-registration-completeness, release-validation-gate, telemetry-governance, telemetry-validation-gate, core-governance-baseline, canon-integration-audit, audit-gates-are-spawned-agent-sessions, frontmatter-validation-before-merge}`, `canon/principles/{dry-canon-says-it-once, consistency-same-pattern-every-time, cache-fetches-and-parses, envelope-time-fields, partial-data-..., async-by-default, identity-resolved-by-protocol}`, governance tooling in `scripts/` (except `surfacing-report.py`, which is klappy.dev-only → untagged).
 - Untagged (stays): `writings/`, `about/`, `draft-zeros/`, `journal/`, `docs/` (except `docs/oddkit/`), `canon/{apocrypha, resonance, observations, voice, case-studies, architecture, CHANGELOG.md}`, `odd/{ledger, handoffs, decisions, backlog}`, and the heavy R&D in `canon/methods/{spawned-agent-session-*, persona-shaped-agent-runtime, trigger-source-taxonomy, quality-attribute-tension-survey}`.
 
 ### Contested → `target_repo: "undecided"` (do not guess)
@@ -90,7 +92,7 @@ The classification is deterministic from the live tree, not a stored list:
 4. Insert the `target_repo:` line into each mover's existing YAML block (quoted value; do not reorder other fields; do not touch body). Contested → `"undecided"`.
 5. Write `canon/meta/scope-map.json` for non-md movers: `{ "<path>": "<target_repo>" }`.
 6. Commit via the Git Data API (create blobs → tree → commit → branch ref) to avoid 769 single-file calls. Open the PR; **do not merge.** Title: "scope-audit: tag movers with target_repo (bifurcation pass 1)".
-7. Verify (Reality Is Sovereign): the PR's CI (`canon-quality.yml`) passes; `git grep 'target_repo: "outcomes-driven-development"' | wc -l` ≈ 138; `... "oddkit"` ≈ 94; no value outside the enum; renderer smoke (a tagged page still renders).
+7. Verify (Reality Is Sovereign): the PR's CI (`canon-quality.yml`) passes; `git grep 'target_repo: "undecided"' | wc -l` ≈ 29; the three confident+undecided counts sum to ≈ 232 (`"outcomes-driven-development"` + its share of undecided ≈ 138; `"oddkit"` + its share of undecided ≈ 94); no value outside the enum; renderer smoke (a tagged page still renders).
 
 ---
 
@@ -98,7 +100,7 @@ The classification is deterministic from the live tree, not a stored list:
 
 - One PR open on `scope-audit`; `main` untouched.
 - `frontmatter-validation-before-merge` and `canon-quality` CI green.
-- Mover counts match (~138 / ~94); contested files carry `"undecided"`.
+- Mover counts reconcile: confident `"outcomes-driven-development"` + `"oddkit"` + `"undecided"` ≈ 232, with bucket totals (confident + the undecided that fall in each bucket) ≈ 138 core / ≈ 94 tool, and `"undecided"` ≈ 29; contested files carry `"undecided"`.
 - Sidecar present for non-md movers.
 - No file moved; no body content changed; `docs/archive` and the PDF untouched.
 
