@@ -20,16 +20,6 @@ target_repo: "outcomes-driven-development"
 
 This method makes extreme exploration safe by requiring a faithful exhaust artifact before closure.
 
-## Outline
-
-- Required Sections
-- What Must Not Happen
-- Closure Rule
-- Portability Notes
-- See Also
-
----
-
 ## Content
 
 **Method v0.1**

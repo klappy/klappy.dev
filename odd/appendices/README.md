@@ -23,15 +23,7 @@ Extended concepts that deepen understanding without introducing enforcement. The
 
 ## Contents
 
-| File | Title | Summary |
-|------|-------|---------|
-| `alignment-reviews.md` | Alignment Reviews | Periodic evaluation of the ODD system itself to detect drift between stated intent, implemented process, and observed outcomes. |
-| `evolution-not-automation.md` | Evolution, Not Automation | This system optimizes learning, not execution. Humans stay in the loop. |
-| `failure-driven-modularity.md` | Failure-Driven Modularity | Modular boundaries are introduced only after repeated failure to regenerate from spec. Modularity is an outcome of failure, not a prerequisite. |
-| `media-as-learning-layer.md` | Media as a Learning Layer | Media reduces cognitive load over stable written content. Canonical truth lives in text. |
-| `progressive-elevation.md` | Progressive Elevation & Decay | The five-layer portability model: how artifacts move from ephemeral attempts to durable canon through strict elevation criteria. Most should decay; few should elevate. |
-| `quantum-development.md` | Quantum Development | Why multiple attempts against the same PRD are sometimes necessary before changing the PRD itself. |
-| `visual-evolution.md` | Visual Evolution | Visual systems evolve independently from products through versioned visual interfaces. |
+To list the documents in this collection: oddkit `catalog` with `path_prefix=odd/appendices/`.
 
 ---
 

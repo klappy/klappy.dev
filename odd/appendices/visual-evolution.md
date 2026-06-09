@@ -21,22 +21,6 @@ target_repo: "outcomes-driven-development"
 
 In ODD, visual systems evolve independently from products. Visual consistency is enforced through versioned visual interfaces and evolutionary selection of visual assets, not shared components or frozen style guides. Products consume visual systems as contracts. Visual decisions are explicit, versioned, testable, and replaceable—treated like API decisions. Three layers exist: Visual Interfaces (compatibility contracts, slow, versioned), Visual Assets (generated outputs, disposable), and Visual Attempts (evolutionary exploration, ephemeral). Visual evolution follows the same promotion rules as code. Products declare compatibility; they do not own visuals.
 
-## Outline
-
-- Summary
-- The Core Principle
-- Visual Layers
-- Visual Interfaces
-- Visual Assets
-- Visual Attempts
-- Promotion Model
-- Separation from Product Lanes
-- Relationship to Evolutionary Development
-- Non-Goals
-- Related Canon
-
----
-
 ## Content
 
 Visual consistency is not enforced through shared components or frozen style guides.

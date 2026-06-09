@@ -21,9 +21,7 @@ The directory exists so questions of the form "where should X live?" become laye
 
 ## Contents
 
-| File | Title |
-|------|-------|
-| `substrate-stack.md` | The Klappy Substrate Stack — OSI-Equivalent Layered Architecture for the Program |
+To list the documents in this collection: oddkit `catalog` with `path_prefix=canon/architecture/`.
 
 ---
 

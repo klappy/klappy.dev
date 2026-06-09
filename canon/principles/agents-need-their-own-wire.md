@@ -34,20 +34,6 @@ The principle is `semi_stable` rather than `stable` because the substrate has no
 
 ---
 
-## Outline
-
-- The Failure Mode: When the Human Is the Wire
-- The Structural Answer: A Wire for Agents
-- What the Architectural Answer Enables
-- AMS as the Worked Reference Implementation
-- Relationship to Symmetric Participation
-- What This Principle Does Not Replace
-- Failure Modes — When the Wire Itself Becomes the Bottleneck
-- Why This Survives Contact With Reality
-- See Also
-
----
-
 ## The Failure Mode: When the Human Is the Wire
 
 Today's typical multi-agent workflow looks like this: the operator opens Claude in one tab, ChatGPT in another, Cursor in a third, maybe a custom agent in a fourth. They prompt agent A; agent A produces output. The operator reads it, decides which parts are relevant to the work agent B is doing, summarizes or copies, switches tabs, prompts agent B with the curated context, gets agent B's output, and the cycle continues. Each agent is doing skilled, capable work. The human's role is plumbing.

@@ -20,26 +20,6 @@ target_repo: "outcomes-driven-development"
 
 Decision rules describe how decisions are made when multiple valid options exist. They complement Constraints by answering "how I choose." Rules include: outcomes before implementation, borrow-bend-break-build progression, KISS, DRY with isolation, explicit state, recoverability over perfection, visible tradeoffs, optimizing for the next maintainer, UI carrying explanation, verification before completion, escalation only when defaults fail, admitting uncertainty early, preferring one-shot builds over steering misses, and hard-coding protocols (not domain tables).
 
-## Outline
-
-- Outcomes Before Implementation
-- Borrow, Bend, Break, Build
-- Simplicity Wins (KISS)
-- DRY, But Not at the Cost of Isolation
-- Prefer Explicit State
-- Favor Recoverability Over Perfection
-- Make Tradeoffs Visible Early
-- Optimize for the Next Maintainer
-- UI Should Carry the Explanation
-- If It Cannot Be Verified, It Is Not Done
-- Escalate Only When Defaults Fail
-- Say "I Don't Know" Early
-- Prefer One-Shot Builds
-- Hard-Code Protocols, Not Domain Tables
-- Measure Total Cost Before Optimizing
-
----
-
 ## Operating Constraints
 
 - MUST define outcome before choosing tools, architecture, or code

@@ -21,15 +21,6 @@ target_repo: "outcomes-driven-development"
 
 This template defines the standard structure for ODD articles. ODD contains universal principles—truths that would still be valid in 10 years, for any team, in any context. ODD is the most stable layer. Use this template when adding new principles or philosophy documents.
 
-## Outline
-
-- When to Add to ODD
-- Frontmatter Fields
-- Document Structure
-- Example
-
----
-
 ## When to Add to ODD
 
 Add to ODD when:
@@ -97,14 +88,6 @@ tags: ["odd", "philosophy"]
 1-2 paragraph compressed overview. What is this principle?
 Why is it universal? How does it shape thinking?
 
-## Outline
-
-- Section 1
-- Section 2
-- Section 3
-
----
-
 ## Content
 
 [Full philosophical content...]
@@ -142,14 +125,6 @@ tags: ["odd", "philosophy", "example"]
 This principle recognizes that human cognitive bandwidth is limited
 while machine output is cheap. Systems should optimize for preserving
 valuable thinking, not for preserving generated artifacts.
-
-## Outline
-
-- The Scarcity
-- The Abundance
-- The Implication
-
----
 
 ## Content
 

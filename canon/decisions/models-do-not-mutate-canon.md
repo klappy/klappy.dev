@@ -19,16 +19,6 @@ execution_posture: governing
 
 This decision records that AI models (LLMs, agents, assistants) are not permitted to directly edit Canon content. Models may read, analyze, summarize, and report on Canon. They may draft proposed changes. But the act of mutation—writing changes to Canon files—requires human review and approval. This preserves Canon's role as stable, human-governed truth.
 
-## Outline
-
-- Decision
-- Status
-- Context
-- Alternatives Considered
-- Consequences
-
----
-
 ## Operating Constraints
 
 - MUST NOT allow models to write changes directly to Canon files

@@ -27,16 +27,6 @@ It must not be used to launder moral authority, enforce ideology, or create "age
 
 Prior to Epoch 5, this document stated that ODD does not define truth or morality. That boundary was intentional — it prevented ODD from becoming dogmatic. Epoch 5 revised this position after repeated evidence that epistemic systems without moral commitments produce sophisticated compliance theater rather than genuine integrity. The original boundary against defining *authority* remains intact: ODD defines what is owed to truth, not who decides what truth is.
 
-## Outline
-
-- What ODD Governs
-- What ODD Does Not Govern
-- What This Forces
-- What This Forbids
-- See Also
-
----
-
 ## Content
 
 **Canon v0.1**

@@ -20,16 +20,6 @@ target_repo: "outcomes-driven-development"
 
 This method exists to make boundary transitions safe without turning them into ritual. It operationalizes the canon constraint: **Boundary Transitions Require Deceleration**.
 
-## Outline
-
-- Exit Checklist
-- Entry Checklist
-- Evidence Notes
-- When to Skip (Rare)
-- See Also
-
----
-
 ## Content
 
 **Method v0.1**

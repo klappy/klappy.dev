@@ -20,18 +20,6 @@ execution_posture: governing
 
 ODD is organized as a three-tier conceptual hierarchy where each layer absorbs different pressure and has different decay rates. ODD contains universal principles (timeless, product-agnostic), Canon contains program-level constraints (shared rules across products), and Docs contains implementation details (how this instance works). This separation allows ODD to outgrow any single repository without losing coherence.
 
-## Outline
-
-- Decision
-- Status
-- The Three Tiers
-- The Litmus Test
-- Why This Matters
-- Consequences
-- Evidence
-
----
-
 ## Operating Constraints
 
 - MUST classify files using the litmus test: 10-year truth → ODD, all-products rule → Canon, local implementation → Docs

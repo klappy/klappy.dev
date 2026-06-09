@@ -26,16 +26,6 @@ Cognitive Partitioning names this constraint and explains why isolating reasonin
 responsibilities becomes necessary as systems scale. The concept is universal and
 does not prescribe any specific implementation.
 
-## Outline
-
-- The failure mode
-- The underlying constraint
-- Analogy: hiring too early
-- Relationship to other ODD concepts
-- Non-goals
-
----
-
 ## The Failure Mode
 
 When a reasoning system has access to too many valid actions, it begins to fail

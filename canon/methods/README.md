@@ -23,13 +23,9 @@ Constraints define non-negotiable limits. Principles define posture and reasonin
 Methods are not workflows, enforcement, or "the one true way."
 They are **durable application patterns** that reduce ambiguity, prevent drift, and make correct application easier—especially under acceleration.
 
-## Outline
+## Contents
 
-- What Methods Are
-- What Methods Are Not
-- How Methods Relate to Constraints and Principles
-- When to Add a Method
-- See Also
+To list the documents in this collection: oddkit `catalog` with `path_prefix=canon/methods/`.
 
 ---
 

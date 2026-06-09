@@ -22,16 +22,6 @@ If epistemic decisions are not encoded, they will be re-litigated. Humans do thi
 
 ODD exists to encode decisions once so reasoning compounds instead of resetting.
 
-## Outline
-
-- What Counts as "Epistemic"
-- What This Forces
-- What This Forbids
-- Evidence Requirements
-- See Also
-
----
-
 ## Content
 
 **Canon v0.1**

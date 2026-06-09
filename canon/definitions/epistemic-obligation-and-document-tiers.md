@@ -20,18 +20,6 @@ target_repo: "outcomes-driven-development"
 
 This document explains the three-tier system used to organize content in this repository. Tiers are not about importance, value, or quality. They are about epistemic obligation—how much a reader or system is obligated to absorb and respect content at each level. Tier 1 carries foundational obligation and rarely changes. Tier 2 carries shared obligation and evolves carefully. Tier 3 carries awareness without obligation and may change freely. Tiers are orthogonal to folders. Any folder may contain documents at any tier.
 
-## Outline
-
-- What Tiers Mean
-- Tier 1: Foundational Obligation
-- Tier 2: Shared Obligation
-- Tier 3: Awareness Without Obligation
-- Why Tier 3 Exists
-- Tier 0: Scope Exclusion (Not a Tier)
-- Tiers Are Not Importance
-
----
-
 ## Operating Constraints
 
 - MUST absorb Tier 1 content fully before proceeding; contradiction is a serious error

@@ -21,23 +21,6 @@ target_repo: "outcomes-driven-development"
 
 Quantum Development is a way of reasoning about uncertainty in AI-assisted development. Given the same PRD, different agents, prompts, and execution paths can produce meaningfully different results. Each attempt is an independent observation of the same specification. The goal is to distinguish specification failure from execution-path variance. A PRD is a hypothesis, an attempt is an experimental run, an outcome is an observation. Multiple attempts allow patterns to emerge and prevent premature convergence. Quantum Development is appropriate when the PRD is clear but failure is ambiguous. It ends when one candidate is promoted.
 
-## Outline
-
-- Purpose
-- Core Idea
-- PRD vs Attempt (Clarified)
-- Why This Matters
-- When Quantum Development Is Appropriate
-- When to Change the PRD Instead
-- Independence Requirement
-- Outcome Interpretation
-- On Timing and Observation
-- Relationship to ODD
-- What This Appendix Is Not
-- Summary
-
----
-
 ## Content
 
 ## Purpose

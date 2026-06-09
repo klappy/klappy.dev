@@ -32,19 +32,6 @@ The Klappy substrate is committed to a different shape. Substrate maintainers mo
 
 ---
 
-## Outline
-
-- The Distinction That Holds the Principle Together
-- What the Substrate Maintainer Sells
-- What Adapter Authors and Agent Builders Sell
-- What Role Creators and Application Operators Sell
-- The Mechanism That Instantiates It Today
-- Why This Is Required for Maintainer Survival
-- What This Forbids
-- See Also
-
----
-
 ## The Distinction That Holds the Principle Together
 
 The principle hinges on a single question for every revenue surface in the program:

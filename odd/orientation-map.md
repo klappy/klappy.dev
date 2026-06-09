@@ -21,17 +21,6 @@ target_repo: "outcomes-driven-development"
 
 This orientation map provides a single-page mental model of how Intent flows through ODD Manifesto to Canon to Decisions to Evidence to Outcomes. ODD is organized as a three-tier conceptual hierarchy: ODD contains universal principles (timeless), Canon contains program-level constraints (shared rules), and Docs contains implementation details (how this instance works). Maturity moves from Exploration through Validation to Commitment. The map explicitly rejects "if it compiles, it's done" and "governance replaces judgment."
 
-## Outline
-
-- The Core Idea (Intent → ODD → Canon → Decisions → Evidence → Outcomes)
-- How to Read This Map
-- The Three-Tier Hierarchy (ODD → Canon → Docs)
-- Where Maturity Lives
-- What This Map Explicitly Rejects
-- Why This Map Exists
-
----
-
 ## Content
 
 > This is not a workflow. It is a mental model.

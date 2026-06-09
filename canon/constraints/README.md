@@ -23,31 +23,9 @@ target_repo: "outcomes-driven-development"
 
 Constraints define the baseline assumptions and design defaults applied to most work. They cover offline-first design, long-term maintainability, interoperability, stateless architectures, AI as accelerator (not authority), evidence over assertion, contextual UX, ephemeral artifacts, explicit tradeoffs, human variability as a design input, irreversibility gates, epistemic encoding, boundary deceleration, single-agent integrity, guide posture for public content, and the relationship between ODD's values and its epistemic function. Each constraint includes what is assumed, why it matters, what it forces, and when it does not apply. These are not universal best practices but reflect specific environments and problems.
 
-## Outline
+## Contents
 
-- Offline-First (Default)
-- Long Timelines & Changing Ownership
-- Maintainability Over Cleverness
-- Interoperability Over Feature Completeness
-- Stateless or Low-State by Default
-- AI as Accelerator, Not Authority
-- Evidence Over Assertion
-- UX Is Contextual, Not Universal
-- Ephemeral Artifacts Are Acceptable
-- Explicit Tradeoffs
-- Lane Self-Containment
-- [Single-Agent Integrity Precedes Collaboration](/canon/constraints/single-agent-integrity-precedes-collaboration.md)
-- [Encode Epistemic Decisions](/canon/constraints/encode-epistemic-decisions.md)
-- [Boundary Transitions Require Deceleration](/canon/constraints/boundary-transitions-require-deceleration.md)
-- [ODD Is an Epistemic OS, Not a Value System](/canon/constraints/odd-is-epistemic-os-not-values.md)
-- [No Irreversible Action Without Epistemic Justification](/canon/constraints/no-irreversible-action-without-epistemic-justification.md)
-- [Humans Are Variable Inputs](/canon/constraints/humans-are-variable-inputs.md)
-- [Meaning Must Not Depend on Path](/canon/constraints/meaning-must-not-depend-on-path.md)
-- [Guide Posture — We Enter Their Story, Not the Other Way Around](/canon/constraints/guide-posture.md)
-- **ODD-Level Constraints** (universal, in `/odd/constraint/`):
-  - [Anti-Metric Laundering](/odd/constraint/anti-metric-laundering.md) — A system that cannot surface its own blind spots will optimize to protect them
-  - [Anti-Cache Lying](/odd/constraint/anti-cache-lying.md) — A cache of derived content is a polite lie; only content-addressed storage is acceptable
-  - [Use Only What Hurts](/odd/constraint/use-only-what-hurts.md) — Prevents ODD from becoming heavy, coercive, or self-justifying
+To list the documents in this collection: oddkit `catalog` with `path_prefix=canon/constraints/`. Universal ODD-level constraints live under `odd/constraint/` (`path_prefix=odd/constraint/`).
 
 ---
 

@@ -21,17 +21,6 @@ target_repo: "outcomes-driven-development"
 
 Prompt architecture addresses the God Prompt anti-pattern: as scope grows, prompts become monolithic, unmaintainable, sensitive to small edits, context-bloated, and inconsistent. The alternative is Orchestrated Intent: keep stable intent in canonical artifacts, construct task prompts dynamically, use smaller focused agents for bounded tasks, pass results through shared constraints and evidence standards. Intent is layered: Worldview (rarely changes), Project Intent (changes occasionally), Task Intent (changes constantly). Only the bottom layer should enter the working prompt in full detail. Context budgeting treats every token like a limited resource.
 
-## Outline
-
-- The Anti-Pattern: Prompt Maximalism (God Prompt)
-- The Alternative: Orchestrated Intent
-- Intent Graph (Mental Model)
-- Context Budgeting
-- Maturity Note
-- Failure Mode of Orchestration
-
----
-
 ## Content
 
 **Canon / ODD Appendix v0.1**

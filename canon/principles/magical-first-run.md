@@ -32,18 +32,6 @@ Anything that breaks this — unexplained jargon, multi-step setup, blank rooms,
 
 ---
 
-## Outline
-
-- The Sixty-Second Test
-- The Success Metric Is Linguistic
-- What This Principle Forbids at L5
-- Why Non-Technical Operators First
-- The Bridge That Makes This Possible
-- How the Stack Supports It
-- See Also
-
----
-
 ## The Sixty-Second Test
 
 A non-technical operator opens an L5 application for the first time. The clock starts when the URL loads. By the time sixty seconds have passed, all of the following must be true:

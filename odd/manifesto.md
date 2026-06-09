@@ -27,24 +27,6 @@ target_repo: "outcomes-driven-development"
 
 Outcomes-Driven Development (ODD) operationalizes governance for human-AI collaboration. The core thesis: development is about defining outcomes, enforcing constraints, and verifying reality—not writing code. AI accelerates execution; governance preserves trust. The pillars include Prompt Over Code, KISS, DRY with Isolation, Consistency, Maintainability, Antifragile design, and Scalability. ODD treats restartability as a feature, applies progressive governance based on maturity (PoC → Pilot → Production), requires evidence over assertion, treats AI as accelerator not authority, demands falsifiable outcomes, prefers reversibility, and requires stop conditions. Memory is the bottleneck, not computation. ODD is portable epistemic infrastructure — it works in monorepos, multi-repos, or any structure where canon is addressable.
 
-## Outline
-
-- Purpose and Core Thesis
-- Values-First Foundation
-- Pillars (Operational Interpretation)
-- Restartability Over Salvage
-- Progressive Governance (Maturity-Aware)
-- Evidence as the Gate
-- Trust, Authority, and AI
-- Outcomes Must Be Falsifiable
-- Reversibility and Cost Awareness
-- Stop Conditions
-- Memory Is the Bottleneck
-- Relationship to Canon
-- Confidence, Risks, and Known Failure Modes
-
----
-
 ## Content
 
 > ODD v1.2 — Extended (Internal / Agent-Governance) → for canon, MCP, agents (this file)

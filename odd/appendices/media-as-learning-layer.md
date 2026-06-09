@@ -21,20 +21,6 @@ target_repo: "outcomes-driven-development"
 
 Media exists to reduce cognitive load, not increase it. It is a learning layer over stable written content—optional, contextual, and regenerable. Canonical truth lives in text; media supports understanding but does not define it. Core rules: clarity is the default (not any specific medium), media is not canon, progressive disclosure is mandatory (opt-in only, no autoplay), media must match learning intent (diagrams for mental models, short video for orientation, audio for reflection), and media is created only for stable content. The system rejects media-first pages, content dumps, and redundant explanations.
 
-## Outline
-
-- Summary
-- Core Rules
-  - Clarity is the default
-  - Media is not Canon
-  - Progressive disclosure is mandatory
-  - Match media to learning intent
-  - Stability before production
-- Anti-Patterns (Explicitly Rejected)
-- Compliance Note
-
----
-
 ## Content
 
 Media is a **learning layer** over stable written content.
