@@ -12,7 +12,7 @@ date: 2026-04-09
 derives_from: "canon/meta/frontmatter-schema.md, canon/values/axioms.md"
 complements: "canon/meta/writing-canon.md, canon/constraints/definition-of-done.md"
 governs: "All PRs that add or modify files in writings/, canon/, odd/, or docs/"
-target_repo: "oddkit"
+target_repo: "outcomes-driven-development"
 ---
 
 # Frontmatter Validation Before Merge — No Exceptions

@@ -13,7 +13,7 @@ derives_from: "canon/values/axioms.md, canon/meta/frontmatter-schema.md, canon/p
 complements: "canon/methods/revision-lens-sequence.md, canon/constraints/frontmatter-validation-before-merge.md, canon/principles/dream-house-principle.md, canon/principles/discernment-layer.md"
 governs: "Any doc-producing workflow that produces content intended to be merged into the knowledge base — essays, canon docs, observations, constraints, methods, principles"
 status: active
-target_repo: "oddkit"
+target_repo: "outcomes-driven-development"
 ---
 
 # Canon-Integration Audit — Three Checks Between Authoring and Merge

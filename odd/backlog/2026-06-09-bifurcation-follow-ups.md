@@ -31,7 +31,7 @@ Blocked by the defaults item. Delete the moved files (142 ODD + 75 oddkit md + s
 
 All 19 (+triangle-pass) undecided markdown docs adjudicated live against the four criteria. Overlay (untagged, stay): ai-voice-cliches, author-identity-language, harness-disambiguation, relational-sensitivity, guide-posture, triangle-of-yaps, triangle-pass, writing-apocrypha-fragments, writing-predocumentaries. Core (shipped): writing-canon, dual-context-writing, prompt-over-code, antifragile-failures-grow-canon, using-ease-and-resistance-as-signals, revision-lens-sequence, choosing-the-right-narrative-container, vodka-architecture, kiss-simplicity-is-the-ceiling, maintainability-one-person-indefinitely, doing-less-enables-more.
 
-Remaining: **AGENTS.md two-way split** (creed/axioms half → core; oddkit-MCP-integration half → oddkit) — still scope-map "undecided". Also pending ruling: three oddkit-boundary docs (envelope-time-fields lean stays; canon-integration-audit, frontmatter-validation-before-merge lean core).
+Remaining: **AGENTS.md two-way split** (creed/axioms half → core; oddkit-MCP-integration half → oddkit) — still scope-map "undecided". Oddkit-boundary trio ruled core 2026-06-09: envelope-time-fields (the principle — request time vs content provenance — travels; oddkit field names are the worked example), canon-integration-audit, frontmatter-validation-before-merge.
 
 
 ## P2 — Worker auth for private knowledge bases
