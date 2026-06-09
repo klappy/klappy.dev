@@ -13,7 +13,7 @@ derives_from: "canon/values/axioms.md, canon/principles/vodka-architecture.md, c
 complements: "canon/principles/cache-fetches-and-parses.md, canon/principles/type-contract-plus-adversarial-review.md"
 governs: "Any tool handler, MCP server endpoint, or user-facing operation whose natural shape is 'scan a corpus to produce complete data.' Binding on all oddkit-pattern MCP servers in this program when deciding where expensive work runs relative to the user-blocking path."
 status: active
-target_repo: "oddkit"
+target_repo: "outcomes-driven-development"
 ---
 
 # Partial Data With Transparency And Background Warm — Never Block The User On A Corpus Scan

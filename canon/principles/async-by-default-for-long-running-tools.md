@@ -14,7 +14,7 @@ derives_from:
 complements:
   - klappy://canon/principles/partial-data-with-transparency-and-background-warm
 status: active
-target_repo: "oddkit"
+target_repo: "outcomes-driven-development"
 ---
 
 # Async by Default — Long-Running MCP Tools Return an Identifier, Never Block
