@@ -6,8 +6,8 @@ audience: canon
 exposure: nav
 tier: 1
 voice: neutral
-stability: draft
-status: proposed
+stability: stable
+status: ratified
 tags: ["odd", "architecture", "identity", "uri", "cqrs", "bifurcation", "read-model", "write-model"]
 relevance: decision
 execution_posture: governing
@@ -46,7 +46,7 @@ the decoupling.
 
 ## Status
 
-**Proposed.** Challenge battery passed 2026-06-09 (planning mode, no canon
+**Ratified** (PR #228 merged 2026-06-09; status flipped post-merge). Challenge battery passed 2026-06-09 (planning mode, no canon
 tensions, block_until_addressed false). Additionally pressure-tested across
 four adversarial maintainer review rounds (registry objection, static-index
 objection, discoverability objection, substrate thought experiment), each of
