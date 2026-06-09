@@ -29,7 +29,7 @@ Blocked by the defaults item. Delete the moved files (142 ODD + 75 oddkit md + s
 
 ## P1 — Undecided adjudication (joint session)
 
-21 `target_repo: "undecided"` files + 3 forks (writing-vertical cluster; vodka/architecture principles split; AGENTS.md two-way split). Format: succinct per-file proposal + one-line why, timeboxed review with maintainer. AGENTS.md must split before either half moves.
+19 `target_repo: "undecided"` files + 3 forks (writing-vertical cluster; vodka/architecture principles split; AGENTS.md two-way split). Format: succinct per-file proposal + one-line why, timeboxed review with maintainer. AGENTS.md must split before either half moves.
 
 ## P2 — Worker auth for private knowledge bases
 
