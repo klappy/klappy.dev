@@ -29,14 +29,14 @@ Blocked by the defaults item. Delete the moved files (142 ODD + 75 oddkit md + s
 
 ## P1 — Undecided adjudication (joint session)
 
-19 `target_repo: "undecided"` files + 3 forks (writing-vertical cluster; vodka/architecture principles split; AGENTS.md two-way split). Format: succinct per-file proposal + one-line why, timeboxed review with maintainer. AGENTS.md must split before either half moves.
+17 `target_repo: "undecided"` files + 3 forks (writing-vertical cluster; vodka/architecture principles split; AGENTS.md two-way split). Format: succinct per-file proposal + one-line why, timeboxed review with maintainer. AGENTS.md must split before either half moves.
 
 Adjudication criteria (maintainer calibration, recorded 2026-06-09):
 
 1. **Topic is not the routing criterion.** A doc is not pulled from core because of what it talks about; canon principles route on whether the principle itself is portable. Ruled in-session: `canon/principles/methodology-personification` and `canon/principles/voice-as-cognitive-load-shedding` are core despite being voice/communication-flavored.
 2. **Provisional found-frameworks stay overlay.** A framework the maintainer found and is still personally validating ("applied as working practice, retired when disconfirmed") does not ship to adopters as core canon until proven. Ruled in-session: `canon/methods/triangle-pass` returned to the overlay (klappy.dev #233, outcomes-driven-development #3) — it derives from `canon/meta/triangle-of-yaps` (undecided).
 
-3. **Exposed tension without a ruling is core; the ruling itself is overlay.** When a principle, constraint, or method names a tension — "it could be this or this, with a range between" — and does not make the maintainer's judgment call about where on the range to land, that exposure is universal fodder for outcomes-driven-development. The test per doc: does it adjudicate, or does it only surface what you need to think through? Adjudication is klappy-specific; the tension travels.
+3. **Exposed tension without a ruling is core; the ruling itself is overlay.** When a principle, constraint, or method names a tension — "it could be this or this, with a range between" — and does not make the maintainer's judgment call about where on the range to land, that exposure is universal fodder for outcomes-driven-development. The test per doc: does it adjudicate, or does it only surface what you need to think through? Adjudication is klappy-specific; the tension travels. Ruled in-session: guide-posture stays in klappy.dev (externally proven but a chosen style — the choice is the adjudication); dual-context-writing and writing-canon are core (reusable authoring constraints; writing-canon is progressive-disclosure doctrine).
 
 4. **oddkit the repo is a user manual and a maintenance manual — nothing else.** If a doc is not about creating, maintaining, or using oddkit specifically, it does not belong in the oddkit repo. Principles and methods that oddkit merely embodies are ODD core; the engine being the proof does not make the principle engine documentation. Ruled in-session: 7 docs moved oddkit → core (the principles cluster + audit-gates-are-spawned-agent-sessions). Open: some user-manual content may itself need a different home — review when the manuals are next touched.
 
