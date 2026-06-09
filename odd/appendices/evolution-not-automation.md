@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/evolution-not-automation
-kind: odd
+kind: canon
 title: "Evolution, Not Automation"
 audience: canon
 exposure: hidden

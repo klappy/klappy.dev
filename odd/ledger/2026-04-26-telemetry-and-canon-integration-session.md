@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-04-26-telemetry-and-canon-integration-session
-kind: odd
+kind: journals
 title: "Ledger — Telemetry Semantic Names, cache_tier Streaming-Race, And Canon-Integration-Audit (Four PRs Shipped)"
 audience: odd
 exposure: nav

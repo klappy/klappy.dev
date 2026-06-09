@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/handoffs/2026-05-10-survey-governance-wiring
-kind: odd
+kind: docs
 title: "Handoff — Survey Method Governance Wiring (PR #192 continuation)"
 audience: docs
 exposure: nav

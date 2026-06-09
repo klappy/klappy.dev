@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-05-15-cutover-validation-session
-kind: odd
+kind: journals
 title: "Session Ledger — Cutover Validation, Canon Authoring, Wrapper Smoke (2026-05-15 to 2026-05-16)"
 audience: odd
 exposure: nav

@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-04-18-e0008-3-validation-and-teams-over-swarms
-kind: odd
+kind: journals
 title: "E0008.3 Session — Validation Mode, Context Break, and Teams Over Swarms"
 audience: odd
 exposure: nav

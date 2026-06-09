@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/orientation-map
-kind: odd
+kind: canon
 title: "ODD + Canon + Evidence — Orientation Map"
 audience: canon
 exposure: nav

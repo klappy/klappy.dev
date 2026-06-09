@@ -1,6 +1,6 @@
 ---
 uri: klappy://public/odd
-kind: odd
+kind: canon
 title: "What is ODD? — Outcomes-Driven Development"
 audience: public
 exposure: nav

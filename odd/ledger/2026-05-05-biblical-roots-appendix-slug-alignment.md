@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-05-05-biblical-roots-appendix-slug-alignment
-kind: odd
+kind: journals
 title: "Biblical Roots Appendix Slug Alignment — Closing One Audit-Job-#36 Finding by Aligning the Forward-Ref to the Draft's Declared URI"
 audience: docs
 exposure: nav

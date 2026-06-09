@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-04-20-p1-3-1-challenge-canary-landed
-kind: odd
+kind: journals
 title: "Session Ledger — P1.3.1 Challenge governance_source Canary Landed (0.19.0)"
 audience: odd
 exposure: nav

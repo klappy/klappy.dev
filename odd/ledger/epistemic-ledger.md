@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/ledger/epistemic-ledger
-kind: odd
+kind: journals
 title: "The Epistemic Ledger — Durable Artifacts That Survive Ephemeral Conversations"
 audience: canon
 exposure: nav

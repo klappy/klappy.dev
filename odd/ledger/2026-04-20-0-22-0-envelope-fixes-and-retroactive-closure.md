@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-04-20-0-22-0-envelope-fixes-and-retroactive-closure
-kind: odd
+kind: journals
 title: "Session Ledger — 0.22.0 Ship Cycle (Envelope Fixes) and the First Retroactive-Closure Pattern Under release-validation-gate Canon"
 audience: odd
 exposure: nav

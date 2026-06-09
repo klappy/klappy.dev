@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/encoding-types/observation
-kind: odd
+kind: canon
 title: "Encoding Type: Observation (O)"
 audience: docs
 exposure: nav

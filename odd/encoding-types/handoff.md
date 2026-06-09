@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/encoding-types/handoff
-kind: odd
+kind: canon
 title: "Encoding Type: Handoff (H)"
 audience: docs
 exposure: nav

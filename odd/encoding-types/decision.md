@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/encoding-types/decision
-kind: odd
+kind: canon
 title: "Encoding Type: Decision (D)"
 audience: docs
 exposure: nav

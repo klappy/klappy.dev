@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/getting-started/agents-and-mcp
-kind: odd
+kind: docs
 title: "Agents & MCP"
 audience: odd
 exposure: nav

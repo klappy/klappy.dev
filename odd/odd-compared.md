@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/odd-compared
-kind: odd
+kind: canon
 title: "Odd Compared"
 audience: odd
 exposure: nav

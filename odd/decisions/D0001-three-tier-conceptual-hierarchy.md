@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/decisions/D0001
-kind: odd
+kind: canon
 title: "Three-Tier Conceptual Hierarchy"
 audience: canon
 exposure: nav

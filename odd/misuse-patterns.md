@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/misuse-patterns
-kind: odd
+kind: canon
 title: "ODD Misuse Patterns"
 audience: canon
 exposure: nav

@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/decisions/D0002
-kind: odd
+kind: canon
 title: "The Canon Storage Model: Files Write, the Index Reads, the URI Keys"
 audience: canon
 exposure: nav

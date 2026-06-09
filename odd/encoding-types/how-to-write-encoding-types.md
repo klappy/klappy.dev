@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/encoding-types/how-to-write-encoding-types
-kind: odd
+kind: canon
 title: "How to Write an Encoding Type Governance Article"
 audience: docs
 exposure: nav

@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/ledger/project-journal-best-practices
-kind: odd
+kind: journals
 title: "Project Journal Best Practices — Sizing, Timestamps, and Tradeoffs"
 audience: docs
 exposure: nav

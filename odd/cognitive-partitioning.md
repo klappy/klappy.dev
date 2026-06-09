@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/cognitive-partitioning
-kind: odd
+kind: canon
 title: "Cognitive Partitioning"
 audience: docs
 exposure: nav

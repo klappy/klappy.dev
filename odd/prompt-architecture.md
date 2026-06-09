@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/prompt-architecture
-kind: odd
+kind: canon
 title: "Prompt Architecture"
 audience: canon
 exposure: nav

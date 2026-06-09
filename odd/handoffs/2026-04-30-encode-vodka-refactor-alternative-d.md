@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/handoffs/2026-04-30-encode-vodka-refactor-alternative-d
-kind: odd
+kind: docs
 title: "Handoff — oddkit_encode Vodka Refactor (Alternative D, Governance-Driven Parser, E0008.4 Phase 2)"
 audience: docs
 exposure: nav

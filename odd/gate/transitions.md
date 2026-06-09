@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/gate/transitions
-kind: odd
+kind: canon
 title: "Gate Transitions — Mode Transition Keys and Detection Terms"
 audience: docs
 exposure: nav

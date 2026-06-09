@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/challenge-types/proposal
-kind: odd
+kind: canon
 title: "Challenge Type: Proposal"
 audience: docs
 exposure: nav

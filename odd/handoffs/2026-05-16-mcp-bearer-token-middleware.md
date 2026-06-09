@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/handoffs/2026-05-16-mcp-bearer-token-middleware
-kind: odd
+kind: docs
 title: "Handoff — MCP Server Bearer-Token Middleware (Supabase JWT + PAT Validation)"
 audience: odd
 exposure: nav
