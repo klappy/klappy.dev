@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-04-30-e0008-4-phase-1-encode-governance-migration-landed
+kind: journals
 title: "E0008.4 Phase 1 Closeout — Encode Governance Migration from TruthKit-KB (Canon-Only Ship, Phase 2 Handoff Laid)"
 audience: docs
 exposure: nav

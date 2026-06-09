@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/constraint/use-only-what-hurts
+kind: canon
 title: "Use Only What Hurts"
 audience: odd
 exposure: nav

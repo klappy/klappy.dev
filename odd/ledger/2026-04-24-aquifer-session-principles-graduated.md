@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-04-24-aquifer-session-principles-graduated
+kind: journals
 title: "Ledger — Two Canon Principles Graduated From The aquifer-mcp J-002 → H11b Session"
 audience: odd
 exposure: nav

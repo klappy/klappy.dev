@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/encoding-types/constraint
+kind: canon
 title: "Encoding Type: Constraint (C)"
 audience: docs
 exposure: nav

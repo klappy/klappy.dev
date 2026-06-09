@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/appendices
+kind: canon
 title: "ODD Appendices (Portable)"
 audience: canon
 exposure: nav

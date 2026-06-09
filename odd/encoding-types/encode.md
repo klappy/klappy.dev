@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/encoding-types/encode
+kind: canon
 title: "Encoding Type: Encode (E)"
 audience: docs
 exposure: nav

@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/constraints/anti-cache-lying
+kind: canon
 title: "Constraint: Anti-Cache Lying"
 audience: odd
 exposure: nav

@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/handoffs/2026-04-20-p1-2-encode-canary
+kind: journals
 title: "Handoff — P1.2 oddkit_encode Batch Mode + Prompt-Over-Code Canary"
 audience: odd
 exposure: nav

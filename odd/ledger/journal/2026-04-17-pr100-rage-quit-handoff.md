@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/ledger/journal/2026-04-17-pr100-rage-quit-handoff
+kind: journals
 title: "Session Journal — PR #100 Rage-Quit Handoff"
 audience: odd
 exposure: nav

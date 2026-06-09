@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/ledger/e0007-handoff-bootstrap
+kind: journals
 title: "E0007 Handoff Bootstrap"
 audience: odd
 exposure: nav

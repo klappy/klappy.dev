@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-03-21-drift-audit-session
+kind: journals
 title: "Session Ledger — Drift Audit, Supersession Method, and Learning in Public"
 tier: 3
 type: ledger

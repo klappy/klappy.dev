@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-05-12-ritual-was-the-smell
+kind: journals
 title: "Session Ledger — Ritual Was the Smell (we-were-the-wire revision, 2026-05-12)"
 audience: odd
 exposure: nav

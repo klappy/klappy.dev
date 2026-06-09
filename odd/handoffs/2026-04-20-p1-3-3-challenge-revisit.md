@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/handoffs/2026-04-20-p1-3-3-challenge-revisit
+kind: journals
 title: "Handoff — P1.3.3 Challenge Canon-Parity Refactor + Cache Principle Graduation (0.21.0)"
 audience: odd
 exposure: nav

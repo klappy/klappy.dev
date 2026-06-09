@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/appendices/cognitive-saturation-threshold
+kind: canon
 title: "Cognitive Saturation Threshold — When Words Stop Transferring Knowledge"
 audience: odd
 exposure: nav

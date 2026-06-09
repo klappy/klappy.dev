@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/handoffs/2026-06-09-storage-model-execution
+kind: journals
 title: "Handoff — Execute the Canon Storage Model (D0002 v2), Verify oddkit, Then Bifurcate"
 audience: canon
 exposure: hidden

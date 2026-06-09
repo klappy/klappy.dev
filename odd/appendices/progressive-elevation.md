@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/appendices/progressive-elevation
+kind: canon
 title: Progressive Elevation & Decay
 audience: odd
 exposure: nav

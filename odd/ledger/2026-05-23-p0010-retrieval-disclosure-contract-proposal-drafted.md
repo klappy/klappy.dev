@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-05-23-p0010-retrieval-disclosure-contract-proposal-drafted
+kind: journals
 title: "Session Ledger — P0010 Retrieval Disclosure Contract Proposal Drafted"
 audience: odd
 exposure: nav

@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd
+kind: canon
 title: "Outcomes-Driven Development (ODD)"
 subtitle: "ODD = Outcomes-Driven Development — the philosophical and operational foundation for this repository."
 audience: canon

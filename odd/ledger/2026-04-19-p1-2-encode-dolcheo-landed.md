@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-04-19-p1-2-encode-dolcheo-landed
+kind: journals
 title: "Session Ledger — P1.2 Encode DOLCHEO + Canary Landed (0.18.0)"
 audience: odd
 exposure: nav

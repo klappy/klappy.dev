@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/decisions
+kind: canon
 title: "ODD Conceptual Decisions"
 audience: canon
 exposure: nav

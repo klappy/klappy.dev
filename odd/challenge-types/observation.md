@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/challenge-types/observation
+kind: canon
 title: "Challenge Type: Observation"
 audience: docs
 exposure: nav

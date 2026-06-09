@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/handoffs/2026-04-20-p1-3-4-encode-canon-parity
+kind: journals
 title: "Handoff — P1.3.4 Encode Canon-Parity Refactor (D5 Stemmed Matcher + D9 Cache Removal for triggerRegex) (0.22.0)"
 audience: odd
 exposure: nav

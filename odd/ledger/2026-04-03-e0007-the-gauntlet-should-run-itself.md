@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-04-03-e0007-the-gauntlet-should-run-itself
+kind: journals
 title: "2026 04 03 E0007 The Gauntlet Should Run Itself"
 audience: odd
 exposure: nav

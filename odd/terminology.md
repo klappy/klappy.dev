@@ -1,6 +1,7 @@
 ---
 title: ODD Terminology & Glossary
 uri: klappy://odd/terminology
+kind: canon
 slug: odd-terminology
 version: 0.1
 status: evolving

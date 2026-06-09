@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/challenge-types/principle-extraction
+kind: canon
 title: "Challenge Type: Principle Extraction"
 audience: docs
 exposure: nav
