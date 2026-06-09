@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/challenge-types/pattern-coinage
+kind: odd
 title: "Challenge Type: Pattern Coinage"
 audience: docs
 exposure: nav

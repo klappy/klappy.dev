@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/media-as-learning-layer
+kind: odd
 title: "Media as a Learning Layer"
 audience: canon
 exposure: nav

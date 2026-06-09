@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-04-27-link-rot-phase-2-shipped
+kind: odd
 title: "Session Ledger — Link-Rot Phase 2 Shipped (oddkit v0.26.0 in prod)"
 audience: odd
 exposure: nav

@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-04-20-post-4-7-proactive-loop-experience
+kind: odd
 title: "Observation — Six Sessions of Proactive Loop Since Opus 4.7: Trust Gained, Verbosity Cost, Checkpoint Shape Revealed"
 audience: odd
 exposure: nav

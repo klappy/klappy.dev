@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-05-12-epoch-9-trio-execution
+kind: odd
 title: "Session Ledger — Epoch 9 Trio Execution (2026-05-12)"
 audience: odd
 exposure: nav

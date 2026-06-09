@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/challenge/normative-vocabulary
+kind: odd
 title: "Challenge Normative Vocabulary"
 audience: docs
 exposure: nav

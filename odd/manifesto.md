@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/manifesto
+kind: odd
 title: "ODD Manifesto — Extended"
 audience: canon
 exposure: nav

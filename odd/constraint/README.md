@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/constraint
+kind: odd
 title: "ODD Constraints"
 audience: odd
 exposure: nav

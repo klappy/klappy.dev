@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/quantum-development
+kind: odd
 title: "Quantum Development"
 audience: canon
 exposure: nav

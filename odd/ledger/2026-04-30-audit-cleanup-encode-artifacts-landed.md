@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-04-30-audit-cleanup-encode-artifacts-landed
+kind: odd
 title: "Audit 2026-04-30 Cleanup Closeout — Three Stale Artifacts Superseded, Code-Observation Principle Earned, CLI Deprecation Queued"
 audience: docs
 exposure: nav

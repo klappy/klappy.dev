@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-05-12-epoch-9-planning
+kind: odd
 title: "Session Ledger — Epoch 9 Planning + Gauntlet + Handoff (2026-05-12)"
 audience: odd
 exposure: nav

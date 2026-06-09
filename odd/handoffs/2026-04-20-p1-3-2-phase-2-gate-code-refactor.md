@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/handoffs/2026-04-20-p1-3-2-phase-2-gate-code-refactor
+kind: odd
 title: "Handoff — P1.3.2 Phase 2: oddkit_gate Code Refactor (0.20.0)"
 audience: odd
 exposure: nav

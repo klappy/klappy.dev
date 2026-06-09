@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-04-19-validator-closeout-and-0.17.0
+kind: odd
 title: "Session Ledger — Validator Closeout and 0.17.0 Release"
 audience: odd
 exposure: nav

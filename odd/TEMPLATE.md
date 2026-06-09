@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/template
+kind: odd
 title: "ODD Article Template"
 audience: canon
 exposure: hidden

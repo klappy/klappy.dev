@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/appendices/failure-driven-modularity
+kind: odd
 title: "Failure-Driven Modularity"
 audience: canon
 exposure: nav

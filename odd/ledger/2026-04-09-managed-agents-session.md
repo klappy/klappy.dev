@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-04-09-managed-agents-session
+kind: odd
 title: "2026 04 09 Managed Agents Session"
 audience: odd
 exposure: nav

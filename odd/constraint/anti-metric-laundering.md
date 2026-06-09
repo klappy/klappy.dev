@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/constraints/anti-metric-laundering
+kind: odd
 title: "Constraint: Anti-Metric Laundering"
 audience: odd
 exposure: nav

@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/alignment-reviews
+kind: odd
 title: "Alignment Reviews"
 audience: canon
 exposure: nav

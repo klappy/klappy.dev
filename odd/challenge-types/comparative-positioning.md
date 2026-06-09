@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/challenge-types/comparative-positioning
+kind: odd
 title: "Challenge Type: Comparative Positioning"
 audience: docs
 exposure: nav

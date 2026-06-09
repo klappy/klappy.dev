@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/handoffs/2026-06-09-scope-audit-execution
+kind: odd
 title: "Handoff — scope-audit PR: Tag Movers with target_repo (klappy.dev Bifurcation, Pass 1)"
 audience: odd
 exposure: nav

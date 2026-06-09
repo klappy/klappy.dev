@@ -1,5 +1,6 @@
 ---
 uri: odd://contract/epistemic-contract
+kind: odd
 title: "Epistemic Contract"
 audience: odd
 stability: long_lived

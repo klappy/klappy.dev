@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-04-26-pr139-and-deploy-propagation-correction
+kind: odd
 title: "Ledger Correction — PR #139 Closed The File-Tier Open Item, And A New Deploy-Propagation Open Item Surfaced"
 audience: odd
 exposure: nav

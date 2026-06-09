@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/appendices/template
+kind: odd
 title: "ODD Appendix Template"
 audience: canon
 exposure: hidden

@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/gate/prerequisites
+kind: odd
 title: "Gate Prerequisites — Prerequisite IDs, Check Vocabularies, and Gap Messages"
 audience: docs
 exposure: nav

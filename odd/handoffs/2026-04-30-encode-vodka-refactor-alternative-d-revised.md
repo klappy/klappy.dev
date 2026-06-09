@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/handoffs/2026-04-30-encode-vodka-refactor-alternative-d-revised
+kind: odd
 title: "Handoff (Revised) — oddkit_encode Phase 2 (Five Worker Items + Open Dedup Bug, Scoped Against Real Code State)"
 audience: docs
 exposure: nav

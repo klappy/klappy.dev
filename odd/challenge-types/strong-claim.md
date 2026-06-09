@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/challenge-types/strong-claim
+kind: odd
 title: "Challenge Type: Strong Claim"
 audience: docs
 exposure: nav

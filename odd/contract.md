@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/contract
+kind: odd
 title: "ODD System Contract"
 audience: canon
 exposure: nav

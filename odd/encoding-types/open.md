@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/encoding-types/open
+kind: odd
 title: "Encoding Type: Open (O, forward-pointing)"
 audience: docs
 exposure: nav

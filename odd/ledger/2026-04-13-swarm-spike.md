@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-04-13-swarm-spike
+kind: odd
 title: "2026 04 13 Swarm Spike"
 audience: odd
 exposure: nav

@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/challenge/stakes-calibration
+kind: odd
 title: "Challenge Stakes Calibration"
 audience: docs
 exposure: nav

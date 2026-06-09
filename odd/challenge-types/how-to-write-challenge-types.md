@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/challenge-types/how-to-write-challenge-types
+kind: odd
 title: "How to Write a Challenge Type Governance Article"
 audience: docs
 exposure: nav

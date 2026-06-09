@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/getting-started
+kind: odd
 title: Getting Started
 audience: odd
 exposure: nav

@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/maturity
+kind: odd
 title: "Project Maturity & Progressive Governance"
 audience: canon
 exposure: nav

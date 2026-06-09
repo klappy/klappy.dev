@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/challenge-types/assumption
+kind: odd
 title: "Challenge Type: Assumption"
 audience: docs
 exposure: nav

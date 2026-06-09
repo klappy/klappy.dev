@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/encoding-types/learning
+kind: odd
 title: "Encoding Type: Learning (L)"
 audience: docs
 exposure: nav

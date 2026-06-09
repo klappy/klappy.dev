@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-05-11-trigger-taxonomy-drafting
+kind: odd
 title: "Session Ledger — 2026-05-11 Drafting trigger-source-taxonomy"
 audience: odd
 exposure: nav

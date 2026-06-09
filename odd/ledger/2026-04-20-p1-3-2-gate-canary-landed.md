@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-04-20-p1-3-2-gate-canary-landed
+kind: odd
 title: "Session Ledger — P1.3.2 Gate governance_source Canary Landed (0.20.0)"
 audience: odd
 exposure: nav

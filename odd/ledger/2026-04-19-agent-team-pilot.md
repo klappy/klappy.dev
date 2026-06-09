@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/ledger/2026-04-19-agent-team-pilot
+kind: odd
 title: "Session Ledger — Agent-Team Pilot (Execution + Validation, Cross-Model)"
 audience: odd
 exposure: nav

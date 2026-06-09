@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/handoffs/2026-04-30-cli-encode-deprecation
+kind: odd
 title: "Handoff — Deprecate Node CLI Encode Path (src/tasks/encode.js Consumers, Worker Is Source of Truth)"
 audience: docs
 exposure: nav

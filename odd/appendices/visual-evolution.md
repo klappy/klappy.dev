@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/visual-evolution
+kind: odd
 title: "Visual Evolution"
 audience: canon
 exposure: nav

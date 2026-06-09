@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/encoding-types/serialization-format
+kind: odd
 title: "Encoding Serialization Format — TSV as Default Wire and Storage Format"
 audience: docs
 exposure: nav

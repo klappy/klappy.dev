@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/challenge/base-prerequisites
+kind: odd
 title: "Challenge Base Prerequisites"
 audience: docs
 exposure: nav

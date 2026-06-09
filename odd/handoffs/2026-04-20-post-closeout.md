@@ -1,5 +1,6 @@
 ---
 uri: klappy://odd/handoffs/2026-04-20-post-closeout
+kind: odd
 title: "Handoff — Post-Closeout State (validator VERIFIED, schema extended, 0.17.0 shipped)"
 audience: odd
 exposure: nav
