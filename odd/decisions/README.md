@@ -17,13 +17,7 @@ execution_posture: routing
 
 This folder contains decisions about ODD itself — the philosophy, not any specific implementation.
 
----
-
-## Conceptual Decisions (This Folder)
-
-| ID | Decision | Summary |
-|----|----------|---------|
-| [D0001](./D0001-three-tier-conceptual-hierarchy.md) | Three-Tier Conceptual Hierarchy | ODD separates universal principles → program constraints → implementation details |
+To list decisions: oddkit catalog with path_prefix=odd/decisions/ (include all kinds until the kind fix lands).
 
 ---
 
@@ -46,6 +40,5 @@ The three-tier model (ODD → Canon → Docs) is itself captured in D0001.
 
 ## See Also
 
-- [D0001: Three-Tier Conceptual Hierarchy](./D0001-three-tier-conceptual-hierarchy.md)
 - `/docs/decisions/README.md` — Implementation decision index
 - `/odd/contract.md` — ODD System Contract
