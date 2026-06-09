@@ -8,6 +8,7 @@ voice: neutral
 stability: stable
 tags: ["oddkit", "implementation", "writing-canon", "progressive-disclosure", "gate"]
 derives_from: "canon/meta/writing-canon.md"
+target_repo: "oddkit"
 ---
 
 # Implementation: Surface Writing Canon as a Gate for Document Deliverables

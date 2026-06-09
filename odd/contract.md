@@ -11,6 +11,7 @@ relevance: decision
 execution_posture: governing
 epoch: E0005
 derives_from: "canon/values/axioms.md (Axiom 1 — Reality Is Sovereign)"
+target_repo: "outcomes-driven-development"
 ---
 
 # ODD System Contract

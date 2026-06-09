@@ -13,6 +13,7 @@ assets: {"practice_video":"/assets/odd/odd-in-practice.mp4","misconception_image
 start_here: true
 start_here_order: 10
 start_here_label: What is ODD?
+target_repo: "outcomes-driven-development"
 ---
 
 # Outcomes-Driven Development (ODD)

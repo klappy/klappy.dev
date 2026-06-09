@@ -2,6 +2,7 @@
 contract: manifest
 version: 2.0.0
 status: active
+target_repo: "oddkit"
 ---
 
 # Manifest Contract (manifest@2.0.0)

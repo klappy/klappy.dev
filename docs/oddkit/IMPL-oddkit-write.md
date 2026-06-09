@@ -12,6 +12,7 @@ date: 2026-02-25
 derives_from: "docs/decisions/D0017-oddkit-write-path.md, docs/planning/oddkit-write-access.md, canon/principles/ritual-is-a-smell.md, odd/constraint/use-only-what-hurts.md"
 complements: "docs/oddkit/IMPL-content-addressed-caching.md, docs/oddkit/IMPL-oddkit-diff.md"
 governs: "oddkit MCP server write action implementation"
+target_repo: "oddkit"
 ---
 
 # Implementation: oddkit_write — One Action, Content to Repo

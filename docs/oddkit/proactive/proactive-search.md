@@ -9,6 +9,7 @@ stability: stable
 tags: ["odd", "oddkit", "search", "proactive", "canon", "epoch-7"]
 epoch: E0007
 date: 2026-04-03
+target_repo: "oddkit"
 ---
 
 # Proactive Search — Search Before Claiming, Not After Failing

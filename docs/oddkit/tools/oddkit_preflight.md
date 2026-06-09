@@ -7,6 +7,7 @@ tier: 2
 voice: neutral
 stability: evolving
 tags: ["oddkit", "tool", "epistemics", "preflight", "implementation", "constraints"]
+target_repo: "oddkit"
 ---
 
 # oddkit_preflight

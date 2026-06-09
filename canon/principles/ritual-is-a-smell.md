@@ -7,6 +7,7 @@ tier: 2
 voice: first_person
 stability: semi_stable
 tags: ["ritual", "design-smell", "automation", "stateless", "continuity", "ergonomics"]
+target_repo: "outcomes-driven-development"
 ---
 
 # Ritual Is a Smell

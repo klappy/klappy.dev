@@ -7,6 +7,7 @@ tier: 2
 voice: neutral
 stability: semi_stable
 tags: ["epistemic", "challenge", "adversarial", "validation", "collaboration"]
+target_repo: "outcomes-driven-development"
 ---
 
 # Epistemic Challenge

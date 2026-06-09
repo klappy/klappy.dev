@@ -13,6 +13,7 @@ derives_from: "canon/methods/spawned-agent-session-runtime-contract.md, canon/me
 complements: "canon/methods/trigger-source-taxonomy.md, canon/methods/spawned-agent-session-substrate-options.md"
 governs: "How any consumer chooses between dispatching a runtime via an assistant in a chat session versus wiring an autonomous trigger that invokes the runtime with no assistant in the loop. Substrate-neutral. Pairs with trigger-source-taxonomy: this doc names the two dispatch classes; trigger-source-taxonomy names the input edges that wake the autonomous-trigger class."
 status: proposed
+target_repo: "outcomes-driven-development"
 ---
 
 # Dispatch Paths for Spawned Agent Sessions — Assistant-Orchestrated vs Autonomous-Trigger

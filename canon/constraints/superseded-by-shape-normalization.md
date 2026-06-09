@@ -14,6 +14,7 @@ derives_from:
   - "canon/principles/identity-resolved-by-protocol.md"
   - "canon/principles/vodka-architecture.md"
 governs: "How tools that read superseded_by frontmatter normalize across authoring conventions"
+target_repo: "outcomes-driven-development"
 ---
 
 # superseded_by Values: Three Shapes Allowed, One Resolution Algorithm

@@ -225,6 +225,25 @@ Archived documents remain in the knowledge base for history but are excluded fro
 
 ---
 
+## Repo Routing — `target_repo`
+
+`target_repo` is an optional, cross-cutting field (it applies to documents of any audience) that declares which repository a file belongs to once the klappy.dev knowledge base bifurcates. It is the only routing signal extraction relies on: a later move is `git grep target_repo` plus copy, never a re-organization.
+
+| Field | Required? | Format | Notes |
+|-------|-----------|--------|-------|
+| `target_repo` | optional | `"outcomes-driven-development"` `"oddkit"` `"undecided"` | Destination repo for this file. Quoted string, one of the three enum values. **Absent = stays in klappy.dev** — the default home is the absence of a tag, so routing never depends on a file's path. |
+
+Values:
+
+- `"outcomes-driven-development"` — the portable core: universal governance and canon an outside adopter needs.
+- `"oddkit"` — the engine's own documentation and engine/release/telemetry governance.
+- `"undecided"` — contested; resolved deliberately before the file moves. Used for cross-cutting files and genuine judgment calls.
+- **Absent** — stays in klappy.dev (the personal overlay, the default home).
+
+Only files that leave klappy.dev carry the tag; the overlay's own files stay untagged. Non-markdown files cannot carry frontmatter, so their routing is recorded in `canon/meta/scope-map.json` instead. A malformed value is a merge-gate failure (the validator enum-checks this field), so a bad route never reaches the renderer. Governing document: `klappy://docs/repo-bifurcation-and-target-repo-routing`.
+
+---
+
 ## Smell Test — How to Detect a Frontmatter Violation
 
 - **Type mismatches.** If a boolean field like `public` is quoted as `"false"` (a truthy string) instead of `false` (a boolean), the renderer behaves incorrectly. If an integer field like `tier` is quoted as `"2"` instead of `2`, type comparisons fail.

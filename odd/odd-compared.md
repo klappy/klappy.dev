@@ -7,6 +7,7 @@ tier: 2
 voice: neutral
 stability: stable
 tags: ["odd", "comparison", "methodology", "overview"]
+target_repo: "outcomes-driven-development"
 ---
 
 # ODD Compared: What It Is, What It Isn't, and How It Relates to Everything Else

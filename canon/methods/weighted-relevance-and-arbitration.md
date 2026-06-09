@@ -7,6 +7,7 @@ tier: 2
 voice: neutral
 stability: stable
 tags: ["arbitration", "relevance", "epistemic-hygiene", "promotion"]
+target_repo: "outcomes-driven-development"
 ---
 
 # Weighted Relevance & Arbitration

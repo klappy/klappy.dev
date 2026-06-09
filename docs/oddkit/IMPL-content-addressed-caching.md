@@ -9,6 +9,7 @@ stability: evolving
 status: implemented
 tags: ["oddkit", "implementation", "caching", "content-addressed", "anti-cache-lying"]
 derives_from: "odd/constraint/anti-cache-lying.md"
+target_repo: "oddkit"
 ---
 
 # Implementation: Replace TTL Caching with Content-Addressed Storage in OddKit

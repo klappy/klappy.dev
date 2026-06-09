@@ -11,6 +11,7 @@ tags:
   - documentation
   - outcomes
   - epistemic-hygiene
+target_repo: "outcomes-driven-development"
 ---
 
 # Documentation Is the Lever, Not the Goal

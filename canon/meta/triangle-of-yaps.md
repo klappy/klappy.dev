@@ -14,6 +14,7 @@ derives_from: "canon/values/axioms.md, canon/values/orientation.md, canon/meta/w
 complements: "canon/meta/writing-canon.md, canon/constraints/ai-voice-cliches.md, canon/methods/choosing-the-right-narrative-container.md, canon/constraints/dual-context-writing.md"
 governs: "The rhetorical shape of any single unit of spoken or written communication produced for klappy.dev — podcast script segments, published essays, and the standalone sections within them. Governs engagement structure; subordinate to writing-canon, which governs document structure."
 constraint: "This document cannot override the axioms or the Writing Canon. Where the Triangle and progressive disclosure conflict, progressive disclosure governs structure and the axioms govern truth."
+target_repo: "undecided"
 ---
 
 # The Triangle of Yaps — One Thought, One Illustration, One Next Step

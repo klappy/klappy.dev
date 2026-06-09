@@ -12,6 +12,7 @@ date: 2026-04-03
 derives_from: "odd/constraint/use-only-what-hurts.md, canon/values/axioms.md, canon/principles/ritual-is-a-smell.md"
 complements: "odd/ledger/epistemic-ledger.md, docs/oddkit/tools/oddkit_encode.md, writings/the-project-journal.md, canon/diagnostics/ritual-detected.md, writings/learning-in-the-open.md, canon/values/drift.md"
 governs: "oddkit_encode tool description, oddkit_orient behavior, and all consumers of the encode action"
+target_repo: "oddkit"
 ---
 
 # Encode Does Not Persist, Nobody Knows OLDC+H, and the Fix Is Continuous Encoding

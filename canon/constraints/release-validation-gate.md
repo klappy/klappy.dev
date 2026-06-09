@@ -13,6 +13,7 @@ derives_from: "canon/principles/verification-requires-fresh-context.md, canon/pr
 complements: "canon/constraints/oddkit-prompt-pattern.md, canon/principles/dry-canon-says-it-once.md"
 governs: "Every PR merged to oddkit main and every promotion to oddkit prod. Also applies to klappy.dev canon PRs that change governance documents the worker reads at runtime. Binding on every orchestrator and every Managed Agent that ships code in this program."
 status: active
+target_repo: "oddkit"
 ---
 
 # Release Validation Gate — Mechanical Rules That Bind Every Ship

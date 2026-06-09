@@ -12,6 +12,7 @@ date: 2026-04-07
 derives_from: "canon/meta/writing-canon.md, canon/constraints/guide-posture.md, canon/constraints/relational-sensitivity.md, docs/book/governance-additions-2026-02-27.md"
 complements: "canon/methods/self-audit.md, canon/constraints/definition-of-done.md, docs/oddkit/IMPL-writing-canon-gate.md"
 governs: "All public essays (writings/) and book chapters — after draft-zero and after each major revision prior to publishing"
+target_repo: "undecided"
 ---
 
 # Method: Revision Lens Sequence — One Pass, One Lens, One Complete Read

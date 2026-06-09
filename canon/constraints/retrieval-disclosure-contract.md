@@ -13,6 +13,7 @@ derives_from: "canon/meta/writing-canon.md, canon/meta/frontmatter-schema.md, ca
 complements: "canon/constraints/oddkit-prompt-pattern.md, canon/constraints/oddkit-action-registration-completeness.md"
 governs: "The response shape and accepted disclosure declarations for every oddkit retrieval action (oddkit_search, oddkit_catalog, oddkit_get, oddkit_preflight, oddkit_resolve), and the contract every consumer of those actions must honor"
 status: active
+target_repo: "oddkit"
 ---
 
 # Retrieval Disclosure Contract — A Canonical Shape for All Document Retrieval Actions

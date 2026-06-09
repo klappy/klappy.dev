@@ -13,6 +13,7 @@ derives_from: "docs/appendices/epoch-7.md, canon/principles/ritual-is-a-smell.md
 complements: "docs/oddkit/proactive/proactive-orient.md, docs/oddkit/proactive/proactive-gate.md, docs/oddkit/proactive/proactive-search.md, docs/oddkit/proactive/proactive-challenge.md, docs/oddkit/proactive/proactive-validate.md, docs/oddkit/proactive/proactive-preflight.md, docs/oddkit/proactive/continuous-encoding.md, docs/oddkit/proactive/proactive-identity-of-integrity.md"
 governs: "All agent behavior in oddkit-powered sessions"
 status: active
+target_repo: "oddkit"
 ---
 
 # Proactive Posture Lapse — Detecting When the Cognitive Rhythm Breaks Down

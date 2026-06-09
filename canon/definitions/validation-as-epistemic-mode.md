@@ -13,6 +13,7 @@ derives_from: "canon/definitions/epistemic-modes.md, canon/constraints/mode-disc
 complements: "docs/appendices/mode-separated-conversations.md, docs/oddkit/tools/oddkit_validate.md, canon/methods/revision-lens-sequence.md"
 governs: "Validation as a first-class epistemic mode — distinct from exploration, planning, and execution, with its own truth conditions, obligations, non-collapse requirements, and a structural separation requirement (context break between creator and validator). Applies to any review of produced artifacts against stated claims."
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Validation as Epistemic Mode

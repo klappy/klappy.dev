@@ -9,6 +9,7 @@ stability: semi_stable
 tags: ["odd", "prompt-architecture", "orchestration"]
 relevance: supporting
 execution_posture: operational
+target_repo: "outcomes-driven-development"
 ---
 
 # Prompt Architecture (Orientation)

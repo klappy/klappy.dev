@@ -13,6 +13,7 @@ derives_from:
   - canon/values/axioms.md
   - canon/values/trust-kernel.md
 complements: "canon/methods/self-audit.md, odd/ledger/epistemic-ledger.md"
+target_repo: "outcomes-driven-development"
 ---
 
 # Community Checking — Outcome Validation Beyond Author Intent

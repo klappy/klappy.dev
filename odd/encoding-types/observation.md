@@ -14,6 +14,7 @@ complements: "odd/encoding-types/decision.md, odd/encoding-types/learning.md, od
 governs: "oddkit_encode parsing and quality scoring for type O"
 fallback: true
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 

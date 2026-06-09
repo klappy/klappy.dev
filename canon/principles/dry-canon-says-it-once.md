@@ -13,6 +13,7 @@ derives_from: "canon/principles/vodka-architecture.md, canon/constraints/oddkit-
 complements: "canon/principles/prompt-over-code.md, canon/values/axioms.md"
 governs: "All governance rule placement decisions in this program"
 status: active
+target_repo: "oddkit"
 ---
 
 # DRY — The Canon Says It Once, the Server Never Repeats It

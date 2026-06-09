@@ -11,6 +11,7 @@ epoch: E0009
 date: 2026-05-12
 derives_from: "canon/constraints/governance-change-discipline.md, docs/appendices/epoch-9.md, writings/we-were-the-wire.md, canon/principles/agents-need-their-own-wire.md, canon/architecture/substrate-stack.md, canon/methods/dispatch-paths.md"
 governs: "Operator and agent behavior after this release lands — the substrate stack is the default integration pattern, operator-as-wire is named as a design smell, autonomous-trigger is the canonical path for everything except synchronous user-facing assistance."
+target_repo: "oddkit"
 ---
 
 # Release Notes — Epoch 9: Substrate Becomes the Wire (2026-05-12)

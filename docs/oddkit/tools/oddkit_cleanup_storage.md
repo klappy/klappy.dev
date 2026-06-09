@@ -7,6 +7,7 @@ tier: 2
 voice: neutral
 stability: evolving
 tags: ["oddkit", "tool", "maintenance", "storage", "cleanup", "cache"]
+target_repo: "oddkit"
 ---
 
 # oddkit_cleanup_storage

@@ -11,6 +11,7 @@ epoch: E0007
 date: 2026-04-03
 superseded_by: "docs/oddkit/proactive/dolche-vocabulary.md"
 supersession_reason: "Superseded by DOLCHE (six dimensions, adds Encode as meta-action) and then by DOLCHEO (seven dimensions, adds Open as forward-pointing thread). Walk superseded_by transitively for current canonical: klappy://canon/definitions/dolcheo-vocabulary."
+target_repo: "oddkit"
 ---
 
 # OLDC+H — The Five Standard Artifact Types for Session Capture

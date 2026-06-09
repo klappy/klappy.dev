@@ -9,6 +9,7 @@ stability: stable
 tags: ["canon", "tiers", "epistemic-obligation", "architecture"]
 relevance: decision
 execution_posture: governing
+target_repo: "outcomes-driven-development"
 ---
 
 # Epistemic Obligation and Document Tiers

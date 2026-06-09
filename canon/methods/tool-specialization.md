@@ -9,6 +9,7 @@ stability: evolving
 tags: ["odd", "pattern", "tools", "decision-complexity"]
 relevance: supporting
 execution_posture: operational
+target_repo: "outcomes-driven-development"
 ---
 
 # Tool Specialization

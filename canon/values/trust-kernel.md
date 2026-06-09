@@ -16,6 +16,7 @@ constraint: "This is a principle (why), not a process (how). The axioms, constra
 start_here: true
 start_here_order: 10
 start_here_label: "Trust Is Built by Managing Expectations — The Kernel"
+target_repo: "outcomes-driven-development"
 ---
 
 # Trust Is Built by Managing Expectations

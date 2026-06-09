@@ -16,6 +16,7 @@ derives_from:
   - "docs/oddkit/IMPL-catalog-recent.md"
 governs: "Resolution of klappy:// URIs by every consumer of canon"
 supersedes: "DRAFT v3 (2026-04-24, pre-Vodka-cut)"
+target_repo: "oddkit"
 ---
 
 # oddkit_resolve — Action Specification (DRAFT v4 — KISS)

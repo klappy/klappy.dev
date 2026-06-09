@@ -9,6 +9,7 @@ stability: stable
 tags: ["odd", "oddkit", "gate", "proactive", "mode-transition", "epoch-7"]
 epoch: E0007
 date: 2026-04-03
+target_repo: "oddkit"
 ---
 
 # Proactive Gate — Gate at Every Mode Transition, Not Just Formal Ones

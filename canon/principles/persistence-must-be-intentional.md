@@ -15,6 +15,7 @@ tags:
   - epistemic-discipline
   - failure-modes
 epoch: 5
+target_repo: "outcomes-driven-development"
 ---
 
 # Persistence Must Be Intentional

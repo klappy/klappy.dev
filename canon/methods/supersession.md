@@ -17,6 +17,7 @@ derives_from:
 complements: "canon/methods/self-audit.md, canon/methods/planning-queue.md, writings/the-drift-queue.md, odd/ledger/epistemic-ledger.md, docs/appendices/compiled-memory.md"
 governs: "All documents in canon/, odd/, and docs/ directories when understanding evolves past what a document encodes"
 constraint: "Superseded documents must remain discoverable as historical evidence. Hiding evolution is a shortcut on truth — and shortcuts on truth always cost more than honest unknowns (Axiom 3)."
+target_repo: "outcomes-driven-development"
 ---
 
 # Method: Supersession — How Governance Evolves Without Erasing Its History

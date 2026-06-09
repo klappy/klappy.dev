@@ -9,6 +9,7 @@ stability: stable
 tags: ["canon", "constraints", "boundaries", "deceleration"]
 relevance: decision
 execution_posture: governing
+target_repo: "outcomes-driven-development"
 ---
 
 # Boundary Transitions Require Deceleration

@@ -13,6 +13,7 @@ derives_from: "canon/methods/borrow-bend-break-beget-build.md, canon/constraints
 complements: "canon/methods/borrow-bend-break-beget-build.md, canon/bootstrap/model-operating-contract.md"
 governs: "Any agent in planning mode about to execute an implementation task with an upstream substrate (SDK, reference impl, widely-adopted library) — or one the field is visibly converging toward. Binds the planning artifact: the agent must produce a falsifiable 6B Evaluation table plus a one-line Reversibility Note before execution begins."
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Borrow Evaluation Before Implementation — A Falsifiable 6B Table the Agent Produces in Planning Before Any Implementation Execution

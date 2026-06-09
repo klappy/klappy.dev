@@ -9,6 +9,7 @@ stability: stable
 tags: ["canon", "methods", "exploration", "limits", "cst"]
 relevance: decision
 execution_posture: governing
+target_repo: "outcomes-driven-development"
 ---
 
 # Method: Extreme Exploration for Limit Discovery

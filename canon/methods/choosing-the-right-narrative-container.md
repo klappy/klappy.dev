@@ -9,6 +9,7 @@ stability: stable
 tags: ["canon", "methods", "writing", "structure"]
 relevance: decision
 execution_posture: governing
+target_repo: "undecided"
 ---
 
 # Method: Choosing the Right Narrative Container

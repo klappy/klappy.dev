@@ -13,6 +13,7 @@ derives_from: "canon/values/orientation.md, canon/values/axioms.md, canon/defini
 complements: "docs/oddkit/proactive/posture-lapse.md, docs/oddkit/proactive/proactive-gate.md, docs/appendices/mode-separated-conversations.md, canon/voice/oddie-the-river-guide.md"
 governs: "The evolving operating contract fetched at session start by any LLM instance running in oddkit-powered projects. Model-agnostic: applies equally to the model, GPT, Gemini, Llama, or any future model with tool-use capabilities. Project instructions point here; full posture, tool rhythm, and mode discipline live here and evolve here."
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Model Operating Contract — Bootstrap for Every Session

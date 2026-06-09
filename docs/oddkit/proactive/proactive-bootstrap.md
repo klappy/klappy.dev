@@ -9,6 +9,7 @@ stability: stable
 tags: ["odd", "oddkit", "proactive", "bootstrap", "system-prompt", "project-instructions", "epoch-7"]
 epoch: E0007
 date: 2026-04-03
+target_repo: "oddkit"
 ---
 
 # Proactive Bootstrap — System Prompt for E0007 Agents

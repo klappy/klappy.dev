@@ -13,6 +13,7 @@ derives_from: "canon/methods/governance-validation-via-agents.md, canon/methods/
 complements: "canon/constraints/borrow-evaluation-before-implementation.md, canon/constraints/no-irreversible-action-without-epistemic-justification.md, canon/methods/spawned-agent-session-substrate-options.md"
 governs: "Any merge-blocking validator that audits canon, documentation, code-vs-canon sync, cross-reference integrity, or any other governance surface where the check requires LLM-grade judgment. Mechanical scripts (regex, AST walkers, lint rules) MAY run as triggers, schedules, or pre-flight hints but MUST NOT serve as the gate. The gate is a spawned agent session that fetches canon at runtime and produces structured findings."
 status: active
+target_repo: "oddkit"
 ---
 
 # Audit Gates Are Spawned Agent Sessions, Not Pattern Matchers

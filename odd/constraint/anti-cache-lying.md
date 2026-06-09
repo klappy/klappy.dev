@@ -12,6 +12,7 @@ epoch: E0005
 date: 2026-02-12
 governs: "All caching decisions for derived or mutable content in ODD-aligned systems"
 complements: "odd/constraint/anti-metric-laundering.md, canon/constraints/decision-rules.md"
+target_repo: "outcomes-driven-development"
 ---
 
 # Constraint: Anti-Cache Lying

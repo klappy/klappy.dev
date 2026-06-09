@@ -9,6 +9,7 @@ stability: stable
 tags: ["odd", "oddkit", "encode", "dolcheo", "oldc-h", "proactive", "continuous", "journal", "epoch-7"]
 epoch: E0007
 date: 2026-04-03
+target_repo: "oddkit"
 ---
 
 # Continuous DOLCHEO Encoding — Track at Every Turn, Not Just Session End

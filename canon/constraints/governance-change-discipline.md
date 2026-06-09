@@ -12,6 +12,7 @@ date: 2026-04-21
 derives_from: "canon/CHANGELOG.md, canon/principles/ritual-is-a-smell.md, docs/appendices/epoch-7.md"
 governs: "Any canon, docs/oddkit/, or odd/ change intended to alter operator or agent behavior"
 complements: "canon/CHANGELOG.md, docs/planning/automated-changelog.md, canon/constraints/proactive-frequency-calibration.md"
+target_repo: "outcomes-driven-development"
 ---
 
 # Governance Change Discipline — Versioning, Changelog, Release Notes, and Epoch Bumps

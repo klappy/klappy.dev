@@ -7,6 +7,7 @@ tier: 1
 voice: first_person
 stability: stable
 tags: ["constraint", "epistemic-safety", "portability", "oddkit"]
+target_repo: "outcomes-driven-development"
 ---
 
 # Meaning Must Not Depend on Path

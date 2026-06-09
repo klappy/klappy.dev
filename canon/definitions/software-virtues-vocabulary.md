@@ -13,6 +13,7 @@ derives_from: "https://medium.com/@klappy/what-are-software-virtues-and-how-to-p
 complements: "canon/principles/quality-attributes-are-in-tension.md, canon/observations/quality-attribute-tension-matrix.md, odd/maturity.md"
 governs: "Vocabulary used across canon when discussing tradeoffs between competing software properties. 'Virtues' is the rhetorical/historical name; 'quality attributes' or 'ilities' is the operational synonym. Both are first-class."
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Software Virtues Vocabulary — Ten Quality Attributes That Compete for Priority

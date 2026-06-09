@@ -12,6 +12,7 @@ date: 2026-04-09
 derives_from: "odd/constraint/anti-cache-lying.md, canon/methods/governance-validation-via-agents.md, canon/values/axioms.md"
 complements: "canon/meta/frontmatter-schema.md, canon/methods/supersession.md, canon/methods/self-audit.md"
 governs: "All klappy:// URIs, frontmatter cross-references, and README index tables across the canon"
+target_repo: "outcomes-driven-development"
 ---
 
 # Reference Integrity Audit

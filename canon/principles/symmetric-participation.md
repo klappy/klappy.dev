@@ -13,6 +13,7 @@ derives_from: "canon/values/axioms.md, canon/architecture/substrate-stack.md, ca
 complements: "canon/principles/magical-first-run.md, canon/principles/creators-get-paid.md, canon/principles/dream-house-principle.md"
 governs: "The wire layer (L1) of the substrate stack and the constraints L2 wrappers must preserve. Forbids any feature that would special-case the substrate by peer type. Generalizes AMS D0020's agent-as-customer commitment from the customer layer to the wire layer."
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Symmetric Participation — Every Peer on the Substrate Interacts Through Identical Wire Primitives

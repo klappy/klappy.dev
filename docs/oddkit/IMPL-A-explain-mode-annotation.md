@@ -8,6 +8,7 @@ voice: neutral
 stability: evolving
 status: superseded
 tags: ["oddkit", "implementation", "epistemic-modes"]
+target_repo: "oddkit"
 ---
 
 # Implementation Instruction Set A

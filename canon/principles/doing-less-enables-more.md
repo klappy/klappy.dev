@@ -13,6 +13,7 @@ derives_from: "canon/principles/vodka-architecture.md, canon/principles/kiss-sim
 complements: "canon/principles/prompt-over-code.md, canon/principles/maintainability-one-person-indefinitely.md"
 governs: "Substrate-design decisions across all programs in this canon: oddkit, AMS, future MCP servers, future protocol-grade work. The empirical principle behind why vodka architecture wins where opinionated stacks lose. Recommended frame for evaluating any substrate proposal."
 status: active
+target_repo: "undecided"
 ---
 
 # Doing Less Enables More — The Inversion Principle for Substrate Design

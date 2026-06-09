@@ -67,6 +67,12 @@ ENUMS: dict[str, set] = {
                  "conversational", "authoritative"},
     "tier":     {1, 2, 3, 4},
     "audience": {"canon", "docs", "public", "odd", "operators", "apocrypha"},
+    # Repo-routing field for the klappy.dev bifurcation. Optional: absence means
+    # the file stays in klappy.dev. When present it must be one of these three
+    # destinations — a malformed value would silently mis-route a file at
+    # extraction time, so the gate rejects it. Source of truth:
+    # canon/meta/frontmatter-schema.md §"Repo Routing — target_repo".
+    "target_repo": {"outcomes-driven-development", "oddkit", "undecided"},
 }
 
 # The eight universal fields. Every document, regardless of audience, must

@@ -9,6 +9,7 @@ stability: stable
 tags: ["canon", "constraints", "integrity", "collaboration"]
 relevance: decision
 execution_posture: governing
+target_repo: "outcomes-driven-development"
 ---
 
 # Single-Agent Integrity Precedes Collaboration

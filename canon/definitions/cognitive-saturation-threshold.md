@@ -9,6 +9,7 @@ stability: stable
 tags: ["canon", "definition", "cst", "closure", "limits"]
 relevance: decision
 execution_posture: governing
+target_repo: "outcomes-driven-development"
 ---
 
 # Cognitive Saturation Threshold (CST)

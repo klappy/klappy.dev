@@ -12,6 +12,7 @@ date: 2026-04-09
 derives_from: "canon/constraints/frontmatter-validation-before-merge.md, canon/constraints/ai-voice-cliches.md, canon/meta/writing-canon.md"
 complements: "docs/agents/validation/README.md, canon/constraints/definition-of-done.md"
 governs: "All PRs that add or modify canon, writings, or documentation"
+target_repo: "outcomes-driven-development"
 ---
 
 # Governance Validation via Managed Agents

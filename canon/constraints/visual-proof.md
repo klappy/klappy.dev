@@ -9,6 +9,7 @@ stability: semi_stable
 tags: ["visual-proof", "evidence"]
 relevance: decision
 execution_posture: governing
+target_repo: "outcomes-driven-development"
 ---
 
 # Visual Proof Standards

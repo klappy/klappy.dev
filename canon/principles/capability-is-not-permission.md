@@ -26,6 +26,7 @@ complements:
   - canon/apocrypha/fragments/fragment-12-the-terminal.md
   - writings/the-cost-of-code-dropped-to-zero.md
   - odd/constraint/use-only-what-hurts.md
+target_repo: "outcomes-driven-development"
 ---
 
 # Capability Is Not Permission — Frictionless Tools Require Intentional Constraint

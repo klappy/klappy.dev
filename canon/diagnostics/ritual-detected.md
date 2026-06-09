@@ -7,6 +7,7 @@ tier: 3
 voice: system_first_person
 stability: evolving
 tags: ["diagnostic", "smell", "ritual", "lint"]
+target_repo: "outcomes-driven-development"
 ---
 
 # RITUAL_DETECTED

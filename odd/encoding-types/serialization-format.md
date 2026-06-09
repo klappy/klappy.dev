@@ -13,6 +13,7 @@ derives_from: "docs/oddkit/proactive/dolche-vocabulary.md, odd/encoding-types/ho
 complements: "odd/encoding-types/decision.md, odd/encoding-types/observation.md, odd/encoding-types/learning.md, odd/encoding-types/constraint.md, odd/encoding-types/handoff.md, odd/encoding-types/question.md"
 governs: "How encoding type fields are serialized for input, output, and storage"
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Encoding Serialization Format — TSV as Default Wire and Storage Format

@@ -12,6 +12,7 @@ date: 2026-04-07
 derives_from: "canon/values/axioms.md, canon/principles/capability-is-not-permission.md, odd/appendices/quantum-development.md"
 complements: "writings/the-same-rules-fresh-eyes.md, canon/methods/revision-lens-sequence.md, canon/constraints/relational-sensitivity.md"
 governs: "All verification and review processes for public essays, canon documents, and code"
+target_repo: "outcomes-driven-development"
 ---
 
 # Verification Requires Fresh Context — A Creator Cannot Be Their Own Critic

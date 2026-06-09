@@ -11,6 +11,7 @@ epoch: E0008
 date: 2026-04-09
 derives_from: "canon/constraints/telemetry-governance.md"
 complements: "docs/oddkit/tools/telemetry_public.md"
+target_repo: "oddkit"
 ---
 
 # telemetry_policy

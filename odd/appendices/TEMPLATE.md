@@ -9,6 +9,7 @@ stability: stable
 tags: ["odd", "appendices", "template"]
 relevance: routing
 execution_posture: routing
+target_repo: "outcomes-driven-development"
 ---
 
 # ODD Appendix Template

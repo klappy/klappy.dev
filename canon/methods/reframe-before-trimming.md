@@ -14,6 +14,7 @@ derives_from:
 complements:
   - klappy://canon/methods/pivot-on-inversion
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Reframe Before Trimming

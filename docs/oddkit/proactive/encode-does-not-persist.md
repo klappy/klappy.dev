@@ -9,6 +9,7 @@ stability: stable
 tags: ["odd", "oddkit", "encode", "persistence", "proactive", "epoch-7"]
 epoch: E0007
 date: 2026-04-03
+target_repo: "oddkit"
 ---
 
 # Encode Does Not Persist — The Caller Must Save

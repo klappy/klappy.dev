@@ -11,6 +11,7 @@ epoch: E0008
 date: 2026-04-26
 derives_from: "canon/constraints/telemetry-governance.md, canon/principles/vodka-architecture.md, canon/principles/prompt-over-code.md"
 complements: "docs/oddkit/tools/telemetry_policy.md, docs/oddkit/responses/envelope-reference.md"
+target_repo: "oddkit"
 ---
 
 # telemetry_public — Raw SQL Against the Public Telemetry Dataset

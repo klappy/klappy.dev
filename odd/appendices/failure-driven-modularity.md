@@ -9,6 +9,7 @@ stability: stable
 tags: ["canon", "evolution", "modularity", "regenerability"]
 relevance: supporting
 execution_posture: operational
+target_repo: "outcomes-driven-development"
 ---
 
 # Failure-Driven Modularity

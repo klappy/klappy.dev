@@ -9,6 +9,7 @@ stability: stable
 tags: ["odd", "oddkit", "epoch-7", "proactive", "validation", "ab-test", "evidence", "bm25"]
 epoch: E0007
 date: 2026-04-03
+target_repo: "oddkit"
 ---
 
 # E0007 Validation — A/B Test Results for Proactive Posture

@@ -19,6 +19,7 @@ date: 2026-04-09
 derives_from: "docs/book/governance.md, docs/planning/book-vs-website-distribution.md, canon/constraints/guide-posture.md"
 complements: "canon/meta/writing-canon.md, docs/book/how-to-read-this-book.md"
 governs: "All writings/ documents that also appear in the book chapter plan"
+target_repo: "undecided"
 ---
 
 # Constraint: Dual-Context Writing — One Document, Two Surfaces

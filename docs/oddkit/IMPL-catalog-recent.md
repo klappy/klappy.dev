@@ -9,6 +9,7 @@ stability: evolving
 tags: ["oddkit", "catalog", "discovery", "metadata", "recent", "temporal", "implementation", "epoch-7"]
 epoch: E0007
 date: 2026-04-03
+target_repo: "oddkit"
 ---
 
 # Implementation: Catalog Metadata Exposure — Articles List with Full Frontmatter

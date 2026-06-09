@@ -12,6 +12,7 @@ stability: evolving
 tags: ["odd", "terminology", "disambiguation", "boundary", "definition", "outcomes-driven-development", "glossary"]
 relevance: supporting
 execution_posture: operational
+target_repo: "outcomes-driven-development"
 ---
 
 # 📖 ODD Terminology & Disambiguation

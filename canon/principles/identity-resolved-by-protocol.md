@@ -17,6 +17,7 @@ governs: "All cross-document identity references in canon and consumers of canon
 complements:
   - "canon/principles/anti-cache-lying.md"
   - "docs/oddkit/specs/oddkit-resolve.md"
+target_repo: "oddkit"
 ---
 
 # Identity Is Resolved By The Protocol — Hardcoded References Are A Cached Lie

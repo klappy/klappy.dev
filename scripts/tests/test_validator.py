@@ -88,6 +88,26 @@ def main() -> None:
         "broken-nav-missing-discovery: nav essay missing public/type/slug fails",
     )
 
+    # 4c. target_repo allowlist (repo bifurcation). A valid enum value passes
+    #     clean; an out-of-enum value fires frontmatter-invalid-enum. The field
+    #     is optional, so its absence is never itself a finding (covered by the
+    #     other fixtures, none of which carry target_repo).
+    d, rc = run(str(FIXTURES / "valid-target-repo.md"))
+    assert rc == 0 and not d["findings"], f"valid target_repo failed: {d}"
+    print("  OK: valid target_repo → 0 findings, exit 0")
+
+    d, rc = run(str(FIXTURES / "broken-invalid-target-repo.md"))
+    assert rc == 1, f"expected exit 1 for invalid target_repo, got {rc}"
+    occurrences = {f["occurrence"] for f in d["findings"]}
+    assert any(o.startswith("target_repo:") for o in occurrences), (
+        f"invalid target_repo should flag the field; got {occurrences}"
+    )
+    expect(
+        {"frontmatter-invalid-enum"},
+        d["findings"],
+        "broken-invalid-target-repo: out-of-enum value fails",
+    )
+
     # 5. Real writings/ directory must be clean (this enforces that we never
     #    ship the validator with existing breakage)
     d, rc = run("writings/")

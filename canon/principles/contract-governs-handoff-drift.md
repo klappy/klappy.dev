@@ -13,6 +13,7 @@ derives_from: "canon/principles/vodka-architecture.md, canon/principles/dry-cano
 complements: "canon/constraints/release-validation-gate.md, canon/constraints/oddkit-prompt-pattern.md, canon/bootstrap/model-operating-contract.md"
 governs: "All conflicts between session-scoped artifacts (handoffs, ledgers, PRDs, scratch notes) and tier-1 / tier-2 canon. Binding on every orchestrator: when a session artifact recommends a path that contradicts canon, canon wins, full stop."
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Contract Governs Handoff Drift — Canon Wins When Session Artifacts Disagree

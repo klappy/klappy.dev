@@ -9,6 +9,7 @@ stability: stable
 tags: ["canon", "constraints", "durability", "decisions"]
 relevance: decision
 execution_posture: governing
+target_repo: "outcomes-driven-development"
 ---
 
 # Encode Epistemic Decisions

@@ -5,6 +5,7 @@ exposure: nav
 tier: 2
 audience: docs
 stability: stable
+target_repo: "oddkit"
 ---
 
 # oddkit Epistemic Instructions

@@ -13,6 +13,7 @@ derives_from: "canon/principles/vodka-architecture.md, canon/resonance/antifragi
 complements: "canon/principles/prompt-over-code.md, canon/principles/ritual-is-a-smell.md"
 governs: "All failure response decisions in this program"
 status: active
+target_repo: "undecided"
 ---
 
 # Antifragile — Every Failure Grows the Canon, Never the Server

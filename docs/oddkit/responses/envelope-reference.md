@@ -11,6 +11,7 @@ epoch: E0008
 date: 2026-04-26
 derives_from: "canon/constraints/telemetry-governance.md, canon/principles/vodka-architecture.md"
 complements: "docs/oddkit/tools/telemetry_public.md"
+target_repo: "oddkit"
 ---
 
 # Response Envelope Reference — debug.trace and the Per-Request Story

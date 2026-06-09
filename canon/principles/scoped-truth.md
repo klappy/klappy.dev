@@ -22,6 +22,7 @@ derives_from:
 complements:
   - canon/principles/capability-is-not-permission.md
   - docs/explorations/epoch-signal-operator-governance.md
+target_repo: "outcomes-driven-development"
 ---
 
 # Scoped Truth — Axioms Travel, Domain Doesn't

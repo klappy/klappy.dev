@@ -9,6 +9,7 @@ stability: stable
 tags: ["odd", "alignment", "drift", "hygiene", "selection-pressure"]
 relevance: supporting
 execution_posture: operational
+target_repo: "outcomes-driven-development"
 ---
 
 # Alignment Reviews

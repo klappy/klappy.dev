@@ -9,6 +9,7 @@ stability: evolving
 tags: ["odd", "cognition", "scaling", "decision-load"]
 relevance: supporting
 execution_posture: operational
+target_repo: "outcomes-driven-development"
 ---
 
 # Cognitive Partitioning

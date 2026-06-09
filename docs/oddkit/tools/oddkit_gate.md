@@ -7,6 +7,7 @@ tier: 2
 voice: neutral
 stability: evolving
 tags: ["oddkit", "tool", "epistemics", "gating", "transitions", "deceleration"]
+target_repo: "oddkit"
 ---
 
 # oddkit_gate

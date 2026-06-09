@@ -13,6 +13,7 @@ derives_from: "canon/principles/prompt-over-code.md, canon/principles/vodka-arch
 complements: "odd/encoding-types/decision.md, odd/encoding-types/observation.md, odd/encoding-types/learning.md, odd/encoding-types/constraint.md, odd/encoding-types/handoff.md"
 governs: "All encoding-type governance articles, server parsing of encoding-type docs, custom type creation"
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # How to Write an Encoding Type Governance Article

@@ -7,6 +7,7 @@ tier: 2
 voice: neutral
 stability: evolving
 tags: ["oddkit", "prompt", "mcp", "epistemics", "guide", "orchestration"]
+target_repo: "oddkit"
 ---
 
 # Epistemic Guide

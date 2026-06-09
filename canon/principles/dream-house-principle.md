@@ -13,6 +13,7 @@ derives_from: "canon/values/axioms.md, canon/principles/capability-is-not-permis
 complements: "canon/principles/discernment-layer.md, canon/constraints/mode-discipline-and-bottleneck-respect.md, writings/the-dream-house-and-pre-optimization.md"
 governs: "All work that involves deciding what to cut, defer, simplify, or pre-emptively constrain before the full version has been drawn"
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # The Dream House Principle — Draw the Full Version Before Cutting from Contact with Reality

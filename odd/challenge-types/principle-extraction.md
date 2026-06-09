@@ -12,6 +12,7 @@ date: 2026-04-16
 derives_from: "canon/constraints/epistemic-challenge.md, odd/challenge-types/how-to-write-challenge-types.md"
 governs: "oddkit_challenge behavior for principle-extraction claims — elevating a heuristic from experience into canon"
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Principle Extraction

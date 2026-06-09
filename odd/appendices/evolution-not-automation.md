@@ -9,6 +9,7 @@ stability: semi_stable
 tags: ["odd", "evolution", "automation", "orientation"]
 relevance: supporting
 execution_posture: operational
+target_repo: "outcomes-driven-development"
 ---
 
 # Evolution, Not Automation

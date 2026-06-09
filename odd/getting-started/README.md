@@ -7,6 +7,7 @@ tier: 2
 voice: neutral
 stability: stable
 tags: ["odd", "getting-started", "onboarding", "oddkit"]
+target_repo: "outcomes-driven-development"
 ---
 
 # Getting Started

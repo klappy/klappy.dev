@@ -12,6 +12,7 @@ execution_posture: operational
 status: canonical
 category: odd-appendix
 version: 1.0
+target_repo: "outcomes-driven-development"
 ---
 
 # Progressive Elevation & Decay

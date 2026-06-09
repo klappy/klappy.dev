@@ -13,6 +13,7 @@ derives_from: "canon/definitions/dolcheo-vocabulary.md, docs/architecture/encode
 complements: "odd/encoding-types/observation.md, odd/encoding-types/handoff.md, odd/encoding-types/decision.md, odd/encoding-types/learning.md, odd/encoding-types/constraint.md, odd/encoding-types/encode.md, odd/encoding-types/how-to-write-encoding-types.md, odd/encoding-types/serialization-format.md"
 governs: "oddkit_encode parsing and quality scoring for type O, facet=open"
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Encoding Type: Open (O, forward-pointing)

@@ -11,6 +11,7 @@ epoch: E0005
 date: 2026-02-17
 derives_from: "canon/constraints/guide-posture.md"
 complements: "docs/oddkit/IMPL-writing-canon-gate.md"
+target_repo: "oddkit"
 ---
 
 # Implementation: Surface Guide Posture for Public-Facing Deliverables

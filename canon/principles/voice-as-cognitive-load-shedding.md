@@ -13,6 +13,7 @@ derives_from: "canon/values/axioms.md, canon/constraints/guide-posture.md"
 complements: "canon/voice/oddie-the-river-guide.md, canon/constraints/ai-voice-cliches.md"
 governs: "Voice design decisions for surfaces operating under high information density"
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Voice as Cognitive Load Shedding — Why Dryness, Calm, and Brevity Are Structural Under Pressure

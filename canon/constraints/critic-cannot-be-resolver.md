@@ -13,6 +13,7 @@ derives_from: "canon/principles/verification-requires-fresh-context.md, canon/va
 complements: "canon/voice/oddie-the-river-guide.md, canon/constraints/mode-discipline-and-bottleneck-respect.md"
 governs: "All agent-system designs where one agent detects issues and another (or the same) resolves them"
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Critic Cannot Be Resolver — Detection and Remediation Require Separate Contexts

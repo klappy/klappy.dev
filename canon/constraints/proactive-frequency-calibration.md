@@ -12,6 +12,7 @@ date: 2026-04-20
 derives_from: "canon/principles/ritual-is-a-smell.md, docs/oddkit/proactive/posture-lapse.md, odd/ledger/2026-04-20-post-4-7-proactive-loop-experience.md, writings/copy-paste.md, writings/shifting-bottlenecks-climbing-ladders.md"
 complements: "canon/constraints/mode-discipline-and-bottleneck-respect.md, docs/oddkit/proactive/posture-lapse.md, canon/diagnostics/ritual-detected.md"
 governs: "Tool-call frequency, turn format, and gauntlet placement during proactive operation"
+target_repo: "outcomes-driven-development"
 ---
 
 # Proactive Frequency Calibration — Cognitive Rhythm Without Operator Babysitting

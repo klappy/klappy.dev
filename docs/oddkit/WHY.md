@@ -7,6 +7,7 @@ tier: 1
 voice: neutral
 stability: stable
 tags: ["orientation", "oddkit", "agents", "epistemic-hygiene"]
+target_repo: "oddkit"
 ---
 
 # Why oddkit Exists
