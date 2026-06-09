@@ -31,6 +31,11 @@ Blocked by the defaults item. Delete the moved files (142 ODD + 75 oddkit md + s
 
 19 `target_repo: "undecided"` files + 3 forks (writing-vertical cluster; vodka/architecture principles split; AGENTS.md two-way split). Format: succinct per-file proposal + one-line why, timeboxed review with maintainer. AGENTS.md must split before either half moves.
 
+Adjudication criteria (maintainer calibration, recorded 2026-06-09):
+
+1. **Topic is not the routing criterion.** A doc is not pulled from core because of what it talks about; canon principles route on whether the principle itself is portable. Ruled in-session: `canon/principles/methodology-personification` and `canon/principles/voice-as-cognitive-load-shedding` are core despite being voice/communication-flavored.
+2. **Provisional found-frameworks stay overlay.** A framework the maintainer found and is still personally validating ("applied as working practice, retired when disconfirmed") does not ship to adopters as core canon until proven. Ruled in-session: `canon/methods/triangle-pass` returned to the overlay (klappy.dev #233, outcomes-driven-development #3) — it derives from `canon/meta/triangle-of-yaps` (undecided).
+
 ## P2 — Worker auth for private knowledge bases
 
 GitHub App or scoped-PAT worker secret so oddkit can read private repos. Enables flipping ODD private later if monetization positioning demands it.
