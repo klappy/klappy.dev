@@ -13,7 +13,7 @@ derives_from: "odd/constraint/anti-cache-lying.md, canon/principles/cache-fetche
 complements: "docs/appendices/epoch-8-2.md, canon/constraints/core-governance-baseline.md"
 governs: "Semantics of time fields in the oddkit response envelope and any oddkit-pattern MCP server envelope — what each field means, which MUST be present, and which are forbidden"
 status: draft
-target_repo: "oddkit"
+target_repo: "outcomes-driven-development"
 ---
 
 # Envelope Time Fields — Request Time vs Content Provenance
