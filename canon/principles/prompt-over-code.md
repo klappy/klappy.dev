@@ -13,7 +13,7 @@ derives_from: "canon/principles/vodka-architecture.md, docs/appendices/conventio
 complements: "odd/prompt-architecture.md, canon/principles/ritual-is-a-smell.md, canon/principles/dry-canon-says-it-once.md"
 governs: "All governance rule implementation decisions in this program"
 status: active
-target_repo: "undecided"
+target_repo: "outcomes-driven-development"
 ---
 
 # Prompt Over Code — Fully Programmable Governance Without Changing the Server

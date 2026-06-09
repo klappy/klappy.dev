@@ -12,7 +12,6 @@ execution_posture: governing
 depends_on:
   - canon/methods/writing-apocrypha-fragments.md
   - canon/methods/choosing-the-right-narrative-container.md
-target_repo: "undecided"
 ---
 
 # Method: Writing Predocumentaries
