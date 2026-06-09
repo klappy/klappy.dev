@@ -14,6 +14,7 @@ governs: "All system prompts in applications that use the Anthropic API with odd
 complements: "odd/prompt-architecture.md, canon/meta/writing-canon.md"
 relevance: "decision"
 execution_posture: "governing"
+target_repo: "outcomes-driven-development"
 ---
 
 # Prompt Pattern for oddkit-Powered Applications

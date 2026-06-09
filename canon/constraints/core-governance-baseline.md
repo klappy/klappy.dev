@@ -13,6 +13,7 @@ derives_from: "canon/principles/vodka-architecture.md, canon/principles/dry-cano
 complements: "docs/oddkit/tools/oddkit_version.md, canon/constraints/telemetry-governance.md"
 governs: "Every oddkit tool that reads governance from canon at runtime. Defines what must ship bundled, what must live only in canon, and what happens when canon is unreachable."
 status: draft
+target_repo: "oddkit"
 ---
 
 # Core Governance Baseline — What Ships With the Worker, What Lives in Canon

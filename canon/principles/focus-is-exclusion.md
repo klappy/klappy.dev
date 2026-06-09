@@ -7,6 +7,7 @@ tier: 1
 voice: neutral
 stability: stable
 tags: ["principles", "capacity", "exclusion", "focus", "delivery"]
+target_repo: "outcomes-driven-development"
 ---
 
 # Focus Is Exclusion

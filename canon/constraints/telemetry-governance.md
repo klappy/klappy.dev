@@ -13,6 +13,7 @@ derives_from: "canon/principles/vodka-architecture.md, canon/principles/maintain
 complements: "docs/oddkit/tools/telemetry_public.md, docs/oddkit/tools/telemetry_policy.md, writings/half-a-million-requests.md"
 governs: "All telemetry collection in oddkit hosted service and TruthKit"
 status: active
+target_repo: "oddkit"
 ---
 
 # Telemetry Governance — What oddkit Tracks and Why

@@ -1,0 +1,10 @@
+{
+  "_comment": "Non-markdown movers for the klappy.dev bifurcation (Pass 1). Markdown files carry target_repo in frontmatter; these cannot, so their routing is recorded here. Absent from this map AND untagged in frontmatter = stays in klappy.dev. Governing doc: klappy://docs/repo-bifurcation-and-target-repo-routing. Handoff: klappy://odd/handoffs/2026-06-09-scope-audit-execution.",
+  "routes": {
+    "AGENTS.md": "undecided",
+    "canon/meta/pack.json": "oddkit",
+    "scripts/audit-retrieval-readiness.py": "oddkit",
+    "scripts/tests/test_validator.py": "oddkit",
+    "scripts/validate-frontmatter.py": "oddkit"
+  }
+}

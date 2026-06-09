@@ -9,6 +9,7 @@ stability: evolving
 tags: ["odd", "appendices", "index", "portable"]
 relevance: routing
 execution_posture: routing
+target_repo: "outcomes-driven-development"
 ---
 
 # ODD Appendices (Portable)

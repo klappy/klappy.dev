@@ -7,6 +7,7 @@ tier: 3
 voice: neutral
 stability: evolving
 tags: ["agents", "mcp", "oddkit", "getting-started"]
+target_repo: "outcomes-driven-development"
 ---
 
 # ODD Agents & MCP: Getting Started

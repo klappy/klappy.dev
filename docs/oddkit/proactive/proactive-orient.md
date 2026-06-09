@@ -9,6 +9,7 @@ stability: stable
 tags: ["odd", "oddkit", "orient", "proactive", "context-shift", "epoch-7"]
 epoch: E0007
 date: 2026-04-03
+target_repo: "oddkit"
 ---
 
 # Proactive Orient — Reorient at Every Context Shift

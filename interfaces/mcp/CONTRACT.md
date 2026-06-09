@@ -2,6 +2,7 @@
 contract: mcp
 version: 0.1.0
 status: draft
+target_repo: "oddkit"
 ---
 
 # MCP Contract (mcp@0.1.0)

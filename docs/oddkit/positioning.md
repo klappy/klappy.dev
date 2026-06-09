@@ -13,6 +13,7 @@ complements: "odd/ledger/epistemic-ledger.md, canon/values/trust-kernel.md, cano
 start_here: true
 start_here_order: 8
 start_here_label: "oddkit — A Protocol, Not a Platform"
+target_repo: "oddkit"
 ---
 
 # oddkit — A Protocol, Not a Platform

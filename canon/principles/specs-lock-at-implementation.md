@@ -13,6 +13,7 @@ derives_from: "canon/principles/contract-governs-handoff-drift.md, canon/princip
 complements: "canon/methods/planning-queue.md, canon/principles/maintainability-one-person-indefinitely.md"
 governs: "All spec-document edits after implementation has begun — applies to API specs, protocol specs, schema specs, version specs, and any document an implementer (human or agent) is building against"
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Specs Lock at Implementation — A Spec Is a Contract; Don't Change It Mid-Build

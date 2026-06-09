@@ -11,6 +11,7 @@ epoch: E0005
 date: 2026-02-09
 derives_from: "canon/values/axioms.md"
 constraint: "This document cannot override the axioms. If tension arises, the axioms govern."
+target_repo: "outcomes-driven-development"
 ---
 
 # Orientation

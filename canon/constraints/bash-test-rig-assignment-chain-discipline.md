@@ -12,6 +12,7 @@ date: 2026-04-26
 derives_from:
   - "canon/principles/ritual-is-a-smell.md"
 governs: "Authoring discipline for shell-script test rigs in this codebase"
+target_repo: "outcomes-driven-development"
 ---
 
 # Bash Test Rigs: Assignment Chains Need Explicit Newlines

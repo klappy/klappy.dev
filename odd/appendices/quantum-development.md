@@ -9,6 +9,7 @@ stability: semi_stable
 tags: ["odd", "quantum", "attempts", "uncertainty", "orientation"]
 relevance: supporting
 execution_posture: operational
+target_repo: "outcomes-driven-development"
 ---
 
 # Quantum Development

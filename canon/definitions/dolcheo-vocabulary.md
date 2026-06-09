@@ -14,6 +14,7 @@ complements: "canon/meta/writing-canon.md, docs/oddkit/proactive/continuous-enco
 governs: "All session capture, project journals, and encode invocations in oddkit-powered projects"
 status: active
 supersedes: "docs/oddkit/proactive/dolche-vocabulary.md"
+target_repo: "outcomes-driven-development"
 ---
 
 # DOLCHEO — Seven Dimensions of Session Capture

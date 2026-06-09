@@ -12,6 +12,7 @@ date: 2026-04-19
 derives_from: "canon/values/axioms.md, canon/principles/verification-requires-fresh-context.md, canon/methods/self-audit.md"
 complements: "canon/definitions/validation-as-epistemic-mode.md, canon/methods/governance-validation-via-agents.md, canon/meta/completion-report-template.md"
 governs: "How completion is verified when an agent reports what it did. Applies to any autonomous or semi-autonomous agent workflow where the agent's terminal self-report is used as evidence of work completed."
+target_repo: "outcomes-driven-development"
 ---
 
 # Agent Self-Report Under Stress — The Filesystem Is the Historian

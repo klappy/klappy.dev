@@ -10,6 +10,7 @@ tags: ["verification", "evidence", "trust", "epistemology", "agents"]
 derives_from: "canon/values/axioms.md (Axiom 4 — You Cannot Verify What You Did Not Observe)"
 relevance: decision
 execution_posture: governing
+target_repo: "outcomes-driven-development"
 ---
 
 # Verification & Evidence

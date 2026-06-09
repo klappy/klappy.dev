@@ -13,6 +13,7 @@ derives_from: "canon/principles/dry-canon-says-it-once.md, canon/principles/vodk
 complements: "canon/constraints/release-validation-gate.md, canon/principles/contract-governs-handoff-drift.md, canon/methods/supersession.md"
 governs: "Any claim that asserts what running code currently does. Architecture briefs, handoffs, ledgers, READMEs, essays, design docs, and prompt-side context all fall under this principle when they describe code behavior."
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Principle — Code Claims Require Code Observation

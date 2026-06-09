@@ -9,6 +9,7 @@ stability: semi_stable
 tags: ["odd", "orientation", "mental-model", "outcomes-driven-development", "hierarchy"]
 relevance: supporting
 execution_posture: operational
+target_repo: "outcomes-driven-development"
 ---
 
 # ODD + Canon + Evidence — Orientation Map

@@ -13,6 +13,7 @@ execution_posture: governing
 start_here: true
 start_here_order: 13
 start_here_label: Definition of Done
+target_repo: "outcomes-driven-development"
 ---
 
 # Definition of Done & Evidence Policy

@@ -15,6 +15,7 @@ start_here_label: The Manifesto
 epoch: E0005
 derives_from: "canon/values/axioms.md"
 complements: "canon/values/orientation.md, canon/constraints/definition-of-done.md, odd/maturity.md"
+target_repo: "outcomes-driven-development"
 ---
 
 # ODD Manifesto v1.2 (Extended)

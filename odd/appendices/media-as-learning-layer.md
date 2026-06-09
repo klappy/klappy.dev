@@ -9,6 +9,7 @@ stability: stable
 tags: ["odd", "media", "learning", "progressive-disclosure", "website"]
 relevance: supporting
 execution_posture: operational
+target_repo: "outcomes-driven-development"
 ---
 
 # Media as a Learning Layer

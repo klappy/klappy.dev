@@ -13,6 +13,7 @@ derives_from: "canon/definitions/epistemic-modes.md, canon/principles/verificati
 complements: "canon/constraints/mode-transitions-require-encoded-handoff.md, canon/methods/persona-shaped-agent-runtime.md, docs/mode-separated-conversations.md"
 governs: "All multi-mode work — agent-driven and human-driven — where the same artifact passes through more than one epistemic mode"
 status: proposed
+target_repo: "outcomes-driven-development"
 ---
 
 # Sessions Mirror Modes — Each Epistemic Mode Earns Its Own Session

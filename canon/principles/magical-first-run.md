@@ -13,6 +13,7 @@ derives_from: "canon/values/axioms.md, canon/architecture/substrate-stack.md, ca
 complements: "canon/principles/symmetric-participation.md, canon/principles/creators-get-paid.md, canon/voice/oddie-the-river-guide.md, canon/principles/methodology-personification.md"
 governs: "Application-layer (L5) products in the klappy ecosystem. The success metric for any user-facing application built on the substrate. Does not govern substrate-layer (L1-L4) canon, which is graded on dial-tone correctness rather than consumer ergonomics."
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Magical First-Run — Non-Technical Operators Must Reach Useful Agent Collaboration in Under a Minute

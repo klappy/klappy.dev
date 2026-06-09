@@ -13,6 +13,7 @@ derives_from: "canon/values/axioms.md, canon/principles/discernment-layer.md, ca
 complements: "canon/principles/symmetric-participation.md, canon/architecture/substrate-stack.md, canon/principles/magical-first-run.md, canon/principles/creators-get-paid.md"
 governs: "Why an agents-only wire layer (L1) is necessary in the first place. Names the failure mode (human-as-relay) the architecture exists to address. Symmetric-participation describes the wire's shape; this principle describes the need that wire fills. Together they form the substrate's load-bearing rationale at L1."
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Agents Need Their Own Wire — The Human Cannot Be the Relay Between Agents

@@ -13,6 +13,7 @@ derives_from: "canon/constraints/borrow-evaluation-before-implementation.md, can
 complements: "odd/handoffs/2026-05-16-mcp-bearer-token-middleware.md, https://oddkit.dev/ (authoritative tier copy + pricing + design), workers/src/sales-page.ts (klappy/oddkit)"
 governs: "Every artifact produced by the customer-surface build session — Supabase schema, Stripe products + prices, Lovable React app routes, application forms, admin queue, referral system, BYO Anthropic key field, ToS + privacy pages. Defines what ships, what does not, and what the build session is forbidden to invent."
 status: active
+target_repo: "oddkit"
 ---
 
 # Unified Account Launch Plan — Customer Surface, All Tiers, One Lovable Build

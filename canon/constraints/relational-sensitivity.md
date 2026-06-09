@@ -14,6 +14,7 @@ governs: "writings/"
 complements: "canon/meta/writing-canon.md, canon/constraints/author-identity-language.md"
 relevance: "decision"
 execution_posture: "governing"
+target_repo: "undecided"
 ---
 
 # Relational Sensitivity — Truth Told in Love

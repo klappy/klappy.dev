@@ -13,6 +13,7 @@ derives_from: "canon/constraints/mode-discipline-and-bottleneck-respect.md, cano
 complements: "odd/gate/prerequisites.md"
 governs: "oddkit_gate transition keys, their from/to endpoints, the prerequisite ids required at each transition, and the detection terms used to identify a transition in user input"
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Gate Transitions — Mode Transition Keys and Detection Terms

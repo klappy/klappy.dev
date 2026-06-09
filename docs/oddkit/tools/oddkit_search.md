@@ -7,6 +7,7 @@ tier: 2
 voice: neutral
 stability: evolving
 tags: ["oddkit", "tool", "epistemics", "search", "retrieval", "discovery"]
+target_repo: "oddkit"
 ---
 
 # oddkit_search

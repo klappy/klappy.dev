@@ -12,6 +12,7 @@ date: 2026-04-16
 derives_from: "canon/constraints/epistemic-challenge.md, odd/challenge-types/how-to-write-challenge-types.md"
 governs: "oddkit_challenge universal prerequisite checks applied regardless of matched type"
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Challenge Base Prerequisites

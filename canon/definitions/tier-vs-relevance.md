@@ -9,6 +9,7 @@ voice: neutral
 stability: stable
 tags: ["metadata", "documentation", "context-packs"]
 execution_posture: governing
+target_repo: "outcomes-driven-development"
 ---
 
 # Tier vs Relevance

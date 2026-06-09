@@ -9,6 +9,7 @@ stability: draft
 tags: ["canon", "methods", "exploration", "durability"]
 relevance: decision
 execution_posture: governing
+target_repo: "outcomes-driven-development"
 ---
 
 # Method: Exploration Exhaust

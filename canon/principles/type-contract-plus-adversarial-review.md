@@ -13,6 +13,7 @@ derives_from: "canon/values/axioms.md, canon/principles/verification-requires-fr
 complements: "canon/constraints/release-validation-gate.md, canon/principles/cache-fetches-and-parses.md"
 governs: "Any code change whose correctness depends on accurately reporting its own incompleteness, partiality, or failure. Binding on every orchestrator shipping type-carrying interfaces across trust boundaries in oddkit-pattern MCP servers and their consumers."
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Type Contract Plus Adversarial Review — Boundary Types Are Necessary, Not Sufficient

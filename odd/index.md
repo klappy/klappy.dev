@@ -10,6 +10,7 @@ stability: stable
 tags: ["odd", "index", "definition", "outcomes-driven-development", "what-is-odd", "methodology"]
 relevance: routing
 execution_posture: routing
+target_repo: "outcomes-driven-development"
 ---
 
 # 🎯 Outcomes-Driven Development (ODD)

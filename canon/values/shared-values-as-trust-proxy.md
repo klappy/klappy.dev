@@ -16,6 +16,7 @@ status: final
 start_here: true
 start_here_order: 3
 start_here_label: "Shared Values as a Trust Proxy"
+target_repo: "outcomes-driven-development"
 ---
 
 # Shared Values as a Trust Proxy

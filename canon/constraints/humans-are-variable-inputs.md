@@ -7,6 +7,7 @@ tier: 1
 voice: first_person
 stability: stable
 tags: ["humans", "variability", "constraints", "ergonomics", "epistemic-discipline"]
+target_repo: "outcomes-driven-development"
 ---
 
 # Humans Are Variable Inputs

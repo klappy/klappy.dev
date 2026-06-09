@@ -9,6 +9,7 @@ stability: stable
 tags: ["odd", "oddkit", "creed", "axioms", "proactive", "drift", "hallucination", "epoch-7"]
 epoch: E0007
 date: 2026-04-03
+target_repo: "oddkit"
 ---
 
 # Proactive Identity of Integrity — Surface the Creed to Prevent Drift

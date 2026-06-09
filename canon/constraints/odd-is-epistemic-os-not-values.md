@@ -12,6 +12,7 @@ stability: stable
 tags: ["canon", "constraints", "odd", "authority", "values"]
 relevance: decision
 execution_posture: governing
+target_repo: "outcomes-driven-development"
 ---
 
 # ODD Is a Value-Grounded Epistemic OS

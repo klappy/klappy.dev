@@ -7,6 +7,7 @@ tier: 1
 voice: neutral
 stability: stable
 tags: ["principles", "irreversibility", "epistemic-cost", "commitment", "exploration"]
+target_repo: "outcomes-driven-development"
 ---
 
 # Irreversibility Is the Real Cost

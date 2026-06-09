@@ -9,6 +9,7 @@ stability: stable
 tags: ["odd", "oddkit", "preflight", "proactive", "execution", "epoch-7"]
 epoch: E0007
 date: 2026-04-03
+target_repo: "oddkit"
 ---
 
 # Proactive Preflight — Preflight Before Every Execution Task

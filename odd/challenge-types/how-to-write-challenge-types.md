@@ -13,6 +13,7 @@ derives_from: "canon/principles/prompt-over-code.md, canon/principles/vodka-arch
 complements: "odd/challenge-types/strong-claim.md, odd/challenge-types/proposal.md, odd/challenge-types/assumption.md, odd/challenge-types/observation.md, odd/challenge/base-prerequisites.md, odd/challenge/normative-vocabulary.md, odd/challenge/stakes-calibration.md"
 governs: "All challenge-type governance articles, server parsing of challenge-type docs, custom challenge type creation, multi-type matching semantics, base-plus-overlay prerequisite resolution"
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # How to Write a Challenge Type Governance Article

@@ -9,6 +9,7 @@ stability: semi_stable
 tags: ["epistemology", "decision-making", "governance"]
 epoch: E0009
 date: 2026-05-10
+target_repo: "outcomes-driven-development"
 ---
 
 # Epistemic Modes

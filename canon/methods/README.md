@@ -9,6 +9,7 @@ stability: stable
 tags: ["canon", "methods", "practice", "application"]
 relevance: decision
 execution_posture: governing
+target_repo: "outcomes-driven-development"
 ---
 
 # Methods

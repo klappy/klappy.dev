@@ -12,6 +12,7 @@ context:
 tags: ["odd", "constraint", "tension-wire", "non-framework"]
 relevance: decision
 execution_posture: governing
+target_repo: "outcomes-driven-development"
 ---
 
 # Use Only What Hurts

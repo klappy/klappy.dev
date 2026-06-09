@@ -13,6 +13,7 @@ derives_from: "canon/definitions/dolcheo-vocabulary.md, docs/oddkit/proactive/do
 complements: "odd/encoding-types/decision.md, odd/encoding-types/observation.md, odd/encoding-types/learning.md, odd/encoding-types/constraint.md, odd/encoding-types/handoff.md, odd/encoding-types/open.md"
 governs: "oddkit_encode parsing and quality scoring for type E"
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Encoding Type: Encode (E)

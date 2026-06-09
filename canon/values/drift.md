@@ -12,6 +12,7 @@ date: 2026-02-15
 derives_from: "canon/values/axioms.md"
 complements: "canon/methods/weighted-relevance-and-arbitration.md, canon/methods/self-audit.md, odd/ledger/epistemic-ledger.md"
 constraint: "Drift is expected in any living system. Its presence must never be treated as failure."
+target_repo: "outcomes-driven-development"
 ---
 
 # Drift — Evidence of a System That's Still Learning

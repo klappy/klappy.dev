@@ -12,6 +12,7 @@ date: 2026-04-20
 derives_from: "canon/principles/ritual-is-a-smell.md, writings/copy-paste.md, odd/ledger/2026-04-20-post-4-7-proactive-loop-experience.md"
 governs: "Operator and agent behavior after PR #133 merges"
 related_pr: "https://github.com/klappy/klappy.dev/pull/133"
+target_repo: "oddkit"
 ---
 
 # Release Notes — Post-4.7 Adaptation Suite (2026-04-20)

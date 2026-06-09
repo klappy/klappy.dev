@@ -13,6 +13,7 @@ derives_from: "canon/values/axioms.md, canon/principles/capability-is-not-permis
 complements: "canon/principles/dream-house-principle.md, canon/constraints/measure-before-you-object.md, canon/observations/performed-prudence-anti-pattern.md, writings/the-dream-house-and-pre-optimization.md"
 governs: "How operators should allocate their attention and expertise when collaborating with AI systems that produce code, drafts, designs, or benchmarks"
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # The Discernment Layer — What Human Expertise Does When AI Executes

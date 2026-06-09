@@ -9,6 +9,7 @@ stability: stable
 tags: ["canon", "constraints", "irreversibility", "epistemic-safety", "commitment", "enforcement"]
 relevance: decision
 execution_posture: governing
+target_repo: "outcomes-driven-development"
 ---
 
 # No Irreversible Action Without Epistemic Justification

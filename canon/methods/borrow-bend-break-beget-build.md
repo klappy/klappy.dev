@@ -14,6 +14,7 @@ derives_from:
   - canon/values/trust-kernel.md
 complements: "canon/methods/self-audit.md, canon/methods/weighted-relevance-and-arbitration.md, canon/constraints/borrow-evaluation-before-implementation.md"
 supersedes_concept: "5B (Borrow, Bend, Break, Beget, Build) — Bide added as the sixth B per klappy://docs/promotions/P0002-borrow-evaluation-before-implementation; URI and filename retained for backward reference"
+target_repo: "outcomes-driven-development"
 ---
 
 # Method: Borrow, Bend, Break, Beget, Bide, Build

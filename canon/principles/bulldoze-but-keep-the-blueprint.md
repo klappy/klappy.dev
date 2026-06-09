@@ -16,6 +16,7 @@ execution_posture: operational
   - evidence
   - cost-models
   - bt-tools
+target_repo: "outcomes-driven-development"
 ---
 
 # Bulldoze the App, Keep the Blueprint

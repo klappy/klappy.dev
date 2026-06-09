@@ -7,6 +7,7 @@ tier: 2
 voice: first_person
 stability: draft
 tags: ["epistemic-scope", "portability", "ritual-smell", "oddkit"]
+target_repo: "outcomes-driven-development"
 ---
 
 # Scope Over Folders

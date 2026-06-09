@@ -12,6 +12,7 @@ date: 2026-02-18
 derives_from: "odd/constraint/use-only-what-hurts.md, odd/ledger/epistemic-ledger.md, canon/definitions/epistemic-modes.md"
 complements: "writings/the-drift-queue.md, docs/appendices/synthesis-ledger.md, docs/appendices/convention-requires-an-enforcer.md"
 governs: "docs/planning/ directory and all planning documents within it"
+target_repo: "outcomes-driven-development"
 ---
 
 # The Planning Queue — Implementation-Ready Specs That Wait Until They Hurt

@@ -12,6 +12,7 @@ date: 2026-04-17
 derives_from: "canon/constraints/epistemic-challenge.md, odd/challenge-types/how-to-write-challenge-types.md"
 governs: "oddkit_challenge detection vocabulary on two surfaces — signal in retrieved canon quotes (tension detection) and noise in user input (BM25 stop-word filter)"
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Challenge Normative Vocabulary

@@ -13,6 +13,7 @@ derives_from: "canon/principles/vodka-architecture.md, canon/values/axioms.md"
 complements: "canon/principles/ritual-is-a-smell.md, canon/principles/maintainability-one-person-indefinitely.md"
 governs: "All MCP servers, tools, and orchestration layers in this program"
 status: active
+target_repo: "undecided"
 ---
 
 # KISS — Simplicity Is the Ceiling, Not the Floor

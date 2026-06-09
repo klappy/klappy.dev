@@ -9,6 +9,7 @@ stability: stable
 tags: ["odd", "oddkit", "handoff", "proactive", "context-window", "saturation", "bootstrap", "epoch-7"]
 epoch: E0007
 date: 2026-04-03
+target_repo: "oddkit"
 ---
 
 # Proactive Handoff — Detect Saturation, Bootstrap the Next Conversation

@@ -15,6 +15,7 @@ complements: "docs/oddkit/proactive/posture-lapse.md, docs/oddkit/proactive/proa
 governs: "All session capture, project journal entries, and encode invocations"
 status: superseded
 superseded_by: "canon/definitions/dolcheo-vocabulary.md"
+target_repo: "oddkit"
 ---
 
 # DOLCHE — Six Dimensions of Session Capture

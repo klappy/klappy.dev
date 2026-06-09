@@ -13,6 +13,7 @@ date: 2026-02-18
 derives_from: "docs/planning/automated-changelog.md, docs/planning/oddkit-write-access.md, odd/ledger/epistemic-ledger.md, canon/principles/ritual-is-a-smell.md, odd/constraint/anti-cache-lying.md"
 complements: "docs/oddkit/IMPL-content-addressed-caching.md, canon/CHANGELOG.md, canon/methods/planning-queue.md"
 governs: "oddkit MCP server diff action, changelog generation pipeline"
+target_repo: "oddkit"
 ---
 
 # Implementation: oddkit_diff — The Universal "What Moved" Primitive

@@ -13,6 +13,7 @@ derives_from: "canon/constraints/epistemic-challenge.md, odd/challenge-types/how
 governs: "oddkit_challenge behavior for observation type and fallback routing"
 fallback: true
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Challenge Type: Observation

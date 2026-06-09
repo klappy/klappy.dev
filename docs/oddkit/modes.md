@@ -8,6 +8,7 @@ voice: neutral
 stability: evolving
 epoch: E0005
 tags: ["oddkit", "agents", "epistemic-modes"]
+target_repo: "oddkit"
 ---
 
 # Epistemic Mode Guidance for oddkit

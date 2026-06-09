@@ -9,6 +9,7 @@ stability: evolving
 tags: ["self-audit", "verification"]
 relevance: supporting
 execution_posture: operational
+target_repo: "outcomes-driven-development"
 ---
 
 # Self-Audit Checklist

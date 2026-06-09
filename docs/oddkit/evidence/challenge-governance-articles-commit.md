@@ -7,6 +7,7 @@ tier: 3
 voice: neutral
 stability: stable
 tags: ["docs", "oddkit", "evidence", "gauntlet"]
+target_repo: "oddkit"
 ---
 
 # Gauntlet Evidence — Challenge Governance Articles Commit

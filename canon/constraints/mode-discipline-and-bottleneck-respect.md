@@ -13,6 +13,7 @@ derives_from: "canon/definitions/epistemic-modes.md, canon/principles/verificati
 complements: "canon/constraints/oddkit-prompt-pattern.md, canon/values/axioms.md"
 governs: "How any LLM instance operating inside oddkit-powered projects conducts substantive work — specifically, when to ask questions, when to produce artifacts, and how to respect the operator's attention as the system bottleneck. Model-agnostic: applies to the model, GPT, Gemini, Llama, or any future model with tool-use capabilities."
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Mode Discipline and Bottleneck Respect — How Models Operate Inside oddkit

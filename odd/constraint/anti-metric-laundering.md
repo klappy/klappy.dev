@@ -7,6 +7,7 @@ tier: 1
 voice: neutral
 stability: stable
 tags: ["constraints", "metrics", "trust", "governance", "agents"]
+target_repo: "outcomes-driven-development"
 ---
 
 # Constraint: Anti-Metric Laundering

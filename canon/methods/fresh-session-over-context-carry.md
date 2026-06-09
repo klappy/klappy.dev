@@ -13,6 +13,7 @@ derives_from: "canon/principles/code-claims-require-code-observation.md, canon/p
 complements: "canon/constraints/release-validation-gate.md, canon/principles/contract-governs-handoff-drift.md, odd/ledger/2026-04-30-audit-cleanup-encode-artifacts-landed.md"
 governs: "Method for deciding whether a multi-phase workflow should continue in the current session or open a fresh one. Applies to any moment where the next phase's contract lives in canon (handoff, ledger, architecture doc) and the operator asks 'continue or fresh session?'"
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Method — Fresh Session Over Context Carry

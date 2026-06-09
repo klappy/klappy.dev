@@ -13,6 +13,7 @@ derives_from: "canon/constraints/telemetry-governance.md, canon/constraints/rele
 complements: "canon/decisions/DR-20260514-0001-telemetry-wrapper-pattern.md, canon/observations/2026-05-14-telemetry-coverage-gap-quantified.md"
 governs: "Every release that touches the telemetry Emission Contract surface in oddkit and TruthKit"
 status: active
+target_repo: "oddkit"
 ---
 
 # Telemetry Validation Gate — Smoke Every Tool, Verify Every Number

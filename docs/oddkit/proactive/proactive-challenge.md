@@ -9,6 +9,7 @@ stability: stable
 tags: ["odd", "oddkit", "challenge", "proactive", "pressure-test", "epoch-7"]
 epoch: E0007
 date: 2026-04-03
+target_repo: "oddkit"
 ---
 
 # Proactive Challenge — Challenge Before Encoding, Not When Asked

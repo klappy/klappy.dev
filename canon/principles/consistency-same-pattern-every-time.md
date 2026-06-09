@@ -13,6 +13,7 @@ derives_from: "canon/principles/vodka-architecture.md, canon/values/axioms.md"
 complements: "docs/architecture/epistemic-os-layers.md, canon/principles/kiss-simplicity-is-the-ceiling.md"
 governs: "All MCP server interfaces and knowledge base serving patterns in this program"
 status: active
+target_repo: "oddkit"
 ---
 
 # Consistency — Same Pattern, Every Knowledge Base, Every Time

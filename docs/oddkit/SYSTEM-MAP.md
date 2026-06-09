@@ -7,6 +7,7 @@ tier: 2
 voice: neutral
 stability: stable
 tags: ["oddkit", "odd", "outcomes-driven-development", "orchestrator", "librarian", "validation", "arbitration"]
+target_repo: "oddkit"
 ---
 
 # Oddkit System Map

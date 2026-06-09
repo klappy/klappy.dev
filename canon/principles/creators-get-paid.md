@@ -13,6 +13,7 @@ derives_from: "canon/values/axioms.md, canon/architecture/substrate-stack.md, ca
 complements: "canon/principles/magical-first-run.md, canon/principles/symmetric-participation.md"
 governs: "The economy layer (L6) of the substrate stack — payment, marketplace, reputation, discoverability, settlement. Constrains how every other layer monetizes. The principle the program defends against the App-Store / landlord failure mode of substrates that drift from infrastructure into rent-extraction."
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Creators Get Paid — The Substrate Is Paid for What It Provides and Never Extracts From Creators' Work

@@ -12,6 +12,7 @@ date: 2026-04-20
 derives_from: "odd/ledger/2026-04-20-post-4-7-proactive-loop-experience.md, odd/ledger/2026-04-19-validator-closeout-and-0.17.0.md, odd/ledger/journal/2026-04-17-pr100-rage-quit-handoff.md"
 complements: "canon/methods/self-audit.md, canon/constraints/release-validation-gate.md"
 governs: "Review-surface architecture for oddkit and klappy.dev releases"
+target_repo: "oddkit"
 ---
 
 # Non-Diff Review Surfaces — Catching System-Level Issues Diff-Scoped Validators Miss

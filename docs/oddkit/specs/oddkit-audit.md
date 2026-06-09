@@ -16,6 +16,7 @@ derives_from:
   - "docs/oddkit/specs/oddkit-resolve.md"
 governs: "Mechanical detection of dead klappy:// references at PR time"
 supersedes: "DRAFT v2.1 (2026-04-26, default-scope narrowed); DRAFT v1 (2026-04-26, four-check version)"
+target_repo: "oddkit"
 ---
 
 # oddkit_audit — Action Specification (DRAFT v2.2 — KISS)

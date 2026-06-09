@@ -5,6 +5,7 @@ audience: odd
 stability: long_lived
 exposure: nav
 tier: 2
+target_repo: "outcomes-driven-development"
 ---
 
 # Epistemic Contract

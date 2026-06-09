@@ -13,6 +13,7 @@ derives_from: "canon/values/axioms.md, canon/principles/ritual-is-a-smell.md, ca
 complements: "docs/architecture/epistemic-os-layers.md, odd/prompt-architecture.md, canon/constraints/oddkit-prompt-pattern.md"
 governs: "All MCP servers, knowledge base serving infrastructure, and orchestration layers in this program"
 status: active
+target_repo: "undecided"
 ---
 
 # Vodka Architecture — The Design Pattern for Epistemic Infrastructure

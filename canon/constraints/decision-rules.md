@@ -9,6 +9,7 @@ stability: stable
 tags: ["decision-rules", "heuristics"]
 relevance: decision
 execution_posture: governing
+target_repo: "outcomes-driven-development"
 ---
 
 # Decision Rules

@@ -7,6 +7,7 @@ tier: 2
 voice: neutral
 stability: stable
 tags: ["interfaces", "canon", "frontmatter", "schema", "verification"]
+target_repo: "oddkit"
 ---
 
 # Canon Frontmatter Contract

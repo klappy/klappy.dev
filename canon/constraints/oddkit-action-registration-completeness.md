@@ -12,6 +12,7 @@ date: 2026-04-26
 derives_from:
   - "canon/principles/vodka-architecture.md"
 governs: "Process for adding a new MCP action surface to klappy/oddkit"
+target_repo: "oddkit"
 ---
 
 # Adding an oddkit Action: Update Both Switch and VALID_ACTIONS

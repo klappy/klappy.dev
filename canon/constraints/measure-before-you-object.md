@@ -13,6 +13,7 @@ derives_from: "canon/values/axioms.md"
 complements: "canon/observations/performed-prudence-anti-pattern.md, canon/constraints/mode-discipline-and-bottleneck-respect.md"
 governs: "All work where a contributor (model or human) raises a performance, cost, complexity, or scaling concern about a proposal under consideration"
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Measure Before You Object — Theoretical Concerns Require Empirical Falsification

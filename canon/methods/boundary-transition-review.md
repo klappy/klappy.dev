@@ -9,6 +9,7 @@ stability: draft
 tags: ["canon", "methods", "boundaries", "review"]
 relevance: decision
 execution_posture: governing
+target_repo: "outcomes-driven-development"
 ---
 
 # Method: Boundary Transition Review

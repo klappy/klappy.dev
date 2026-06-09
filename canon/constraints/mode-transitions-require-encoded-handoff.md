@@ -13,6 +13,7 @@ derives_from: "canon/principles/sessions-mirror-modes.md, canon/definitions/epis
 complements: "canon/methods/persona-shaped-agent-runtime.md, docs/mode-separated-conversations.md, canon/definitions/dolcheo-vocabulary.md"
 governs: "Every transition between epistemic modes — exploration, planning, execution, validation, resolution — across all surfaces (agent runtime, human conversation, mixed teams)"
 status: proposed
+target_repo: "outcomes-driven-development"
 ---
 
 # Mode Transitions Require Encoded Handoff — Every Gate Demands a Durable Artifact

@@ -9,6 +9,7 @@ stability: stable
 tags: ["odd", "oddkit", "proactive", "provenance", "journal", "changelog", "version", "ritual", "epoch-7"]
 epoch: E0007
 date: 2026-04-03
+target_repo: "oddkit"
 ---
 
 # Proactive Artifact Provenance — Capture What Happened Before Finalizing

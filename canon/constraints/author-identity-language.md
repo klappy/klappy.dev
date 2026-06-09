@@ -12,6 +12,7 @@ date: 2026-03-05
 derives_from: "canon/values/trust-kernel.md, canon/values/axioms.md"
 complements: "canon/constraints/guide-posture.md, canon/meta/writing-canon.md"
 governs: "All public-facing content: hook fields, og_description, twitter_description, description fields, opening paragraphs of public essays, podcast generation inputs, and social cards"
+target_repo: "undecided"
 ---
 
 # Author Identity Language

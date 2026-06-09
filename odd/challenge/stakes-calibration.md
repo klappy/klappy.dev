@@ -12,6 +12,7 @@ date: 2026-04-16
 derives_from: "canon/definitions/epistemic-modes.md, canon/constraints/epistemic-challenge.md, canon/principles/irreversibility-is-the-real-cost.md, odd/challenge-types/how-to-write-challenge-types.md"
 governs: "oddkit_challenge mode-to-depth mapping — which question tiers, prerequisite strictness, and reframings surface for a given caller mode"
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Challenge Stakes Calibration

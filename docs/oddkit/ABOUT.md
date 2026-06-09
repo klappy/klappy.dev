@@ -7,6 +7,7 @@ tier: 1
 voice: neutral
 stability: stable
 tags: ["oddkit", "odd", "definition", "outcomes-driven-development", "what-is-odd", "about", "orientation"]
+target_repo: "oddkit"
 ---
 
 # About oddkit

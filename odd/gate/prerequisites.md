@@ -13,6 +13,7 @@ derives_from: "canon/constraints/mode-discipline-and-bottleneck-respect.md, cano
 complements: "odd/gate/transitions.md"
 governs: "oddkit_gate prerequisite id definitions — each prereq's description, the vocabulary used to check whether the input satisfies it, and the gap message surfaced when it does not"
 status: active
+target_repo: "outcomes-driven-development"
 ---
 
 # Gate Prerequisites — Prerequisite IDs, Check Vocabularies, and Gap Messages

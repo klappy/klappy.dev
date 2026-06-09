@@ -8,6 +8,7 @@ tier: 2
 voice: neutral
 stability: stable
 tags: ["epistemics", "governance", "learning", "promotion"]
+target_repo: "outcomes-driven-development"
 ---
 
 # Epistemic Hygiene
