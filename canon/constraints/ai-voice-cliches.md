@@ -12,7 +12,6 @@ date: 2026-04-09
 derives_from: "canon/meta/writing-canon.md, canon/constraints/guide-posture.md"
 complements: "canon/constraints/author-identity-language.md, canon/constraints/relational-sensitivity.md"
 governs: "All public-facing content: essays, articles, social posts, hook fields, descriptions"
-target_repo: "undecided"
 ---
 
 # AI Voice Clichés — Patterns That Erode Trust in Co-Authored Writing

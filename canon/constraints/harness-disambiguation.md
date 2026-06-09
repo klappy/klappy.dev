@@ -12,7 +12,6 @@ date: 2026-04-14
 derives_from: "canon/principles/vodka-architecture.md, writings/the-harness-and-the-operating-system.md"
 complements: "canon/constraints/author-identity-language.md, odd/terminology.md"
 governs: "All public-facing content, partner documents, and architecture decision records that use the word 'harness'"
-target_repo: "undecided"
 ---
 
 # Harness Disambiguation

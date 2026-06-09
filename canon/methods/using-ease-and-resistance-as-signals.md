@@ -9,7 +9,7 @@ stability: stable
 tags: ["canon", "methods", "writing", "signals"]
 relevance: decision
 execution_posture: governing
-target_repo: "undecided"
+target_repo: "outcomes-driven-development"
 ---
 
 # Method: Using Ease and Resistance as Signals

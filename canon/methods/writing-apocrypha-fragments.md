@@ -9,7 +9,6 @@ stability: stable
 tags: ["canon", "methods", "apocrypha", "writing"]
 relevance: decision
 execution_posture: governing
-target_repo: "undecided"
 ---
 
 # Method: Writing Apocrypha Fragments

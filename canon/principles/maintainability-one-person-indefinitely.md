@@ -13,7 +13,7 @@ derives_from: "canon/principles/vodka-architecture.md, canon/values/axioms.md"
 complements: "canon/principles/ritual-is-a-smell.md, canon/principles/kiss-simplicity-is-the-ceiling.md"
 governs: "All infrastructure sizing and complexity decisions in this program"
 status: active
-target_repo: "undecided"
+target_repo: "outcomes-driven-development"
 ---
 
 # Maintainability — One Person, Indefinitely
