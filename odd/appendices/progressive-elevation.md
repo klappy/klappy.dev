@@ -24,17 +24,6 @@ target_repo: "outcomes-driven-development"
 
 ODD treats durable thinking as scarce and generated artifacts as abundant—most should decay while only patterns that reduce future drag should elevate. The five layers of portability are Conversation/Attempt, Project/PRD, Interoperability/Contracts, Canon, and Decision Trace. Elevation requires recurrence, portability, drag reduction, and testability; if any criterion fails, the artifact stays local or dies. Elevation must be deliberately triggered—typically after refactors, repeated friction, or closed attempts.
 
-## Outline
-
-- Summary
-- The Five Layers of Portability
-- Elevation Criteria (Strict)
-- Elevation Trigger Points
-- Decay Rule (Default)
-- Where This Fits With Projects and Epochs
-
----
-
 ## Content
 
 ## Summary

@@ -20,51 +20,15 @@ The philosophical and operational foundation for this repository. ODD treats out
 
 ---
 
-## 📁 Contents
+## Contents
 
-| File | Title | Summary |
-|------|-------|---------|
-| `manifesto.md` | ODD Manifesto | The core philosophy: defining outcomes, enforcing constraints, verifying reality. AI accelerates execution; governance preserves trust. |
-| `terminology.md` | Terminology & Disambiguation | Constrained vocabulary of ODD. Defines terms before elevation — language governance at the point of origin. |
-| `maturity.md` | Project Maturity | How rigor changes as projects mature. PoC → Pilot → Production. |
-| `contract.md` | ODD System Contract | Version contract for ODD compatibility. Currently v3.0.0 (structure-agnostic era). |
-| `misuse-patterns.md` | Misuse Patterns | Common failure modes and how ODD gets misapplied in practice. |
-| `prompt-architecture.md` | Prompt Architecture | How intent scales without giant prompts. |
-| `orientation-map.md` | Orientation Map | One-page mental model of ODD, Canon, Evidence, and Outcomes. |
-| `cognitive-partitioning.md` | Cognitive Partitioning | Why reasoning systems must divide under pressure as they scale. |
-
-### Values
-
-| File | Title | Summary |
-|------|-------|---------|
-| `../canon/values/axioms.md` | Foundational Axioms | Four values from which all ODD epistemic discipline is derived. Explicit, intentional, and forkable. |
-| `../canon/values/orientation.md` | Orientation | The creed — an identity statement agents carry into every task. Compresses all four axioms into a single posture. |
-| `../canon/values/trust-kernel.md` | Trust Is Built by Managing Expectations | The kernel — the principle that explains why all four axioms exist. Not a fifth axiom, but the outcome they produce. |
-| `../canon/values/drift.md` | Drift — Evidence of a System That's Still Learning | Drift is expected. Absence of drift means stagnation. Amend, acknowledge, or investigate. |
-
-### Core Infrastructure
-
-| File | Title | Summary |
-|------|-------|---------|
-| `ledger/epistemic-ledger.md` | The Epistemic Ledger | Durable artifacts that survive ephemeral conversations — observations, learnings, decisions, constraints, handoffs. |
-| `../canon/methods/community-checking.md` | Community Checking | Outcome validation beyond author intent — tests transfer, not correctness. |
-| `../canon/methods/borrow-bend-break-beget-build.md` | Borrow, Bend, Break, Beget, Build | The canonical 5B sequence for maximizing work not done. |
-
-### Subfolders
-
-| Folder | Purpose |
-|--------|---------|
-| `appendices/` | Extended concepts (23 files). See [appendices/README.md](./appendices/README.md) |
-| `decisions/` | Architecture Decision Records. See [decisions/README.md](./decisions/README.md) |
+To list the documents in this collection: oddkit `catalog` with `path_prefix=odd/` (decisions and appendices live under `odd/decisions/` and `odd/appendices/`; values under `canon/values/`).
 
 ---
 
 ## 🚀 Start Here
 
-1. **`manifesto.md`** — Understand the philosophy
-2. **`terminology.md`** — Lock in the language
-3. **`maturity.md`** — Know when rigor increases
-4. **`contract.md`** — Understand the compatibility contract
+Begin with the manifesto to understand the philosophy, then the terminology to lock in the language, then maturity to know when rigor increases, then the contract to understand the compatibility guarantee. Each resolves through the catalog above.
 
 ---
 

@@ -20,13 +20,4 @@ Reasoning orientations that explain why constraints and mechanisms exist. Princi
 
 ## Contents
 
-| File | Title |
-|------|-------|
-| `bulldoze-but-keep-the-blueprint.md` | Bulldoze the App, Keep the Blueprint |
-| `focus-is-exclusion.md` | Focus Is Exclusion |
-| `irreversibility-is-the-real-cost.md` | Irreversibility Is the Real Cost |
-| `odds-relationship-to-documentation.md` | Documentation Is the Lever, Not the Goal |
-| `ritual-is-a-smell.md` | Ritual Is a Smell |
-| `scope-over-folders.md` | Scope Over Folders |
-| `capability-is-not-permission.md` | Capability Is Not Permission — Frictionless Tools Require Intentional Constraint |
-| `scoped-truth.md` | Scoped Truth — Axioms Travel, Domain Doesn't |
+To list the documents in this collection: oddkit `catalog` with `path_prefix=canon/principles/`.

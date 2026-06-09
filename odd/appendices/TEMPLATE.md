@@ -21,15 +21,6 @@ target_repo: "outcomes-driven-development"
 
 This template defines the standard structure for ODD appendices. Appendices elaborate on ODD principles with deeper analysis, examples, or edge cases. They are still universal (not implementation-specific) but are tier 2 content—revealed after the core principles.
 
-## Outline
-
-- When to Add an ODD Appendix
-- Frontmatter Fields
-- Document Structure
-- Example
-
----
-
 ## When to Add an ODD Appendix
 
 Add an ODD appendix when:
@@ -95,14 +86,6 @@ tags: ["odd", "appendices", "topic"]
 1-2 paragraph compressed overview. What principle does this elaborate?
 What additional depth does it provide?
 
-## Outline
-
-- Section 1
-- Section 2
-- Section 3
-
----
-
 ## Content
 
 [Full content...]
@@ -140,14 +123,6 @@ tags: ["odd", "appendices", "example"]
 This appendix elaborates on the scarcity principle by examining how
 it applies specifically to documentation systems. It provides examples
 of decay-by-default and elevation criteria.
-
-## Outline
-
-- The Problem
-- The Pattern
-- The Application
-
----
 
 ## Content
 

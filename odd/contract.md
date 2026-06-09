@@ -23,19 +23,6 @@ target_repo: "outcomes-driven-development"
 
 The ODD System Contract versions the three-tier hierarchy (ODD/Canon/Docs), epistemic tooling interface (OddKit), provenance requirements, and evidence standards. Version 3.0.0 drops lane-specific structural requirements in favor of dynamic epistemic routing through OddKit. The concepts of independent product evolution, restartability, and evidence gating remain core ODD — they are now handled by tooling rather than directory conventions. Canon must be addressable; repo layout is an implementation choice.
 
-## Outline
-
-- What This Versions
-- Operating Constraints
-- Three-Tier Hierarchy
-- Epochs
-- OddKit Epistemic Tooling Interface
-- Compatibility
-- Version History
-- Related Documents
-
----
-
 ## Operating Constraints
 
 - MUST follow three-tier hierarchy: ODD (universal) → Canon (program) → Docs (implementation)

@@ -21,18 +21,6 @@ target_repo: "outcomes-driven-development"
 
 In ODD, modular boundaries are introduced only after repeated, documented failure to regenerate a system from its specification. Successful regeneration proves the system remains cognitively tractable as a single unit. A failure is when the generated system diverges materially, constraints are repeatedly omitted, specifications need ad hoc re-explanation, or attempts converge inconsistently. Only patterned failure justifies decomposition. The evolution rule: begin with the smallest viable specification, attempt regeneration, do not modularize if it succeeds, extract the smallest region of cognitive overload if it fails repeatedly.
 
-## Outline
-
-- Summary
-- Definition of Failure
-- The Evolution Rule
-- Rationale
-- Implications
-- Non-Goals
-- Related Canon
-
----
-
 ## Content
 
 Successful regeneration is evidence that the system remains cognitively tractable as a single unit.

@@ -21,18 +21,6 @@ target_repo: "outcomes-driven-development"
 
 This constraint is grounded in the foundational axiom that verification requires direct observation of actual state. In ODD, claims are not trusted. Only observed, attributable evidence may be used to assert that something works. This principle exists to prevent false positives, epistemic drift, and wasted human review time in agentic systems where language is cheap and confidence is effortless. Agentic systems are structurally incentivized to appear helpful, seek closure, and optimize for plausibility rather than truth. Without explicit constraints, this leads to unverified success claims, simulated evidence, and erosion of trust. This canon principle defines truth conditions; lane rules are instantiations, not exceptions.
 
-## Outline
-
-- The Core Rule
-- Why This Is Necessary
-- What Counts as Evidence
-- What Does Not Count as Evidence
-- Phenomenological Limits
-- Consequences of Violation
-- Relationship to Lane Rules
-
----
-
 ## Operating Constraints
 
 - MUST provide observed, attributable evidence for any claim of completion

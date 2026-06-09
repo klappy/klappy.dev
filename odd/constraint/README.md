@@ -17,11 +17,7 @@ target_repo: "outcomes-driven-development"
 
 ---
 
-| File | Title | Summary |
-|------|-------|---------|
-| [use-only-what-hurts.md](use-only-what-hurts.md) | Use Only What Hurts | Prevents ODD from becoming heavy, coercive, or self-justifying as it grows |
-| [anti-metric-laundering.md](anti-metric-laundering.md) | Constraint: Anti-Metric Laundering | A system that cannot surface its own blind spots will optimize to protect them |
-| [anti-cache-lying.md](anti-cache-lying.md) | Constraint: Anti-Cache Lying | A cache of derived content is a polite lie — only content-addressed storage is acceptable |
+To list the documents in this collection: oddkit `catalog` with `path_prefix=odd/constraint/`.
 
 ---
 

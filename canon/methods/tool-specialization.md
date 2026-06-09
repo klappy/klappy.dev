@@ -25,16 +25,6 @@ scoped reasoning units, reducing decision complexity while preserving capability
 This pattern captures invariants and tradeoffs without prescribing a specific
 implementation.
 
-## Outline
-
-- Context
-- The pattern
-- Invariants
-- Tradeoffs
-- Non-goals
-
----
-
 ## Context
 
 This pattern emerges when adding tools increases confusion, misfires, or decision

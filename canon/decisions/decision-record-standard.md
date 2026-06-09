@@ -23,16 +23,6 @@ Decision records prevent re-litigating choices and preserve the reasoning that l
 
 Decision records are promoted from the Decisions Ledger when they prove durable and broadly relevant.
 
-## Outline
-
-- File Location and Naming
-- Required Frontmatter
-- Required Sections
-- Lifecycle States
-- Promotion from Ledger
-
----
-
 ## Operating Constraints
 
 - MUST preserve intent, alternatives, rationale, and consequences

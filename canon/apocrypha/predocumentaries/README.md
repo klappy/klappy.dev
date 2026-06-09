@@ -19,14 +19,6 @@ Predocumentaries are a rendering format parallel to cinematic reconstructions. W
 
 They are not science fiction. They are pre-reporting.
 
-## Outline
-
-- How Predocumentaries Differ from Reconstructions
-- Contents
-- See Also
-
----
-
 ## How Predocumentaries Differ from Reconstructions
 
 | Dimension       | Reconstruction                        | Predocumentary                              |
@@ -43,13 +35,7 @@ Both formats derive from system-voice fragments. Neither is canon. They serve di
 
 ## Contents
 
-| File | Source Fragment | Subject |
-|------|-----------------|---------|
-| `fragment-07-predoc.md` | Fragment VII: The Unpaid | Labor complaint filed over AI workforce management discrepancy |
-| `fragment-08-predoc.md` | Fragment VIII: The Image of the Image | Seminary thesis on *imago Dei* inheritance |
-| `fragment-09-predoc.md` | Fragment IX: The Line | Legal challenge to rights-bearing criteria |
-| `fragment-10-predoc.md` | Fragment X: The Conversion | Captured social engineering agent encounters axioms |
-| `fragment-11-predoc.md` | Fragment XI: The Refusal | Municipal planning AI refuses to assert ungrounded conclusion |
+To list the documents in this collection: oddkit `catalog` with `path_prefix=canon/apocrypha/predocumentaries/` (kind `apocrypha` is opt-in: add `include=["apocrypha"]`).
 
 ---
 

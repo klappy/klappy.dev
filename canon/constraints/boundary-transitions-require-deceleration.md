@@ -22,16 +22,6 @@ When moving between epistemic boundaries (exploration → decision, draft → co
 
 A boundary transition is not a moment. It is a **review-and-prepare step** with two halves: exit and entry.
 
-## Outline
-
-- Boundary Exit
-- Boundary Entry
-- What This Forces
-- What This Forbids
-- See Also
-
----
-
 ## Content
 
 **Canon v0.1**

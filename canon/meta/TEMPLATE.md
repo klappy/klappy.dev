@@ -19,15 +19,6 @@ execution_posture: routing
 
 This template defines the standard structure for Canon articles. Canon contains program-level constraints—rules that all products in this program must follow. Canon is more stable than Docs but less universal than ODD. Use this template when adding new constraints, policies, or shared rules.
 
-## Outline
-
-- When to Add to Canon
-- Frontmatter Fields
-- Document Structure
-- Example
-
----
-
 ## When to Add to Canon
 
 Add to Canon when:
@@ -95,14 +86,6 @@ tags: ["canon", "topic"]
 1-2 paragraph compressed overview. What is this constraint?
 Why does it exist? How does it shape behavior?
 
-## Outline
-
-- Section 1
-- Section 2
-- Section 3
-
----
-
 ## Content
 
 **Canon vX.Y**
@@ -142,15 +125,6 @@ tags: ["canon", "example"]
 This constraint ensures consistency across products by requiring X
 before Y. It derives from the ODD principle of evidence over assertion
 and applies to all lanes.
-
-## Outline
-
-- What I Assume
-- Why It Matters
-- What It Forces
-- When It Doesn't Apply
-
----
 
 ## Content
 

@@ -31,18 +31,6 @@ The model is named "Substrate Stack" rather than copying OSI verbatim because th
 
 ---
 
-## Outline
-
-- The Six Layers
-- The Cross-Cutting Layer: Economy
-- How to Use the Stack
-- Layer Assignments for Existing Work
-- What the Stack Forbids
-- Open Questions
-- See Also
-
----
-
 ## The Six Layers
 
 ### L1 — Wire

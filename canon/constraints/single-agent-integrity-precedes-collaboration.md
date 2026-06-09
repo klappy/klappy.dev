@@ -22,16 +22,6 @@ I treat **single-agent integrity** as the minimum viable unit of epistemic accou
 
 This is not anti-collaboration. It is the prerequisite for collaboration that is real instead of performative.
 
-## Outline
-
-- What I Mean by Integrity
-- What This Forces
-- What This Forbids
-- When It Doesn't Apply
-- See Also
-
----
-
 ## Content
 
 **Canon v0.1**

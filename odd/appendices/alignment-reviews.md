@@ -21,18 +21,6 @@ target_repo: "outcomes-driven-development"
 
 Alignment Reviews are periodic evaluations that detect and correct drift between stated intent, implemented process, and observed outcomes. They apply to content, process, and tooling equally. Reviews evaluate Canon (contradicted rules, obsolete references, undocumented invariants), PRDs (actual decision criteria, implicit patching, boundary bleeding), Attempts (incompatible comparisons, ignored failures, insufficient evidence), and Tooling (enforced invariants, accidental drift, silent compensation). Reviews are triggered by events (epoch transitions, repeated failures, PRD rewrites) not schedules. They produce corrections, not features.
 
-## Outline
-
-- Summary
-- Why This Exists
-- What Is Reviewed (Canon, PRDs, Attempts, Tooling)
-- When Reviews Occur
-- What Reviews Produce
-- Non-Goals
-- Core Invariant
-
----
-
 ## Content
 
 Its purpose is to detect and correct **drift** between:

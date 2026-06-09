@@ -82,15 +82,7 @@ Each resonance page follows a consistent structure:
 
 ## Contents
 
-| File | Work | ODD Principle |
-|------|------|---------------|
-| `antifragile.md` | Antifragile | Systems Should Improve Under Stress |
-| `lean-startup.md` | The Lean Startup | Epistemic Feedback Loops |
-| `ooda-loop.md` | OODA Loop | Orientation Dominates Action |
-| `sprint.md` | Sprint | Constrained Convergence Produces Clarity |
-| `double-diamond.md` | The Double Diamond | Governed Divergence and Convergence |
-| `ai-coding-toolkit.md` | AI Coding Toolkit — Harness Engineering | Verification Must Be Structural, Not Manual |
-| `seeing-like-an-agent.md` | Seeing Like an Agent — Claude Code Tool Design Lessons | Observation Before Assertion |
+To list the documents in this collection: oddkit `catalog` with `path_prefix=canon/resonance/`.
 
 ---
 

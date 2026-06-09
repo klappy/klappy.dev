@@ -21,18 +21,6 @@ target_repo: "outcomes-driven-development"
 
 ODD is often mistaken for an attempt to automate software development. It is not. Automation optimizes execution; evolution optimizes learning. ODD is designed for disciplined evolution: humans define intent (PRDs, constraints, DoD), agents generate variation (independent attempts), reality provides feedback (evidence), humans perform selection (promotion/rejection), and learnings are retained. Humans stay in the loop because fully automated selection optimizes for what is easy to measure rather than what actually matters. All evolution is discrete, auditable, reversible, and bounded.
 
-## Outline
-
-- Why This Appendix Exists
-- What We Are Not Doing
-- What We Are Doing Instead
-- Why Humans Stay in the Loop
-- Evolutionary Scope
-- Controlled, Not Runaway
-- The Core Principle
-
----
-
 ## Content
 
 **Status:** Orientation  

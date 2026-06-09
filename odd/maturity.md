@@ -21,18 +21,6 @@ target_repo: "outcomes-driven-development"
 
 Project maturity defines how constraints and policies change as a project matures. Three levels exist: Level 0 (PoC/Exploration) focuses on learning quickly with non-authoritative artifacts; Level 1 (Pilot/Product) delivers value safely with evidence, visual proof, and explicit tradeoffs; Level 2 (Production/Long-Term) sustains trust with measurable outcomes, observability, security, and explicit stop conditions. Rigor increases with maturity. Projects should move up when others depend on them, artifacts persist, decisions become costly to reverse, or trust is implicitly assumed.
 
-## Outline
-
-- Core Principle: Rigor increases with maturity
-- Level 0 — PoC / Exploration
-- Level 1 — Pilot / Product
-- Level 2 — Production / Long-Term
-- Relationship to Other Canon Documents
-- Agent Expectations
-- Escalation Rules
-
----
-
 ## Content
 
 **Canon v0.1**

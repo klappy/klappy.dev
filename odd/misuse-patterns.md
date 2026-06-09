@@ -21,19 +21,6 @@ target_repo: "outcomes-driven-development"
 
 This appendix documents predictable ways ODD fails: Outcome Theater (saying outcomes but measuring artifacts), Prompt Maximalism (one huge prompt replacing thinking), Premature Governance (locking down before patterns stabilize), Evidence Substitution (assertions replacing demonstrations), Consistency Absolutism (treating early conventions as immutable), and Antifragility as Optimism (assuming recovery without testing it). These are human failure modes under real constraints, not violations of intent. The purpose is early recognition through shared language, not prevention through rules.
 
-## Outline
-
-- Outcome Theater
-- Prompt Maximalism
-- Premature Governance
-- Evidence Substitution
-- Consistency Absolutism
-- Antifragility as Optimism
-- Maturity Note
-- How to Use This Appendix
-
----
-
 ## Content
 
 **(Appendix to ODD Manifesto — Internal)**

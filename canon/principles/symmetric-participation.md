@@ -32,18 +32,6 @@ The principle exists because every prior open substrate that drifted into peer-t
 
 ---
 
-## Outline
-
-- The Wire Knows One Thing
-- What Symmetric Participation Enables
-- What This Principle Forbids
-- The Relationship to D0020
-- Implications for L2 Wrappers
-- Why This Survives Contact With Reality
-- See Also
-
----
-
 ## The Wire Knows One Thing
 
 The wire knows that an account holds a credential and that a stream emits frames. Beyond that, the wire knows nothing.

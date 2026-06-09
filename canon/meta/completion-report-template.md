@@ -19,22 +19,6 @@ execution_posture: routing
 
 The completion report template is the mandatory output format for claiming completion. It ties together the Definition of Done, Self-Audit, and Visual Proof Standards into a single, reviewable artifact. Reports must include task overview, intended outcome, what changed, verification performed, observed behavior, evidence produced, visual proof (if applicable), self-audit summary, confidence and gaps, exceptions or notes, and a completion declaration. Reports may be brief but must be honest. If the report is unclear, the work is unclear.
 
-## Outline
-
-- Task Overview
-- Intended Outcome
-- What Changed
-- Verification Performed
-- Observed Behavior
-- Evidence Produced
-- Visual Proof (If Applicable)
-- Self-Audit Summary
-- Confidence & Gaps
-- Exceptions or Notes
-- Completion Declaration
-
----
-
 ## Content
 
 **Canon v0.1**

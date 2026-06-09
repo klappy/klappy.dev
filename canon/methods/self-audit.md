@@ -20,23 +20,6 @@ target_repo: "outcomes-driven-development"
 
 The self-audit checklist defines how work should be self-reviewed before claiming completion. It covers ten areas: intended outcome, constraints applied, decision rules followed, verification performed, evidence produced, document structure validation, UX and behavior check, tradeoffs and risks, maintainability check, and confidence level. Minimum acceptable completion requires a stated outcome, at least one verification step, at least one piece of evidence, and acknowledgment of tradeoffs or unknowns. This replaces repeated back-and-forth questions about whether work was actually run and verified.
 
-## Outline
-
-- Intended Outcome
-- Constraints Applied
-- Decision Rules Followed
-- Verification Performed
-- Evidence Produced
-- Document Structure Check
-- UX & Behavior Check
-- Tradeoffs & Risks
-- Maintainability Check
-- Confidence Level
-- Minimum Acceptable Completion
-- Agent Expectations
-
----
-
 ## Content
 
 **Canon v0.1**
