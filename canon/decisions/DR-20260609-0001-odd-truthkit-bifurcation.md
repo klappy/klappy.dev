@@ -17,7 +17,7 @@ status: active
 
 # DR-20260609-0001 — Bifurcating klappy.dev: Universal Core, ODD Vertical, TruthKit-KB, and Frontmatter-Routed Extraction
 
-> The klappy.dev knowledge base fuses four distinct layers at the file level: a universal epistemic kernel, a software-development vertical (ODD), a personal overlay (essays, voice, story), and a tool layer (oddkit's own governance and docs). The engine (oddkit) is already domain-blind — the same ten actions serve a software canon and an oral-theology corpus unchanged — so all domain specificity lives in the knowledge base, not the tool. This record commits to separating the universal core into a public `outcomes-driven-development` repo, folding tool docs into `oddkit`, keeping klappy.dev as the personal overlay, and queuing the universal distillation (TruthKit-KB) as a second pass. The separation is routed through a `target_repo` frontmatter tag so the eventual move is a mechanical search-and-copy, not a re-organization.
+> The klappy.dev knowledge base fuses four distinct layers at the file level: a universal epistemic kernel, a software-development vertical (ODD), a personal overlay (essays, voice, story), and a tool layer (oddkit's own governance and docs). The engine (oddkit) is already domain-blind — the same ten actions serve a software canon and an oral-theology corpus unchanged — so all domain specificity lives in the knowledge base, not the tool. This record commits to separating the universal core into a public `outcomes-driven-development` repo, folding tool docs into `oddkit`, keeping klappy.dev as the personal overlay, and treating the universal distillation (TruthKit-KB) as the first extraction pass after the audit — with `outcomes-driven-development` emerging as its software-flavored byproduct. The separation is routed through a `target_repo` frontmatter tag so the eventual move is a mechanical search-and-copy, not a re-organization.
 
 ---
 
@@ -25,7 +25,7 @@ status: active
 
 `klappy/klappy.dev` is the knowledge base the oddkit Worker reads at runtime; `klappy/oddkit` is the engine. The base currently mixes four layers in one tree. The primary goal is to let non-klappy users (Tim, Ian, and others) adopt oddkit **without** inheriting klappy's voice, story, or software-development framing — and to do so without disrupting klappy.dev, which is the daily driver.
 
-The decision is to abstract the universal core out of klappy.dev rather than reorganize the whole repo. The core becomes a new public repo, `outcomes-driven-development`. The tool layer folds into the existing `oddkit` repo. The personal overlay stays in klappy.dev. The universal distillation — TruthKit-KB — is a second pass that strips software vocabulary from the core; it is not attempted in the same pass as the separation.
+The decision is to abstract the universal core out of klappy.dev rather than reorganize the whole repo. The core becomes a new public repo, `outcomes-driven-development`. The tool layer folds into the existing `oddkit` repo. The personal overlay stays in klappy.dev. The universal distillation — TruthKit-KB — is the first extraction pass after the audit: it strips software vocabulary from the core, and `outcomes-driven-development` falls out as the kernel-plus-thin-vertical byproduct. The distillation pass is never combined with the audit pass.
 
 To make the eventual extraction mechanical, each file that will move is tagged with a `target_repo` frontmatter field. Untagged means "stays in klappy.dev." Extraction is then `git grep target_repo` plus copy — not a judgment call repeated 769 times.
 
@@ -33,7 +33,7 @@ To make the eventual extraction mechanical, each file that will move is tagged w
 
 ## Decision
 
-1. **Three live destinations, one deferred.** `outcomes-driven-development` (public, core governance and canon), `oddkit` (engine + its docs/governance), `klappy.dev` (personal overlay and story). TruthKit-KB (the minimal universal distillation) is queued as a later pass.
+1. **Three live destinations, with TruthKit-KB as the distillation that produces one of them.** `outcomes-driven-development` (public, core governance and canon), `oddkit` (engine + its docs/governance), `klappy.dev` (personal overlay and story). TruthKit-KB (the minimal universal distillation) is the first extraction pass after the audit; `outcomes-driven-development` is the software-flavored byproduct of that same pass (kernel + thin vertical overlay).
 2. **The core must not depend on the overlay.** `outcomes-driven-development` stands alone. Cross-links from klappy.dev into the core are allowed; links from the core into klappy.dev are not. Outbound links from klappy.dev may dead-end for readers without access — that is acceptable.
 3. **Privacy is deferred.** Ship the core public now; privatize later if/when oddkit supports authenticated private knowledge bases. The separation happens today; the access-control change does not block it.
 4. **Audit before extract.** One non-destructive observation pass (tag `target_repo`) precedes any move. The move is a second pass. The two are never combined.
