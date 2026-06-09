@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/handoffs/2026-04-20-fresh-session-continuation
-kind: docs
+kind: journals
 title: "Handoff — Fresh Session Continuation from 2026-04-19 (post agent-team pilot)"
 audience: odd
 exposure: nav

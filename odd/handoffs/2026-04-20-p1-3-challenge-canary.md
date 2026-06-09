@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/handoffs/2026-04-20-p1-3-challenge-canary
-kind: docs
+kind: journals
 title: "Handoff — P1.3.1 oddkit_challenge governance_source Retrofit"
 audience: odd
 exposure: nav

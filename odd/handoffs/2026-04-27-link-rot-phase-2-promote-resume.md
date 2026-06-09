@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/handoffs/2026-04-27-link-rot-phase-2-promote-resume
-kind: docs
+kind: journals
 title: "Handoff — Link-Rot Phase 2 Promote Resume (RV-Gate Cleared, Awaiting Final Merge)"
 audience: odd
 exposure: nav

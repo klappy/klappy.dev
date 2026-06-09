@@ -1,6 +1,6 @@
 ---
 uri: klappy://odd/handoffs/2026-05-14-telemetry-coverage-completeness
-kind: docs
+kind: journals
 title: "Handoff — Telemetry Coverage Completeness (Phase 1)"
 audience: odd
 exposure: nav
