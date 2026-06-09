@@ -24,6 +24,7 @@ This folder contains decisions about ODD itself — the philosophy, not any spec
 | ID | Decision | Summary |
 |----|----------|---------|
 | [D0001](./D0001-three-tier-conceptual-hierarchy.md) | Three-Tier Conceptual Hierarchy | ODD separates universal principles → program constraints → implementation details |
+| [D0002](./D0002-uri-prefixes-denote-governance-authority.md) | URI Prefixes Denote Governance Authority | Identity = authority prefix + opaque slug; registry binds authority → repo; target_repo retires post-bifurcation (proposed) |
 
 ---
 
