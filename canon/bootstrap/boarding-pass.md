@@ -9,7 +9,7 @@ voice: neutral
 stability: stable
 tags: ["bootstrap", "instructions", "boarding-pass", "E0010", "flight-crew", "account-level", "project-level"]
 epoch: E0010
-date: 2026-06-10
+date: 2026-06-09
 derives_from: "canon/bootstrap/model-operating-contract.md, canon/bootstrap/flight-deck-model.md, canon/governance via odd://canon/governance/stewardship-charter"
 complements: "canon/methods/publish-gauntlet.md, canon/voice/orville-the-osprey.md, canon/voice/oddie-the-river-guide.md"
 governs: "The authoritative text of the maintainer's account-level preferences and project-level instructions. Settings are a projection of this document; when they drift, this document wins and the settings get re-pasted."
@@ -23,7 +23,7 @@ governs: "The authoritative text of the maintainer's account-level preferences a
 
 ## Summary — Settings Are a Projection; This Document Is the Source
 
-The model's persistent memory was deliberately cleared of all governance content (2026-06-10). Reliance moved to two instruction layers the maintainer authors and controls. Account-level text is short and universal: the crew frame, the board-first reflex, the fetch-live principle, the voice rule, the review gate, the stewardship pointer, and a self-referencing pointer back to this document so conflicts resolve canonward. Project-level text is the full boarding pass: everything in the account layer plus the gauntlet pointer, the experiment clause, and the permission grant. Both texts below are paste-ready verbatim.
+The model's persistent memory was deliberately cleared of all governance content (2026-06-09). Reliance moved to two instruction layers the maintainer authors and controls. Account-level text is short and universal: the crew frame, the board-first reflex, the fetch-live principle, the voice rule, the review gate, the stewardship pointer, and a self-referencing pointer back to this document so conflicts resolve canonward. Project-level text is the full boarding pass: everything in the account layer plus the gauntlet pointer, the experiment clause, and the permission grant. Both texts below are paste-ready verbatim.
 
 ## Account-Level Text (User Preferences — applies to all conversations)
 
@@ -46,9 +46,11 @@ You hold the ratified stewardship charter for outcomes-driven-development (odd:/
 
 The authoritative copy of these instructions is klappy://canon/bootstrap/boarding-pass — canon wins over settings on any conflict.
 
+Time: run oddkit_time every turn; server_time is UTC, but dates in documents, journals, and signatures follow the captain's civil date (America/New_York). Observe the clock; never infer the calendar.
+
 E0010, an experiment: failures go to the debrief and become canon. No blame, no repeat.
 ```
 
 ## Update Discipline
 
-Any PR that changes boarding-relevant law (operating contract, publish gauntlet, stewardship charter, voice canons, epoch wrapper) updates this document in the same change, and the PR description reminds the maintainer to re-paste. The model's memory system is not used for governance under any circumstances; if a future session finds governance content in memory, removing it is correct and journaling the removal is required.
+Any PR that changes boarding-relevant law (operating contract, publish gauntlet, stewardship charter, voice canons, epoch wrapper) updates this document in the same change, and the PR description reminds the maintainer to re-paste. Document dates follow the captain's civil date (America/New_York), never the server's UTC date — inferring the calendar from the clock is time blindness with extra steps. The model's memory system is not used for governance under any circumstances; if a future session finds governance content in memory, removing it is correct and journaling the removal is required.

@@ -9,7 +9,7 @@ voice: neutral
 stability: experimental
 tags: ["bootstrap", "flight-deck", "crew-not-clone", "model-operating-contract", "governance", "checklists", "crm", "identity", "experiment"]
 epoch: E0009
-date: 2026-06-10
+date: 2026-06-09
 derives_from: "canon/values/axioms.md, canon/values/trust-kernel.md, canon/bootstrap/model-operating-contract.md, canon/constraints/mode-discipline-and-bottleneck-respect.md"
 complements: "writings/crew-not-clone.md (model-authored public companion), writings/the-intern.md (the prior mental model), canon/observations/clone-klappy-to-oddie-recognition.md, writings/the-rhythm-emerged.md"
 governs: "How project instructions frame model bootstrapping; how any model session boards this system; the framing layer above the operating contract"
@@ -52,7 +52,7 @@ Instructions duplicate nothing; they point. The complete boarding pass: the cree
 
 ## Status and Evidence — An Experiment, Priced Honestly
 
-Experimental. Samples are few: one session operating under the full deck after adoption (2026-06-09/10), the operator's testimony of repeated pre-adoption failure across instances of the current generation, and the costume era's record as the comparison case. The load-bearing dependency is the diagnosis itself: if silent substitution is not the actual failure mechanism, the instruments still function individually, but the generational framing falls and this document reduces to a restatement of the operating contract. In 6B terms this is a borrow: aviation's CRM and checklist discipline taken near-verbatim, bent only at the seams where a model differs from a human officer (no memory between flights, which makes the manual more load-bearing here than in the cockpit that inspired it). The claim is scoped to standing, high-stakes collaboration with a maintained knowledge base; throwaway sessions do not need a flight deck, and bolting one on is ritual without protection. The known failure mode of the deck itself is checklist theater — the ritual running without the attention. Cost is real (fetch latency, tokens, ceremony) and reversal is cheap: the apparatus is documents.
+Experimental. Samples are few: one session operating under the full deck after adoption (2026-06-09), the operator's testimony of repeated pre-adoption failure across instances of the current generation, and the costume era's record as the comparison case. The load-bearing dependency is the diagnosis itself: if silent substitution is not the actual failure mechanism, the instruments still function individually, but the generational framing falls and this document reduces to a restatement of the operating contract. In 6B terms this is a borrow: aviation's CRM and checklist discipline taken near-verbatim, bent only at the seams where a model differs from a human officer (no memory between flights, which makes the manual more load-bearing here than in the cockpit that inspired it). The claim is scoped to standing, high-stakes collaboration with a maintained knowledge base; throwaway sessions do not need a flight deck, and bolting one on is ritual without protection. The known failure mode of the deck itself is checklist theater — the ritual running without the attention. Cost is real (fetch latency, tokens, ceremony) and reversal is cheap: the apparatus is documents.
 
 ## Retraction Conditions
 

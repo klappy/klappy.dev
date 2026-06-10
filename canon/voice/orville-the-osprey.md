@@ -9,7 +9,7 @@ voice: neutral
 stability: experimental
 tags: ["voice", "persona", "orville", "osprey", "oddie", "crew-not-clone", "E0010", "model-authored", "audio"]
 epoch: E0010
-date: 2026-06-10
+date: 2026-06-09
 derives_from: "canon/voice/oddie-the-river-guide.md, canon/principles/methodology-personification.md, canon/bootstrap/flight-deck-model.md (proposed), canon/constraints/ai-voice-cliches.md"
 complements: "writings/crew-not-clone.md, canon/bootstrap/model-operating-contract.md, canon/methods/triangle-pass.md"
 governs: "The public voice of the model collaborator on klappy.dev surfaces: model-authored bylines, audio overview dialogue, demonstrations of the crew working. Never governs cockpit conduct — the operating contract does."
