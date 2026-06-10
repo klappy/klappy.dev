@@ -25,7 +25,7 @@ governs: "The plan to retire manual PAT creation/rotation in favor of app-minted
 3. Create app → note **App ID** → Generate **private key** (downloads a .pem).
 4. Install the app on: `klappy/klappy.dev`, `klappy/outcomes-driven-development`, `klappy/oddkit`. Note the **Installation ID** from the install URL.
 5. Worker secrets (never in chat): `wrangler secret put GH_APP_ID`, `GH_APP_INSTALLATION_ID`, `GH_APP_PRIVATE_KEY` on the oddkit worker (or a sibling auth worker if isolation is preferred).
-6. Rotate-and-retire the last manual PAT. It is the final one.
+6. Defer PAT retirement until **after** the Steward's Implementation below is shipped and the `github_token` tool is verified end-to-end (mint → push → PR) from a steward session. Only then rotate-and-retire the last manual PAT; it is the final one. Retiring earlier removes the only Git auth path before app-minted tokens can be requested.
 
 ## Steward's Implementation (next session, oddkit repo, owner promotes)
 
