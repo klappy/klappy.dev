@@ -2,12 +2,12 @@
 uri: "klappy://writings/artifacts-are-projections"
 title: "Artifacts Are Projections"
 audience: public
-exposure: public
+exposure: draft
 tier: 2
 voice: first_person
-stability: draft
+stability: draft  # pending author editorial pass per ai-voice-cliches (gauntlet run post-hoc 2026-06-09)
 tags: ["knowledge-base", "projection", "artifacts", "directors-chair", "ai", "expertise"]
-public: true
+public: false
 type: "essay"
 slug: "artifacts-are-projections"
 hook: "You shipped the thing. Six months later the thing is stale, and everything you knew while making it lives nowhere but your head."
