@@ -38,6 +38,21 @@ governs: "The plan to retire manual PAT creation/rotation in favor of app-minted
 - Boarding pass addition (same-PR per update discipline): "Git auth: call `github_token` at need; never request or accept long-lived credentials in chat."
 - Telemetry: mint events visible in oddkit_telemetry like any tool call.
 
+## 6B Evaluation (build gate — executed 2026-06-10)
+
+Goal: a Cloudflare Worker MCP server exposing a `github_token` tool that mints short-lived, scoped GitHub App installation tokens.
+
+| Step   | Verdict                  | Justification |
+|--------|--------------------------|---------------|
+| Borrow | `applied`                | `agents@0.15.0` `createMcpHandler` (Cloudflare, constraint-named for Workers-hosted MCP; stateless route — no Durable Object required) for MCP transport/lifecycle; `@modelcontextprotocol/sdk@1.29.0` `McpServer` (protocol authors) for envelope/capability negotiation; `@octokit/auth-app@8.2.0` (GitHub/Octokit) for the entire JWT-mint-exchange-cache loop, including WebCrypto RS256 via `universal-github-app-jwt`; `zod@4.4.3` for tool schemas. |
+| Bend   | `applied`                | `createMcpHandler` wrapped with a fail-closed bearer middleware (mirrors the 2026-05-16 middleware pattern); `auth-app`'s built-in cache rides the worker isolate lifetime; down-scope params (`repositories`, `permissions`) passed through to `auth({type:"installation"})` — its cache is keyed on installation+repos+permissions and expiry-aware, satisfying the cache spec by construction rather than by handroll. |
+| Break  | `none-yet`               | No friction observed during build; candidate friction (GitHub ships PKCS#1 keys, WebCrypto wants PKCS#8) is absorbed by the runbook's openssl conversion step, not code. |
+| Beget  | `skipped`                | Single-maintainer project; no party positioned to carry a piece. |
+| Bide   | `inspected-and-rejected` | Inspected: stock GitHub MCP connector (as of June 2026), `gh-scoped-creds`, `github-app-user-auth` (JupyterHub ecosystem). Criterion: **foundational gap** — none expose worker-minted, charter-scoped tokens over MCP with bot provenance; the JupyterHub pair are CLI/device-flow shaped and don't serve agent sessions. Tripwire retained: stock connector gaining down-scoped app minting + bot identity → retire this tool and borrow. |
+| Build  | `minimal`                | ~190 lines: tool surface, bearer gate, env wiring (`src/index.ts` + `src/auth.ts`). Everything protocol- or crypto-shaped is borrowed. Traces to the Bide rejection's foundational gap. |
+
+> Reversibility: forward = low (template with no downstream dependents yet); backward = low (uninstall App / delete secrets restores PAT mode).
+
 ## Accepted Escalation Path — Stated, Not Hidden
 
 Contents RW + Workflows RW is not a small power. Write access to `.github/workflows/` means the app can modify CI, and CI runs with the repo's own `GITHUB_TOKEN`. Administration being absent blocks settings, visibility, and credential changes via the API directly — but workflow-write is an indirect escalation path. It is accepted, not eliminated: CI changes land in PRs and audit logs under the `oddkit-steward[bot]` identity, where they are visible and attributable. "No Administration" must never be documented as "cannot escalate."
