@@ -9,7 +9,7 @@ voice: neutral
 stability: stable
 tags: ["methods", "publishing", "gauntlet", "checklist", "writing-canon", "challenge", "E0010", "flight-crew"]
 epoch: E0010
-date: 2026-06-10
+date: 2026-06-09
 derives_from: "canon/meta/writing-canon.md, canon/methods/triangle-pass.md, canon/constraints/guide-posture.md, canon/constraints/dual-context-writing.md, canon/constraints/ai-voice-cliches.md, canon/bootstrap/model-operating-contract.md"
 complements: "canon/methods/self-audit.md, canon/methods/revision-lens-sequence.md, canon/bootstrap/flight-deck-model.md"
 governs: "Every piece of public writing on klappy.dev: essays, articles, hooks, descriptions, social posts. The gauntlet fires before drafting begins and completes before anything publishes."
@@ -45,4 +45,4 @@ The gauntlet exists because every one of its steps was once skipped by a capable
 
 ## Enforcement
 
-The gauntlet is part of the Definition of Done for any deliverable in `writings/` and any public-facing copy. It is named in the model operating contract's checklist obligations and in project instructions. Provenance: documented 2026-06-10 by maintainer ruling, after one session demonstrated all four failure modes before noon and zero after boarding.
+The gauntlet is part of the Definition of Done for any deliverable in `writings/` and any public-facing copy. It is named in the model operating contract's checklist obligations and in project instructions. Provenance: documented 2026-06-09 by maintainer ruling, after one session demonstrated all four failure modes before noon and zero after boarding.

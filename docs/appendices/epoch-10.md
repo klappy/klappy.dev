@@ -9,11 +9,11 @@ voice: neutral
 stability: draft
 tags: ["epoch", "E0010", "flight-crew", "crew-not-clone", "bootstrap", "governance", "experiment"]
 epoch: E0010
-date: 2026-06-10
+date: 2026-06-09
 derives_from: "docs/appendices/epoch-9.md, canon/bootstrap/model-operating-contract.md, canon/bootstrap/flight-deck-model.md, canon/constraints/governance-change-discipline.md"
 complements: "writings/crew-not-clone.md, writings/the-rhythm-emerged.md, canon/observations/clone-klappy-to-oddie-recognition.md"
 governs: "The framing and enforcement wrapper for all model sessions from declaration forward; the success criteria this era is measured against"
-status: "DECLARED — 2026-06-10, by maintainer ratification"
+status: "DECLARED — 2026-06-09, by maintainer ratification"
 ---
 
 # Epoch 10 — Flight Crew: Bootstrapping Moves From Costume to Seat
