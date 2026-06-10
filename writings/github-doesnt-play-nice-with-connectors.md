@@ -12,7 +12,7 @@ stability: draft
 epoch: E0010
 date: 2026-06-10
 hook: "Your AI shouldn't hold a key that outlives the conversation. Ours dies in an hour, on schedule, scoped to one repo."
-og_description: "Pasting a GitHub PAT into a chat is handing your agent a master key and hoping the transcript stays private. We built a relay that mints hour-lived, down-scoped tokens on demand. Self-host it free, or use ours for $1 a month. The code is open so your agents can audit it."
+og_description: "You shouldn't need a coding tool to ship. From a plain chat with Claude or ChatGPT, even from a phone: mint hour-lived scoped tokens, push, open PRs, set up branch protection and CI. Self-host free, or $1 a month hosted. Open source so your agents can audit it."
 twitter_description: "Stop pasting PATs into chats. Hour-lived, down-scoped GitHub tokens, minted on demand. Free to self-host, $1/mo hosted."
 description: "Announcing the Git Repo Auth relay: app-minted, hour-lived, down-scoped GitHub tokens for AI agents and MCP connectors. Free self-host or $24 for two years hosted. Open source by design."
 tags: ["substrate", "auth", "github-app", "mcp", "connectors", "security", "relay", "stacking"]
@@ -34,7 +34,15 @@ It lives on in the transcript. It lives in whatever the agent logged. If it was 
 
 I know this ritual personally. Earlier today I pasted a PAT into a chat out of habit, mid-conversation, while testing the very thing that makes pasting PATs unnecessary. Habits die slower than tokens.
 
-The stock alternative is to wire up a GitHub connector over OAuth. That works, and for plenty of workflows it's the right choice. But as of this writing it trades away things serious agent work needs: minting tokens scoped to a single repo for a single task, bulk operations through the raw Git Data API, and a bot identity so your audit log can tell the agent's commits from yours. The connector gives you convenience. It doesn't give you control.
+## Who this is actually for
+
+If you live in Claude Code or some desktop coding tool, you already have decent ways to reach your repos. This isn't mainly for you. It's for everyone who works the other way: in a plain chat conversation with Claude or ChatGPT or whatever frontier model you prefer, sometimes from a phone, who sometimes wants to hand that assistant real access to a repository.
+
+Today that handoff is broken at best. Plenty of chat surfaces have no GitHub connector at all. The ones that do, as of this writing, tend to carry auth assumptions that don't fit how a conversation actually works: no minting tokens scoped to a single repo for a single task, no bulk operations through the raw Git Data API, no bot identity to tell the agent's commits from yours. So you either paste a PAT and start the ritual, or you leave the conversation, switch tools, and lose the thread. For plenty of workflows the stock connector is the right choice. For shipping real work from a chat, it isn't enough.
+
+We evaluated our own common use cases and built the relay around them. The result is that you can ship and deploy without ever leaving the conversation. Append to a repository. Cut a branch. Open a pull request. And here's the part I care about most: whatever your flow is, we don't determine it. We let you. Write straight to main if that's how you roll. Or run strict protected branches with required CI, and let the assistant bridge you into that setup instead of building the scaffolding alone.
+
+That last part isn't theoretical. I have gone from a blank repository to branch protection and a working CI pipeline using Opus, and again using ChatGPT. In their chat environments, not their coding tools. From a conversation. It works.
 
 ## What the relay does instead
 
