@@ -27,7 +27,7 @@ The gauntlet exists because every one of its steps was once skipped by a capable
 
 ## The Steps
 
-1. **Preflight.** Run `preflight` on the topic. Read what it surfaces; the doors an essay points at must exist before the essay promises them.
+1. **Preflight.** Run `oddkit_preflight` on the topic. Read what it surfaces; the doors an essay points at must exist before the essay promises them.
 2. **Fetch the law, live.** Writing canon (five extraction tiers, header scan), triangle pass (the seven-item entry-layer checklist), guide posture (their pain before our system), dual-context writing (no surface-assuming phrases), AI voice clichés (the pattern list). Fetched in-session, at current hash. Recall does not count.
 3. **Draft inside the constraints.** Stance title; complete-compressed-argument blockquote; `## Summary —` extraction key; headers that tell the story in sequence; reader as hero.
 4. **Mechanical audit.** Count em dashes and their clustering; scan for negation parallelism, formulaic transitions, uniform pacing, context-assuming phrases. Numbers in the record.
