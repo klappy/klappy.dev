@@ -35,7 +35,7 @@ The relay sits in the space press now calls agent authentication / authenticated
 
 **What no comparable offers**: a $1/mo anything. The floor of the paid market is $29/mo. The relay's declared price is not competing in this market — it is refusing to, which is consistent with the guide posture: the comparables sell to companies building agents; the relay sells to a person in a chat.
 
-**Cost basis check**: Cloudflare Workers paid plan is ~$5/mo base plus fractions of a cent per thousand requests. A heavy solo user minting 50 tokens/day generates ~1,500 worker requests/mo — infrastructure cost per customer is pennies. At $1/mo the margin on infra is real; the costs that matter are support attention and abuse handling, both of which are design problems, not price problems.
+**Cost basis check**: Cloudflare Workers paid plan is ~$5/mo base plus fractions of a cent per thousand requests. A heavy solo user minting 50 tokens/day generates ~1,500 worker requests/mo — marginal infrastructure cost per customer is on the order of a tenth of a cent monthly against $1/mo revenue. Stated the owner's way: infra costs could run 100–1000x and the wedge price still beats the market. Infrastructure is never the binding constraint on this pricing; the binding constraints are the operator's support attention and the one shared resource (App-level token-creation pacing against GitHub's secondary limits) — both bounded by design, not by price.
 
 ---
 
