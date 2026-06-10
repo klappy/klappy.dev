@@ -2,12 +2,12 @@
 uri: "klappy://writings/artifacts-are-projections"
 title: "Artifacts Are Projections — The Thing You Shipped Was Never the Asset"
 audience: public
-exposure: draft
+exposure: public
 tier: 2
 voice: first_person
 stability: draft
 tags: ["knowledge-base", "projection", "artifacts", "directors-chair", "ai", "expertise"]
-public: false
+public: true
 type: "essay"
 slug: "artifacts-are-projections"
 hook: "You shipped the thing. Six months later the thing is stale, and everything you knew while making it lives nowhere but your head."
@@ -20,7 +20,7 @@ companion: "odd://canon/principles/knowledge-base-as-the-unit"
 
 # Artifacts Are Projections — The Thing You Shipped Was Never the Asset
 
-> Every artifact you ship goes stale; the knowledge that produced it doesn't have to. Encode your expertise into a knowledge base — decisions, constraints, vocabulary, the rules you'd give an apprentice — and the knowledge base becomes the durable asset while everything downstream becomes a projection: a website, an essay, an audio overview, an app, rendered by a build or a model and disposable on purpose, because anything projected can be re-projected from a source that didn't go stale. Your job changes with it. You leave the workbench for the director's chair: you adjudicate what enters the canon and you direct which projections get made. Owned by you, licensed if you choose, never assigned.
+> Every artifact you ship goes stale; the knowledge that produced it doesn't have to. Encode your expertise into a knowledge base (decisions, constraints, vocabulary, the rules you'd give an apprentice) and the knowledge base becomes the durable asset while everything downstream becomes a projection: a website, an essay, an audio overview, an app, rendered by a build or a model and disposable on purpose, because anything projected can be re-projected from a source that didn't go stale. Your job changes with it. You leave the workbench for the director's chair: you adjudicate what enters the canon and you direct which projections get made. Owned by you, licensed if you choose, never assigned.
 
 ## Summary — The Knowledge Base Is the Planet; Everything You Ship Is a Map of It
 
@@ -46,11 +46,11 @@ My own knowledge base spent months as a tangle. Personal story, portable methodo
 
 ## The Director's Chair — You Stop Making Things and Start Directing Projections
 
-So the work changes shape. You stop being the person who makes the things. You take the director's chair: you decide what enters the canon (what you actually know, stated carefully enough to be projected from) and you direct which projections get made, for which audience, on which surface. The model runs the camera. You own the screenplay.
+So the work changes shape. You stop being the person who makes the things. You take the director's chair: you decide what enters the canon (what you actually know, stated carefully enough to be projected from) and you direct which maps get drawn, for which traveler, on which surface. The model does the drawing. You own the planet.
 
 ## What Do You Know That Nobody Else Has Encoded?
 
-That question matters more than any tooling. I mean your judgment, not your outputs: the tensions you've learned to navigate, the failure modes you can smell, the rules you'd give an apprentice. That's the planet. Everything you've ever shipped was a photograph of it taken on one particular afternoon.
+That question matters more than any tooling. I mean your judgment, not your outputs: the tensions you've learned to navigate, the failure modes you can smell, the rules you'd give an apprentice. That's the planet. Everything you've ever shipped was one map of it, drawn on one particular afternoon.
 
 ## Where This Holds, and Where It Doesn't
 

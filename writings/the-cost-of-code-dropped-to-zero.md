@@ -6,7 +6,7 @@ author: "Klappy"
 type: essay
 public: true
 audience: public
-exposure: nav
+exposure: public
 tier: 1
 voice: first_person
 stability: evolving
