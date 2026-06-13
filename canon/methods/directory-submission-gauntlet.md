@@ -18,7 +18,7 @@ evidence: "git-repo-auth-mcp odd/ledger/ — 2026-06-10 phase-1; 2026-06-11 prov
 
 # The Directory Submission Gauntlet
 
-*A method for taking an MCP server from working code to a submitted Claude Directory listing — field-tested end to end on git-repo-auth-mcp, submitted 2026-06-12, operated entirely from a phone. Target state when this method is mature: idea → submitted, with payments live, in one day.*
+*A method for taking an MCP server from working code to a submitted Claude Directory listing — field-tested end to end on git-repo-auth-mcp, submitted 2026-06-12, operated entirely from mobile devices — phone and iPad, never a laptop. Target state when this method is mature: idea → submitted, with payments live, in one day.*
 
 ## Epistemic status (read first)
 
@@ -26,7 +26,7 @@ evidence: "git-repo-auth-mcp odd/ledger/ — 2026-06-10 phase-1; 2026-06-11 prov
 
 Confidence is not uniform across the claims:
 
-- **High (mechanically observed, repeatable in principle):** the favicon-crawl gate and its remedy chain; TOTP seed mechanics; the phone-only DCR+PKCE validation rig; client views trimming annotations; the form's draft-persistence and post-submission editability.
+- **High (mechanically observed, repeatable in principle):** the favicon-crawl gate and its remedy chain; TOTP seed mechanics; the desktop-free DCR+PKCE validation rig; client views trimming annotations; the form's draft-persistence and post-submission editability.
 - **Medium (held once, plausibly general):** the collateral-doc workflow; the test-account design; the triple-validation structure; the form-fill rules; the entity-coherence checklist.
 - **Projection (untested):** the one-day timeline. No run has achieved it; it is the target this method exists to reach, not a result it has produced.
 
@@ -77,7 +77,7 @@ Three passes, three contexts, reports filed to the ledger **including clean ones
 2. **Reviewer simulation (operator):** execute the setup doc literally on every surface to be claimed; any deviation from the text is a finding against the doc.
 3. **Adversarial read:** run the negative tests nobody runs — the read-only token's push *refused*, the quota wall's message truthful at zero, the hostile-content thought-test on tool descriptions.
 
-**The phone-only validation rig** (no desktop required): DCR-register a throwaway OAuth client → PKCE pair → hand the operator the authorize URL → operator authenticates in their own browser → operator pastes back the single-use redirect code (useless without the held verifier; credentials never touch chat) → raw `initialize` / `tools/list` / `tools/call` → revoke the grant. Two uses on the evidence run: annotation confirmation, full tool exercise. This satisfies the "MCP Inspector" half of the pre-submission requirement by protocol equivalence.
+**The desktop-free validation rig** (runs from a phone or tablet; no laptop required): DCR-register a throwaway OAuth client → PKCE pair → hand the operator the authorize URL → operator authenticates in their own browser → operator pastes back the single-use redirect code (useless without the held verifier; credentials never touch chat) → raw `initialize` / `tools/list` / `tools/call` → revoke the grant. Two uses on the evidence run: annotation confirmation, full tool exercise. This satisfies the "MCP Inspector" half of the pre-submission requirement by protocol equivalence.
 
 ## Phase 4 — Entity, money, brand coherence
 
