@@ -69,8 +69,9 @@ Anthropic's own confirmation text supplies the tension for free: *"due to overwh
 
 ## From the field transcripts (June 10–11, raw and verbatim where it counts)
 
-### The kitchen-table pitch (June 11 — explaining it to family)
-- **The discovery-while-teaching moment, live on tape:** *"So now explaining this to you, I'm realizing wait a second, this is actually more secure for regular devs."* The security thesis wasn't designed and then marketed — it was *discovered mid-explanation to a loved one.* That's an essay-one centerpiece: the product taught its builder its own best argument.
+### The family phone call (June 11 — explaining it to a family member, by phone)
+- **[C] Correction (2026-06-13, captain's catch):** the "kitchen table" scene was hallucinated during transcript summarization and survived into drafts. The conversation happened **on the phone with a family member**. Rule: scene details in maintainer-voice essays are claims; they must trace to verbatim transcript lines, never to summary color.
+- **The discovery-while-teaching moment, live on tape:** *"So now explaining this to you, I'm realizing wait a second, this is actually more secure for regular devs."* The security thesis wasn't designed and then marketed — it was *discovered mid-explanation to a loved one, on a phone call.* That's an essay-one centerpiece: the product taught its builder its own best argument.
 - The plain-language metaphor that survived the conversation: *"you get a key that only gets you into the one room to do your one job"* — and it expires in an hour, *"but the AI does it behind the scenes, so you don't even have to think about it."* (This is the outcome-first prompt insight, spoken a day before the marketing learned it.)
 - The lazy-key generalization, in his own cadence: *"when people have to do it by hand, they make it really open and lazy… everybody does it because it's too tedious and cumbersome to make a whole bunch of keys."*
 - The hope, stated as prayer: *"my prayer is, because that doesn't exist in their marketplace, somebody would stumble across it."* — written before the directory submission existed; the submission is that prayer with paperwork.
