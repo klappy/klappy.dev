@@ -27,7 +27,7 @@ related:
 
 > If you've ever sent work to a reviewer you can't see, an app store, a journal, a hiring inbox, you know the silence that follows. We sent our security tool into Anthropic's MCP directory review, and their own confirmation email warns the silence may never answer. So before the stranger's audit, we ran our own: every public claim checked against the live service, four failures caught and turned into standing written rules, the entire run done from a phone and an iPad because I refuse to let this work need a laptop. The product's own bot identity pushed its own submission paperwork. Approval doesn't change what the product does. It changes who finds out it exists. That's the one ending I can't control, and it turns out to be the part that matters least.
 
-*This is the second of two companion essays. The first, [Habits Die Slower Than Tokens](/writings/habits-die-slower-than-tokens), is the confession and the tool. This one is what happened when we walked that tool into Anthropic's review.*
+*This is the second of two companion essays. The first, [Habits Die Slower Than Tokens](klappy://writings/habits-die-slower-than-tokens), is the confession and the tool. This one is what happened when we walked that tool into Anthropic's review.*
 
 ---
 
@@ -93,6 +93,6 @@ If the answer is no, or never, that's a result too. I needed to submit something
 
 The full timeline, honestly stated: idea to deployed-with-live-payments in twenty-four hours, two more days to a finished submission, all of it part-time around a full meeting load, no laptop in the story. The audit method that made it possible is written down as a public checklist, in the open at [directory-submission-gauntlet](https://github.com/klappy/klappy.dev/blob/main/canon/methods/directory-submission-gauntlet.md), and that document makes a claim I want to be honest about: it projects the next submission takes a morning. A projection, untested. The second run is the validation, and I'll publish the result whichever way it lands. Would you bet on the projection?
 
-If you haven't read how the tool itself came to exist, including the confession that starts it, the companion essay is [Habits Die Slower Than Tokens](/writings/habits-die-slower-than-tokens). The service is live at [gitauth.klappy.dev](https://gitauth.klappy.dev) whether or not a directory ever says so.
+If you haven't read how the tool itself came to exist, including the confession that starts it, the companion essay is [Habits Die Slower Than Tokens](klappy://writings/habits-die-slower-than-tokens). The service is live at [gitauth.klappy.dev](https://gitauth.klappy.dev) whether or not a directory ever says so.
 
 We shipped into a silence that may never answer, and I'm content either way. The house was inspected before the stranger arrived. The next crossing should take a morning. Should. Ask me after the second run.
