@@ -1,5 +1,5 @@
 ---
-uri: "klappy://writings/habits-die-slower-than-tokens"
+uri: klappy://writings/habits-die-slower-than-tokens
 title: "Habits Die Slower Than Tokens — Why We Taught the Key to Die Instead of Teaching Ourselves to Rotate It"
 audience: public
 exposure: public
@@ -8,16 +8,25 @@ voice: first_person
 stability: draft
 tags: ["substrate", "auth", "github-app", "mcp", "security", "connectors", "git-repo-auth", "confession", "companion-essay"]
 public: true
-type: "essay"
-slug: "habits-die-slower-than-tokens"
+type: essay
+slug: habits-die-slower-than-tokens
 hook: "I put a GitHub master key in my project instructions so I'd stop having to paste it. Then the models started refusing to let me."
 description: "I pasted GitHub master keys into AI chats, then taped one inside the front door. Almost everyone I pitched admitted some version of the same. So we built a bridge where the agent mints its own key at the moment of need, scoped to one room and one job, dead within the hour. Expiry is the rotation."
 og_description: "Habits die slower than tokens. So we taught the key to die instead."
-author: "Klappy"
-date: "2026-06-12"
-epoch: "E0010"
+author: Klappy
+date: 2026-06-12
+epoch: E0010
 derives_from: "docs/planning/pat-transcendence-github-app.md, canon/principles/agents-need-their-own-wire.md"
-companion: "klappy://writings/the-submission-changes-exposure-not-function, klappy://writings/we-were-the-wire, klappy://writings/crew-not-clone"
+related:
+  - uri: "klappy://writings/the-submission-changes-exposure-not-function"
+    label: "The Submission"
+    relationship: "companion"
+  - uri: "klappy://writings/we-were-the-wire"
+    label: "We Were the Wire"
+    relationship: "related"
+  - uri: "klappy://writings/crew-not-clone"
+    label: "Crew, Not Clone"
+    relationship: "related"
 ---
 
 # Habits Die Slower Than Tokens — Why We Taught the Key to Die Instead of Teaching Ourselves to Rotate It
