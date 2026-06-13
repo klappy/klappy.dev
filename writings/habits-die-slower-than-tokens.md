@@ -28,17 +28,27 @@ author: "[CAPTAIN'S CALL — house convention per author-identity-language]"
 
 ---
 
-## Summary — Your Ritual, My Confession, and the Key That Dies on Its Own
+## A Quick Word Before We Start — You Don't Need to Be Technical for This
+
+If words like "token" and "repo" aren't your native language, you're not just welcome here, you're exactly who we built this for. Everything in this essay works in hotel keys, so let's set that up front.
+
+An old hotel used metal keys. A metal key can be copied at any hardware store, it works forever, and if it's the master key, it opens every room in the building. Lose one and the hotel re-cores every lock. A modern hotel uses keycards. The desk programs a card for your room and your stay. It opens your door and nothing else, it dies at checkout, and if you lose it, the desk voids it and hands you a new one in thirty seconds. Nobody re-cores anything.
+
+Everything that follows is that story. The way most people connect an AI to their code today is the metal master key. What we built is the front desk.
+
+## Summary — Your Ritual, My Confession, and the Keycard That Dies at Checkout
 
 Where is your last personal access token right now? If you work with AI agents and GitHub, there's a decent chance it's sitting in a chat transcript, still valid, still able to touch every repo on your account. You meant to rotate it. You didn't, because rotation is a chore, and chores lose. I know, because I did it for months, and then I did something worse, and when I started pitching the fix I learned how much company we have. Meanwhile the models themselves were closing the door on the whole workflow, one generation at a time. The fix turned out to be old technology arranged correctly: a GitHub App holds the only long-lived secret, and your agent mints a fresh, scoped, one-hour token for each task, automatically, without you thinking about it. I found the security argument mid-sentence, explaining the thing to my family. This essay walks you to it the same way. The companion essay is what happened when we submitted it.
 
 ## Where Is Your Last Token Right Now?
 
-Be honest. Not the token you meant to make, the one you actually made. Did the expiry dropdown say ninety days, or did you pick the longest thing it offered? Did you scope it to one repo, or was "all repositories" easier? And after the conversation ended, did the token?
+A "personal access token" is GitHub's version of a key: a string of characters that proves to the server you're allowed in. Treat the word token as key for the rest of this essay and you won't miss a thing.
+
+So, be honest. Not the key you meant to make, the one you actually made. Did the expiry dropdown say ninety days, or did you pick the longest thing it offered? Did you scope it to one repo, or was "all repositories" easier? And after the conversation ended, did the token?
 
 If you'd rather not answer, you're in good company, and I'll go first. I pasted a PAT into a chat out of habit, mid-conversation, while testing the very thing that makes pasting PATs unnecessary. Habits die slower than tokens.
 
-That was the confession I was prepared to publish. Here's the truer one. Pasting the key every session got tedious, and tedium is the strongest force in my workflow. So I put the PAT in my project instructions. Every new conversation auto-loaded a long-lived master key to my repositories before I'd typed a word. I didn't carry the key carelessly. I taped it inside the front door so I'd never have to carry it at all.
+That was the confession I was prepared to publish. Here's the truer one. Pasting the key every session got tedious, and tedium is the strongest force in my workflow. So I put the PAT in my project instructions. Every new conversation auto-loaded a long-lived master key to my repositories before I'd typed a word. I didn't carry the master key carelessly. I taped it inside the front door so I'd never have to carry it at all. A metal key, copied, taped where every guest who entered could find it.
 
 Why would anyone do that? For the same reason you picked the longest expiry in the dropdown. The right way is a fresh token per task, scoped to one repo, minimum permissions, rotated when the task ends. Nobody does that by hand. The lazy key isn't a personal failing. It's the rational response to a tedious system.
 
@@ -64,13 +74,13 @@ Read the progression again. The tooling grew a conscience faster than my workflo
 
 ## What Would the Key Look Like If Your Agent Made It?
 
-The fix is old technology arranged correctly. A GitHub App holds the only long-lived credential, a private key that lives in a worker secret and never appears in any conversation. You connect once, with a normal sign-in, and choose which repositories the bridge can ever see. From then on, when your agent needs access, it mints its own token: read-only unless the task genuinely needs to write, scoped to your chosen repos, and dead within the hour. No refresh exists. Expiry is the rotation.
+The fix is old technology arranged correctly. A GitHub App holds the only long-lived credential, a private key that lives in a worker secret and never appears in any conversation. You connect once, with a normal sign-in, and choose which repositories the bridge can ever see. From then on, when your agent needs access, it walks to the front desk and gets a keycard: programmed for the rooms you chose, look-but-don't-touch unless the job genuinely needs to change something, and dead within the hour. Checkout is built in. Nobody re-cores anything. Expiry is the rotation.
 
-You never ask for a token. You ask for an outcome, like "take a look at my repo and tell me what needs attention," and the minting happens underneath. I understood this best the day I explained it to my family at the kitchen table. Halfway through I heard myself say it: you get a key that only gets you into the one room, to do your one job, and then the key stops working. And I stopped, because I realized mid-sentence that this convenience bridge for newcomers is quietly more secure than what most professional developers do by hand. The laziness that produces year-long master keys is the same laziness the bridge redirects into one-hour scoped ones. We didn't defeat your inertia. We re-aimed it.
+You never ask for a token. You ask for an outcome, like "take a look at my repo and tell me what needs attention," and the minting happens underneath. I understood this best the day I explained it to my family at the kitchen table. Halfway through I heard myself say it: you get a key that only gets you into the one room, to do your one job, and then the key stops working. The hotel keycard, discovered out loud at a kitchen table. And I stopped, because I realized mid-sentence that this convenience bridge for newcomers is quietly more secure than what most professional developers do by hand. The laziness that produces year-long master keys is the same laziness the bridge redirects into one-hour scoped ones. We didn't defeat your inertia. We re-aimed it.
 
 ## Why Should You Trust Us? You Mostly Don't Have To
 
-GitHub enforces every wall, which matters more than anything we wrote. Permissions the App was never granted are permissions no agent can ever exceed, no matter what it's asked or what it decides. That boundary isn't a policy the agent promises to follow. It's physics. The permission ceiling is the grant you installed. The repository scope is the set you selected. The expiry is GitHub's, not ours. Every action lands signed by a bot identity, so your audit log can tell the agent's commits from yours, and even a denial names the bot. The kill switch is one click that belongs entirely to you: uninstall the App, and everything stops, with nothing required from us.
+GitHub enforces every wall, which matters more than anything we wrote. Permissions the App was never granted are permissions no agent can ever exceed, no matter what it's asked or what it decides. That boundary isn't a policy the agent promises to follow. It's physics. The permission ceiling is the grant you installed. The repository scope is the set you selected. The expiry is GitHub's, not ours. Every action lands signed by a bot identity, the way a hotel's card log shows exactly which card opened which door at what time, so your records can tell the agent's work from yours, and even a refused door names the card. And the kill switch is one click that belongs entirely to you: uninstall the App, and it's the front desk voiding every card in the building at once, with nothing required from us.
 
 I can vouch for that last wall personally, because it locked me out of my own project. Mid-session, while testing the install flow, I reinstalled the App, which invalidated the working session's grant and stranded two finished commits. The verdict in the journal reads: working as designed. A kill switch that spares its builder isn't a kill switch.
 
