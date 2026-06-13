@@ -17,7 +17,6 @@ date: "2026-06-12"
 epoch: "E0010"
 derives_from: "docs/planning/pat-transcendence-github-app.md, canon/principles/agents-need-their-own-wire.md"
 companion: "klappy://writings/the-submission-changes-exposure-not-function, klappy://writings/we-were-the-wire, klappy://writings/crew-not-clone"
-author: "[CAPTAIN'S CALL — house convention per author-identity-language]"
 ---
 
 # Habits Die Slower Than Tokens — Why We Taught the Key to Die Instead of Teaching Ourselves to Rotate It
