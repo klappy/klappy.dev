@@ -48,6 +48,12 @@ Almost a dozen of them, when I described the PAT-in-the-chat ritual, did the sam
 
 That reaction taught me more than any analytics dashboard could. The shame is collective and the gap is real. Everyone knows the ritual is wrong, everyone performs it anyway, and nobody talks about it, which is precisely how bad defaults survive. A ritual is a smell. If a workflow only stays safe when humans remember to do a chore, the workflow is broken, and the fix belongs in the substrate, not in the humans.
 
+## Who This Is Actually For
+
+If you live in Claude Code or a desktop coding tool, you already have decent ways to reach your repos, and this isn't mainly for you. It's for everyone who works the other way: in a plain chat conversation with whatever frontier model you prefer, sometimes from a phone, who sometimes wants to hand that assistant real access to a repository.
+
+Today that handoff is broken at best. Plenty of chat surfaces have no GitHub connector at all, and the ones that do tend to carry auth assumptions that don't fit how a conversation works: no tokens scoped to a single repo for a single task, no bulk operations through the raw Git Data API, no bot identity to tell the agent's commits from yours. So you either paste a PAT and start the ritual, or you leave the conversation, switch tools, and lose the thread. For shipping real work from a chat, the stock options aren't enough. I have gone from a blank repository to branch protection and a working CI pipeline from inside a chat conversation, on more than one model, and the relay is why.
+
 ## The Models Stopped Letting Me
 
 There is an era marker buried in this story, and I want to record it plainly because it is testimony, not a benchmark.
@@ -62,7 +68,7 @@ The fix is old technology arranged correctly. A GitHub App holds the only long-l
 
 You never ask for a token. You ask for an outcome, like "take a look at my repo and tell me what needs attention," and the minting happens underneath. I understood my own product best the day I explained it to my family at the kitchen table. Halfway through I heard myself say it: you get a key that only gets you into the one room, to do your one job, and then the key stops working. And I stopped, because I realized mid-sentence that this throwaway bridge for convenience was quietly more secure than what most professional developers do by hand. The laziness that produces year-long master keys is the same laziness the bridge redirects into one-hour scoped ones. We didn't defeat the inertia. We re-aimed it.
 
-GitHub enforces every wall, which matters more than anything we wrote. The permission ceiling is the grant you installed. The repository scope is the set you selected. The expiry is GitHub's, not ours. Every action lands signed by a bot identity, so your audit log can tell the agent's commits from yours, and even a denial names the bot. And the kill switch is one click that belongs entirely to you: uninstall the App, and everything stops, with nothing required from us.
+GitHub enforces every wall, which matters more than anything we wrote. Permissions the App was never granted are permissions no agent can ever exceed, no matter what it's asked or what it decides. That boundary isn't a policy the agent promises to follow. It's physics. The permission ceiling is the grant you installed. The repository scope is the set you selected. The expiry is GitHub's, not ours. Every action lands signed by a bot identity, so your audit log can tell the agent's commits from yours, and even a denial names the bot. And the kill switch is one click that belongs entirely to you: uninstall the App, and everything stops, with nothing required from us.
 
 I can vouch for that last wall personally, because it locked me out of my own project. Mid-session, while testing the install flow, I reinstalled the App, which invalidated the working session's grant and stranded two finished commits. The verdict in the journal reads: working as designed. A kill switch that spares its builder isn't a kill switch.
 
@@ -72,8 +78,16 @@ The service runs free for your first hundred mints, no card, which is enough to 
 
 The first paying subscription on the books is mine. I bought my own bottom tier to find out whether the pipes leaked, checkout to webhook to live tier, with real money. They didn't. I'm calling it the most honest dollar in SaaS until someone shows me a more honest one.
 
+## Why This Layer Exists at All
+
+I've written before about the wire: every place a human manually shuttles things between systems is a place where substrate is missing. Data was the obvious case. Credentials turned out to be the same disease. Every time you mint a PAT by hand and paste it into a chat, you are the credential wire, and the rotation you keep deferring is the interest on that debt.
+
+And if GitHub ships first-party, down-scoped, hour-lived minting for agents tomorrow, use it. So will I. The day an official version of this layer stands up, we swap ours for theirs and keep building on top. The point was never to own the layer. The point is that the layer exists.
+
 ## The Door
 
 If you've ever pasted a key into a chat and promised yourself you'd rotate it, the bridge is at [gitauth.klappy.dev](https://gitauth.klappy.dev), the code is open at [github.com/klappy/git-repo-auth-mcp](https://github.com/klappy/git-repo-auth-mcp), and the first hundred mints are free. Have your agent audit the repo before you trust us. That's what the read-only default is for.
 
 And if you want to know what happened when we walked this thing into Anthropic's directory review, with a test account, a favicon stuck in Google's cache, and no laptop anywhere in the story, that's the companion essay: [The Submission](/writings/the-submission-changes-exposure-not-function).
+
+Your last PAT should be the one you revoke today.
