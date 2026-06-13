@@ -11,7 +11,7 @@ public: true
 type: essay
 slug: habits-die-slower-than-tokens
 hook: "I put a GitHub master key in my project instructions so I'd stop having to paste it. Then the models started refusing to let me."
-description: "I pasted GitHub master keys into AI chats, then taped one inside the front door. Almost everyone I pitched admitted some version of the same. So we built a bridge where the agent mints its own key at the moment of need, scoped to one room and one job, dead within the hour. Expiry is the rotation."
+description: "I pasted GitHub master keys into AI chats, then taped one inside the front door. Nearly half the people I pitched admitted some version of the same. So we built a bridge where the agent mints its own key at the moment of need, scoped to one room and one job, dead within the hour. Expiry is the rotation."
 og_description: "Habits die slower than tokens. So we taught the key to die instead."
 author: Klappy
 date: 2026-06-12
@@ -31,7 +31,7 @@ related:
 
 # Habits Die Slower Than Tokens — Why We Taught the Key to Die Instead of Teaching Ourselves to Rotate It
 
-> If you've ever minted a GitHub personal access token, pasted it into an AI chat, and promised yourself you'd rotate it later, this is for you, from someone who did worse: I put one in my project instructions so every conversation auto-loaded a master key. Nearly a dozen people I pitched admitted, reluctantly, to some version of the same thing, because making the right key by hand is a chore and chores lose to inertia every time. So we built a bridge where your agent mints its own key at the moment of need, scoped to one room and one job, dead within the hour. Expiry is the rotation. Self-host it free, or use ours for a dollar a month, and the code is open so your agents can audit it before you trust it.
+> If you've ever minted a GitHub personal access token, pasted it into an AI chat, and promised yourself you'd rotate it later, this is for you, from someone who did worse: I put one in my project instructions so every conversation auto-loaded a master key. Nearly half a dozen people I pitched admitted, reluctantly, to some version of the same thing, because making the right key by hand is a chore and chores lose to inertia every time. So we built a bridge where your agent mints its own key at the moment of need, scoped to one room and one job, dead within the hour. Expiry is the rotation. Self-host it free, or use ours for a dollar a month, and the code is open so your agents can audit it before you trust it.
 
 *This is the first of two companion essays. The second, [The Submission](klappy://writings/the-submission-changes-exposure-not-function), follows this tool through Anthropic's directory review, end to end, from a phone.*
 
@@ -65,7 +65,7 @@ Why would anyone do that? For the same reason you picked the longest expiry in t
 
 After we shipped the fix, I pitched it around. Developers, mostly, plus the new kind of builder who only ever talks to an AI and discovers GitHub exists because their agent needed somewhere to put the code.
 
-Almost a dozen of them, when I described the PAT-in-the-chat ritual, did the same thing: a small wince, then an admission. They do it too. Sometimes. They hate it. They didn't know what else to do.
+Almost half a dozen of them, when I described the PAT-in-the-chat ritual, did the same thing: a small wince, then an admission. They do it too. Sometimes. They hate it. They didn't know what else to do.
 
 Sound familiar? The shame is collective and the gap is real. Everyone knows the ritual is wrong, everyone performs it anyway, and nobody talks about it, which is precisely how bad defaults survive. Here's the test worth keeping: a ritual is a smell. If a workflow only stays safe when humans remember to do a chore, the workflow is broken, and the fix belongs in the substrate, not in you.
 
