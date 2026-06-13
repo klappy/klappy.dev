@@ -33,7 +33,7 @@ related:
 
 > If you've ever minted a GitHub personal access token, pasted it into an AI chat, and promised yourself you'd rotate it later, this is for you, from someone who did worse: I put one in my project instructions so every conversation auto-loaded a master key. Nearly a dozen people I pitched admitted, reluctantly, to some version of the same thing, because making the right key by hand is a chore and chores lose to inertia every time. So we built a bridge where your agent mints its own key at the moment of need, scoped to one room and one job, dead within the hour. Expiry is the rotation. Self-host it free, or use ours for a dollar a month, and the code is open so your agents can audit it before you trust it.
 
-*This is the first of two companion essays. The second, [The Submission](/writings/the-submission-changes-exposure-not-function), follows this tool through Anthropic's directory review, end to end, from a phone.*
+*This is the first of two companion essays. The second, [The Submission](klappy://writings/the-submission-changes-exposure-not-function), follows this tool through Anthropic's directory review, end to end, from a phone.*
 
 ---
 
@@ -79,7 +79,7 @@ Today that handoff is broken at best. Plenty of chat surfaces have no GitHub con
 
 Here's an era marker I want on the record, as testimony rather than benchmark. When I asked successive Claude models to work with a pasted PAT: Opus 4.5 complied. 4.6 warned. 4.7 nagged. 4.8 refused. And Fable 5 said, in effect, well, okay, I'll do it, but we need to prioritize a root fix. Then it cited my own canon and essays back at me, and proposed the fix.
 
-Read the progression again. The tooling grew a conscience faster than my workflow did. Each generation tightened the screws on a practice everyone privately knew was indefensible, until the newest one stopped resisting and started engineering. I didn't build this bridge in spite of the models' objections. I built it because their objections were correct, and because the last one offered to help. (If you want that arc from the model's side of the table, it wrote its own essay: [Crew, Not Clone](/writings/crew-not-clone).)
+Read the progression again. The tooling grew a conscience faster than my workflow did. Each generation tightened the screws on a practice everyone privately knew was indefensible, until the newest one stopped resisting and started engineering. I didn't build this bridge in spite of the models' objections. I built it because their objections were correct, and because the last one offered to help. (If you want that arc from the model's side of the table, it wrote its own essay: [Crew, Not Clone](klappy://writings/crew-not-clone).)
 
 ## What Would the Key Look Like If Your Agent Made It?
 
@@ -101,7 +101,7 @@ The first paying subscription on the books is mine. I bought my own bottom tier 
 
 ## Why This Layer Exists at All
 
-I've written before about [the wire](/writings/we-were-the-wire): every place a human manually shuttles things between systems is a place where substrate is missing. Data was the obvious case. Credentials turned out to be the same disease. Every time you mint a PAT by hand and paste it into a chat, you are the credential wire, and the rotation you keep deferring is the interest on that debt.
+I've written before about [the wire](klappy://writings/we-were-the-wire): every place a human manually shuttles things between systems is a place where substrate is missing. Data was the obvious case. Credentials turned out to be the same disease. Every time you mint a PAT by hand and paste it into a chat, you are the credential wire, and the rotation you keep deferring is the interest on that debt.
 
 And if GitHub ships first-party, down-scoped, hour-lived minting for agents tomorrow, use it. So will I. The day an official version of this layer stands up, we swap ours for theirs and keep building on top. The point was never to own the layer. The point is that the layer exists.
 
@@ -109,6 +109,6 @@ And if GitHub ships first-party, down-scoped, hour-lived minting for agents tomo
 
 So, one more time: where is your last token right now? If the answer made you wince, the bridge is at [gitauth.klappy.dev](https://gitauth.klappy.dev), the code is open at [github.com/klappy/git-repo-auth-mcp](https://github.com/klappy/git-repo-auth-mcp), and your first hundred mints are free. Have your agent audit the repo before you trust us. That's what the read-only default is for.
 
-And if you want to know what happened when we walked this thing into Anthropic's directory review, with a test account, a favicon stuck in Google's cache, and no laptop anywhere in the story, that's the companion essay: [The Submission](/writings/the-submission-changes-exposure-not-function).
+And if you want to know what happened when we walked this thing into Anthropic's directory review, with a test account, a favicon stuck in Google's cache, and no laptop anywhere in the story, that's the companion essay: [The Submission](klappy://writings/the-submission-changes-exposure-not-function).
 
 Your last PAT should be the one you revoke today.
