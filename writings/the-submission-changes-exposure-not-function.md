@@ -1,5 +1,5 @@
 ---
-uri: "klappy://writings/the-submission-changes-exposure-not-function"
+uri: klappy://writings/the-submission-changes-exposure-not-function
 title: "The Submission — Audit Yourself Before the Stranger Does, Because Approval Only Changes Exposure"
 audience: public
 exposure: public
@@ -8,16 +8,19 @@ voice: first_person
 stability: draft
 tags: ["substrate", "auth", "mcp", "directory", "submission", "self-audit", "git-repo-auth", "mobile", "companion-essay"]
 public: true
-type: "essay"
-slug: "the-submission-changes-exposure-not-function"
+type: essay
+slug: the-submission-changes-exposure-not-function
 hook: "We walked our security tool into Anthropic's directory review from a phone, after inspecting it harder than any reviewer would. Four failures became written rules. Now we wait."
 description: "Before submitting git-repo-auth to Anthropic's MCP directory, we ran the audit on ourselves: every marketing claim checked against the live service, four failures caught and turned into standing rules, the whole run done from a phone and an iPad. The product's own bot pushed the paperwork. Approval doesn't change what it does. It changes who finds out."
 og_description: "Approval doesn't change what it does. It changes who finds out."
-author: "Klappy"
-date: "2026-06-13"
-epoch: "E0010"
+author: Klappy
+date: 2026-06-13
+epoch: E0010
 derives_from: "canon/methods/directory-submission-gauntlet.md"
-companion: "klappy://writings/habits-die-slower-than-tokens"
+related:
+  - uri: "klappy://writings/habits-die-slower-than-tokens"
+    label: "Habits Die Slower Than Tokens"
+    relationship: "companion"
 ---
 
 # The Submission — Audit Yourself Before the Stranger Does, Because Approval Only Changes Exposure
