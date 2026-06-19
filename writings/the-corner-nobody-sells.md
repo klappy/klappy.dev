@@ -8,7 +8,6 @@ voice: first_person
 stability: stable
 tags: ["writings", "essay", "trust", "verification", "borrow", "substrate", "judgment"]
 type: essay
-kind: essay
 slug: the-corner-nobody-sells
 author: Klappy
 public: true
