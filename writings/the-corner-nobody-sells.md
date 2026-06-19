@@ -1,23 +1,23 @@
 ---
-kind: essay
-type: essay
+uri: klappy://writings/the-corner-nobody-sells
 title: "The Corner Nobody Sells"
-subtitle: "You can borrow almost the whole AI stack now. The one part you can't borrow is the part that decides whether to trust what comes out."
-author: Klappy
-status: "candidate — author-approved, for merge review"
-public: false
 audience: public
-exposure: draft
+exposure: public
+tier: 3
 voice: first_person
+stability: stable
+tags: ["writings", "essay", "trust", "verification", "borrow", "substrate", "judgment"]
+type: essay
+kind: essay
+slug: the-corner-nobody-sells
+author: Klappy
+public: true
+description: "Every off-the-shelf AI stack gets you most of the way, then stops at the same place: verifying judgment-call work no test can grade. That corner is the part nobody sells, and the part worth owning."
+hook: "The stack got cheaper to assemble. The checking didn't."
+subtitle: "You can borrow almost the whole AI stack now. The one part you can't borrow is the part that decides whether to trust what comes out."
 epoch: E0010
 date: 2026-06-18
-hook: "The stack got cheaper to assemble. The checking didn't."
-builds_on:
-  - "klappy://writings/we-were-the-wire"
-  - "klappy://writings/the-dream-house-and-pre-optimization"
-  - "klappy://writings/learning-in-the-open"
-  - "klappy://canon/principles/a-proxy-confers-shape-not-standing (candidate)"
-tags: [writings, essay, trust, verification, borrow, substrate, judgment]
+derives_from: "writings/we-were-the-wire.md, writings/the-dream-house-and-pre-optimization.md, writings/learning-in-the-open.md, canon/principles/a-proxy-confers-shape-not-standing.md"
 ---
 
 # The Corner Nobody Sells
