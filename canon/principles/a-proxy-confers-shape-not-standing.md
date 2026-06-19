@@ -1,13 +1,16 @@
 ---
-kind: canon
+uri: klappy://canon/principles/a-proxy-confers-shape-not-standing
 title: "A Proxy Confers Shape, Not Standing"
-status: candidate
+audience: canon
+exposure: nav
 tier: 2
-public: false
 voice: neutral
+stability: experimental
+status: proposed
+tags: ["canon", "principle", "proxy", "trust", "authority-laundering", "provenance", "substrate"]
+kind: canon
 epoch: E0010
 date: 2026-06-17
-tags: [proxy, substrate, epistemic-plane, trust, authority-laundering, provenance]
 derives_from: "canon/values/axioms.md (Axiom 2 — A Claim Is a Debt), canon/verification-and-evidence.md, canon/principles/identity-resolved-by-protocol.md"
 governs: "Any proxy or gateway that turns a resource into agent-consumable context or a callable tool"
 complements: "canon/principles/anti-metric-laundering.md, canon/patterns/docs-proxy-canon-as-tool.md, canon/decisions/models-do-not-mutate-canon.md"
