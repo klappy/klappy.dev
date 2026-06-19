@@ -9,7 +9,7 @@ stability: semi_stable
 tags: ["canon", "principle", "skills", "procedure", "judgment", "discernment", "vodka-architecture", "prompt-over-code", "E0010"]
 epoch: E0010
 date: 2026-06-18
-derives_from: "canon/constraints/audit-gates-are-spawned-agent-sessions.md, canon/principles/prompt-over-code.md, canon/principles/verification-requires-fresh-context.md, canon/definitions/validation-as-epistemic-mode.md, canon/principles/discernment-layer.md"
+derives_from: "canon/constraints/audit-gates-are-spawned-agent-sessions.md, canon/principles/prompt-over-code.md, canon/principles/verification-requires-fresh-context.md, canon/constraints/critic-cannot-be-resolver.md, canon/definitions/validation-as-epistemic-mode.md, canon/principles/discernment-layer.md"
 complements: "writings/when-skills-arent-enough.md, canon/principles/ritual-is-a-smell.md, writings/crew-not-clone.md"
 governs: "How responsibility is divided between a skill (a fixed, relevance-loaded procedure) and the judgment layer (odd/canon/oddkit). Determines what may be encoded into a skill and what must be left to a judging agent operating under canon."
 status: active
@@ -52,9 +52,13 @@ The claim is not that today's skills are immature and tomorrow's will judge. The
 
 When canon defines what to check and the check requires reading prose, code, and history together to render a judgment, `canon/constraints/audit-gates-are-spawned-agent-sessions` requires the gate to be a spawned, fresh-context agent session. Mechanical alternatives are forbidden as gates — not discouraged, forbidden — because they manufacture false confidence: a green check sitting over a drift the matcher cannot see. A skill is a mechanical procedure. Putting it at a judgment gate produces the worse-than-nothing outcome that constraint exists to prevent.
 
-### A Creator Cannot Validate Its Own Output
+### A Procedure Cannot Supply the Independence Validation Requires
 
-`canon/principles/verification-requires-fresh-context` establishes that the lenses used to create an artifact are the same lenses used to evaluate it, so a creator's accumulated context bridges the gap between intent and artifact and hides the flaws. Validation is therefore a distinct mode that requires a context break — a fresh session, a different reviewer, a real handoff (`canon/definitions/validation-as-epistemic-mode`). A static skill loaded into the same context, running over the same state that produced the work, is exactly the self-review those documents forbid. It can describe a checklist; it cannot be the independent eyes the checklist needs.
+`canon/principles/verification-requires-fresh-context` establishes that the lenses used to create an artifact are the lenses used to evaluate it, so a creator's accumulated context bridges the gap between intent and artifact and hides the flaws. `canon/constraints/critic-cannot-be-resolver` sharpens the same point: detection and remediation require separate contexts, because one context corrupts both functions. The independence validation needs is therefore a property of context, not of procedure. It is supplied by the break: a fresh session, a separate reviewer, a real handoff. Nothing about a set of steps can manufacture that break.
+
+This is why a skill cannot be the validating judgment, and the reason is sharper than "a skill is mechanical." A skill is context-portable. The same bundle loads into the session that produced the work or into a fresh one, with no guarantee of which. In the producing context it is self-review wearing a checklist. In a fresh context the independence comes from the session, not from the skill. Either way the load-bearing thing is the context break, which the skill neither provides nor preserves. A skill can host the checklist a fresh-context judge runs. It cannot be the independence that makes the judgment trustworthy.
+
+This reason is distinct from the audit-gate reason above, not a restatement of it. That one is about capability: a mechanical matcher cannot read prose, code, and history together to see semantic drift at all. This one is about independence: even a fully capable judge cannot validate the output of its own context. A skill fails both tests, for different reasons.
 
 ### The Enforcer Does Not Get to Script the Law
 
@@ -86,9 +90,15 @@ A procedure is safe to encode because it is meant to be invariant — running it
 
 The rule also explains why the verdict resists encoding in the first place. A verdict is not state you write down once and reuse without drift — `canon/principles/dry-canon-says-it-once` warns that a rule duplicated into two homes diverges silently, and a verdict baked into a skill is precisely that: the judging duplicated out of the judgment layer and into a procedure, where it will diverge from what canon now says the moment canon moves. Keep the law in the canon, keep the judging in a fresh-context reading of it, and let the skill carry only the steps.
 
-## When This Would Be Wrong — The Retraction Condition
+## When This Would Be Wrong — Two Retraction Conditions
 
-A principle that cannot be falsified is a preference. This one has a falsifier: if a thing called a "skill" ever rendered context-dependent verdicts — weighing evidence it was not pre-told how to weigh, from a context fresh enough to catch its own blind spots, with no oracle behind it — then the boundary would be wrong. But that thing would no longer be a skill in the sense this principle uses; it would have become a judging agent, which is the substrate under a different name. The boundary is definitional, and that is its strength: it holds not because skills happen to be weak today but because "fixed, relevance-loaded procedure" and "fresh-context judgment with no oracle" are different kinds of thing. Retract this principle if and only if those two collapse into one; at that point the vocabulary, not just the claim, needs rewriting.
+A principle that cannot be falsified is a preference. This one carries two falsifiers, one definitional and one empirical, and it needs both. The definitional clause alone would make the principle true by construction, and a principle true by construction says nothing about the world.
+
+**The definitional clause.** The boundary holds because "fixed, relevance-loaded procedure" and "fresh-context judgment with no oracle" are different kinds of thing. If the vocabulary itself ever stops distinguishing them, the principle and the words it is built from both need rewriting. This clause is analytic and cannot be falsified by anything the world does. That is its strength and also its limit.
+
+**The empirical clause.** The principle also makes a bet the world can settle. A fixed, scripted procedure placed at a judgment gate will drift from the verdict a fresh-context judge would render, and it will drift precisely on the cases its author did not anticipate, producing the green-over-drift failure that `canon/constraints/audit-gates-are-spawned-agent-sessions` names. The test is runnable. Take a representative set of cases, including ones outside the procedure's anticipated conditions, and compare the procedure's verdicts against a fresh-context judging agent's. The principle predicts disagreement that grows with novelty. If instead the verdicts agree across the novel cases, if a scripted procedure reliably matches independent judgment on inputs it was never told how to weigh, then the operational rule "encode the procedure, never the verdict" has lost its force, whatever we decide to call the artifact. That is the failure mode the principle is betting it will keep encountering. Retract the rule the day it stops.
+
+The definitional clause answers whether these are different kinds of thing. The empirical clause answers the question canon asks of every principle: is this surviving because it is true, or because its failure mode has not yet been encountered?
 
 ## A Separate Concern, Parked — Persona Is Not This Principle
 
@@ -98,6 +108,7 @@ There is a parallel axis that is easy to confuse with this one: whether a model 
 
 - [Audit Gates Are Spawned Agent Sessions](klappy://canon/constraints/audit-gates-are-spawned-agent-sessions) — why a mechanical matcher cannot be a judgment gate
 - [Verification Requires Fresh Context](klappy://canon/principles/verification-requires-fresh-context) — why a creator cannot validate its own work
+- [Critic Cannot Be Resolver](klappy://canon/constraints/critic-cannot-be-resolver) — detection and remediation need separate contexts; independence is contextual, not procedural
 - [Validation as Epistemic Mode](klappy://canon/validation-as-epistemic-mode) — validation as a distinct mode requiring a context break
 - [Prompt Over Code](klappy://canon/principles/prompt-over-code) — the enforcer is generic; the law lives in documents, not the runtime
 - [The Discernment Layer](klappy://canon/principles/discernment-layer) — the human-side companion: discernment is the load-bearing capacity once production is cheap
