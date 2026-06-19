@@ -5,7 +5,7 @@ title: "The Corner Nobody Sells"
 subtitle: "You can borrow almost the whole AI stack now. The one part you can't borrow is the part that decides whether to trust what comes out."
 author: Klappy
 status: "candidate — author-approved, for merge review"
-public: false
+public: true
 audience: public
 exposure: public
 voice: first_person
