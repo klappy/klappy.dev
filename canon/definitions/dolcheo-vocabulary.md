@@ -1,14 +1,14 @@
 ---
 uri: klappy://canon/definitions/dolcheo-vocabulary
-title: "DOLCHEO — Seven Dimensions of Session Capture"
+title: "DOLCHEOT — Eight Dimensions of Session Capture"
 audience: canon
 exposure: nav
 tier: 2
 voice: neutral
 stability: semi_stable
-tags: ["canon", "definitions", "dolcheo", "dolche", "oldc-h", "vocabulary", "session-capture", "project-journal", "open-items", "priority-bands", "epoch-8.3"]
-epoch: E0008.3
-date: 2026-04-19
+tags: ["canon", "definitions", "dolcheot", "dolcheo", "dolche", "oldc-h", "vocabulary", "session-capture", "project-journal", "open-items", "priority-bands", "tension", "tensions", "derived", "epoch-9"]
+epoch: E0009
+date: 2026-06-24
 derives_from: "canon/values/axioms.md, canon/definitions/epistemic-modes.md, docs/oddkit/proactive/dolche-vocabulary.md, docs/oddkit/proactive/oldc-h-vocabulary.md, odd/ledger/2026-04-19-agent-team-pilot.md"
 complements: "canon/meta/writing-canon.md, docs/oddkit/proactive/continuous-encoding.md, docs/oddkit/proactive/encode-does-not-persist.md, odd/ledger/project-journal-best-practices.md"
 governs: "All session capture, project journals, and encode invocations in oddkit-powered projects"
@@ -17,9 +17,9 @@ supersedes: "docs/oddkit/proactive/dolche-vocabulary.md"
 target_repo: "outcomes-driven-development"
 ---
 
-# DOLCHEO — Seven Dimensions of Session Capture
+# DOLCHEOT — Eight Dimensions of Session Capture
 
-> Decisions, Observations (closed), Learnings, Constraints, Handoffs, Encodes, Opens. Six artifact types and one meta-level action, with Open added as the seventh letter: the forward-pointing thread that stays with the current owner. DOLCHE tracked what happened but had no home for what remained unresolved. Open items fill that gap. Unfinished work, unanswered questions, and live threads get captured as first-class artifacts with priority bands, separate from Handoffs (which transfer work to another owner). Both Os retain the single letter `O`; section placement disambiguates closed Observation from Open item. A DOLCHE journal tells you what was done; a DOLCHEO journal also tells you what is still alive.
+> Decisions, Observations (closed), Learnings, Constraints, Handoffs, Encodes, Opens, Tensions. Six artifact types, one meta-level action, one forward-pointing thread, and one derived dimension — with Open added as the seventh letter and Tension as the eighth: the forward-pointing thread that stays with the current owner. DOLCHE tracked what happened but had no home for what remained unresolved. Open items fill that gap. Unfinished work, unanswered questions, and live threads get captured as first-class artifacts with priority bands, separate from Handoffs (which transfer work to another owner). Both Os retain the single letter `O`; section placement disambiguates closed Observation from Open item. A DOLCHE journal tells you what was done; a DOLCHEO journal also tells you what is still alive; a DOLCHEOT journal also surfaces what the captured artifacts, taken together, contradict — and Tension is the only one of the eight that is derived rather than asserted.
 
 ---
 
@@ -33,9 +33,11 @@ DOLCHEO adds **Open** as that something else. The second `O` joins the letter se
 
 DOLCHEO is backward compatible with DOLCHE. Every DOLCHE journal is a valid DOLCHEO journal with zero Open items. Migration is additive: start capturing Open items, nothing else changes.
 
+**The eighth letter, Tension, is different in kind.** Where the first seven are *asserted* — an author states what was decided, seen, learned, constrained, handed off, encoded, or left open — Tension is *derived*: a retrospective pass reads across the captured artifacts and surfaces what they contradict. For months this happened by accident, in the prose of encode output; DOLCHEOT makes it a first-class, typed, synthesized artifact. Tension is the only second-order dimension, and like Open it is additive: every DOLCHEO journal is a valid DOLCHEOT journal with zero Tensions. See `odd/encoding-types/tension.md`.
+
 ---
 
-## The Seven Letters
+## The Eight Letters
 
 **Decisions (D)** — What was chosen. Explicit commitments with rationale. Decisions close options and create direction. They are the highest-stakes artifacts because they constrain all subsequent work. A decision without rationale is a debt (Axiom 2). A decision without a constraint test is untested.
 
@@ -50,6 +52,8 @@ DOLCHEO is backward compatible with DOLCHE. Every DOLCHE journal is a valid DOLC
 **Encodes (E)** — The meta-level action of crystallizing a D, O, L, C, H, or open O through oddkit's encode action. Each encode event records what was crystallized, what quality score it received, whether persistence was required, and what gaps remained. An Encode is a receipt, not content; it proves that crystallization happened. The E is what makes DOLCHEO self-auditing: a journal with five Decisions and zero Encodes is telling you the decisions were mentioned but never captured.
 
 **Opens (O, forward-pointing)** — Unresolved threads that stay with the current owner. Work begun and awaiting next action, questions raised and awaiting answer, decisions pending further evidence, items deferred to the next pass. Open items carry a priority band (P1, P2, P3…) so the list is scannable. They close by becoming Decisions (resolved), Handoffs (transferred), or Observations (completed and now history).
+
+**Tensions (T, derived)** — A contradiction or unresolved conflict visible only *across* two or more captured artifacts, never in a single one. Unlike the other seven, a Tension is not asserted by the author; it is inferred by a pass over the artifacts already captured — synthesized by default, advisory, and sha-bound to the artifacts it spans. It closes when an author resolves it (a Decision) or retracts a pole. Tension is the eighth letter and the first second-order dimension; see `odd/encoding-types/tension.md`.
 
 ---
 
@@ -91,6 +95,20 @@ Open items carry a priority band so the list is scannable without reading each e
 Sub-bands are allowed when a band has internal ordering: P1.1 runs before P1.2, both inside the P1 tier. The handoff that spawned this document used P1.1 (DOLCHEO canon doc) and P1.2 (encode batch-mode + canary refactor) to express "these are both the priority for the next session, in this order."
 
 Bands are a communication tool, not a scheduling system. They say "if I only had time for one thing, which one?" — and answer by ordering. When a band is completed, its items move out of Open (into D, O-closed, or H as appropriate) and the remaining bands shift up or stay where they are at the author's discretion. Bands are not recomputed on every write.
+
+---
+
+## Tension Is Derived, Not Asserted — The Eighth Dimension
+
+The first seven dimensions are *asserted*: an author or agent states them as content. Tension is the exception — it is **derived**, computed by a pass over the other artifacts. This is what makes it the first *second-order* DOLCHEOT type and why it behaves differently from its siblings.
+
+**Synthesized by default.** A Tension is emitted by a detection pass, not entered by an author, so its custody is `synthesized` — a regeneratable projection, never sovereign. An operator who asserts a contradiction in their own voice creates an *authored* Tension, which is sovereign and supersedes the inferred one. An author who *resolves* a Tension (a Decision) closes it by reference and drops its priority; the Tension is marked `resolved`, not deleted.
+
+**Advisory and sha-bound.** A Tension is sha-bound to the artifacts it spans. When any of them changes, it goes stale and is re-derived — staleness *detection* is reliable, but re-derivation is not bitwise reproducible, because detection is an inference, not a deterministic transform. A false-positive Tension is dismissable and never blocks.
+
+**Three senses, one letter.** "Tension" is overloaded; the `T` dimension is precise. The *quality-attribute tradeoff* (`canon/principles/quality-attributes-are-in-tension`) is one `kind` of Tension. The *challenge-vs-canon contradiction* surfaced by oddkit challenge is the challenge-time sibling. The DOLCHEOT `T` is the encode-time, within-source primitive: a contradiction across the captured artifacts. They share machinery; they are not the same artifact.
+
+**Why core, not a domain extension.** The extension mechanism below admits domain-specific letters (P for Prayer, R for Rulings). Tension is not domain-specific — it emerged across every oddkit-powered project, in the prose of ordinary encodes. It is promoted into the core letter set for that reason.
 
 ---
 
@@ -143,16 +161,17 @@ The `odd/ledger/2026-04-19-agent-team-pilot.md` ledger is the first DOLCHEO-nati
 
 ---
 
-## Tool-Level Implication — oddkit_encode Must Accept All Seven
+## Tool-Level Implication — oddkit_encode Must Accept All Eight
 
-The `oddkit_encode` tool currently recognizes four hardcoded artifact types and collapses batched input into a single typed blob. DOLCHEO expands the recognized set to seven and requires per-artifact output.
+The `oddkit_encode` tool currently recognizes four hardcoded artifact types and collapses batched input into a single typed blob. DOLCHEOT expands the recognized set to eight and requires per-artifact output.
 
 Concrete requirements that follow from this vocabulary:
 
-1. The tool must accept prefix-tagged input for all seven letters: `[D]`, `[O]`, `[L]`, `[C]`, `[H]`, `[E]`, and the Open variant (`[O-open]` or equivalent, with an optional priority band like `[O-open P1]`).
+1. The tool must accept prefix-tagged input for all eight letters: `[D]`, `[O]`, `[L]`, `[C]`, `[H]`, `[E]`, the Open variant (`[O-open]` or equivalent, with an optional priority band like `[O-open P1]`), and `[T]` for an authored Tension.
 2. Batched input with multiple prefixes must return a per-artifact array, not a single collapsed blob. Each artifact gets its own quality score and persistence flag.
 3. Single-artifact input without a prefix must still work — the existing heuristic that infers type from content remains as fallback.
 4. The vocabulary itself must be read from this document at runtime, not hardcoded in the tool. That is the prompt-over-code pattern applied to encode — canon defines the vocabulary, code reads it, the three-tier resolution stack (live canon → bundled baseline → fail-loud) governs fallback.
+5. Tension (`T`) is **derived, not prefixed** in the common case: after typing the assertable artifacts, the tool runs a detection pass across them and emits `T` rows for genuine cross-artifact contradictions, marked `synthesized`. An operator may also assert a `[T]` Tension directly. See `odd/encoding-types/tension.md` for the detection pass and quality criteria.
 
 The implementation PR for these requirements is tracked separately from this canon doc; this document is the governance contract the tool must satisfy.
 
@@ -160,23 +179,25 @@ The implementation PR for these requirements is tracked separately from this can
 
 ## Storage at Scale
 
-DOLCHEO entries are structured data: each has a type (one of D / O / L / C / H / E / O-open), a timestamp, a summary, a body, tags, and — for Open items — a priority band. At personal scale, a few entries per session, markdown journals work well. At production scale, dozens per day across multiple projects, tabular formats like TSV or CSV offer faster parsing, easier appending, and cleaner git diffs.
+DOLCHEOT entries are structured data: each has a type (one of D / O / L / C / H / E / O-open / T), a timestamp, a summary, a body, tags, and — for Open items — a priority band. At personal scale, a few entries per session, markdown journals work well. At production scale, dozens per day across multiple projects, tabular formats like TSV or CSV offer faster parsing, easier appending, and cleaner git diffs.
 
-Storage format is an implementation concern, not a vocabulary concern. DOLCHEO defines what to capture. How entries are stored, indexed, and queried depends on the deployment context: markdown for human-readable journals, tabular formats for machine-queryable session history, or both in parallel. The vocabulary travels across any format that can carry the seven-letter type field.
+Storage format is an implementation concern, not a vocabulary concern. DOLCHEOT defines what to capture. How entries are stored, indexed, and queried depends on the deployment context: markdown for human-readable journals, tabular formats for machine-queryable session history, or both in parallel. The vocabulary travels across any format that can carry the eight-letter type field.
 
 ---
 
 ## Extensibility — Custom Types Through Governance
 
-DOLCHEO's seven letters are defaults, not a closed set. Any knowledge base can extend the vocabulary by adding a governance document that defines a new type letter, describes when it should be used, gives examples of valid entries, and explains how it relates to the existing seven.
+DOLCHEOT's eight letters are defaults, not a closed set. Any knowledge base can extend the vocabulary by adding a governance document that defines a new type letter, describes when it should be used, gives examples of valid entries, and explains how it relates to the existing seven.
 
 A pastoral knowledge base might add `P` for Prayer Requests. A legal knowledge base might add `R` for Rulings. A smart-home knowledge base might add `A` for Automations. The extension mechanism is governance, not code: the server infrastructure treats the type field as a string and searches, filters, and counts entries without needing to know what each letter means.
 
 Prompt-over-code applies to the vocabulary itself. The defaults are universal. The extensions are domain-specific. The capability is open. The semantics are governed.
 
+Tension (`T`) was the first letter promoted *into* the core set rather than added as a domain extension: it is universal, surfacing in every project's encode prose, so it earned a core letter rather than a knowledge-base-local one.
+
 ---
 
-## Migration from DOLCHE
+## Migration from DOLCHE and DOLCHEO
 
 DOLCHEO is backward compatible with DOLCHE. All six original dimensions retain their definitions. The only additions are:
 
@@ -187,6 +208,10 @@ DOLCHEO is backward compatible with DOLCHE. All six original dimensions retain t
 Existing DOLCHE journals do not need to be rewritten — they are valid DOLCHEO journals that happen to have zero Open entries. The trigger phrases "encode DOLCHE," "journal this," and "run the gauntlet" continue to work and invoke capture across all seven types; agents should use DOLCHEO in output regardless of which trigger phrase the operator uses.
 
 Agents that were previously taught DOLCHE have one concrete behavior change: at session end, before writing the Handoff section, scan the session for unresolved threads and record them as Open items with priority bands. If there are genuinely none, note that explicitly. An absent Open section is different from an empty one; the former suggests the agent forgot, the latter confirms the agent checked.
+
+### From DOLCHEO to DOLCHEOT
+
+DOLCHEOT adds one dimension: Tension (`T`), the derived contradiction. Every DOLCHEO journal is a valid DOLCHEOT journal with zero Tensions. The one behavior change: when encoding a session, after typing the assertable artifacts, run a detection pass across them and emit Tensions for genuine cross-artifact contradictions. Because Tension is derived and advisory, an absent Tension set is fine — it means the pass found none, or was not run; it is not a malformed journal.
 
 ---
 
@@ -200,12 +225,15 @@ DOLCHEO is a working vocabulary for session capture inside oddkit-powered knowle
 
 **Prior art the Open letter relates to.** The Open/Handoff distinction has relatives in several established systems: Getting Things Done separates Next Actions (owner is self) from Waiting For (owner is someone else), which is a close analogue of the Open/Handoff split. Kanban boards distinguish in-progress work from done work, but do not separate forward-pointing threads with the current owner from transferred work. Issue trackers track tickets with status fields, but a ticket is a heavier unit of work than a session-scope Open item. DOLCHEO's contribution is not the distinction itself but its compact letter-based notation inside a session journal, alongside the six other DOLCHE dimensions, with a single-letter disambiguation rule that preserves backward compatibility.
 
+**Prior art the Tension letter relates to.** Surfacing and preserving contradictions rather than silently resolving them is the move in truth-maintenance systems and defeasible/argumentation frameworks, and resembles a merge-conflict marker that is kept rather than auto-resolved. DOLCHEOT's contribution is again notational and operational: a derived, sha-bound, advisory contradiction captured in the same letter-based journal as the asserted artifacts, emitted by the encode pass rather than entered by hand.
+
 **Retraction conditions.** DOLCHEO should be retracted, revised, or replaced if any of the following hold after sustained use:
 
 - Open items in practice convert almost entirely to Handoffs at session end, with near-zero in-session closure. If that pattern holds, the Open dimension is not earning its place and can be collapsed back into Handoff.
 - The letter collision between closed Observation and Open (both `O`) causes operators or agents to consistently confuse the two despite the section-placement convention. If disambiguation fails in practice, either the collision should be resolved by using a distinct letter (e.g., `U` for Unresolved), or the convention should be strengthened.
 - Priority bands are used inconsistently to the point where they provide no scanning value. If bands become noise, drop them and accept flat Open lists.
 - A more general session-capture framework emerges in the broader AI-augmented-workflow literature that DOLCHEO does not add value beyond. If prior art catches up, adopt it.
+- Tension (`T`) rows are mostly false positives, or are recorded but never acted on at the same rate they were when buried in prose. If making tensions explicit and typed earns nothing over the prose habit, tighten the detector or retract the dimension.
 
 These conditions will be evaluated against live ledgers over the coming weeks. The first ledger written against DOLCHEO, `odd/ledger/2026-04-19-agent-team-pilot.md`, is the initial data point.
 
@@ -213,19 +241,19 @@ These conditions will be evaluated against live ledgers over the coming weeks. T
 
 ## Discoverability
 
-This article exists so that any search for "DOLCHEO," "DOLCHE," "OLDC+H," "session capture," "journal vocabulary," "project journal format," "open items," "priority bands," "forward-pointing threads," "decisions observations learnings constraints handoffs encodes opens," or "what to track in a session" surfaces this vocabulary.
+This article exists so that any search for "DOLCHEO," "DOLCHE," "OLDC+H," "session capture," "journal vocabulary," "project journal format," "open items," "priority bands," "forward-pointing threads," "decisions observations learnings constraints handoffs encodes opens tensions," "DOLCHEOT," "tensions," "contradictions across artifacts," or "what to track in a session" surfaces this vocabulary.
 
 ---
 
 ## Anti-Pattern — Do Not Write "DOLCHEO+H"
 
-The vocabulary is **DOLCHEO**. The seven letters are D-O-L-C-**H**-E-O — Handoffs is the fifth letter, already inside the acronym. Writing **DOLCHEO+H** is malformed:
+The vocabulary is **DOLCHEOT**. The eight letters are D-O-L-C-**H**-E-O-**T** — Handoffs is the fifth letter and Tension the eighth, already inside the acronym. Writing **DOLCHEO+H** (or **DOLCHEOT+T**) is malformed:
 
 - It doubles the H (once inside the acronym, once as the suffix).
 - It is residue from the superseded `OLDC+H` vocabulary (`docs/oddkit/proactive/oldc-h-vocabulary.md`), in which Handoffs were appended with `+H` because the original four letters did not include them. DOLCHEO absorbed Handoffs into the acronym; the suffix is no longer needed.
 - It propagates because agents see "OLDC+H" in canon-adjacent context (this doc's See Also, ledger headers in older artifacts) and pattern-match the suffix onto the new vocabulary by mistake.
 
-When tagging or describing session capture, write **DOLCHEO**. The Handoff section is named with the letter `H` inside the acronym, just like Decision is `D` and Encode is `E`.
+When tagging or describing session capture, write **DOLCHEOT**. The Handoff section is named with the letter `H` inside the acronym, just like Decision is `D` and Encode is `E`. The same rule applies to Tension: `T` is the eighth letter, inside the acronym — never append it as a suffix (`DOLCHEOT+T` is malformed for the same reason as `DOLCHEO+H`).
 
 ### If you are reading an older artifact that uses "DOLCHEO+H"
 
@@ -246,5 +274,6 @@ Treat it as a typo equivalent to "DOLCHEO." Do not propagate the form into new a
 - [Continuous Encoding](klappy://docs/oddkit/proactive/continuous-encoding) — encoding at every turn, not just session end
 - [Project Journal Best Practices](klappy://odd/ledger/project-journal-best-practices) — sizing, timestamps, and format for journals
 - [Agent-Team Pilot Ledger](klappy://odd/ledger/2026-04-19-agent-team-pilot) — the first DOLCHEO-native ledger, used as a working reference
+- [Encoding Type: Tension](klappy://odd/encoding-types/tension) — the derived eighth dimension's type governance
 - [Epistemic Modes](klappy://canon/epistemic-modes) — the four modes that govern when capture happens
 - [Writing Canon](klappy://canon/meta/writing-canon) — the checklist every canon document must pass
