@@ -179,9 +179,9 @@ The implementation PR for these requirements is tracked separately from this can
 
 ## Storage at Scale
 
-DOLCHEO entries are structured data: each has a type (one of D / O / L / C / H / E / O-open / T), a timestamp, a summary, a body, tags, and — for Open items — a priority band. At personal scale, a few entries per session, markdown journals work well. At production scale, dozens per day across multiple projects, tabular formats like TSV or CSV offer faster parsing, easier appending, and cleaner git diffs.
+DOLCHEOT entries are structured data: each has a type (one of D / O / L / C / H / E / O-open / T), a timestamp, a summary, a body, tags, and — for Open items — a priority band. At personal scale, a few entries per session, markdown journals work well. At production scale, dozens per day across multiple projects, tabular formats like TSV or CSV offer faster parsing, easier appending, and cleaner git diffs.
 
-Storage format is an implementation concern, not a vocabulary concern. DOLCHEO defines what to capture. How entries are stored, indexed, and queried depends on the deployment context: markdown for human-readable journals, tabular formats for machine-queryable session history, or both in parallel. The vocabulary travels across any format that can carry the eight-letter type field.
+Storage format is an implementation concern, not a vocabulary concern. DOLCHEOT defines what to capture. How entries are stored, indexed, and queried depends on the deployment context: markdown for human-readable journals, tabular formats for machine-queryable session history, or both in parallel. The vocabulary travels across any format that can carry the eight-letter type field.
 
 ---
 
