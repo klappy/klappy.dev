@@ -19,7 +19,7 @@ target_repo: "outcomes-driven-development"
 
 # Encoding Type: Tension (T, derived)
 
-> A contradiction or unresolved conflict visible only *across* two or more captured artifacts — never in any single one. Unlike every other DOLCHEOT type, a Tension is not asserted by the author; it is *derived* by a retrospective pass over the artifacts already captured. It is synthesized by default, advisory, and sha-bound to the artifacts it spans: when they change, it goes stale and is re-derived. A Tension closes when an author resolves it (a Decision) or retracts one of its poles.
+> A contradiction or unresolved conflict visible only *across* two or more captured artifacts — never in any single one. Unlike every other DOLCHEOT type, a Tension is synthesized by default rather than asserted in the common case; when an operator asserts the contradiction in their own voice, it becomes an authored, sovereign Tension. It is advisory and sha-bound to the artifacts it spans: when they change, it goes stale and is re-derived. A Tension closes when an author resolves it (a Decision) or retracts one of its poles.
 
 ---
 
@@ -38,7 +38,7 @@ Tension is the first **second-order** DOLCHEOT type. Every other letter is *asse
 | Letter | T |
 | Name | Tension |
 | Custody | Synthesized by default (derived); authored only when an operator asserts the contradiction in their own voice |
-| Priority | Derived / second-order — emitted by a detection pass after the assertable types, not entered by hand |
+| Priority | Derived / second-order — emitted by a detection pass after the assertable types by default; entered by hand only when an operator asserts the contradiction |
 
 ---
 
@@ -106,7 +106,7 @@ Quality levels:
 
 ## The Detection Pass — How Tensions Get Emitted
 
-Because a Tension is derived, it is produced by a pass, not by an author. After the assertable artifacts (D, O, L, C, H, Open) are typed for a session, the encoder runs one scan across them — and across any cited source documents — and emits a `T` row for each genuine cross-artifact contradiction. Guidance:
+Because a Tension is synthesized by default, it is usually produced by a pass rather than an author. After the assertable artifacts (D, O, L, C, H, E, Open) are typed for a session, the encoder runs one scan across them — and across any cited source documents — and emits a `T` row for each genuine cross-artifact contradiction. Guidance:
 
 - Emit a Tension only when ≥2 captured artifacts (or an artifact and a cited source) genuinely conflict. Two unrelated facts are not a tension.
 - Keep it signal: cap emitted tensions per session and require the opposition and sourced-pole criteria. A detector that flags everything is worse than the prose habit it replaces.
