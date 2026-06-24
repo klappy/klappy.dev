@@ -130,5 +130,5 @@ A Tension earns its place only if it stays honest about its own confidence: it i
 - [DOLCHEOT Vocabulary](klappy://canon/definitions/dolcheo-vocabulary) — the eight-dimension framework this type belongs to; why Tension is core, not a domain extension
 - [How to Write an Encoding Type](klappy://odd/encoding-types/how-to-write-encoding-types) — the meta-governance this doc follows
 - [Quality Attributes Are In Tension](klappy://canon/principles/quality-attributes-are-in-tension) — the `tradeoff` kind of Tension, as a structural principle
-- [Encoding Type: Encode](klappy://odd/encoding-types/encode) — the other meta/derived letter (a receipt of the encode action)
+- [Encoding Type: Encode](klappy://odd/encoding-types/encode) — the meta-level letter for encode-action receipts
 - [Prompt Over Code](klappy://canon/principles/prompt-over-code) — why this governance doc exists instead of server code
