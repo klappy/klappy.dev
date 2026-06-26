@@ -150,8 +150,8 @@ This document extends the original binary decision (*models may analyze and repo
 
 ## See Also
 
-- [Rulebook Transfer](/canon/principles/rulebook-transfer.md) — the authority-flow asymmetry this rests on
-- [Everything Is a Project](/docs/planning/kb-data-model.md) — governance is a role on a scope
-- [ODD Is a Value-Grounded Epistemic OS](/canon/constraints/odd-is-epistemic-os-not-values.md) — authority is a governance-layer axis, not an epistemic-core one
+- [Rulebook Transfer](klappy://canon/principles/rulebook-transfer) — the authority-flow asymmetry this rests on
+- [Everything Is a Project](klappy://docs/planning/kb-data-model) — governance is a role on a scope
+- [ODD Is a Value-Grounded Epistemic OS](klappy://canon/constraints/odd-is-epistemic-os-not-values) — authority is a governance-layer axis, not an epistemic-core one
 - [Epistemic Obligation and Document Tiers](/canon/definitions/epistemic-obligation-and-document-tiers.md)
 - [Constraints](/canon/constraints/README.md) — AI as Accelerator, Not Authority
