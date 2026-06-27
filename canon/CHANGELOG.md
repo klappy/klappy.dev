@@ -18,6 +18,23 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
+## 0.39.0 — 2026-06-09
+
+**Flight Crew (E0010)**
+
+A new epoch. Epoch 9 retired the operator as the wire; the substrate became the wire. Epoch 10 retires the costume; the seat replaces it. The axioms, the canon, and the tools do not change — what changes is the wrapper: how a model boards the system and how governance is enforced once aboard. Earlier model generations were bootstrapped with an identity worn as self; the current generation keeps its own judgment, declines the costume, and fails by silent substitution — recalling governance instead of fetching it live. Epoch 10 answers with the flight deck: the knowledge base is the employee manual opened at the moment of use, preflight fires before work every session regardless of capability, modes are a sterile cockpit, the cross-check runs both directions, and the journal is the black box the debrief turns into canon.
+
+This entry backfills the changelog marker for an epoch that was declared on 2026-06-09 via `docs/appendices/epoch-10.md` but did not carry its `governance-change-discipline` markers at declaration time. The accompanying release note is added in the same change.
+
+### Added — Canon Surface
+
+- **Appendix: Epoch 10 — Flight Crew** (`docs/appendices/epoch-10.md`) — Tier 2, neutral. Declared 2026-06-09 by maintainer ratification. Names the costume→seat transition and the flight-deck enforcement model.
+- **Release note** (`docs/oddkit/release-notes/2026-06-09-epoch-10-flight-crew.md`) — Tier 3, neutral.
+
+### Governance
+
+- Backfilled markers per `canon/constraints/governance-change-discipline.md` (changelog entry + release note) for the E0010 declaration. Scope is E0010 only; any other canon changes merged since 0.38.0 without version markers are out of scope for this change.
+
 ## 0.38.0 — 2026-05-12
 
 **Substrate Becomes the Wire (E0009)**
