@@ -5,7 +5,7 @@ audience: canon
 exposure: nav
 tier: 1
 voice: neutral
-stability: semi_stable
+stability: stable
 tags: ["canon", "decisions", "models", "mutation", "governance", "stewardship", "delegation", "authority", "epoch-10"]
 relevance: decision
 execution_posture: governing
