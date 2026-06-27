@@ -5,14 +5,14 @@ audience: canon
 exposure: nav
 tier: 1
 voice: neutral
-stability: semi_stable
+stability: stable
 tags: ["canon", "principle", "epoch-10", "agentic", "the-loop", "prompt-over-code", "discernment", "articulability", "stewardship", "delegation-ladder", "kirigami", "rulebook-transfer"]
 epoch: E0010
 date: 2026-06-26
 derives_from: "canon/principles/prompt-over-code.md, canon/principles/discernment-layer.md, canon/principles/skills-are-procedure-not-judgment.md, canon/decisions/models-do-not-mutate-canon.md, canon/principles/code-claims-require-code-observation.md, canon/principles/verification-requires-fresh-context.md"
 complements: "writings/shifting-bottlenecks-climbing-ladders.md (operator-side delegation ladder), writings/how-you-lead-is-what-you-build.md (delegation as graduation), docs/planning/kb-data-model.md (governance is a role on a scope), canon/principles/symmetric-participation.md, canon/constraints/odd-is-epistemic-os-not-values.md, kirigami contributor/custody/synthesized model, P0 cross-model reconstruction-fidelity sweep"
 governs: "How discernment transfers down model tiers; how a self-building loop surfaces candidate governance without unravelling"
-status: draft
+status: active
 target_repo: "outcomes-driven-development"
 ---
 
