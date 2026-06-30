@@ -76,6 +76,16 @@ Two layers of evidence, each scoped honestly.
 
 A further hazard sharpens both: an articulated rulebook can be fluent and still not describe what its author actually did. A confabulated rulebook reads well and reproduces badly. Fidelity is therefore never inferred from how good the rulebook reads; it is measured by testing that the lesser tier makes the same cuts — consistent with [Code Claims Require Code Observation](klappy://canon/principles/code-claims-require-code-observation): the claim is verified against observation, not against its own prose.
 
+### Second probe — COO canon, 2026-06-30 (real corpus, three tiers)
+
+A live cross-model run folded chapters from four COO books through one lens, graded by a fresh-context grader against held-out truth (`kirigami://docs/eval/coo-corpus-fidelity-run-2026-06-30`). It extends both evidence layers:
+
+**Execution transfer — strengthened.** Under a sufficiently explicit lens a Haiku-class model reached ship-grade fidelity (8/8 held-out questions on the hardest chapter). The *articulability step-size* mechanism was observed directly: under a thin lens Haiku collapsed (88 rows, 4 tier-1 — a starved skeleton); writing the missing discernment down (budgets, tier test, anti-fragmentation rule, worked example, self-count gate) moved the same model into the frontier band (45 rows, 10 tier-1) with no model change. Articulability, not raw capability, was the binding variable — exactly as the principle predicts.
+
+**Stewardship transfer — first data on the chain arm.** The prior evidence was N=1 at the top rung. This probe tested the rung below: a mid-tier model (Sonnet) *authored* a compensating rule for a Haiku failure, and it worked when Haiku ran it (the targeted hallucination and orphan edges disappeared) — but it **over-corrected**, dropping coverage. A frontier model (Opus), given the identical brief, authored the same fix **surgically** — failure removed, coverage preserved. Reading: stewardship *does* transfer below the top rung, but it is **lossy in the tacit dimension** — the mid tier fixes the articulable bug and fumbles the balance the frontier holds. This is a first, concrete data point on the **star-or-chain** question: frontier→bottom authoring is clean (the star arm holds); mid-tier→bottom authoring is real but degraded — consistent with the claim that the delegation ladder has fewer rungs than the execution ladder.
+
+**Still open.** The device tier is untested (all three models are cloud). The multi-rung chain remains thin: one rung of mid-tier stewardship, observed once, lossy. Star-vs-chain is now *informed*, not resolved.
+
 ## Open questions
 
 - **Star or chain?** Does stewardship capacity re-instantiate at each tier (a chain — every tier stewards the one below), or does it concentrate at the frontier (a star — one steward authoring for everyone)? The single observed rung does not distinguish them. This is the dominant empirical question for the whole model.
