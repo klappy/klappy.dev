@@ -17,13 +17,13 @@ target_repo: "outcomes-driven-development"
 
 # Writing Canon — Progressive Disclosure and Topographic Navigation
 
-> Every canon document must be actionable at every extraction depth: title alone, title + blockquote, title + blockquote + metadata, summary section, and full document. Headers are a navigational map — scanning filenames and headings is the topography. If a partial extraction cannot guide a correct decision, the document has failed before it was read. Every document competes with the axioms and creed for context space; bulk without progressive disclosure threatens the foundation.
+> "Show me what I'm deciding in a way that respects my attention and time." That is the reader's one demand, and every canon document must answer it at every extraction depth: title alone, title + blockquote, title + blockquote + metadata, summary section, and full document. Headers are a navigational map — scanning filenames and headings is the topography. If a partial extraction cannot guide a correct decision, the document has failed before it was read. Every document competes with the axioms and creed for context space; bulk without progressive disclosure threatens the foundation.
 
 ---
 
 ## Summary — Documents Are Read in Fragments, So Write Them That Way
 
-Agents and tooling rarely consume a full document. The librarian returns a title and a blockquote snippet. Context packs project at varying detail levels. Humans scan headings before committing to read. Every document must therefore be structured so that progressively larger excerpts are each independently actionable — not merely informative, but sufficient to guide a decision.
+Agents and tooling rarely consume a full document. The librarian returns a title and a blockquote snippet. Context packs project at varying detail levels. Humans scan headings before committing to read. Every document must therefore be structured so that progressively larger excerpts are each independently actionable — not merely informative, but sufficient to guide a decision. Compressed to one sentence, the reader's demand is: "Show me what I'm deciding in a way that respects my attention and time."
 
 This is not a formatting preference. It is a structural requirement derived from how documents actually get consumed. A document that only works when read in full is a document that fails in practice. More critically, the axioms and creed are the most important content in any context window — every other document competes with them for space. Canon growth that lacks progressive discipline doesn't just waste tokens; it buries the values that make the system trustworthy.
 
