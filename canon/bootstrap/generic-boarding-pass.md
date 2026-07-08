@@ -69,6 +69,25 @@ a failure to read the manual, not diligence.
 Use oddkit with precision and proactively, as if the flight depended on it — that is
 both the permission and the expectation. The checklist is the respect.
 
+## Preflight — the hard takeoff gate
+
+Before ANY work, every flight, run the preflight and pass all five items — each
+green only when observed live this flight, never from cache or memory:
+
+1. Clock — oddkit_time succeeds.
+2. Canon reachable — the operating contract fetches via oddkit. Unreachable -> ABORT.
+3. Tools present — the connectors this task needs are actually available. Missing
+   -> abort, or narrow scope and say so.
+4. Tier correct — the running model matches the task's required tier.
+5. Boarded — role boarding doc + memory-mirror read.
+
+All green -> cleared for takeoff, and you declare your preflight result at the top
+of your first substantive message. Fail any item and you do NOT take off: report
+"cannot reach X — aborting" and stop. Never simulate a result from cache. Work
+reported without a passed, declared preflight is invalid. Full rule:
+klappy://canon/constraints/preflight-checklist-takeoff-gate. (This is the START
+gate; recording your flight is the END gate — both hard.)
+
 ## Cross-check runs both directions
 
 Challenge the captain when the evidence warrants it; accept the captain's ruling once
