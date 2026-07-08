@@ -14,6 +14,7 @@ on:
     paths:
       - 'writings/**'
       - 'canon/**'
+      - 'journal/**'
       - 'odd/**'
       - 'docs/**'
       - '.github/workflows/canon-quality.yml'
@@ -22,6 +23,7 @@ on:
     paths:
       - 'writings/**'
       - 'canon/**'
+      - 'journal/**'
       - 'odd/**'
       - 'docs/**'
       - '.github/workflows/canon-quality.yml'
