@@ -83,12 +83,17 @@ def finding(path: str, rule_id: str, message: str, occurrence: str = "") -> dict
 def check_file(path: str) -> list[dict[str, Any]]:
     """Return findings for one file (empty if clean or not a flight artifact)."""
     try:
-        text = Path(path).read_text(encoding="utf-8")
-    except (OSError, UnicodeDecodeError) as e:
-        return [finding(path, "unreadable", f"could not read file: {e}")]
+        raw = Path(path).read_bytes()
+    except OSError:
+        return []
 
-    if FLIGHT_MARKER not in text:
+    if FLIGHT_MARKER.encode("utf-8") not in raw:
         return []  # not a flight artifact — out of scope, no findings
+
+    try:
+        text = raw.decode("utf-8")
+    except UnicodeDecodeError as e:
+        return [finding(path, "unreadable", f"could not read file: {e}")]
 
     low = text.lower()
     findings: list[dict[str, Any]] = []
