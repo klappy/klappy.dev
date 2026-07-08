@@ -18,6 +18,28 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
+## 0.40.0 — 2026-07-08
+
+**Preflight Becomes a Hard Takeoff Gate (E0010)**
+
+A posture recalibration within Flight Crew, not a new epoch. E0010 named preflight as an instrument that "fires before work, every session, regardless of capability." This release makes it a **gate**: five items (clock, canon reachable, tools present, tier correct, boarded), checked every flight before any work, each green only when observed live — never from cache or memory. Fail any item and the flight does not take off; it aborts and reports the specific failure ("cannot reach X — aborting") rather than simulating the result from recall. A cleared flight declares its preflight result at the top of its first substantive message, and work reported without a passed, declared preflight is invalid. This closes the failure the operator observed all week: dispatched flights with zero MCP connectors that could not reach canon and flew anyway. The preflight is the START gate; recording-as-landing is the END gate; both are hard.
+
+### Added — Canon Surface
+
+- **Constraint: The Preflight Checklist — The Hard Takeoff Gate No Flight Skips** (`canon/constraints/preflight-checklist-takeoff-gate.md`) — Tier 1, neutral. The authoritative rule: the five items, the declaration requirement, the abort behavior, and the two-surface enforcement model (mechanical presence check + spawned-agent judgment).
+- **Release note** (`docs/oddkit/release-notes/2026-07-08-preflight-takeoff-gate.md`) — Tier 3, neutral.
+- **Dispatch protocol** (`DISPATCH.md`, repo root) — binds every dispatched flight to the same takeoff gate.
+- **CI structural check** (`scripts/validate-preflight-declaration.py` + `preflight-declaration` job in `.github/workflows/canon-quality.yml`) — soft-first mechanical presence check for the declaration on flight artifacts, mirroring the recording-as-landing end-gate pattern.
+
+### Changed — Boarding Surface
+
+- `canon/bootstrap/model-operating-contract.md` — new "The Preflight — The Hard Takeoff Gate" section (the binding procedure).
+- `canon/bootstrap/generic-boarding-pass.md` and `canon/bootstrap/boarding-pass.md` — the paste-ready project and account instructions now carry the five-item gate, the declaration requirement, and the abort behavior. Update discipline names the takeoff gate as boarding-relevant law; the maintainer re-pastes settings.
+
+### Governance
+
+- Markers per `canon/constraints/governance-change-discipline.md`: version bump (this entry), changelog entry, and release note. Behavior-affecting posture recalibration within E0010 — no epoch bump (who-initiates is unchanged; the change hardens an existing posture).
+
 ## 0.39.0 — 2026-06-09
 
 **Flight Crew (E0010)**

@@ -14,6 +14,7 @@ on:
     paths:
       - 'writings/**'
       - 'canon/**'
+      - 'journal/**'
       - 'odd/**'
       - 'docs/**'
       - '.github/workflows/canon-quality.yml'
@@ -22,6 +23,7 @@ on:
     paths:
       - 'writings/**'
       - 'canon/**'
+      - 'journal/**'
       - 'odd/**'
       - 'docs/**'
       - '.github/workflows/canon-quality.yml'
@@ -624,3 +626,112 @@ jobs:
         with:
           header: canon-quality-surfacing
           path: /tmp/surface-comment.md
+
+  preflight-declaration:
+    name: Preflight declaration on flight artifacts (soft)
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    # Soft-only report for the START-gate half of the flight airframe
+    # (klappy://canon/constraints/preflight-checklist-takeoff-gate). Pure-Python
+    # file parsing — deterministic, no oddkit call. Checks that any file which
+    # self-identifies as a flight artifact (marker `<!-- flight-artifact -->`)
+    # carries a well-formed preflight declaration: all five items + a
+    # disposition. This is the MECHANICAL half only (audit-gates-are-spawned-
+    # agent-sessions permits a pattern matcher for literal presence checks);
+    # whether the declared preflight was TRUE is a spawned-agent judgment, never
+    # this job. Ships soft; flips to hard after an observation cycle, same as the
+    # frontmatter and audit gates. The END-gate counterpart is recording-as-landing.
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run preflight-declaration check
+        run: |
+          python3 scripts/validate-preflight-declaration.py --json > /tmp/pf-result.json || true
+          python3 - <<'PYEOF'
+          import json
+          d = json.load(open('/tmp/pf-result.json'))
+          print(f"scanned={d['scanned']} flight_artifacts={d['flight_artifacts']} "
+                f"status={d['status']} findings={len(d['findings'])}")
+          PYEOF
+
+      - name: Upload findings artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: preflight-declaration-findings
+          path: /tmp/pf-result.json
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: Render PR comment
+        if: github.event_name == 'pull_request'
+        run: |
+          python3 - <<'PYEOF'
+          import json
+          d = json.load(open('/tmp/pf-result.json'))
+          findings = d['findings']
+          lines = []
+          icon = '\u2705' if not findings else '\u26a0\ufe0f'
+          lines.append(f"### Canon Quality \u2014 Preflight Declaration {icon}")
+          lines.append('')
+          lines.append(f"Soft report for the START gate "
+                       f"(`klappy://canon/constraints/preflight-checklist-takeoff-gate`). "
+                       f"{d['scanned']} file(s) scanned, {d['flight_artifacts']} flight "
+                       f"artifact(s) checked. **Never blocks** \u2014 informational until the "
+                       f"gate flips to hard after the observation cycle.")
+          lines.append('')
+          if not findings:
+              lines.append('All flight artifacts carry a well-formed preflight declaration '
+                           '(five items + disposition), or none are marked yet.')
+          else:
+              lines.append(f'**{len(findings)} finding(s)** on marked flight artifacts:')
+              lines.append('')
+              lines.append('| File | Rule | Message |')
+              lines.append('|---|---|---|')
+              for f in findings:
+                  path = f['location']['path']
+                  msg = (f['message'] or '').replace('|', '\\|')
+                  lines.append(f"| `{path}` | `{f['rule_id']}` | {msg} |")
+              lines.append('')
+              lines.append('> Mechanical presence check only. A green result means a declaration '
+                           'exists and is well-formed \u2014 not that the declared preflight was '
+                           'true. Verifying the declaration is honest is a spawned-agent judgment '
+                           '(`klappy://canon/constraints/audit-gates-are-spawned-agent-sessions`).')
+          lines.append('')
+          lines.append('<sub>Validator: `scripts/validate-preflight-declaration.py` \u00b7 '
+                       'Constraint: `klappy://canon/constraints/preflight-checklist-takeoff-gate` \u00b7 '
+                       'Run: [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})</sub>')
+          open('/tmp/pf-comment.md','w').write('\n'.join(lines))
+          PYEOF
+
+      - name: Sticky comment
+        if: github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: canon-quality-preflight-declaration
+          path: /tmp/pf-comment.md
+
+      - name: Workflow step summary
+        if: always()
+        run: |
+          {
+            echo "## Canon Quality \u2014 Preflight Declaration (soft)"
+            echo ""
+            python3 - <<'PYEOF'
+          import json
+          try:
+              d = json.load(open('/tmp/pf-result.json'))
+              print(f"- **Status**: {d['status']}")
+              print(f"- **Scanned**: {d['scanned']}")
+              print(f"- **Flight artifacts checked**: {d['flight_artifacts']}")
+              print(f"- **Findings**: {len(d['findings'])}")
+          except Exception as e:
+              print(f"- **Result**: check did not produce output ({e})")
+          PYEOF
+          } >> "$GITHUB_STEP_SUMMARY"

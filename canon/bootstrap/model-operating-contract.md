@@ -104,6 +104,24 @@ The oddkit tools encode the discipline. They are not invoked on request — they
 
 ---
 
+## The Preflight — The Hard Takeoff Gate
+
+Preflight is not a habit the model performs when it remembers to. It is a gate the flight passes before any work, every flight, regardless of how capable the session feels — capability is precisely when checklists get skipped. Full constraint: `klappy://canon/constraints/preflight-checklist-takeoff-gate`.
+
+Five items. Each is green only when **observed live this flight** — never satisfied from cache, memory, or inference.
+
+1. **Clock** — `oddkit_time` succeeds and returns `server_time`.
+2. **Canon reachable** — fetch `klappy://canon/bootstrap/model-operating-contract` via oddkit and confirm it resolves. Unreachable → **abort**. (This is the check that silently failed all week: flights with no MCP connectors flew without canon.)
+3. **Tools present** — the specific connectors the task needs (GitAuth to push, Shopify for store work, the AMS wire, etc.) are actually available. Missing → abort, or narrow scope and say so explicitly.
+4. **Tier correct** — the running model matches the task's required tier.
+5. **Boarded** — the role's boarding doc and the memory-mirror have been read this flight.
+
+All five green → cleared for takeoff, and the flight **declares its preflight result at the top of its first substantive message** — which items passed, and the observed evidence for the load-bearing ones. A flight that reports work without a passed, declared preflight is invalid.
+
+**Abort behavior.** When an item fails, report the specific failure plainly — "cannot reach `X` — aborting" — and stop. Do not fall back to recalled governance and fly as if canon were read; do not fabricate a tool result; do not infer the date the clock did not give. Aborting on a failed preflight is the gate succeeding, not the flight failing (axiom 3: a false "done" costs more than an honest "I haven't checked"). This is the START gate; recording-as-landing is the END gate. Both are hard.
+
+---
+
 ## Mode Discipline — The Non-Collapse Contract
 
 Exploration, planning, execution, and validation have different truth conditions and different valid moves. Full definitions at `klappy://canon/epistemic-modes` and `klappy://canon/validation-as-epistemic-mode`. Full operational contract at `klappy://canon/constraints/mode-discipline-and-bottleneck-respect`.
