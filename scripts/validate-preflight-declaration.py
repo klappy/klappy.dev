@@ -80,12 +80,23 @@ def finding(path: str, rule_id: str, message: str, occurrence: str = "") -> dict
     }
 
 
+def strip_frontmatter(text: str) -> str:
+    """Return markdown content without a leading YAML frontmatter block."""
+    lines = text.splitlines(keepends=True)
+    if not lines or lines[0].strip() != "---":
+        return text
+    for idx, line in enumerate(lines[1:], start=1):
+        if line.strip() == "---":
+            return "".join(lines[idx + 1:])
+    return text
+
+
 def check_file(path: str) -> list[dict[str, Any]]:
     """Return findings for one file (empty if clean or not a flight artifact)."""
     try:
         raw = Path(path).read_bytes()
-    except OSError:
-        return []
+    except OSError as e:
+        return [finding(path, "unreadable", f"could not read file: {e}")]
 
     if FLIGHT_MARKER.encode("utf-8") not in raw:
         return []  # not a flight artifact — out of scope, no findings
@@ -95,10 +106,10 @@ def check_file(path: str) -> list[dict[str, Any]]:
     except UnicodeDecodeError as e:
         return [finding(path, "unreadable", f"could not read file: {e}")]
 
-    low = text.lower()
+    low = strip_frontmatter(text).lower()
     findings: list[dict[str, Any]] = []
 
-    # Isolate a declaration region if one is delimited; else scan whole file.
+    # Metadata is not part of the declaration; only the artifact body counts.
     missing = [
         item for item, pats in REQUIRED_ITEMS.items()
         if not any(re.search(rf"\b{p}\b", low) for p in pats)
