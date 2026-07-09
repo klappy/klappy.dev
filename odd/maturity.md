@@ -193,6 +193,30 @@ A project may move down only with explicit acknowledgment.
 
 ---
 
+## 🛫 Progressive Governance in Practice — Gate Rigor Scales With Maturity
+
+> Passing the gates is the clearance. Delegated authority is exercised, not abdicated.
+
+Clearing the oddkit gated modes — explore → plan → execute → validate → promote — is itself the clearance to ship **and** deploy at Level 0 and early Level 1 maturity: proof-of-concept, prototype, and the pre-launch launch of something that has no users yet. A flight that clears the gates does not then stop for an additional human-approval halt. The gates already carried the rigor the maturity level requires. This is delegated authority exercised, not abdicated.
+
+The heavier human mechanisms — review-before-publish, irreversibility holds, block-on-public-content — belong to **Level 2 / Production**: a product with real users, real data, or genuinely irreversible external effects. They must not be reflexively applied to PoCs, prototypes, or the launch of something that has no users yet. Applying production halts to pre-launch work is the "rigor too early kills creativity" failure this document exists to prevent.
+
+**Reversibility is the test.** If an action is cheaply reversible — revert a deploy of a pre-launch site with no users, roll back a prototype — it flows. The "block only on irreversibility" rule (`canon/principles/irreversibility-is-the-real-cost.md`) is itself scoped by maturity: what is effectively reversible at pre-launch may be irreversible in production. The same deploy is a shrug at Level 0 and a held breath at Level 2.
+
+### Reconciliation
+
+• **ARS v1 non-blocking policy (PR #10).** Reviewers are advisory, not halts, on reversible pre-launch work. This policy is the maturity axis of that same non-blocking stance: it names *when* a review may block (Production) and when it may not (PoC / prototype / pre-launch).
+
+• **"The captain's authorial voice ships only with review."** That rule governs genuinely captain-authored external content in production contexts. It does not govern crew-authored prototype copy at pre-launch. Crew-authored pre-launch copy is not the captain's authorial voice, and no user is reading it yet — it flows under the gates like any other reversible pre-launch artifact.
+
+### Captain's Directive — 2026-07-09
+
+> "If you follow oddkit modes and gates you can be trusted to just take it live. Stop halting at every opportunity on PoCs, prototypes, and even launches. Production has its own mechanisms."
+
+Otto (the dispatcher) had been over-halting on reversible pre-launch work. This policy corrects that: at Level 0 and early Level 1, passing the gates is the go.
+
+---
+
 ## 💡 Closing Note
 
 This model exists to protect both:
