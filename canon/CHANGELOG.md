@@ -18,6 +18,20 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
+## 0.40.0 — 2026-07-09
+
+**The Director's Chair — Whole-Vision Canon Overview**
+
+Adds a single captain-approved, thin-overview canon document that consolidates the full program vision — director's-chair posture, six-layer substrate stack, the CDO/Otto seat, governance spine, and the L6 economy — into one frame agents can orient from before drilling into specifics. The document carries a provenance appendix (Bee conversation IDs + canon thread names) as an explicit unfold-map, so agents fetch full detail on demand rather than the overview trying to be exhaustive. Captain-approved 2026-07-09; marked `stability: evolving` since the vision continues to sharpen in use.
+
+### Added — Canon Surface
+
+- **The Director's Chair — The Whole Vision, Whole** (`canon/the-directors-chair-vision.md`) — Tier 2, neutral, evolving. Whole-program vision overview for the CDO (Otto) and other agents, with captain's four 2026-07-09 rulings (naming deferral, Otto's place in the runtime, economy sequencing, build philosophy) and the vodka-architecture discipline section.
+
+### Governance
+
+- Minor version bump per `canon/constraints/governance-change-discipline.md` — new canon document intended to shape how agents orient to the whole-program vision. Release notes at `docs/oddkit/release-notes/2026-07-09-directors-chair-vision.md`. No epoch bump: this document synthesizes and cross-references existing epoch-9/epoch-10 canon rather than shifting operator or agent posture.
+
 ## 0.39.0 — 2026-06-09
 
 **Flight Crew (E0010)**
