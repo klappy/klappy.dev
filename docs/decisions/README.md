@@ -26,6 +26,7 @@ Architecture Decision Records (ADRs) specific to the klappy.dev repository imple
 | [D0001](./D0001-prod-branch-is-production.md) | `prod` branch is production; `main` is experiment ledger | **Active** |
 | [D0005](./D0005-nuke-safety-guards.md) | Nuke command refuses on `prod`, warns on `main` | **Active** |
 | [D0007](./D0007-branch-names-are-convenience.md) | Branch names are convenience; provenance lives in META | **Active** |
+| [D0019](./D0019-merge-attribution-v1.md) | Merge attribution v1: attribution wins (squash locally, push, close PR) | **Active** |
 
 ### Attempt Lifecycle
 
