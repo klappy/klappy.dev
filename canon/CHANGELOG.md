@@ -18,6 +18,24 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
+## 0.41.0 — 2026-07-09
+
+**The Dispatcher Dispatches; It Never Executes In-Session**
+
+Encodes a hard, durable role boundary for the CDO/dispatcher (Otto): the dispatcher queues and routes work to flights and never executes hands-on work in its own session — no builds, deploys, git operations, state-changing API calls, or file bundling, including deploys via the Cloudflare execute / "CF Extras" tool. The rule closes a recurring failure in which the dispatcher makes "I'll delegate everything from now on" promises that do not survive a context reset, because the resolve lived in session memory rather than in canon. Moving the boundary into canon means a fresh dispatcher inherits it at board time instead of re-promising it. Reinforces the runtime's existing hands-allowlist and tripwire, and states the enforcement gap honestly: until ARS/the harness gates the dispatch seat, the rule relies on boarding canon at session start. Recorded as a debrief lesson (no blame), raising the priority of ARS enforcing role boundaries.
+
+### Added — Canon Surface
+
+- **The Dispatcher Dispatches; It Never Executes In-Session** (`canon/constraints/dispatcher-dispatches-never-executes.md`) — Tier 1, neutral, stable. The dispatcher's hands-allowlist (talk to the captain, think/advise, route to flights), the tripwire (stop-and-delegate on any hands-on action), the capability-gap signal (wire the crew or note the gap; never self-execute), the memory-evaporation mechanism behind empty promises, and the honest ARS enforcement gap.
+
+### Changed — Canon Surface
+
+- **The Director's Chair — The Whole Vision, Whole** (`canon/the-directors-chair-vision.md`) — Added a "The dispatcher dispatches; it never executes in-session" subsection to the CDO/Otto seat section, cross-referencing the new constraint so the dispatcher charter and the durable rule stay linked.
+
+### Governance
+
+- Minor version bump per `canon/constraints/governance-change-discipline.md` — a new tier-1 canon constraint that adds an operating rule for the dispatcher role. Release notes at `docs/oddkit/release-notes/2026-07-09-dispatcher-never-executes.md`. No epoch bump: this reinforces existing E0010 flight-crew posture (delegation over doing, harness-enforced boundaries) rather than shifting who initiates.
+
 ## 0.40.0 — 2026-07-09
 
 **The Director's Chair — Whole-Vision Canon Overview**
