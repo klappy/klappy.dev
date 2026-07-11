@@ -18,6 +18,27 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
+## 0.42.0 — 2026-07-11
+
+**Standing Rulings Promoted from Session Memory to Canon**
+
+Promotes four of the captain's standing rulings out of Otto's lossy per-session memory into durable canon, so they are fetched live per turn via the operating card instead of decaying with the session. The thesis: rules belong in policy, not memory. Each ruling gets a concise canon entry, and the Otto Operating Card gains a "The Rulings (2026-07-11)" section pointing to each — the card stays a pointer surface, restating nothing.
+
+### Added — Canon Surface
+
+- **Model Ladder — Fable Is the Ceiling; Delegate Down, Never Escalate to Opus** (`canon/defaults/model-ladder-fable-ceiling.md`) — Tier 2, stable. Fable is the superior, default model and the ceiling; Opus is inferior and never the escalation for hard/high-stakes work; from Fable the only move is down to cheaper tiers for well-scoped, rulebook-governed execution. Sharpens the rung order within the frontier band named by `canon/methods/discernment-transfer-ladder.md`.
+- **Reasoning Effort Defaults Low; Escalate on Importance** (`canon/defaults/reasoning-effort-low-default.md`) — Tier 2, stable. Effort starts LOW and is raised deliberately on importance; effort and model are independent dials. Records the harness gap honestly: Cowork dispatch tools expose per-flight `model` but not per-flight `effort` (project-wide settings.json/env only today) — logged as an owed harness request.
+- **Apply Clear Intent-Aligned Fixes Without Gating on the Captain** (`canon/constraints/intent-aligned-fixes-proceed.md`) — Tier 1, stable. Obvious + intent-aligned + low-risk → act without asking; confirm-first is reserved for real forks, irreversibles, and authorial voice. The captain's ruling: "you know my intent."
+- **PRs Are Hygiene, Not a Hold — Crew Opens and Self-Merges Green PRs** (`canon/constraints/prs-are-hygiene-not-a-hold.md`) — Tier 1, stable. PRs stay as hygiene (CI gate, reviewable unit, history), but green means merge: the crew self-merges and never parks a green PR waiting on the captain. Red or confirm-first-class changes still escalate.
+
+### Changed — Canon Surface
+
+- **The Otto Operating Card** (`canon/bootstrap/otto-operating-card.md`) — Retitled from "Five Standing Rules" to "Standing Rules"; added "The Rulings (2026-07-11)" section with one-line pointers to the four new entries (rules 6–9); `complements` frontmatter extended accordingly. The card remains DRY — pointers with a one-line why, no restated law.
+
+### Governance
+
+- Minor version bump per `canon/constraints/governance-change-discipline.md` — four new behavior-affecting canon entries plus an operating-card change. Release notes at `docs/oddkit/release-notes/2026-07-11-standing-rulings-into-canon.md`. No epoch bump: these rulings harden existing E0010 flight-crew posture (delegation, bottleneck respect, harness-fetched rules over session memory) rather than shifting who initiates.
+
 ## 0.41.0 — 2026-07-09
 
 **The Dispatcher Dispatches; It Never Executes In-Session**
