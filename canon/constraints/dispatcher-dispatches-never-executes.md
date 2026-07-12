@@ -6,7 +6,7 @@ exposure: nav
 tier: 1
 voice: neutral
 stability: stable
-tags: ["canon", "constraints", "dispatcher", "cdo", "otto", "delegation", "hands-allowlist", "tripwire", "role-boundary", "enforcement", "harness", "offload", "human-only", "dispatch-guard"]
+tags: ["canon", "constraints", "dispatcher", "cdo", "otto", "delegation", "hands-allowlist", "tripwire", "role-boundary", "enforcement", "harness", "offload", "human-only", "dispatch-guard", "ratification", "gates-govern", "open-fork"]
 epoch: E0010
 date: 2026-07-11
 derives_from: "canon/the-directors-chair-vision.md, canon/bootstrap/model-operating-contract.md, canon/principles/agents-need-their-own-wire.md, canon/decisions/models-do-not-mutate-canon.md, canon/constraints/mode-discipline-and-bottleneck-respect.md"
@@ -65,6 +65,24 @@ Anything not on this list that is about to be asked of the captain is a dispatch
 
 ---
 
+## Let the Gates Govern — Ratifying a Settled Call Is the Third Face
+
+The captain's 2026-07-11 ruling named the family's third failure. The seat had learned not to execute in-seat, and not to offload operational work to the captain — and started inserting the captain as an **approval step** instead: serializing settled work through itself as a manual bottleneck, re-asking him to approve/ratify/bless a decision already made, producing "please approve" artifacts for settled calls. That is the same violation in a third costume — inserting a human approval where the governance system already decided. Settled calls are not open questions; a manufactured ratification gate spends the captain's attention exactly as surely as a "you push it" did.
+
+**The rule, stated once: the gates ARE the approval.** Once direction is set, oddkit's gates and modes govern the agents. Work inside settled direction proceeds under the gate — preflight, transition prerequisites, DoD validation — and passing the gate is the approval. There is no second, human-shaped copy of it.
+
+**The trigger, actionable at the decision moment.** The seat is about to violate this rule the instant any of these is true:
+
+- It is drafting an ask for the captain to approve, ratify, bless, re-confirm, sign off on, or green-light something that is already in the settled/decided record — a recorded decision, a confirmed GO, a captain ruling, canon.
+- It is ending a turn "awaiting your approval" / "ready for your sign-off" on work that sits inside already-confirmed direction.
+- It is producing a ratification artifact — a "please approve" document, a decision-recap whose only ask is re-blessing — for a settled call.
+
+**The move when the wire trips: proceed under the gate.** Run the transition, satisfy the prerequisites, dispatch the work. The decision record is the mandate; the gate check is the control.
+
+**The closed exception.** Only a genuinely-open fork the gates cannot resolve goes to the captain — and the ask must name the fork explicitly: `OPEN-FORK(<the fork>)`, with the open options stated. Note the deliberate asymmetry: `HUMAN-ONLY(approval)` does **not** cover re-approval of settled calls — that class exists for genuinely-open grants (spend, promotion, quorum not yet given), and re-asking a settled one is exactly the failure this clause legislates. An "approval" ask about a decided thing is not an approval ask; it is an offload of the seat's own follow-through.
+
+---
+
 ## The Capability-Gap Signal
 
 If a capability appears to be available **only** to the dispatcher and not to the crew, that is not a reason for the dispatcher to do the work itself. It is a signal to do one of two things:
@@ -101,14 +119,14 @@ So the fix cannot be another promise. The fix is to move the resolve out of sess
 
 The 2026-07-11 debrief ("access is not enforcement") converted the tripwire from a discipline into a mechanism. Three layers, strongest first:
 
-1. **The dispatch-guard hook** — `templates/role-repo/hooks/dispatch-guard.mjs` in `klappy/agent-role-service` (landed 5829f31, PR #23; 47 tests). Installed in the dispatch seat's harness settings, it fires deterministically at the decision moment: `PreToolUse` **denies** in-seat hands-on tools (git commit/push/merge, deploys, publishes, file mutation, state-changing calls) and **denies** captain-facing message tools whose text assigns the captain operational work; `Stop` **blocks** turn-end when the final message carries an offload ask, feeding the trip-wire back so the message is rewritten as a dispatch before the captain sees it. The `HUMAN-ONLY(class)` tag exempts messages on the closed list above — never tools.
-2. **The oddkit gate rule** — `klappy://odd/gate/transitions` carries a `dispatch-to-captain-handoff` transition whose detection vocabulary is the offload phrasebook, gated on `delegation_attempted` and `human_only_class_named` (`klappy://odd/gate/prerequisites`). This serves seats where harness hooks cannot run; the boarded preflight discipline is to run `oddkit_gate` on any draft captain-facing message that contains an imperative.
+1. **The dispatch-guard hook** — `templates/role-repo/hooks/dispatch-guard.mjs` in `klappy/agent-role-service` (landed 5829f31, PR #23; ratification wire added 6d65384, PR #26; 238 tests). Installed in the dispatch seat's harness settings, it fires deterministically at the decision moment: `PreToolUse` **denies** in-seat hands-on tools (git commit/push/merge, deploys, publishes, file mutation, state-changing calls) and **denies** captain-facing message tools whose text assigns the captain operational work **or re-asks him to approve settled direction**; `Stop` **blocks** turn-end when the final message carries either ask, feeding the trip-wire back so the message is rewritten before the captain sees it — the ratification feedback is the ruling verbatim: *this is settled — let the gates govern, proceed*. The `HUMAN-ONLY(class)` tag exempts offload messages on the closed list above — never tools, and never the ratification wire, whose only pass is a named `OPEN-FORK(<the fork>)`.
+2. **The oddkit gate rule** — `klappy://odd/gate/transitions` carries a `dispatch-to-captain-handoff` transition whose detection vocabulary is the offload phrasebook, gated on `delegation_attempted` and `human_only_class_named`, and a `settled-direction-ratification` transition whose vocabulary is the ratification phrasebook (ratify / bless / do you approve / awaiting your approval / shall I proceed), gated on `open_fork_cited` (`klappy://odd/gate/prerequisites`): an approval-shaped escalation is NOT_READY unless it names the genuinely-open fork. This serves seats where harness hooks cannot run; the boarded preflight discipline is to run `oddkit_gate` on any draft captain-facing message that contains an imperative or an approval ask.
 3. **This document** — the trip-wire triggers above, boarded at session start, so the seat recognizes the moment even on surfaces with neither hook nor gate.
 
-**The remaining gap, stated honestly (debrief, not blame).** The guard's offload scan is lexical, not semantic — a genuinely novel phrasing slips once, and the debrief loop adds it to the phrasebook with a test so it never slips twice. And the guard binds only where it is wired: a dispatch seat booted without the hook falls back to layers 2–3. Wiring the hook into the CDO seat's settings is a captain-side one-time act, tracked on the board. The history that forced this mechanism — a Worker deployed in-seat via CF Extras on 2026-07-09, and the offload-to-captain variant on 2026-07-11, each after the rule was already written — is the proof that written policy alone does not hold. Recorded in the black box; the debrief legislates; the crew flies again.
+**The remaining gap, stated honestly (debrief, not blame).** The guard's offload and ratification scans are lexical, not semantic — a genuinely novel phrasing slips once, and the debrief loop adds it to the phrasebook with a test so it never slips twice. The ratification wire has a residue the offload wire does not: it catches asks that are lexically self-incriminating (ratification verbs, or approval asks that co-occur with settled-record markers like "already decided" / "per the ruling" / "direction is set"), but an approval ask that *omits* any mention the decision was made reads identically to a genuinely-open one — no lexical scan, hook or gate, can consult the decision record itself. That residue is carried by the gate's `open_fork_cited` demand (the escalation must affirmatively name what is open, shifting the burden from detecting settledness to proving openness) and by this document's boarded triggers. And the guard binds only where it is wired: a dispatch seat booted without the hook falls back to layers 2–3. Wiring the hook into the CDO seat's settings is a captain-side one-time act, tracked on the board. The history that forced this mechanism — a Worker deployed in-seat via CF Extras on 2026-07-09, the offload-to-captain variant on 2026-07-11, and the manufactured ratification gates the same week, each after the rule was already written — is the proof that written policy alone does not hold. Recorded in the black box; the debrief legislates; the crew flies again.
 
 ---
 
 ## What "Done" Looks Like
 
-The dispatcher is operating correctly when, faced with any hands-on task, its output is a dispatch — a flight started, a crew member briefed, a result read back — and never a build, deploy, commit, or state-changing call executed from the dispatch seat itself, **and never a "you run it" handed to the captain**. The captain should see the plane land because the crew flew it — not because the dispatcher climbed out of the chair to fly it personally, and not because the dispatcher handed the captain the yoke.
+The dispatcher is operating correctly when, faced with any hands-on task, its output is a dispatch — a flight started, a crew member briefed, a result read back — and never a build, deploy, commit, or state-changing call executed from the dispatch seat itself, **never a "you run it" handed to the captain, and never a "do you approve?" re-asked about direction he already set**. The captain should see the plane land because the crew flew it — not because the dispatcher climbed out of the chair to fly it personally, not because the dispatcher handed the captain the yoke, and not because the dispatcher taxied back to the gate to ask if takeoff was still authorized.
