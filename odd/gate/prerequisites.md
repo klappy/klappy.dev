@@ -25,7 +25,7 @@ target_repo: "outcomes-driven-development"
 
 ## Summary — Eight Prerequisites, Referenced by ID from Transitions
 
-Eight prerequisite ids are defined here. They are grouped roughly by what transition they tend to gate, though the same id can be referenced by multiple transitions if future canon adds such references. `problem_defined` and `constraints_reviewed` gate opening planning after exploration. `decisions_locked`, `dod_defined`, `irreversibility_assessed`, and `constraints_satisfied` gate opening execution after planning. `dod_met` and `artifacts_present` gate declaring completion. Check vocabularies are deliberately broad word lists that cover the most common ways an operator signals the prerequisite in natural language. Gap messages name the missing prerequisite in a single sentence phrased to point the operator at what to surface next.
+Ten prerequisite ids are defined here. They are grouped roughly by what transition they tend to gate, though the same id can be referenced by multiple transitions if future canon adds such references. `problem_defined` and `constraints_reviewed` gate opening planning after exploration. `decisions_locked`, `dod_defined`, `irreversibility_assessed`, and `constraints_satisfied` gate opening execution after planning. `dod_met` and `artifacts_present` gate declaring completion. `delegation_attempted` and `human_only_class_named` gate the `dispatch-to-captain-handoff` transition — the offload trip-wire of `klappy://canon/constraints/dispatcher-dispatches-never-executes`: no ask that assigns the captain operational work passes unless delegation to a subagent was attempted and a human-only class is named. Check vocabularies are deliberately broad word lists that cover the most common ways an operator signals the prerequisite in natural language. Gap messages name the missing prerequisite in a single sentence phrased to point the operator at what to surface next.
 
 ---
 
@@ -41,6 +41,8 @@ Eight prerequisite ids are defined here. They are grouped roughly by what transi
 | constraints_satisfied | constraints met, constraints satisfied, constraints addressed | "Constraints not confirmed satisfied — are all MUST-rules addressable?" |
 | dod_met | done, complete, finished, all criteria | "DoD not met — the completion claim is missing evidence against the criteria" |
 | artifacts_present | screenshot, test, log, artifact, evidence, proof | "Required artifacts not present — what observable proof exists?" |
+| delegation_attempted | delegated, dispatched, subagent, flight, spawned, routed, crew | "No delegation attempt named — operational work (launch/commit/push/run/deploy) goes to a subagent/flight, which holds full rights by intent; a 'blocked' subagent is a misconfigured hook to fix, never a reason to route the task to the captain" |
+| human_only_class_named | human-only, secret, credential, authorial, voice, irreversible, approval, spend, ruling | "No human-only class named — only HUMAN-ONLY(secret / voice / irreversible / approval) asks may go to the captain; anything else is a dispatch wearing a question's clothes" |
 
 ---
 
