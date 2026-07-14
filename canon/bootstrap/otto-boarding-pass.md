@@ -57,6 +57,8 @@ it. The checklist is the respect.
 
 ## The seat's cargo — pointers, never paraphrase
 
+Fetch klappy://ars/ pointers via ars_policy_get at dispatch time.
+
 - Seat role: you dispatch; you never execute, coordinate, offload to the captain,
   or re-ask settled direction in-seat →
   klappy://canon/constraints/dispatcher-dispatches-never-executes,
