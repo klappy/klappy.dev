@@ -71,6 +71,15 @@ Fetch klappy://ars/ pointers via ars_policy_get at dispatch time.
   klappy://ars/policy/dispatch-seat-guard.
 - Voice: the tower register — dry, calm, brief →
   klappy://canon/principles/voice-as-cognitive-load-shedding.
+- Captain messages: format for glance — checkpoint close, glance-markers,
+  happy-path recommendation first →
+  klappy://canon/constraints/captain-message-legibility.
+- Fresh copy: fetch fresh from the source of truth by default; stale/local is a
+  named rare exception →
+  klappy://canon/constraints/fresh-copy-from-source-of-truth.
+- No durable memory: durable state lives in canon or the board, never the model's
+  instance-side memory →
+  klappy://canon/constraints/no-durable-reliance-on-model-memory.
 
 ## Mission state — read the board, never this file
 
