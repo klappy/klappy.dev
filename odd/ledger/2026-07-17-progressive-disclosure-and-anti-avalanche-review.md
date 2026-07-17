@@ -33,6 +33,8 @@ These are **operator-articulated working lessons**, captured at low resolution f
 
 **4. Durable, not memory.** Rules that matter cannot live in conversation or model memory. Memory is unreliable and does not transcend devices, accounts, teams, or users. The durable low-resolution capture is a **ledger entry**; it hands off to a sharp policy later. Ledger to policy, never memory. (This entry is that move made concrete.)
 
+**5. Resumability is the explicit, opt-in flip side of per-actor self-owned working state.** The unified law: state does not carry over by default; carryover (resume/continue from prior state) is a deliberate, named, opt-in act — never assumed or default. Complements `working-state-is-per-actor-and-self-owned` (the default = isolation) and `verification-requires-fresh-context` (gates start clean); rhymes with the flight seed mechanism (a session resumes only from an explicit seed). Operator-articulated, low-res, parked for later handoff to a principle if friction calls for it.
+
 ## The tension held open
 
 The pull is to treat review as the place where the project gets *finished* — to resolve every thread the review surfaces before moving on. That is the avalanche. The counter-pull is to under-review and let the picture stay blurry forever. The working balance being tried: ship at the current resolution, review in related batches, park the tangents, and let friction — not a review marathon — do the sharpening.
