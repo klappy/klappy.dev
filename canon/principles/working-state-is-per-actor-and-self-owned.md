@@ -77,3 +77,13 @@ It complements `canon/constraints/humans-are-variable-inputs.md` (isolation must
 ## What This Does Not Require
 
 It does not require that actors never share data — deliberate, named, read-only handoffs between actors are fine and often necessary. The law governs *mutable working state*, not intentional shared artifacts. The failure mode is unowned, unnamed, mutable residue silently inherited; the remedy is ownership and isolation of working state, not the abolition of sharing. Nor does it mandate any particular mechanism: `mktemp -d`, a per-run container, a namespaced cache key, and a scratch schema are all valid realizations. The principle fixes the invariant; each substrate chooses its enforcer.
+
+## Resumability Is Explicit, Not Default
+
+The two clauses above fix the default: working state is per-actor and self-owned, and nothing carries over between actors on its own. Carryover — resuming or continuing from a prior actor's state — is therefore never assumed; it is a deliberate, named, opt-in act. State does not carry over by default. When it does carry over, it does so because some actor named the handoff and chose to inherit from it — not because residue was silently present and got read as signal.
+
+This is the positive statement of the carve-out in "What This Does Not Require": deliberate, named handoffs are permitted precisely because they are the opposite of inherited residue. A named seed is owned, addressed, and chosen; residue is unowned, unaddressed, and assumed. The distinction is not cleanliness but intent — resumption is legitimate only when an actor opts into a specific prior state by name, and illegitimate when a prior state merely happens to still be lying in the working area.
+
+It complements `canon/principles/verification-requires-fresh-context.md` — every verification gate starts from clean context rather than inherited state — and it rhymes with the flight-seed mechanism, where a session resumes only from an explicit seed it was handed, not from whatever the last session left behind.
+
+> **Folded in at low resolution.** This clause is recorded here as a complementary part of the working-state law for now. If it earns the weight, it may be spun into its own principle later; until then it lives here as the named exception that completes the default the two clauses establish.
