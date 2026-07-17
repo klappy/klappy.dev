@@ -38,7 +38,7 @@ Declares E0011, the epoch that relocates the unit of trust from the boarded seat
 
 ### Governance
 
-- Minor version bump per `canon/constraints/governance-change-discipline.md` — a behavior-affecting change that shifts the evaluation reality (what "done" means and what evidence a build must carry). Epoch bump E0010 → E0011 with appendix at `docs/appendices/epoch-11.md`. The loop-frame canon (PRs #288–#291) is referenced and scoped for relabel but not restamped in this PR. Authored in the captain's voice; DRAFT — do not merge until the captain reviews the exact text.
+- Minor version bump per `canon/constraints/governance-change-discipline.md` — a behavior-affecting change that shifts the evaluation reality (what "done" means and what evidence a build must carry). Epoch bump E0010 → E0011 with appendix at `docs/appendices/epoch-11.md`. The loop-frame canon (PRs #288–#291) is referenced and scoped for relabel but not restamped in this PR. Authored for ratification; DRAFT — do not merge until reviewed and ratified.
 
 ## 0.41.0 — 2026-07-09
 

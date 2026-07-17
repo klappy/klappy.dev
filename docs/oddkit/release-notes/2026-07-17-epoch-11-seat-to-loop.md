@@ -14,7 +14,7 @@ derives_from: "docs/appendices/epoch-11.md, canon/architecture/two-loop-operatin
 
 # Release Notes — Epoch 11: Seat to Loop
 
-> Epoch 11 is declared via `docs/appendices/epoch-11.md`. This release note and the changelog entry (canon 0.42.0) supply the `governance-change-discipline` markers alongside the declaration. DRAFT — authored in the captain's voice; do not merge until the captain reviews the exact text.
+> Epoch 11 is declared via `docs/appendices/epoch-11.md`. This release note and the changelog entry (canon 0.42.0) supply the `governance-change-discipline` markers alongside the declaration. DRAFT — authored for ratification; do not merge until reviewed and ratified.
 
 ## Impact at a glance
 
@@ -53,7 +53,7 @@ Nothing in the axioms, the canon corpus, the oddkit tools, or the E0010 seat and
 
 ## Reading guidance
 
-- **Operators / captains:** the seam you own is ratification. Rule on policy before the build exists; the loop makes an unauthorized build structurally hard to ship silently.
+- **Operators:** the seam you own is ratification. Rule on policy before the build exists; the loop makes an unauthorized build structurally hard to ship silently.
 - **Agents / seats:** before you build, find the ratified policy and cite it. If it is not there, the build is not yours to start.
 - **Reviewers:** check for the four governance-change-discipline markers and, for any build PR under E0011, for a cited governing policy and gate-passage receipts.
 
