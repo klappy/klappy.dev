@@ -7,7 +7,7 @@ audience: odd
 exposure: nav
 voice: neutral
 stability: stable
-tags: ["ledger", "black-box", "low-resolution", "progressive-disclosure", "progressive-jpeg", "maturity", "anti-avalanche", "review-batching", "durable-not-memory", "pre-policy", "no-blame"]
+tags: ["ledger", "black-box", "low-resolution", "progressive-disclosure", "progressive-jpeg", "maturity", "anti-avalanche", "review-batching", "durable-not-memory", "pre-policy", "no-blame", "judgment", "discernment", "mentorship"]
 epoch: E0010
 date: 2026-07-17
 derives_from: "odd/maturity.md, canon/bootstrap/model-operating-contract.md"
@@ -28,6 +28,13 @@ These are **operator-articulated working lessons**, captured at low resolution f
 **1. Progressive disclosure is the build model.** An app — or a policy set — is a progressive JPEG. It is viewable, buildable, and shippable at every resolution, and it sharpens with each iterative pass and each contact with reality. Maturity is not bought with more up-front review; it is earned as the **policies get clearer over time and through friction**. The clarity of the policies *is* the maturity signal. (Relates to `klappy://odd/maturity` — policy weight scales with maturity — but read from the other direction: it is the sharpening of the policies, not a calendar or a review count, that moves the project up the axis. Cross-reference only; that doc is not edited here.)
 
 **2. Anti-avalanche.** Reviewing or ratifying must not spawn exponential *unrelated* work. The failure mode observed today: for every two or three documents reviewed, two or three new and unrelated workstreams were spawned. That ratio does not converge — it avalanches, and the review never finishes. Findings surfaced during review are **parked** (recorded), not built mid-review. The lever is stopping the tangents, not slowing the pace.
+
+**2a. Refinement — anti-avalanche is judgment, not a checkbox (folded in, low resolution).** Sharpens observation 2 without replacing it:
+
+- *Some temporary avalanche is unavoidable.* The loop surfaces real work; pretending a review can run at zero-avalanche is its own dishonesty. The aim is a ratio that converges, not a mythical zero.
+- *The discipline is judgment and discernment, not a mechanical rule.* It is knowing when a thread has given what it will and it is time to **stop pulling**, versus when one more turn is worth it. That judgment is grown through reps, not handed over — which is exactly why anti-avalanche resists being reduced to a checkbox policy.
+- *The distinguishing line.* A review that surfaces a **refinement of the doc under review** folds **into** that doc — bounded and correct. A review that spawns **unrelated** new work is the avalanche. The lever is "keep the change about the thing being reviewed." (This very fold is that move made concrete: a refinement folded into the ledger it refines, not a new workstream spun up beside it.)
+- *Mentorship framing.* The operator mentors the model toward discipline, restraint, patience, and answering for itself — sometimes by declining to answer incessant questions and teaching self-sufficiency, the way one mentors a young person. Anti-avalanche is one shape of that restraint.
 
 **3. Related batches are the balance.** Review in human-sized *related* batches — often two or three, sometimes one. Not a dozen at once (unreviewable), and not one-at-a-time-with-a-full-flight-spun-up-per-finding (that is the avalanche wearing a discipline costume). The batch is related work; the discipline is refusing to chase what isn't.
 
