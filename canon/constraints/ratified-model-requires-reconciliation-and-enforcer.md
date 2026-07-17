@@ -11,7 +11,7 @@ epoch: E0010
 date: 2026-07-16
 derives_from: "docs/appendices/convention-requires-an-enforcer.md, canon/principles/prompt-over-code.md, canon/principles/vodka-architecture.md, canon/values/axioms.md, outputs/debrief-ars-monolith-2026-07-16.md"
 complements: "canon/constraints/release-validation-gate.md, canon/constraints/frontmatter-validation-before-merge.md"
-governs: "Any program in which the captain ratifies a data model, schema, or design invariant that running code is expected to honor. Binding on every seat that ships an implementation against a ruled model — the reconciliation is owed, and an enforcer must make the drift impossible to ship silently."
+governs: "Any program in which the operator ratifies a data model, schema, or design invariant that running code is expected to honor. Binding on every seat that ships an implementation against a ruled model — the reconciliation is owed, and an enforcer must make the drift impossible to ship silently."
 status: draft
 target_repo: "klappy.dev"
 ---
@@ -20,10 +20,10 @@ target_repo: "klappy.dev"
 
 > **Posture:** DRAFT — filed 2026-07-16 as the durable lesson from the ARS one-blob
 > monolith write-freeze (see `outputs/debrief-ars-monolith-2026-07-16.md`). The
-> constraint below awaits the captain's ratification. It is authored in the captain's
-> voice and must not be merged until he reviews the exact text.
+> constraint below awaits ratification. It is authored for ratification
+> and must not be merged until reviewed and ratified.
 
-> A ratified model is a debt against the code, not a decoration on it. When the captain
+> A ratified model is a debt against the code, not a decoration on it. When the operator
 > rules a data/design model, the implementation MUST be reconciled to that model — or a
 > tracked, dated exception MUST be logged naming the divergence and its owner. And
 > because a ruling that no machine checks is a convention, an **enforcer must exist that
@@ -34,7 +34,7 @@ target_repo: "klappy.dev"
 
 ## Summary — What Must Be True Once a Model Is Ruled
 
-Two rules bind from the moment the captain ratifies a model that code is expected to honor.
+Two rules bind from the moment the operator ratifies a model that code is expected to honor.
 
 **First, the implementation is reconciled to the ratified model, or an exception is tracked.**
 A ruling is not satisfied by a commit subject that says the code "owes the reconciliation."
@@ -57,7 +57,7 @@ enforcer is binding.
 
 ## The Motivating Case — The ARS One-Blob Monolith
 
-On **2026-07-10** the captain ruled the ARS data model: *flat records + provenance, the board
+On **2026-07-10** the operator ruled the ARS data model: *flat records + provenance, the board
 a projection of a flat store* (`agent-role-service` `docs/policy/ars-data-model-philosophy.md`,
 `status: active`). An earlier ratification (commit `f7fdeb8`, 2026-07-08) had already recorded
 that *"code owes the reconciliation."*
