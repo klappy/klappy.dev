@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: semi_stable
 tags: ["canon", "architecture", "governance", "two-loop", "policy-first", "ratification", "fresh-session-gates", "cdo-seat", "vodka-architecture", "prompt-over-code"]
-epoch: E0009
+epoch: E0010
 date: 2026-07-17
 derives_from: "canon/the-directors-chair-vision.md, canon/bootstrap/model-operating-contract.md, canon/constraints/audit-gates-are-spawned-agent-sessions.md, canon/principles/verification-requires-fresh-context.md, canon/principles/code-claims-require-code-observation.md, canon/constraints/dispatcher-dispatches-never-executes.md, canon/principles/prompt-over-code.md, canon/principles/vodka-architecture.md"
 complements: "canon/methods/governance-validation-via-agents.md, canon/principles/mcp-as-universal-interface.md, canon/principles/antifragile-failures-grow-canon.md, canon/definitions/epistemic-modes.md"
