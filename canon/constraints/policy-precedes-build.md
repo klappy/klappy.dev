@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: semi_stable
 tags: ["canon", "constraint", "governance", "policy-first", "prompt-over-code", "mode-discipline", "preflight", "fleet-wide"]
-epoch: E0009
+epoch: E0010
 date: 2026-07-17
 derives_from: "canon/values/axioms.md (Axiom 2 — A Claim Is a Debt; Axiom 4 — You Cannot Verify What You Did Not Observe), canon/principles/prompt-over-code.md, canon/bootstrap/model-operating-contract.md, canon/meta/constraint-driven-audits.md"
 complements: "canon/constraints/release-validation-gate.md, canon/constraints/definition-of-done.md, canon/constraints/borrow-evaluation-before-implementation.md, docs/appendices/convention-requires-an-enforcer.md, odd/maturity.md, canon/principles/contract-governs-handoff-drift.md"
