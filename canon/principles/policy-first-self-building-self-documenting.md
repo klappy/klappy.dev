@@ -17,10 +17,10 @@ status: draft
 
 # Policy-First — Policies First Ensures All Code Is Self-Building and Self-Documenting
 
-> **Posture:** DRAFT — captain's principle, filed 2026-07-17 as the framing for the ARS
+> **Posture:** DRAFT — a principle authored for ratification, filed 2026-07-17 as the framing for the ARS
 > storage policy set (`canon/constraints/ars-bounded-storage`) and the enforceable-policy
-> template (`canon/meta/enforceable-policy-anatomy`). Authored in the captain's voice;
-> do not merge until the captain reviews the exact text.
+> template (`canon/meta/enforceable-policy-anatomy`). Authored for ratification;
+> do not merge until reviewed and ratified.
 
 > Policies first ensures all code is self-building and self-documenting. When the governing
 > policy is written before the code and precisely enough to build from, two properties fall

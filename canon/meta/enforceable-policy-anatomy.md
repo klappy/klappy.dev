@@ -17,9 +17,8 @@ status: draft
 
 # Anatomy of an Enforceable Policy — WHAT · WHY · ENFORCEMENT · SCOPE · VERIFICATION
 
-> **Posture:** DRAFT — captain's meta-template, filed 2026-07-17 alongside the ARS storage
-> policy set. Authored in the captain's voice; do not merge until the captain reviews the exact
-> text.
+> **Posture:** DRAFT — a meta-template authored for ratification, filed 2026-07-17 alongside the ARS storage
+> policy set. Authored for ratification; do not merge until reviewed and ratified.
 
 > An enforceable policy is not prose about a good idea. It is five declared parts, and a policy
 > missing any of them is advice, not enforcement. **WHAT** states the rule precisely enough to

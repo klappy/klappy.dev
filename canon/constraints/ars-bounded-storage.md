@@ -18,10 +18,10 @@ target_repo: "agent-role-service"
 
 # ARS Bounded Storage — Per-Entity Rows, Always-R2 Offload, Rotation, and a Durable Mirror
 
-> **Posture:** DRAFT — captain's pen. Filed 2026-07-17 as the enforceable canon for the ARS
-> storage redesign the captain approved in `agent-role-service/docs/adr/ADR-0001-ars-per-entity-do-sqlite.md`
-> (all seven design questions RULED, 2026-07-16). Authored in the captain's authorial voice.
-> **DO NOT MERGE until the captain reviews the exact text.** Nothing here is built, deployed, or
+> **Posture:** DRAFT — authored for ratification. Filed 2026-07-17 as the enforceable canon for the ARS
+> storage redesign the operator approved in `agent-role-service/docs/adr/ADR-0001-ars-per-entity-do-sqlite.md`
+> (all seven design questions RULED, 2026-07-16). Authored for ratification.
+> **DO NOT MERGE until reviewed and ratified.** Nothing here is built, deployed, or
 > migrated by this document; it is the buildable spec the build flight implements and cites.
 
 > The ARS store keeps one row per record, offloads what is huge, rotates what is old, and mirrors
@@ -46,7 +46,7 @@ value under a single storage key, rewritten on every mutation. When the serializ
 the Durable Object's 2 MB row cap, every `storage.put` failed with `SQLITE_TOOBIG`, and since
 every mutation funnels through that one write, every write froze.
 
-The store had been ruled otherwise. `ars-data-model-philosophy` (Captain-RULED 2026-07-10)
+The store had been ruled otherwise. `ars-data-model-philosophy` (Operator-RULED 2026-07-10)
 required *flat records + provenance, the board a projection of a flat store*. The code was the
 opposite shape, nothing reconciled it, and no enforcer flagged the drift. That is exactly the
 failure `ratified-model-requires-reconciliation-and-enforcer` names in the general — this
@@ -59,7 +59,7 @@ every gate, assertion, and invariant references its governing policy URI (`klapp
 so the code documents itself and the drift becomes impossible to ship silently.
 
 Each policy below follows the `enforceable-policy-anatomy` template: **WHAT · WHY · ENFORCEMENT ·
-SCOPE · VERIFICATION.** The seven captain rulings (ADR §5, Q1–Q7) are the authority behind them.
+SCOPE · VERIFICATION.** The seven operator rulings (ADR §5, Q1–Q7) are the authority behind them.
 
 ---
 
@@ -207,7 +207,7 @@ watermark. Large payload bodies are already R2 pointers (P2), so the tail-follow
 rather than re-copying. **No mirror or R2 write ever sits on a request/tool handler.**
 
 **WHY.** Durability must not tax responsiveness. If the mirror rode the request path, every user
-operation would wait on R2 — a new latency and a new failure mode on the hot path. The captain
+operation would wait on R2 — a new latency and a new failure mode on the hot path. The operator
 ruled a continuous, alarm-driven tail-follower off the request path (Q6): backups become
 automatic, off-path, and continuous — never a manual flight and never a tax on the caller.
 
@@ -354,11 +354,11 @@ ENFORCEMENT mechanisms are *proposed design*, unbuilt as of this draft — named
 implements and cites them, not asserted as already existing. A policy whose enforcer is not yet
 built is a legitimate state only when it says so; this one does.
 
-**Alternatives considered (ruled by the captain, ADR §5).** P2 considered a *dynamic size
-threshold* instead of type-aware always-R2; the captain ruled always-R2 by field type because a
+**Alternatives considered (ruled by the operator, ADR §5).** P2 considered a *dynamic size
+threshold* instead of type-aware always-R2; the operator ruled always-R2 by field type because a
 measured threshold is a size gamble and misses `report.result` (Q1). Migration considered running
-the stopgap unfreeze PR first; the captain ruled skip-the-stopgap, one clean cutover (Q5). Driver
-state considered a single JSON blob row; the captain ruled split tables for consistency with the
+the stopgap unfreeze PR first; the operator ruled skip-the-stopgap, one clean cutover (Q5). Driver
+state considered a single JSON blob row; the operator ruled split tables for consistency with the
 no-blob redesign (Q4). These are recorded so the policies are not read as the only options that
 existed — they are the ruled options.
 
@@ -389,8 +389,8 @@ path.
 
 ## How This Constraint Got Written
 
-The ARS store froze on 2026-07-16 (`SQLITE_TOOBIG`), six days after the captain ruled a flat-records
-model the code never adopted. The captain approved the redesign in ADR-0001 (all seven design
+The ARS store froze on 2026-07-16 (`SQLITE_TOOBIG`), six days after the operator ruled a flat-records
+model the code never adopted. The operator approved the redesign in ADR-0001 (all seven design
 questions ruled, 2026-07-16) and directed: *"Nothing is built without clear policies that explain
 what, why, and any other template that makes a good enforceable policy."* This document is that
 policy set — authored policy-first so the build flight can derive the store from it and cite it
@@ -406,7 +406,7 @@ back — and the concrete, storage-specific discharge of the general obligation 
   That constraint makes the obligation *general* — a ruled model must be reconciled and must have an
   enforcer. This constraint is its *specific* discharge for ARS storage: six named enforcers that
   make the ruled flat-records model bind the code. It **extends** #288; it does not restate it.
-- **`ars-data-model-philosophy` (Captain-RULED 2026-07-10).** The flat-records + pinned-provenance
+- **`ars-data-model-philosophy` (Operator-RULED 2026-07-10).** The flat-records + pinned-provenance
   model. P1 restores it at the storage layer; `provenance NOT NULL` on every record-bearing table
   (ADR §2.1) preserves the one pinned invariant.
 - **`ars-nouns-and-verbs` (RATIFIED, v1.2.0).** One table per noun; the tool↔verb review gate (§5)
