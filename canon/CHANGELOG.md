@@ -18,6 +18,21 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
+## 0.42.0 — 2026-07-17
+
+**Sandbox Hygiene — Per-Flight Owned Scratch, No Fixed Shared Temp Names**
+
+Encodes a hard rule against fixed, shared temp paths for flight working state — most damagingly `/tmp/pr_body.md`. Authored from residue observed directly at boot: a stale `/tmp/pr_body.md` owned by `nobody:nogroup` from the prior flight, the same artifact class that produced wrong-content PRs and git-lock failures across earlier flights. Every flight now mints a uniquely-named, self-owned scratch directory (`mktemp -d`, mode 0700), works only inside it, and tears it down on exit. The rule is paired with a mechanical enforcer (preflight scratch-mint + df/stale-file check, EXIT-trap teardown, a sourced helper, and a practice/lint check) so it does not decay to advice. Reconciled with the policy-precedes-build ordering: the constraint is drafted before the implementing fix, which cites it by URI.
+
+### Added — Canon Surface
+
+- **Sandbox Hygiene — Per-Flight Owned Scratch, No Fixed Shared Temp Names** (`canon/constraints/sandbox-hygiene-per-flight-scratch.md`) — Tier 1, neutral, semi_stable. WHAT/WHY/ENFORCEMENT/SCOPE/VERIFICATION anatomy: unique self-owned scratch, no fixed shared temp names, mandatory teardown, mechanical preflight + teardown enforcement, and an honest scope split between the repo-enforceable helper and the captain-side per-flight `TMPDIR` isolation setting.
+
+### Governance
+
+- Minor version bump per `canon/constraints/governance-change-discipline.md` — a new tier-1 canon constraint that adds an operating rule for flight sandbox hygiene. Release notes at `docs/oddkit/release-notes/2026-07-17-sandbox-hygiene-per-flight-scratch.md`. No epoch bump: this reinforces existing E0010 flight-crew posture (mechanical enforcement over memory, repo-truth extended to the sandbox) rather than shifting who initiates.
+- DRAFT status: opened as a draft PR for captain review. `policy-precedes-build` / `enforceable-policy-anatomy` were not found as committed canon files; `derives_from` should be repointed at them before merge if they exist.
+
 ## 0.41.0 — 2026-07-09
 
 **The Dispatcher Dispatches; It Never Executes In-Session**
