@@ -27,8 +27,8 @@ State residue is indistinguishable from signal. A dirty sandbox invalidates the 
 ## What you need to do
 
 - **Repo side (delivered):** flights source the shared helper `agent-role-service/scripts/flight-scratch.sh` (preflight + scratch-mint + teardown). See its PR.
-- **Captain side (action required):** enable per-flight `TMPDIR` isolation in the Cowork launch configuration so scratch isolation does not depend on flight discipline alone. This is a launch-config setting and cannot be delivered by PR.
+- **Operator side (action required):** enable per-flight `TMPDIR` isolation in the Cowork launch configuration so scratch isolation does not depend on flight discipline alone. This is a launch-config setting and cannot be delivered by PR.
 
 ## Status
 
-Draft — opened for captain review alongside the constraint and the helper PR. No epoch bump; reinforces E0010 flight-crew posture.
+Draft — opened for review alongside the constraint and the helper PR. No epoch bump; reinforces E0010 flight-crew posture.

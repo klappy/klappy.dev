@@ -26,12 +26,12 @@ Encodes a hard rule against fixed, shared temp paths for flight working state �
 
 ### Added — Canon Surface
 
-- **Sandbox Hygiene — Per-Flight Owned Scratch, No Fixed Shared Temp Names** (`canon/constraints/sandbox-hygiene-per-flight-scratch.md`) — Tier 1, neutral, semi_stable. WHAT/WHY/ENFORCEMENT/SCOPE/VERIFICATION anatomy: unique self-owned scratch, no fixed shared temp names, mandatory teardown, mechanical preflight + teardown enforcement, and an honest scope split between the repo-enforceable helper and the captain-side per-flight `TMPDIR` isolation setting.
+- **Sandbox Hygiene — Per-Flight Owned Scratch, No Fixed Shared Temp Names** (`canon/constraints/sandbox-hygiene-per-flight-scratch.md`) — Tier 1, neutral, semi_stable. WHAT/WHY/ENFORCEMENT/SCOPE/VERIFICATION anatomy: unique self-owned scratch, no fixed shared temp names, mandatory teardown, mechanical preflight + teardown enforcement, and an honest scope split between the repo-enforceable helper and the operator-side per-flight `TMPDIR` isolation setting.
 
 ### Governance
 
 - Minor version bump per `canon/constraints/governance-change-discipline.md` — a new tier-1 canon constraint that adds an operating rule for flight sandbox hygiene. Release notes at `docs/oddkit/release-notes/2026-07-17-sandbox-hygiene-per-flight-scratch.md`. No epoch bump: this reinforces existing E0010 flight-crew posture (mechanical enforcement over memory, repo-truth extended to the sandbox) rather than shifting who initiates.
-- DRAFT status: opened as a draft PR for captain review. `policy-precedes-build` / `enforceable-policy-anatomy` were not found as committed canon files; `derives_from` should be repointed at them before merge if they exist.
+- DRAFT status: opened as a draft PR for review. `policy-precedes-build` / `enforceable-policy-anatomy` were not found as committed canon files; `derives_from` should be repointed at them before merge if they exist.
 
 ## 0.41.0 — 2026-07-09
 

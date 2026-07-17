@@ -51,13 +51,13 @@ Authored from residue observed directly at boot this session: a stale `/tmp/pr_b
 - **Teardown (on exit):** an `EXIT` trap that removes the flight's scratch dir, and only dirs it owns under the tmp root — never a blind `rm -rf` of a shared path.
 - **Shared helper:** the preflight + scratch-mint + teardown are provided as a single sourced helper (`agent-role-service/scripts/flight-scratch.sh`) so every flight gets the behavior by sourcing one file, not by re-implementing it. A `flight_prbody` accessor returns a unique path *inside* scratch, structurally preventing the fixed-name write.
 - **Practice check:** a lint/test that fails when flight tooling references a fixed `/tmp/pr_body.md` (or equivalent constant working path) instead of the helper.
-- **Launch isolation (captain-side):** per-flight `TMPDIR` isolation in the Cowork launch configuration is the belt to this suspenders; named in Scope as out-of-repo.
+- **Launch isolation (operator-side):** per-flight `TMPDIR` isolation in the Cowork launch configuration is the belt to this suspenders; named in Scope as out-of-repo.
 
 ## SCOPE — Where This Binds
 
 - **Binds:** every flight (agent session) that writes temp/working files, clones repos, or composes PR bodies in the local/shared flight sandbox; and the shared flight tooling that flights source.
 - **Repo-enforceable pieces:** the sourced helper, its tests, and the practice/lint check — implemented in `agent-role-service` (the flights' shared tooling home).
-- **Out of repo (captain-side):** per-flight scratch *isolation* at launch (a fresh/namespaced `TMPDIR` per flight) is a **Cowork launch-configuration setting**, not a repository change. It cannot be delivered by PR; it is flagged for the captain to apply.
+- **Out of repo (operator-side):** per-flight scratch *isolation* at launch (a fresh/namespaced `TMPDIR` per flight) is a **Cowork launch-configuration setting**, not a repository change. It cannot be delivered by PR; it is flagged for the operator to apply.
 - **Not in scope:** the per-run **cloud** sandbox in `agent-role-service/src/runtime/task.js`, which already provisions a fresh isolated sandbox per run (`/workspace/repo`) and is hardened separately under PR #80.
 
 ## VERIFICATION — How We Know It Holds
@@ -73,4 +73,4 @@ Authored from residue observed directly at boot this session: a stale `/tmp/pr_b
 
 Per the policy-precedes-build ordering (draft the governing constraint before implementing the fix, and cite the constraint from the code), this document is authored and opened as a DRAFT canon PR **before** the mechanical fix, and the `agent-role-service` helper cites this constraint by URI in its header. The build implements what the policy declares; it does not get ahead of it.
 
-> Honesty note (Axiom 1): as of this writing, no committed canon file named `policy-precedes-build` or `enforceable-policy-anatomy` was found via `oddkit_search` or in the `klappy.dev` working tree. This constraint therefore realizes the *named* ordering and the WHAT/WHY/ENFORCEMENT/SCOPE/VERIFICATION anatomy as the captain specified them, and reconciles with the governance that **is** committed (`governance-change-discipline`, `definition-of-done`, `convention-requires-an-enforcer`, `repo-truth`/`D0004`). If a canonical `policy-precedes-build` / `enforceable-policy-anatomy` exists elsewhere, the `derives_from` line should be updated to point at it before merge.
+> Honesty note (Axiom 1): as of this writing, no committed canon file named `policy-precedes-build` or `enforceable-policy-anatomy` was found via `oddkit_search` or in the `klappy.dev` working tree. This constraint therefore realizes the *named* ordering and the WHAT/WHY/ENFORCEMENT/SCOPE/VERIFICATION anatomy as the operator specified them, and reconciles with the governance that **is** committed (`governance-change-discipline`, `definition-of-done`, `convention-requires-an-enforcer`, `repo-truth`/`D0004`). If a canonical `policy-precedes-build` / `enforceable-policy-anatomy` exists elsewhere, the `derives_from` line should be updated to point at it before merge.
