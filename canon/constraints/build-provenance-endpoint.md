@@ -5,20 +5,20 @@ audience: canon
 exposure: nav
 tier: 2
 voice: neutral
-stability: draft
+stability: semi_stable
 tags: ["canon", "constraints", "provenance", "build", "deploy", "attestation", "verification"]
 epoch: E0010
 date: 2026-07-18
 derives_from: "canon/constraints/definition-of-done.md, docs/decisions/D0002-attempt-provenance-required.md"
 complements: "docs/decisions/D0019-merge-attribution-v1.md, canon/constraints/reviewability-standard.md"
-governs: "Any deployed build or release artifact of klappy.dev; the runtime surface that discloses its own provenance"
-status: draft
+governs: "Any deployed build or release artifact in the klappy portfolio (klappy.dev, oddkit, ARS, and sibling services); the runtime surface that discloses its own provenance"
+status: active
 target_repo: "klappy.dev"
 ---
 
 # Build Provenance Endpoint — Every Build/Deploy Carries a Verifiable Provenance Claim
 
-> **Posture:** DRAFT — proposed for captain review, not yet ratified. **Do not merge until reviewed.**
+> **Posture:** RATIFIED (captain, in-session 2026-07-19) — adopted portfolio-wide; ARS is the first conformer (its reliability inventory D6/S4 slice implements this constraint by extending /health).
 
 > A running build is itself a claim ("this is what's live"), and Axiom 2 — A Claim Is a Debt — means that claim needs evidence a reader can check without trusting the deploy pipeline's word for it. This constraint proposes that every deployed build expose a machine-readable provenance endpoint answering: who built it, from what commit, built/deployed when, and attested how — the same discipline D0002 already requires for attempts, extended to what's actually running in production.
 
@@ -48,11 +48,11 @@ This is the definition-of-done evidence requirement (`canon/constraints/definiti
 
 ---
 
-## Open Questions for Captain Ratification
+## Ratified Answers (captain, 2026-07-19)
 
-- Exact route and response shape (new surface vs. extending an existing `/health`-style endpoint)
-- What "attested how" means concretely on this stack (CI run link is the cheap default; signed manifest is the stronger version)
-- Whether this belongs in `klappy.dev` only or generalizes to `target_repo: "oddkit"` as a reusable pattern
+- **Route/shape:** per-service; extending an existing `/health`-style endpoint is acceptable — the fields are the contract, not the path. (ARS does exactly this per its reliability inventory S4.)
+- **Attestation:** a CI run URL is the floor; a signed manifest is the stronger rung services may graduate to. Unknown fields degrade explicitly per the operating constraints.
+- **Scope:** portfolio-wide (this ruling) — the `governs` line above now binds every deployed service in the portfolio, each implementing locally.
 
 ---
 
