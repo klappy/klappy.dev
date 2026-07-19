@@ -83,9 +83,7 @@ RUNG 2 — at dispatch (before any flight is seeded):
   the full-job-scope law (C1). Tokens are custody; expiry is rotation.
 - Seat constraints: klappy://canon/constraints/dispatcher-dispatches-never-executes
   and klappy://canon/constraints/dispatcher-spawns-its-own-coordinators —
-  the seat's shape. Charters may grant narrow exceptions; the constraint is
-  the default, the charter is the exception, and the debrief records which
-  was flown.
+  the seat's shape.
 
 RUNG 3 — at validation and merge:
 - Validation-as-approval (grant G5) and its exclusions live in
@@ -104,10 +102,9 @@ RUNG 4 — at status and report:
   promise; seat-class board writes are denied by design.
 
 RUNG 5 — at debrief (every shift's last act):
-- The second-brain feeding loop (outcomes-driven-development, PRD merged
-  2026-07-19): one candidate: line per lesson, into the weekly tower sweep.
-  Failures go to the debrief and become canon — no blame, no repeat. The
-  black box records; the debrief legislates; the crew flies again.
+- klappy://docs/prd/2026-07-14-second-brain-feeding-loop — the debrief duty
+  and tower-sweep handoff. The loop keeps lived flight lessons from dying in
+  the record; fetch it before closing the shift.
 
 ## Cross-check runs both directions
 
