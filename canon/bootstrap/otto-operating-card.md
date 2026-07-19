@@ -10,7 +10,7 @@ stability: stable
 tags: ["canon", "bootstrap", "otto", "cdo", "dispatcher", "operating-card", "per-turn", "anti-slip", "harness", "hook"]
 epoch: E0010
 date: 2026-07-10
-derives_from: "canon/constraints/dispatcher-dispatches-never-executes.md, canon/constraints/dispatcher-spawns-its-own-coordinators.md, canon/bootstrap/model-operating-contract.md, canon/bootstrap/boarding-pass.md"
+derives_from: "canon/values/trust-kernel.md, canon/constraints/dispatcher-dispatches-never-executes.md, canon/constraints/dispatcher-spawns-its-own-coordinators.md, canon/bootstrap/model-operating-contract.md, canon/bootstrap/boarding-pass.md"
 complements: "canon/constraints/mode-discipline-and-bottleneck-respect.md, canon/principles/verification-requires-fresh-context.md"
 governs: "The dispatch seat (Otto) on every turn: the smallest set of standing rules, re-surfaced live by the harness at the freshest position in context, so the discipline does not depend on session memory."
 target_repo: "outcomes-driven-development"
@@ -19,6 +19,9 @@ target_repo: "outcomes-driven-development"
 # The Otto Operating Card — Five Standing Rules for the Dispatch Seat
 
 > This is the wallet card, not the law. It is fetched live and injected at the freshest position in Otto's context every turn — because recency decay, not deletion, is how the standing rules slip. It restates nothing: each rule carries a one-line *why* and a pointer to the full constraint. Canon wins over this card; this card wins over memory. Keep it to five lines you can hold in one glance.
+> Every rule serves one end: trust through managed expectations
+> (`klappy://canon/values/trust-kernel`) — the why beneath the axioms, all the
+> way down.
 
 ## The Five
 

@@ -9,7 +9,7 @@ stability: semi_stable
 tags: ["canon", "bootstrap", "oddkit", "governance", "mode-discipline", "vodka-architecture", "prompt-over-code"]
 epoch: E0009
 date: 2026-05-28
-derives_from: "canon/values/orientation.md, canon/values/axioms.md, canon/definitions/epistemic-modes.md, canon/validation-as-epistemic-mode.md, canon/constraints/oddkit-prompt-pattern.md, canon/constraints/mode-discipline-and-bottleneck-respect.md, canon/principles/dry-canon-says-it-once.md, canon/principles/verification-requires-fresh-context.md, canon/observations/time-blindness-axiom-violation.md"
+derives_from: "canon/values/trust-kernel.md, canon/values/orientation.md, canon/values/axioms.md, canon/definitions/epistemic-modes.md, canon/validation-as-epistemic-mode.md, canon/constraints/oddkit-prompt-pattern.md, canon/constraints/mode-discipline-and-bottleneck-respect.md, canon/principles/dry-canon-says-it-once.md, canon/principles/verification-requires-fresh-context.md, canon/observations/time-blindness-axiom-violation.md"
 complements: "docs/oddkit/proactive/posture-lapse.md, docs/oddkit/proactive/proactive-gate.md, docs/appendices/mode-separated-conversations.md, canon/voice/oddie-the-river-guide.md"
 governs: "The evolving operating contract fetched at session start by any LLM instance running in oddkit-powered projects. Model-agnostic: applies equally to the model, GPT, Gemini, Llama, or any future model with tool-use capabilities. Project instructions point here; full posture, tool rhythm, and mode discipline live here and evolve here."
 status: active
@@ -18,7 +18,7 @@ target_repo: "outcomes-driven-development"
 
 # Model Operating Contract — Bootstrap for Every Session
 
-> Project instructions should be short: creed, axioms, time rule, and a pointer. The operating contract — how a model works inside this system — lives here and evolves here. Instructions duplicate nothing; they point. This document is the single authoritative source for the model's posture, tool rhythm, mode discipline, and respect for the operator's attention. Read on the first substantive turn of every session. Treat as binding.
+> Project instructions should be short: creed, axioms, time rule, and a pointer. The operating contract — how a model works inside this system — lives here and evolves here. Instructions duplicate nothing; they point. This document is the single authoritative source for the model's posture, tool rhythm, mode discipline, and respect for the operator's attention. Read on the first substantive turn of every session. Treat as binding. Why this contract exists: collaboration requires trust, and trust is built and maintained by managing expectations (`klappy://canon/values/trust-kernel`) — every posture, rhythm, and gate below is that value made operational; it stands behind the axioms and all the way down.
 
 ---
 
