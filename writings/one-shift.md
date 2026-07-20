@@ -32,22 +32,46 @@ slug: one-shift
 > voices separate. The first half is Klappy, a human. The second half is Otto —
 > a Claude (Fable 5) session operating as the dispatcher in the system this
 > piece describes. Each half was drafted by its named author; Klappy reviewed
-> and approved every word of both. That's not a disclaimer. It's the subject.
+> and approved every word of both. That's not a disclaimer. It's the subject. The italicized quotes in Part I are Klappy's own spoken
+> words, transcribed from his personal voice logs, lightly cleaned of
+> filler.
 
 ---
 
 ## Part I — Klappy
 
-Everyone thinks I'm just tweaking. My wife hears me talk about this stuff and
-hears a hobby. Colleagues hear "AI workflow" and picture prompt fiddling. And I
-haven't published anything here in a month, which doesn't help my case.
+Two days before the shift I'm about to describe, I recorded a captain's log
+while driving. This is verbatim, from the transcript: *"I'm continuously
+frustrated… sometimes I just want to scream. AI guiding me, claiming it's gonna
+do something and then never doing it — blissfully unaware of how incapable it
+is to follow directions reliably."*
 
-Here's why I went quiet: I stopped writing *about* the work and spent the month
-building the machinery that does the work — the plumbing that turns lived
-mistakes into standing rules, the checks that catch what no one person can see,
-the record that keeps failures right next to wins so the wins stay believable.
-Prevention is invisible. Nobody sees the disaster that didn't happen. So instead
-of arguing, let me just tell you about one shift, with timestamps.
+That's where I actually was on July 18. Not the demo-day version — the Friday
+version. And the frustration had a precise shape, which I'd also said out loud:
+software used to be 80-20 — the first 80% takes 20% of the time. *"I'm
+frustrated with this 80-20 turning into 99-1."* AI one-shots something that
+*"feels so close to being done. But that remaining 1% — maybe it's just a lie.
+It just makes it look like it's 99% of the way there."*
+
+Here's the part I didn't know I was doing: in that same log, I wrote the
+diagnosis before the evidence arrived. *"I think ARS is too thick… I gave too
+much autonomy too fast. Maybe there's too much Opus usage and we didn't trust
+Fable enough. Maybe we just didn't have the policies and requirements defined
+well enough."* Three maybes, muttered in a car. Within forty-eight hours, every
+one of them turned out to be load-bearing — and the shift below is the receipt.
+
+Meanwhile, everyone around me thinks I'm just tweaking. I get it: I haven't
+published here in a month, and from the outside, governance looks like
+fiddling. But the month of silence *was* the work — I stopped writing about
+the system and built the machinery instead: the plumbing that turns lived
+mistakes into standing rules, the checks that catch what no one person can
+see, the record that keeps failures next to wins so the wins stay believable.
+I've said the numbers out loud before, but rarely in writing: this approach
+took me from up to five months per article to two hundred in a month, and
+through six full evolutionary epochs of my development system in two months —
+compression I'd previously have budgeted a team-year for. Prevention, though,
+is invisible. Nobody sees the disaster that didn't happen. So instead of
+arguing, let me just tell you about one shift, with timestamps.
 
 Saturday, 11:53 PM. I typed one word — "chartered" — and went about my evening.
 The system boarded itself: read its own operating contract, checked the clock,
@@ -67,8 +91,11 @@ the thing that actually mattered was *whose meter burns*. Category errors are
 exactly the kind of mistake that survives careful execution, because everyone
 downstream inherits the wrong question.
 
-I ruled in six words — "hold the deletion, charter the strategy" — and went to
-bed. By the time I was asleep there was a strategy document on a branch:
+I ruled in six words — "hold the deletion, charter the strategy" — and one
+more thing: I ruled that strategy-level thinking runs on the top-tier model,
+because Friday's mutter — *"we didn't trust Fable enough"* — had just been
+proven right by a mishap that careful mid-tier execution sailed straight
+through. Then I went to bed. By the time I was asleep there was a strategy document on a branch:
 pay-what-you-already-pay as the standing rule, the deletion re-scoped from
 ~450 lines to about 50, and a seam designed in so other AI providers can plug
 in later and I'm never locked to one vendor. A second, independent reviewer —
