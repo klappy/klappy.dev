@@ -83,6 +83,8 @@ This is a minimal, additive corollary to an existing tier-1 constraint, not a ne
 
 ## Status
 
+**LANDED AS ACTIVE CANON** — corollary appended verbatim to `canon/constraints/mode-discipline-and-bottleneck-respect.md`, 2026-07-20, on captain merge instruction ("307 a and merge").
+
 `proposed`
 
 ## Review Notes

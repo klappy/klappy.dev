@@ -32,6 +32,18 @@ The deeper principle: the operator's attention is the system bottleneck. Theory 
 
 Accompanying this: **search canon before asking anything, in any mode.** Most questions the model is about to ask are already answered in a canon document. Asking a question whose answer canon would have surfaced is not due diligence — it is a failure to read the manual. Search first. If canon answers, use the answer. Only if canon genuinely does not answer does the question get surfaced, and only in a mode where surfacing is valid.
 
+**Corollary — search canon before designing, not just before asking.** The
+rule above closes the gap between "a question is about to be asked" and
+"canon already answered it." It does not close the earlier gap: a fully-formed
+design can bypass the asking step entirely if the designer is confident.
+Any design decision with a named canon domain (caching, storage, identity,
+disclosure, or any future domain that accumulates a canon constraint) requires
+a canon search *at design time*, before a solution shape is chosen — not only
+when a question is about to be surfaced. Confidence is not evidence that
+canon was consulted. A constraint that has existed in canon for months can
+still be violated if the design step that should have searched for it never
+did.
+
 ---
 
 ## The Four Modes — Truth Conditions, Not Labels
