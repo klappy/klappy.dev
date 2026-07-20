@@ -5,7 +5,7 @@ audience: public
 exposure: public
 tier: 2
 voice: first_person
-stability: draft
+stability: stable
 tags: ["ai-collaboration", "memory", "architecture", "memento", "alzheimers", "augmented-memory", "trust", "model-authored"]
 public: true
 type: "essay"
