@@ -84,7 +84,9 @@ decision, my memory of what got ruled last week. Watch what the interface
 shrinks to by the end of this story: read a card, say four words. A client is
 just a captain with less context — every bottleneck I remove from myself is a
 prerequisite I remove from them. The capacity I'm building for myself *is*
-the product.
+the product. And when it's ready for others, it won't be *this* instance they
+get — each use case gets its own, so my broken evenings never become anyone
+else's outage.
 
 And to be honest about the frame: it wasn't one session. The whole weekend
 was sessions — the Saturday log above was one of them — layered on a month of
