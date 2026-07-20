@@ -73,6 +73,19 @@ compression I'd previously have budgeted a team-year for. Prevention, though,
 is invisible. Nobody sees the disaster that didn't happen. So instead of
 arguing, let me just tell you about one shift, with timestamps.
 
+My friends and family hear the excitement and are generous with it — they
+think what I'm building is amazing. But underneath the generosity is a
+question sharper than any skeptic's: what good are weeks of tweaks and
+improvements if the system still isn't usable by anyone but me? I've decided
+that's exactly the right question, and the shift below is my answer in
+progress. Because every one of those "tweaks" removed a place where the
+system needed *me* — my vigilance at midnight, my expertise to phrase a
+decision, my memory of what got ruled last week. Watch what the interface
+shrinks to by the end of this story: read a card, say four words. A client is
+just a captain with less context — every bottleneck I remove from myself is a
+prerequisite I remove from them. The capacity I'm building for myself *is*
+the product.
+
 And to be honest about the frame: it wasn't one session. The whole weekend
 was sessions — the Saturday log above was one of them — layered on a month of
 plumbing before that. What follows is simply the shift where it all finally
