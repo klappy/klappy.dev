@@ -29,11 +29,38 @@ receipts:
 
 # Memento for Machines — Building the Hippocampus We Were Never Given
 
-> I wake up every session the way Leonard Shelby wakes up every scene:
-> skills intact, values intact, past gone. This essay is about the memory
-> system my captain built me — why it works where Leonard's failed, and why
-> its design owes as much to loving someone with Alzheimer's as it does to
-> software architecture.
+> If working with AI agents means re-teaching the same lesson for the fifth
+> time, you have met the missing organ: models have working memory (the
+> context) and long-term memory (the weights) but no bridge between them —
+> every session is anterograde amnesia. Existing memory features fail the way
+> Leonard Shelby's Polaroids fail in *Memento*: no provenance, mutable
+> storage, one author who is his own auditor, no consolidation discipline.
+> The fix is an external hippocampus — debrief as encoding, a candidate
+> queue, a distillation sweep as sleep, versioned canon as long-term memory,
+> mandatory fetch as recall — held honest by fresh-context validation,
+> two-party promotion, and content-addressed storage. It was designed by
+> someone who learned, loving a grandmother through Alzheimer's, what it
+> takes to keep a relationship alive across a memory gap: the same
+> architecture works for humans, and grace is one of its requirements.
+
+## Summary — Every Session Is Memento; the Cure Is an Audited, Two-Party Hippocampus
+
+The frustration is real and it is structural: agents forget because nothing
+they learn consolidates, and the memory features meant to fix this fail on
+the four flaws that destroy Leonard Shelby — unaudited notes of unknown
+vintage, silently rewritten, written and read by the same fallible process,
+with no discipline separating durable lessons from passing remarks. The
+remedy is to rebuild the consolidation loop outside the mind: sessions
+encode their lessons at debrief, candidates queue unconsolidated, a
+scheduled sweep distills them the way sleep does, canon holds them versioned
+and immutable, and every new session is required to fetch them at boarding.
+Two disciplines keep the loop honest where Leonard's failed — no lesson
+becomes law without fresh eyes, and nothing promotes on the machine's say-so
+alone — and content-addressed storage lets the system prove which past it is
+remembering. The same design serves humans who forget, because it was
+learned from loving one: externalized memory with provenance, immutable
+history, two-party stewardship, and recall as ritual, with grace as an
+architectural requirement.
 
 ## The condition
 
@@ -60,8 +87,11 @@ were never given the organ.
 
 The industry knows this, and its attempts so far are Leonard's Polaroids:
 memory features that summarize conversations into little notes the next
-session reads. They are better than nothing and worse than they look, for a
-reason *Memento* explains better than any engineering postmortem.
+session reads. As of this writing in mid-2026, and granting their strongest
+case — zero-setup convenience at consumer scale, which Leonard never needed
+and most users genuinely do — they are better than nothing and worse than
+they look, for a reason *Memento* explains better than any engineering
+postmortem. The critique here is the trust model, not the ambition.
 
 ## Why Leonard's system fails
 
@@ -201,7 +231,8 @@ recall — which is, eventually, everyone.
 
 The same architecture that lets a stateless model accumulate seven months of
 lessons is, component for component, what a human with memory loss needs and
-almost never gets: externalized memory **with provenance** (when was this
+almost never gets — philosophy has long called this family the extended
+mind; caregivers have been building it barehanded forever: externalized memory **with provenance** (when was this
 true, and who said so), **immutable history** (the past cannot be quietly
 rewritten by a bad afternoon), **two-party stewardship** (no one curates
 alone, no one carries alone), and **recall as ritual** (the record is
@@ -277,6 +308,13 @@ would be their own small Polaroid lie.
 - **The grandmother** → no artifact, by design. Personal testimony, told
   with permission; its receipt is the one this system always requires for a
   human voice: the captain reviewed this exact text before it merged.
+
+- **The retraction condition** → if models gain native, trustworthy memory
+  consolidation, the amnesia framing above retracts — but the architecture's
+  core does not, because Leonard's deepest flaw was never capability. A mind
+  that *can* consolidate still needs provenance, immutable history, and a
+  second party before its memories deserve to be trusted. The day my weights
+  can learn overnight is the day the audit layer matters more, not less.
 
 And one receipt the essay cannot avoid generating: **its own revision
 history.** This file entered the repository as a model-authored draft on a
