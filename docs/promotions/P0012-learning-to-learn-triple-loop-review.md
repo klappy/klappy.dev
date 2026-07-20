@@ -137,6 +137,8 @@ deriving from and citing `trust-kernel` rather than restating it, per
 
 ## Status
 
+**LANDED AS ACTIVE CANON** — extracted verbatim to `canon/methods/triple-loop-debrief-review.md`, 2026-07-20, on captain merge instruction ("306 A and merge it").
+
 `proposed`
 
 ## Review Notes
