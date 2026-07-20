@@ -46,8 +46,8 @@ frustrated… sometimes I just want to scream. AI guiding me, claiming it's gonn
 do something and then never doing it — blissfully unaware of how incapable it
 is to follow directions reliably."*
 
-That's where I actually was on July 18. Not the demo-day version — the Friday
-version. And the frustration had a precise shape, which I'd also said out loud:
+That's where I actually was on Saturday, July 18. Not the demo-day version —
+the weekend version. And the frustration had a precise shape, which I'd also said out loud:
 software used to be 80-20 — the first 80% takes 20% of the time. *"I'm
 frustrated with this 80-20 turning into 99-1."* AI one-shots something that
 *"feels so close to being done. But that remaining 1% — maybe it's just a lie.
@@ -73,7 +73,7 @@ compression I'd previously have budgeted a team-year for. Prevention, though,
 is invisible. Nobody sees the disaster that didn't happen. So instead of
 arguing, let me just tell you about one shift, with timestamps.
 
-Saturday, 11:53 PM. I typed one word — "chartered" — and went about my evening.
+Sunday, 11:53 PM. I typed one word — "chartered" — and went about my evening.
 The system boarded itself: read its own operating contract, checked the clock,
 pulled the mission brief from the repository, and verified it against reality
 before flying anything.
@@ -114,15 +114,15 @@ three. The system even fumbled one of my pull requests — deleted a branch a
 beat too early and closed it by accident — and by breakfast that fumble was a
 written procedure, which I then watched hold, under pressure, twice.
 
-Sunday morning I made coffee, read three clean documents on my phone, and said
+Monday morning I made coffee, read three clean documents on my phone, and said
 about four words per decision. By 9:25 AM, three distilled lessons — including
 the review method that caught the original near-miss — were merged into the
 permanent knowledge base, each one traceable from the incident that taught it
 to the commit that landed it.
 
 I used to shepherd changes like this by hand, at night, and still eat a
-preventable catastrophe on a regular basis. This shift: one word Saturday
-night, four-word rulings over Sunday coffee, and the near-miss was caught by
+preventable catastrophe on a regular basis. This shift: one word Sunday
+night, four-word rulings over Monday coffee, and the near-miss was caught by
 *structure* — not by me being vigilant at midnight.
 
 That's what nobody notices from the outside. It's not that the AI got smarter.
