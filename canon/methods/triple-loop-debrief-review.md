@@ -6,7 +6,7 @@ exposure: nav
 tier: 2
 voice: neutral
 stability: evolving
-tags: ["methods", "debrief", "learning-to-learn", "meta-skill"]
+tags: ["methods", "debrief", "learning-to-learn", "meta-skill", "triple-loop", "third-loop", "three-loops"]
 derives_from:
   - klappy://canon/values/trust-kernel
 status: active
