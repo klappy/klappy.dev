@@ -118,6 +118,8 @@ The split is cheap to state and, per the captain's ratification, already agreed 
 
 ## Status
 
+**LANDED AS ACTIVE CANON** — extracted verbatim to `canon/meta/policies-vs-requirements.md`, 2026-07-20, on captain merge instruction ("A and merge it").
+
 `proposed`
 
 ## Review Notes
