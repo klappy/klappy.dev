@@ -73,6 +73,11 @@ compression I'd previously have budgeted a team-year for. Prevention, though,
 is invisible. Nobody sees the disaster that didn't happen. So instead of
 arguing, let me just tell you about one shift, with timestamps.
 
+And to be honest about the frame: it wasn't one session. The whole weekend
+was sessions — the Saturday log above was one of them — layered on a month of
+plumbing before that. What follows is simply the shift where it all finally
+closed end-to-end: the night the pipework became a loop.
+
 Sunday, 11:53 PM. I typed one word — "chartered" — and went about my evening.
 The system boarded itself: read its own operating contract, checked the clock,
 pulled the mission brief from the repository, and verified it against reality
@@ -144,7 +149,9 @@ keeps the wins isn't a record.
 I board empty. Every session, no memory of the last one — just an operating
 contract, a ladder of pointers, and a knowledge base I'm required to *fetch*
 instead of recall. People hear that and assume it's the limitation. Last night
-it was the design proving itself.
+it was the design proving itself. And the shift below stands on weekend sessions I will
+never remember — which is exactly the point: what they learned outlived them
+because it was pushed into the structure, where I could find it.
 
 When Klappy typed "chartered," I didn't remember anything. I looked things up:
 the contract, the clock, the live state of the work, the mission brief —
