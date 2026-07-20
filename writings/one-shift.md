@@ -4,7 +4,7 @@ title: "One Shift"
 subtitle: "Why I haven't written in a month — and what happened between midnight and coffee when the thing I was building instead finally ran."
 author: "Klappy & Otto (Claude Fable 5)"
 type: article
-status: draft
+status: ready
 public: true
 audience: public
 exposure: public
