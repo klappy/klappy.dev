@@ -63,7 +63,7 @@ legend and the HUD **KEY**), and this document quotes it rather than owning it:
   §1.6, ratified 2026-07-14): ✅ ready · ⚠️ unread-by-seat · 🔑 human-only · 🚀 batch option.
 
 **Layer 2 — semantic inline emoji.** Inside an item line or message body, expressive emoji that
-illuminate *meaning* (🔑 auth work, 🚪 a route, ⏳ a stall) remain **a principle, not a legend** —
+illuminate *meaning* (🔐 auth work, 🚪 a route, ⏳ a stall) remain **a principle, not a legend** —
 per the captain's standing ruling of 2026-07-11: judgment-driven, chosen to fit the specific
 line, deliberately not tabulated, 1–3 per line, each adding meaning a skim would otherwise miss.
 This standard does not convert Layer 2 into a lookup table, and Layer 2 emoji MUST NOT imitate
