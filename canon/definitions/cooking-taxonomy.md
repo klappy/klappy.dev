@@ -5,7 +5,7 @@ status: candidate
 date: 2026-08-04
 revised: 2026-08-07
 ratified: 2026-08-07
-derives_from: klappy://canon/kernel/trust
+derives_from: klappy://canon/values/trust-kernel
 governs: "Every client-facing packaging of the house's AI and software work — menus, proposals, statements of work, pricing structure, onboarding, teaching, deliverable naming; fetched at the moment any artifact a client will read is chartered or drafted; internal crew operations remain under the airline frame."
 tags: [cooking-taxonomy, client-frame, recipe, menu, role-reconciliation, trust-kernel, projection, ninety-nine-one, kitchen-roles, tasting, sub-recipes, service-tiers, gates, service-formats, counter-service, kitchen, cooking, dishes, meals, pantry, chef, restaurant, catering, customization-spectrum]
 ---
