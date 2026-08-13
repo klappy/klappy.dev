@@ -12,7 +12,7 @@ date: 2026-07-18
 derives_from: "canon/constraints/mode-discipline-and-bottleneck-respect.md, canon/constraints/actionable-output-in-actionable-form.md, canon/values/axioms.md, docs/appendices/convention-requires-an-enforcer.md"
 complements: "canon/constraints/reviewability-standard.md, canon/constraints/seeded-response-standard.md, canon/meta/triangle-of-yaps.md, canon/meta/enforceable-policy-anatomy.md, canon/constraints/captain-message-legibility.md"
 governs: "Every captain-facing message any seat or flight emits — status lines, decision asks, flight reports, incident updates, PR and decision trays — and the glyph vocabulary those messages use to carry state at a glance"
-status: draft
+status: active
 target_repo: "outcomes-driven-development"
 ---
 
