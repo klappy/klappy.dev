@@ -60,7 +60,7 @@ Proof — the instance this method was derived in: L1/L2 = `klappy.dev` canon wi
 
 ## The Decision Tree — Run T1–T7 in Order; Stop at First Landing
 
-Each test is answerable from the document's own text. Run T1–T7 in order. T1 is a gate and T2 is an L1 candidate — neither is a landing; continue. Stop at the first test that names a home (L1 at T3 when a T2 candidate is settled; a T3 bet skips T4 and continues at T5; otherwise T4–T7). The SPLIT rule (below) is the exception: when distinct substances would name more than one home, split rather than stopping. When no landing test decides, the document stays at the lower rung.
+Each test is answerable from the document's own text. Run T1–T7 in order. T1 is a gate and T2 is an L1 candidate — neither is a landing; continue. Stop at the first test that names a home (L1 at T3 when a T2 candidate is settled; a T3 bet skips T4 and continues at T5 so T5–T7 can name the home; otherwise T4–T7). The SPLIT rule (below) is the exception: when distinct substances would name more than one home, split rather than stopping. When no landing test decides, the document stays at the lower rung.
 
 ### T1 — The Genericization Gate (criterion 6)
 
@@ -82,13 +82,13 @@ Each test is answerable from the document's own text. Run T1–T7 in order. T1 i
 
 **If no → not L1.** Continue to T3. The bet gate still runs before any L2 landing.
 
-**Falsifier:** a domain or operator for which the stripped claim is false (continue to T3, then T4–T7), or a demonstration that the claim is empty once the operator context is removed (an "invariant" that only restates the operator's preference is a ruling, not an invariant — T3 will veto L1/L2 and T5/T6 will place it).
+**Falsifier:** a domain or operator for which the stripped claim is false (continue to T3, then T4–T7), or a demonstration that the claim is empty once the operator context is removed (an "invariant" that only restates the operator's preference is a ruling, not an invariant — continue to T3, then T4–T7; T3 vetoes L1/L2 only for bets, not for rulings).
 
 ### T3 — The Bet Gate (criterion 2)
 
 **Test:** Is the claim settled doctrine — survived across contexts, adjudicated, with counter-examples considered — or a provisional found-framework still under validation?
 
-**If a bet → not L1/L2**, whatever T2 said. Continue at T5 to place it. The overlay is where bets live; the core is where settled doctrine lives. A single supporting case makes an aphorism, not an invariant; principles become canon once stated, so a principle resting on one incident routes down until it has survived contact with a second.
+**If a bet → not L1/L2**, whatever T2 said. Skip T4 and continue at T5 so T5–T7 can name the home (office, kitchen, or overlay). The core is where settled doctrine lives. A single supporting case makes an aphorism, not an invariant; principles become canon once stated, so a principle resting on one incident routes down until it has survived contact with a second.
 
 **If settled and T2 marked an L1 candidate → L1.** Stop unless SPLIT applies. Tag and extract using T4's mechanics so the genericized core copy travels.
 
