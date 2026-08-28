@@ -26,9 +26,9 @@ target_repo: "outcomes-driven-development"
 
 A layered estate accumulates documents faster than any maintainer can adjudicate them by feel. Without tests, routing decays into topic-matching ("it mentions writing, so it goes to the writing canon") — the exact failure the core-boundary criteria were canonized to prevent. With tests, any agent or adopter can take a document, read only its text, and produce a verdict another agent would reproduce.
 
-The tests below are ordered as a decision tree because order is load-bearing: the genericization gate and the bet gate must run *before* the canon test, or provisional, operator-specific material leaks upward into layers that outsiders consume. Each test is falsifiable — it names the textual evidence that would flip its verdict. The method closes with tie-breakers for documents that pass multiple tests, and the SPLIT rule for documents that genuinely carry substance for more than one layer.
+The tests below are ordered as a decision tree because order is load-bearing: the genericization gate (T1) and the bet gate (T3) must both resolve *before* any L1/L2 landing, or provisional, operator-specific material leaks upward into layers that outsiders consume. T2 only marks an L1 candidate; it is not a stop. Each test is falsifiable — it names the textual evidence that would flip its verdict. The method closes with tie-breakers for documents that pass multiple tests, and the SPLIT rule for documents that genuinely carry substance for more than one layer.
 
-Every claim here is an application of settled prior art: the seven core-boundary criteria, the `target_repo` extraction convention (route by frontmatter, extract verbatim-minus-`target_repo`, grandfather existing URIs, never mint new URI schemes), and the repo-scope discipline ("product research lands in the product repo"). This document adds the layer map and the executable ordering; it restates the criteria only where a test compresses one, and cites them everywhere else.
+Every claim here is an application of settled prior art: the seven core-boundary criteria, the `target_repo` extraction convention (route by frontmatter, extract the T1-genericized body minus the tag, grandfather existing URIs, never mint new URI schemes), and the repo-scope discipline ("product research lands in the product repo"). This document adds the layer map and the executable ordering; it restates the criteria only where a test compresses one, and cites them everywhere else.
 
 ---
 
@@ -58,15 +58,17 @@ Proof — the instance this method was derived in: L1/L2 = `klappy.dev` canon wi
 
 ---
 
-## The Decision Tree — Run in Order, Stop at First Verdict
+## The Decision Tree — Run T1–T7 in Order; Stop at First Landing
 
-Each test is answerable from the document's own text. Run T1–T6 in order; the SPLIT rule (below) handles documents that trip more than one.
+Each test is answerable from the document's own text. Run T1–T7 in order. T1 is a gate and T2 is an L1 candidate — neither is a landing; continue. Stop at the first test that names a home (L1 at T3 when a T2 candidate is settled; a T3 bet skips T4 and continues at T5; otherwise T4–T7). The SPLIT rule (below) is the exception: when distinct substances would name more than one home, split rather than stopping. When no landing test decides, the document stays at the lower rung.
 
 ### T1 — The Genericization Gate (criterion 6)
 
 **Test:** Does the text contain operator-specific operational values — repo names, server URLs, account-bound commands, copy-pasteable prompts naming the operator's resources — *as subject rather than proof*?
 
-**If yes → not L1/L2 yet.** Either genericize the subject to placeholders (`[OWNER]/[REPO]` — the precedent: the governance-validation method's core copy reads "Validate the frontmatter of `[FILE]` on branch `[BRANCH]` in `[OWNER]/[REPO]`" while the overlay copy keeps the live values), or route the document down to the layer whose readers share those values. An adopter copy-pasting upper-layer content must land in their own world, not the operator's.
+**If yes → not L1/L2 yet.** Either genericize the subject to placeholders (`[OWNER]/[REPO]` — the precedent: the governance-validation method's core copy reads "Validate the frontmatter of `[FILE]` on branch `[BRANCH]` in `[OWNER]/[REPO]`" while the overlay copy keeps the live values) and continue at T2, or skip L1/L2 and continue at T5 to the layer whose readers share those values. An adopter copy-pasting upper-layer content must land in their own world, not the operator's.
+
+**If no → continue to T2.**
 
 **Distinguisher (criterion 5):** instance values appearing as *evidence, worked example, or provenance* inside an upper-layer document are healthy and do not trip this gate. The gate trips when the document is *about* the instance or cannot function without instance context.
 
@@ -76,15 +78,21 @@ Each test is answerable from the document's own text. Run T1–T6 in order; the 
 
 **Test:** Strip every operator-specific fact from the text. Does what remains still assert a true, falsifiable epistemic invariant — a claim about observation, evidence, verification, attention, or system behavior that holds for any operator in any domain?
 
-**If yes → L1 canon candidate** — *candidate*, because T3 still gates landing.
+**If yes → L1 canon candidate** — *candidate, not a landing.* Do not stop. Run T3: the bet gate can still veto promotion.
 
-**Falsifier:** a domain or operator for which the stripped claim is false, or a demonstration that the claim is empty once the operator context is removed (an "invariant" that only restates the operator's preference is a ruling, not an invariant — route via T4).
+**If no → not L1.** Continue to T3. The bet gate still runs before any L2 landing.
+
+**Falsifier:** a domain or operator for which the stripped claim is false (continue to T3, then T4–T7), or a demonstration that the claim is empty once the operator context is removed (an "invariant" that only restates the operator's preference is a ruling, not an invariant — T3 will veto L1/L2 and T5/T6 will place it).
 
 ### T3 — The Bet Gate (criterion 2)
 
 **Test:** Is the claim settled doctrine — survived across contexts, adjudicated, with counter-examples considered — or a provisional found-framework still under validation?
 
-**If a bet → it stays at the operator's layer (overlay/office/kitchen), whatever T2 said.** The overlay is where bets live; the core is where settled doctrine lives. A single supporting case makes an aphorism, not an invariant; principles become canon once stated, so a principle resting on one incident routes down until it has survived contact with a second.
+**If a bet → not L1/L2**, whatever T2 said. Continue at T5 to place it. The overlay is where bets live; the core is where settled doctrine lives. A single supporting case makes an aphorism, not an invariant; principles become canon once stated, so a principle resting on one incident routes down until it has survived contact with a second.
+
+**If settled and T2 marked an L1 candidate → L1.** Stop unless SPLIT applies. Tag and extract using T4's mechanics so the genericized core copy travels.
+
+**If settled and T2 did not mark a candidate → continue to T4.**
 
 **Falsifier for "settled":** name the ≥2 independent contexts it survived and the counter-example that was considered and rejected. Absent both, it is a bet.
 
@@ -92,7 +100,7 @@ Each test is answerable from the document's own text. Run T1–T6 in order; the 
 
 **Test:** Is the methodology proven across ≥2 repositories *and* useful to an outside adopter with zero operator context after T1 genericization?
 
-**If yes → L2**, mechanically: the document stays in the overlay carrying `target_repo: "outcomes-driven-development"`; extraction is search-and-copy over that field, verbatim minus the tag; existing `klappy://` URIs are grandfathered and **no new URI scheme is ever minted** for the move. Untagged means it stays home.
+**If yes → L2**, mechanically: the document stays in the overlay carrying a `target_repo` tag whose value is *this estate's* portable-core destination (proof here: `"outcomes-driven-development"` — an adopter substitutes their own core repo; do not copy this estate's value). Extraction is search-and-copy over that field. The overlay copy may keep live instance values; the extracted core copy is the T1-genericized body (placeholders, not operator values) with the tag removed. Existing instance URI schemes are grandfathered as proof (here: `klappy://`) and **no new URI scheme is ever minted** for the move. Untagged means it stays home.
 
 **Falsifier:** an adopter who, handed the genericized text, still cannot use it without asking the operator what it means.
 
@@ -118,7 +126,7 @@ Each test is answerable from the document's own text. Run T1–T6 in order; the 
 
 **If yes → that project's repo** (`research/<topic>/`, its docs, its changelog). This is repo-scope discipline: "Product research lands in the product repo," and a tool repository holds that tool's user manual and maintenance manual — nothing else (criterion 4). A mixed branch gets decomposed file-by-file, never migrated wholesale; cross-repo moves carry provenance (origin repo, branch, tip SHA) in both commit message and PR body. If the product repo does not exist, that is an escalation, not a reason to land product material at a governance layer.
 
-**Everything reaches a verdict here.** A document that failed T1–T6 and is not project-scoped is, by construction, operator material with no external consumer: it stays in the overlay by default — the same default the boundary criteria set: *when no criterion clearly decides, the document stays put; the core must be pulled toward quality, not pushed toward volume.*
+**Everything reaches a verdict here.** A document that failed T1–T6 and is not project-scoped is, by construction, operator material with no external consumer: it stays at the lower rung by default (in this tree, the overlay) — the same default the boundary criteria set: *when no test clearly decides, the document stays at the lower rung; the upper layers are pulled toward quality, never pushed toward volume.*
 
 ---
 
@@ -158,7 +166,7 @@ Six artifacts from the night of 2026-08-27/28, verdict each. Two existed in the 
 
 ## Self-Application — This Document Through Its Own Tree
 
-Gate 0: passes as of this PR. T1: operator values appear only as proof (the layer-map instance row, the worked examples) — the tests themselves name generic layers; the gate does not trip. T2: the stripped substance — *route on substance, decide from the text alone, gate genericization and bets before canon, split one-layer-per-rung* — is an operator-free method; candidate. T3: the underlying criteria are settled tier-1 doctrine that survived a full bifurcation; the five-layer extension rests on a ratified office topology and the downward-cascade ruling — the extension is newer than the criteria, and this document's `stability: evolving` says so honestly. T4: the routing practice is proven across ≥2 independent boundaries (overlay→core bifurcation, June 2026; office→product decomposition under repo-scope discipline, July 2026) and is useful to any adopter with a layered estate → **verdict: L1/L2 — overlay canon carrying `target_repo: "outcomes-driven-development"`.**
+Gate 0: passes as of this PR. T1: operator values appear only as proof (the layer-map instance row, the worked examples, T4's destination-repo proof) — the tests themselves name generic layers and tell an adopter to substitute their own core repo; the gate does not trip. T2: the stripped substance — *route on substance, decide from the text alone, gate genericization and bets before canon, split one-layer-per-rung* — is an operator-free method; candidate, not a landing. T3: the underlying criteria are settled tier-1 doctrine that survived a full bifurcation; the five-layer extension rests on a ratified office topology and the downward-cascade ruling — the extension is newer than the criteria, and this document's `stability: evolving` says so honestly. Settled + T2 candidate → **L1.** T4 mechanics apply so the genericized core copy travels (this estate's portable-core tag as proof: `target_repo: "outcomes-driven-development"`); the routing practice is proven across ≥2 independent boundaries (overlay→core bifurcation, June 2026; office→product decomposition under repo-scope discipline, July 2026) and is useful to any adopter with a layered estate — same overlay-plus-tag landing, not a second home.
 
 The SPLIT rule then assigns the residue: the office receives a **pointer plus the concrete adoption map** (which real repos sit at which layers — instance-owned, office material by T5), and a journal entry per the office's own convention. The working-conventions repo receives **nothing** — it inherits the school by reference and never copies it; when a cook routes a document mid-service, the pointer chain already reaches here. No project repo is touched.
 
