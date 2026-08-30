@@ -182,6 +182,56 @@ The tool offers time. The skill teaches the model how to use it. The harness (Tr
 
 ---
 
+---
+
+## Black Box Thinking — The Event Itself Was Time Blindness
+
+Amendment 2026-08-30. Primary source: Bee conversation 10189141 (state COMPLETED; start 2026-08-29T12:04:33-04:00). Speaker Chris unless noted. Quoted with utterance id and `spoken_at`. Bee's conversation summary is secondary and is not cited as evidence.
+
+The 2026-04-11 observation named time blindness as a model axiom violation: models fabricate timelines because they do not observe time. The 2026-08-29 recap names a second face of the same defect — **fixation that consumes the clock** — in the failure data of *Black Box Thinking*, in the operator's own work, and in the AI sessions that rage-quit. Failure data is the raw material of improvement, not shame.
+
+### Chapter 1 — operating theatre
+
+Chris, recapping chapter one (utterance 3260382131, spoken_at 2026-08-29T12:12:14-04:00): "started off going over what happened in the operating theater and basically how the airline pilot looked at how he could based on his context, the aviation industry had already kind of solved the issues of repeated mistakes and uh learning to learn from them, you know, because lives losing lives was costly."
+
+The incident, in his telling (3260382143, 2026-08-29T12:15:14-04:00): "the actual situation itself, the the i incident, the event itself was time blindness."
+
+The theatre (3260382162–3260382169, 2026-08-29T12:18:06-04:00 through 12:19:11-04:00): "Now chapter one, the the incident that caused the death." "Um the surgeon was focused on getting the airflow or getting like a something in the mouth and down the throat of the patient so they could retrieve the airflow or or resume the airflow." "They were so focused on doing it through the mouth they didn't take the backup option." "There's a tipping point of when the brain is distarved is deprived or starved of oxygen." "You have a time limit before there's brain damage." "So at a certain tipping point, you know, when their their final seconds you're supposed to switch over to a tracheotomy or whatever and go through the throat and bypass the mouth, just go straight into the airwave." "And it's not pretty, it's dangerous to do that, but it sure is better than letting the patient die, like what happened, or giving brain damage." "But the surgeons who were working on the problem didn't even realize so much time had passed."
+
+Nurse and clock ignored (3260382171, 2026-08-29T12:19:20-04:00): "And even though somebody was watching the clock and it was a nurse, like already got the kit ready and tried to force it on the surgeons, they just did ignored her because of reasons, right?"
+
+Speaker Unknown, immediately prior (3260382170, 2026-08-29T12:19:16-04:00): "They had time blindness while they were trying to fix it."
+
+### Chapter 2 — landing-gear fuel fixation
+
+Chris (3260382144, 2026-08-29T12:15:29-04:00): "And so it made it even more apparent in chapter two when when the pilot of a famous airline crash was so fixated on fixing the landing gear and realizing that everything kind of checks out okay, but yet there's still not all the green lights and so we can't trust it."
+
+Fuel (3260382145–3260382147, 2026-08-29T12:15:51-04:00 through 12:16:08-04:00): "So he spent his entire remaining hours or sorry, whatever time they have of fuel." "Worrying about the landing gear, not realizing that they were too far away to be able to land when they ran out of fuel." "So no matter how many people try to talk to the airline pilot, he just assumed he had time and didn't even hear or pay attention to the other new, more important warning."
+
+He names the human pattern (3260382149–3260382150, 2026-08-29T12:16:22-04:00 through 12:16:33-04:00): "I realize it's human nature for all of us to get time blindness." "We're fixated on one problem and we don't realize how much time is going by."
+
+### Personal cost, and the AI-session vent
+
+Chris, of himself (3260382157, 2026-08-29T12:17:15-04:00): "I suffer from time blindness as much as anybody."
+
+(3260382158, 2026-08-29T12:17:22-04:00): "Get fixated on solving a problem and then don't realize how much time has passed, and then I have other more important things to do, and I drop the ball on them regularly."
+
+The AI-session vent and rage-quit cost record (3260382159, 2026-08-29T12:17:32-04:00; 3260382172, 2026-08-29T12:19:34-04:00): "And so I vented yesterday for the time blindness of of AI." "So, anyway, I feel like the the sessions that I've had with AI getting time blindness, like I'm trying to do a task in ARS, and ARS was forcing these long processes that were turning what promised to be like a few hours into a few days, into a few weeks, and then realizing it wouldn't be done for months, I just rage quit multiple times throughout the process and tried to restart it and every single time the model evolved into time-blindness."
+
+### Prevent models from being time-blind — the seat does not do the work
+
+The design question (3260382177, 2026-08-29T12:20:46-04:00): "And one of them, you know, that I debriefed about yesterday was how how do we prevent models from being time-blind?"
+
+The rule, in his words, not a paraphrase:
+
+- 3260382178, 2026-08-29T12:20:54-04:00: "And one of those is ensuring that whoever I interact with, the model that I interact with is not doing the work."
+- 3260382179, 2026-08-29T12:21:02-04:00: "'Cause they'll be busy doing work and get time blind and not realize that they're unavailable to me for many, many minutes, if not longer."
+- 3260382180, 2026-08-29T12:21:12-04:00: "So I need something to be responsive within seconds."
+- 3260382181, 2026-08-29T12:21:17-04:00: "So rule number one is whoever you're communicating with needs to stay responsive."
+- 3260382182, 2026-08-29T12:21:22-04:00: "They need to not do work, they need to delegate everything."
+
+Clock-in-the-hand (oddkit_time, `server_time`) addresses the 2026-04-11 face: models that cannot observe elapsed time. This amendment records the 2026-08-29 face: a user-facing model that *does* the long work becomes unavailable, burns the operator's clock, and evolves into time-blindness the same way the theatre and the cockpit did. The counter is structural, not hortatory: the seat that talks to the operator stays responsive; the work is delegated.
+
 ## See Also
 
 - [We Forgot to Give AI a Clock](klappy://writings/we-forgot-to-give-ai-a-clock) — public essay covering the full arc from viral video to working timer
