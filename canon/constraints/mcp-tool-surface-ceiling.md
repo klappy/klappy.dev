@@ -11,6 +11,8 @@ see_also:
   - klappy://canon/patterns/docs-proxy-canon-as-tool
   - klappy://docs/promotions/P0006-vodka-boundary-enumeration-as-spec-convention
   - klappy://canon/principles/mcp-as-universal-interface
+  - klappy://canon/meta/enforceable-policy-anatomy
+  - klappy://canon/constraints/policy-precedes-build
 ---
 
 # MCP Tool Surface Ceiling — Three Tools by Default, Four at Most
@@ -63,7 +65,15 @@ vodka-architecture. Adopters outside this house are invited, not bound.
 
 `tools/list` on the deployed server returns ≤ 4 entries. The spec's vodka
 boundary sections ("knows / does not know / is NOT") exist and are consistent
-with the tool list.
+with the tool list. The server's `docs()` boarding pass cites this constraint's
+URI — code points back at the policy that governs it, closing the policy-first
+loop (`policy-precedes-build`).
+
+## Retraction Condition
+
+Retract or raise the ceiling if two servers built under it each need a fifth
+tool for a reason their specs document and `execute` demonstrably cannot absorb.
+One such case is a spec exception; two is evidence the frame is wrong.
 
 ## Failure Modes
 
@@ -80,6 +90,10 @@ A server whose upstream has no coherent "execute" verb — pure event streams,
 pure storage — may argue for a different trio. The argument is still written.
 
 ## See Also
+
+Lineage: this constraint is written to the anatomy in `canon/meta/enforceable-policy-anatomy`
+(klappy.dev#289) and is the kind of governing policy `canon/constraints/policy-precedes-build`
+(klappy.dev#290) requires before a build opens.
 
 `klappy://canon/methods/reframe-before-trimming` ·
 `klappy://canon/patterns/docs-proxy-canon-as-tool` ·
