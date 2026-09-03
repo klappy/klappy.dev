@@ -108,7 +108,9 @@ the adopting system already gates a plan before it binds:
 
 - **What canon asks of the adopter.** Name the lens as a step in the adopter's own
   planning lifecycle at the point just before bind; add one gate to the
-  adopter's own pre-bind check that reads whether the delta receipt exists
+  adopter's own pre-execution check (the last gate before work starts, after
+  the planning seat has had its turn — not the ordering check, which runs
+  before the lens and would deadlock) that reads whether the delta receipt exists
   beside the work unit, or the work unit carries an explicit exemption line
   (`driver-seat: exempt (<class>)`); put one pointer to this URI in the
   adopter's boarding text. Three touches, in the adopter's vocabulary.
@@ -152,7 +154,7 @@ row; canon does not change.
 | exempt classes | fast-food, petit four | taxi run, single-leg hop |
 | planning seat | CoS or expeditor in planning mode | dispatch seat, preflight |
 | the step in the lifecycle | `cookbook/tickets/LIFECYCLE.md` step 3, before bind | preflight checklist item, before pushback |
-| the presence gate | `cookbook/tickets/CHECKLIST.md` gate 13 "Lens receipt" | a line on the dispatch release |
+| the presence gate | `cookbook/tickets/FIRE-CHECK.md` gate 8 "Lens receipt" (CHECKLIST gate 13 only checks the exemption line for exempt classes) | a line on the dispatch release |
 | delta receipt | `DELTA.md` beside `TICKET.md` | `DELTA.md` in the flight folder |
 | boarding pointer | one line in `cookbook/boarding/SHIM.md` | one line in the boarding pass |
 | first receipt | kitchen `2026-09-02-door43-mcp-v2-planning` | — |
@@ -163,8 +165,9 @@ row; canon does not change.
 
 - A planning seat can `oddkit_get klappy://canon/methods/driver-seat-lens`
   and observe the prompt verbatim plus when and on what to run it.
-- An adopter's pre-bind check can be run on a scoped work unit and observed
-  to pass only with a delta receipt present or an explicit exemption line.
+- An adopter's pre-execution check can be run on a scoped work unit and
+  observed to pass only with a delta receipt present or an explicit
+  exemption line.
 - The operator can read this file and find the prompt is his text, unedited.
 - A reader can open the first scoped work unit after it lands and observe a
   delta receipt with named changes and named rejections.
