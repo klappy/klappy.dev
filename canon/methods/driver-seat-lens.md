@@ -7,6 +7,7 @@ tier: 2
 voice: neutral
 stability: evolving
 status: active
+source: "Jeffrey Emanuel (@doodlestein), https://x.com/doodlestein/status/2094288037458882668"
 tags: ["canon", "methods", "planning", "ergonomics", "agent-legibility", "lifecycle", "receipt", "driver-seat", "lens", "metaphor-agnostic"]
 epoch: E0010
 date: 2026-09-03
@@ -33,8 +34,13 @@ target_repo: "outcomes-driven-development"
 ## WHAT — The Rule, Precisely
 
 **The prompt.** The lens is the operator's prompt, run verbatim by a planning
-seat with the plan and every design document in context. The text is the
-operator's and is not edited by any seat (HUMAN-ONLY: voice):
+seat with the plan and every design document in context. The wording is
+**Jeffrey Emanuel's** (@doodlestein), from his "My Favorite Prompts" series —
+https://x.com/doodlestein/status/2094288037458882668 — adopted here verbatim
+by the operator on 2026-09-02. Attribution was missed at first cut and
+corrected 2026-09-03; the omission is on the operator, not the author. The
+text is not edited by any seat (HUMAN-ONLY: voice, the author's and the
+operator's):
 
 > OK, now I want you to think deeply about how to make this entire system as
 > agent-intuitive, agent-ergonomic, and agent-accretive as you can possibly
@@ -51,6 +57,9 @@ operator's and is not edited by any seat (HUMAN-ONLY: voice):
 > modular, and interconnected, forming a tower of linked abstractions that are
 > maximally legible to you as an agent. Really ruminate and meditate on all of
 > this incredibly deeply before responding or taking any actions.
+
+*— Jeffrey Emanuel, @doodlestein. The lens step, receipt, scope, and this
+file are the house's; the words above are his.*
 
 **Looking through it.** A capable planning seat takes the work unit, its plan, and every
 design document the plan touches into one context and runs the prompt as
