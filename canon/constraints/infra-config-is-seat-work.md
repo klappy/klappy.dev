@@ -2,7 +2,7 @@
 title: "Infra Config Is Seat Work — Deploy Is Push, Dashboard Is Not a HUMAN-ONLY Class"
 kind: canon
 tier: 1
-status: proposed
+status: ratified
 date: 2026-09-02
 audience: [agents, builders]
 tags: [constraints, human-only, deploy, cloudflare, infra, recurring-miss]
