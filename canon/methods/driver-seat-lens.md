@@ -1,13 +1,13 @@
 ---
-uri: klappy://canon/methods/driver-seat-pass
-title: "The Driver's-Seat Pass — A Planning Seat Sits Where the Agent Will Sit Before the Plan Binds"
+uri: klappy://canon/methods/driver-seat-lens
+title: "The Driver's-Seat Lens — A Planning Seat Sits Where the Agent Will Sit Before the Plan Binds"
 audience: canon
 exposure: nav
 tier: 2
 voice: neutral
 stability: evolving
 status: draft
-tags: ["canon", "methods", "planning", "ergonomics", "agent-legibility", "lifecycle", "receipt", "driver-seat", "metaphor-agnostic"]
+tags: ["canon", "methods", "planning", "ergonomics", "agent-legibility", "lifecycle", "receipt", "driver-seat", "lens", "metaphor-agnostic"]
 epoch: E0010
 date: 2026-09-03
 derives_from: "canon/bootstrap/model-operating-contract.md, canon/values/axioms.md, canon/constraints/mode-discipline-and-bottleneck-respect.md"
@@ -16,23 +16,23 @@ governs: "Any governed body of work, under any operating metaphor: before a plan
 target_repo: "outcomes-driven-development"
 ---
 
-# The Driver's-Seat Pass — A Planning Seat Sits Where the Agent Will Sit Before the Plan Binds
+# The Driver's-Seat Lens — A Planning Seat Sits Where the Agent Will Sit Before the Plan Binds
 
 > Before a plan binds, one planning seat reads the whole design set as the
 > agent who will have to drive it, and changes the documents until the system
-> is legible, coherent, and cheap from that seat. The pass is the constructive
-> twin of `oddkit_challenge`: challenge finds what is wrong; the pass finds
+> is legible, coherent, and cheap from that seat. The lens is the constructive
+> twin of `oddkit_challenge`: challenge finds what is wrong; the lens finds
 > what is missing. It runs on every unit of work above the trivial, and on
 > every revision of such a plan; it leaves a delta receipt naming what changed
-> and what was considered and rejected. A pass that leaves no delta did not
-> run. Operator, 2026-09-02: "that needs to be a policy run on all tickets
+> and what was considered and rejected. A lens that leaves no delta was not
+> looked through. Operator, 2026-09-02: "that needs to be a policy run on all tickets
 > and planning loops."
 
 ---
 
 ## WHAT — The Rule, Precisely
 
-**The prompt.** The pass is the operator's prompt, run verbatim by a planning
+**The prompt.** The lens is the operator's prompt, run verbatim by a planning
 seat with the plan and every design document in context. The text is the
 operator's and is not edited by any seat (HUMAN-ONLY: voice):
 
@@ -52,29 +52,29 @@ operator's and is not edited by any seat (HUMAN-ONLY: voice):
 > maximally legible to you as an agent. Really ruminate and meditate on all of
 > this incredibly deeply before responding or taking any actions.
 
-**The run.** A capable planning seat takes the work unit, its plan, and every
+**Looking through it.** A capable planning seat takes the work unit, its plan, and every
 design document the plan touches into one context and runs the prompt as
 written, in exploration → planning modes only. No execution. The output is
 two things:
 
 1. Edits to the design documents themselves, made by the seat.
 2. **The delta receipt** — a file stored with the work unit (`DELTA.md` by
-   convention): for each thing the pass changed, one line naming the change
+   convention): for each thing the lens changed, one line naming the change
    and why; for each thing it considered and rejected, one line naming it and
    the reason; and a picture of the system as one thing, not as a parts list.
 
-**Order.** The pass runs *before* `oddkit_challenge`. The pass finds what is
-missing; the challenge then finds what is wrong with the plan the pass left.
+**Order.** The lens runs *before* `oddkit_challenge`. The lens finds what is
+missing; the challenge then finds what is wrong with the plan the lens left.
 Running them the other way spends challenge's questions on a plan about to
 be rewritten.
 
-**Voice.** The pass edits plans and seat-authored documents. A document in the
-operator's voice is not edited by the pass; the proposed change is named in
-the delta receipt and the pass stops there.
+**Voice.** The lens edits plans and seat-authored documents. A document in the
+operator's voice is not edited by the lens; the proposed change is named in
+the delta receipt and the lens stops there.
 
 **Vocabulary.** This method names three things and nothing else: a *work
-unit* (the thing being planned), a *planning seat* (whoever runs the pass),
-and a *delta receipt* (the file that proves it ran). Every operating
+unit* (the thing being planned), a *planning seat* (whoever looks through the lens),
+and a *delta receipt* (the file that proves the look happened). Every operating
 metaphor supplies its own words for the work unit, its size classes, its
 lanes, and its gates. The method binds to none of them; see Example
 Applications.
@@ -92,7 +92,7 @@ prompt that works once in chat and lives nowhere durable is the
 rule-in-memory class: it runs when someone remembers it and stops the day
 they do not.
 
-The pass earns its place because the questions it asks are not the ones the
+The lens earns its place because the questions it asks are not the ones the
 other gates ask. A form check asks whether the fields are there. A challenge
 asks whether the claims survive pressure. Neither asks the planning seat to
 sit where the agent will sit and say what would make the job cheap. That is
@@ -106,7 +106,7 @@ run every time and not when convenient.
 This method is a lifecycle step with a file receipt. It is enforced wherever
 the adopting system already gates a plan before it binds:
 
-- **What canon asks of the adopter.** Name the step in the adopter's own
+- **What canon asks of the adopter.** Name the lens as a step in the adopter's own
   planning lifecycle at the point just before bind; add one gate to the
   adopter's own pre-bind check that reads whether the delta receipt exists
   beside the work unit, or the work unit carries an explicit exemption line
@@ -114,7 +114,7 @@ the adopting system already gates a plan before it binds:
   adopter's boarding text. Three touches, in the adopter's vocabulary.
 - **What this does and does not enforce.** A presence gate reads whether the
   file exists. It cannot read whether the delta is real. A receipt that says
-  "looks good" passes the gate and fails the pass; Failure Modes below name
+  "looks good" passes the gate and fails the lens; Failure Modes below name
   the response. Under the enforcement ladder this is honest L3/L4 territory:
   a seat can comply by remembering to write a file, so the gate is a
   tripwire, not an enforcer. The interim obligation is the receipt's shape —
@@ -133,14 +133,14 @@ the adopting system already gates a plan before it binds:
   the one-line change, and the small self-contained change. The exemption is
   written in the work unit, not assumed.
 - **Widening is the operator's ruling, not the seat's.** The operator may
-  put the pass on every unit. The seat does not widen scope on its own and
+  put the lens on every unit. The seat does not widen scope on its own and
   does not narrow it to save cost.
 - **Cost:** one planning-seat turn on a capable model per scoped unit or
   revision. Scope stays proportional to that cost, or the rule dies of it.
 
 ---
 
-## Example Applications — The Same Step Under Different Metaphors
+## Example Applications — The Same Lens Under Different Metaphors
 
 These are illustrations, not the binding. A future metaphor supplies its own
 row; canon does not change.
@@ -152,7 +152,7 @@ row; canon does not change.
 | exempt classes | fast-food, petit four | taxi run, single-leg hop |
 | planning seat | CoS or expeditor in planning mode | dispatch seat, preflight |
 | the step in the lifecycle | `cookbook/tickets/LIFECYCLE.md` step 3, before bind | preflight checklist item, before pushback |
-| the presence gate | `cookbook/tickets/CHECKLIST.md` gate 13 "Pass receipt" | a line on the dispatch release |
+| the presence gate | `cookbook/tickets/CHECKLIST.md` gate 13 "Lens receipt" | a line on the dispatch release |
 | delta receipt | `DELTA.md` beside `TICKET.md` | `DELTA.md` in the flight folder |
 | boarding pointer | one line in `cookbook/boarding/SHIM.md` | one line in the boarding pass |
 | first receipt | kitchen `2026-09-02-door43-mcp-v2-planning` | — |
@@ -161,7 +161,7 @@ row; canon does not change.
 
 ## VERIFICATION — How Compliance Is Proven
 
-- A planning seat can `oddkit_get klappy://canon/methods/driver-seat-pass`
+- A planning seat can `oddkit_get klappy://canon/methods/driver-seat-lens`
   and observe the prompt verbatim plus when and on what to run it.
 - An adopter's pre-bind check can be run on a scoped work unit and observed
   to pass only with a delta receipt present or an explicit exemption line.
@@ -170,44 +170,44 @@ row; canon does not change.
   delta receipt with named changes and named rejections.
 - **Falsifier / retraction condition:** if two consecutive scoped units carry
   delta receipts that change nothing the challenge would not also have
-  caught, the pass is not earning its turn — scope narrows by ruling, or the
+  caught, the lens is not earning its turn — scope narrows by ruling, or the
   step retracts and this document is superseded, not deleted.
 
 ---
 
-## Failure Modes — What Breaks When the Pass Is a Vibe
+## Failure Modes — What Breaks When the Lens Is a Vibe
 
-- **Re-read, not a pass:** the seat reads the docs and writes "looks good"
+- **Re-read, not a lens:** the seat reads the docs and writes "looks good"
   — no delta.
-- **Scope creep by cost:** the pass runs on trivial units, gets expensive,
+- **Scope creep by cost:** the lens runs on trivial units, gets expensive,
   and the rule is dropped for everything.
-- **Voice edit:** the pass rewrites an operator-voice document because it was
+- **Voice edit:** the lens rewrites an operator-voice document because it was
   in context.
 - **Wrong order:** challenge runs first and its findings are made stale by
-  the pass.
+  the lens.
 - **Metaphor capture:** an adopter's vocabulary is written back into this
   method, and the next metaphor cannot inherit it.
 
 ## Required Response When Detected
 
-- **Empty delta** → the presence gate fails; the pass is re-run with the
+- **Empty delta** → the presence gate fails; the lens is re-run with the
   docs *and* a list of every call the seat would make as the user of the
   system.
 - **Cost** → scope stays proportional; the operator widens it by ruling, not
   the seat.
 - **Voice** → stop; revert the edit; name the proposed change in the delta
   receipt and show the exact text.
-- **Wrong order** → re-run challenge on the post-pass plan; the earlier run
-  is noted in the receipt as pre-pass.
+- **Wrong order** → re-run challenge on the post-lens plan; the earlier run
+  is noted in the receipt as pre-lens.
 - **Metaphor capture** → move the words to Example Applications; the WHAT,
   SCOPE, and ENFORCEMENT sections keep the three neutral terms only.
 
 ## See Also
 
 - [Model Operating Contract](/canon/bootstrap/model-operating-contract.md) —
-  the four modes; the pass lives at the planning → execution boundary
+  the four modes; the lens lives at the planning → execution boundary
 - [Revision Lens Sequence](/canon/methods/revision-lens-sequence.md) —
-  single-lens passes verify; the driver's-seat pass is one such lens
+  single-lens passes verify; this is one such lens, given a name and a receipt
 - [Borrow Evaluation Before Implementation](/canon/constraints/borrow-evaluation-before-implementation.md)
   — the other planning-time table a plan owes before it binds
 - [Infra Config Is Seat Work](/canon/constraints/infra-config-is-seat-work.md)
