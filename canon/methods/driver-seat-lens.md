@@ -6,7 +6,7 @@ exposure: nav
 tier: 2
 voice: neutral
 stability: evolving
-status: draft
+status: active
 tags: ["canon", "methods", "planning", "ergonomics", "agent-legibility", "lifecycle", "receipt", "driver-seat", "lens", "metaphor-agnostic"]
 epoch: E0010
 date: 2026-09-03
