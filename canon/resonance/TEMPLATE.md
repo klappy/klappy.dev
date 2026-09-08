@@ -1,5 +1,5 @@
 ---
-uri: klappy://canon/resonance/template
+uri: klappy://canon/resonance/TEMPLATE
 title: "Resonance Page Template"
 audience: canon
 exposure: hidden
