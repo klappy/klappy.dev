@@ -6,6 +6,7 @@ exposure: hidden
 tier: 3
 voice: neutral
 stability: stable
+tags: ["resonance", "template", "compatibility"]
 superseded_by: klappy://canon/resonance/TEMPLATE
 ---
 
