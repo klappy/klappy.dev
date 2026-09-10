@@ -18,6 +18,28 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
+## 0.42.0 — 2026-07-17
+
+**Epoch 11 — Seat to Loop: The Gate Becomes the Verdict**
+
+Declares E0011, the epoch that relocates the unit of trust from the boarded seat (E0010) to the gated two-loop production frame. A valid outcome is one that descended from ratified policy through the loop — exploration → policy → PRD → build → validate — fresh-validated at every gate, for every role, not just the seated model. The forcing fault is the ARS monolith freeze of 2026-07-16: a correctly boarded seat built a thing no policy authorized because code ran ahead of policy and no enforcer could measure the drift. The new binding contract is `policy-precedes-build`; the new mandatory evidence is gate-passage receipts. This release authors the epoch declaration first (the write-up is the declaration); the frontmatter relabel of the loop-frame canon to E0011 is a documented follow-up, not executed here. Declared as an experiment with retraction conditions on the record.
+
+### Added — Appendices
+
+- **Epoch 11 — Seat to Loop: The Gate Becomes the Verdict** (`docs/appendices/epoch-11.md`) — Tier 2, neutral, draft. The E0011 declaration: thesis, forcing fault, what changed (binding contract, mandatory evidence, universal scope), what carries forward unchanged, scope boundary, the documented relabel scope, success criteria, and the experiment clause.
+
+### Added — Release Notes
+
+- **Epoch 11: Seat to Loop** (`docs/oddkit/release-notes/2026-07-17-epoch-11-seat-to-loop.md`) — What changes for operators and agents after this lands.
+
+### Changed — Appendices
+
+- **Epochs** (`docs/appendices/epochs.md`) — Added the E0011 registry entry, and backfilled E0009 and E0010 entries whose appendices existed without registry lines, so the ledger no longer skips epochs.
+
+### Governance
+
+- Minor version bump per `canon/constraints/governance-change-discipline.md` — a behavior-affecting change that shifts the evaluation reality (what "done" means and what evidence a build must carry). Epoch bump E0010 → E0011 with appendix at `docs/appendices/epoch-11.md`. The loop-frame canon (PRs #288–#291) is referenced and scoped for relabel but not restamped in this PR. Authored for ratification; DRAFT — do not merge until reviewed and ratified.
+
 ## 0.41.0 — 2026-07-09
 
 **The Dispatcher Dispatches; It Never Executes In-Session**
