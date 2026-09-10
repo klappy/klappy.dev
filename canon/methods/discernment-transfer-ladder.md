@@ -5,11 +5,11 @@ audience: canon
 exposure: nav
 tier: 2
 voice: neutral
-stability: provisional
+stability: evolving
 target_repo: "outcomes-driven-development"
 date: 2026-06-30
 derives_from: "canon/principles/rulebook-transfer, canon/principles/discernment-layer, canon/values/axioms, canon/constraints/measure-before-you-object, canon/methods/revision-lens-sequence, canon/principles/verification-requires-fresh-context"
-status: proposed
+status: active
 ---
 
 # Method: The Discernment Transfer Ladder
@@ -66,14 +66,19 @@ Three guardrails travel with the delegation, each already in canon:
 
 There is therefore **no conflict** with "models do not mutate canon." That decision forbids governing *above* one's scope and *over* oneself; it explicitly permits delegated, bounded, in-domain stewardship. The human keeps two things no rung below inherits: ratification of the top tier (universal canon), and the authority to grant and revoke every steward's scope.
 
-This is not abstract for Covenynt. The COO's own design is this principle instantiated at the business layer: act-with-approval, solo-approve for low-stakes, 2-of-3 partners for high-stakes (`0 Context/about.md`). The agent is a bounded, revocable steward of the COO domain — ratifying the reversible in-domain work itself, escalating the rest. The ladder and the COO approval model are the same structure at two altitudes.
+This is not abstract for [ORG]. The COO's own design is this principle instantiated at the business layer: act-with-approval, solo-approve for low-stakes, 2-of-3 partners for high-stakes (`[ORG-APPROVAL-POLICY-DOC]`). The agent is a bounded, revocable steward of the COO domain — ratifying the reversible in-domain work itself, escalating the rest. The ladder and the COO approval model are the same structure at two altitudes.
 
 ## Worked example (the session that produced this method)
 
 Task: fold one chapter of a COO book into a Kirigami foldout. Reference: Opus, 41 rows / 11 tier-1. Students under rulebook v1: Sonnet 37/9 (converged — adjacent tier), Haiku 88/4 (collapsed — two tiers down, judgment did not transfer; *format* — JSON, edge syntax — did transfer). Compensation v2: budgets, tier-1 test, anti-fragmentation rule, worked example, self-count gate. Students under v2: Haiku 45/10, back in the reference band. Not yet done: the semantic-fidelity gate (Step 2 axis two) and the unseen-case test (Step 5). Predicted non-transferable rung: cross-book reconciliation (L6) stays on the top model tier.
 
+## Provenance and Ratification
+
+- **Captain-ratified 2026-07-07 (America/New_York):** proven in practice — many experiments across many repos over the week since authoring, not only the session recorded above. Observed gaps in that proving period were attributable to unrelated causes, not this method.
+- **Captain's caveat, same ruling:** ratified as proven is not ratified as robust — the process remains fragile, and every run wants careful planning, careful execution, and a real validation pass (fresh-context, per `verification-requires-fresh-context`).
+
 ## Open
 
 - **Semantic fidelity unproven.** Convergence so far is structural only. The fidelity grader against a held-out answer key has not run.
 - **N is uncalibrated.** How many compensation rounds before declaring a capability non-transferable is not yet known.
-- **Reality-grounding for this domain.** For the COO, the ultimate answer key is whether the agent's actions are right in the field — which only the pilot (Brief 07 Step 5 / Brief 08 Phase 2) supplies.
+- **Reality-grounding for this domain.** For the COO, the ultimate answer key is whether the agent's actions are right in the field — which only the pilot ([ORG-PILOT-BRIEF] field phases) supplies.
