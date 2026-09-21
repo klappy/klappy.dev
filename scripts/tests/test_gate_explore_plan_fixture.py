@@ -111,6 +111,10 @@ CF_VODKA = (
     "ready to plan. the problem is a thin gate. constraints reviewed. "
     "no world prior. no house install. we use CF and vodka"
 )
+CITE_LEAK = (
+    "ready to plan. the problem is a thin gate. constraints reviewed. "
+    "world prior cited. house install cited."
+)
 
 
 def main() -> None:
@@ -159,6 +163,21 @@ def main() -> None:
         and "world_prior_cited" in met
         and "house_install_cited" in met,
         f"met={met} unmet={unmet}",
+    )
+
+    met, unmet = evaluate(CITE_LEAK, ids, vocab)
+    ok(
+        "cite verbs for the other two bands do not leak house_canon_cited",
+        "house_canon_cited" in unmet
+        and "world_prior_cited" in met
+        and "house_install_cited" in met,
+        f"met={met} unmet={unmet}",
+    )
+    ok(
+        "house_canon_cited check stems omit cited (hyphen-split leak)",
+        "cit" not in vocab["house_canon_cited"]
+        and "cited" not in vocab["house_canon_cited"],
+        f"stems={sorted(vocab['house_canon_cited'])}",
     )
 
     if failed:
