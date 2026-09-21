@@ -58,4 +58,4 @@ Prereq-ids listed in the Prerequisites column are resolved against `odd/gate/pre
 
 When the server cannot reach this file at runtime, `oddkit_gate` falls back to a hardcoded minimal vocabulary that mirrors the row order and detection terms above. The minimal tier is identified in the response envelope via `governance_source: "minimal"`; the canon tier via `governance_source: "knowledge_base"`. Both tiers run the same BM25 matcher; they differ only in whether the vocabulary is editable by updating this file or locked to the deployed worker version.
 
-The `exploration-to-planning` row (2026-09-21, kitchen ticket `2026-09-20-gate-explore-plan-prior-art`) lists five prerequisite ids: the original pair plus `world_prior_cited`, `house_install_cited`, `house_canon_cited`. Those ids are defined in `odd/gate/prerequisites.md`. Planning-to-execution is unchanged.
+The `exploration-to-planning` row (2026-09-21) lists five prerequisite ids: the original pair plus `world_prior_cited`, `house_install_cited`, `house_canon_cited`. Those ids are defined in `odd/gate/prerequisites.md`. Planning-to-execution is unchanged.
