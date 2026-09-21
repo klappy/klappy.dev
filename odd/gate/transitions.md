@@ -34,7 +34,7 @@ Six declared transitions cover the mode-discipline cycle and its two guarded esc
 | Transition Key | From | To | Prerequisites | Detection Terms |
 |---|---|---|---|---|
 | `planning-to-execution` | planning | execution | decisions_locked, dod_defined, irreversibility_assessed, constraints_satisfied | ready to build, ready to implement, start building, let's code, start coding, moving to execution, moving to build |
-| `exploration-to-planning` | exploration | planning | problem_defined, constraints_reviewed | ready to plan, start planning, let's plan, time to plan, move to planning, moving to planning, ready, let's go, proceed, move forward, next step |
+| `exploration-to-planning` | exploration | planning | problem_defined, constraints_reviewed, world_prior_cited, house_install_cited, house_canon_cited | ready to plan, start planning, let's plan, time to plan, move to planning, moving to planning, ready, let's go, proceed, move forward, next step |
 | `execution-to-exploration` | execution | exploration |  | back to exploration, need to rethink, step back, stepped back, stepping back, reconsider |
 | `execution-to-completion` | execution | completion | dod_met, artifacts_present | ship, shipping, shipped, deploy, release, go live, push to prod |
 | `dispatch-to-captain-handoff` | execution | captain-escalation | delegation_attempted, human_only_class_named | you run it, you push, you commit, you deploy, you launch, you merge, can you run, please run this, over to you, your turn, on your machine, run this yourself, hand off to the captain, captain to run, for you to merge, leave the push to you |
@@ -57,3 +57,5 @@ When no row's detection terms score above zero against the user input, the serve
 Prereq-ids listed in the Prerequisites column are resolved against `odd/gate/prerequisites.md`. An id that appears in this table but not in that file is a governance error; the server's minimal fallback tier carries a hardcoded vocabulary snapshot that keeps gate functional in this case, but the canon-level fix is to update one file or the other.
 
 When the server cannot reach this file at runtime, `oddkit_gate` falls back to a hardcoded minimal vocabulary that mirrors the row order and detection terms above. The minimal tier is identified in the response envelope via `governance_source: "minimal"`; the canon tier via `governance_source: "knowledge_base"`. Both tiers run the same BM25 matcher; they differ only in whether the vocabulary is editable by updating this file or locked to the deployed worker version.
+
+The `exploration-to-planning` row (2026-09-21, kitchen ticket `2026-09-20-gate-explore-plan-prior-art`) lists five prerequisite ids: the original pair plus `world_prior_cited`, `house_install_cited`, `house_canon_cited`. Those ids are defined in `odd/gate/prerequisites.md`. Planning-to-execution is unchanged.
