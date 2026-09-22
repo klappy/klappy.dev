@@ -12,7 +12,7 @@ exposure: nav
 date: 2026-09-21
 derives_from: "canon/values/axioms.md, canon/methods/borrow-bend-break-beget-build.md, canon/principles/skills-are-procedure-not-judgment.md"
 complements: "docs/guides/jev-in-the-odd-stack.md, canon/resonance/ai-coding-toolkit.md, canon/resonance/agentic-engineering.md, canon/constraints/retrieval-disclosure-contract.md"
-status: DRAFT — captain review required before landing
+status: shipped-with-open-pushback — captain ruling 2026-09-21; see Open Pushback
 ---
 
 # Jev and System One Models (Resonance)
@@ -113,3 +113,32 @@ Bide verdict per klappy://canon/constraints/borrow-evaluation-before-implementat
 - [Audit Gates Are Spawned Agent Sessions](/canon/constraints/audit-gates-are-spawned-agent-sessions.md)
 - [Retrieval-Disclosure Contract](/canon/constraints/retrieval-disclosure-contract.md)
 - [AI Coding Toolkit — Harness Engineering](/canon/resonance/ai-coding-toolkit.md) — the sibling resonance; same layer argument, one tier down
+
+---
+
+## Open Pushback (folded in unchanged, 2026-09-21)
+
+Two fresh-context validators graded this page against rubric A–G. Fable: *land with listed edits*. Astra: *return to author*. The captain ruled: ship as-is with the pushback recorded, then test against real evidence. Nothing above was rewritten to absorb these; they stand as objections the bake-off must answer. Full verdicts: kitchen `rail/.../2026-09-21-jev-system-one-resonance/VERDICT.md`.
+
+**Corrections both validators agree on (not yet applied):**
+- "10x the latency" is 5x (anisselbd). "~10x cheaper" is 2.7x — DMB's own headline disagrees with its own prices.
+- 95.0% is a fitted regression over five Jev signals, not decomposition alone.
+- The seven-stage "layer 4" collides with canon's four-layer model, where layer 4 is generation. Needs distinct names.
+- `jev-latest` is TypeSafe's alias, not Cloudflare's; responses carry the versioned id, so "silent" is overstated. The silent risk is Workers AI exposing bare `typesafe/jev` with no visible pin.
+- 67.8% comes from DataCamp's write-up, not the launch post text; attribute it.
+- Kirigami candidate: HYGIENE 13 declares that vocabulary open; a Choice closes it. Strike or rewrite as open-set.
+
+**Objections that go to the test bench (Astra):**
+- "Never gate" contradicts "Noul near 0.99 or do not gate." Define gate; remove any implied license to automate ODD's semantic gate.
+- Pruning can delete required governance without triggering fallback: §4 discards below threshold, §9 escalates below threshold, and the two quantities (relevance vs confidence) are never distinguished. A confident false-negative removes the rule the judge needed. The static fallback covers outage, not a successful wrong prune. **Test: seed known-required docs into the candidate set and measure how often the router drops them.**
+- The router state as shown (tool, tokens, cache, disclosure) cannot decide `body_worth_it` or next epistemic action; it can warn about payload cost. **Test: which fields actually move the decision.**
+- The 99% has no denominator. **Test must define the unit** (tasks, decisions, tokens, time), a quality-preservation condition, a held-out set, and a decision rule for acceptable recall loss.
+- "Width is free" is unsupported: DMB's flat latency is across option counts, not question counts; priorbench reports 800 judgments at 985 ms; TypeSafe caps 64K total and 32K state-plus-question. **Test: latency vs question count on real boarding catalogs.**
+- Search-cannot-rule-applicability is asserted, not shown; the bake-off must include a reranking baseline, not only lexical search.
+- TypeSafe's own jaggedness page (Jev 1.13): distractor-rich state reduces accuracy, adversarial state can steer answers, separately asked questions need not preserve logical identities. All three hit a context-pruning router. **Test with distractors present.**
+- The strongest opposing view is not fully answered. Better argument: audit-gates requires a clean session with structured findings; Jev cannot be that session. Not "no prose, no grounds."
+- Calibration maps and thresholds have no named owner or lifecycle; that is where thinness fails if it fails.
+- `oddkit_resolve` (1,200 calls/30 d) is missing from the telemetry table and the `next_tool` Choice.
+- Access is documented, not proven: no call has been made, so the gold set is not proven to be the sole blocker.
+
+**Standing:** Bide `waiting`. Retraction conditions above apply. Reversal is a result.
