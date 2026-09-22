@@ -64,7 +64,7 @@ A decision is cheap to emit and expensive to justify. ODD keeps the two apart: p
 - **Agreement with bigger models is not observation of reality.** The vendor's 67.8% is agreement with a two-model panel on four vendor-authored workflows. Coverage restates it as accuracy. A panel of peers is not reality.
 - **It does not know that it does not know.** Off-distribution, calibration fails and the sign flips by output type; asked to apply a rule that lived in policy rather than in the text, it answered 44.7% right at 0.74 stated. On forced-uncertainty items every LLM admitted ignorance 97–100% of the time; Jev, 49.7%.
 - **It always answers.** Without an explicit "none of these," zero of thirty out-of-scope inputs were flagged.
-- **Chooser in the outer loop holds authority without a record.** The popular pattern puts Jev choosing next-step with LLMs demoted to tools. ODD puts the human gate and the mode declaration at that seat. A sequence of bare choices is a flight with no black box.
+- **Chooser in the outer loop holds authority without a record.** The popular pattern puts Jev choosing next-step with LLMs demoted to tools. ODD puts the human gate and the mode declaration at that seat. A sequence of bare choices is a work unit with no receipt.
 - **A proprietary model is still a dependency.** Served by three hosts (TypeSafe, Vercel, Cloudflare Workers AI), so the substrate is swappable; the weights, the moving `jev-latest` alias, and the unproven price are not. ODD's procedure layer currently has zero inference dependencies.
 
 ---
@@ -93,7 +93,7 @@ Bide verdict per klappy://canon/constraints/borrow-evaluation-before-implementat
 
 ## Confidence, Disconfirmers, Prior Art
 
-**Confidence.** Working belief, not established fact. The layer claim rests on five independent measurements days old plus the vendor's own architecture statement; none reproduced here; no hands-on use. Scope: bounded kitchens with a private ontology. Nothing here is claimed for open-domain work.
+**Confidence.** Working belief, not established fact. The layer claim rests on five independent measurements days old plus the vendor's own architecture statement; none reproduced here; no hands-on use. Scope: bounded adopters with a private ontology. Nothing here is claimed for open-domain work.
 
 **What would retract it.** (a) Jev, or a successor, emits inspectable rationale alongside its probability — the "no receipt" divergence collapses and the gate/validate exclusion must be re-argued. (b) Abstention measured at LLM parity (>95% on forced-uncertainty) — the bluffing divergence collapses. (c) Off-distribution calibration measured near in-domain on ODD's own gold set — the "break vendor calibration" line is retired. (d) The bake-off shows the existing lexical classifiers already exceed ~90% — the borrow is not worth the dependency.
 
