@@ -1,0 +1,35 @@
+{
+  "source_commit": "28dbd7f7737d5aa302d81fc740c2ced3fa676e38",
+  "source_files": [
+    {
+      "path": "rail/4-plated/2026-09-03-canon-is-metaphor-agnostic/CHECKLIST-RUN.md",
+      "sha": "1605cfe3716c2bb70513070bfa5c9cc37ed6695b",
+      "mode": "100644"
+    },
+    {
+      "path": "rail/4-plated/2026-09-03-canon-is-metaphor-agnostic/DEBRIEF.md",
+      "sha": "89fb07dba4d5f9e736007c18dba640c4d71d4fbd",
+      "mode": "100644"
+    },
+    {
+      "path": "rail/4-plated/2026-09-03-canon-is-metaphor-agnostic/FIRE-CHECK-RUN.md",
+      "sha": "1202bd28ab5daf3345cbe2734301df3a0fb3ef52",
+      "mode": "100644"
+    },
+    {
+      "path": "rail/4-plated/2026-09-03-canon-is-metaphor-agnostic/LEARNING-CLAIM.md",
+      "sha": "6c6f4659f73247bf47cbc9e881e15828e0cd53d1",
+      "mode": "100644"
+    },
+    {
+      "path": "rail/4-plated/2026-09-03-canon-is-metaphor-agnostic/TICKET.md",
+      "sha": "ffc6176648cd516555752c3d4b6d491ba456fc61",
+      "mode": "100644"
+    },
+    {
+      "path": "rail/4-plated/2026-09-03-canon-is-metaphor-agnostic/VERDICT.md",
+      "sha": "264fa458c32ba5917afd545a68fa3a4b82aba76c",
+      "mode": "100644"
+    }
+  ]
+}
