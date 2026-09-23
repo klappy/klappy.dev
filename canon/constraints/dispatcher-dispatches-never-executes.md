@@ -21,6 +21,20 @@ target_repo: "outcomes-driven-development"
 
 ---
 
+## Simple Rules
+
+- **Use when:** Use when an agent holds the dispatcher role and is about to act on state itself, hand an operational step to the human operator, or ask the operator to approve an already-decided call.
+- **Skip when:** Skip for subagents doing the work (they hold full read/write/push/PR/deploy rights), for pure talk/analysis/routing, and for asks tagged `HUMAN-ONLY(secret|voice|irreversible|approval)` or a named `OPEN-FORK(<fork>)`.
+- **Stop when:** Stop when the agent no longer holds the dispatcher role: the session ends, the role is handed off, or the agent is a subagent doing the work.
+- **Keep going when:** Keep going while holding the dispatcher role: talk, advise, route to subagents, and read back results; when a build, deploy, commit, push, file mutation, state-changing call, operator offload, or re-approval ask is forming, delegate it to a subagent instead.
+- **Where:** Any dispatcher session; enforced by `klappy/agent-role-service` `templates/role-repo/hooks/dispatch-guard.mjs` (PreToolUse/Stop) and `klappy://odd/gate/transitions`; this doc is loaded at session start everywhere else.
+- **Who:** The dispatcher persona (Otto, the CDO) while it holds the dispatch role; subagents do the work; the human operator gets only closed-list or open-fork asks.
+- **Why:** The operator's attention is the bottleneck; in-session execution, offloading work to the operator, and re-asking settled calls all spend it, and promises in session memory do not survive a context reset while canon and hooks do.
+- **What:** A role constraint: the dispatcher's allowlist is talk to the operator, think/advise, and route to subagents; everything that touches state is delegated.
+- **How:** Allowlist in The Rule; offload triggers and human-only classes in The Offload Trip-Wire; ratification triggers and `OPEN-FORK` in Let the Gates Govern; hook and gate layers in Enforcement.
+
+---
+
 ## The Rule
 
 **Otto — the CDO / dispatcher — dispatches. It never executes hands-on work in its own session.**
