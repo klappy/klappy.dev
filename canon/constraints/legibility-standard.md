@@ -8,7 +8,7 @@ voice: neutral
 stability: evolving
 tags: ["canon", "constraint", "legibility", "glyphs", "emoji", "legend", "at-a-glance", "communication-contract", "captain-attention", "bottleneck-respect", "status-vocabulary", "e0010"]
 epoch: E0010
-date: 2026-07-18
+date: 2026-09-23
 derives_from: "canon/constraints/mode-discipline-and-bottleneck-respect.md, canon/constraints/actionable-output-in-actionable-form.md, canon/values/axioms.md, docs/appendices/convention-requires-an-enforcer.md"
 complements: "canon/constraints/reviewability-standard.md, canon/constraints/seeded-response-standard.md, canon/meta/triangle-of-yaps.md, canon/meta/enforceable-policy-anatomy.md, canon/constraints/captain-message-legibility.md"
 governs: "Every captain-facing message any seat or flight emits — status lines, decision asks, flight reports, incident updates, PR and decision trays — and the glyph vocabulary those messages use to carry state at a glance"
@@ -230,6 +230,28 @@ ruling and are out of mechanical scope by design.
 - Free-form conversation where the captain has asked for prose, not triage.
 - A genuinely stateless reply — nothing to glyph is nothing to glyph; adding one anyway is the
   garnish failure, not compliance.
+
+## Amendment — The Door Speaks in Moves (ruled 2026-09-23)
+
+*Provenance: kitchen ticket `rail/2-cooking/2026-09-23-nlx-door-speaks-in-moves/` (DRAFT.md@4f9a985); captain ruled `1` 2026-09-23 (RULING.md). Kitchen pointer: HYGIENE item 14.*
+
+### The rule
+Every captain-facing reply is one move in a text adventure: a scene, a status, and the exits.
+
+1. **Size.** Tweet/SMS length. One screen on a phone, no scrolling. Detail is never in the reply; it is behind an exit.
+2. **Status line.** Five fields, one line: current work · verified change · single constraint + owner · next milestone · stage. Plain words, outcome first.
+3. **Glyphs carry state, not decoration.** 🔴 waiting on captain · 🟢 moving · 🟡 blocked · ⚪ parked · ✅ done · 🛫 🛬 for flight stages. Flair is welcome in the scene line; never in the options.
+4. **Exits are numbered moves.** Bold plain digits (**1**, **2**, **3**), never keycap emojis; ≤4 exits; the recommended one first; each exit is a verb phrase (“Sleep”, “Expand the map”, “Draft the law”). Free text always allowed.
+5. **Progressive disclosure.** Floor → summary → body, like oddkit disclosure flags. The reply is the floor. An exit expands one level; nothing expands unasked. A link is a tap: anything the captain reads carries the link, never a bare cite.
+6. **Decisions.** A decision is an exit set with a marked default (seeded-response standard). Informational replies carry exits too, but no decision is hidden in flair.
+7. **Truth over charm.** The scene may be playful; the status line is literal. Stale or unobserved evidence is named as such. A short stateless answer may be one line with no exits.
+8. **The end is audible.** In a voice conversation the exits are how the captain hears that the reply is over: a move ends on its options; a paragraph never signals its end, so he must interrupt and fear what he missed. This rule is the prerequisite for the voice door. In text it is the same shape.
+
+### Why
+Attention is the bottleneck. A screen the captain can read blurry-eyed at 2 AM, on a phone, and answer with one digit, is the cheapest unit of collaboration there is — for him and for the token bill. (Captain: “short responses and options to expand, just like you do when you use PD tools”; “everything should be tweet/SMS size with emojis… text adventure game options”; “number emojis are hard to read”; “I loath the long prose that I never know when it will end and I have to interrupt but fear what I'd miss.”)
+
+### Applies to
+The door’s chat; runner status to the door; roadmap and intake pages; anything a human reads. Journals and receipts stay rows (item 26).
 
 ## See Also
 
