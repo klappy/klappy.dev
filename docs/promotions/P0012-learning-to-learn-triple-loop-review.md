@@ -171,3 +171,13 @@ proposal — per `docs/promotions/README.md`, promotion to Canon is the
 maintainer's decision alone. Delivered as a fallback artifact (push to
 klappy.dev refused — 403) inside the ODD sweep branch; the dispatch seat
 opens the PR against klappy.dev from this file and its companion patch.
+
+## Addendum 2026-07-21 — second evidence window + Theory of Constraints mechanism (seat-recorded captain steering)
+
+**Evidence gap cured.** The artifact honestly flagged that all prior observations came from one calendar window. An independent window (2026-07-20 evening → 2026-07-21 morning, overnight PR-triage sweep) now supplies the pattern across distinct repos and mechanisms:
+- **Effort at a non-constraint:** the seat invested the night in container-runtime reaper workarounds (micro-charter law, recovery protocol, two PRDs) while the binding constraint on throughput was seat turn-cadence: 03:13–07:52Z, ~4.5h, ~10 captain interruptions, 9 merges (~1 merge per captain touch) vs. the corrected morning turn: ~18 min, 0 interruptions, 9 merges + CI audit. Same lane, same reaper. Only the captain's direct intervention surfaced it — triple-loop insight again arriving by captain catch, not standing question.
+- **L4-duty pattern (second occurrence class):** a consequential prevention plan reached the captain unchallenged because the challenge duty lived only in prompt text; it fired only when the captain remembered (mirrors preflight's own L4→L1 promotion history).
+
+**Proposed mechanism (captain steering 2026-07-21): the triple-loop question gets a Theory of Constraints section.** Each debrief/cycle: (1) name the Goal metric — validated Goal-work landed per captain-minute consumed; (2) identify the CURRENT binding constraint with convicting evidence; (3) audit the cycle's effort and new lessons as constraint-relevant vs local-optimum — elevation effort goes to the constraint; local work continues at best-practice quality but does not masquerade as throughput; (4) sunset-review standing laws whose birth-constraint has moved (first scheduled: micro-charter law retires when run-completion durability ships — agent-role-service PRD, merged as PR #112); (5) re-identify the constraint every cycle. Improvement at a non-constraint is inventory, not throughput.
+
+**Cross-references:** ODD `candidates/2026-07-21-theory-of-constraints-as-the-third-loop.md` (merged 85f247b, G5-validated as proposal-framed); ODD `docs/prd/2026-07-14-second-brain-feeding-loop.md` (accepted cadence: weekly, riding the tower sweep). Status remains `proposed` — this addendum adds evidence and mechanism; promotion stays the captain's decision.
