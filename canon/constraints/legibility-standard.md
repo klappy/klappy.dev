@@ -31,6 +31,20 @@ target_repo: "outcomes-driven-development"
 
 ---
 
+## Simple Rules
+
+- **Use when:** Use when writing any message a human operator reads to triage state or make a decision: status lines, decision asks, work-unit reports, incident updates, PR/decision trays, roadmap and intake pages.
+- **Skip when:** Skip for agent-to-agent or subagent traffic, commit messages, code and config, document and essay bodies, journals and receipts (they stay rows), and replies where the operator asked for prose.
+- **Stop when:** Stop once the reply fits one phone screen and ends on its numbered options; a stateless answer stops at one line with no options and no glyph.
+- **Keep going when:** Keep going while the reply still carries state, a decision, or more than one screen of detail: lead with the state glyph and move detail behind a numbered option.
+- **Where:** Operator-facing chat, status/report/incident messages, card and PR/decision-tray text, roadmap and intake pages; not `canon/**` bodies, `journal/**`, commits, or code.
+- **Who:** Any agent or process composing text for the human operator; the operator's own authored text is never edited.
+- **Why:** The human reader's attention is the bottleneck, so state must read in one glance and a decision must be answerable with one digit (see WHY).
+- **What:** A format constraint: operator-facing replies are short, lead with state glyphs from the live board legend, and end on up to four numbered options, recommended first.
+- **How:** Fetch the glyph legend from the live tracking board, then shape the reply per the Amendment section rules 1–8; glyph placement in WHAT, exclusions in SCOPE and When This Does Not Apply.
+
+---
+
 ## WHAT — The Rule, Precisely
 
 Every captain-facing message that carries state, asks for a decision, reports a flight, or
