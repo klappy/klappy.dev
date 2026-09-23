@@ -1227,7 +1227,7 @@ This release introduces the Resonance section: external works that echo ideas fo
 ### Added
 
 - **Resonance Index** (`/canon/resonance/README.md`) — Documents the relationship between ODD and influential external works with mandatory divergence rule
-- **Resonance Template** (`/canon/resonance/TEMPLATE.md`) — Book-centered naming convention with ODD principle as subtitle
+- **Resonance Template** (`/canon/resonance/template.md`) — Book-centered naming convention with ODD principle as subtitle
 - **Four Resonance Pages:**
   - `antifragile.md` — Taleb's Antifragile → ODD Principle: Systems Should Improve Under Stress
   - `lean-startup.md` — Ries' The Lean Startup → ODD Principle: Epistemic Feedback Loops

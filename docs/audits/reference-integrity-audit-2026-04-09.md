@@ -115,8 +115,8 @@ These appear in template files as syntactic examples. They are not real paths.
 
 | File | Link |
 |------|------|
-| `canon/resonance/TEMPLATE.md` | `/odd/<file>` |
-| `canon/resonance/TEMPLATE.md` | `/canon/<file>` |
+| `canon/resonance/template.md` | `/odd/<file>` |
+| `canon/resonance/template.md` | `/canon/<file>` |
 | `docs/TEMPLATE.md` | `/path/to/doc.md` |
 | `docs/TEMPLATE_README.md` | `/path/to/folder/` |
 | `docs/TEMPLATE_README.md` | `/path/to/doc.md` |
