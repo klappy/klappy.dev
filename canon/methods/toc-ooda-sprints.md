@@ -4,7 +4,7 @@ title: "Method: ToC OODA Sprints"
 status: tasting
 date: 2026-09-23
 audience: canon
-kind: method
+kind: canon
 exposure: nav
 tier: 2
 voice: third_person
@@ -91,11 +91,13 @@ Token burn was named the biggest constraint, and acknowledgement chatter and unc
 
 ## Applies to
 
-Orchestration at any size. An epic, a batch of tickets or a single ticket runs the same loop: one constraint, one owner, a fixed mark, trailing delivery, lanes with exact files.
+Orchestration at any size. An epic, a batch of work units or a single work unit runs the same loop: one constraint, one owner, a fixed mark, trailing delivery, lanes with exact files.
 
 Token economy runs the same loop too. Input and output are both inventory that competes for one reader's attention. The 2026-09-23 ruling applies ToC and OODA to both: cite instead of restating, one row per act, and a status channel that is optimized rather than removed (kitchen `debriefs/2026-09-23-layout-cemented.md` §Output economy).
 
-| Method term | Example on the kitchen rail |
+## Example Applications
+
+| Method term | Kitchen |
 |---|---|
 | epic | meal |
 | sprint | one work unit in `/work/active`: owner, path list, base commit, checkpoint |
