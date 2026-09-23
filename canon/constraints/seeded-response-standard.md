@@ -20,6 +20,20 @@ target_repo: "outcomes-driven-development"
 
 > Companion to the legibility and reviewability standards. The legibility standard makes work *readable*; the reviewability standard makes it *reviewable*; this standard makes a decision *answerable* — with as little friction as it took to make it legible and reviewable. Everywhere the system asks the captain to decide or give feedback, it MUST seed a few happy-path answers: 2–4 quick-pick options with one clearly recommended default, while always leaving free-text / "other" open. The human should be able to answer with a tap or a single number, never forced to compose a response from scratch. Big decisions get clickable buttons; fast ones get numbered quick-picks. Captain ruling, 2026-07-09. The seed is respect for the captain's time and attention — it drives the cost-to-respond toward zero.
 
+## Simple Rules
+
+- **Use when:** Use when asking a human operator to make a decision or give feedback: agent chat questions, decisions surfaced in PR descriptions, and feedback or decision cards on the board/HUD.
+- **Skip when:** Skip for purely informational replies that ask nothing, open-ended creative prompts with no informed shortlist, and moments where the operator asked for free-form conversation.
+- **Stop when:** Stop once the prompt carries 2–4 options with one marked recommended default, a free-text / "other" path, and the recommended path is answerable with one tap or one number.
+- **Keep going when:** Keep going while the prompt is a bare question, lists options with no recommendation, lacks an "other" exit, or buries the choice in prose or an empty text box.
+- **Where:** Agent chat replies, PR descriptions (`pull/*` bodies), and board/HUD feedback and decision cards.
+- **Who:** Any agent or process that poses a decision or feedback prompt to the human operator (or any user).
+- **Why:** The operator's attention is the bottleneck; seeding answers drives the cost-to-respond toward zero instead of handing over a blank page (see Why This Is Necessary).
+- **What:** A decision-shape constraint: every decision ask seeds 2–4 quick-picks with a recommended default and an open write-in, as buttons for big calls and numbered picks for fast ones.
+- **How:** Apply the Operating Constraints and Defaults per surface in The Three Surfaces; check against Failure Modes and Verification.
+
+---
+
 ## Description
 
 Under Epoch 10, the captain's attention is the system's bottleneck, and every question the system poses spends it. A bare, open-ended question — "What should we do here?" — inverts the cost the same way a review with no preview URL does: it hands the captain a blank page and makes him do the framing work the crew should have already done. The crew saw the options; the crew formed a recommendation; asking the question without them throws that work away and bills the captain to reconstruct it.
