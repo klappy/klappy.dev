@@ -54,8 +54,9 @@ All tracking occurs on `/mcp` POST envelopes. One data point is written per JSON
 | Canon URL | Which repo is being served | `https://github.com/klappy/klappy.dev` |
 | Document URI | For `get` calls, the path requested | `klappy://canon/principles/vodka-architecture` |
 | Worker version | oddkit version string | `0.17.0` |
+| Jev contract | Which Jev contract ran, when Jev ran (blob 10); blobs 11–12 carry the primitive and the pick. Absent when Jev did not run | `cites@1` |
 
-> Slot 9 (formerly `cache_tier`) is retired. The single-tier interpreter that picked one storage tier as the "winner" of a multi-fetch request was the source of repeated bugs across PRs #137–#139; it has been replaced by per-fetch records in the trace and aggregate counts in `cache_hits` / `cache_lookups` (doubles 7 and 8). The slot stays unused — no reuse — per the "no deprecation, nobody uses them yet" rule established in PR #137.
+> Slot 9 (formerly `cache_tier`) was retired when the single-tier interpreter that picked one storage tier as the "winner" of a multi-fetch request proved to be the source of repeated bugs across PRs #137–#139; it was replaced by per-fetch records in the trace and aggregate counts in `cache_hits` / `cache_lookups` (doubles 7 and 8). The "no reuse" hold on slot 9 was lifted 2026-09-26 (captain ruling, canon PR #339) when the Jev doubles took slots 9–14; a reader of pre-Jev rows treats any double 9 as the retired `cache_tier`, and the `jev_contract` blob being set is the signal that slots 9–14 carry Jev values.
 
 ### Numeric Values (Doubles)
 
@@ -69,6 +70,12 @@ All tracking occurs on `/mcp` POST envelopes. One data point is written per JSON
 | 6 | `tokens_out` | `cl100k_base` token count of the response body. `0` for streamed responses or tokenizer failure |
 | 7 | `cache_hits` | Count of per-fetch records in the request whose `cached` flag was true. Sourced from `tracer.cacheStats.hits` |
 | 8 | `cache_lookups` | Total per-fetch records in the request — the denominator for hit-rate. Sourced from `tracer.cacheStats.total` |
+| 9 | `jev_p_top` | Jev's top-pick probability. `-1` when Jev ran without a probability. Slots 9–14 are written only when Jev ran (`jev_contract` set) |
+| 10 | `jev_margin` | Gap between Jev's top and second pick. `-1` when not computed |
+| 11 | `jev_escalated` | `1` when Jev escalated to the larger model, else `0` |
+| 12 | `jev_fallback` | `1` when Jev fell back to the non-Jev path, else `0` |
+| 13 | `jev_latency_ms` | Jev wall-clock in milliseconds |
+| 14 | `jev_tokens_in` | `cl100k_base` tokens Jev consumed as input |
 | 15 | `tokens_source` | `cl100k_base` token count of the full document(s) behind the response — the `source` field of the tool token footer (`klappy://canon/constraints/tool-token-footer`). `0` when the action carries no footer. Slots 9–14 are not claimed here |
 
 #### Why no `tokenize_ms`
