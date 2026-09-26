@@ -69,6 +69,7 @@ All tracking occurs on `/mcp` POST envelopes. One data point is written per JSON
 | 6 | `tokens_out` | `cl100k_base` token count of the response body. `0` for streamed responses or tokenizer failure |
 | 7 | `cache_hits` | Count of per-fetch records in the request whose `cached` flag was true. Sourced from `tracer.cacheStats.hits` |
 | 8 | `cache_lookups` | Total per-fetch records in the request — the denominator for hit-rate. Sourced from `tracer.cacheStats.total` |
+| 15 | `tokens_source` | `cl100k_base` token count of the full document(s) behind the response — the `source` field of the tool token footer (`klappy://canon/constraints/tool-token-footer`). `0` when the action carries no footer. Slots 9–14 are not claimed here |
 
 #### Why no `tokenize_ms`
 

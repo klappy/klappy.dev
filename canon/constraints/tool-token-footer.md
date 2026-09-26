@@ -65,7 +65,7 @@ are out of scope (see WHAT IT DOES NOT COVER).
 | Field | Type | Meaning |
 |---|---|---|
 | `source` | integer | Tokens of the full file(s) that would be in context if the tool had returned them whole. For several files (a search, a bundle), the sum over every distinct file the response draws from. |
-| `returned` | integer | Tokens of the content actually sent: the payload the caller's context receives, envelope metadata excluded. |
+| `returned` | integer | Tokens of the content actually sent: the payload the caller's context receives, envelope metadata excluded. In an oddkit-style envelope that is `result` plus `assistant_text`, serialized as delivered; `action`, `server_time`, `state`, `debug`, and the `tokens` footer itself are not counted. |
 | `ratio` | number or `null` | `returned / source`, rounded to two decimals (more if needed to be non-zero). `null` when `source` is 0. |
 | `tokenizer` | string | The encoding both counts used. `cl100k_base` unless a second count is added (see Tokenizer rule). |
 
