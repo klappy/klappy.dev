@@ -7,7 +7,7 @@ tier: 2
 voice: neutral
 stability: semi_stable
 tags: ["cooking-taxonomy", "client-frame", "recipe", "menu", "role-reconciliation", "trust-kernel", "projection", "ninety-nine-one", "kitchen-roles", "tasting", "sub-recipes", "service-tiers", "gates", "service-formats", "counter-service", "kitchen", "cooking", "dishes", "meals", "pantry", "chef", "restaurant", "catering", "customization-spectrum"]
-date: 2026-08-07
+date: 2026-09-25
 derives_from: "canon/values/trust-kernel.md, canon/bootstrap/flight-deck-model.md, writings/artifacts-are-projections.md, canon/principles/capability-is-not-permission.md"
 governs: "Every client-facing packaging of the house's AI and software work: menus, proposals, statements of work, pricing structure, onboarding, teaching, deliverable naming; fetched at the moment any artifact a client will read is chartered or drafted; internal crew operations remain under the airline frame."
 status: active
@@ -22,6 +22,8 @@ status: active
 > The dining-room test: if the reader is a diner, this document governs; if the reader is crew, it does not.
 >
 > Known informally as: the kitchen, the cooking metaphor, the recipe system, the menu. All of those names point here.
+>
+> Amended 2026-09-25: the cockpit exclusion above rests on the Wrap Ruling, which is superseded (see the note at §11). The additions of this amendment are §17–§23.
 
 ## Summary — The Client Orders From a Menu; the Kitchen Keeps the Recipes
 
@@ -131,6 +133,8 @@ The sub-recipe law, where a recipe's output can be a prerequisite ingredient of 
 ## 11. The Wrap Ruling
 *Confidence: high (locked, working lunch, 2026-08-06).*
 
+> ⚠️ **Superseded by (2026-09-25 record of a 2026-08-08 ruling):** the captain's ruling of 2026-08-08, recorded as R1 Metaphor in the kitchen's closed rulings ([`health-code/RULINGS.md`, R1](https://github.com/klappy/kitchen/blob/main/health-code/RULINGS.md)) and restated in the kitchen charter ([`KITCHEN.md`](https://github.com/klappy/kitchen/blob/main/KITCHEN.md)). Under R1 the kitchen frame runs front AND back of house; the airline/dispatch frame is retired to a read-only archive and no longer governs crew operations. This is a partial supersession per klappy://canon/methods/supersession: only this section is superseded; the rest of the document stays authoritative. The Wrap Ruling text below is kept unchanged as historical evidence of the 2026-08-06 understanding.
+
 
 Cooking wraps, and does not replace, the airline/dispatch frame. Cooking is the dining room: what clients see, what they order, the recipes and menu built for them. Airline is the cockpit: how the crew flies (dispatch, flights, validation gates), internal to execution. The two frames answer different questions for different audiences and must not mix in client-facing material: a menu does not mention dispatch, and a flight log does not mention courses.
 
@@ -175,3 +179,48 @@ The grounding tripwire: a solution without a grounded problem people actually fe
 
 
 The packaged-goods question is answered by the spectrum's fast-food end — off-the-shelf items exist, in someone else's kitchen; the house's live question is now where the house pantry ends and the client's pantry begins — what substrate is shared and what is the client's own store. Pricing unit (per dish, per meal, or per plan) is still open. The boundary between a meal plan and a retainer needs a rule, not a feel. How much of the kitchen a culinary-school client is shown, and in what order, remains open. And implementation: whether recipe cards compile into skills — "skills are the modern-day script" — or stay markdown the agents consume directly.
+
+(Amended 2026-09-25: the meal-plan/retainer question now has a rule, §20.)
+
+## 17. Ingredient Typology
+*Confidence: medium (amended 2026-09-25 from the kitchen's composability spec; in kitchen use since 2026-08-08).*
+
+Ingredients are typed inputs, and the type decides how a recipe may use them. RAW: primary sources; consumed, never modified. PREPARED: the output of a prior recipe (the sub-recipe law of §10); it carries provenance and a freshness date. STAPLE: the standing pantry; curated, long shelf life. PERISHABLE: carries a freshness date; once expired it is re-observed before use, never served as current. ALLERGEN: secrets, personal data, the owner's own voice, and irreversible actions; any dish that touches one escalates to the allergy protocol, where a named human ratifies before it ships.
+
+Recipes declare their ingredient assumptions, so a deviation found at mise en place triggers adapt-or-refuse before cooking starts rather than a rescue after it (see §23).
+
+## 18. The Techniques Rung
+*Confidence: medium (amended 2026-09-25 from the kitchen's composability spec).*
+
+Below the recipe sits the technique: an atomic method such as validate, distill, or translate. The spec plane therefore reads technique → recipe → cookbook → curriculum. Techniques live in the school (this canon); recipes compose techniques by reference and never copy them. The instance plane of §3 (dish → meal → meal plan) is unchanged.
+
+## 19. The Two-Axis Service Model
+*Confidence: medium (amended 2026-09-25; the axes are named, pricing on them is not yet run in the field).*
+
+Service varies on two independent axes, not one. CUSTOMIZATION: what the client supplies, the spectrum of §7 (house ingredients → groceries → pantry → own kitchen). CEREMONY/PROMISE: how much process and how firm a promise the dish carries, the tiers of §5 (fast food → entrée → catering or fine dining). Every menu item picks a coordinate on both axes. Pricing prices the coordinate: customization sets ingredient cost, ceremony sets labor. Reading the spectrum and the tiers as one scale is the error this section corrects.
+
+## 20. Retainer = Standing Prix Fixe
+*Confidence: medium (amended 2026-09-25; answers the meal-plan/retainer question of §16).*
+
+A menu item is recipe + tier + promise + price. A special is a one-off that is not yet a recipe; the recipe is written only after the special succeeds, by the frequency rule of §13. A retainer is a standing prix fixe: recurring meals at a set price. The meal plan is the schedule; the retainer is the price agreement for the recurring meals on it. Off-menu orders are allowed and priced as specials.
+
+## 21. Recursion Semantics
+*Confidence: high (kitchen ruling R11, 2026-08-08).*
+
+Sub-recipes (§10) run in exactly two modes. PREP-AHEAD: the sub-recipe is its own prior ticket, and its product goes to the pantry as a prepared ingredient with provenance and freshness (§17). À LA MINUTE: the sub-recipe runs inline inside the parent dish's remaining promise, never with a fresh clock. Prep chains are at most two deep; a deeper chain is a menu-design failure, and the response is to redesign the recipe, not to extend the chain. Source: [`health-code/RULINGS.md`, R11](https://github.com/klappy/kitchen/blob/main/health-code/RULINGS.md).
+
+## 22. The Kitchen's Specifications
+*Confidence: high (pointers only).*
+
+This canon is the school; a kitchen inherits it and never copies it. The house kitchen's operating law lives in its own repository and is authoritative for kitchen operations: the charter ([`KITCHEN.md`](https://github.com/klappy/kitchen/blob/main/KITCHEN.md)) and the closed rulings ([`health-code/RULINGS.md`](https://github.com/klappy/kitchen/blob/main/health-code/RULINGS.md)), including R1 (metaphor, the §11 supersession), R11 (depth, §21), R12 (freshness and allergens, §17), and R14 (lineage: amend by dated supersession, never edit in place). Where this document and a kitchen ruling disagree, the ruling's date and supersession note decide, and the disagreement is a drift to record here.
+
+## 23. Field Evidence (2026-08-10/11)
+*Confidence: medium (three field conversations in two days; not yet a pattern across many engagements).*
+
+The kitchen frame was tested live with outside listeners in the field trials recorded in the kitchen journal (`journal/2026-08-11-metaphor-field-trials.md`). Participants are described by role only.
+
+METAPHOR AS TRANSLATION. Kitchen speech is back-of-house. The front of house speaks the audience's own language (product terms; plain what, why, how), and the models hold the kitchen-to-audience map. The vocabulary is an adapter, not law. This refines the claim in §11 that the kitchen "carries across cultures without translation": the frame traveled, and it traveled through translation.
+
+TWO NAMED FIELD VALIDATIONS. (1) A partner in a recurring advisory conversation extended the metaphor unprompted: seasonal ingredients as data shelf life, which independently reproduces the perishable rule of §17. (2) A product lead at a partner organization mapped the frame onto their own product playbook and committed to joint pilots. The frame was the first to be adopted by listeners on first hearing; the earlier airline frame had reached one listener.
+
+EGG DOCTRINE, SHARPENED. A dish cannot be uncooked. Steering a ruined dish is sunk cost: fix the recipe and refire (the SCRAP AND RE-COOK and AMEND dispositions of §4). Because refiring is the remedy, recipes declare their ingredient assumptions so deviations surface at mise en place (§17). The wanted practice is "summarize and start fresh": encode what was learned, end the session, refire clean.
