@@ -1,5 +1,5 @@
 ---
-name: managed-agents
+name: klappy-managed-agents
 description: "Spin up autonomous Claude Managed Agents via the Anthropic API to perform long-running tasks in cloud containers. Agents have bash, file ops, web search, and MCP server access (including oddkit).  Use this skill whenever the user wants to: run an autonomous agent, spin up a validation agent, have an agent review a PR, send a task to a Managed Agent, dispatch background work, validate frontmatter or governance constraints via agent, run a coding task autonomously, or have an agent clone a repo, make changes, and push a PR. Also trigger when the user says “send an agent,” “spin up an agent,” “dispatch this,” “have an agent do it,” “validate with an agent,” or references the Managed Agents API."
 ---
 
