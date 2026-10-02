@@ -80,7 +80,7 @@ A "cheaper substrate" that doubles inference cost (because it forces a different
 
 - Lowest implementation cost: the agent loop, sandboxing, tool execution, observability, and tracing are all native. No code to write beyond the system prompt and the dispatcher.
 - First-party support: built and operated by the model provider, with the tightest integration to Claude's tool-use schema and prompt caching.
-- Foundation system prompt and oddkit posture compose with task role per the existing managed-agents skill.
+- Foundation system prompt and oddkit posture compose with task role per the existing klappy-managed-agents skill.
 
 **Weaknesses:**
 
@@ -450,7 +450,7 @@ If a fourth substrate enters the market and meets the spawn-clean / agentic / ca
 - Cloudflare blog: "Agents have their own computers with Sandboxes GA" (2026-04-13) — the GA announcement.
 - Anthropic Managed Agents docs at https://docs.claude.com — current beta API surface and pricing.
 - Cursor Bugbot product page at https://cursor.com/bugbot and pricing at https://docs.cursor.com/en/account/pricing — third-party bundled implementation cited as prior art.
-- `skills/managed-agents/SKILL.md` — the operational skill for using Anthropic Managed Agents specifically.
+- `skills/klappy-managed-agents/SKILL.md` — the operational skill for using Anthropic Managed Agents specifically.
 - Cloudflare blog: "Introducing Dynamic Workflows: durable execution that follows the tenant" (2026-05-01) — per-tenant durable workflow dispatch.
 - Cloudflare blog: "Project Think: building the next generation of AI agents on Cloudflare" (2026-04-15) — Agents SDK primitives and Think base class.
 - Cloudflare Agents docs: https://developers.cloudflare.com/agents/ — Agent base class, Workspace, Session API, execution ladder.
