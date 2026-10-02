@@ -103,6 +103,8 @@ To list the documents in this collection: oddkit `catalog` with `path_prefix=can
 
 ## See Also
 
+- [Black Box Thinking](/canon/resonance/black-box-thinking.md) — draft comparison: learning across model sessions; captain review pending.
+
 - [ODD Manifesto](/odd/manifesto.md)
 - [Canon Index](/canon/README.md)
 - [Three-Tier Hierarchy](/odd/decisions/D0001-three-tier-conceptual-hierarchy.md)
