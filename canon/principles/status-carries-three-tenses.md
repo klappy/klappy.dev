@@ -21,6 +21,20 @@ status: active
 
 ---
 
+## Simple Rules
+
+- **Use when:** Use when any message, document or contract states what exists, existed or will exist — status, release note, roadmap, demo, sales claim, handoff, schema.
+- **Skip when:** Skip for claims with no state in them — a definition, a question, a pure opinion.
+- **Stop when:** Stop when a reader who missed the last stretch can place every claim as was / is / will be, each with its time, confidence, proximity and relevance (see The Test).
+- **Keep going when:** Keep going while any claim could be read in two tenses or any "will be" lacks its gate.
+- **Where:** Captain-facing and agent-facing surfaces, including agent-to-agent contracts and schemas; rendering rules live in `canon/constraints/legibility-standard` (Three Tenses amendment).
+- **Who:** Whoever makes the claim, human or model; a reviewer checks tenses before content.
+- **Why:** An expectation has no footing without a place in time (`klappy://canon/values/trust-kernel`).
+- **What:** Three tenses, each with observed time plus confidence, proximity and relevance; timelines cut at natural snapshots (Three Axes; Each Tense Is a Timeline).
+- **How:** Observe before stating, stamp what you read, carry the path from what the reader holds to now and from now to the gate the decision waits on (Constraints).
+
+---
+
 ## Summary — Expectations Live in Time, So Status Must Too
 
 Trust is built by managing expectations (`klappy://canon/values/trust-kernel`). An expectation is always about a state at a time: it was red at nine, it is green now, it will be on production after the next train. Remove the time and the expectation cannot be checked; remove the tense and the reader cannot tell a memory from a report from a promise. Both removals are expectations failures, and both produce the same symptom in the reader: they stop trusting the reporter, however accurate each individual sentence may have been.
@@ -45,13 +59,13 @@ One line is enough when all three fit: *main was red at 23:05 (release gate), is
 
 ## Three Axes Compound on Time — Confidence, Proximity, Relevance
 
-Past and future are not one thing each. Every point on either side of now carries three independent measures, and a status that names the tense but not the measures still misleads. The captain's brain dump of 2026-10-09 named all three and asked that they not be conflated; the first draft of this principle had blurred two of them.
+Past and future are not one thing each. Every point on either side of now carries three independent measures, and a status that names the tense but not the measures still misleads. The captain named all three on 2026-10-09 and asked that they not be conflated.
 
 | Axis | Question it answers | Was | Will be |
 |---|---|---|---|
-| **Confidence** | *How is this known?* | observed by the reporter · observed by a tool whose output the reporter read · recorded in a ledger or log · reported by another seat or person · remembered from earlier in the session · inferred | committed and gated · planned with evidence (tests green, PR open) · planned on track record alone · proposed, awaiting a ruling · hoped, no work started |
+| **Confidence** | *How is this known?* | observed by the reporter · observed by a tool whose output the reporter read · recorded in a ledger or log · reported by another seat or person · remembered from earlier in the session · inferred | committed and gated · planned, with evidence it is on course · planned on track record alone · proposed, awaiting a ruling · hoped, no commitment |
 | **Proximity** | *How far from now?* | seconds ago · this session · last release · releases ago | next train · this release · a few releases out · the vision |
-| **Relevance** | *How much does it bear on this task?* | changed what the reader holds now · context the reader never acted on · noise | the gate this decision waits on · the horizon the decision reaches · the roadmap beyond it |
+| **Relevance** | *How much does it bear on this task?* | changed what the reader holds now · context the reader never acted on · unrelated to this task | the gate this decision waits on · the horizon the decision reaches · the roadmap beyond it |
 
 The axes are independent. A *hoped* feature can be *near* ("we want it in this release") and a *committed* one can be *far* (contracted for next year). "It was green" read from a CI badge an hour ago and "it was green" recalled from a colleague's message yesterday differ on confidence *and* proximity; both may be irrelevant if the reader is deciding about a different gate. Collapsing the three into one word — "soon", "basically done", "we had that" — is how a *hoped* "will be" gets delivered at the *is* tense, which is the sales failure named above.
 
@@ -80,7 +94,7 @@ What relevance does not permit: dropping a transition because it is embarrassing
 ## What This Is Not
 
 - **Not the epistemic modes.** Exploration, planning, execution and validation are linear stages of work with their own time dimension; the three tenses apply *inside* any of them. A validator reports was/is/will-be as much as a builder does.
-- **Not a version scheme.** Release identifiers are a cross-section of this principle, strongest for the past and present: a released version is a trustworthy snapshot of *was* and *is*. The future stays loose by design — ship early, cut a patch when the fix lands, do not pre-number what has not been built — so "will be" is anchored by gates, not by version numbers promised in advance.
+- **Not a version scheme.** Release identifiers are a cross-section of this principle, strongest for the past and present: a released version is a trustworthy snapshot of *was* and *is*. The future stays loose by design — ship when the gate passes, cut a patch when the fix lands, do not pre-number what has not been built — so "will be" is anchored by gates, not by version numbers promised in advance.
 - **Not a skill.** It is a lens applied across skills, methods, contracts and schemas, including the contracts agents write to each other between layers.
 
 ---
@@ -102,20 +116,6 @@ The model failure in the next section is one instance of a human pattern, not a 
 ## Evidence
 
 2026-10-09 (America/New_York), FIA app cookbook session. The first officer asked the captain a yes/no in the morning that the captain had answered at 23:17 the night before, and reported the main branch "red" when it had been green for three and a half hours. Each sentence had once been true. Neither carried the time it was true. The captain's response named the cost: when a report cannot distinguish past, present and future, the collaboration is bankrupt however good the work underneath — and the principle, in his words, hangs on the trust cornerstone.
-
----
-
-## Simple Rules
-
-- **Use when:** any message, document or contract states what exists, existed or will exist — status, release note, roadmap, demo, sales claim, handoff, schema.
-- **Skip when:** the claim has no state in it — a definition, a question, a pure opinion.
-- **Stop when:** a reader who missed the last stretch can place every claim as was / is / will be, with its time, how it is known, and why it is here.
-- **Keep going when:** any claim could be read in two tenses, or any "will be" lacks its gate.
-- **Where:** every captain-facing and agent-facing surface; the legibility standard carries the rendering rules.
-- **Who:** whoever makes the claim — human or model; the reviewer checks the tenses before the content.
-- **Why:** trust is built by managing expectations, and an expectation has no footing without a place in time.
-- **What:** three tenses, each with observed time, confidence, proximity and relevance; timelines cut at natural snapshots.
-- **How:** observe before stating; stamp what you read; carry the path from what the reader holds to now, and from now to the gate the decision waits on.
 
 ---
 
