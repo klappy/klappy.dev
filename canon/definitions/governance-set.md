@@ -17,7 +17,7 @@ status: active
 
 # The Governance Set — Policy Is a Member, Not the Umbrella
 
-> From July to October the program used one word, "policy," for the whole of what shapes behaviour, and before that "canon article." The word failed in the mouth before it failed on paper: a colleague's correction on 2026-07-15 separated the *why* that needs context from the *what* that does not, and the captain's own log three days later accepted that not everything is a policy. This definition names the set by the question each member answers and the speed it changes; separates the six **governance kinds** canon already files (values, principles, constraints, definitions, policies, requirements) from the **interfaces and surfaces** that consume them (methods, contracts, schemas, lenses, hygiene, charters, skills); and names the ledger as the record that feeds the set. "Policy set" is retired as the umbrella. Two rulings are left to the captain and stated as open: what the whole is called, and which of two ratified canon docs defines "policy."
+> From July to October the program used one word, "policy," for the whole of what shapes behaviour, and before that "canon article." The word failed in the mouth before it failed on paper: a colleague's correction on 2026-07-15 (the captain's recollection; Bee transcript, paraphrased) separated the *why* that needs context from the *what* that does not, and the captain's own log three days later accepted that not everything is a policy. This definition names the set by the question each member answers and the speed it changes; separates the seven **governance kinds** canon already files (values, principles, constraints, definitions, decisions, policies, requirements) from the **interfaces and surfaces** that consume them (methods, contracts, schemas, lenses, hygiene, charters, skills); and names the ledger as the record that feeds the set. "Policy set" is retired as the umbrella. Two rulings are left to the captain and stated as open: what the whole is called, and which of two ratified canon docs defines "policy."
 
 ---
 
@@ -30,12 +30,12 @@ status: active
 - **Where:** Any repo that carries governance: klappy.dev canon, project cookbooks, the kitchen's hygiene, boarding manifests.
 - **Who:** Whoever files, cites or reviews a governance artifact; the law seat adjudicates disputes of kind.
 - **Why:** Gates check by kind; a misfiled kind is skipped by the gate built for it (`klappy://canon/meta/policies-vs-requirements`).
-- **What:** Six governance kinds, seven consumers, one feeding record, one retired umbrella, two open rulings.
+- **What:** Seven governance kinds, seven consumers, one feeding record, one retired umbrella, two open rulings.
 - **How:** Classify by the question answered (The Governance Kinds, The Consumers), then route the open rulings to the captain.
 
 ---
 
-## Summary — Six Kinds Govern, Seven Consume, One Record Feeds
+## Summary — Seven Kinds Govern, Seven Consume, One Record Feeds
 
 The governance set is everything that constrains, directs or shapes behaviour in a program and outlives the session that wrote it. Canon's README already calls these "governance artifacts" and files them in `values/`, `principles/`, `constraints/`, `definitions/`, `decisions/` and `methods/`, with `/canon/**` internal and `/odd/` public (`klappy://canon/README`). This definition adds the two axes that classification turns on: the **question an artifact answers** and the **speed at which it changes**. Collapsing kinds of different speed under one word is a suspected root cause of steering failures (`klappy://canon/meta/policies-vs-requirements`), and the ARS monolith freeze of 2026-07-16 is the recorded instance: code ran ahead of policy, and no enforcer could measure the drift (`klappy://docs/appendices/epoch-11`).
 
@@ -51,7 +51,7 @@ Confidence: a working definition, drawn from one program's three months of usage
 |---|---|---|---|
 | **Values / axioms** | what we will not trade away | almost never | `values/` |
 | **Principles** | *why*; a stance that needs context to apply | per epoch | `principles/` |
-| **Constraints** | what must or must not hold now, auditable | live list; added when pain is paid | `constraints/` (universal); kitchen hygiene (operational) |
+| **Constraints** | what must or must not hold now, auditable | live list; added when pain is paid | `constraints/` |
 | **Definitions** | what a word means here | by ruling | `definitions/` |
 | **Decisions** | what was chosen and why, at canon level | per ruling | `decisions/` |
 | **Policies** | a governing statement, enforceable and scoped — *see the open ruling* | see the open ruling | `constraints/` or a cookbook, by scope |
@@ -70,7 +70,7 @@ Precedence among these is canon's own ladder — manifesto, maturity, constraint
 | **Schemas** | fix the shape data takes across a boundary | `klappy://canon/meta/frontmatter-schema` (for docs) |
 | **Lenses** | say through whose eyes a thing is reviewed before it moves; never rule | `canon/methods/lens`, drafted in PR #320, unmerged as of 2026-10-09 |
 | **Hygiene** | the kitchen's operating rules, PR-gated | kitchen `HYGIENE.md` (pointer only) |
-| **Charter** | what a seat may decide alone and what must come back | boarding manifests |
+| **Charter** | what a seat may decide alone and what must come back | no canon doc; boarding manifests only — debt named |
 | **Skills** | the fixed procedure of a pass, checked against the set | `klappy://canon/principles/skills-are-procedure-not-judgment` |
 
 The ledger (decisions, observations, learnings, constraints-as-found, handoffs, opens, tensions) feeds the set and is fed by nothing in it. How the beats of the loop consume each kind is the two-loop operating model's to say, not this document's.
@@ -123,7 +123,7 @@ Closest prior art outside the program: "policy hierarchy" and "governance framew
 ## Constraints — What This Definition Requires and Prohibits
 
 - No document, essay or ticket uses "policy set" or "policies" for the whole; use the umbrella the captain rules, or the specific kind.
-- A bare "policy" is misfiled until the open ruling lands; say which doc's meaning is intended.
+- A bare "policy" is flagged for the ledger until the open ruling lands; say which doc's meaning is intended.
 - Methods, contracts, schemas, lenses, hygiene, charters and skills are filed as consumers, never as governance kinds.
 - A kind that fits two rows is a tension for the ledger, not a reason to add a row.
 
