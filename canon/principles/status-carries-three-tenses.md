@@ -10,7 +10,7 @@ tags: ["canon", "principles", "trust", "expectations", "time", "status", "commun
 epoch: E0008.1
 date: 2026-10-09
 derives_from: "canon/values/trust-kernel.md, canon/values/axioms.md, canon/observations/time-blindness-axiom-violation.md"
-complements: "canon/bootstrap/model-operating-contract.md, canon/constraints/measure-before-you-object.md, canon/methods/toc-ooda-sprints.md"
+complements: "canon/principles/data-carries-observed-time.md, canon/constraints/legibility-standard.md, canon/bootstrap/model-operating-contract.md, canon/constraints/measure-before-you-object.md, canon/methods/toc-ooda-sprints.md"
 governs: "Every status report, handoff, progress line, review request, release note, roadmap and sales claim about a product — human or model"
 status: active
 ---
