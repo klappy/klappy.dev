@@ -52,7 +52,7 @@ When that happens enough, trust goes, however good the underlying work is. I hav
 
 ## The Morning It Finally Got Written Down
 
-I had been living with this for years and always had bigger fires. What pushed it over the edge was small.
+For over a decade I have been fighting this with humans, and for more than a year now with AI. I kept choosing the more imminent battle instead. Until this morning, when the thing that finally tipped it was small.
 
 Last night, around a quarter past eleven, I answered a question for one of my AI seats. Yes or no, done. This morning the same seat asked me the same question again. Then it told me the main branch was red. I checked. The branch had gone green at six. It was now nine-thirty.
 
