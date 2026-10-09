@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: draft
 tags: ["canon", "constraint", "ratification", "data-model", "reconciliation", "convention-requires-an-enforcer", "drift", "prompt-over-code", "ars"]
-epoch: E0010
+epoch: E0011
 date: 2026-07-16
 derives_from: "docs/appendices/convention-requires-an-enforcer.md, canon/principles/prompt-over-code.md, canon/principles/vodka-architecture.md, canon/values/axioms.md, outputs/debrief-ars-monolith-2026-07-16.md"
 complements: "canon/constraints/release-validation-gate.md, canon/constraints/frontmatter-validation-before-merge.md"
