@@ -1,6 +1,6 @@
 ---
-uri: klappy://canon/definitions/governance-set
-title: "The Governance Set — Policy Is a Member, Not the Umbrella"
+uri: klappy://canon/definitions/governance-artifacts
+title: "Governance Artifacts — Policy Is a Member, Not the Umbrella"
 audience: canon
 exposure: nav
 tier: 2
@@ -11,13 +11,13 @@ epoch: E0010
 date: 2026-10-09
 derives_from: "canon/README.md, canon/meta/policies-vs-requirements.md, canon/meta/enforceable-policy-anatomy.md, canon/definitions/dolcheo-vocabulary.md, canon/principles/dry-canon-says-it-once.md"
 complements: "canon/methods/README.md, canon/definitions/cooking-taxonomy.md, canon/principles/skills-are-procedure-not-judgment.md, canon/meta/constraint-driven-audits.md, canon/architecture/two-loop-operating-model.md, canon/constraints/policy-precedes-build.md, docs/appendices/epoch-11.md"
-governs: "What the artifacts that shape model and human behaviour in this program are called, which of them are governance and which consume it, and the one open ruling on what 'policy' means"
+governs: "What the artifacts that shape model and human behaviour in this program are called, which of them are governance and which consume it, and the two rulings of 2026-10-09 on the umbrella name and what 'policy' means"
 status: active
 ---
 
-# The Governance Set — Policy Is a Member, Not the Umbrella
+# Governance Artifacts — Policy Is a Member, Not the Umbrella
 
-> From July to October the program used one word, "policy," for the whole of what shapes behaviour, and before that "canon article." The word failed in the mouth before it failed on paper: a colleague's correction on 2026-07-15 (the captain's recollection; Bee transcript, paraphrased) separated the *why* that needs context from the *what* that does not, and the captain's own log three days later accepted that not everything is a policy. This definition names the set by the question each member answers and the speed it changes; separates the seven **governance kinds** canon already files (values, principles, constraints, definitions, decisions, policies, requirements) from the **interfaces and surfaces** that consume them (methods, contracts, schemas, lenses, hygiene, charters, skills); and names the ledger as the record that feeds the set. "Policy set" is retired as the umbrella. Two rulings are left to the captain and stated as open: what the whole is called, and which of two ratified canon docs defines "policy."
+> From July to October the program used one word, "policy," for the whole of what shapes behaviour, and before that "canon article." The word failed in the mouth before it failed on paper: a colleague's correction on 2026-07-15 (the captain's recollection; Bee transcript, paraphrased) separated the *why* that needs context from the *what* that does not, and the captain's own log three days later accepted that not everything is a policy. This definition names the set by the question each member answers and the speed it changes; separates the eight **governance kinds** (values, principles, constraints, definitions, decisions, policies, mandates, requirements) from the **interfaces and surfaces** that consume them (methods, contracts, schemas, lenses, hygiene, charters, skills); and names the ledger as the record that feeds the set. "Policy set" is retired as the umbrella; the whole is called **governance artifacts** (captain ruling 2026-10-09 19:33 ET, canon README's own phrase). "Policy" keeps P0011's meaning, durable principle-shaped guidance, and the five-part per-build artifact of `enforceable-policy-anatomy` takes its own name, **mandate** (working name until the captain supplies one; same ruling, option 2).
 
 ---
 
@@ -26,18 +26,18 @@ status: active
 - **Use when:** Use when naming, filing, citing or classifying any artifact that shapes what a model or human may do, must do, or how, and when a document, essay or ticket reaches for "policy" as a catch-all.
 - **Skip when:** Skip for the content of any one kind (its own doc governs that) and for the ledger's internal shape (`klappy://canon/definitions/dolcheo-vocabulary`).
 - **Stop when:** Stop when every artifact in scope sits in exactly one row of the two tables below with its question, speed and home named.
-- **Keep going when:** Keep going while an artifact fits two rows, or "policy" is used for something that is neither a durable governing statement nor a ratified per-build one (see The Open Ruling on "Policy").
+- **Keep going when:** Keep going while an artifact fits two rows, or "policy" is used for a per-build mandate (see The Ruling on "Policy").
 - **Where:** Any repo that carries governance: klappy.dev canon, project cookbooks, the kitchen's hygiene, boarding manifests.
 - **Who:** Whoever files, cites or reviews a governance artifact; the law seat adjudicates disputes of kind.
 - **Why:** Gates check by kind; a misfiled kind is skipped by the gate built for it (`klappy://canon/meta/policies-vs-requirements`).
-- **What:** Seven governance kinds, seven consumers, one feeding record, one retired umbrella, two open rulings.
-- **How:** Classify by the question answered (The Governance Kinds, The Consumers), then route the open rulings to the captain.
+- **What:** Eight governance kinds, seven consumers, one feeding record, one retired umbrella, two rulings recorded (umbrella = governance artifacts; policy = P0011; five-part artifact = mandate).
+- **How:** Classify by the question answered (The Governance Kinds, The Consumers); amendments the rulings imply are listed under The Ruling on "Policy".
 
 ---
 
-## Summary — Seven Kinds Govern, Seven Consume, One Record Feeds
+## Summary — Eight Kinds Govern, Seven Consume, One Record Feeds
 
-The governance set is everything that constrains, directs or shapes behaviour in a program and outlives the session that wrote it. Canon's README already calls these "governance artifacts" and files them in `values/`, `principles/`, `constraints/`, `definitions/`, `decisions/` and `methods/`, with `/canon/**` internal and `/odd/` public (`klappy://canon/README`). This definition adds the two axes that classification turns on: the **question an artifact answers** and the **speed at which it changes**. Collapsing kinds of different speed under one word is a suspected root cause of steering failures (`klappy://canon/meta/policies-vs-requirements`), and the ARS monolith freeze of 2026-07-16 is the recorded instance: code ran ahead of policy, and no enforcer could measure the drift (`klappy://docs/appendices/epoch-11`).
+Governance artifacts are everything that constrains, directs or shapes behaviour in a program and outlives the session that wrote it. Canon's README already calls these "governance artifacts" and files them in `values/`, `principles/`, `constraints/`, `definitions/`, `decisions/` and `methods/`, with `/canon/**` internal and `/odd/` public (`klappy://canon/README`). This definition adds the two axes that classification turns on: the **question an artifact answers** and the **speed at which it changes**. Collapsing kinds of different speed under one word is a suspected root cause of steering failures (`klappy://canon/meta/policies-vs-requirements`), and the ARS monolith freeze of 2026-07-16 is the recorded instance: code ran ahead of policy, and no enforcer could measure the drift (`klappy://docs/appendices/epoch-11`).
 
 Not everything that touches governance *is* governance. Methods apply it and are explicitly not a place to smuggle authority (`klappy://canon/methods`). Contracts and schemas are the interfaces two lanes share. Lenses, hygiene and charters are review and operating surfaces. Skills are procedure (`klappy://canon/principles/skills-are-procedure-not-judgment`). The ledger is the record whose entries are promoted into kinds at a breakpoint (`klappy://canon/definitions/dolcheo-vocabulary`). Keeping those apart is most of the work this definition does.
 
@@ -54,7 +54,8 @@ Confidence: a working definition, drawn from one program's three months of usage
 | **Constraints** | what must or must not hold now, auditable | live list; added when pain is paid | `constraints/` |
 | **Definitions** | what a word means here | by ruling | `definitions/` |
 | **Decisions** | what was chosen and why, at canon level | per ruling | `decisions/` |
-| **Policies** | a governing statement, enforceable and scoped — *see the open ruling* | see the open ruling | `constraints/` or a cookbook, by scope |
+| **Policies** | durable, principle-shaped governing guidance (P0011) | slow | `principles/` or `constraints/` by content; a cookbook when project-scoped |
+| **Mandates** *(working name)* | the ratified governing statement for one build: WHAT · WHY · ENFORCEMENT · SCOPE · VERIFICATION (`klappy://canon/meta/enforceable-policy-anatomy`) | per build, before code | the build's cookbook; canon when universal |
 | **Requirements** | the specific functional needs of one build; the ingredients | per build; fast | PRD, ticket, cookbook recipe (`klappy://canon/definitions/cooking-taxonomy`) |
 
 Precedence among these is canon's own ladder — manifesto, maturity, constraints, decision rules, evidence policies — and apparent conflicts are usually explained by maturity context rather than by rank (`klappy://canon/README`). Speed is a classification axis here, not a precedence rule.
@@ -77,31 +78,31 @@ The ledger (decisions, observations, learnings, constraints-as-found, handoffs, 
 
 ---
 
-## The Open Ruling on "Policy" — Two Ratified Docs Disagree
+## The Ruling on "Policy" — Two Ratified Docs Disagreed; P0011 Wins
 
-Canon holds two definitions, both active as of 2026-10-09:
+Canon held two definitions, both active on 2026-10-09:
 
 | Doc | "Policy" means | Speed | Lineage |
 |---|---|---|---|
 | `klappy://canon/meta/policies-vs-requirements` (landed 2026-07-20, #305) | durable, slow-changing, principle-shaped guidance, as against fast build-specific requirements | slow | the captain's log of 2026-07-18 |
 | `klappy://canon/meta/enforceable-policy-anatomy` (ratified 2026-10-09) | a governing statement for something about to be built, with WHAT · WHY · ENFORCEMENT · SCOPE · VERIFICATION | per build, before code | the ARS storage policy set, 2026-07-17 |
 
-They were written two days apart from the same incident and point in opposite directions on speed. Each is internally coherent; the tension is between them. Options for the captain, in the order the law seat leans:
+They were written two days apart from the same incident and pointed in opposite directions on speed. The captain ruled 2026-10-09 19:33 ET for option 2 (stated as "I think"; held as a ruling, revisable): **P0011 wins; the anatomy-shaped artifact is renamed.** Its working name is *mandate* until the captain supplies one. The options as they stood:
 
 1. **Anatomy wins; P0011 amended.** "Policy" = the enforceable per-build statement. Durable guidance is simply "principles." P0011's split becomes principles vs requirements.
 2. **P0011 wins; anatomy renamed.** "Policy" = durable guidance. The five-part per-build artifact gets its own name (a "mandate," a "build policy," the captain's word).
 3. **Both, scoped.** "Policy" alone is forbidden; every use says which: *canon policy* (durable) or *build policy* (anatomy-conformant).
 
-Until ruled, this definition does not fix the policy row's speed or home, and any new doc using the bare word is flagged for the ledger.
+Follow-ups this ruling implies, not done in this PR: retitle `enforceable-policy-anatomy` as the mandate anatomy; amend `policy-precedes-build`, `policy-first-self-building-self-documenting` and `two-loop-operating-model` where they mean the per-build artifact; replace the working name here once the captain supplies it.
 
 ---
 
-## The Name of the Whole — Second Open Ruling
+## The Name of the Whole — Ruled: Governance Artifacts
 
 | Name | What it has meant | Standing |
 |---|---|---|
-| **governance artifacts** | canon README's own phrase for `/canon/**` | the law seat's lean: no new coinage |
-| **governance set** | the whole collection across repos, the captain's phrase 2026-10-09 | this document's working title |
+| **governance artifacts** | canon README's own phrase for `/canon/**` | **ruled 2026-10-09 19:33 ET**: the umbrella |
+| **governance set** | the whole collection across repos, the captain's phrase earlier on 2026-10-09 | superseded by the ruling |
 | **canon** | the durable, universal members | keeps that meaning; a subset |
 | **cookbook** | a project's scoped governance plus recipes | keeps that meaning; a scope |
 | **ontology stack** | the whole set across repos, named 2026-09-16 as a bridge | alias until ruled |
@@ -122,8 +123,8 @@ Closest prior art outside the program: "policy hierarchy" and "governance framew
 
 ## Constraints — What This Definition Requires and Prohibits
 
-- No document, essay or ticket uses "policy set" or "policies" for the whole; use the umbrella the captain rules, or the specific kind.
-- A bare "policy" is flagged for the ledger until the open ruling lands; say which doc's meaning is intended.
+- No document, essay or ticket uses "policy set" or "policies" for the whole; use "governance artifacts," or the specific kind.
+- "Policy" means P0011's durable guidance; a per-build five-part artifact is a mandate, never a bare "policy."
 - Methods, contracts, schemas, lenses, hygiene, charters and skills are filed as consumers, never as governance kinds.
 - A kind that fits two rows is a tension for the ledger, not a reason to add a row.
 
