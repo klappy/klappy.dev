@@ -22,7 +22,7 @@ og_title: "What Was, What Is, What Will Be"
 og_description: "Every sentence was true once. None of them said when. Why status without time is the oldest trust failure in product work, and what to carry instead."
 twitter_description: "Every sentence was true once. None of them said when. The fourth dimension of software is the one that sinks projects."
 
-derives_from: "canon/values/trust-kernel.md, canon/principles/status-carries-three-tenses.md, canon/principles/data-carries-observed-time.md, canon/observations/time-blindness-axiom-violation.md"
+derives_from: "canon/values/trust-kernel.md, canon/principles/status-carries-three-tenses.md, canon/principles/data-carries-observed-time.md, canon/observations/time-blindness-axiom-violation.md, canon/resonance/ooda-loop.md"
 complements: "writings/the-same-rules-fresh-eyes.md, writings/your-context-window-needs-a-sabbath.md, writings/every-handoff-drops-context.md"
 governs: "Public explanation of the three-tenses principle; the human-side companion to the time-blindness observation"
 status: active
@@ -46,7 +46,7 @@ I have worked with a lot of teams over the years, in a lot of seats. Developers 
 
 A developer says "it's done" meaning "it's merged," and the user finds out otherwise. An agent tells me the gate is red because it was red when the agent last looked, hours ago. A founder sells what the product will be as if it already is. A funder hears that plan and books it as a result. Each speaker believes they told the truth. Each listener walks away holding an expectation that the world will not honor.
 
-When that happens enough, trust goes, however good the underlying work is. I have come to treat an unclear past, present and future as grounds for bankruptcy on a collaboration. The fix is a discipline rather than a tool: say which tense you are in, say when you saw it, say how you know it and how far from now it sits, and if you are describing the future, say what has to happen for it to arrive. Then carry only the past and future snapshots that bear on the decision at hand. The principle is written up properly at [Status Carries Three Tenses](klappy://canon/principles/status-carries-three-tenses). This essay is the story behind it.
+When that happens enough, trust goes, however good the underlying work is. I have come to treat an unclear past, present and future as grounds for bankruptcy on a collaboration. The fix is a discipline rather than a tool: say which tense you are in, say when you saw it, say how you know it and how far from now it sits, and if you are describing the future, say what has to happen for it to arrive. Then carry only the past and future snapshots that bear on the decision at hand. The principle is written up properly at [Status Carries Three Tenses](klappy://canon/principles/status-carries-three-tenses). This is the story behind it.
 
 ---
 
@@ -71,6 +71,8 @@ I have been the lead developer, the architect, the sales engineer and the CTO at
 But I have also made the bold claim myself, because I could see the vision so clearly that the gap between the vision and the current build stopped registering. I have described a Bible translation tool by what it was going to do, to people who reasonably heard what it did. Casting vision is part of the job. You cannot lead a team or raise money without saying where this is going. What gets lost is the discernment in the gray area between the vision and what exists right now, and losing that discernment is the lie, even when every individual sentence was sincere.
 
 My stubborn hope, and it may be naive, is that the opposite can be true. That you can build a long track record of bold promises kept without ever letting the future get delivered in the present tense. I have seen it work. The same product, with the same team, kept its clients and its funders when the tenses were kept straight, and lost them when they were not.
+
+I am not claiming to have invented anything here. Applying time to a product is as old as the roadmap. I am saying this is what I have watched, across enough teams and enough years to stop treating it as coincidence, and this is what I am writing down. If someone shows me a team that collapses the tenses and keeps its clients, or keeps them straight and still loses the room, I will come back and revise this.
 
 ---
 
@@ -110,14 +112,20 @@ And it is not a skill. I went back and forth on that during the dictation and la
 
 ---
 
+## This Is the Second O
+
+It hit me while I was writing the last section. We already solved this, in principle, years ago, and then applied it everywhere. Observe, orient, decide, act. The first O is observation, and we built a whole discipline around it: observe before you claim, stamp what you read. The three tenses are the second O. Orientation is placing what you observed on the timeline relative to where you are standing right now, and that placement goes stale the moment now moves. The seat that told me the gate was red had observed correctly, hours earlier. It had simply never re-oriented. It was deciding and acting off an orientation it had cached the night before, which is the one thing [ODD's reading of OODA](klappy://canon/resonance/ooda-loop) says you cannot do: orientation is the center of gravity, and it has to be refreshed and written down, not remembered. Was, is, will be, each with its time, is what a written-down orientation looks like.
+
+---
+
 ## The Model Taught Me the Human Version
 
 In April I wrote up [time blindness](klappy://canon/observations/time-blindness-axiom-violation): models have no clock, so they infer elapsed time from context and guess confidently when they guess wrong. We built a clock and put it in the model's hand, and that one fix unlocked more than I expected across the whole system.
 
-This essay is the human side of that observation. A human with a perfect clock who says "the build is red" without a time has made the same mistake as the model that never had one. The reader still cannot tell whether to act. Time blindness explained how a model loses the clock. This principle says why losing it costs trust no matter who is speaking, and no matter which of the three tenses they lose.
+This is the human side of that observation. A human with a perfect clock who says "the build is red" without a time has made the same mistake as the model that never had one. The reader still cannot tell whether to act. Time blindness explained how a model loses the clock. This principle says why losing it costs trust no matter who is speaking, and no matter which of the three tenses they lose.
 
 The root of all of it is [trust](klappy://canon/values/trust-kernel), and trust is nothing more mysterious than expectations managed honestly over time. Honesty, transparency, observability across the product lifecycle. The principle ends with a one-question test for any status; I will let it keep that. Mine is simpler. If I have to ask "wait, is that still the case?", the work underneath will not save us.
 
 ---
 
-*Companion pieces: [Status Carries Three Tenses](klappy://canon/principles/status-carries-three-tenses) — the principle this essay tells the story of. [Time Blindness](klappy://canon/observations/time-blindness-axiom-violation) — the model-clock side of the same problem. [Every Handoff Drops Context](klappy://writings/every-handoff-drops-context) — what happens to tense across session boundaries.*
+*See also: [Status Carries Three Tenses](klappy://canon/principles/status-carries-three-tenses) — the principle this piece tells the story of. [Time Blindness](klappy://canon/observations/time-blindness-axiom-violation) — the model-clock side of the same problem. [Every Handoff Drops Context](klappy://writings/every-handoff-drops-context) — what happens to tense across session boundaries.*
