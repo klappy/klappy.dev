@@ -46,7 +46,7 @@ I have worked with a lot of teams over the years, in a lot of seats. Developers 
 
 A developer says "it's done" meaning "it's merged," and the user finds out otherwise. An agent tells me the gate is red because it was red when the agent last looked, hours ago. A founder sells what the product will be as if it already is. A funder hears that plan and books it as a result. Each speaker believes they told the truth. Each listener walks away holding an expectation that the world will not honor.
 
-When that happens enough, trust goes, however good the underlying work is. I've come to treat an unclear past, present and future as grounds for bankruptcy on a collaboration. The fix is a discipline rather than a tool: say which tense you are in, say when you saw it, say how you know it and how far from now it sits, and if you are describing the future, say what has to happen for it to arrive. Then carry only the past and future snapshots that bear on the decision at hand. It turns out this is the second O in observe, orient, decide, act: orientation, written down with its time. The principle is written up properly at [Status Carries Three Tenses](klappy://canon/principles/status-carries-three-tenses). This is the story behind it.
+When that happens enough, trust goes, however good the underlying work is. I have come to treat an unclear past, present and future as grounds for bankruptcy on a collaboration. The fix is a discipline rather than a tool: say which tense you are in, say when you saw it, say how you know it and how far from now it sits, and if you are describing the future, say what has to happen for it to arrive. Then carry only the past and future snapshots that bear on the decision at hand. It turns out this is the second O in observe, orient, decide, act: orientation, written down with its time. The principle is written up properly at [Status Carries Three Tenses](klappy://canon/principles/status-carries-three-tenses). This is the story behind it.
 
 ---
 
@@ -58,7 +58,7 @@ Last night, around a quarter past eleven, I answered a question for one of my AI
 
 Nothing the seat said was false. The question had been open at one point. The gate had been red at one point. The seat had simply carried both facts forward without the time attached, and from its side of the table there was no way to tell a memory from an observation. From my side, I had to stop, re-verify everything it had told me, and decide whether to trust the next message at all.
 
-I've had that exact feeling in rooms full of humans. The sales engineer who learns mid-conversation that leadership already promised the feature. The project lead reading a roadmap and not knowing which rows are shipped, which are building, and which are hopes with nice names. The difference this time was that I could do something about it the same day. Before eleven the principle was drafted and ruled. It merged at five past.
+I have had that exact feeling in rooms full of humans. The sales engineer who learns mid-conversation that leadership already promised the feature. The project lead reading a roadmap and not knowing which rows are shipped, which are building, and which are hopes with nice names. The difference this time was that I could do something about it the same day. Before eleven the principle was drafted and ruled. It merged at five past.
 
 ---
 
@@ -66,11 +66,11 @@ I've had that exact feeling in rooms full of humans. The sales engineer who lear
 
 It would be convenient to pin this on sales. I can't.
 
-I have been the lead developer, the architect, the sales engineer and the CTO at the same company, sometimes in the same week. I've watched leadership sell a thing that did not exist and then gone back to my desk to backfill it before anyone bought. Some people call that how startups work. One co-founder makes the bold promise, the team figures out how to deliver. Fine. I understand the move.
+I have been the lead developer, the architect, the sales engineer and the CTO at the same company, sometimes in the same week. I have watched leadership sell a thing that did not exist and then gone back to my desk to backfill it before anyone bought. Some people call that how startups work. One co-founder makes the bold promise, the team figures out how to deliver. Fine. I understand the move.
 
-But I've also made the bold claim myself, because I could see the vision so clearly that the gap between the vision and the current build stopped registering. I've described a Bible translation tool by what it was going to do, to people who reasonably heard what it did. Casting vision is part of the job. You cannot lead a team or raise money without saying where this is going. What gets lost is the discernment in the gray area between the vision and what exists right now, and losing that discernment is the lie, even when every individual sentence was sincere.
+But I've also made the bold claim myself, because I could see the vision so clearly that the gap between the vision and the current build stopped registering. I have described a Bible translation tool by what it was going to do, to people who reasonably heard what it did. Casting vision is part of the job. You cannot lead a team or raise money without saying where this is going. What gets lost is the discernment in the gray area between the vision and what exists right now, and losing that discernment is the lie, even when every individual sentence was sincere.
 
-My stubborn hope, and it may be naive, is that the opposite can be true. That you can build a long track record of bold promises kept without ever letting the future get delivered in the present tense. I've seen it work. The same product, with the same team, kept its clients and its funders when the tenses were kept straight, and lost them when they were not.
+My stubborn hope, and it may be naive, is that the opposite can be true. That you can build a long track record of bold promises kept without ever letting the future get delivered in the present tense. I have seen it work. The same product, with the same team, kept its clients and its funders when the tenses were kept straight, and lost them when they were not.
 
 I'm not claiming to have invented anything here. Applying time to a product is as old as the roadmap. I am saying this is what I have watched, across enough teams and enough years to stop treating it as coincidence, and this is what I am writing down. If someone shows me a team that collapses the tenses and keeps its clients, or keeps them straight and still loses the room, I'll come back and revise this.
 
@@ -80,7 +80,7 @@ I'm not claiming to have invented anything here. Applying time to a product is a
 
 When I first started dictating this I thought the answer was three states. Past, present, future. Label everything, done.
 
-That would already be a big improvement, but it isn't enough, because the past and the future are not single points. A button on a screen can have a dozen past states. A roadmap has a next train, a next release, and the vision. Collapsing all of that into "we had that" or "it's coming" is the same conflation wearing a smaller hat.
+That would already be a big improvement, but it is not enough, because the past and the future are not single points. A button on a screen can have a dozen past states. A roadmap has a next train, a next release, and the vision. Collapsing all of that into "we had that" or "it's coming" is the same conflation wearing a smaller hat.
 
 What I actually track, on both sides of now, is three independent things. How confident I am in the claim: did I see it myself, or do I just remember it; is it gated, or merely hoped. How close it is to now: this session, or three releases ago; the next train, or the vision. And how much it bears on what we are deciding right now.
 
