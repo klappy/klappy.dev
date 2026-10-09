@@ -13,7 +13,6 @@ derives_from: "agent-role-service/docs/adr/ADR-0001-ars-per-entity-do-sqlite.md,
 complements: "canon/constraints/release-validation-gate.md, canon/meta/constraint-driven-audits.md, canon/principles/vodka-architecture.md"
 governs: "Every storage read/write path in klappy/agent-role-service — AccountDO (src/do.js) and the core modules (src/core/{registry,leases,board,runs,seed,members,driver}.js), the alarm handler, and the protocol/tool handlers. Binding on every seat that ships ARS storage code and on the CI + runtime enforcers named per policy."
 status: draft
-target_repo: "agent-role-service"
 ---
 
 # ARS Bounded Storage — Per-Entity Rows, Always-R2 Offload, Rotation, and a Durable Mirror
