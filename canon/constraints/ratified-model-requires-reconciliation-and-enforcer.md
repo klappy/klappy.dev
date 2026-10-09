@@ -13,7 +13,6 @@ derives_from: "docs/appendices/convention-requires-an-enforcer.md, canon/princip
 complements: "canon/constraints/release-validation-gate.md, canon/constraints/frontmatter-validation-before-merge.md"
 governs: "Any program in which the operator ratifies a data model, schema, or design invariant that running code is expected to honor. Binding on every seat that ships an implementation against a ruled model — the reconciliation is owed, and an enforcer must make the drift impossible to ship silently."
 status: draft
-target_repo: "klappy.dev"
 ---
 
 # Ratified Model Requires Reconciliation and an Enforcer — A Ruled Design Must Bind the Code
