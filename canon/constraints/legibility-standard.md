@@ -10,7 +10,7 @@ tags: ["canon", "constraint", "legibility", "glyphs", "emoji", "legend", "at-a-g
 epoch: E0010
 date: 2026-09-23
 derives_from: "canon/constraints/mode-discipline-and-bottleneck-respect.md, canon/constraints/actionable-output-in-actionable-form.md, canon/values/axioms.md, docs/appendices/convention-requires-an-enforcer.md"
-complements: "canon/constraints/reviewability-standard.md, canon/constraints/seeded-response-standard.md, canon/meta/triangle-of-yaps.md, canon/meta/enforceable-policy-anatomy.md, canon/constraints/captain-message-legibility.md"
+complements: "canon/principles/status-carries-three-tenses.md, canon/principles/data-carries-observed-time.md, canon/constraints/reviewability-standard.md, canon/constraints/seeded-response-standard.md, canon/meta/triangle-of-yaps.md,"
 governs: "Every captain-facing message any seat or flight emits — status lines, decision asks, flight reports, incident updates, PR and decision trays — and the glyph vocabulary those messages use to carry state at a glance"
 status: active
 target_repo: "outcomes-driven-development"
@@ -237,6 +237,9 @@ ruling and are out of mechanical scope by design.
 - **Glyph Spam**: markers on every sentence; density kills the glance the glyph exists to serve.
 - **Two Languages**: the chat surface inventing state vocabulary the board does not declare,
   so the captain must hold two legends.
+- **Tenseless Status**: a present-tense line ("main is red", "the screenshots show…") that is
+  really a memory, a mix of before and after, or a plan — the reader cannot tell what was, what
+  is, and what will be, or when each was seen. See the Three Tenses amendment below.
 
 ## When This Does Not Apply
 
@@ -266,6 +269,28 @@ Attention is the bottleneck. A screen the captain can read blurry-eyed at 2 AM, 
 
 ### Applies to
 Captain-facing chat; status a seat reports to the captain; roadmap and intake pages; anything a human reads. Journals and receipts stay rows.
+
+## Amendment — Three Tenses in Presentation (ruled 2026-10-09)
+
+*Provenance: captain's rulings in the FIA session of 2026-10-09 (America/New_York): "I need more clear presentation of what's what"; "what was, what is, what will be"; "it is also a presentation issue." Principles: `klappy://canon/principles/status-carries-three-tenses` (the why for status) and `klappy://canon/principles/data-carries-observed-time` (the why for data).*
+
+### The rule
+A status that cannot be placed in time is not legible, however short or glyph-led it is.
+
+1. **Every status line carries its tenses.** What **was** (and when last seen), what **is** (and when last checked), what **will be** (and the gate that produces it). Door rule 2's five fields above are read as the **is**; this amendment adds the **was** and **will be** around it when either differs from what the captain last saw. Door rule 1 (size) still holds: the three tenses fit the one line — `was 🔴 23:05 · is 🟢 06:05 (chk 09:41) · will be prod after deploy` — and a before/after comparison goes behind an exit, not in the floor.
+2. **Every state claim carries an observed time.** "🟢 main green (checked 09:41)". A state the seat has not re-observed is marked, never asserted: "last seen 🔴 23:05, not re-checked."
+3. **Before and after never interleave.** A comparison shows one frame per state, labeled **was** / **is** (or **is** / **will be**), side by side or in sequence — never mixed screenshots, never one list that blends landed and proposed.
+4. **Proposed is not landed.** A change that is drafted, in a PR, or scheduled is **will be**, with its gate named; it is never written in the present tense. A sales claim about a product is a status and obeys the same rule.
+5. **Timing in the captain's clock.** Times in captain-facing text are his civil time (America/New_York unless he says otherwise), observed via the clock tool, never inferred.
+6. **Each point names its confidence and proximity.** Past and future are gradients, not points, on two axes that do not collapse into each other: confidence — *observed · reported · recalled* for what was, *gated · planned · hoped* for what will be — and proximity — *this session · last release · releases ago*, *next train · this release · the vision*. One word each, or the time and source that imply them. A bare "will ship Friday" is read as gated and scheduled; if it is hoped, say hoped.
+7. **Tenses are timelines; pick by relevance.** The same thing has many past and future states. Carry the state the captain last saw and the path from it to now — one transition shown, several compressed to a count with the latest time (`was 🔴 23:05 → flipped ×3 → 🟢 since 06:05`); carry the next gate and as far beyond as his current decision reaches. The rest goes behind an exit. Never drop a transition because it is embarrassing or add a future because it is attractive.
+8. **Stale is said plainly.** When the seat does not know whether a state still holds, the glyph is ⚪ or the state is prefixed "last seen", not rendered as current (sharpens Door rule 7, *Truth over charm*, above).
+
+### Why
+The captain, 2026-10-09: the fourth dimension — distinguishing past, present and future states and articulating the timing of each — is what sinks projects, and the inability to do so is grounds to "declare bankruptcy" on a collaboration however good the underlying work. It hangs on the trust cornerstone: a reader who cannot place a status in time cannot set, check, or transfer an expectation from it. The same morning, a seat asked a yes/no the captain had answered the night before and reported a gate red that had been green for hours; each sentence had once been true, none carried its time.
+
+### Applies to
+Every surface in SCOPE above. Journals and receipts already carry times as rows; this amendment governs the captain-facing rendering.
 
 ## See Also
 
