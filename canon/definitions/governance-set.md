@@ -92,7 +92,7 @@ They were written two days apart from the same incident and point in opposite di
 2. **P0011 wins; anatomy renamed.** "Policy" = durable guidance. The five-part per-build artifact gets its own name (a "mandate," a "build policy," the captain's word).
 3. **Both, scoped.** "Policy" alone is forbidden; every use says which: *canon policy* (durable) or *build policy* (anatomy-conformant).
 
-Until ruled, this definition does not fix the policy row's speed or home, and any new doc using the bare word is misfiled.
+Until ruled, this definition does not fix the policy row's speed or home, and any new doc using the bare word is flagged for the ledger.
 
 ---
 
