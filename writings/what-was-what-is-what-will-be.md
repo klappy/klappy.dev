@@ -22,7 +22,7 @@ og_title: "What Was, What Is, What Will Be"
 og_description: "Every sentence was true once. None of them said when. Why status without time is the oldest trust failure in product work, and what to carry instead."
 twitter_description: "Every sentence was true once. None of them said when. The fourth dimension of software is the one that sinks projects."
 
-derives_from: "canon/values/trust-kernel.md, canon/principles/status-carries-three-tenses.md, canon/principles/data-carries-observed-time.md, canon/observations/time-blindness-axiom-violation.md, canon/resonance/ooda-loop.md"
+derives_from: "canon/values/trust-kernel.md, canon/principles/status-carries-three-tenses.md, canon/principles/data-carries-observed-time.md, canon/observations/time-blindness-axiom-violation.md, canon/resonance/ooda-loop.md, canon/methods/toc-ooda-sprints.md"
 complements: "writings/the-same-rules-fresh-eyes.md, writings/your-context-window-needs-a-sabbath.md, writings/every-handoff-drops-context.md"
 governs: "Public explanation of the three-tenses principle; the human-side companion to the time-blindness observation"
 status: active
@@ -114,7 +114,7 @@ And it is not a skill. I went back and forth on that during the dictation and la
 
 ## This Is the Second O
 
-It hit me while I was writing the last section. We already solved this, in principle, years ago, and then applied it everywhere. Observe, orient, decide, act. The first O is observation, and we built a whole discipline around it: observe before you claim, stamp what you read. The three tenses are the second O. Orientation is placing what you observed on the timeline relative to where you are standing right now, and that placement goes stale the moment now moves. The seat that told me the gate was red had observed correctly, hours earlier. It had simply never re-oriented. It was deciding and acting off an orientation it had cached the night before, which is the one thing [ODD's reading of OODA](klappy://canon/resonance/ooda-loop) says you cannot do: orientation is the center of gravity, and it has to be refreshed and written down, not remembered. Was, is, will be, each with its time, is what a written-down orientation looks like.
+It hit me while I was writing the last section. We already solved this, in principle, years ago, and then applied it everywhere. Observe, orient, decide, act. The first O is observation, and we built a whole discipline around it: observe before you claim, stamp what you read. The three tenses are the second O. Orientation is placing what you observed on the timeline relative to where you are standing right now, and that placement goes stale the moment now moves. The seat that told me the gate was red had observed correctly, hours earlier. It had simply never re-oriented. It was deciding and acting off an orientation it had cached the night before, which is the one thing [ODD's reading of OODA](klappy://canon/resonance/ooda-loop) says you cannot do: orientation is the center of gravity, and it has to be refreshed and written down, not remembered. We lean on that loop at every scale I work at: the thirty-minute look-again in [ToC OODA sprints](klappy://canon/methods/toc-ooda-sprints), the orient call an agent makes before it touches anything, the operating rhythms in my private kitchens that I will not drag onto this page. Each is the same move at a different zoom. Was, is, will be, each with its time, is what a written-down orientation looks like.
 
 ---
 
