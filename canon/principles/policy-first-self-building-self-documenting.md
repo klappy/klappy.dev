@@ -5,22 +5,21 @@ audience: canon
 exposure: nav
 tier: 1
 voice: neutral
-stability: draft
+stability: evolving
 tags: ["canon", "principle", "policy-first", "prompt-over-code", "self-building", "self-documenting", "enforcement", "traceability", "ars"]
 epoch: E0011
 date: 2026-07-17
 derives_from: "canon/principles/prompt-over-code.md, docs/appendices/convention-requires-an-enforcer.md, canon/constraints/ratified-model-requires-reconciliation-and-enforcer.md, canon/values/axioms.md"
 complements: "canon/meta/enforceable-policy-anatomy.md, canon/meta/constraint-driven-audits.md, canon/constraints/ars-bounded-storage.md"
 governs: "The authoring order of every buildable capability in this program: the governing policy is written before the code, precisely enough that the code can be derived from it, and the code cites the policy back. Binding on any seat that ships an implementation of a ruled model."
-status: draft
+status: active
 ---
 
 # Policy-First — Policies First Ensures All Code Is Self-Building and Self-Documenting
 
-> **Posture:** DRAFT — a principle authored for ratification, filed 2026-07-17 as the framing for the ARS
+> **Posture:** ACTIVE — ratified by merge on 2026-10-09 (captain ruling). A principle filed 2026-07-17 as the framing for the ARS
 > storage policy set (`canon/constraints/ars-bounded-storage`) and the enforceable-policy
-> template (`canon/meta/enforceable-policy-anatomy`). Authored for ratification;
-> do not merge until reviewed and ratified.
+> template (`canon/meta/enforceable-policy-anatomy`).
 
 > Policies first ensures all code is self-building and self-documenting. When the governing
 > policy is written before the code and precisely enough to build from, two properties fall

@@ -6,7 +6,7 @@ audience: docs
 exposure: nav
 tier: 2
 voice: neutral
-stability: draft
+stability: evolving
 tags: ["epoch", "E0011", "two-loop", "policy-first", "policy-precedes-build", "gated-loop", "fresh-session-gates", "ratification", "governance", "experiment"]
 epoch: E0011
 date: 2026-07-17

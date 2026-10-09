@@ -168,4 +168,4 @@ Authored 2026-07-17 under the Model Operating Contract, in execution mode, on th
 - **Structural tests can be satisfied by a vacuous policy.** T1/T2 (cited + resolves) can pass on a meaningless one-line "policy." The semantic backstop is T4 (derivable), which requires reviewer judgment and cannot be fully mechanized. This is a known soft floor, called out in Falsifiability & Retraction as the condition that would force strengthening T4.
 - **The mechanical wiring (Hooks 1–2) describes prerequisites and a CI check that must be implemented** in `klappy://odd/gate/prerequisites` and the CI pipeline. This document ratifies the *policy*; the enforcer implementation is a build that — fittingly — must itself proceed from this ratified policy.
 
-This document is authored for ratification and ships only after review of the exact text; it is opened as a DRAFT PR, not merged.
+This document was authored for ratification and ratified by merge on 2026-10-09 (captain ruling; PR #290).

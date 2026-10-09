@@ -5,22 +5,20 @@ audience: canon
 exposure: nav
 tier: 1
 voice: neutral
-stability: draft
+stability: evolving
 tags: ["canon", "constraint", "ratification", "data-model", "reconciliation", "convention-requires-an-enforcer", "drift", "prompt-over-code", "ars"]
 epoch: E0011
 date: 2026-07-16
 derives_from: "docs/appendices/convention-requires-an-enforcer.md, canon/principles/prompt-over-code.md, canon/principles/vodka-architecture.md, canon/values/axioms.md, outputs/debrief-ars-monolith-2026-07-16.md"
 complements: "canon/constraints/release-validation-gate.md, canon/constraints/frontmatter-validation-before-merge.md"
 governs: "Any program in which the operator ratifies a data model, schema, or design invariant that running code is expected to honor. Binding on every seat that ships an implementation against a ruled model — the reconciliation is owed, and an enforcer must make the drift impossible to ship silently."
-status: draft
+status: active
 ---
 
 # Ratified Model Requires Reconciliation and an Enforcer — A Ruled Design Must Bind the Code
 
-> **Posture:** DRAFT — filed 2026-07-16 as the durable lesson from the ARS one-blob
-> monolith write-freeze (see `outputs/debrief-ars-monolith-2026-07-16.md`). The
-> constraint below awaits ratification. It is authored for ratification
-> and must not be merged until reviewed and ratified.
+> **Posture:** ACTIVE — ratified by merge on 2026-10-09 (captain ruling). Filed 2026-07-16 as the durable lesson from the ARS one-blob
+> monolith write-freeze (see `outputs/debrief-ars-monolith-2026-07-16.md`).
 
 > A ratified model is a debt against the code, not a decoration on it. When the operator
 > rules a data/design model, the implementation MUST be reconciled to that model — or a
