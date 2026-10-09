@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: draft
 tags: ["canon", "principle", "policy-first", "prompt-over-code", "self-building", "self-documenting", "enforcement", "traceability", "ars"]
-epoch: E0010
+epoch: E0011
 date: 2026-07-17
 derives_from: "canon/principles/prompt-over-code.md, docs/appendices/convention-requires-an-enforcer.md, canon/constraints/ratified-model-requires-reconciliation-and-enforcer.md, canon/values/axioms.md"
 complements: "canon/meta/enforceable-policy-anatomy.md, canon/meta/constraint-driven-audits.md, canon/constraints/ars-bounded-storage.md"

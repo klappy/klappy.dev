@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: draft
 tags: ["canon", "meta", "policy", "template", "enforcement", "convention-requires-an-enforcer", "policy-first", "drift", "governance"]
-epoch: E0010
+epoch: E0011
 date: 2026-07-17
 derives_from: "canon/principles/policy-first-self-building-self-documenting.md, docs/appendices/convention-requires-an-enforcer.md, canon/meta/constraint-driven-audits.md, canon/constraints/release-validation-gate.md, canon/constraints/ratified-model-requires-reconciliation-and-enforcer.md, canon/values/axioms.md"
 complements: "canon/constraints/ars-bounded-storage.md"
