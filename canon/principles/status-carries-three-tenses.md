@@ -1,6 +1,6 @@
 ---
 uri: klappy://canon/principles/status-carries-three-tenses
-title: "Status Carries Three Tenses — Was, Is, Will Be, Each With an Observed Time and a Rung of Confidence"
+title: "Status Carries Three Tenses — Was, Is, Will Be, Each With an Observed Time and Its Confidence, Proximity and Relevance"
 audience: canon
 exposure: nav
 tier: 2
@@ -11,13 +11,13 @@ epoch: E0010
 date: 2026-10-09
 derives_from: "canon/values/trust-kernel.md, canon/values/axioms.md, canon/observations/time-blindness-axiom-violation.md"
 complements: "canon/principles/data-carries-observed-time.md, canon/constraints/legibility-standard.md, canon/bootstrap/model-operating-contract.md, canon/constraints/measure-before-you-object.md, canon/methods/toc-ooda-sprints.md"
-governs: "Every status report, handoff, progress line, review request, release note, roadmap and sales claim about a product — human or model"
+governs: "Every status report, handoff, progress line, review request, release note, roadmap and sales claim about a product, and every agent-to-agent contract or schema that states what exists — human or model"
 status: active
 ---
 
-# Status Carries Three Tenses — Was, Is, Will Be, Each With an Observed Time and a Rung of Confidence
+# Status Carries Three Tenses — Was, Is, Will Be, Each With an Observed Time and Its Confidence, Proximity and Relevance
 
-> A status that cannot be placed in time is not a status; it is a mood. The fourth dimension of software is the one that sinks projects: not the code, but the inability to say reliably what was, what is, and what will be — and when each was observed or is expected. Every status therefore carries three tenses, and every tense carries a time the reporter observed, not inferred, and names how firmly it holds — observed or recalled, gated or hoped. It is the trust kernel applied to the clock: expectations cannot be set, maintained, checked, or transferred about a thing whose position in time is unknown.
+> A status that cannot be placed in time is not a status; it is a mood. The fourth dimension of software is the one that sinks projects: not the code, but the inability to say reliably what was, what is, and what will be — and when each was observed or is expected. Every status therefore carries three tenses, and every tense carries a time the reporter observed, not inferred, and names how it is known, how far from now it sits, and why it bears on the task at hand. It is the trust kernel applied to the clock: expectations cannot be set, maintained, checked, or transferred about a thing whose position in time is unknown.
 
 ---
 
@@ -43,37 +43,45 @@ One line is enough when all three fit: *main was red at 23:05 (release gate), is
 
 ---
 
-## Each Tense Is a Gradient of Confidence, Not a Point
+## Three Axes Compound on Time — Confidence, Proximity, Relevance
 
-Past and future are not one thing each. Within "was" there is a ladder from *I observed it* down to *I was told*; within "will be" a ladder from *committed and gated* down to *hoped*. A status that names the tense but not the rung still misleads: "it was green" read from a CI badge and "it was green" recalled from a colleague's message are different claims with different weights, and "it will ship Friday" with a merged PR and a scheduled deploy is not "it will ship Friday" because the roadmap says so.
+Past and future are not one thing each. Every point on either side of now carries three independent measures, and a status that names the tense but not the measures still misleads. The captain's brain dump of 2026-10-09 named all three and asked that they not be conflated; the first draft of this principle had blurred two of them.
 
-| Tense | Rung (strongest → weakest) | Reads as |
-|---|---|---|
-| **Was** | observed by the reporter, with time · observed by a tool whose output the reporter read · recorded in a ledger or log · reported by another seat or person · remembered from earlier in the session · inferred | "I saw" → "the gate said" → "the log shows" → "the door reported" → "I recall" → "I assume" |
-| **Is** | just re-observed · observed earlier this turn · observed earlier this session, not re-checked · unobserved | "checked 09:41" → "as of the start of this turn" → "last seen 23:05, not re-checked" → "unknown" |
-| **Will be** | committed with a named gate and a scheduled trigger · committed, gate named, trigger unscheduled · planned and queued · proposed, awaiting a ruling · hoped | "deploys on the next train, door triggers" → "after the captain's yes" → "queued, unit filed" → "in the ASK" → "we'd like to" |
+| Axis | Question it answers | Was | Will be |
+|---|---|---|---|
+| **Confidence** | *How is this known?* | observed by the reporter · observed by a tool whose output the reporter read · recorded in a ledger or log · reported by another seat or person · remembered from earlier in the session · inferred | committed and gated · planned with evidence (tests green, PR open) · planned on track record alone · proposed, awaiting a ruling · hoped, no work started |
+| **Proximity** | *How far from now?* | seconds ago · this session · last release · releases ago | next train · this release · a few releases out · the vision |
+| **Relevance** | *How much does it bear on this task?* | changed what the reader holds now · context the reader never acted on · noise | the gate this decision waits on · the horizon the decision reaches · the roadmap beyond it |
 
-The rung is part of the status. A reporter who collapses the ladder into a bare tense has set an expectation at the strongest rung the reader will assume, which is usually higher than the one the reporter holds. The sales failure in the previous section is exactly this: a "will be" at the *hoped* rung, delivered at the *is* tense.
+The axes are independent. A *hoped* feature can be *near* ("we want it in this release") and a *committed* one can be *far* (contracted for next year). "It was green" read from a CI badge an hour ago and "it was green" recalled from a colleague's message yesterday differ on confidence *and* proximity; both may be irrelevant if the reader is deciding about a different gate. Collapsing the three into one word — "soon", "basically done", "we had that" — is how a *hoped* "will be" gets delivered at the *is* tense, which is the sales failure named above.
 
-The ladder is not a format. Naming the rung can be one word — "observed", "reported", "recalled"; "gated", "queued", "proposed" — or the time and source that imply it.
+Naming an axis can be one word or the time and source that imply it: "observed 09:41" carries confidence and proximity; "the gate your yes is waiting on" carries relevance.
 
 ---
 
 ## Each Tense Is a Timeline, and Relevance Chooses the Points
 
-"Was" is not one state and neither is "will be." The same thing can have a dozen past states — a gate that went red, green, red, green in twelve hours — and a dozen future ones — the next train, the deploy after it, the field test, the release milestone. A status that reports one "was" and one "will be" has already chosen, and the choice is where expectations are managed or lost.
+"Was" is not one state and neither is "will be." The same thing can have a dozen past states — a gate that went red, green, red, green in twelve hours; a screen tweaked pixel by pixel for two hours — and a dozen future ones — the next train, the deploy after it, the field test, the release milestone. A status that reports one "was" and one "will be" has already chosen, and the choice is where expectations are managed or lost.
 
-The filter is relevance to the reader's current moment and current task:
+The filter is relevance to the reader's current moment and current task, and the default cut points are the natural snapshots:
 
-| Tense | Carry | Leave behind an exit |
-|---|---|---|
-| **Was** | the state the reader last held, and every transition since — those are what move their expectation | the full history; earlier states the reader never acted on |
-| **Is** | the current state, with its observed time and rung | detail the current decision does not need |
-| **Will be** | the next gate and as many beyond it as the current decision reaches | the roadmap past that horizon |
+| Tense | Carry | Default snapshots | Leave behind an exit |
+|---|---|---|---|
+| **Was** | the state the reader last held, and the path from it to now | before this working session · the last release · the release before that | every intermediate tweak; states the reader never acted on |
+| **Is** | the current state, with its observed time and confidence | now | detail the current decision does not need |
+| **Will be** | the next gate and as many beyond it as the current decision reaches | the next train · this release · the next | the roadmap past that horizon |
 
-Two readers of the same thing get different statuses. The captain who last saw the gate red at 23:05 needs "went green 06:05, still green 09:41"; the cook who watched it turn green needs only "still green 09:41." The reporter's job is to know which state the reader is still holding — the ledger and the last message to them say so — and to carry the path from there to now, then from now to the next decision.
+Two readers of the same thing get different statuses. The captain who last saw the gate red at 23:05 needs "went green 06:05, still green 09:41"; the cook who watched it turn green needs only "still green 09:41." A design review after two hours of tweaking needs three frames — before the session, the last release, now — not two hundred screenshots. The reporter's job is to know which state the reader is still holding — the ledger and the last message to them say so — and to carry the path from there to now, then from now to the next decision.
 
 What relevance does not permit: dropping a transition because it is embarrassing, or carrying a far-future state because it is attractive. The horizon is the task's, not the reporter's.
+
+---
+
+## What This Is Not
+
+- **Not the epistemic modes.** Exploration, planning, execution and validation are linear stages of work with their own time dimension; the three tenses apply *inside* any of them. A validator reports was/is/will-be as much as a builder does.
+- **Not a version scheme.** Release identifiers are a cross-section of this principle, strongest for the past and present: a released version is a trustworthy snapshot of *was* and *is*. The future stays loose by design — ship early, cut a patch when the fix lands, do not pre-number what has not been built — so "will be" is anchored by gates, not by version numbers promised in advance.
+- **Not a skill.** It is a lens applied across skills, methods, contracts and schemas, including the contracts agents write to each other between layers.
 
 ---
 
@@ -97,12 +105,26 @@ The model failure in the next section is one instance of a human pattern, not a 
 
 ---
 
+## Simple Rules
+
+- **Use when:** any message, document or contract states what exists, existed or will exist — status, release note, roadmap, demo, sales claim, handoff, schema.
+- **Skip when:** the claim has no state in it — a definition, a question, a pure opinion.
+- **Stop when:** a reader who missed the last stretch can place every claim as was / is / will be, with its time, how it is known, and why it is here.
+- **Keep going when:** any claim could be read in two tenses, or any "will be" lacks its gate.
+- **Where:** every captain-facing and agent-facing surface; the legibility standard carries the rendering rules.
+- **Who:** whoever makes the claim — human or model; the reviewer checks the tenses before the content.
+- **Why:** trust is built by managing expectations, and an expectation has no footing without a place in time.
+- **What:** three tenses, each with observed time, confidence, proximity and relevance; timelines cut at natural snapshots.
+- **How:** observe before stating; stamp what you read; carry the path from what the reader holds to now, and from now to the gate the decision waits on.
+
+---
+
 ## Constraints — What This Principle Requires and Prohibits
 
 - A status with no tense is not a status. Rewrite it until a reader can place each claim as was, is, or will be.
 - A tense with no observed time is marked unobserved, never inferred from context or from the last time the reporter looked.
 - "Will be" names the gate that produces it, so the reader knows what to watch rather than when to hope.
-- Each tense names its rung of confidence — observed, reported, recalled; gated, queued, proposed — by a word or by the time and source that imply it. A bare tense is read at the strongest rung, which is the reporter's lie by omission.
+- Each point in a tense names its confidence (observed, reported, recalled; gated, planned, hoped) and its proximity (when), by a word or by the time and source that imply them. A bare tense is read at the strongest confidence and the nearest proximity, which is the reporter's lie by omission.
 - Each tense is a timeline. The status carries the past states from the one the reader last held to now, and the future states as far as the current decision reaches — chosen by relevance to the reader's moment and task, never by comfort.
 - A before/after presentation keeps the two states visibly separate; one frame per state, never interleaved.
 - This is a principle (why), not a format (how). Methods and operating contracts choose the line shape; they may not drop a tense or a time.
