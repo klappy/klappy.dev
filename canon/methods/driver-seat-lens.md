@@ -81,6 +81,11 @@ be rewritten.
 operator's voice is not edited by the lens; the proposed change is named in
 the delta receipt and the lens stops there.
 
+**Class.** This is the first instance of `klappy://canon/methods/lens` —
+a prompt with an owner, a seat, a phase, inputs, a boundary, and a receipt.
+A lens frame that admits many lenses reads that method; this file stays the
+one prompt.
+
 **Vocabulary.** This method names three things and nothing else: a *work
 unit* (the thing being planned), a *planning seat* (whoever looks through the lens),
 and a *delta receipt* (the file that proves the look happened). Every operating
