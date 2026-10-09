@@ -17,7 +17,7 @@ status: paused
 
 # ARS Bounded Storage — Per-Entity Rows, Always-R2 Offload, Rotation, and a Durable Mirror
 
-> **Posture:** PAUSED — captain ruling 2026-10-09 19:38 ET: ARS is retrospectively on ice. The lessons it forced (the 2026-07-16 freeze, policy-precedes-build, Epoch 11) stand; the system itself is paused as the program moved from a home-rolled code harness to GitHub repos, files and folders compatible with any harness. This document is kept as the record of what was ratified, not as a live constraint. Was: ACTIVE — ratified by merge on 2026-10-09 (captain ruling). Filed 2026-07-17 as the enforceable canon for the ARS
+> **Posture:** PAUSED — captain ruling 2026-10-09 19:38 ET: ARS is retrospectively on ice. The lessons it forced (the 2026-07-16 freeze, policy-precedes-build, Epoch 11) stand; the system itself is paused as the program moved from a home-rolled code harness to GitHub repos, files and folders compatible with any harness. Most of what ARS taught was carried forward: its lessons shaped the approaches that replaced it, and much of its shape is reused in them, even where the explicit implementation is not. This document is kept as the record of what was ratified, and as the ancestor of what came after, not as a live constraint. Was: ACTIVE — ratified by merge on 2026-10-09 (captain ruling). Filed 2026-07-17 as the enforceable canon for the ARS
 > storage redesign the operator approved in `agent-role-service/docs/adr/ADR-0001-ars-per-entity-do-sqlite.md`
 > (all seven design questions RULED, 2026-07-16).
 > Nothing here is built, deployed, or
