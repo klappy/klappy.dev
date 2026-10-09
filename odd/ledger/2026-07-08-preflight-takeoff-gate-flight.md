@@ -33,7 +33,7 @@ Result: all five green → **cleared for takeoff**.
 
 ## What flew
 
-Codified the five-item preflight as a hard, fail-closed takeoff gate: authoritative tier-1 constraint (`canon/constraints/preflight-checklist-takeoff-gate.md`), a binding section in the operating contract, the gate written into both boarding passes (project + account text), a root `DISPATCH.md` for dispatched flights, a soft mechanical CI check (`scripts/validate-preflight-declaration.py` + `preflight-declaration` job) as the START-gate mirror of recording-as-landing, and governance markers (CHANGELOG 0.40.0 + release note).
+Codified the five-item preflight as a hard, fail-closed takeoff gate: authoritative tier-1 constraint (`canon/constraints/preflight-checklist-takeoff-gate.md`), a binding section in the operating contract, the gate written into both boarding passes (project + account text), a root `DISPATCH.md` for dispatched flights, a soft mechanical CI check (`scripts/validate-preflight-declaration.py` + `preflight-declaration` job) as the START-gate mirror of recording-as-landing, and governance markers (CHANGELOG 0.43.0 + release note).
 
 ## Cross-check / debrief
 
