@@ -61,7 +61,7 @@ The ladder is not a format. Naming the rung can be one word — "observed", "rep
 
 ## Each Tense Is a Timeline, and Relevance Chooses the Points
 
-"Was" is not one state and neither is "will be." The same thing can have a dozen past states — a gate that went red, green, red, green in twelve hours — and a dozen future ones — the next train, the deploy after it, the field test, the Summit. A status that reports one "was" and one "will be" has already chosen, and the choice is where expectations are managed or lost.
+"Was" is not one state and neither is "will be." The same thing can have a dozen past states — a gate that went red, green, red, green in twelve hours — and a dozen future ones — the next train, the deploy after it, the field test, the release milestone. A status that reports one "was" and one "will be" has already chosen, and the choice is where expectations are managed or lost.
 
 The filter is relevance to the reader's current moment and current task:
 
