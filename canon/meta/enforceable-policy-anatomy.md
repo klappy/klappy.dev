@@ -5,20 +5,20 @@ audience: canon
 exposure: nav
 tier: 1
 voice: neutral
-stability: draft
+stability: evolving
 tags: ["canon", "meta", "policy", "template", "enforcement", "convention-requires-an-enforcer", "policy-first", "drift", "governance"]
 epoch: E0011
 date: 2026-07-17
 derives_from: "canon/principles/policy-first-self-building-self-documenting.md, docs/appendices/convention-requires-an-enforcer.md, canon/meta/constraint-driven-audits.md, canon/constraints/release-validation-gate.md, canon/constraints/ratified-model-requires-reconciliation-and-enforcer.md, canon/values/axioms.md"
 complements: "canon/constraints/ars-bounded-storage.md"
 governs: "Every new tier-1 or tier-2 policy or constraint document authored in canon/ that a machine, review gate, or runtime invariant is expected to enforce. Defines the five parts an enforceable policy must declare and the conformance bar for each."
-status: draft
+status: active
 ---
 
 # Anatomy of an Enforceable Policy — WHAT · WHY · ENFORCEMENT · SCOPE · VERIFICATION
 
-> **Posture:** DRAFT — a meta-template authored for ratification, filed 2026-07-17 alongside the ARS storage
-> policy set. Authored for ratification; do not merge until reviewed and ratified.
+> **Posture:** ACTIVE — ratified by merge on 2026-10-09 (captain ruling). A meta-template filed 2026-07-17 alongside the ARS storage
+> policy set.
 
 > An enforceable policy is not prose about a good idea. It is five declared parts, and a policy
 > missing any of them is advice, not enforcement. **WHAT** states the rule precisely enough to

@@ -5,22 +5,22 @@ audience: canon
 exposure: nav
 tier: 1
 voice: neutral
-stability: draft
+stability: evolving
 tags: ["canon", "constraint", "ars", "storage", "durable-object", "sqlite", "r2", "bounded-row", "retention", "mirror", "write-freeze", "policy-first", "prompt-over-code"]
 epoch: E0010
 date: 2026-07-17
 derives_from: "agent-role-service/docs/adr/ADR-0001-ars-per-entity-do-sqlite.md, agent-role-service/docs/policy/ars-data-model-philosophy.md, agent-role-service/docs/policy/ars-nouns-and-verbs.md, agent-role-service/docs/policy/ars-v1-operating-policy.md, canon/constraints/ratified-model-requires-reconciliation-and-enforcer.md, canon/principles/policy-first-self-building-self-documenting.md, canon/meta/enforceable-policy-anatomy.md, outputs/debrief-ars-monolith-2026-07-16.md"
 complements: "canon/constraints/release-validation-gate.md, canon/meta/constraint-driven-audits.md, canon/principles/vodka-architecture.md"
 governs: "Every storage read/write path in klappy/agent-role-service — AccountDO (src/do.js) and the core modules (src/core/{registry,leases,board,runs,seed,members,driver}.js), the alarm handler, and the protocol/tool handlers. Binding on every seat that ships ARS storage code and on the CI + runtime enforcers named per policy."
-status: draft
+status: active
 ---
 
 # ARS Bounded Storage — Per-Entity Rows, Always-R2 Offload, Rotation, and a Durable Mirror
 
-> **Posture:** DRAFT — authored for ratification. Filed 2026-07-17 as the enforceable canon for the ARS
+> **Posture:** ACTIVE — ratified by merge on 2026-10-09 (captain ruling). Filed 2026-07-17 as the enforceable canon for the ARS
 > storage redesign the operator approved in `agent-role-service/docs/adr/ADR-0001-ars-per-entity-do-sqlite.md`
-> (all seven design questions RULED, 2026-07-16). Authored for ratification.
-> **DO NOT MERGE until reviewed and ratified.** Nothing here is built, deployed, or
+> (all seven design questions RULED, 2026-07-16).
+> Nothing here is built, deployed, or
 > migrated by this document; it is the buildable spec the build flight implements and cites.
 
 > The ARS store keeps one row per record, offloads what is huge, rotates what is old, and mirrors
