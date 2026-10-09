@@ -12,12 +12,12 @@ date: 2026-07-17
 derives_from: "agent-role-service/docs/adr/ADR-0001-ars-per-entity-do-sqlite.md, agent-role-service/docs/policy/ars-data-model-philosophy.md, agent-role-service/docs/policy/ars-nouns-and-verbs.md, agent-role-service/docs/policy/ars-v1-operating-policy.md, canon/constraints/ratified-model-requires-reconciliation-and-enforcer.md, canon/principles/policy-first-self-building-self-documenting.md, canon/meta/enforceable-policy-anatomy.md, outputs/debrief-ars-monolith-2026-07-16.md"
 complements: "canon/constraints/release-validation-gate.md, canon/meta/constraint-driven-audits.md, canon/principles/vodka-architecture.md"
 governs: "Every storage read/write path in klappy/agent-role-service — AccountDO (src/do.js) and the core modules (src/core/{registry,leases,board,runs,seed,members,driver}.js), the alarm handler, and the protocol/tool handlers. Binding on every seat that ships ARS storage code and on the CI + runtime enforcers named per policy."
-status: active
+status: paused
 ---
 
 # ARS Bounded Storage — Per-Entity Rows, Always-R2 Offload, Rotation, and a Durable Mirror
 
-> **Posture:** ACTIVE — ratified by merge on 2026-10-09 (captain ruling). Filed 2026-07-17 as the enforceable canon for the ARS
+> **Posture:** PAUSED — captain ruling 2026-10-09 19:38 ET: ARS is retrospectively on ice. The lessons it forced (the 2026-07-16 freeze, policy-precedes-build, Epoch 11) stand; the system itself is paused as the program moved from a home-rolled code harness to GitHub repos, files and folders compatible with any harness. This document is kept as the record of what was ratified, not as a live constraint. Was: ACTIVE — ratified by merge on 2026-10-09 (captain ruling). Filed 2026-07-17 as the enforceable canon for the ARS
 > storage redesign the operator approved in `agent-role-service/docs/adr/ADR-0001-ars-per-entity-do-sqlite.md`
 > (all seven design questions RULED, 2026-07-16).
 > Nothing here is built, deployed, or
