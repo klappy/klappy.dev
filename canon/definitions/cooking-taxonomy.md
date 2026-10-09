@@ -140,7 +140,7 @@ The metaphor is locked (working lunch, 2026-08-06). The airline frame was judged
 *Confidence: medium (mapping is directional, not exhaustive).*
 
 
-Recipe ≈ charter or skill. Dish ≈ artifact or outcome. Meal ≈ engagement deliverable. Meal plan ≈ roadmap or retainer cadence. Cookbook ≈ productized catalog. Menu ≈ the client-facing offer list. Agents perform the instructions; clients never execute them. For software delivery, the dishes are planning, building, QA, DevOps/CICD, maintenance, and support: the Covenant Ventures shape.
+Recipe ≈ method or skill (a charter is the grant that authorizes the cook, not the recipe; see `klappy://canon/definitions/governance-artifacts`). Dish ≈ artifact or outcome. Meal ≈ engagement deliverable. Meal plan ≈ roadmap or retainer cadence. Cookbook ≈ productized catalog. Menu ≈ the client-facing offer list. Agents perform the instructions; clients never execute them. For software delivery, the dishes are planning, building, QA, DevOps/CICD, maintenance, and support: the Covenant Ventures shape.
 
 The kitchen itself is the tech stack. Each dish is handed off press-play style: a kick-off artifact of ingredients and instructions delivered to a named owner who runs it.
 
