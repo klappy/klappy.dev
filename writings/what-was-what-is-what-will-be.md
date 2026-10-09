@@ -36,17 +36,17 @@ provenance:
 
 # What Was, What Is, What Will Be
 
-> This morning a teammate asked me a yes/no question I had answered the night before, then reported that the build was red. It had been green for three and a half hours. Every sentence was true at some point. Not one of them carried the time it was true, so I had to reconstruct the timeline myself before I could act. That is the oldest failure I know in product work, and I have watched it lose clients, funders and whole sprints long before an AI ever made it. Trust is built by managing expectations, and an expectation has no footing without a place in time. So every status I accept now carries three tenses: what was, what is, what will be, each with the moment it was seen or the gate that decides it, and for each, how I know it, how far from now it sits, and whether it bears on the decision in front of me.
+> This morning a teammate asked me a yes/no question I had answered the night before, then reported that the build was red. It had been green for three and a half hours. Every sentence was true at some point. Not one of them carried the time it was true, so I had to reconstruct the timeline myself before I could act. That is the oldest failure I know in product work, and I have watched it cost a sprint, then a client, then a funder, long before an AI ever made it. Trust is built by managing expectations, and an expectation has no footing without a place in time. So every status I accept now carries all three tenses, past, present and future: what was, what is, what will be, each with the moment it was seen or the gate that decides it, and for each, how I know it, how far from now it sits, and whether it bears on the decision in front of me.
 
 ---
 
 ## Summary — The Fourth Dimension Is the One That Sinks Projects
 
-I have worked with a lot of teams over the years, in a lot of seats. Customers, users, funders. Developers reporting to managers, managers reporting up, leadership reporting to the board. Lately, AI agents reporting to me. The problem that shows up in every one of those relationships is the same problem, and it is not about the code. It is that we speak about the past, the present and the future in one flat tense and leave the listener to guess which is which.
+I have worked with a lot of teams over the years, in a lot of seats. Developers reporting to managers, managers reporting to leadership, leadership reporting to the board, the board answering to funders, and all of it answering to the users and customers who actually have to live with the product. Lately, AI agents reporting to me. The problem that shows up in every one of those relationships is the same problem, and it is not about the code. It is that we speak about the past, the present and the future in one flat tense, what was, what is and what will be all sounding the same, and leave the listener to guess which is which.
 
-A founder sells what the product will be as if it already is. A funder hears a plan and books it as a result. A developer says "it's done" meaning "it's merged," and the user finds out otherwise. An agent tells me the gate is red because it was red when the agent last looked, hours ago. Each speaker believes they told the truth. Each listener walks away holding an expectation that the world will not honor.
+A developer says "it's done" meaning "it's merged," and the user finds out otherwise. An agent tells me the gate is red because it was red when the agent last looked, hours ago. A founder sells what the product will be as if it already is. A funder hears that plan and books it as a result. Each speaker believes they told the truth. Each listener walks away holding an expectation that the world will not honor.
 
-When that happens enough, trust goes, however good the underlying work is. I have come to treat an unclear was / is / will be as grounds for bankruptcy on a collaboration. The fix is a discipline rather than a tool: say which tense you are in, say when you saw it, say how you know it and how far from now it sits, and if you are describing the future, say what has to happen for it to arrive. Then carry only the past and future snapshots that bear on the decision at hand. The principle is written up properly at [Status Carries Three Tenses](klappy://canon/principles/status-carries-three-tenses). This essay is the story behind it.
+When that happens enough, trust goes, however good the underlying work is. I have come to treat an unclear past, present and future as grounds for bankruptcy on a collaboration. The fix is a discipline rather than a tool: say which tense you are in, say when you saw it, say how you know it and how far from now it sits, and if you are describing the future, say what has to happen for it to arrive. Then carry only the past and future snapshots that bear on the decision at hand. The principle is written up properly at [Status Carries Three Tenses](klappy://canon/principles/status-carries-three-tenses). This essay is the story behind it.
 
 ---
 
@@ -66,17 +66,17 @@ I have had that exact feeling in rooms full of humans. The sales engineer who le
 
 It would be convenient to pin this on sales. I can't.
 
-I have been the lead developer, the architect, the CTO and the sales engineer at the same company, sometimes in the same week. I have watched leadership sell a thing that did not exist and then gone back to my desk to backfill it before anyone bought. Some people call that how startups work. One co-founder makes the bold promise, the team figures out how to deliver. Fine. I understand the move.
+I have been the lead developer, the architect, the sales engineer and the CTO at the same company, sometimes in the same week. I have watched leadership sell a thing that did not exist and then gone back to my desk to backfill it before anyone bought. Some people call that how startups work. One co-founder makes the bold promise, the team figures out how to deliver. Fine. I understand the move.
 
 But I have also made the bold claim myself, because I could see the vision so clearly that the gap between the vision and the current build stopped registering. I have described a Bible translation tool by what it was going to do, to people who reasonably heard what it did. Casting vision is part of the job. You cannot lead a team or raise money without saying where this is going. What gets lost is the discernment in the gray area between the vision and what exists right now, and losing that discernment is the lie, even when every individual sentence was sincere.
 
-My stubborn hope, and it may be naive, is that the opposite can be true. That you can build a long track record of bold promises kept without ever letting a "will be" get delivered in the "is" tense. I have seen it work. The same product, with the same team, kept its clients and its funders when the tenses were kept straight, and lost them when they were not.
+My stubborn hope, and it may be naive, is that the opposite can be true. That you can build a long track record of bold promises kept without ever letting the future get delivered in the present tense. I have seen it work. The same product, with the same team, kept its clients and its funders when the tenses were kept straight, and lost them when they were not.
 
 ---
 
 ## Three Axes, Not Three Boxes
 
-When I first started dictating this I thought the answer was three states. Was, is, will be. Label everything, done.
+When I first started dictating this I thought the answer was three states. Past, present, future. Label everything, done.
 
 That would already be a big improvement, but it is not enough, because the past and the future are not single points. A button on a screen can have a dozen past states. A roadmap has a next train, a next release, and the vision. Collapsing all of that into "we had that" or "it's coming" is the same conflation wearing a smaller hat.
 
@@ -90,7 +90,7 @@ Those axes are independent, and that is the part I used to get wrong. A hoped-fo
 
 Relevance is what keeps this from becoming its own flood.
 
-If we have spent two hours tweaking the look of a screen, I do not want two hundred screenshots. I want three frames: before this session started, what shipped last release, and now. Maybe the release before that if it changed something I still carry in my head. Pixel-by-pixel history is noise. The natural cut points are where the reader's mental model actually lives.
+If we have spent two hours tweaking the look of a screen, I do not want two hundred screenshots. I want three frames: now, before this session started, and what shipped last release. Maybe the release before that, if it changed something I still carry in my head. Pixel-by-pixel history is noise. The natural cut points are where the reader's mental model actually lives.
 
 The same goes forward. Carry the next gate, and as many gates beyond it as the current decision reaches. The roadmap past that horizon is a different conversation. And the filter is relevance to the reader's moment and task, never comfort. Dropping a transition because it is embarrassing, or carrying a far-off feature because it is attractive, is exactly the collapse we are trying to prevent.
 
@@ -100,9 +100,9 @@ The same goes forward. Carry the next gate, and as many gates beyond it as the c
 
 I want to be careful about three things this could get confused with.
 
-It is not the working modes. Explore, plan, build, validate have their own clock; the tenses ride inside whichever one you are in.
+It is not the working modes. Explore, plan, build, validate have their own clock; past, present and future ride inside whichever one you are in.
 
-It is not a version scheme, though semantic versioning is a useful cross-section of it. Where I part ways with semver is the future. Our cycle now is minutes to days, sometimes weeks, and one day it will be seconds, so I do not want to block progress predicting which feature lands when. Ship when the gate passes, cut the patch when the fix lands, number it afterward.
+It is not a version scheme, though semantic versioning is a useful cross-section of it. Where I part ways with semver is the future. Our cycle now is weeks at the slowest, usually days, often hours or minutes, and one day it will be seconds, so I do not want to block progress predicting which feature lands when. Ship when the gate passes, cut the patch when the fix lands, number it afterward.
 
 And it is not a skill. I went back and forth on that during the dictation and landed on principle: a lens applied across skills, methods and the contracts agents write to each other between layers. The data-side twin, [readings carry the time they were observed](klappy://canon/principles/data-carries-observed-time), gets its own page.
 
@@ -112,7 +112,7 @@ And it is not a skill. I went back and forth on that during the dictation and la
 
 In April I wrote up [time blindness](klappy://canon/observations/time-blindness-axiom-violation): models have no clock, so they infer elapsed time from context and guess confidently when they guess wrong. We built a clock and put it in the model's hand, and that one fix unlocked more than I expected across the whole system.
 
-This essay is the human side of that observation. A human with a perfect clock who says "the build is red" without a time has made the same mistake as the model that never had one. The reader still cannot tell whether to act. Time blindness explained how a model loses the clock. This principle says why losing it costs trust no matter who is speaking.
+This essay is the human side of that observation. A human with a perfect clock who says "the build is red" without a time has made the same mistake as the model that never had one. The reader still cannot tell whether to act. Time blindness explained how a model loses the clock. This principle says why losing it costs trust no matter who is speaking, and no matter which of the three tenses they lose.
 
 The root of all of it is [trust](klappy://canon/values/trust-kernel), and trust is nothing more mysterious than expectations managed honestly over time. Honesty, transparency, observability across the product lifecycle. The principle ends with a one-question test for any status; I will let it keep that. Mine is simpler. If I have to ask "wait, is that still the case?", the work underneath will not save us.
 
