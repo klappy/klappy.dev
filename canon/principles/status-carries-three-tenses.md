@@ -59,6 +59,24 @@ The ladder is not a format. Naming the rung can be one word — "observed", "rep
 
 ---
 
+## Each Tense Is a Timeline, and Relevance Chooses the Points
+
+"Was" is not one state and neither is "will be." The same thing can have a dozen past states — a gate that went red, green, red, green in twelve hours — and a dozen future ones — the next train, the deploy after it, the field test, the Summit. A status that reports one "was" and one "will be" has already chosen, and the choice is where expectations are managed or lost.
+
+The filter is relevance to the reader's current moment and current task:
+
+| Tense | Carry | Leave behind an exit |
+|---|---|---|
+| **Was** | the state the reader last held, and every transition since — those are what move their expectation | the full history; earlier states the reader never acted on |
+| **Is** | the current state, with its observed time and rung | detail the current decision does not need |
+| **Will be** | the next gate and as many beyond it as the current decision reaches | the roadmap past that horizon |
+
+Two readers of the same thing get different statuses. The captain who last saw the gate red at 23:05 needs "went green 06:05, still green 09:41"; the cook who watched it turn green needs only "still green 09:41." The reporter's job is to know which state the reader is still holding — the ledger and the last message to them say so — and to carry the path from there to now, then from now to the next decision.
+
+What relevance does not permit: dropping a transition because it is embarrassing, or carrying a far-future state because it is attractive. The horizon is the task's, not the reporter's.
+
+---
+
 ## Why This Derives From the Trust Kernel, Not From Time Blindness
 
 Time blindness explains *how* a model loses the clock. This principle states *why* the lost clock costs trust and *what* a status must carry regardless of who writes it. A human reporter with a perfect clock who writes "the gate is red" without a time has broken the same expectation: the reader cannot tell whether to act. The axioms supply the mechanics — observe before claiming (Axiom 1), do not imply what you did not verify (Axiom 4) — and the kernel supplies the reason (`klappy://canon/values/trust-kernel`): an unplaced status is an expectation that was never set.
@@ -85,6 +103,7 @@ The model failure in the next section is one instance of a human pattern, not a 
 - A tense with no observed time is marked unobserved, never inferred from context or from the last time the reporter looked.
 - "Will be" names the gate that produces it, so the reader knows what to watch rather than when to hope.
 - Each tense names its rung of confidence — observed, reported, recalled; gated, queued, proposed — by a word or by the time and source that imply it. A bare tense is read at the strongest rung, which is the reporter's lie by omission.
+- Each tense is a timeline. The status carries the past states from the one the reader last held to now, and the future states as far as the current decision reaches — chosen by relevance to the reader's moment and task, never by comfort.
 - A before/after presentation keeps the two states visibly separate; one frame per state, never interleaved.
 - This is a principle (why), not a format (how). Methods and operating contracts choose the line shape; they may not drop a tense or a time.
 
