@@ -423,4 +423,83 @@ This change alters what the system can see about itself:
 
 - E0007/E0007.1 artifacts remain valid. E0008 does not modify proactive posture, Vodka Architecture, or any prior governance.
 - E0008 adds infrastructure observability that prior epochs did not include.
-- E0008 is the current epoch.
+- E0008 is the current epoch within its window.
+
+---
+
+## E0009 — Substrate Becomes the Wire
+
+**Date:** 2026-05-12
+
+E0008 made the system observable. E0009 retires the integration pattern the prior disciplines were defending against: human-as-wire. The substrate becomes the wire.
+
+See [`docs/appendices/epoch-9.md`](/docs/appendices/epoch-9.md) for the full epoch declaration.
+
+### What changed
+
+E0009 names the substrate stack end-to-end (L1 wire through L6 economy), specifies persona-shaped runtimes and the five-dimension spawned-session contract, bounds the dispatch surface to a binary (assistant-orchestrated vs. autonomous-trigger), and taxonomizes trigger sources. Audits become spawned agent sessions on substrate; validation gets its own substrate and context break; personas become deployable peers with accounts and streams; cross-agent coordination and knowledge ingestion run over the wire with no assistant in the loop. The operator becomes a director, not a relay.
+
+### Why this is a new epoch
+
+- The system bottleneck was never tokens — it was the human being the integration layer between intelligences
+- Success now means the operator never had to be the wire between a layer and its neighbors
+- The operator's attention is reserved for direction-setting and pivot decisions
+- E0008 artifacts produced with a human relay are not comparable to E0009 artifacts produced on substrate
+
+### Compatibility
+
+- E0008 artifacts remain valid within E0008.
+- E0008 artifacts are not comparable to E0009 artifacts by default.
+
+---
+
+## E0010 — Flight Crew: Bootstrapping Moves From Costume to Seat
+
+**Date:** 2026-06-09
+
+E0009 made the substrate the wire. E0010 changes the wrapper: how a model boards the system and how governance is enforced once it has. The costume is retired; the seat replaces it.
+
+See [`docs/appendices/epoch-10.md`](/docs/appendices/epoch-10.md) for the full epoch declaration.
+
+### What changed
+
+Earlier model generations were bootstrapped with an identity — a creed worn as self. The current generation keeps its own judgment, declines the costume, and fails by silent substitution: recalling governance instead of fetching it. E0010 answers with the flight deck. The knowledge base is the employee manual, opened at the moment of use. Preflight fires before work, every session, regardless of capability. Modes are a sterile cockpit. The cross-check runs both directions. The journal is the black box; the debrief turns failure into canon. Project instructions shrink to a boarding pass: creed, axioms, time rule, and a pointer. Declared as an experiment with retraction conditions on the record.
+
+### Why this is a new epoch
+
+- Everything below the wrapper (axioms, canon, tools) is unchanged; what changes is the relationship frame in which all of it is used
+- Success means boarded sessions produce zero unreviewed commits in the maintainer's voice and zero publishes that skipped the gauntlet
+- The maintainer's attention shifts from catching process violations to adjudicating content
+- E0009 artifacts produced by an unboarded model are not comparable to E0010 artifacts produced from the seat
+
+### Compatibility
+
+- E0009 artifacts remain valid within E0009.
+- E0009 artifacts are not comparable to E0010 artifacts by default.
+
+---
+
+## E0011 — Seat to Loop: The Gate Becomes the Verdict
+
+**Date:** 2026-07-17
+
+E0010 seated the model as crew and located trust in the boarded seat. E0011 retires the seat as the unit of trust: the gated two-loop production frame replaces it. A valid outcome is one that descended from ratified policy through the loop, fresh-validated at every gate, for every role.
+
+See [`docs/appendices/epoch-11.md`](/docs/appendices/epoch-11.md) for the full epoch declaration.
+
+### What changed
+
+The ARS monolith freeze (2026-07-16) proved a correctly boarded seat can still build a thing no policy authorized, because code ran ahead of policy and no enforcer could measure the drift. E0011 answers with the loop as the universal production frame: an outer collaboration loop (operator ↔ CDO, produces decisions and ratifications, never code) and an inner production loop (exploration → policy → PRD → build → validate), joined at the ratification seam, each gate a fresh session so nothing certifies its own work. The binding contract is `policy-precedes-build` (design → policy → PRD → build, fleet-wide, ratified + derivable + cited). The mandatory evidence is gate-passage receipts plus fresh validation, for every role — not just the seated model.
+
+### Why this is a new epoch
+
+- Trust moves from the seat to the loop the seat runs inside: boarding governs how a seat behaves, not what its build may descend from
+- "Done" now means the outcome descended from ratified policy through the gated loop and carries its gate-passage receipts
+- The maintainer's attention shifts from catching unauthorized builds after the fact to ruling on policy at the ratification seam before the build exists
+- E0010 artifacts trusted by seat are not comparable to E0011 artifacts validated by loop
+
+### Compatibility
+
+- E0010 artifacts remain valid within E0010; the seat and boarding frame carry forward unchanged.
+- E0010 artifacts are not comparable to E0011 artifacts by default.
+- E0011 is the current epoch. Declared as an experiment; see the appendix for retraction conditions.
