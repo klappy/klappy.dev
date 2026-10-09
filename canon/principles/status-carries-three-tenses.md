@@ -6,12 +6,12 @@ exposure: nav
 tier: 2
 voice: neutral
 stability: evolving
-tags: ["canon", "principles", "trust", "expectations", "time", "status", "communication", "tense", "lifecycle"]
+tags: ["canon", "principles", "trust", "expectations", "time", "status", "communication", "tense", "lifecycle", "product-development", "sales"]
 epoch: E0008.1
 date: 2026-10-09
 derives_from: "canon/values/trust-kernel.md, canon/values/axioms.md, canon/observations/time-blindness-axiom-violation.md"
 complements: "canon/bootstrap/model-operating-contract.md, canon/constraints/measure-before-you-object.md, canon/methods/toc-ooda-sprints.md"
-governs: "Every status report, handoff, progress line, review request, and release note in AI-augmented work"
+governs: "Every status report, handoff, progress line, review request, release note, roadmap and sales claim about a product — human or model"
 status: active
 ---
 
@@ -46,6 +46,14 @@ One line is enough when all three fit: *main was red at 23:05 (release gate), is
 ## Why This Derives From the Trust Kernel, Not From Time Blindness
 
 Time blindness explains *how* a model loses the clock. This principle states *why* the lost clock costs trust and *what* a status must carry regardless of who writes it. A human reporter with a perfect clock who writes "the gate is red" without a time has broken the same expectation: the reader cannot tell whether to act. The axioms supply the mechanics — observe before claiming (Axiom 1), do not imply what you did not verify (Axiom 4) — and the kernel supplies the reason: an unplaced status is an unmanaged expectation.
+
+---
+
+## Observed Across Roles — This Predates Models
+
+The captain's account (2026-10-09): as founder, inventor, lead developer, architect, CTO and sales engineer, he repeatedly watched sales and leadership sell what the product *would be* and claim it already *was*. The person responsible for making it true carried the gap as anxiety. The outcomes were the same every time the tenses collapsed: lost clients, rework, frustrated users, angry funders, lost funding. When the tenses were kept — what is shipped, what is building, what is promised, each with its date — the same products kept their clients and their funders. In his judgment this is probably the root communication concern of product development, which is why it lives here as a principle and not as a style note for model output.
+
+The model failure in the next section is one instance of a human pattern, not a new problem.
 
 ---
 
