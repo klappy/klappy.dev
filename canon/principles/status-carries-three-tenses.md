@@ -1,6 +1,6 @@
 ---
 uri: klappy://canon/principles/status-carries-three-tenses
-title: "Status Carries Three Tenses — Was, Is, Will Be, Each With an Observed Time"
+title: "Status Carries Three Tenses — Was, Is, Will Be, Each With an Observed Time and a Rung of Confidence"
 audience: canon
 exposure: nav
 tier: 2
@@ -15,7 +15,7 @@ governs: "Every status report, handoff, progress line, review request, release n
 status: active
 ---
 
-# Status Carries Three Tenses — Was, Is, Will Be, Each With an Observed Time
+# Status Carries Three Tenses — Was, Is, Will Be, Each With an Observed Time and a Rung of Confidence
 
 > A status that cannot be placed in time is not a status; it is a mood. The fourth dimension of software is the one that sinks projects: not the code, but the inability to say reliably what was, what is, and what will be — and when each was observed or is expected. Every status therefore carries three tenses, and every tense carries a time the reporter observed, not inferred. It is the trust kernel applied to the clock: expectations cannot be set, maintained, checked, or transferred about a thing whose position in time is unknown.
 
@@ -40,6 +40,22 @@ The fix is structural, not stylistic. Every status names what **was** (and when 
 | **Will be** | the next state and the gate that produces it | when it is expected, and what decides it | a plan is read as a result |
 
 One line is enough when all three fit: *main was red at 23:05 (release gate), is green since 06:05 (checked 09:41), will be on production after the next deploy, which the deploy gate triggers.* Several lines are fine when the reader must compare before and after. What is not fine is a single present-tense sentence that could belong to any of the three.
+
+---
+
+## Each Tense Is a Gradient of Confidence, Not a Point
+
+Past and future are not one thing each. Within "was" there is a ladder from *I observed it* down to *I was told*; within "will be" a ladder from *committed and gated* down to *hoped*. A status that names the tense but not the rung still misleads: "it was green" read from a CI badge and "it was green" recalled from a colleague's message are different claims with different weights, and "it will ship Friday" with a merged PR and a scheduled deploy is not "it will ship Friday" because the roadmap says so.
+
+| Tense | Rung (strongest → weakest) | Reads as |
+|---|---|---|
+| **Was** | observed by the reporter, with time · observed by a tool whose output the reporter read · recorded in a ledger or log · reported by another person · remembered from earlier in the session · inferred | "I saw" → "the gate said" → "the log shows" → "the door reported" → "I recall" → "I assume" |
+| **Is** | just re-observed · observed earlier this turn · observed earlier this session, not re-checked · unobserved | "checked 09:41" → "as of the start of this turn" → "last seen 23:05, not re-checked" → "unknown" |
+| **Will be** | committed with a named gate and a scheduled trigger · committed, gate named, trigger unscheduled · planned and queued · proposed, awaiting a ruling · hoped | "deploys on the next train, door triggers" → "after the captain's yes" → "queued, unit filed" → "in the ASK" → "we'd like to" |
+
+The rung is part of the status. A reporter who collapses the ladder into a bare tense has set an expectation at the strongest rung the reader will assume, which is usually higher than the one the reporter holds. The sales failure in the previous section is exactly this: a "will be" at the *hoped* rung, delivered at the *is* tense.
+
+The ladder is not a format. Naming the rung can be one word — "observed", "reported", "recalled"; "gated", "queued", "proposed" — or the time and source that imply it.
 
 ---
 
@@ -68,6 +84,7 @@ The model failure in the next section is one instance of a human pattern, not a 
 - A status with no tense is not a status. Rewrite it until a reader can place each claim as was, is, or will be.
 - A tense with no observed time is marked unobserved, never inferred from context or from the last time the reporter looked.
 - "Will be" names the gate that produces it, so the reader knows what to watch rather than when to hope.
+- Each tense names its rung of confidence — observed, reported, recalled; gated, queued, proposed — by a word or by the time and source that imply it. A bare tense is read at the strongest rung, which is the reporter's lie by omission.
 - A before/after presentation keeps the two states visibly separate; one frame per state, never interleaved.
 - This is a principle (why), not a format (how). Methods and operating contracts choose the line shape; they may not drop a tense or a time.
 
