@@ -7,10 +7,10 @@ tier: 2
 voice: neutral
 stability: evolving
 tags: ["canon", "principles", "trust", "time", "data", "observation", "staleness", "provenance", "axiom-1", "axiom-4"]
-epoch: E0008.1
+epoch: E0010
 date: 2026-10-09
 derives_from: "canon/values/trust-kernel.md, canon/values/axioms.md, canon/observations/time-blindness-axiom-violation.md"
-complements: "canon/principles/status-carries-three-tenses.md, canon/principles/envelope-time-fields.md, odd/constraints/anti-cache-lying.md, canon/principles/code-claims-require-code-observation.md"
+complements: "canon/principles/status-carries-three-tenses.md, canon/principles/envelope-time-fields.md, odd/constraint/anti-cache-lying.md, canon/principles/code-claims-require-code-observation.md"
 governs: "Every datum a model or agent reads, holds in context, or reports — test results, gate states, screenshots, query results, transcripts, file contents, metrics"
 status: active
 ---
@@ -51,7 +51,7 @@ Trust is built by managing expectations (`klappy://canon/values/trust-kernel`). 
 
 ## Evidence
 
-- 2026-10-09, FIA app cookbook session: a release gate observed red at ~23:05 ET was reported as red at ~09:30 ET; it had been green since 06:05 ET. The datum ("red") was in context without its time. Sibling incident recorded in `status-carries-three-tenses`.
+- 2026-10-09, FIA app cookbook session: a release gate observed red at ~23:05 ET was reported as red at ~09:30 ET and re-checked at 09:41 ET; it had been green since 06:05 ET. The datum ("red") was in context without its time. Sibling incident recorded in `status-carries-three-tenses`.
 - 2026-02, `docs/incidents/oddkit-stale-cache-2026-02`: oddkit served stale canon for days; the fix (content-addressed storage, two envelope time fields) is this principle enforced mechanically for one data source.
 
 ---

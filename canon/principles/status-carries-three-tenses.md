@@ -7,7 +7,7 @@ tier: 2
 voice: neutral
 stability: evolving
 tags: ["canon", "principles", "trust", "expectations", "time", "status", "communication", "tense", "lifecycle", "product-development", "sales"]
-epoch: E0008.1
+epoch: E0010
 date: 2026-10-09
 derives_from: "canon/values/trust-kernel.md, canon/values/axioms.md, canon/observations/time-blindness-axiom-violation.md"
 complements: "canon/principles/data-carries-observed-time.md, canon/constraints/legibility-standard.md, canon/bootstrap/model-operating-contract.md, canon/constraints/measure-before-you-object.md, canon/methods/toc-ooda-sprints.md"
@@ -17,7 +17,7 @@ status: active
 
 # Status Carries Three Tenses — Was, Is, Will Be, Each With an Observed Time
 
-> A status that cannot be placed in time is not a status; it is a mood. The fourth dimension of software is the one that sinks projects: not the code, but the inability to say reliably what was, what is, and what will be — and when each was observed or is expected. Every status therefore carries three tenses, and every tense carries a time the reporter observed, not inferred. This is not a formatting rule. It is the trust kernel applied to the clock: expectations cannot be set, maintained, checked, or transferred about a thing whose position in time is unknown.
+> A status that cannot be placed in time is not a status; it is a mood. The fourth dimension of software is the one that sinks projects: not the code, but the inability to say reliably what was, what is, and what will be — and when each was observed or is expected. Every status therefore carries three tenses, and every tense carries a time the reporter observed, not inferred. It is the trust kernel applied to the clock: expectations cannot be set, maintained, checked, or transferred about a thing whose position in time is unknown.
 
 ---
 
@@ -27,7 +27,7 @@ Trust is built by managing expectations (`klappy://canon/values/trust-kernel`). 
 
 Models make this failure easily. A session that watched a gate turn red remembers "red" and repeats it hours after the gate turned green, because nothing in its context stamped the observation with a time (`klappy://canon/observations/time-blindness-axiom-violation`). A reporter who mixes the old screenshot with the new one, or the merged change with the proposed one, forces the reader to reconstruct the timeline themselves — and the reader was the bottleneck already.
 
-The fix is structural, not stylistic. Every status names what **was** (and when it was observed), what **is** (and when that was observed), and what **will be** (and when it is expected, with what gate decides it). A tense with no observed time is marked as such — "not re-checked since 09:39" — rather than silently carried forward.
+The fix is structural, not stylistic. Every status names what **was** (and when it was observed), what **is** (and when that was observed), and what **will be** (and when it is expected, with what gate decides it). A tense with no observed time is marked as such — "not re-checked since 09:41" — rather than silently carried forward.
 
 ---
 
@@ -39,19 +39,19 @@ The fix is structural, not stylistic. Every status names what **was** (and when 
 | **Is** | the state now | when the reporter last observed it | a memory is passed off as an observation |
 | **Will be** | the next state and the gate that produces it | when it is expected, and what decides it | a plan is read as a result |
 
-One line is enough when all three fit: *main was red at 23:05 (release gate), is green since 09:39 (checked 09:41), will be on production after the next deploy, which the door triggers.* Several lines are fine when the reader must compare before and after. What is not fine is a single present-tense sentence that could belong to any of the three.
+One line is enough when all three fit: *main was red at 23:05 (release gate), is green since 06:05 (checked 09:41), will be on production after the next deploy, which the deploy gate triggers.* Several lines are fine when the reader must compare before and after. What is not fine is a single present-tense sentence that could belong to any of the three.
 
 ---
 
 ## Why This Derives From the Trust Kernel, Not From Time Blindness
 
-Time blindness explains *how* a model loses the clock. This principle states *why* the lost clock costs trust and *what* a status must carry regardless of who writes it. A human reporter with a perfect clock who writes "the gate is red" without a time has broken the same expectation: the reader cannot tell whether to act. The axioms supply the mechanics — observe before claiming (Axiom 1), do not imply what you did not verify (Axiom 4) — and the kernel supplies the reason: an unplaced status is an unmanaged expectation.
+Time blindness explains *how* a model loses the clock. This principle states *why* the lost clock costs trust and *what* a status must carry regardless of who writes it. A human reporter with a perfect clock who writes "the gate is red" without a time has broken the same expectation: the reader cannot tell whether to act. The axioms supply the mechanics — observe before claiming (Axiom 1), do not imply what you did not verify (Axiom 4) — and the kernel supplies the reason (`klappy://canon/values/trust-kernel`): an unplaced status is an expectation that was never set.
 
 ---
 
 ## Observed Across Roles — This Predates Models
 
-The captain's account (2026-10-09): as founder, inventor, lead developer, architect, CTO and sales engineer, he repeatedly watched sales and leadership sell what the product *would be* and claim it already *was*. The person responsible for making it true carried the gap as anxiety. The outcomes were the same every time the tenses collapsed: lost clients, rework, frustrated users, angry funders, lost funding. When the tenses were kept — what is shipped, what is building, what is promised, each with its date — the same products kept their clients and their funders. In his judgment this is probably the root communication concern of product development, which is why it lives here as a principle and not as a style note for model output.
+The captain's account (2026-10-09): as founder, inventor, lead developer, architect, CTO and sales engineer, he repeatedly watched sales and leadership sell what the product *would be* and claim it already *was*. The person responsible for making it true carried the gap. The outcomes were the same every time the tenses collapsed: lost clients, rework, frustrated users, angry funders, lost funding. When the tenses were kept — what is shipped, what is building, what is promised, each with its date — the same products kept their clients and their funders. In his judgment this is probably the root communication concern of product development, which is why it lives here as a principle and not as a style note for model output.
 
 The model failure in the next section is one instance of a human pattern, not a new problem.
 
