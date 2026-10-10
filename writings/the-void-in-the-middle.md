@@ -84,9 +84,11 @@ So the tools I went looking for had a strange constraint: no embeddings, no trai
 
 ## Two Things That Led Here
 
-I did not arrive at that constraint by thinking. I arrived by failing twice, in public, with my own tools.
+I did not arrive at that constraint by thinking. I arrived by failing, in public, with my own tools, more than once.
 
-The first was oddkit. For most of 2026 it has been the progressive-disclosure tool I use for all of my own governance: an agent reads a title, then a compressed argument, then a summary, then only the section it needs, and the full body last if ever, stopping as soon as it has enough to act. It works. It works really well, with one condition I underestimated for months.
+The first failure was before oddkit existed, back in January 2026, and it is where oddkit came from. The rules were already too big to read every time, so I compiled them: pre-packaged context packs meant to spare the model from reading everything. They worked, right up until the rules changed, and then the pack was lying until somebody rebuilt it. So I automated the compilation, rebuilding the pack on every change. That worked too, and it was slow, and the changes kept coming faster than the compile could keep up. The only way out was to stop compiling ahead of time and compile at the moment of reading: dynamic compilation, the pack assembled on demand from live source for the question actually being asked. That is what oddkit is.
+
+For most of 2026 oddkit has been the progressive-disclosure tool I use for all of my own governance: an agent reads a title, then a compressed argument, then a summary, then only the section it needs, and the full body last if ever, stopping as soon as it has enough to act. It works. It works really well, with one condition I underestimated for months.
 
 > "Oddkit requires a convention, a strict convention for it to work optimally. Yes, it can work without it, but it's not as optimal. I can't get anybody other than myself to adopt Oddkit. How am I going to expect that to be a standard for people to use?"
 
@@ -98,7 +100,7 @@ What fell out of testing the walker was not what I was building. It was the thin
 
 > "What shook out of it during testing for Cartographer and the Walker for boarding was actually pretty powerful and really good hygiene and good discipline to shake out and shape out good definitions of what should be walked and when."
 
-A manifest. A sidecar to the content rather than a rewrite of it: a short list of what to read, in what order, plus a few lines of framing, handed to the agent at boarding. Go do your research, here is the pointer. Not a distillation. I want to be clear about that because I had tried distillation earlier in the year, in the form of compilation packs, pre-packaged context meant to spare the model from reading everything, and it was a maintenance nightmare. Every time the rules moved the pack lied. The pointer does not lie, because it points at the live source.
+A manifest. A sidecar to the content rather than a rewrite of it: a short list of what to read, in what order, plus a few lines of framing, handed to the agent at boarding. Go do your research, here is the pointer. Not a distillation. I want to be clear about that because the compilation packs above were distillation, and the lesson of the packs was that every time the rules moved the pack lied. The pointer does not lie, because it points at the live source.
 
 I am not going to describe how the pointer is built here. That part is still being measured, and the numbers belong on the ledger with their caveats, not in an essay. What I will say is that there were somewhere around a hundred experiments between January and October 2026 attacking this same problem again and again, across every epoch of the knowledge base, and many of them are failures worth citing: context cramming, context shaping, context engineering under a dozen names. Each one worked until the content moved. The small thing is the one that survived the content moving.
 
