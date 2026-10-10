@@ -88,7 +88,7 @@ I did not arrive at that constraint by thinking. I arrived by failing twice, in 
 
 The first was oddkit. For most of 2026 it has been the progressive-disclosure tool I use for all of my own governance: an agent reads a title, then a compressed argument, then a summary, then the body, and stops as soon as it has enough to act. It works. It works really well, with one condition I underestimated for months.
 
-> "Oddkit requires a convention, a strict convention for it to work optimally. Yes, it can work without it, but it's not as optimal... Because I couldn't get anybody, I can't get anybody else other than myself to adopt Oddkit. How am I going to expect that to be a standard for people to use?"
+> "Oddkit requires a convention, a strict convention for it to work optimally. Yes, it can work without it, but it's not as optimal. I can't get anybody other than myself to adopt Oddkit. How am I going to expect that to be a standard for people to use?"
 
 Every document had to be reshaped to the convention before the ladder could be walked. I did that to my own knowledge base, hundreds of documents, and the result was worth it. Then I looked at the partners whose rules were now part of mine, and I knew with near certainty that none of them would ever rewrite their ontology to my template. Good discipline and good conventions work. I have the receipts. They also demand rework and maintenance that nobody else is going to sign up for, and a tool only I can use is a hobby.
 
