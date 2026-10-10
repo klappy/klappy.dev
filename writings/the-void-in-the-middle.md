@@ -78,6 +78,8 @@ Let me be precise about the tense, because it matters. That was true by the fall
 
 My working theory, and I hold it as a theory, is that this is the shape of the next decade. Most content people create from here on will be second brains, knowledge bases, the accumulated rules and context of teams and organizations. That content will be created faster than anyone can train a model on it, and faster than anyone can embed it. "Just put it in a RAG system" is the reflex, and it is a reasonable reflex when the content holds still. It does not hold still. By the time it is indexed, it has moved.
 
+Governance is the example I live in, but it is only one. Social media, email, messages, the notes a team leaves for itself: the kinds of fresh content that grow faster than they can be indexed are endless, and every one of them has the same shape. I think that is where the research turns from a personal itch into a prerequisite. The more people want local AI, and the more they want sovereignty over their own data instead of shipping it to someone else's index, the more they need tools that can read what they have, as it is, the moment it changes. You cannot promise comprehensive coverage of a person's own content without that.
+
 So the tools I went looking for had a strange constraint: no embeddings, no training, nearly deterministic, close to instant, and able to map content they had never seen before. Blazing fast ways to read fractals, is how I put it on the call. That constraint is not where the industry is pointed, which is the first sign you are standing in a gap.
 
 ---
