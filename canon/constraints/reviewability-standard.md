@@ -20,6 +20,20 @@ target_repo: "outcomes-driven-development"
 
 > Companion to the legibility standard. The legibility standard makes work *readable*; the reviewability standard makes it *reviewable* — with as little friction as making it legible. Nothing may be handed to the captain "for review" without a concrete, low-friction way to actually review it: a live preview URL, a staging link, a rendered artifact. It is a failure to ask the captain to review something that requires him to put on a developer hat and spend thirty minutes standing up an environment just to see it. Crew supplies the reviewable surface as part of delivery. Captain, verbatim: "So freaking annoying to be asked to review something and there be absolutely no thought into how I would review it." Never again.
 
+## Simple Rules
+
+- **Use when:** Use when handing any work to a human reviewer as "ready for review": a running system, document, design, visual, or other artifact someone must see to approve.
+- **Skip when:** Skip for purely conversational answers with no artifact, work the reviewer has explicitly said they will review from source, and internal intermediate steps not yet presented for review.
+- **Stop when:** Stop once the hand-off includes a surface the reviewer can reach in roughly one tap with no local build, or states explicitly why no surface is possible.
+- **Keep going when:** Keep going while the hand-off offers only a branch name, raw source, reproduce-it-yourself instructions, or a localhost proof, or defers the review link to a follow-up.
+- **Where:** Every review hand-off; running systems → deployed staging URL (stateful workers: the staging project per `canon/constraints/per-environment-worker-projects.md`); documents, designs, visuals → a rendered, linkable version.
+- **Who:** Whoever delivers the work produces the reviewable surface; the reviewer, whose attention is the bottleneck, is never asked to build, install, or configure anything to see it.
+- **Why:** Review spends the scarcest attention, and a request without a surface shifts the whole setup cost onto the reviewer, so the delivery is not done (see Why This Is Necessary).
+- **What:** A delivery constraint, companion to the legibility standard: anything handed over for review ships with a low-friction reviewable surface — a live preview URL, a staging link, or a rendered artifact.
+- **How:** Apply the Operating Constraints and Defaults sections, then check the hand-off against Verification and Failure Modes; exclusions are in When This Does Not Apply.
+
+---
+
 ## Description
 
 Under Epoch 10, the captain's attention is the system's bottleneck, and review is where that attention is spent. A review request that ships without a way to review inverts the cost: it moves the entire setup burden — clone the repo, install dependencies, configure secrets, run a local server, reproduce state — onto the one person whose time is scarcest. The work may be done, but the *delivery* is not, because the reviewable surface is part of the deliverable, not an optional extra.

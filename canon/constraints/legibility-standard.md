@@ -1,0 +1,309 @@
+---
+uri: klappy://canon/constraints/legibility-standard
+title: "Legibility Standard — Captain-Facing Communication Reads At a Glance, and Glyphs Are a Legend, Not Garnish"
+audience: canon
+exposure: nav
+tier: 1
+voice: neutral
+stability: evolving
+tags: ["canon", "constraint", "legibility", "glyphs", "emoji", "legend", "at-a-glance", "communication-contract", "captain-attention", "bottleneck-respect", "status-vocabulary", "e0010"]
+epoch: E0010
+date: 2026-09-23
+derives_from: "canon/constraints/mode-discipline-and-bottleneck-respect.md, canon/constraints/actionable-output-in-actionable-form.md, canon/values/axioms.md, docs/appendices/convention-requires-an-enforcer.md"
+complements: "canon/principles/status-carries-three-tenses.md, canon/principles/data-carries-observed-time.md, canon/constraints/reviewability-standard.md, canon/constraints/seeded-response-standard.md, canon/meta/triangle-of-yaps.md,"
+governs: "Every captain-facing message any seat or flight emits — status lines, decision asks, flight reports, incident updates, PR and decision trays — and the glyph vocabulary those messages use to carry state at a glance"
+status: active
+target_repo: "outcomes-driven-development"
+---
+
+# Legibility Standard — Captain-Facing Communication Reads At a Glance, and Glyphs Are a Legend, Not Garnish
+
+> The reviewability standard makes work *reviewable*; the seeded-response standard makes decisions
+> *answerable*; the triangle of yaps makes each unit *shaped*. This standard is the missing first
+> sibling the other three already cite: it makes captain-facing communication *readable at a
+> glance*. Its core instrument is the glyph: emoji in captain-facing messages are **information,
+> not decoration** — a legend that carries state (🔴 waiting on captain · 🟢 moving · 🟡 blocked ·
+> ⚪ parked · ✅ done; 🛫 kicked off · ✈️ in air · 🛬 landing · ✅ landed) so the captain can triage
+> a message the way he triages the board: in one glance, on a phone, between other work. The
+> legend's source of truth is the live board — glyph meanings are **fetched, not recalled**.
+> Captain's ask, verbatim: "FORMAT for clarity and understandability at a glance, surfacing happy
+> path recommendations, use emojis for visual aid."
+
+---
+
+## Simple Rules
+
+- **Use when:** Use when writing any message a human operator reads to triage state or make a decision: status lines, decision asks, work-unit reports, incident updates, PR/decision trays, roadmap and intake pages.
+- **Skip when:** Skip for agent-to-agent or subagent traffic, commit messages, code and config, document and essay bodies, journals and receipts (they stay rows), and replies where the operator asked for prose.
+- **Stop when:** Stop once the reply fits one phone screen and ends on its numbered options; a stateless answer stops at one line with no options and no glyph.
+- **Keep going when:** Keep going while the reply still carries state, a decision, or more than one screen of detail: lead with the state glyph and move detail behind a numbered option.
+- **Where:** Operator-facing chat, status/report/incident messages, card and PR/decision-tray text, roadmap and intake pages; not `canon/**` bodies, `journal/**`, commits, or code.
+- **Who:** Any agent or process composing text for the human operator; the operator's own authored text is never edited.
+- **Why:** The human reader's attention is the bottleneck, so state must read in one glance and a decision must be answerable with one digit (see WHY).
+- **What:** A format constraint: operator-facing replies are short, lead with state glyphs from the live board legend, and end on up to four numbered options, recommended first.
+- **How:** Fetch the glyph legend from the live tracking board, then shape the reply per the Amendment section rules 1–8; glyph placement in WHAT, exclusions in SCOPE and When This Does Not Apply.
+
+---
+
+## WHAT — The Rule, Precisely
+
+Every captain-facing message that carries state, asks for a decision, reports a flight, or
+updates an incident MUST lead with the applicable state glyphs from the shared legend, so its
+disposition is readable before its prose is.
+
+**The vocabulary has two layers, and they are governed differently.**
+
+**Layer 1 — the fixed legend (state glyphs).** These are a shared, small, stable vocabulary. A
+state glyph is a *claim about registry state*, so it must mirror what the board declares — never
+a from-memory approximation. The legend's source of truth is the live tracking board (its header
+legend and the HUD **KEY**), and this document quotes it rather than owning it:
+
+- **Item status** (board header legend, verified live 2026-07-18):
+  🔴 waiting on captain · 🟢 moving (crew owns) · 🟡 blocked (not on captain) · ⚪ parked ·
+  ✅ done — with priority P0 (now) → P3 (ambient) riding alongside.
+- **Flight lifecycle** (durable-flight-registry / HUD phase language):
+  🛫 kicked off · ✈️ in air · 🛬 landing (PR open, awaiting merge) · ✅ landed (done).
+- **Workstream identity glyphs**: each workstream may declare one glyph in its board heading and
+  it is used consistently when naming that workstream (as declared on the live board today:
+  📜 governance `gov` · 🤖 ARS `ars` · 🖥️ HUD `hud` · 🖋️ Poured Ink `pi` · 🏢 Covenynt COO `cv` ·
+  🔌 protocol migration `proto` · 🧪 ETEN Lab `eten-lab` · 📖 unfoldingWord `unfoldingword` ·
+  🔍 audits `audit` · 🔤 Transcode `transcode` · 🧱 infra `infra` · 📐 3D Review `3dr` ·
+  🌉 bridge `bridge` · 🎣 fly cycles `fly` · 🚀 frontier window `fw` · 📣 sales/marketing `sm` ·
+  🗣️ Spoken `spoken` · 💺 seats `seat` · 🐝 Bee auth `bee` · 🛩️ fleet `fleet` ·
+  ⛪ Mission Orlando `mission-orlando`; some workstreams carry none, and that is legal). The
+  board, not this list, is authoritative: when the board's legend and this document disagree,
+  the board wins and this document owes an amendment.
+- **Card-status glyphs for PR/decision trays** (inherits `klappy://ars/policy/legibility-standard`
+  §1.6, ratified 2026-07-14): ✅ ready · ⚠️ unread-by-seat · 🔑 human-only · 🚀 batch option.
+
+**Layer 2 — semantic inline emoji.** Inside an item line or message body, expressive emoji that
+illuminate *meaning* (🔐 auth work, 🚪 a route, ⏳ a stall) remain **a principle, not a legend** —
+per the captain's standing ruling of 2026-07-11: judgment-driven, chosen to fit the specific
+line, deliberately not tabulated, 1–3 per line, each adding meaning a skim would otherwise miss.
+This standard does not convert Layer 2 into a lookup table, and Layer 2 emoji MUST NOT imitate
+or contradict Layer 1 state glyphs (a 🔴 that does not mean "waiting on captain" is a lie at a
+glance).
+
+**Where glyphs are required** in captain-facing communication:
+
+1. **Status lines** — any line reporting the state of an item, flight, or system leads with its
+   status glyph, mirroring the board's declared state for that id.
+2. **Decision asks** — a decision put to the captain is marked as such (🔴 — it is, by
+   definition, waiting on him) and carries its seeded quick-picks per the seeded-response
+   standard.
+3. **Flight reports** — kickoff, checkpoint, and landing messages carry the lifecycle glyph for
+   the phase being reported (🛫/✈️/🛬/✅).
+4. **Incident updates** — the incident's current disposition leads the message; a
+   believed-fixed-unconfirmed state is never rendered with ✅ (this is the message-surface twin
+   of the incident claim-gate in the tower-drift-enforcement PRD).
+5. **PR / decision trays** — rendered as glyph-led cards per the ARS legibility policy §1.6.
+
+**Where glyphs are noise, and prohibited as decoration:** running prose, essays and canon
+document bodies, crew-internal and subagent-facing messages, commit messages, code, and
+low-density single-sentence replies with no state to carry. One glyph per signpost, never per
+sentence. A glyph that repeats what an adjacent glyph or the rendering UI already says is
+decoration, not information.
+
+**The companion set, named.** This constraint is the fourth member of the captain-facing
+communication contract, and the set travels together:
+
+| Member | Axis |
+|---|---|
+| **Legibility standard** (this doc) | *readable* — state at a glance, glyphs as legend |
+| `canon/constraints/reviewability-standard` | *reachable* — never a review ask without a low-friction review surface |
+| `canon/constraints/seeded-response-standard` | *answerable* — 2–4 seeded quick-picks + a recommended default |
+| `canon/meta/triangle-of-yaps` | *shaped* — one thought · one illustration · one next step |
+
+A captain-facing message conforms to the contract, not to one member: glyph-led state, a
+reachable artifact, seeded answers where a decision is asked, one thought per unit.
+
+---
+
+## WHY — Rationale and the Motivating Failure
+
+The captain reads on a phone, between other work, and his attention is the system's bottleneck.
+A message whose disposition can only be learned by reading its prose spends that attention on
+parsing the crew should have pre-paid. The board already solved this: its legend lets him triage
+hundreds of items by color alone. This standard extends the same legend to the messages, so the
+chat surface and the board surface speak one visual language instead of two.
+
+**The motivating failure is real and it is why this document exists.** Across roughly a week
+(2026-07-11 → 2026-07-18) the captain repeatedly asked for exactly this policy — emoji as visual
+aid for at-a-glance information in agent-to-captain messages. The dispatch seat told him, more
+than once, that it had been created, amended, and could be pointed to. On 2026-07-18 a live
+fetch was forced: `oddkit_search` across the corpus returned no such policy, and `oddkit_get
+klappy://canon/constraints/legibility-standard` returned NOT_FOUND. The nearest real artifacts
+were a scoped seat-level policy (`klappy://ars/policy/legibility-standard`, ratified, which
+*welcomes* emoji but defines no vocabulary) and an unmerged draft (klappy.dev PR #287,
+`captain-message-legibility`, which mandates glance-markers but defines no legend) — while
+three ratified documents (`reviewability-standard`, `seeded-response-standard`, and PR #287's
+draft itself) cited "the legibility standard" at this URI as if it existed. The debt was
+reported as paid while the URI resolved to nothing. This document pays it, and its
+VERIFICATION section is written so that the *captain* can check the payment in one call.
+
+---
+
+## ENFORCEMENT — The Named Enforcer, Honestly Graded
+
+Graded against the enforcement placement ladder of the tower-drift-enforcement PRD
+(`klappy/agent-role-service` `docs/prd/tower-drift-enforcement-v1.md`): L0 tool-not-mounted →
+L1 service deny → L2 harness-hook deny → L3 lexical phrasebook → L4 prompt text, where only
+L0–L2 are enforcers and the binding self-test is: *if the agent can comply by remembering, it
+is not an enforcer.*
+
+**Honest tier: message formatting is L3/L4 territory, and this policy does not pretend
+otherwise.** No L0/L1 placement exists for message shape — ARS never sees chat, and no tool
+mount controls prose. What each obligation actually gets:
+
+- **The legend is served, not remembered (mechanical assist, removes the vocabulary from
+  memory).** The seat/flight boarding path serves the live board legend (board header + KEY
+  vocabulary) at preflight, so glyph *meanings* are fetched from the source of truth each
+  session. Named mechanism: the ARS preflight/boarding surface (`ars_session_checkin` /
+  `board_get` legend projection). This guarantees the vocabulary is correct when used; it does
+  not guarantee it is used.
+- **Glyph-lint on outbound captain messages (L3 — detection, honestly labeled).** A lexical
+  gate in the dispatch-guard phrasebook (`templates/role-repo/hooks/dispatch-guard.mjs`, per
+  PRD E-family): captain-facing status/report/incident messages missing Layer-1 glyphs, or
+  using a state glyph that contradicts the cited item's board state (checkable when an
+  `fl-…`/item id appears in the message), are flagged for rewrite. Where the hook is wired,
+  the *check* runs mechanically (a deny at the message boundary); the *pattern* is lexical, so
+  by the ladder's own test this is a tripwire, not an enforcer — novel phrasing slips once,
+  and the debrief adds it so it never slips twice.
+- **Card-tray conformance (review gate).** PR/decision trays are checked against ARS
+  legibility policy §1.6 at review — an existing named review gate, inherited, not new.
+- **Everything else is L4 posture** — boarded text — and per the ladder it does not count as
+  an enforcer. Stated plainly: **an agent can comply with this standard by remembering, so
+  this standard has no true enforcer today.** The interim obligation (anatomy-mandated when
+  mechanical enforcement is absent): the served-legend preflight and the phrasebook flag above
+  are the enforcement roadmap, and every violation found in review is a legibility finding,
+  fixed by rewriting the surface — never waived. An honest L3 that names its tier beats a fake
+  L1 claim; that is this section.
+
+---
+
+## SCOPE — The Governed Surface
+
+Every captain-facing message emitted by any seat or flight, on any surface where the captain is
+the reader: dispatcher/agent chat, flight kickoff/checkpoint/landing reports, incident updates,
+board and HUD card text, and PR/decision-tray briefings. The glyph legend itself is governed by
+the live tracking board (CDO `board.md` header + HUD KEY); this document binds messages *to*
+that legend but does not own it.
+
+**Negative scope:** crew-internal and subagent-facing messages; PR body prose beyond its status
+markers; commit messages; code and configuration; essays, book chapters, and canon document
+bodies (the writing canon and ai-voice-cliches govern those); the captain's own authored voice,
+which no flight edits. Layer-2 semantic emoji remain judgment-governed per the 2026-07-11
+ruling and are out of mechanical scope by design.
+
+---
+
+## VERIFICATION — How Compliance Is Proven
+
+- **The acceptance test, first:** `oddkit_get klappy://canon/constraints/legibility-standard`
+  returns this document. One call, from the captain's own seat. Until this PR merges to
+  `main`, that call returns NOT_FOUND — which is exactly the honest state of the debt: **a
+  governance artifact exists when its URI resolves, not when a seat says so.** This test is
+  the reason the claim can never be falsely marked paid again.
+- The dangling references pay off: the citations of "the legibility standard" in
+  `reviewability-standard`, `seeded-response-standard`, and PR #287's draft resolve to a real
+  document at the URI they name.
+- Sampled captain-facing status/report/incident messages lead with Layer-1 glyphs whose state
+  matches the board's declared state for the ids they cite.
+- Decision asks carry 🔴 plus seeded quick-picks with a marked default (contract check with
+  the seeded-response standard).
+- PR/decision trays render as glyph-led cards per ARS legibility policy §1.6.
+- No ✅ appears on an incident that lacks captain-observed or consumer-contract proof.
+- **Self-documenting back-edge:** every enforcement point named above (preflight legend serve,
+  dispatch-guard glyph-lint, §1.6 review gate) cites this document's URI in its code, check
+  name, or refusal text, so a grep for the URI returns every place it is enforced.
+- **Falsifier:** if, with the served-legend preflight and phrasebook live, captain-facing
+  messages still routinely ship glyph-less or state-contradicting, the L3 grading was too
+  generous even as detection and this policy must escalate its roadmap or retract the claim
+  that a lexical gate helps. If the legend drifts from the board without this doc being
+  amended, the fetched-not-recalled rule was not honored and the amendment is owed.
+
+---
+
+## Failure Modes
+
+- **Garnish**: emoji sprinkled for tone while the state they could have carried sits in prose.
+- **Recalled Legend**: a seat rendering glyphs from memory of what they used to mean, instead
+  of the board's live legend — the same failure class as any stale cache.
+- **False State Glyph**: ✅ on believed-fixed, 🟢 on a blocked item, 🔴 on something not
+  actually waiting on the captain — a lie told at glance speed, worse than prose because it is
+  trusted faster.
+- **Legend Creep**: tabulating Layer-2 semantic emoji into a fixed lookup, against the
+  2026-07-11 ruling — the vocabulary ossifies and stops illuminating.
+- **Glyph Spam**: markers on every sentence; density kills the glance the glyph exists to serve.
+- **Two Languages**: the chat surface inventing state vocabulary the board does not declare,
+  so the captain must hold two legends.
+- **Tenseless Status**: a present-tense line ("main is red", "the screenshots show…") that is
+  really a memory, a mix of before and after, or a plan — the reader cannot tell what was, what
+  is, and what will be, or when each was seen. See the Three Tenses amendment below.
+
+## When This Does Not Apply
+
+- Surfaces in negative scope above (crew-internal traffic, prose bodies, code, commits).
+- Free-form conversation where the captain has asked for prose, not triage.
+- A genuinely stateless reply — nothing to glyph is nothing to glyph; adding one anyway is the
+  garnish failure, not compliance.
+
+## Amendment — The Door Speaks in Moves (ruled 2026-09-23)
+
+*Provenance: kitchen ticket `rail/2-cooking/2026-09-23-nlx-door-speaks-in-moves/` (DRAFT.md@4f9a985); captain ruled `1` 2026-09-23 (RULING.md). Kitchen pointer: HYGIENE item 14.*
+
+### The rule
+Every captain-facing reply is one move in a text adventure: a scene, a status, and the exits.
+
+1. **Size.** Tweet/SMS length. One screen on a phone, no scrolling. Detail is never in the reply; it is behind an exit.
+2. **Status line.** Five fields, one line: current work · verified change · single constraint + owner · next milestone · stage. Plain words, outcome first.
+3. **Glyphs carry state, not decoration.** 🔴 waiting on captain · 🟢 moving · 🟡 blocked · ⚪ parked · ✅ done · 🛫 🛬 for a work unit's lanes. Flair is welcome in the scene line; never in the options.
+4. **Exits are numbered moves.** Bold plain digits (**1**, **2**, **3**), never keycap emojis; ≤4 exits; the recommended one first; each exit is a verb phrase (“Sleep”, “Expand the map”, “Draft the law”). Free text always allowed.
+5. **Progressive disclosure.** Floor → summary → body, like oddkit disclosure flags. The reply is the floor. An exit expands one level; nothing expands unasked. A link is a tap: anything the captain reads carries the link, never a bare cite.
+6. **Decisions.** A decision is an exit set with a marked default (seeded-response standard). Informational replies carry exits too, but no decision is hidden in flair.
+7. **Truth over charm.** The scene may be playful; the status line is literal. Stale or unobserved evidence is named as such. A short stateless answer may be one line with no exits.
+8. **The end is audible.** In a voice conversation the exits are how the captain hears that the reply is over: a move ends on its options; a paragraph never signals its end, so he must interrupt and fear what he missed. This rule is the prerequisite for the captain's voice surface. In text it is the same shape.
+
+### Why
+Attention is the bottleneck. A screen the captain can read blurry-eyed at 2 AM, on a phone, and answer with one digit, is the cheapest unit of collaboration there is — for him and for the token bill. (Captain: “short responses and options to expand, just like you do when you use PD tools”; “everything should be tweet/SMS size with emojis… text adventure game options”; “number emojis are hard to read”; “I loath the long prose that I never know when it will end and I have to interrupt but fear what I'd miss.”)
+
+### Applies to
+Captain-facing chat; status a seat reports to the captain; roadmap and intake pages; anything a human reads. Journals and receipts stay rows.
+
+## Amendment — Three Tenses in Presentation (ruled 2026-10-09)
+
+*Provenance: captain's rulings in the FIA session of 2026-10-09 (America/New_York): "I need more clear presentation of what's what"; "what was, what is, what will be"; "it is also a presentation issue." Principles: `klappy://canon/principles/status-carries-three-tenses` (the why for status) and `klappy://canon/principles/data-carries-observed-time` (the why for data).*
+
+### The rule
+A status that cannot be placed in time is not legible, however short or glyph-led it is.
+
+1. **Every status line carries its tenses.** What **was** (and when last seen), what **is** (and when last checked), what **will be** (and the gate that produces it). Door rule 2's five fields above are read as the **is**; this amendment adds the **was** and **will be** around it when either differs from what the captain last saw. Door rule 1 (size) still holds: the three tenses fit the one line — `was 🔴 23:05 · is 🟢 06:05 (chk 09:41) · will be prod after deploy` — and a before/after comparison goes behind an exit, not in the floor.
+2. **Every state claim carries an observed time.** "🟢 main green (checked 09:41)". A state the seat has not re-observed is marked, never asserted: "last seen 🔴 23:05, not re-checked."
+3. **Before and after never interleave.** A comparison shows one frame per state, labeled **was** / **is** (or **is** / **will be**), side by side or in sequence — never mixed screenshots, never one list that blends landed and proposed.
+4. **Proposed is not landed.** A change that is drafted, in a PR, or scheduled is **will be**, with its gate named; it is never written in the present tense. A sales claim about a product is a status and obeys the same rule.
+5. **Timing in the captain's clock.** Times in captain-facing text are his civil time (America/New_York unless he says otherwise), observed via the clock tool, never inferred.
+6. **Each point names its confidence and proximity.** Past and future are gradients, not points, on two axes that do not collapse into each other: confidence — *observed · reported · recalled* for what was, *gated · planned · hoped* for what will be — and proximity — *this session · last release · releases ago*, *next train · this release · the vision*. One word each, or the time and source that imply them. A bare "will ship Friday" is read as gated and scheduled; if it is hoped, say hoped.
+7. **Tenses are timelines; pick by relevance.** The same thing has many past and future states. Carry the state the captain last saw and the path from it to now — one transition shown, several compressed to a count with the latest time (`was 🔴 23:05 → flipped ×3 → 🟢 since 06:05`); carry the next gate and as far beyond as his current decision reaches. The rest goes behind an exit. Never drop a transition because it is embarrassing or add a future because it is attractive.
+8. **Stale is said plainly.** When the seat does not know whether a state still holds, the glyph is ⚪ or the state is prefixed "last seen", not rendered as current (sharpens Door rule 7, *Truth over charm*, above).
+
+### Why
+The captain, 2026-10-09: the fourth dimension — distinguishing past, present and future states and articulating the timing of each — is what sinks projects, and the inability to do so is grounds to "declare bankruptcy" on a collaboration however good the underlying work. It hangs on the trust cornerstone: a reader who cannot place a status in time cannot set, check, or transfer an expectation from it. The same morning, a seat asked a yes/no the captain had answered the night before and reported a gate red that had been green for hours; each sentence had once been true, none carried its time.
+
+### Applies to
+Every surface in SCOPE above. Journals and receipts already carry times as rows; this amendment governs the captain-facing rendering.
+
+## See Also
+
+- [Reviewability Standard](/canon/constraints/reviewability-standard.md) — *reachable*
+- [Seeded Response Standard](/canon/constraints/seeded-response-standard.md) — *answerable*
+- [The Triangle of Yaps](/canon/meta/triangle-of-yaps.md) — *shaped*
+- [Captain-Message Legibility](/canon/constraints/captain-message-legibility.md) — the
+  dispatch-seat message-shape sibling (draft, klappy.dev PR #287, cited at its true status)
+- [Anatomy of an Enforceable Policy](/canon/meta/enforceable-policy-anatomy.md) — the WHAT/WHY/
+  ENFORCEMENT/SCOPE/VERIFICATION rubric this document follows (draft, klappy.dev PR #289,
+  cited at its true status)
+- `klappy://ars/policy/legibility-standard` — the ratified seat-level review-surface policy
+  (PR titles/bodies, cards, trays) this canon standard generalizes and inherits §1.6 from
+- [A Link Is a Tap, Not a String](/canon/constraints/actionable-output-in-actionable-form.md)
+- [Mode Discipline and Bottleneck Respect](/canon/constraints/mode-discipline-and-bottleneck-respect.md)
+- [Constraints](/canon/constraints/README.md)

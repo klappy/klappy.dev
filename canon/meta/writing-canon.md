@@ -29,6 +29,20 @@ This is not a formatting preference. It is a structural requirement derived from
 
 ---
 
+## Simple Rules
+
+- **Use when:** Use when writing, restructuring, or reviewing any document in `canon/`, `odd/`, `docs/`, or `writings/` before committing or publishing it.
+- **Skip when:** Skip for text outside `canon/`, `odd/`, `docs/`, and `writings/`; this governs document structure in those trees, not other output.
+- **Stop when:** Stop when all eight Checklist items pass: every extraction tier is independently actionable and the header scan tells the document's full story.
+- **Keep going when:** Keep going while any tier cannot guide a correct decision on its own, a key claim appears only in the body, or the document would crowd out the axioms in a small context.
+- **Where:** `canon/**`, `odd/**`, `docs/**`, `writings/**`: the title, `>` blockquote, frontmatter metadata, `## Summary — …` section, and section headers.
+- **Who:** Any agent or human author writing or editing these documents; oddkit preflight and validate surface the checklist automatically.
+- **Why:** Documents are read in fragments and every document competes with the axioms and creed for context space, so each layer must be actionable alone (see The Governing Principle).
+- **What:** A Definition of Done requirement: five extraction tiers (title, blockquote, metadata, summary, full document), descriptive headers, and no claim introduced below a higher tier.
+- **How:** Shape each tier per The Five Extraction Tiers, headers per Headers Are a Navigational Map, then run the eight-point Checklist; enforcement details in Enforcement.
+
+---
+
 ## The Five Extraction Tiers
 
 Every canon document must pass the smell test at each of these tiers: given only this much, could an agent act correctly?
