@@ -86,7 +86,7 @@ So the tools I went looking for had a strange constraint: no embeddings, no trai
 
 I did not arrive at that constraint by thinking. I arrived by failing twice, in public, with my own tools.
 
-The first was oddkit. For most of 2026 it has been the progressive-disclosure tool I use for all of my own governance: an agent reads a title, then a compressed argument, then a summary, then the body, and stops as soon as it has enough to act. It works. It works really well, with one condition I underestimated for months.
+The first was oddkit. For most of 2026 it has been the progressive-disclosure tool I use for all of my own governance: an agent reads a title, then a compressed argument, then a summary, then only the section it needs, and the full body last if ever, stopping as soon as it has enough to act. It works. It works really well, with one condition I underestimated for months.
 
 > "Oddkit requires a convention, a strict convention for it to work optimally. Yes, it can work without it, but it's not as optimal. I can't get anybody other than myself to adopt Oddkit. How am I going to expect that to be a standard for people to use?"
 
