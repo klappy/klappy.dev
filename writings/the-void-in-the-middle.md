@@ -1,7 +1,7 @@
 ---
 uri: klappy://writings/the-void-in-the-middle
 title: "The Void in the Middle"
-subtitle: "The researchers are fixing the models. The engineers are shipping product. The rules that make AI trustworthy live in the gap between them, and the gap is growing faster than anyone can read it."
+subtitle: "The researchers are fixing the models. The engineers are shipping product. The rules that make AI trustworthy live in the gap between those two approaches, and the gap is growing faster than anyone can read it."
 author: Klappy
 type: essay
 public: true
@@ -14,12 +14,12 @@ tags: ["writings", "essay", "trust", "governance", "context", "knowledge-bases",
 epoch: E0012
 date: 2026-10-09
 
-hook: "Your AI follows the rules when the rules fit in one window. Then you add a partner, a department, a second project, and the rules stop fitting. Nobody is working on that problem, because it is not a model problem and it is not a product problem."
+hook: "Your AI follows the rules when the rules fit in one window. Then you add a partner, a department, a second project, and the rules stop fitting. It is not a model problem and it is not quite a product problem, so it falls between the two approaches most people are taking."
 description: "When I explain what I do, people stare. The model researchers are solving model problems; the engineers are shipping product; I have spent 2026 in the void between them, running something like a hundred experiments on one question: how do you keep AI trustworthy over rules and knowledge that grow faster than any context window, any embedding, any training run can keep up? Here is what failed, what held, and the four kinds of trust I now measure separately."
 slug: the-void-in-the-middle
 
 og_title: "The Void in the Middle"
-og_description: "The rules that make AI trustworthy outgrew the context window within a year of adding a few partners. Nobody on either side of the industry is working on that. I am."
+og_description: "The rules that make AI trustworthy outgrew the context window within a year of adding a few partners. The model side and the product side are taking different approaches to it. I work on the product-engineering side, looking in the gaps between them."
 twitter_description: "Researchers fix models. Engineers ship product. The rules that keep AI honest live in the gap, and the gap outgrew the context window a year ago."
 
 derives_from: "canon/values/trust-kernel.md, canon/bootstrap/model-operating-contract.md, canon/principles/status-carries-three-tenses.md"
@@ -36,15 +36,15 @@ provenance:
 
 # The Void in the Middle
 
-> There are two kinds of people working on AI right now, and they barely talk to each other. The researchers are solving model problems. The engineers are using the models to ship product. I am on neither side. I have spent 2026 obsessed with the void between them, where the rules that make an AI trustworthy actually live, and where I watched those rules outgrow any context window within a year of adding a few partners. Rewriting everything to one convention worked and nobody adopted it. Pre-compiled context packs worked and became a maintenance nightmare. What held was smaller than I expected: a thin pointer to what to read and in what order, and the admission that trust with an AI, like trust with a colleague, is not one thing. It is built differently while you explore, plan, execute and validate, and it has to be measured that way. I do not claim that is universal. It is what leading human and AI teams has shown me.
+> There are two kinds of people working on AI right now, taking two different approaches. The researchers are solving model problems. The engineers are using the models to ship product. I am on the product-engineering side, but I have spent 2026 obsessed with the void between the two, where the rules that make an AI trustworthy actually live, and where I watched those rules outgrow any context window within a year of adding a few partners. Rewriting everything to one convention worked and nobody adopted it. Pre-compiled context packs worked and became a maintenance nightmare. What held was smaller than I expected: a thin pointer to what to read and in what order, and the admission that trust with an AI, like trust with a colleague, is not one thing. It is built differently while you explore, plan, execute and validate, and it has to be measured that way. I do not claim that is universal. It is what leading human and AI teams has shown me.
 
 ---
 
-## Summary — The Rules Outgrew the Window, and Nobody Owns That Problem
+## Summary — The Rules Outgrew the Window, and That Problem Falls Between Two Approaches
 
 If you have worked with AI seriously for more than a few months, you have felt this. The AI behaved when your instructions fit on one page. Then the page became a folder. Then a second project shared half the folder and overrode the other half. Then a partner organization brought its own rules, which inherited some of yours and contradicted others. Somewhere in there the AI started sounding confident about rules it had never read, and you went back to checking everything by hand.
 
-That is the problem I have been living inside since January 2026. It is not a model problem, so the researchers are not working on it. It is not a product problem, so the engineers route around it with a bigger prompt and a vector database. It sits in the middle, and the middle is where I work.
+That is the problem I have been living inside since January 2026. The researchers and the product engineers are taking different approaches to it, and each approach has bright spots that clearly work. I am on the product-engineering side of that line, solving product-engineering problems, but the place I keep looking is the gap between the two: taking the bright spots from each and trying to apply them in a broader, more abstract way than either side needs for its own purposes.
 
 This essay is about what I found there. The short version: governance for AI is fractal and it compounds faster than any context, embedding or training run can keep up; the two approaches I tried first both worked and both failed for reasons that had nothing to do with the model; what survived was a small discipline rather than a big system; and the thing we call "AI trust" is at least four things, because trust during exploration is built differently from trust during validation. Why trust is the hinge at all is already written down in [the trust kernel](klappy://canon/values/trust-kernel): collaboration hangs on trust, and trust is built by managing expectations. I am not going to restate it. I am going to tell you what it cost me to learn where the expectations actually live.
 
@@ -128,11 +128,11 @@ If your work has a fifth mode, or three, I would like to hear it. The claim I wi
 
 Here is where I think I actually am, as of October 2026.
 
-On one side there are the AI scientists, the people doing real research on models. They are solving model problems, and the pace of that work is too slow for the problem I have. By the time a model change lands, my partners' rules have moved again. On the other side there are the engineers using the models to ship product, and I have been one of them for most of my career. They are fast, and they have no reason to stop and ask where the rules live; a bigger prompt and a vector store will get the demo out the door.
+On one side there are the AI scientists, the people doing real research on models. They are solving model problems, and the pace of that work is too slow for the problem I have. By the time a model change lands, my partners' rules have moved again. On the other side there are the engineers using the models to ship product, and that is my side; I have been one of them for most of my career. We are fast, and most of the time a bigger prompt and a vector store will get the product out the door, so the question of where the rules live rarely gets asked on its own.
 
-These two groups speak different languages and barely work together. I am obsessed with the void in the middle. It is where governance has to be navigated rather than memorized, where trust has to be earned in four modes rather than scored once, and where the content keeps changing faster than either side's tools assume.
+These two groups speak different languages, and they are taking different approaches. I am obsessed with the void in the middle. It is where governance has to be navigated rather than memorized, where trust has to be earned in four modes rather than scored once, and where the content keeps changing faster than either side's tools assume.
 
-I do not have the patience for pure research. I am also no longer satisfied by shipping product on top of a trust layer I cannot explain. The only reason this gap holds my attention is that every experiment, including the failed ones, has been proving the gap is real.
+I do not have the patience for pure research. What I do have is a product-engineering problem that the product side's usual answers stopped solving, and a habit of looking at the bright spots on both sides, the things that visibly work, and asking whether they can be applied more broadly and more abstractly than either side built them for. The only reason this gap holds my attention is that every experiment, including the failed ones, has been proving the gap is real.
 
 ---
 
