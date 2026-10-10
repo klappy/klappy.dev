@@ -51,7 +51,7 @@ Nothing in the axioms, the canon corpus, the oddkit tools, the E0010 seat, or th
 ## What this release does NOT do
 
 - It does **not** retag the companion essay; PR #348 owns that file.
-- It does **not** declare a Decide epoch. Terry, the law seat, is blocked on orienting in the documented timeline; that is why Orientation comes first.
+- It does **not** declare a Decide epoch. the law seat (the model that adjudicates what the record already says) is blocked on orienting in the documented timeline; that is why Orientation comes first.
 - It does **not** modify the seat, the loop, gate-passage receipts, fresh validation, or any prior epoch's governance.
 
 ## Reading guidance

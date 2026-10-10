@@ -18,7 +18,7 @@ status: "DRAFT — 2026-10-09, authored for the captain's exact-text review; not
 
 # Epoch 12 — Orientation: The Record Is Placed in Time
 
-> Epoch 10 gave the model a seat. Epoch 11 put the seat inside a loop and made the gate the verdict. Epoch 12 is the second O of OODA. Observability (E0008) gave us plenty to look at; what keeps failing is orientation, and specifically orientation backward. This morning a seat re-asked a question I had answered the night before, and reported a gate red that had been green for three and a half hours. Nothing was unobservable; the seat could not place what it held in time. So the unit of trust stays the loop, and what changes is what makes a status valid: every claim about state carries was, is and will be, each with its observed time, confidence, proximity and relevance. Orientation also means prior art: every plan names what was already tried, inside and outside the house, and when it was viable. Moving off the home-rolled harness onto plain GitHub repos is what makes this possible, one shared record any seat can board and orient in. Decide is probably next. Terry gives me hope a model can decide well from observed data, but Terry is stuck orienting in the documented timeline today, which is why this epoch comes first. Declared as an experiment, with retraction conditions on the record.
+> Epoch 10 gave the model a seat. Epoch 11 put the seat inside a loop and made the gate the verdict. Epoch 12 is the second O of OODA. Observability (E0008) gave us plenty to look at; what keeps failing is orientation, and specifically orientation backward. This morning a seat re-asked a question I had answered the night before, and reported a gate red that had been green for three and a half hours. Nothing was unobservable; the seat could not place what it held in time. So the unit of trust stays the loop, and what changes is what makes a status valid: every claim about state carries was, is and will be, each with its observed time, confidence, proximity and relevance. Orientation also means prior art: every plan names what was already tried, inside and outside the house, and when it was viable. Moving off the home-rolled harness onto plain GitHub repos is what makes this possible, one shared record any seat can board and orient in. Decide is probably next. The seat I gave the law to, the one that adjudicates what the record already says and manages the rulings without ever cooking or touching infrastructure, gives me hope a model can decide well from observed data. But that seat is stuck today, unable to orient in the documented timeline of what was, what is and what will be, which is why this epoch comes first. Declared as an experiment, with retraction conditions on the record.
 
 ---
 
@@ -58,7 +58,7 @@ The axioms, the creed, the canon corpus, the oddkit tools. Observability (E0008)
 
 ## Decide Is Next, Which Is Why This Comes First
 
-Most decisions here have been mine. Terry, the law seat, is the first evidence a model can rule well from observed data and proper orientation, and Terry is blocked today on exactly that. No decide epoch while the seat that would prove it cannot place the record in time.
+Most decisions here have been mine. The law seat, a model that adjudicates what the record already says and manages the rulings, is the first evidence a model can rule well from observed data and proper orientation, and that seat is blocked today on exactly that. No decide epoch while the seat that would prove it cannot place the record in time.
 
 ## Declared as an Experiment
 

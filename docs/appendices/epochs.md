@@ -520,7 +520,7 @@ The forcing incident (2026-10-09, ~09:30 ET): a seat re-asked a question answere
 
 - Evidence requirements change: observed times on every tense; prior art on every plan
 - A bare present-tense status, or a plan without its prior-art table, is unproven
-- Orientation precedes Decide: the law seat (Terry) is blocked on orienting in the documented timeline, so this epoch comes first
+- Orientation precedes Decide: the law seat, the model that adjudicates what the record already says, is blocked on orienting in the documented timeline, so this epoch comes first
 - E0011 artifacts with untimed status are not comparable to E0012 artifacts placed in time
 
 ### Compatibility
