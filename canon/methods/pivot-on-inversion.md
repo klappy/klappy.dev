@@ -57,3 +57,7 @@ Increase sensitivity to further degradation.
 4. Regenerate cleanly from extracted invariants.
 5. Compare variants.
 6. Resume under restored positive gradient.
+
+## See Also
+
+- `klappy://canon/principles/progress-over-perfection` — the principle under this method

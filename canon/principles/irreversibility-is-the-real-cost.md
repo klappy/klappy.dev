@@ -52,3 +52,4 @@ This is not about efficiency. A system that optimizes for less work will sometim
 - **Boundary Transitions Require Deceleration** (`canon/constraints/boundary-transitions-require-deceleration.md`) — Enforces the slowdown at the exact point where exploration could collapse into commitment.
 - **Extreme Exploration for Limit Discovery** (`canon/methods/extreme-exploration-for-limit-discovery.md`) — The method that depends on exploration being cheap and non-binding.
 - **Synthesis Ledger** (`docs/appendices/synthesis-ledger.md`) — The structural mechanism that absorbs uncertainty: cognition without commitment.
+- **Progress Over Perfection** (`canon/principles/progress-over-perfection.md`) — The shipping half: small reversible steps are cheap, and irreversibles are its named exception.

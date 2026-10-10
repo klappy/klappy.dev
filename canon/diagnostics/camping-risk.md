@@ -58,3 +58,7 @@ It is the failure mode of unconscious persistence.
 - **Shallow plateau** — Suggest reassessment.
 - **Flat plateau** — Recommend pivot.
 - **Negative slope** — Interrupt and require explicit mode decision (see `pivot-on-inversion`).
+
+## See Also
+
+- `klappy://canon/principles/progress-over-perfection` — camping is the failure mode this principle names as momentum

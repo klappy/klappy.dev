@@ -43,6 +43,7 @@ Many collaboration sessions stall in plateau due to attachment and incrementalis
 
 ## See Also
 
+- `klappy://canon/principles/progress-over-perfection` — the principle these defaults serve; the defaults stay defaults
 - `klappy://canon/defaults/epistemic-posture`
 - `klappy://canon/principles/persistence-must-be-intentional`
 - `klappy://canon/diagnostics/camping-risk`

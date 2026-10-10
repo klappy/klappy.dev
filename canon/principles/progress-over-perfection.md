@@ -116,3 +116,4 @@ This is not momentum. Continuing to polish after improvement has flattened is ca
 | `klappy/kitchens` `boarding/projects/TEMPLATE.md` § 4, `skills/kitchen-sprint` | two 30-minute sprints per fire; shipped or missed, rowed |
 | `klappy/3d-review-cookbook` HYGIENE §10 | ship one accepted increment; freeze the release scope |
 | `klappy/fia-app-cookbook` alpha v2 SPRINTS | parallel slices per sprint; usable outcome or honest partial |
+| `klappy/kitchen` `rail/2-cooking/2026-09-26-law-merge-train` | the lived example of the month: ten stacked law PRs waiting for a perfect merge became one integration branch per repo, the clean ones merged as a unit, the five with real conflicts named and left for their own fix (captain, 2026-10-10 11:34 ET) |
