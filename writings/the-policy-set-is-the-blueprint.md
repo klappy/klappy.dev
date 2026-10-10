@@ -120,4 +120,12 @@ Take the last build that hurt: the one that dropped something, trusted something
 
 Do that a few times and you'll notice the app has stopped being the thing you protect. The rules are. And the day you delete the app on purpose and rebuild it from the rules, the same app only cleaner, you'll understand what the bulldozer was pointing at the whole time: the rulebook under the drawing.
 
+---
+
+## What the Meetings Are For Now
+
+None of this was new. It was always true. It just lived locked inside the minds of each product team, maintained by months and years of weekly, sometimes daily, meetings whose real job was to prevent the drift we are all quietly carrying. That is what most of those meetings were: people re-syncing the blueprint by hand, because nowhere else held it.
+
+Imagine the meeting when everything is already captured and harvested into a blueprint that any AI harness can build against. The sync is done before anyone walks in. The meeting gets a new outlook and a refined purpose: to drive outcomes. And maybe, some weeks, just to hang out and build the relationships that made the work worth doing in the first place.
+
 *See also: [Bulldoze the App, Keep the Blueprint](klappy://canon/principles/bulldoze-but-keep-the-blueprint), where the claim that code was never the asset began. [Governance Artifacts](klappy://canon/definitions/governance-artifacts), the vocabulary this revision uses. [Artifacts Are Projections](klappy://writings/artifacts-are-projections), the view from the artifact looking back at its source.*
