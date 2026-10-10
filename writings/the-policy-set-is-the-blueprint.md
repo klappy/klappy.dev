@@ -1,6 +1,6 @@
 ---
 uri: "klappy://writings/the-policy-set-is-the-blueprint"
-title: "The Policy Set Is the Blueprint — Your Code Was Only Ever Its Derivation"
+title: "The Governance Artifacts Are the Blueprint — Your Code Was Only Ever Its Derivation"
 audience: public
 exposure: draft
 tier: 2
@@ -24,7 +24,7 @@ provenance:
   revised: "2026-10-09 — after a colleague's correction (people by role only) and the ratified vocabulary in canon/definitions/governance-artifacts.md; the ARS story kept, with its current status stated"
 ---
 
-# The Policy Set Is the Blueprint — Your Code Was Only Ever Its Derivation
+# The Governance Artifacts Are the Blueprint — Your Code Was Only Ever Its Derivation
 
 > *Bulldoze the App, Keep the Blueprint* said the code was never the asset and the blueprint was. It left "blueprint" as a gesture. The blueprint is the governance artifacts: a few principles that say why, a live list of constraints that must hold, the contracts and schemas two lanes share before either builds, and, for each build, a mandate that says what and why with enough precision to build from, with the requirements as its ingredients. Each one was earned from a specific building pain. The code is a derivation of them: self-building, because you regenerate it from the mandate; self-documenting, because it cites the mandate and the requirement it came from. Three loops keep it honest. The build loop runs mandate to requirements to build to gate. The heal loop runs friction to ledger to fix: reality rubs, the ledger catches. A nightly retrospective reads the ledger and proposes changes to the durable artifacts. Swap the governance at a stable point and fork, and the variations fall out, because the variation lives in the blueprint, not in bespoke code.
 
