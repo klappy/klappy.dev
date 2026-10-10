@@ -56,7 +56,7 @@ Confidence: a working definition, drawn from one program's three months of usage
 | **Decisions** | what was chosen and why, at canon level | per ruling | `decisions/` |
 | **Charters** | who holds bounded authority over a scope, what is reserved to the captain, and how the grant survives its holder; the scope may be a repo, a project, a seat, a session or a single deliverable, and the kind is the same at every zoom | by ruling; ratified, amended, revoked | `klappy://canon/delegating-responsibility-over-a-project`; ODD `canon/governance/stewardship-charter` |
 | **Policies** | durable, principle-shaped governing guidance (P0011) | slow | `principles/` or `constraints/` by content; a cookbook when project-scoped |
-| **Mandates** *(working name)* | the ratified governing statement for one build: WHAT · WHY · ENFORCEMENT · SCOPE · VERIFICATION (`klappy://canon/meta/enforceable-policy-anatomy`) | per build, before code | the build's cookbook; canon when universal |
+| **Mandates** | the ratified governing statement for one build: WHAT · WHY · ENFORCEMENT · SCOPE · VERIFICATION (`klappy://canon/meta/enforceable-policy-anatomy`); typically carried inside a charter | per build, before code | the build's cookbook; canon when universal |
 | **Requirements** | the specific functional needs of one build; the ingredients | per build; fast | PRD, ticket, cookbook recipe (`klappy://canon/definitions/cooking-taxonomy`) |
 
 Precedence among these is canon's own ladder — manifesto, maturity, constraints, decision rules, evidence policies — and apparent conflicts are usually explained by maturity context rather than by rank (`klappy://canon/README`). Speed is a classification axis here, not a precedence rule.
@@ -89,13 +89,13 @@ Canon held two definitions, both active on 2026-10-09:
 | `klappy://canon/meta/policies-vs-requirements` (landed 2026-07-20, #305) | durable, slow-changing, principle-shaped guidance, as against fast build-specific requirements | slow | the captain's log of 2026-07-18 |
 | `klappy://canon/meta/enforceable-policy-anatomy` (ratified 2026-10-09) | a governing statement for something about to be built, with WHAT · WHY · ENFORCEMENT · SCOPE · VERIFICATION | per build, before code | the ARS storage policy set, 2026-07-17 |
 
-They were written two days apart from the same incident and pointed in opposite directions on speed. The captain ruled 2026-10-09 19:33 ET for option 2 (stated as "I think"; held as a ruling, revisable): **P0011 wins; the anatomy-shaped artifact is renamed.** Its working name is *mandate* until the captain supplies one. The options as they stood:
+They were written two days apart from the same incident and pointed in opposite directions on speed. The captain ruled 2026-10-09 19:33 ET for option 2 (stated as "I think"; held as a ruling, revisable): **P0011 wins; the anatomy-shaped artifact is renamed.** The captain named it *mandate* (2026-10-09 20:00 ET): a governance kind of its own, typically carried inside a charter. The options as they stood:
 
 1. **Anatomy wins; P0011 amended.** "Policy" = the enforceable per-build statement. Durable guidance is simply "principles." P0011's split becomes principles vs requirements.
 2. **P0011 wins; anatomy renamed.** "Policy" = durable guidance. The five-part per-build artifact gets its own name (a "mandate," a "build policy," the captain's word).
 3. **Both, scoped.** "Policy" alone is forbidden; every use says which: *canon policy* (durable) or *build policy* (anatomy-conformant).
 
-Follow-ups this ruling implies, not done in this PR: retitle `enforceable-policy-anatomy` as the mandate anatomy; amend `policy-precedes-build`, `policy-first-self-building-self-documenting` and `two-loop-operating-model` where they mean the per-build artifact; replace the working name here once the captain supplies it.
+Follow-ups this ruling implied — **done 2026-10-09** (mandate relabel train): `enforceable-policy-anatomy` retitled as the mandate anatomy (uri unchanged); `policy-precedes-build`, `policy-first-self-building-self-documenting` and `two-loop-operating-model` amended where they meant the per-build artifact; the name *mandate* confirmed by the captain.
 
 ---
 
