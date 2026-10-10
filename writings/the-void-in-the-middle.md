@@ -168,4 +168,6 @@ If you are the reader I have in mind, you already have a version of this problem
 
 Where do your rules actually live right now, and how many of them does your AI read before it acts? When the rules moved last, who updated the summary the AI was reading, and how long was the summary wrong before anyone noticed? And when you say you trust or do not trust your AI, which mode were you in when the trust broke?
 
+If you have wondered why this site went quiet for most of 2026, this is half the answer. I was in the gap, running the experiments above instead of writing them up. The other half is the kitchen that grew up around them, the seats and rails and cookbooks that turned one maintainer into a crew, and that evolution is the next thing worth writing about.
+
 I do not have a product for you. As of today I have a research question, a pile of documented failures, a small discipline that has held up so far, and a way of splitting trust into four that I measure separately and do not claim is universal. If any of that is useful, the kernel it hangs on is public and short, and the contract that defines the four modes is public too. Start there. Then write down where your own rules outgrew the window, because that is the moment the void opened under you, and it is the moment nobody else is looking at.
