@@ -6,10 +6,10 @@ author: Klappy
 type: essay
 public: true
 audience: public
-exposure: draft
+exposure: public
 tier: 2
 voice: first_person
-stability: draft
+stability: evolving
 tags: ["writings", "essay", "trust", "governance", "context", "knowledge-bases", "four-modes", "exploration", "planning", "execution", "validation", "research"]
 epoch: E0012
 date: 2026-10-09
@@ -25,7 +25,7 @@ twitter_description: "Researchers fix models. Engineers ship product. The rules 
 derives_from: "canon/values/trust-kernel.md, canon/bootstrap/model-operating-contract.md, canon/principles/status-carries-three-tenses.md, canon/constraints/borrow-evaluation-before-implementation.md, canon/definitions/dolcheo-vocabulary.md, canon/bootstrap/any-seat-boarding-recipe.md"
 complements: "writings/the-same-rules-fresh-eyes.md, writings/your-context-window-needs-a-sabbath.md, writings/learning-in-the-open.md, writings/what-was-what-is-what-will-be.md, writings/the-project-journal.md"
 governs: "Public statement of the research question behind the walker work: trustworthy AI over content that outgrows any context, and trust measured per mode"
-status: draft
+status: active
 
 provenance:
   trigger: "Oct 7, 2026 — a call with a collaborator in which I said out loud, for the first time, that the thing I keep trying to productize is still a research project that does not know its own shape"
