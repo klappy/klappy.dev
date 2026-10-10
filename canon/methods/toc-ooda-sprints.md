@@ -23,6 +23,8 @@ Long builds run by agents drift in a known way. Agents optimize locally, work pi
 
 This method came out of one week on one build, 3D Review, 2026-09-19 to 2026-09-22. It rests on one case. Read every rule below as scoped: on one agent-run web build with one operator, this is what held and what broke. Outside that context it is untested. Status is tasting.
 
+The sprint is the unit of contact for `klappy://canon/principles/progress-over-perfection`: the smallest increment a fresh context can verify, then the next one from what was verified.
+
 ## What it is
 
 Both parts are borrowed, not coined: Theory of Constraints is Goldratt's, the OODA loop is Boyd's. Theory of Constraints says where to look: the single thing limiting progress now. OODA says how often to look: observe, orient, decide, act, and repeat. Put together, the constraint is re-chosen at every loop instead of once per project.

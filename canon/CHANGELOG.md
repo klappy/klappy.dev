@@ -18,6 +18,18 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
+## 0.45.0 — 2026-10-10
+
+**Progress Over Perfection — the stance scattered across nine documents gets its principle**
+
+### Added — Principles
+
+- **Progress Over Perfection** (`canon/principles/progress-over-perfection.md`) — Tier 1, neutral, evolving. No system survives contact with reality intact; the sooner the contact, the cheaper the edges. Size of the step is the lever, verifiability of the step is the floor. Grounds in the captain's words; Simple Rules; nine named failure modes; irreversibles and the captain's voice are its named exception. Captain approval in the door 2026-10-10 11:21 ET (#359).
+
+### Changed — Pointers up
+
+- `defaults/iteration-bias`, `methods/toc-ooda-sprints`, `methods/pivot-on-inversion`, `principles/persistence-must-be-intentional`, `principles/irreversibility-is-the-real-cost`, `principles/dream-house-principle`, `principles/antifragile-failures-grow-canon`, `diagnostics/camping-risk`, `resonance/lean-startup`, `resonance/sprint`, `resonance/antifragile` — each gains one line pointing up at the new principle. Retroactive audit: kitchen `rail/1-ordered/2026-10-10-progress-over-perfection-pointers/AUDIT.md`.
+
 ## 0.44.0 — 2026-10-09
 
 **Epoch 12 — Orientation: The Record Is Placed in Time**

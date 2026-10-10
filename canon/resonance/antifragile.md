@@ -74,3 +74,4 @@ ODD treats antifragility as insufficient on its own. Stress must be captured, in
 - [Attempts](/docs/archive/ATTEMPTS.md)
 - [Evolution Not Automation](/odd/appendices/evolution-not-automation.md)
 - [ODD Manifesto](/odd/manifesto.md)
+- [Progress Over Perfection](/canon/principles/progress-over-perfection.md) — the ODD principle this resonance echoes

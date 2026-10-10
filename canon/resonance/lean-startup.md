@@ -76,3 +76,4 @@ ODD absorbs Lean Startup's speed while rejecting its tolerance for epistemic amn
 ## Related Canon
 
 - [Evolution Not Automation](/odd/appendices/evolution-not-automation.md)
+- [Progress Over Perfection](/canon/principles/progress-over-perfection.md) — the ODD principle this resonance echoes

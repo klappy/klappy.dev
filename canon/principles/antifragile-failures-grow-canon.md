@@ -75,3 +75,4 @@ This is ODD's application of Taleb's antifragility (`canon/resonance/antifragile
 - [Antifragile (Resonance)](klappy://canon/resonance/antifragile) — ODD's application of Taleb's antifragility with the memory divergence
 - [Prompt Over Code](klappy://canon/principles/prompt-over-code) — the sibling principle that makes antifragile response possible: governance in documents, not code
 - [Ritual Is a Smell](klappy://canon/principles/ritual-is-a-smell) — post-incident checklists that aren't encoded are ritual smells
+- [Progress Over Perfection](klappy://canon/principles/progress-over-perfection) — contact with reality produces the failures this principle keeps

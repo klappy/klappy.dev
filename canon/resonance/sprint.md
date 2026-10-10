@@ -74,3 +74,4 @@ ODD absorbs Sprint's constraint discipline while rejecting its event-centric mod
 - [ODD Manifesto](/odd/manifesto.md)
 - [Attempts](/docs/archive/ATTEMPTS.md)
 - [Decision Records](/docs/decisions/README.md)
+- [Progress Over Perfection](/canon/principles/progress-over-perfection.md) — the ODD principle this resonance echoes

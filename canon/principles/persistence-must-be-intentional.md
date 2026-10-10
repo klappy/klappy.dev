@@ -71,3 +71,9 @@ In acute execution states (e.g., crisis response, live demos, production failure
 
 When stopping the bleeding, execute.
 Reassess after stabilization.
+
+---
+
+## See Also
+
+- `klappy://canon/principles/progress-over-perfection` — the principle this is the stop-polishing half of

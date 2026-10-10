@@ -147,3 +147,4 @@ The lived account is `writings/the-dream-house-and-pre-optimization`. The princi
 - [Axioms](klappy://canon/values/axioms) — Axiom 1 (Reality Is Sovereign) is the source: the cut must be made against real constraints, not predicted ones
 - [The Dream House and Pre-Optimization](klappy://writings/the-dream-house-and-pre-optimization) — the sibling essay; lived account, receipts, and the economic context
 - [The Cost of Code Dropped to Zero](klappy://writings/the-cost-of-code-dropped-to-zero) — predecessor essay on the same cost-collapse that makes draw-first tractable
+- [Progress Over Perfection](klappy://canon/principles/progress-over-perfection) — governs what happens after the full drawing: cut the first room from contact with reality; sequence, not substitution
