@@ -11,7 +11,7 @@ tier: 2
 voice: first_person
 stability: evolving
 tags: ["writings", "essay", "trust", "expectations", "time", "status", "product-development", "sales", "communication", "agents"]
-epoch: E0010
+epoch: E0012
 date: 2026-10-09
 
 hook: "This morning a teammate asked me a yes/no question I had answered the night before, then told me the build was red. It had been green for three and a half hours. Every sentence was true once. None of them said when."
