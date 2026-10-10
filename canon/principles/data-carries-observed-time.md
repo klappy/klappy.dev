@@ -7,7 +7,7 @@ tier: 2
 voice: neutral
 stability: evolving
 tags: ["canon", "principles", "trust", "time", "data", "observation", "staleness", "provenance", "axiom-1", "axiom-4"]
-epoch: E0010
+epoch: E0012
 date: 2026-10-09
 derives_from: "canon/values/trust-kernel.md, canon/values/axioms.md, canon/observations/time-blindness-axiom-violation.md"
 complements: "canon/principles/status-carries-three-tenses.md, canon/principles/envelope-time-fields.md, odd/constraint/anti-cache-lying.md, canon/principles/code-claims-require-code-observation.md"

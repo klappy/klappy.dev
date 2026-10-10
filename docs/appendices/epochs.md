@@ -502,4 +502,29 @@ The ARS monolith freeze (2026-07-16) proved a correctly boarded seat can still b
 
 - E0010 artifacts remain valid within E0010; the seat and boarding frame carry forward unchanged.
 - E0010 artifacts are not comparable to E0011 artifacts by default.
-- E0011 is the current epoch. Declared as an experiment; see the appendix for retraction conditions.
+- E0011 artifacts remain valid within E0011. Declared as an experiment; see the appendix for retraction conditions.
+
+## E0012 — Orientation: The Record Is Placed in Time
+
+**Date:** 2026-10-09
+
+E0011 made the loop the frame and the gate the verdict. E0012 keeps the loop as the unit of trust and changes what makes a status valid: every claim about state is placed in time (was / is / will be, each with observed time, confidence, proximity and relevance), and every plan orients against prior art before it binds. The second O of OODA.
+
+See [`docs/appendices/epoch-12.md`](/docs/appendices/epoch-12.md) for the full epoch declaration.
+
+### What changed
+
+The forcing incident (2026-10-09, ~09:30 ET): a seat re-asked a question answered the night before and reported a release gate red that had been green for three and a half hours. Observability (E0008) was intact; the seat could not place what it held in time. E0012 binds `status-carries-three-tenses` and `data-carries-observed-time`: observe before stating, stamp what you read, re-observe when the age exceeds how fast the datum changes, mark the untimed as untimed. Proximity is a last-mile rendering of a stored timestamp. Prior art (the three bands and the 6B table) is mandatory evidence on every plan. The governance vocabulary is named (`governance-artifacts`, nine kinds). The program's record now lives in GitHub repos any harness can board; ARS is on ice, its lessons carried in shape.
+
+### Why this is a new epoch
+
+- Evidence requirements change: observed times on every tense; prior art on every plan
+- A bare present-tense status, or a plan without its prior-art table, is unproven
+- Orientation precedes Decide: the law seat (Terry) is blocked on orienting in the documented timeline, so this epoch comes first
+- E0011 artifacts with untimed status are not comparable to E0012 artifacts placed in time
+
+### Compatibility
+
+- E0011 artifacts remain valid within E0011; the seat, the loop, gate-passage receipts and fresh validation carry forward unchanged.
+- E0011 artifacts are not comparable to E0012 artifacts by default.
+- E0012 is the current epoch. Declared as an experiment; see the appendix for retraction conditions.
