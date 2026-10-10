@@ -1,7 +1,7 @@
 ---
 uri: klappy://writings/the-void-in-the-middle
-title: "The Void in the Middle"
-subtitle: "The researchers are fixing the models. The engineers are shipping product. The rules that make AI trustworthy live in the gap between those two approaches, and the gap is growing faster than anyone can read it."
+title: "The Rules That Keep AI Honest Outgrew the Context Window"
+subtitle: "Researchers fix models, engineers ship product, and the fresh content that governs AI grows faster than either side's tools assume. A year in the void in the middle."
 author: Klappy
 type: essay
 public: true
@@ -18,7 +18,7 @@ hook: "Your AI follows the rules when the rules fit in one window. Then you add 
 description: "When I explain what I do, people stare. The model researchers are solving model problems; the engineers are shipping product; I have spent 2026 in the void between them, running something like a hundred experiments on one question: how do you keep AI trustworthy over rules and knowledge that grow faster than any context window, any embedding, any training run can keep up? Here is what failed, what held, and the four kinds of trust I now measure separately."
 slug: the-void-in-the-middle
 
-og_title: "The Void in the Middle"
+og_title: "The Rules That Keep AI Honest Outgrew the Context Window"
 og_description: "The rules that make AI trustworthy outgrew the context window within a year of adding a few partners. The model side and the product side are taking different approaches to it. I work on the product-engineering side, looking in the gaps between them."
 twitter_description: "Researchers fix models. Engineers ship product. The rules that keep AI honest live in the gap, and the gap outgrew the context window a year ago."
 
@@ -34,7 +34,9 @@ provenance:
   ghost_writer: "Drafted by the CoS seat from the sources above; every claim traces to my words or to canon; the captain's exact-text ruling governs"
 ---
 
-# The Void in the Middle
+# The Rules That Keep AI Honest Outgrew the Context Window
+
+*Researchers fix models, engineers ship product, and the fresh content that governs AI grows faster than either side's tools assume. A year in the void in the middle.*
 
 > There are two kinds of people working on AI right now, taking two different approaches. The researchers are solving model problems. The engineers are using the models to ship product. I am on the product-engineering side, but I have spent 2026 obsessed with the void between the two, where the rules that make an AI trustworthy actually live, and where I watched those rules outgrow any context window within a year of adding a few partners. Rewriting everything to one convention worked and nobody adopted it. Pre-compiled context packs worked and became a maintenance nightmare. What held was smaller than I expected: a thin pointer to what to read and in what order, and the admission that trust with an AI, like trust with a colleague, is not one thing. It is built differently while you explore, plan, execute and validate, and it has to be measured that way. I do not claim that is universal. It is what leading human and AI teams has shown me.
 
