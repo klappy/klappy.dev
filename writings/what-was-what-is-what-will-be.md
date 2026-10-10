@@ -1,7 +1,7 @@
 ---
 uri: klappy://writings/what-was-what-is-what-will-be
 title: "What Was, What Is, What Will Be"
-subtitle: "A status that cannot be placed in time is not a status, and a product sold in the wrong tense is a lie"
+subtitle: "The three tenses of temporal orientation: a status that cannot be placed in time is not a status, and a product sold in the wrong tense is a lie"
 author: Klappy
 type: essay
 public: true
@@ -10,7 +10,7 @@ exposure: public
 tier: 2
 voice: first_person
 stability: evolving
-tags: ["writings", "essay", "trust", "expectations", "time", "status", "product-development", "sales", "communication", "agents"]
+tags: ["writings", "essay", "trust", "expectations", "time", "status", "orientation", "ooda", "product-development", "sales", "communication", "agents"]
 epoch: E0012
 date: 2026-10-09
 
@@ -18,7 +18,7 @@ hook: "This morning a teammate asked me a yes/no question I had answered the nig
 description: "The same failure has followed me from startups to Bible translation to AI agents: past, present and future get spoken in one tense, and the listener has to guess which is which. Trust does not survive the guessing. Here is the discipline I use instead."
 slug: what-was-what-is-what-will-be
 
-og_title: "What Was, What Is, What Will Be"
+og_title: "What Was, What Is, What Will Be — The Three Tenses of Temporal Orientation"
 og_description: "Every sentence was true once. None of them said when. Why status without time is the oldest trust failure in product work, and what to carry instead."
 twitter_description: "Every sentence was true once. None of them said when. The fourth dimension of software is the one that sinks projects."
 
