@@ -24,7 +24,7 @@ status: "DRAFT — 2026-10-09, authored for the captain's exact-text review; not
 
 ## Summary — Orientation Is the Center of Gravity
 
-Boyd called orientation the schwerpunkt of the loop (`canon/resonance/ooda-loop`); I am paying for not taking him literally. E0008 made the system observable and E0011 made the loop the frame; neither said how a seat holds what it observed once the clock moves on. A status without a place in time is a mood; a reading without an observed time is a memory. Orientation keeps those apart, backward into the record and outward into what the world has tested.
+Boyd, who drew the loop, said orientation is the part everything else hangs on (`canon/resonance/ooda-loop`). I read that years ago and still treated it as the quick step between looking and deciding. This morning was the bill. E0008 made the system observable and E0011 made the loop the frame; neither said how a seat holds what it observed once the clock moves on. A status without a place in time is a mood; a reading without an observed time is a memory. Orientation keeps those apart, backward into the record and outward into what the world has tested.
 
 ## The Forcing Fault — Green for Three and a Half Hours
 
