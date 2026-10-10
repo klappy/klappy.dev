@@ -18,6 +18,35 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
+## 0.44.0 — 2026-10-09
+
+**Epoch 12 — Orientation: The Record Is Placed in Time**
+
+Declares E0012, the epoch of the second O of OODA. The unit of trust stays the gated loop (E0011); what changes is what makes a status valid. The forcing incident (2026-10-09, ~09:30 ET): a seat re-asked a question answered the night before and reported a release gate red that had been green for three and a half hours, with observability (E0008) fully intact. Every claim about state now carries was / is / will be, each with observed time, confidence, proximity and relevance; proximity is a last-mile rendering of a stored timestamp. Every plan carries prior art (the three bands and the 6B table) before it binds. The governance vocabulary is named. The program's record lives in GitHub repos any harness can board; ARS is on ice. Orientation precedes Decide, which is likely the next epoch. Declared as an experiment with retraction conditions on the record. DRAFT — authored for the captain's exact-text review.
+
+### Added — Appendices
+
+- **Epoch 12 — Orientation: The Record Is Placed in Time** (`docs/appendices/epoch-12.md`) — Tier 2, first person, draft. The E0012 declaration: the forcing fault, what changes, the binding contract, the mandatory evidence, what does not change, why Decide waits, and the experiment clause.
+
+### Added — Release Notes
+
+- **Epoch 12: Orientation** (`docs/oddkit/release-notes/2026-10-09-epoch-12-orientation.md`) — What changes for operators and agents after this lands.
+
+### Changed — Appendices
+
+- **Epochs** (`docs/appendices/epochs.md`) — Added the E0012 registry entry; E0011 is no longer marked current.
+
+### Changed — Epoch Retag E0010 → E0012
+
+- `canon/principles/status-carries-three-tenses.md`
+- `canon/principles/data-carries-observed-time.md`
+- `canon/definitions/governance-artifacts.md`
+- `writings/what-was-what-is-what-will-be.md` — the companion essay, retagged in its own PR (#348), which ships in the same release.
+
+### Governance
+
+- Minor version bump per `canon/constraints/governance-change-discipline.md` — a behavior-affecting change that shifts the evidence requirements (observed times on every tense; prior art on every plan). Epoch bump E0011 → E0012 with appendix at `docs/appendices/epoch-12.md`. DRAFT — do not merge until the captain has reviewed the exact text.
+
 ## 0.43.0 — 2026-07-08
 
 **Preflight Becomes a Hard Takeoff Gate (E0010)**

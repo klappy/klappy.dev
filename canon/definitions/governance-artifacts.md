@@ -7,7 +7,7 @@ tier: 2
 voice: neutral
 stability: evolving
 tags: ["canon", "definitions", "vocabulary", "governance", "policy", "principle", "constraint", "requirement", "contract", "schema", "lens"]
-epoch: E0010
+epoch: E0012
 date: 2026-10-09
 derives_from: "canon/README.md, canon/meta/policies-vs-requirements.md, canon/meta/enforceable-policy-anatomy.md, canon/definitions/dolcheo-vocabulary.md, canon/principles/dry-canon-says-it-once.md"
 complements: "canon/methods/README.md, canon/definitions/cooking-taxonomy.md, canon/principles/skills-are-procedure-not-judgment.md, canon/meta/constraint-driven-audits.md, canon/architecture/two-loop-operating-model.md, canon/constraints/policy-precedes-build.md, docs/appendices/epoch-11.md"
