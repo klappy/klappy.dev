@@ -23,7 +23,7 @@ og_description: "The rules that make AI trustworthy outgrew the context window w
 twitter_description: "Researchers fix models. Engineers ship product. The rules that keep AI honest live in the gap, and the gap outgrew the context window a year ago."
 
 derives_from: "canon/values/trust-kernel.md, canon/bootstrap/model-operating-contract.md, canon/principles/status-carries-three-tenses.md"
-complements: "writings/the-same-rules-fresh-eyes.md, writings/your-context-window-needs-a-sabbath.md, writings/learning-in-the-open.md, writings/what-was-what-is-what-will-be.md"
+complements: "writings/the-same-rules-fresh-eyes.md, writings/your-context-window-needs-a-sabbath.md, writings/learning-in-the-open.md, writings/what-was-what-is-what-will-be.md, writings/the-project-journal.md"
 governs: "Public statement of the research question behind the walker work: trustworthy AI over content that outgrows any context, and trust measured per mode"
 status: draft
 
@@ -46,7 +46,7 @@ If you have worked with AI seriously for more than a few months, you have felt t
 
 That is the problem I have been living inside since January 2026. The researchers and the product engineers are taking different approaches to it, and each approach has bright spots that clearly work. I am on the product-engineering side of that line, solving product-engineering problems, but the place I keep looking is the gap between the two: taking the bright spots from each and trying to apply them in a broader, more abstract way than either side needs for its own purposes.
 
-This essay is about what I found there. The short version: governance for AI is fractal and it compounds faster than any context, embedding or training run can keep up; the two approaches I tried first both worked and both failed for reasons that had nothing to do with the model; what survived was a small discipline rather than a big system; and the thing we call "AI trust" is at least four things, because trust during exploration is built differently from trust during validation. Why trust is the hinge at all is already written down in [the trust kernel](klappy://canon/values/trust-kernel): collaboration hangs on trust, and trust is built by managing expectations. I am not going to restate it. I am going to tell you what it cost me to learn where the expectations actually live.
+This essay is about what I found there. The short version: governance for AI is fractal and it compounds faster than any context, embedding or training run can keep up; the two approaches I tried first both worked and both failed for reasons that had nothing to do with the model; what survived was a small discipline rather than a big system, and a record that keeps its receipts; and the thing we call "AI trust" is at least four things, because trust during exploration is built differently from trust during validation. Why trust is the hinge at all is already written down in [the trust kernel](klappy://canon/values/trust-kernel): collaboration hangs on trust, and trust is built by managing expectations. I am not going to restate it. I am going to tell you what it cost me to learn where the expectations actually live.
 
 ---
 
@@ -101,6 +101,20 @@ What fell out of testing the walker was not what I was building. It was the thin
 A manifest. A sidecar to the content rather than a rewrite of it: a short list of what to read, in what order, plus a few lines of framing, handed to the agent at boarding. Go do your research, here is the pointer. Not a distillation. I want to be clear about that because I had tried distillation earlier in the year, in the form of compilation packs, pre-packaged context meant to spare the model from reading everything, and it was a maintenance nightmare. Every time the rules moved the pack lied. The pointer does not lie, because it points at the live source.
 
 I am not going to describe how the pointer is built here. That part is still being measured, and the numbers belong on the ledger with their caveats, not in an essay. What I will say is that there were somewhere around a hundred experiments between January and October 2026 attacking this same problem again and again, across every epoch of the knowledge base, and many of them are failures worth citing: context cramming, context shaping, context engineering under a dozen names. Each one worked until the content moved. The small thing is the one that survived the content moving.
+
+---
+
+## The Record Has to Survive Too
+
+Reading was only half of it. The other half was the record, and I underrated it for longer.
+
+Everything above is about getting the right rules in front of an AI. Nothing above says what happens to what the AI and I decided once the session ends. In early 2026 the answer was: it evaporated, or it lived in a chat transcript nobody would ever open again, or it lived in a tidy summary that quietly dropped the one caveat that mattered. Then a partner would ask why we did something and I would have to reconstruct it from memory. That is an expectations failure of the oldest kind, and the trust kernel names it: expectations not maintained, not transferred.
+
+So the journal became the flight recorder. Not prose. Rows. Every session leaves rows, and every row carries the same twelve fields, and four of them do the work: who contributed it, what kind of claim it is, how confident, and the relationships that tie it to the rows and sources it rests on. A dictation I gave on a walk, a ruling I made in a chat, a run a seat finished at three in the morning, all land in the same shape, and the shape is what makes them comparable later.
+
+The tool that folds raw material into those rows is called Kirigami, and two of its rules matter more than its name. Folding is lossy on purpose, but discarding is not deleting: every row keeps a pointer back to the cold source it was cut from, so a claim can always be traced to the moment it was made. And synthesis is connective, never generative: a row may wire together things that already exist, and it is not allowed to invent a connection and call it a finding. I wrote that rule after watching summaries do exactly that.
+
+This is why I can write "I said this on October 7" and mean it. The provenance block on this essay names the three dictations it was built from and the typed text it quotes. The ledger keeps the numbers I am not putting here. When the thing you are trusting is the record of a collaboration that is now months old and spread across a dozen sessions and two or three partners, provenance is not bookkeeping. It is the only way the expectation you set back then is still checkable now.
 
 ---
 
