@@ -38,7 +38,7 @@ Here is the sharper version. The blueprint is a set of [governance artifacts](kl
 
 ## You Took the Advice and Still Couldn't Rebuild It Twice
 
-The parent argument was that code stopped being the scarce thing. When generation gets cheap, variation explodes, maintenance becomes a tax, and old output costs more to understand than to regenerate. So you protect what makes regeneration safe. I believed it in July. I still do.
+The parent argument was that code stopped being the scarce thing. When generation gets cheap, variation explodes, maintenance becomes a tax, and old output costs more to understand than to regenerate. So you protect what makes regeneration safe. I believed it in January, refined it in July, and I'm still getting closer to it as the only way I can imagine operating. I'll never go back.
 
 But "protect the blueprint" is only useful if you can say what a blueprint is, and for a long time I couldn't. I had intent in my head, constraints in a chat transcript, decisions in a commit message I'd never find again. When I regenerated, the model filled every gap I'd left with something plausible, and plausible is not the same as decided. The second build drifted from the first because I had never written down the thing it drifted from. The model did its job. I hadn't done mine.
 
