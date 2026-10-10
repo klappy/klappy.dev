@@ -142,7 +142,7 @@ An AI that invents a possibility during exploration has done its job. The same i
 
 I want to be careful here, in the same words I used on October 7:
 
-> "I don't know, I don't want to claim this is universal, but I do believe in my experience, these are the four areas or modes that I've had to focus AI to operate differently in. And so any evaluation or metrics we would do when evaluating AI trust is evaluated differently for each of these modes."
+> "I don't want to claim this is universal, but I do believe in my experience, these are the four areas or modes that I've had to focus AI to operate differently in. And so any evaluation or metrics we would do when evaluating AI trust is evaluated differently for each of these modes."
 
 If your work has a fifth mode, or three, I would like to hear it. The claim I will defend is the smaller one: trust is not one number, and anyone selling you a single "AI trust score" has already collapsed something that should stay separate.
 
