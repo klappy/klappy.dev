@@ -50,7 +50,7 @@ This essay is about what I found there. The short version: governance for AI is 
 
 ---
 
-## The Stare
+## When I Explain This, People Stare: It Is Still a Research Question, Not a Product
 
 When I explain this to people at the organizations I work with, they stare at me.
 
@@ -64,7 +64,7 @@ If that sounds abstract, let me show you where it came from.
 
 ---
 
-## Where the Rules Went
+## The Rules Outgrew the Context Window Within a Year, and Every Kind of Fresh Content Does the Same
 
 Think about where governance lives in your own life. There are universal rules, then country rules, state, city, the HOA, the rules in your own house. At work there are company rules, department rules, rules for a vertical, rules a partner insists on. Every layer inherits from the one above and overrides some of it. Everything is fractally spread out.
 
@@ -84,7 +84,7 @@ So the tools I went looking for had a strange constraint: no embeddings, no trai
 
 ---
 
-## Two Things That Led Here
+## What Failed and What Survived: Compiled Packs, oddkit's Convention, Cartographer's Map, and the Manifest Sidecar
 
 I did not arrive at that constraint by thinking. I arrived by failing, in public, with my own tools, more than once.
 
@@ -110,7 +110,7 @@ One of those failures deserves its own paragraph, because it is where the bright
 
 ---
 
-## The Record Has to Survive Too
+## The Record Has to Survive the Session: Kirigami Turned the Journal Into a Flight Recorder With Provenance and Resumability
 
 Reading was only half of it. The other half was the record, and I underrated it for longer.
 
@@ -130,7 +130,7 @@ This is why I can write "I said this on October 7" and mean it. The provenance b
 
 ---
 
-## Four Kinds of Trust
+## AI Trust Is Four Things, Not One: Exploration, Planning, Execution and Validation Each Earn It Differently
 
 Somewhere in those experiments the question changed on me. I had started out trying to validate AI work, which is where everyone starts. Can I trust the output? And I kept noticing that this was not how I trusted the people I work with.
 
@@ -150,7 +150,7 @@ If your work has a fifth mode, or three, I would like to hear it. The claim I wi
 
 ---
 
-## The Void in the Middle
+## The Void in the Middle: Researchers Fix Models, Engineers Ship Product, the Gap Between Them Is Where I Work
 
 Here is where I think I actually am, as of October 2026.
 
@@ -162,7 +162,7 @@ I do not have the patience for pure research. What I do have is a product-engine
 
 ---
 
-## What I Am Asking You
+## What I Am Asking You: Find Where Your Own Rules Outgrew the Window, and Start From the Kernel
 
 If you are the reader I have in mind, you already have a version of this problem, and you have probably been treating it as a prompt-engineering chore. I would ask you to look at it differently for a week.
 
