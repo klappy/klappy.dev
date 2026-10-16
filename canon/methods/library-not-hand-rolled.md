@@ -1,6 +1,6 @@
 ---
 uri: klappy://canon/methods/library-not-hand-rolled
-title: "Library, Not Hand-Rolled — Borrow Load-Bearing Infrastructure by Default, and Red-Flag the Exception in Writing Before the First Commit"
+title: "Library, Not Hand-Rolled — Borrow Load-Bearing Infrastructure by Default"
 audience: canon
 exposure: nav
 tier: 2
@@ -17,9 +17,9 @@ supersedes: "canon/principles/library-not-hand-rolled.md (the practice half of t
 target_repo: "outcomes-driven-development"
 ---
 
-# Library, Not Hand-Rolled — Borrow Load-Bearing Infrastructure by Default, and Red-Flag the Exception in Writing Before the First Commit
+# Library, Not Hand-Rolled — Borrow Load-Bearing Infrastructure by Default
 
-> Two principles meet at every infrastructure choice: the cost of a load-bearing layer is its lifetime of care (`ownership-outlives-the-build`), and a decision is not reviewed until every registered perspective has rowed (`silence-is-not-consent`). This method is the practice they produce. Load-bearing infrastructure is borrowed from a maintained community by default. A proposal to hand-roll it, fork it into solitude, or adopt it from an abandoned source is a red flag from every registered perspective, naming the risk, the lifetime maintenance cost and the maintained alternative, in writing, before the first commit. The proposer, operator included, answers in writing before anything is built, and may still decide; the method guarantees the telling, not the outcome. Where a project's governing documents already name the stack for a class of layer, that rule fills the Borrow row and an evaluation that contradicts it is a hold, never a decision.
+> Two principles meet at every infrastructure choice: the cost of a load-bearing layer is its lifetime of care (`ownership-outlives-the-build`), and a decision is not reviewed until every registered perspective has answered (`silence-is-not-consent`). This method is the practice they produce. Load-bearing infrastructure is borrowed from a maintained community by default; a proposal to hand-roll, fork or adopt it from an abandoned source is a red flag from every registered perspective, naming the risk, the lifetime cost and the maintained alternative in writing, and the proposer, operator included, answers in writing before anything is built. Where a project's governing documents already name the stack, that rule fills the Borrow row and a contrary evaluation is a hold, never a decision.
 
 ---
 
@@ -28,7 +28,7 @@ target_repo: "outcomes-driven-development"
 The method has four steps and one pre-emption. It runs in planning, before any implementation begins, on any proposal that touches a load-bearing layer: the framework a user interface is written in, a database or storage engine, authentication, a transport or protocol implementation, build tooling, cryptography, scheduling and queues, document rendering, localisation.
 
 1. **Borrow by default.** The starting assumption for any load-bearing layer is a maintained community implementation. Building, forking into a private line, or adopting an abandoned or single-maintainer source is the exception and carries the burden of proof. The six-row evaluation (`borrow-evaluation-before-implementation`) records which maintained option was considered and why.
-2. **Red-flag the exception.** When a proposal takes the exception, every registered review perspective records a red flag. Each flag is short and written: the risk, the lifetime maintenance cost and who pays it, and the maintained alternative. A perspective whose boundary excludes the question still rows, as "outside my boundary, no flag", so absence is visible.
+2. **Red-flag the exception.** When a proposal takes the exception, every registered review perspective in whose boundary the question falls records a red flag, short and written: the risk, the lifetime maintenance cost and who pays it, and the maintained alternative. A perspective whose boundary excludes the question records "outside my boundary, no flag" instead, so absence is visible; `silence-is-not-consent` rules 2 and 5 govern the outcomes and the operator clause, and this method does not restate them.
 3. **Answer before building.** Nothing is built until every red flag has a written, dated, attributable answer from the proposer. "I accept the cost" is an acceptable answer. An unwritten answer is not.
 4. **The operator is told the same way.** When the proposer is the operator, steps 2 and 3 run unchanged: the operator receives exactly the flags an agent would receive, in writing, before ruling. The operator may rule after reading them; the method does not decide for the operator.
 
@@ -40,8 +40,8 @@ The method has four steps and one pre-emption. It runs in planning, before any i
 
 - **Use when:** a plan, ticket, or six-row evaluation proposes to build, fork, or adopt an unmaintained implementation of a layer other work will stand on, or a registered review perspective is asked to row on such a proposal, or a bound stack rule exists for the layer's class.
 - **Skip when:** the choice is application logic, domain code, glue, a script, a prototype, or anything written to be regenerated; or a thin wrapper that keeps a maintained library behind a project-owned interface; or the question is how to cost the layer (the principle) rather than what to do about it.
-- **Stop when:** the layer is borrowed from a maintained source and the evaluation says so; or the exception is taken and every registered perspective has rowed and every red flag has a written, dated answer from the proposer.
-- **Keep going when:** a registered perspective has not rowed; a red flag has no written answer; a bound stack rule exists and the evaluation has not quoted it; the proposer is the operator and has not yet read the flags.
+- **Stop when:** the layer is borrowed from a maintained source and the evaluation says so; or the exception is taken and every registered perspective has answered and every red flag has a written, dated answer from the proposer.
+- **Keep going when:** a registered perspective has not answered; a red flag has no written answer; a bound stack rule exists and the evaluation has not quoted it; the proposer is the operator and has not yet read the flags.
 - **Where:** planning records, six-row evaluations, tickets that add or change a load-bearing layer, and the review receipts beside them.
 - **Who:** every proposer, agent or operator; every registered review perspective; whoever closes the planning gate.
 - **Why:** the first version is cheap and the lifetime is not, and the one perspective that would have objected is the one that stayed silent (§ Grounds).
@@ -60,7 +60,7 @@ For any load-bearing layer, the Borrow row names a maintained implementation, or
 Two cases in one house, two months apart, same shape:
 
 - **2026-09-02.** Agents repeatedly hand-rolled JSON-RPC, transport and auth for protocol servers until a build convention bound those layers to a maintained SDK; a section was added after a repeat miss. The convention is this method's first instance, applied to one class of layer.
-- **2026-10-16.** A seat read the house rule naming the UI framework, filed it as a correction option, placed the framework at "Bide" in its six-row evaluation, and shipped three framework-free components under provisional approval. One of four registered review perspectives had looked. The operator reversed the decision the same morning, and the pre-emption above was bound the same day.
+- **2026-10-16.** An agent read the house rule naming the UI framework, filed it as a correction option, placed the framework at "Bide" in its six-row evaluation, and shipped three framework-free components under provisional approval. One of four registered review perspectives had looked. The operator reversed the decision the same morning, and the pre-emption above was bound the same day.
 
 The operator, 2026-10-16, cleaned for grammar with his review (the raw lines stay in the private transcript): "If I go create a home landing page and choose Adobe Flash because I like it, somebody had better stop me, or at least tell me it's a bad idea. If I want to build my own database from scratch, tell me the risks and make me think about it. Stop hand-rolling major infrastructure."
 
@@ -88,7 +88,7 @@ This does not override the operator. It guarantees the operator is told; it neve
 
 This does not replace the six-row evaluation. It tells the evaluation what the Borrow row holds for load-bearing layers and what happens when the evaluation wants to leave it.
 
-Where this diverges from its parents: the two principles say what a layer costs and who must have rowed; this method says what to do with both at the moment of choosing. The six-B sequence lets any step be skipped with a named justification; for load-bearing layers this method removes the skip past Borrow unless every registered perspective has flagged it and the proposer has answered.
+Where this diverges from its parents: the two principles say what a layer costs and who must have answered; this method says what to do with both at the moment of choosing. The six-B sequence lets any step be skipped with a named justification; for load-bearing layers this method removes the skip past Borrow unless every registered perspective has flagged it and the proposer has answered.
 
 
 **Alternatives considered, and reversibility.** Three shapes were rejected before this one: a prohibition on hand-rolling, because the operator must keep the ruling; a check by one designated perspective, because one perspective is exactly what looked on 2026-10-16 and missed; and a justification note inside the six-B evaluation, because the skip past Borrow with a note beside it is the failure that occurred. The method itself is reversible in text: it adds a review step and a pre-emption, both of which can be withdrawn by amending this page, and it builds nothing. What it protects against is not reversible: a load-bearing layer, once other work stands on it, is what `irreversibility-is-the-real-cost` describes. Prior art: the build convention of 2026-09-02 for protocol servers is the first instance; outside this canon the shape resembles an architecture decision record with mandatory reviewers.
@@ -106,7 +106,7 @@ Where this diverges from its parents: the two principles say what a layer costs 
 | **The flag without an answer** | Red flags are written and the build starts anyway | Nothing is built until the proposer answers in writing | § Method 3 |
 | **The operator's pass** | No perspective flags the operator's own preference for a hand-rolled or unmaintained layer | The operator is told exactly what an agent would be told | § Method 4; `canon/bootstrap/generic-boarding-pass` |
 | **Provisional cover** | A decision that contradicts bound law ships under provisional approval | Provisional approval covers reversible work, not re-deciding settled law | `canon/principles/progress-over-perfection` |
-| **Paraphrased order** | The operator's instruction naming a stack is restated as a list of candidates | The seat carries the order forward verbatim; paraphrase turns orders into options | § Grounds (2026-10-16) |
+| **Paraphrased order** | The operator's instruction naming a stack is restated as a list of candidates | The agent carries the order forward verbatim; paraphrase turns orders into options | § Grounds (2026-10-16) |
 | **The wrapper mistaken for a build** | A thin interface over a maintained library is flagged as hand-rolling | Wrapping is Bend; the method does not reach it | § What This Does Not Mean |
 
 ---

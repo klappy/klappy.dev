@@ -19,7 +19,7 @@ target_repo: "outcomes-driven-development"
 
 # Ownership Outlives the Build — The Cost of Infrastructure Is Its Lifetime of Care, Not Its First Version
 
-> The price of a load-bearing layer is not the effort to write its first version; it is every patch, edge case, incident and security fix for as long as anything stands on it, paid by whoever owns it. A maintained community spreads that lifetime across thousands of users. A hand-rolled, forked, or abandoned layer concentrates it on one owner's attention, which is the scarcest resource this canon manages. So any decision about such a layer is priced over its lifetime of care, never by its first version. The principle is falsified the day a hand-rolled layer in this canon's projects proves cheaper to own over its life than the maintained one it replaced.
+> The price of a load-bearing layer is not the effort to write its first version; it is every patch, incident and security fix for as long as anything stands on it, paid by whoever owns it. A maintained community spreads that lifetime across thousands of users; a hand-rolled, forked or abandoned layer concentrates it on one owner's attention, the scarcest resource this canon manages. So such a layer is priced over its lifetime of care, never by its first version. Falsified the day a hand-rolled layer in this canon's projects proves cheaper to own over its life than the maintained one it replaced.
 
 ---
 
@@ -61,7 +61,7 @@ A load-bearing layer keeps charging after it is written: patches, incidents, sec
 Two cases in one house, two months apart, same shape:
 
 - **2026-09-02.** Agents repeatedly hand-rolled JSON-RPC, transport and auth for protocol servers until a build convention bound those layers to a maintained SDK; a section was added after a repeat miss. Each hand-rolled copy was quick to write and belonged to one operator afterwards.
-- **2026-10-16.** A seat read the house rule naming the UI framework, filed it as a correction option, placed the framework at "Bide" in its six-row evaluation, and shipped three framework-free components under provisional approval. The components were small; the layer they established was not.
+- **2026-10-16.** An agent read the house rule naming the UI framework, filed it as a correction option, placed the framework at "Bide" in its six-row evaluation, and shipped three framework-free components under provisional approval. The components were small; the layer they established was not.
 
 The operator, 2026-10-16, cleaned for grammar with his review (the raw lines stay in the private transcript): "I'm frustrated that a production UI would use vanilla JS without the benefit of a community-maintained framework." On why: "You can build it in beautiful reusable abstractions. But state and memory management and a billion other things are addressed for us in UI frameworks." On himself: "If I want to build my own database from scratch, tell me the risks and make me think about it."
 
