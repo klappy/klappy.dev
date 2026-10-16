@@ -26,7 +26,7 @@ target_repo: "outcomes-driven-development"
 
 Infrastructure is load-bearing when other work stands on it and cannot easily move off it: the framework a user interface is written in, a database or storage engine, authentication, a transport or protocol implementation, build tooling, cryptography, scheduling and queues, document rendering, localisation. The first version of any of these is cheap to write; every patch, edge case and security fix after that is paid by whoever owns it, alone, for as long as the thing runs. A maintained community pays that cost across thousands of users. A hand-rolled layer pays it with one person's attention, which is the scarcest resource this canon manages.
 
-So the principle has two halves. The first is a default: borrow. The second is a process guarantee that survives the default being overridden: every review perspective registered for a project must look at every infrastructure choice and say so, with one of three outcomes, so that the choice is never made in silence. The guarantee binds reviewers against the operator as firmly as against agents, because the operator's enthusiasm is the one failure mode no agent will challenge unasked.
+So the principle has two halves. The first is a default: borrow. The second is a process guarantee that survives the default being overridden: every review perspective registered for a project must look at every infrastructure choice and say so, with one of four outcomes, so that the choice is never made in silence. The guarantee binds reviewers against the operator as firmly as against agents, because the operator's enthusiasm is the one failure mode no agent will challenge unasked.
 
 ## The principle
 
