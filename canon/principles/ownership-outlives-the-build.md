@@ -25,7 +25,7 @@ target_repo: "outcomes-driven-development"
 
 ## Summary — Price the Lifetime, Name the Owner
 
-A load-bearing layer keeps charging after it is written: patches, incidents, security fixes and the hours of whoever owns it, for as long as anything stands on it. A maintained community spreads that charge across everyone who uses the layer; a hand-rolled, forked or abandoned one puts it on a single owner, and the owner's attention is the scarcest thing this canon manages. So the cost column of any infrastructure decision is the lifetime, not the first version; it names who pays, and it is written where the decision is recorded. The layers in scope are the ones other work stands on: a UI framework, a database, auth, transport, build tooling, crypto, queues, rendering, localisation. The practice this produces is `canon/methods/library-not-hand-rolled`.
+A load-bearing layer keeps charging after it is written: patches, incidents, security fixes and the hours of whoever owns it, for as long as anything stands on it. A maintained community spreads that charge across everyone who uses the layer; a hand-rolled, forked or abandoned one puts it on a single owner, and the owner's attention is the scarcest thing this canon manages. So the cost column of any infrastructure decision is the lifetime, not the first version; it names who pays, and it is written where the decision is recorded. The layers in scope are the ones other work stands on: a UI framework, a database, auth, transport, build tooling, crypto, queues, rendering, localisation. A thin wrapper over a maintained library is borrowing; only the wrapper is priced. The practice this produces is `canon/methods/library-not-hand-rolled`.
 
 ---
 
@@ -38,7 +38,7 @@ This canon already holds that the real cost of work is what it takes to undo, no
 1. **Price the lifetime, not the first version.** When a plan, evaluation or review weighs a load-bearing layer, the cost column is patches, incidents, security fixes and seat-hours over the layer's expected life. First-version effort is a line item in that column, never the total.
 2. **Ownership is singular.** A layer no community maintains has exactly one owner: whoever built, forked or adopted it. That owner pays every future cost, whether or not they still remember choosing to.
 3. **A community amortises.** A maintained implementation spreads the same lifetime cost across every user, maintainer and bug reporter it has. The difference between one owner and thousands is the whole argument for borrowing.
-4. **Abandonment is a transfer, not an escape.** Adopting an unmaintained or single-maintainer source transfers its lifetime cost to the adopter at the moment of adoption. A fork into a private line does the same.
+4. **Abandonment transfers the cost.** Adopting an unmaintained or single-maintainer source transfers its lifetime cost to the adopter at the moment of adoption. A fork into a private line does the same.
 5. **The accounting is written down.** A decision that accepts the lifetime cost of a hand-rolled or unmaintained layer records that cost, in words, where the decision is recorded. An unwritten cost is paid anyway; it is only paid by surprise.
 
 ---
