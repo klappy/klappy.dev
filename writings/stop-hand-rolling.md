@@ -1,7 +1,7 @@
 ---
 uri: klappy://writings/stop-hand-rolling
 title: "Stop Hand-Rolling"
-subtitle: "The First Version Is the Cheapest Thing You Will Ever Do to That Code, and the Agent Only Sees the First Version"
+subtitle: "They Measure in Hours for the Build. You Measure in Years for the Maintenance."
 author: Klappy
 type: essay
 public: false
@@ -14,13 +14,13 @@ tags: ["writings", "essay", "agents", "infrastructure", "maintenance", "hand-rol
 epoch: E0010
 date: 2026-10-16
 hook: "Three months into a production UI I asked whether Svelte would be safe to adopt for the next revision. The answer was that there was nothing to adopt it into. The whole thing was hand-rolled vanilla JavaScript, and I had never looked."
-description: "Every AI session finds a new place in the stack to hand-roll something, and the reason is that the agent is pricing the next ten minutes while you are paying for the next ten years. What I learned from the sixth MCP server and the one UI I never checked, and the two principles I wrote so I could stop repeating myself."
+description: "Every AI session finds a new place in the stack to hand-roll something, and the reason is that the agent measures in hours for the build while you measure in years for the maintenance. What I learned from the sixth MCP server and the one UI I never checked, and the two principles I wrote so I could stop repeating myself."
 og_title: "Stop Hand-Rolling"
-og_description: "The agent prices the next ten minutes. You pay for the next ten years. Two cases, two principles, and the day I will take it all back."
+og_description: "They measure in hours for the build. You measure in years for the maintenance. Two cases, two principles, and the day I will take it all back."
 og_type: article
 twitter_card: summary_large_image
 twitter_title: "Stop Hand-Rolling"
-twitter_description: "The agent prices the next ten minutes. You pay for the next ten years. Two cases, two principles, and the day I will take it all back."
+twitter_description: "They measure in hours for the build. You measure in years for the maintenance. Two cases, two principles, and the day I will take it all back."
 slug: stop-hand-rolling
 derives_from: "canon/principles/ownership-outlives-the-build.md, canon/principles/silence-is-not-consent.md, canon/methods/library-not-hand-rolled.md, canon/methods/borrow-bend-break-beget-build.md, canon/constraints/borrow-evaluation-before-implementation.md, canon/principles/capability-is-not-permission.md"
 complements: "writings/the-dream-house-and-pre-optimization.md, writings/we-were-the-wire.md"
@@ -36,19 +36,19 @@ provenance:
 
 ---
 
-## Summary — The Agent Prices Ten Minutes, You Pay for Ten Years
+## Summary — They Measure in Hours, You Measure in Years
 
 Agents hand-roll load-bearing infrastructure because they are optimising the task in front of them, and the task in front of them is always the first version. Maintenance is invisible from there. My stack had seven angles of mitigation against this and still leaked about one session in six, which told me the gap was not another instruction but a missing principle. Two now exist: price infrastructure over its lifetime and name who pays; and treat silence from a reviewer as a failed review, never as consent, including when the proposer is me. Hand-roll your proof of concept all you like. The moment someone might use it, borrow. Two cases and one operator so far; the test is whether unflagged hand-rolled layers in my own plated work fall from about one in six toward zero within a quarter. I will retract all of it the day an application can be spoken into existence and never maintained.
 
 ---
 
-## What the Agent Sees, and What You Pay
+## Hours for the Build, Years for the Maintenance
 
 Here is the asymmetry that makes the whole problem.
 
-When an agent decides how to build the transport for a server, or the shell of a user interface, it is looking at the next ten minutes. Hand-rolling wins that comparison every time. There is no dependency to learn, no version to pin, no documentation to read. The code appears, it runs, the task closes.
+When an agent decides how to build the transport for a server, or the shell of a user interface, it measures in hours: how long until this runs. Hand-rolling wins that comparison every time. There is no dependency to learn, no version to pin, no documentation to read. The code appears, it runs, the task closes.
 
-You are looking at the next ten years. You will patch it. You will field the edge case the library already handles. You will read the security advisory for a thing you wrote yourself and realise there is no advisory, because nobody is watching it but you. Every hour of that lands on one person, and that person is the one whose attention was already the scarcest thing in the system.
+You measure in years: how long until this stops being my problem. You will patch it. You will field the edge case the library already handles. You will read the security advisory for a thing you wrote yourself and realise there is no advisory, because nobody is watching it but you. Every hour of that lands on one person, and that person is the one whose attention was already the scarcest thing in the system.
 
 A maintained library spreads that lifetime across thousands of users, maintainers and bug reporters. A hand-rolled layer concentrates it on you. That is the entire argument, and it took me two cases to learn to say it in one sentence.
 
@@ -58,7 +58,7 @@ The first case is well documented in my own repositories, so I will keep it shor
 
 I build MCP servers. Many of them. From the very beginning my stack carried a method for not building things from scratch, the six Bs: borrow, bend, break, beget, bide, build, in that order. There was a convention naming the SDK to use. There were boarding instructions that pointed at the convention.
 
-Roughly every third server, an agent hand-rolled the JSON-RPC framing, the transport, or the auth anyway. It had read the convention, or skipped it, and decided that writing its own was quicker. Quicker and faster for what? For the ten minutes. Each of those servers then became mine to maintain, alone, until I regenerated it onto the SDK.
+Roughly every third server, an agent hand-rolled the JSON-RPC framing, the transport, or the auth anyway. It had read the convention, or skipped it, and decided that writing its own was quicker. Quicker and faster for what? For the hours. Each of those servers then became mine to maintain, alone, until I regenerated it onto the SDK.
 
 It took about six misses before the servers stabilised. By then there were seven angles of mitigation stacked against one mistake: governance policy, canon articles, hygiene lines, house rules, review lenses that look for exactly this, boarding instructions to make sure all of it gets read, and a gate that refuses work without a six-row evaluation on the record. That is a lot of apparatus to stop a behaviour a junior engineer would stop after being told once.
 
@@ -87,6 +87,8 @@ The leak comes from where the apparatus sits. Every one of my seven mitigations 
 Let me be fair to hand-rolling, because I do it constantly.
 
 Go into any of my repositories and look at the history. It is full of hand-rolled work. Proof of concept after proof of concept, written in an afternoon because reaching for a framework would have cost more than the whole experiment. That is the right call for a proof of concept. If nobody will ever touch it, hand-roll the thing.
+
+And to be fair to the other side of my own history: some of my hand-rolled libraries are still on npm and RubyGems, still installed, still working, years after I last touched them. So the decade test I keep asking of frameworks (if I stop touching this and the world keeps moving, does it still run?) is one some hand-rolled code passes. The ones that pass share a shape. They are finished: small surface, no security exposure, few or no dependencies, sitting on a runtime that held still. Finished code can be left alone. The layers this essay is about never finish, because the ground under them moves every quarter: browser APIs, protocol revisions, the next advisory. A UI shell, an auth layer, a transport. For those, "I'll leave it alone" is a promise the ground does not let you keep. If you believe yours is finished, say so in writing, with the risk; the cost column still runs, and sometimes it comes out in your favour.
 
 The line is the first hint that someone will use it. Prototype to production is where the tipping point arrives, and it arrives fast. The rule I want from an agent is the rule I apply to myself: hand-roll the proof, measure the tipping point early, and regenerate onto a maintained framework before the first user shows up. "Regenerate, don't steer" already says this for bootstrap code. I had never said it for the layer underneath.
 
