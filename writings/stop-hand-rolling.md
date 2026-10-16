@@ -38,7 +38,7 @@ provenance:
 
 ## Summary — They Measure in Hours, You Measure in Years
 
-Agents hand-roll load-bearing infrastructure because they are optimising the task in front of them, and the task in front of them is always the first version. Instructions bind only the session that reads them; a principle binds the reasoning, so a session that never saw the instruction still lands on the same answer. Maintenance is invisible from there. My stack had seven angles of mitigation against this and still leaked about one session in six, which told me the gap was not another instruction but a missing principle. Two now exist: price infrastructure over its lifetime and name who pays; and treat silence from a reviewer as a failed review, never as consent, including when the proposer is me. Hand-roll your proof of concept all you like. The moment someone might use it, borrow. Two cases and one operator so far; the test is whether unflagged hand-rolled layers in my own plated work fall from about one in six toward zero within a quarter. I will retract all of it the day an application can be spoken into existence and never maintained.
+Agents hand-roll load-bearing infrastructure because they are optimising the task in front of them, and the task in front of them is always the first version. Instructions bind only the session that reads them; a principle binds the reasoning, so a session that never saw the instruction still lands on the same answer. Maintenance is invisible from there. My stack had seven angles of mitigation against this and still leaked about one session in six, which told me the gap was not another instruction but a missing principle. Two now exist: price infrastructure over its lifetime and name who pays; and treat silence from a reviewer as a failed review, never as consent, including when the proposer is me. Hand-roll your proof of concept all you like. The moment someone might use it, borrow. A thin layer over maintained libraries is borrowing; a layer you call finished still gets its risk written down. Two cases and one operator so far; the test is whether unflagged hand-rolled layers in my own plated work fall from about one in six toward zero within a quarter. I will retract all of it the day an application can be spoken into existence and never maintained.
 
 ---
 
@@ -84,7 +84,7 @@ The leak comes from where the apparatus sits. Every one of my seven mitigations 
 
 Part of this is also a discovery problem I am chasing separately. Governance that will not fit in one session has to be found before it can be obeyed, and you cannot search for a law you do not know exists. The server case was that: the convention was there and the seat never found it. The UI case was worse: the seat found the rule and filed it as a suggestion. Discovery fixes the first. Only a principle, or a gate, fixes the second.
 
-## The Line Is Production, Not Perfection
+## The Line Is Production
 
 Let me be fair to hand-rolling, because I do it constantly.
 
@@ -96,13 +96,13 @@ The line is the first hint that someone will use it. Prototype to production is 
 
 Which raises the uncomfortable possibility that the agent has been meeting my standard all along, and the standard was the problem.
 
-## Two Principles, Not an Eighth Instruction
+## Two Principles Instead of an Eighth Instruction
 
 So I wrote the fix as far up the stack as I could reach.
 
 The first principle is that ownership outlives the build. The cost of a load-bearing layer is its lifetime of care, not its first version, and any decision about such a layer names that lifetime and names who pays it. Written down, where the decision is recorded. An unwritten cost is still paid; it is only paid by surprise.
 
-The second is that silence is not consent. A project registers review perspectives because each one sees what the others miss, and a decision is not reviewed until every one of them has answered: agree, proceed with a named concern, hold with a named rule, or outside my boundary. A perspective that says nothing has not agreed; it has failed to review. And this one runs against me. If I come in wanting to build a home page in Adobe Flash because I like it, somebody had better stop me, or at least tell me it is a bad idea. If I want to build my own database from scratch, tell me the risks and make me think about it. I can still rule afterwards. The principle guarantees the telling.
+The second is that silence is not consent. A project registers review perspectives because each one sees what the others miss, and a decision is not reviewed until every one of them has answered: agree, proceed with a named concern, hold with a named rule, or outside my boundary. A perspective that says nothing has failed to review. And this one runs against me. If I come in wanting to build a home page in Adobe Flash because I like it, somebody had better stop me, or at least tell me it is a bad idea. If I want to build my own database from scratch, tell me the risks and make me think about it. I can still rule afterwards. The principle guarantees the telling.
 
 Between them sits the practice, which is just the method I already had with the escape hatch welded shut for load-bearing layers: borrow by default; red-flag the exception in writing with the risk, the lifetime cost and the maintained alternative; answer in writing before building; and where the house has already named the stack, that rule fills the Borrow row and an evaluation that disagrees is a hold, never a decision.
 
@@ -126,7 +126,7 @@ Until then: if you are building a proof of concept, hand-roll whatever you like.
 
 ---
 
-## See Also
+## See Also — The Two Principles, the Method and the Sequence
 
 - [Ownership Outlives the Build](klappy://canon/principles/ownership-outlives-the-build) — the cost principle: price the lifetime, name the owner.
 - [Silence Is Not Consent](klappy://canon/principles/silence-is-not-consent) — the review principle: every registered perspective answers, the operator included.
