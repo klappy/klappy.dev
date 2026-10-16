@@ -77,17 +77,7 @@ A planning record for a load-bearing layer shows a Borrow row naming a maintaine
 
 ## What This Does Not Mean
 
-This does not say the maintained choice is always better; it says the unmaintained choice must be argued for in writing before it is made.
-
-This does not prefer any framework, vendor or language; a project's governing documents name those, and this method defers to them.
-
-This does not reach application logic, domain code, glue, scripts, prototypes, or anything disposable by design; "regenerate, don't steer" already covers those.
-
-This does not forbid wrapping: a thin project-owned interface over a maintained library is Bend, not hand-rolling.
-
-This does not override the operator. It guarantees the operator is told; it never decides for them.
-
-This does not replace the six-row evaluation. It tells the evaluation what the Borrow row holds for load-bearing layers and what happens when the evaluation wants to leave it.
+The maintained choice is the default, not a verdict: the unmaintained choice stays available once argued for in writing. No framework, vendor or language is preferred here; a project's governing documents name those and this method defers to them. Out of scope: application logic, domain code, glue, scripts, prototypes and anything written to be regenerated, which "regenerate, don't steer" already covers; and wrapping, since a thin project-owned interface over a maintained library is Bend. The operator is told, never overruled. The six-row evaluation stays in force; this method fixes what its Borrow row holds for load-bearing layers and what happens when the evaluation wants to leave it.
 
 Where this diverges from its parents: the two principles say what a layer costs and who must have answered; this method says what to do with both at the moment of choosing. The six-B sequence lets any step be skipped with a named justification; for load-bearing layers this method removes the skip past Borrow unless every registered perspective has flagged it and the proposer has answered.
 

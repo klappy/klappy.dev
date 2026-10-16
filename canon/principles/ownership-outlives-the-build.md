@@ -59,10 +59,7 @@ This canon already holds that the real cost of work is what it takes to undo, no
 
 ## Grounds — Six Hand-Rolled Servers and One Unchecked UI
 
-Two cases in one house, two months apart, same shape:
-
-- **2026-09-02.** Agents repeatedly hand-rolled JSON-RPC, transport and auth for protocol servers until a build convention bound those layers to a maintained SDK; a section was added after a repeat miss. Each hand-rolled copy was quick to write and belonged to one operator afterwards.
-- **2026-10-16.** An agent read the house rule naming the UI framework, filed it as a correction option, placed the framework at "Bide" in its six-row evaluation, and shipped three framework-free components under provisional approval. The components were small; the layer they established was not.
+The two cases (protocol servers hand-rolled until a convention bound an SDK, 2026-09-02; a production UI run for months without a framework, 2026-10-16) are recorded once, in `canon/methods/library-not-hand-rolled` § Grounds. What this page takes from them is the cost shape: each hand-rolled copy was quick to write and belonged to one person afterwards, and the UI components were small while the layer they established was not.
 
 The operator, 2026-10-16, cleaned for grammar with his review (the raw lines stay in the private transcript): "I'm frustrated that a production UI would use vanilla JS without the benefit of a community-maintained framework." On why: "You can build it in beautiful reusable abstractions. But state and memory management and a billion other things are addressed for us in UI frameworks." On himself: "If I want to build my own database from scratch, tell me the risks and make me think about it."
 
@@ -78,15 +75,7 @@ The cost column of any infrastructure decision names a lifetime: years, not hour
 
 ## What This Does Not Mean
 
-This does not say building is forbidden. It says building is priced correctly before it is chosen.
-
-This does not say the maintained choice is always cheaper. It says the comparison is made over the lifetime, and that a maintained choice usually wins that comparison for the reasons in § Principle 3.
-
-This does not reach application logic, domain code, glue, scripts, prototypes, or anything disposable by design; "regenerate, don't steer" already covers those.
-
-This does not forbid wrapping: a thin project-owned interface over a maintained library adds a small layer the project owns, and that small layer is priced like any other.
-
-This does not decide who may make the choice. It decides how the choice is costed. Who must be told, and that silence is not agreement, is `canon/principles/silence-is-not-consent`.
+Building stays allowed; it is priced over its lifetime before it is chosen. The maintained choice is usually, not always, cheaper over that lifetime (§ Principle 3), and the comparison is what the principle requires. Out of scope: application logic, domain code, glue, scripts, prototypes and anything written to be regenerated, which "regenerate, don't steer" already covers. A thin project-owned interface over a maintained library is in scope only for the small layer the project owns, which is priced like any other; the moving ground beneath it, the parsing, the transport, the crypto, stays the community's to maintain, and that is why wrapping is borrowing. Who may make the choice, and the rule that silence is not agreement, belong to `canon/principles/silence-is-not-consent`; this page decides only how the choice is costed.
 
 Where this diverges from its parents: `irreversibility-is-the-real-cost` prices the undo; this principle prices the ongoing care that makes a layer expensive to undo in the first place. `capability-is-not-permission` says cheap creation needs imposed constraint; this principle names one constraint, lifetime accounting, for one class of creation.
 

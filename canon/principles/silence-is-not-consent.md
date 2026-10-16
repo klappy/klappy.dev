@@ -60,7 +60,7 @@ The usual failure is not refusal; it is silence. A perspective is not asked, or 
 
 ## Grounds — Four Perspectives Registered, One Looked
 
-- **2026-10-16.** A project registered four review perspectives for its design gate. An agent recorded a stack decision after one of the four had looked; the other three left no answer and the decision moved. The one perspective registered to hold on the house stack rule had not been run. The decision was reversed the same morning by the operator.
+- **2026-10-16.** A project registered four review perspectives for its design gate. An agent recorded a stack decision after one had looked; the other three left no answer and the decision moved. The perspective registered to hold on the house stack rule had not been run, and the operator reversed the decision the same morning. The same case is recorded from the cost angle in `canon/methods/library-not-hand-rolled` § Grounds.
 
 The operator, 2026-10-16, cleaned for grammar with his review (the raw lines stay in the private transcript): "All lenses must look at this. Everything impacts everything else. Let the team look at decisions and at least have a chance to say LGTM or raise a red or yellow flag." On the other direction of the cross-check: "If I go create a home landing page and choose Adobe Flash because I like it, somebody had better stop me, or at least tell me it's a bad idea."
 
@@ -78,15 +78,7 @@ The review record beside a decision has exactly as many entries as the project r
 
 ## What This Does Not Mean
 
-This does not say every perspective must agree. It says every perspective must answer.
-
-This does not say the operator cannot overrule a hold. It says the operator is told, in writing, before ruling, and the ruling is recorded beside the hold.
-
-This does not say a project must register many perspectives. A project with one registered perspective satisfies this principle with one answer. The principle governs completeness against the list, not the length of the list.
-
-This does not make a review perspective an executor. A perspective records an outcome; it does not edit the artifact, rule on it, or speak for the operator.
-
-This does not reach decisions no perspective was registered to see. Which decisions a perspective examines is set by its registration, not by this principle.
+Agreement is never required; an answer is. The operator may overrule a hold after reading it in writing, and the ruling is recorded beside the hold. The principle governs completeness against the registered list, not the length of the list: one registered perspective is satisfied by one answer. A perspective records an outcome and nothing more; it does not edit the artifact, rule on it, or speak for the operator. Decisions no perspective was registered to see are outside this page; registration, not this principle, sets what each perspective examines.
 
 Where this diverges from its parents: `verification-requires-fresh-context` says a reviewer must not be the creator; this principle says the set of reviewers must be complete. The boarding pass's cross-check clause binds one seat's conduct toward the operator; this principle binds the project's record of whether every seat conducted itself so.
 
