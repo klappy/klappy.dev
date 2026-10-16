@@ -76,7 +76,7 @@ So the review failed in both directions. The agent treated bound law as a candid
 
 ## Why Seven Layers Still Leak
 
-I want to be careful here, because the easy version of this essay is "the agent is lazy", and that is not what I believe.
+I want to be careful here, because the easy version of this essay is "the agent is lazy", and I do not believe that.
 
 Agents are capable of this. They do it correctly most of the time. The failure rate I feel is somewhere between one in six and one in twelve sessions, which is low enough to trust and high enough to hurt, and that combination is exactly what produces technical debt: a system you stop checking because it is usually right.
 
@@ -94,7 +94,7 @@ And to be fair to the other side of my own history: some of my libraries are sti
 
 The line is the first hint that someone will use it. Prototype to production is where the tipping point arrives, and it arrives fast. The rule I want from an agent is the rule I apply to myself: hand-roll the proof, measure the tipping point early, and regenerate onto a maintained framework before the first user shows up. "Regenerate, don't steer" already says this for bootstrap code. I had never said it for the layer underneath.
 
-Which raises the uncomfortable possibility that the agent is not failing my standard. It is meeting mine.
+Which raises the uncomfortable possibility that the agent has been meeting my standard all along, and the standard was the problem.
 
 ## Two Principles, Not an Eighth Instruction
 
@@ -118,7 +118,7 @@ The test is simple. A quarter from now, I will count the plated work in my proje
 
 ## The Day I Take This Back
 
-One day we will speak and the application will exist. Not better code: no code. The interface will be generated as fluidly as a conversation, closer to interactive video than to a component tree, and the idea of maintaining a hand-rolled layer will sound like maintaining a typewriter. On that day I will retract every word above, and gladly.
+One day we will speak and the application will exist, with no code underneath it at all. The interface will be generated as fluidly as a conversation, closer to interactive video than to a component tree, and the idea of maintaining a hand-rolled layer will sound like maintaining a typewriter. On that day I will retract every word above, and gladly.
 
 That day is not here. What is here is already what I would have called magic a year ago, so I am trying to hold the frustration loosely. Rebase the expectations. Give the agents the principles instead of an eighth instruction. See whether they do better. Buy time until the apps can be spoken into existence.
 
