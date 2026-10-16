@@ -19,11 +19,17 @@ target_repo: "outcomes-driven-development"
 
 # Silence Is Not Consent — A Decision Is Incomplete Until Every Registered Perspective Has Answered
 
-> A project registers review perspectives because each sees what the others miss, so a decision they were registered to see is not reviewed until every one has recorded an outcome: agree, proceed with a named concern, hold with a named rule, or outside my boundary with no flag. A perspective that says nothing has not agreed; it has failed to review, and the record shows the gap. The operator's own proposals are reviewed the same way, and the operator rules after being told. Falsified if decisions answered by one perspective are reversed no more often than decisions every perspective answered.
+> A project registers review perspectives because each sees what the others miss, so a decision they were registered to see is not reviewed until every one has recorded an outcome: agree, proceed with a named concern, hold with a named rule, or outside my boundary with no flag. A perspective that says nothing has not agreed; it has failed to review, and the record shows the gap; no perspective is skipped because another looked; a hold names its rule. The operator's own proposals are reviewed the same way, and the operator rules after being told. Falsified if decisions answered by one perspective are reversed no more often than decisions every perspective answered.
 
 ---
 
-## Principle
+## Summary — Every Registered Perspective Writes an Answer
+
+A project's review perspectives are registered because they see different things, so a decision is reviewed only when every one registered for that gate has written one of four outcomes: agree, proceed with a named concern, hold with a named rule, or outside my boundary with no flag. A missing answer is a gap in the review and is recorded as one; it never reads as agreement, and it blocks the gate until written. No perspective is skipped because another looked, and a hold names the rule it holds on. The operator's own proposals are reviewed the same way and the operator reads the answers before ruling. The practice this produces for infrastructure is `canon/methods/library-not-hand-rolled`.
+
+---
+
+## Principle — Six Rules for a Complete Review
 
 Every project that uses this canon registers a set of review perspectives: a list of named viewpoints, each with an owner and a boundary, that a decision must pass before it moves. The list exists because no single reviewer, human or model, sees everything, and because a creator cannot be their own critic (`verification-requires-fresh-context`). The list is only worth having if it is used in full. A decision that one perspective examined and three ignored has had one review, not a review.
 
@@ -38,7 +44,7 @@ The usual failure is not refusal; it is silence. A perspective is not asked, or 
 
 ---
 
-## Simple Rules
+## Simple Rules — When to Load This Page
 
 - **Use when:** a decision is about to be recorded as reviewed: a plan, a six-row evaluation, an architecture or stack choice, a contract change, a page moving toward publication, or any artifact a project's registered review perspectives are listed to examine.
 - **Skip when:** the project registers no review perspectives for the artifact's class or gate; or the question is what a particular perspective should look for, which its own definition governs.
@@ -52,12 +58,7 @@ The usual failure is not refusal; it is silence. A perspective is not asked, or 
 
 ---
 
-## Summary — Every Registered Perspective Writes an Answer
-
-A project's review perspectives are registered because they see different things, so a decision is reviewed only when every one registered for that gate has written one of four outcomes: agree, proceed with a named concern, hold with a named rule, or outside my boundary with no flag. A missing answer is a gap in the review and is recorded as one; it never reads as agreement. The operator's own proposals are reviewed the same way and the operator reads the answers before ruling. The practice this produces for infrastructure is `canon/methods/library-not-hand-rolled`.
----
-
-## Grounds
+## Grounds — Four Perspectives Registered, One Looked
 
 - **2026-10-16.** A project registered four review perspectives for its design gate. An agent recorded a stack decision after one of the four had looked; the other three left no answer and the decision moved. The one perspective registered to hold on the house stack rule had not been run. The decision was reversed the same morning by the operator.
 
@@ -95,7 +96,7 @@ Where this diverges from its parents: `verification-requires-fresh-context` says
 
 ---
 
-## Failure Modes
+## Failure Modes — How Silence Gets Read as Yes
 
 | Name | What it looks like | Why it fails this principle | Pointer |
 |---|---|---|---|
@@ -109,7 +110,7 @@ Where this diverges from its parents: `verification-requires-fresh-context` says
 
 ---
 
-## Cross-References
+## Cross-References — Parents, Sibling and the Method
 
 - **The Generic Boarding Pass** (`canon/bootstrap/generic-boarding-pass.md`) — "the cross-check runs both directions"; this principle is that clause made checkable across every registered perspective.
 - **Verification Requires Fresh Context** (`canon/principles/verification-requires-fresh-context.md`) — a creator cannot be their own critic; this principle adds that the critics must all have spoken.

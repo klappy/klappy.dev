@@ -15,6 +15,6 @@ derives_from: "canon/principles/ownership-outlives-the-build.md, canon/principle
 target_repo: "outcomes-driven-development"
 ---
 
-# Library, Not Hand-Rolled — Superseded
+# Library, Not Hand-Rolled — Superseded: Split Into Two Principles and One Method
 
 > This page carried two root ideas under an instruction's name and was split on 2026-10-16 by operator ruling. The cost argument is `klappy://canon/principles/ownership-outlives-the-build`; the review-completeness argument is `klappy://canon/principles/silence-is-not-consent`; the practice both produce is `klappy://canon/methods/library-not-hand-rolled`, which this URI resolves to.

@@ -19,11 +19,17 @@ target_repo: "outcomes-driven-development"
 
 # Ownership Outlives the Build — The Cost of Infrastructure Is Its Lifetime of Care, Not Its First Version
 
-> The price of a load-bearing layer is not the effort to write its first version; it is every patch, incident and security fix for as long as anything stands on it, paid by whoever owns it. A maintained community spreads that lifetime across thousands of users; a hand-rolled, forked or abandoned layer concentrates it on one owner's attention, the scarcest resource this canon manages. So such a layer is priced over its lifetime of care, never by its first version. Falsified the day a hand-rolled layer in this canon's projects proves cheaper to own over its life than the maintained one it replaced.
+> The price of a load-bearing layer is not the effort to write its first version; it is every patch, incident and security fix for as long as anything stands on it, paid by whoever owns it. A maintained community spreads that lifetime across thousands of users; a hand-rolled, forked or abandoned layer concentrates it on one owner's attention, the scarcest resource this canon manages. So such a layer is priced over its lifetime of care, never by its first version, and the accepted cost is written where the decision is recorded, with the owner's name beside it. Falsified the day a hand-rolled layer in this canon's projects proves cheaper to own over its life than the maintained one it replaced.
 
 ---
 
-## Principle
+## Summary — Price the Lifetime, Name the Owner
+
+A load-bearing layer keeps charging after it is written: patches, incidents, security fixes and the hours of whoever owns it, for as long as anything stands on it. A maintained community spreads that charge across everyone who uses the layer; a hand-rolled, forked or abandoned one puts it on a single owner, and the owner's attention is the scarcest thing this canon manages. So the cost column of any infrastructure decision is the lifetime, not the first version; it names who pays, and it is written where the decision is recorded. The layers in scope are the ones other work stands on: a UI framework, a database, auth, transport, build tooling, crypto, queues, rendering, localisation. The practice this produces is `canon/methods/library-not-hand-rolled`.
+
+---
+
+## Principle — Five Rules for Pricing a Layer's Lifetime
 
 A layer is load-bearing when other work stands on it and cannot easily move off it: the framework a user interface is written in, a database or storage engine, authentication, a transport or protocol implementation, build tooling, cryptography, scheduling and queues, document rendering, localisation. These layers share one economic shape. The first version is cheap, often a pleasant afternoon. Everything after the first version is paid for as long as the layer runs, and it is paid by whoever owns the layer, alone.
 
@@ -37,7 +43,7 @@ This canon already holds that the real cost of work is what it takes to undo, no
 
 ---
 
-## Simple Rules
+## Simple Rules — When to Load This Page
 
 - **Use when:** a plan, ticket, evaluation or review must weigh the cost of a layer other work will stand on: a UI framework, database, auth, transport, build tooling, crypto, queue, rendering, localisation, or anything a project cannot easily move off.
 - **Skip when:** the choice is application logic, domain code, glue, a script, a prototype, or anything written to be regenerated or thrown away; or the question is which maintained option to borrow rather than whether to borrow at all.
@@ -51,12 +57,7 @@ This canon already holds that the real cost of work is what it takes to undo, no
 
 ---
 
-## Summary — Price the Lifetime, Name the Owner
-
-A load-bearing layer keeps charging after it is written: patches, incidents, security fixes and the hours of whoever owns it, for as long as anything stands on it. A maintained community spreads that charge across everyone who uses the layer; a hand-rolled, forked or abandoned one puts it on a single owner, and the owner's attention is the scarcest thing this canon manages. So the cost column of any infrastructure decision is the lifetime, not the first version, and it names who pays. The practice this produces is `canon/methods/library-not-hand-rolled`.
----
-
-## Grounds
+## Grounds — Six Hand-Rolled Servers and One Unchecked UI
 
 Two cases in one house, two months apart, same shape:
 
@@ -95,7 +96,7 @@ Where this diverges from its parents: `irreversibility-is-the-real-cost` prices 
 
 ---
 
-## Failure Modes
+## Failure Modes — How First-Version Thinking Looks in the Record
 
 | Name | What it looks like | Why it fails this principle | Pointer |
 |---|---|---|---|
@@ -108,7 +109,7 @@ Where this diverges from its parents: `irreversibility-is-the-real-cost` prices 
 
 ---
 
-## Cross-References
+## Cross-References — Parents, Sibling and the Method
 
 - **Library, Not Hand-Rolled** (`canon/methods/library-not-hand-rolled.md`) — the method this principle produces: borrow by default, red-flag the exception, answer in writing before building.
 - **Silence Is Not Consent** (`canon/principles/silence-is-not-consent.md`) — the sibling principle: who must have rowed before a decision counts as made.

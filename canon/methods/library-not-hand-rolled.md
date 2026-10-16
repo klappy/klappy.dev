@@ -19,11 +19,17 @@ target_repo: "outcomes-driven-development"
 
 # Library, Not Hand-Rolled — Borrow Load-Bearing Infrastructure by Default
 
-> Two principles meet at every infrastructure choice: the cost of a load-bearing layer is its lifetime of care (`ownership-outlives-the-build`), and a decision is not reviewed until every registered perspective has answered (`silence-is-not-consent`). This method is the practice they produce. Load-bearing infrastructure is borrowed from a maintained community by default; a proposal to hand-roll, fork or adopt it from an abandoned source is a red flag from every registered perspective, naming the risk, the lifetime cost and the maintained alternative in writing, and the proposer, operator included, answers in writing before anything is built. Where a project's governing documents already name the stack, that rule fills the Borrow row and a contrary evaluation is a hold, never a decision.
+> Two principles meet at every infrastructure choice: the cost of a load-bearing layer is its lifetime of care (`ownership-outlives-the-build`), and a decision is not reviewed until every registered perspective has answered (`silence-is-not-consent`). This method is the practice they produce. Load-bearing infrastructure is borrowed from a maintained community by default; a proposal to hand-roll, fork or adopt it from an abandoned source is a red flag from every registered perspective in whose boundary it falls (the others record "outside my boundary"), naming the risk, the lifetime cost and the maintained alternative in writing, and the proposer, operator included, answers in writing before anything is built. Where a project's governing documents already name the stack, that rule fills the Borrow row and a contrary evaluation is a hold, never a decision.
 
 ---
 
-## Method
+## Summary — Borrow by Default, Flag the Exception, Answer in Writing
+
+For any load-bearing layer, the Borrow row names a maintained implementation, or a bound stack rule quoted into it. The layers in scope are the ones other work stands on: a UI framework, a database, auth, transport, build tooling, crypto, queues, rendering, localisation; a thin wrapper over a maintained library is Bend, not hand-rolling. If a proposal hand-rolls, forks or adopts an unmaintained layer instead, every in-boundary perspective writes a red flag naming risk, lifetime cost and the maintained alternative, and the proposer, operator included, answers in writing before anything is built. An evaluation that contradicts a bound rule is a hold quoting the rule, never a decision. The two principles underneath are `ownership-outlives-the-build` and `silence-is-not-consent`.
+
+---
+
+## Method — Four Steps and One Pre-emption
 
 The method has four steps and one pre-emption. It runs in planning, before any implementation begins, on any proposal that touches a load-bearing layer: the framework a user interface is written in, a database or storage engine, authentication, a transport or protocol implementation, build tooling, cryptography, scheduling and queues, document rendering, localisation.
 
@@ -36,7 +42,7 @@ The method has four steps and one pre-emption. It runs in planning, before any i
 
 ---
 
-## Simple Rules
+## Simple Rules — When to Load This Page
 
 - **Use when:** a plan, ticket, or six-row evaluation proposes to build, fork, or adopt an unmaintained implementation of a layer other work will stand on, or a registered review perspective is asked to row on such a proposal, or a bound stack rule exists for the layer's class.
 - **Skip when:** the choice is application logic, domain code, glue, a script, a prototype, or anything written to be regenerated; or a thin wrapper that keeps a maintained library behind a project-owned interface; or the question is how to cost the layer (the principle) rather than what to do about it.
@@ -50,12 +56,7 @@ The method has four steps and one pre-emption. It runs in planning, before any i
 
 ---
 
-## Summary — Borrow by Default, Flag the Exception, Answer in Writing
-
-For any load-bearing layer, the Borrow row names a maintained implementation, or a bound stack rule quoted into it. If a proposal hand-rolls, forks or adopts an unmaintained layer instead, every registered perspective writes a red flag naming risk, lifetime cost and the maintained alternative, and the proposer, operator included, answers in writing before anything is built. An evaluation that contradicts a bound rule is a hold quoting the rule, never a decision. The two principles underneath are `ownership-outlives-the-build` and `silence-is-not-consent`.
----
-
-## Grounds
+## Grounds — Six Hand-Rolled Servers and One Unchecked UI
 
 Two cases in one house, two months apart, same shape:
 
@@ -94,9 +95,10 @@ Where this diverges from its parents: the two principles say what a layer costs 
 **Alternatives considered, and reversibility.** Three shapes were rejected before this one: a prohibition on hand-rolling, because the operator must keep the ruling; a check by one designated perspective, because one perspective is exactly what looked on 2026-10-16 and missed; and a justification note inside the six-B evaluation, because the skip past Borrow with a note beside it is the failure that occurred. The method itself is reversible in text: it adds a review step and a pre-emption, both of which can be withdrawn by amending this page, and it builds nothing. What it protects against is not reversible: a load-bearing layer, once other work stands on it, is what `irreversibility-is-the-real-cost` describes. Prior art: the build convention of 2026-09-02 for protocol servers is the first instance; outside this canon the shape resembles an architecture decision record with mandatory reviewers.
 
 **Falsifier.** Retract or narrow this method if the mandatory flag-and-answer step costs more in ceremony, measured in seat-hours per infrastructure decision, than it saves in avoided maintenance, incidents and reversals across the projects it governs; or if either root principle is retracted, since the method has no ground without them. Record the result as a dated amendment with the evidence.
+
 ---
 
-## Failure Modes
+## Failure Modes — How the Exception Slips Past the Flag
 
 | Name | What it looks like | Why it fails this method | Pointer |
 |---|---|---|---|
@@ -111,7 +113,7 @@ Where this diverges from its parents: the two principles say what a layer costs 
 
 ---
 
-## Cross-References
+## Cross-References — The Two Roots, the Sequence and the Binding
 
 - **Ownership Outlives the Build** (`canon/principles/ownership-outlives-the-build.md`) — the first root: the cost of a load-bearing layer is its lifetime of care; the red flag's cost line comes from here.
 - **Silence Is Not Consent** (`canon/principles/silence-is-not-consent.md`) — the second root: every registered perspective rows; the red flag from every perspective, and "outside my boundary, no flag", come from here.
