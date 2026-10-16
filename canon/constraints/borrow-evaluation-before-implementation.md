@@ -145,6 +145,7 @@ The following are violations regardless of how the resulting code performs:
 - Declaring a Bide without a tripwire. Bide-without-tripwire is dropped scope wearing a costume.
 - Marking `inspected-and-rejected` without naming which inspection criterion applied and what specifically was inspected.
 - Skipping the Reversibility Note. The note is one line; absence is not brevity, it is an omission.
+- Re-deciding a stack the house has already bound. A bound house-stack rule (the operator's kitchen law: a UI framework, an MCP SDK, a database, auth, transport, build tooling) pre-fills the Borrow row; a six-row result whose verdict contradicts bound law is a HOLD that quotes the law, never a decision; `Bide` may not be used to defer bound law. (Captain ruling 2026-10-16 "Make it so!", klappy/kitchen rail `2026-10-16-house-stack-for-product-ui` change 2; occasioned by a cook placing the house's Svelte rule at Bide and shipping vanilla.)
 
 ---
 
