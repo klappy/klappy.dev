@@ -82,6 +82,8 @@ Agents are capable of this. They do it correctly most of the time. The failure r
 
 The leak comes from where the apparatus sits. Every one of my seven mitigations was an instruction: do this, check that, read this file first. Instructions bind the session that reads them. A principle binds the reasoning, so that a session which never saw the instruction still arrives at the same answer. When I asked myself what was bothering me so badly, the honest answer was that I had been adding instructions for months to a gap only a principle could close. Maybe I did not have enough coverage. Or maybe I had the wrong kind.
 
+Part of this is also a discovery problem I am chasing separately. Governance that will not fit in one session has to be found before it can be obeyed, and you cannot search for a law you do not know exists. The server case was that: the convention was there and the seat never found it. The UI case was worse: the seat found the rule and filed it as a suggestion. Discovery fixes the first. Only a principle, or a gate, fixes the second.
+
 ## The Line Is Production, Not Perfection
 
 Let me be fair to hand-rolling, because I do it constantly.
