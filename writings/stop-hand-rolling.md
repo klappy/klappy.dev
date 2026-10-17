@@ -11,7 +11,7 @@ tier: 3
 voice: first_person
 stability: draft
 tags: ["writings", "essay", "agents", "infrastructure", "maintenance", "hand-rolled", "6B", "borrow", "library-not-hand-rolled", "ownership-outlives-the-build", "silence-is-not-consent", "generative-ui"]
-epoch: E0010
+epoch: E0012
 date: 2026-10-16
 hook: "Three months into a production UI I asked whether Svelte would be safe to adopt for the next revision. The answer was that there was nothing to adopt it into. The whole thing was hand-rolled vanilla JavaScript, and I had never looked."
 description: "Every AI session finds a new place in the stack to hand-roll something, and the reason is that the agent measures in hours for the build while you measure in years for the maintenance. What I learned from the sixth MCP server and the one UI I never checked, and the two principles I wrote so I could stop repeating myself."
