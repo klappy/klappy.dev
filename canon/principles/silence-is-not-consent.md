@@ -7,10 +7,10 @@ tier: 1
 voice: neutral
 stability: experimental
 tags: ["principles", "review", "lenses", "cross-check", "completeness", "decisions", "operator"]
-epoch: E0010
+epoch: E0012
 date: 2026-10-16
 derives_from: "canon/bootstrap/generic-boarding-pass.md, canon/principles/verification-requires-fresh-context.md, canon/values/axioms.md, canon/methods/driver-seat-lens.md"
-complements: "canon/principles/ownership-outlives-the-build.md, canon/methods/library-not-hand-rolled.md, canon/constraints/canon-is-metaphor-agnostic.md, canon/principles/contract-governs-handoff-drift.md"
+complements: "docs/appendices/epoch-12.md, canon/principles/ownership-outlives-the-build.md, canon/methods/library-not-hand-rolled.md, canon/constraints/canon-is-metaphor-agnostic.md, canon/principles/contract-governs-handoff-drift.md"
 governs: "When a decision in any project governed by this canon counts as reviewed: every review perspective the project registers has recorded an outcome for it, the operator's own proposals included."
 status: proposed
 supersedes: "canon/principles/library-not-hand-rolled.md (the review-completeness half of the former principle)"

@@ -7,10 +7,10 @@ tier: 2
 voice: neutral
 stability: experimental
 tags: ["methods", "borrow", "6B", "infrastructure", "dependencies", "review", "red-flag", "maintenance"]
-epoch: E0010
+epoch: E0012
 date: 2026-10-16
 derives_from: "canon/principles/ownership-outlives-the-build.md, canon/principles/silence-is-not-consent.md, canon/methods/borrow-bend-break-beget-build.md, canon/constraints/borrow-evaluation-before-implementation.md"
-complements: "canon/bootstrap/generic-boarding-pass.md, canon/principles/progress-over-perfection.md, canon/principles/contract-governs-handoff-drift.md, canon/constraints/canon-is-metaphor-agnostic.md"
+complements: "docs/appendices/epoch-12.md, canon/bootstrap/generic-boarding-pass.md, canon/principles/progress-over-perfection.md, canon/principles/contract-governs-handoff-drift.md, canon/constraints/canon-is-metaphor-agnostic.md"
 governs: "The practice any seat follows when a plan, ticket, or evaluation proposes to build, fork, or adopt an unmaintained implementation of a load-bearing layer, in any project governed by this canon."
 status: proposed
 supersedes: "canon/principles/library-not-hand-rolled.md (the practice half of the former principle, reframed as a method)"

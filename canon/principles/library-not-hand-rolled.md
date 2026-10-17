@@ -7,7 +7,7 @@ tier: 3
 voice: neutral
 stability: stable
 tags: ["principles", "superseded", "redirect", "borrow", "infrastructure"]
-epoch: E0010
+epoch: E0012
 date: 2026-10-16
 status: superseded
 superseded_by: "canon/methods/library-not-hand-rolled.md"

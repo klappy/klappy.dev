@@ -7,10 +7,10 @@ tier: 1
 voice: neutral
 stability: experimental
 tags: ["principles", "infrastructure", "maintenance", "ownership", "lifetime-cost", "borrow", "dependencies"]
-epoch: E0010
+epoch: E0012
 date: 2026-10-16
 derives_from: "canon/principles/irreversibility-is-the-real-cost.md, canon/principles/capability-is-not-permission.md, canon/methods/borrow-bend-break-beget-build.md, canon/principles/progress-over-perfection.md"
-complements: "canon/methods/library-not-hand-rolled.md, canon/principles/silence-is-not-consent.md, canon/constraints/borrow-evaluation-before-implementation.md, canon/constraints/canon-is-metaphor-agnostic.md"
+complements: "docs/appendices/epoch-12.md, canon/methods/library-not-hand-rolled.md, canon/principles/silence-is-not-consent.md, canon/constraints/borrow-evaluation-before-implementation.md, canon/constraints/canon-is-metaphor-agnostic.md"
 governs: "How the cost of any load-bearing layer is accounted for when a plan, evaluation, or review decides whether to build, fork, adopt, or borrow it, in any project governed by this canon."
 status: proposed
 supersedes: "canon/principles/library-not-hand-rolled.md (the cost half of the former principle)"
