@@ -9,7 +9,7 @@ stability: evolving
 status: active
 source: "Jeffrey Emanuel (@doodlestein), https://x.com/doodlestein/status/2094288037458882668"
 tags: ["canon", "methods", "planning", "ergonomics", "agent-legibility", "lifecycle", "receipt", "driver-seat", "lens", "metaphor-agnostic"]
-epoch: E0010
+epoch: E0011
 date: 2026-09-03
 derives_from: "canon/bootstrap/model-operating-contract.md, canon/values/axioms.md, canon/constraints/mode-discipline-and-bottleneck-respect.md"
 complements: "canon/methods/revision-lens-sequence.md, canon/constraints/borrow-evaluation-before-implementation.md, canon/constraints/reviewability-standard.md, canon/constraints/infra-config-is-seat-work.md"

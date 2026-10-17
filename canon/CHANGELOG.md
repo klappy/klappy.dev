@@ -18,6 +18,12 @@ This changelog tracks changes to the **Canon pack** as a whole.
 The Canon uses **pack-level versioning** (one version number) rather than per-file versioning.
 Per-file versions are intentionally omitted to reduce ceremony and prevent metadata rot.
 
+## 0.45.1 — 2026-10-16
+
+### Fixed
+
+- **Epoch re-stamp** — `epoch` re-stamped on 38 pages across `canon/`, `writings/`, `docs/`, `odd/` whose `date` falls after a later major epoch opened (rule and dates from `docs/appendices/epochs.md`); only the `epoch` field changed (kitchen `rail/1-ordered/2026-10-16-epoch-drift-cleanup`).
+
 ## 0.45.0 — 2026-10-10
 
 **Progress Over Perfection — the stance scattered across nine documents gets its principle**

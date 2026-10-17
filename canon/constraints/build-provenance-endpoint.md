@@ -7,7 +7,7 @@ tier: 2
 voice: neutral
 stability: semi_stable
 tags: ["canon", "constraints", "provenance", "build", "deploy", "attestation", "verification"]
-epoch: E0010
+epoch: E0011
 date: 2026-07-18
 derives_from: "canon/constraints/definition-of-done.md, docs/decisions/D0002-attempt-provenance-required.md"
 complements: "docs/decisions/D0019-merge-attribution-v1.md, canon/constraints/reviewability-standard.md"

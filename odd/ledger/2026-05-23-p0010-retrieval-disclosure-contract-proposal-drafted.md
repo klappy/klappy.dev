@@ -8,7 +8,7 @@ tier: 3
 voice: neutral
 stability: stable
 tags: ["odd", "ledger", "session", "p0010", "catalog", "progressive-disclosure", "structural-filters", "telemetry", "vodka-architecture", "epoch-8.4"]
-epoch: E0008.4
+epoch: E0009
 date: 2026-05-23
 session_span: "2026-05-23 — single session, in progress"
 derives_from: "canon/meta/writing-canon.md, canon/meta/frontmatter-schema.md, canon/principles/vodka-architecture.md, canon/constraints/mode-discipline-and-bottleneck-respect.md, docs/audits/guide-posture-audit.md, canon/constraints/borrow-evaluation-before-implementation.md"

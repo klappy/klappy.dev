@@ -8,7 +8,7 @@ tier: 3
 voice: neutral
 stability: draft
 tags: ["handoff", "execution", "d0002", "cqrs", "index-kill", "bifurcation"]
-epoch: E0009
+epoch: E0010
 date: 2026-06-09
 governs: "One fresh execution session"
 ---

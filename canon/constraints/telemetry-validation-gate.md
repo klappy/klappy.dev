@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: evolving
 tags: ["canon", "constraint", "telemetry", "validation", "smoke-test", "wrapper-correctness", "release-pipeline", "analytics-engine"]
-epoch: E0008
+epoch: E0009
 date: 2026-05-15
 derives_from: "canon/constraints/telemetry-governance.md, canon/constraints/release-validation-gate.md, canon/observations/performed-prudence-anti-pattern.md"
 complements: "canon/decisions/DR-20260514-0001-telemetry-wrapper-pattern.md, canon/observations/2026-05-14-telemetry-coverage-gap-quantified.md"

@@ -8,7 +8,7 @@ tier: 2
 voice: terse
 stability: draft
 tags: ["handoff", "session", "scope-audit", "target_repo", "bifurcation", "extraction", "frontmatter", "outcomes-driven-development", "oddkit", "truthkit", "execution-contract", "epoch-9"]
-epoch: "E0009"
+epoch: "E0010"
 date: 2026-06-09
 derives_from: "docs/repo-bifurcation-and-target-repo-routing.md, canon/meta/frontmatter-schema.md, canon/constraints/frontmatter-validation-before-merge.md, canon/constraints/release-validation-gate.md, canon/principles/meaning-must-not-depend-on-path.md"
 complements: "journal/2026-06-09-odd-truthkit-bifurcation-and-scope-audit.tsv, canon/meta/scope-map.json, scripts/validate-frontmatter.py"

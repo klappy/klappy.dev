@@ -7,7 +7,7 @@ tier: 2
 voice: neutral
 stability: stable
 tags: ["canon", "observation", "diagnostic", "telemetry", "coverage", "instrumentation-gap", "reproducible-analysis", "epoch-8"]
-epoch: E0008
+epoch: E0009
 date: 2026-05-14
 status: active
 derives_from: "workers/src/index.ts, workers/src/telemetry.ts, workers/src/tokenize.ts"

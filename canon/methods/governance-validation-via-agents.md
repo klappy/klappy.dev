@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: evolving
 tags: ["canon", "methods", "validation", "managed-agents", "governance", "automation", "quality-gate"]
-epoch: E0007
+epoch: E0008
 date: 2026-04-09
 derives_from: "canon/constraints/frontmatter-validation-before-merge.md, canon/constraints/ai-voice-cliches.md, canon/meta/writing-canon.md"
 complements: "docs/agents/validation/README.md, canon/constraints/definition-of-done.md"

@@ -13,7 +13,7 @@ slug: "artifacts-are-projections"
 hook: "You shipped the thing. Six months later the thing is stale, and everything you knew while making it lives nowhere but your head."
 description: "The artifact was never the asset. Your knowledge base is, and every app, essay, video, or deck is a projection you can regenerate at will. Companion to the ODD principle 'Knowledge Base as the Unit.'"
 date: "2026-06-09"
-epoch: "E0009"
+epoch: "E0010"
 og_description: "The artifact was never the asset. Your knowledge base is. Everything else is a projection."
 companion: "odd://canon/principles/knowledge-base-as-the-unit"
 ---

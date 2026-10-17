@@ -9,7 +9,7 @@ voice: neutral
 stability: stub
 tags: ["backlog", "bifurcation", "d0002", "oddkit", "outcomes-driven-development", "truthkit", "follow-up"]
 date: 2026-06-09
-epoch: E0009
+epoch: E0010
 status: queued
 priority: ordered-below
 derives_from: "odd/decisions/D0002-canon-storage-model.md, odd/handoffs/2026-06-09-storage-model-execution.md, docs/repo-bifurcation-and-target-repo-routing.md"

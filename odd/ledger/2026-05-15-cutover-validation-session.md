@@ -8,7 +8,7 @@ tier: 3
 voice: neutral
 stability: stable
 tags: ["ledger", "session", "telemetry", "wrapper-validation", "canon-authoring", "performed-prudence", "smoke-gate"]
-epoch: E0008
+epoch: E0009
 date: 2026-05-16
 derives_from: "odd/handoffs/2026-05-14-telemetry-coverage-completeness.md, canon/constraints/telemetry-validation-gate.md"
 complements: "canon/observations/2026-05-16-telemetry-wrapper-intermittent-emit-loss.md, canon/decisions/DR-20260514-0001-telemetry-wrapper-pattern.md"

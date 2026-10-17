@@ -7,7 +7,7 @@ tier: 2
 voice: neutral
 stability: evolving
 tags: ["canon", "observation", "telemetry", "wrapper", "emit-loss", "cloudflare-workers", "waituntil", "follow-up"]
-epoch: E0008
+epoch: E0009
 date: 2026-05-16
 derives_from: "canon/constraints/telemetry-governance.md, canon/constraints/telemetry-validation-gate.md"
 complements: "canon/decisions/DR-20260514-0001-telemetry-wrapper-pattern.md, canon/observations/2026-05-14-telemetry-coverage-gap-quantified.md"

@@ -8,7 +8,7 @@ exposure: nav
 voice: neutral
 stability: stable
 tags: ["ledger", "black-box", "low-resolution", "progressive-disclosure", "progressive-jpeg", "maturity", "anti-avalanche", "review-batching", "durable-not-memory", "pre-policy", "no-blame", "judgment", "discernment", "mentorship"]
-epoch: E0010
+epoch: E0011
 date: 2026-07-17
 derives_from: "odd/maturity.md, canon/bootstrap/model-operating-contract.md"
 governs: "The black-box record of four operator-articulated working lessons about how an ODD app/policy set is built and reviewed. Low-resolution capture, pre-policy — hands off to a sharp policy later via friction, not now."

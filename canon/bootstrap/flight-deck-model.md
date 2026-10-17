@@ -8,7 +8,7 @@ tier: 2
 voice: neutral
 stability: experimental
 tags: ["bootstrap", "flight-deck", "crew-not-clone", "model-operating-contract", "governance", "checklists", "crm", "identity", "experiment"]
-epoch: E0009
+epoch: E0010
 date: 2026-06-09
 derives_from: "canon/values/axioms.md, canon/values/trust-kernel.md, canon/bootstrap/model-operating-contract.md, canon/constraints/mode-discipline-and-bottleneck-respect.md"
 complements: "writings/crew-not-clone.md (model-authored public companion), writings/the-intern.md (the prior mental model), canon/observations/clone-klappy-to-oddie-recognition.md, writings/the-rhythm-emerged.md"

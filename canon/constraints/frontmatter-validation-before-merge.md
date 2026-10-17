@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: stable
 tags: ["canon", "constraints", "frontmatter", "validation", "writings", "renderer", "quality-gate"]
-epoch: E0007
+epoch: E0008
 date: 2026-04-09
 derives_from: "canon/meta/frontmatter-schema.md, canon/values/axioms.md"
 complements: "canon/meta/writing-canon.md, canon/constraints/definition-of-done.md"

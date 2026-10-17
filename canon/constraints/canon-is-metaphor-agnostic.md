@@ -8,7 +8,7 @@ voice: neutral
 stability: evolving
 status: draft
 tags: ["canon", "constraints", "metaphor", "vocabulary", "inheritance", "portability", "example-applications", "scope-chain"]
-epoch: E0010
+epoch: E0011
 date: 2026-09-03
 derives_from: "odd/contract.md, canon/values/trust-kernel.md, canon/principles/dry-canon-says-it-once.md"
 complements: "canon/methods/driver-seat-lens.md, canon/constraints/infra-config-is-seat-work.md, canon/bootstrap/generic-boarding-pass.md"

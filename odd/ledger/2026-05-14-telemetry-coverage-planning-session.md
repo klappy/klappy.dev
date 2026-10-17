@@ -8,7 +8,7 @@ tier: 3
 voice: terse
 stability: stable
 tags: ["journal", "ledger", "dolcheo", "session", "telemetry", "observability", "planning", "epoch-8", "phase-1"]
-epoch: E0008
+epoch: E0009
 date: 2026-05-14
 status: complete
 derives_from: "odd/handoffs/2026-05-14-telemetry-coverage-completeness.md, canon/constraints/telemetry-governance.md"

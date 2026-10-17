@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: evolving
 tags: ["canon", "constraint", "legibility", "glyphs", "emoji", "legend", "at-a-glance", "communication-contract", "captain-attention", "bottleneck-respect", "status-vocabulary", "e0010"]
-epoch: E0010
+epoch: E0011
 date: 2026-09-23
 derives_from: "canon/constraints/mode-discipline-and-bottleneck-respect.md, canon/constraints/actionable-output-in-actionable-form.md, canon/values/axioms.md, docs/appendices/convention-requires-an-enforcer.md"
 complements: "canon/principles/status-carries-three-tenses.md, canon/principles/data-carries-observed-time.md, canon/constraints/reviewability-standard.md, canon/constraints/seeded-response-standard.md, canon/meta/triangle-of-yaps.md,"

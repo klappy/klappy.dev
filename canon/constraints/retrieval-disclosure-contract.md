@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: evolving
 tags: ["canon", "constraint", "retrieval", "disclosure", "progressive-disclosure", "catalog", "search", "get", "preflight", "resolve", "frontmatter", "structural-filters", "vodka-architecture", "oddkit"]
-epoch: E0008.4
+epoch: E0009
 date: 2026-05-28
 derives_from: "canon/meta/writing-canon.md, canon/meta/frontmatter-schema.md, canon/principles/vodka-architecture.md, canon/constraints/mode-discipline-and-bottleneck-respect.md, canon/constraints/borrow-evaluation-before-implementation.md"
 complements: "canon/constraints/oddkit-prompt-pattern.md, canon/constraints/oddkit-action-registration-completeness.md"

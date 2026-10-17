@@ -8,7 +8,7 @@ tier: 2
 voice: neutral
 stability: semi_stable
 tags: ["odd", "oddkit", "encode", "dolche", "dolcheo", "dolcheot", "tension", "tensions", "contradiction", "tradeoff", "drift", "derived", "second-order", "projection", "encoding-type", "tsv", "governance", "epoch-9"]
-epoch: E0009
+epoch: E0010
 date: 2026-06-24
 derives_from: "canon/definitions/dolcheo-vocabulary.md, odd/encoding-types/how-to-write-encoding-types.md, canon/principles/quality-attributes-are-in-tension.md, canon/principles/prompt-over-code.md"
 complements: "odd/encoding-types/observation.md, odd/encoding-types/decision.md, odd/encoding-types/learning.md, odd/encoding-types/constraint.md, odd/encoding-types/handoff.md, odd/encoding-types/encode.md, odd/encoding-types/open.md, odd/encoding-types/how-to-write-encoding-types.md, odd/encoding-types/serialization-format.md"

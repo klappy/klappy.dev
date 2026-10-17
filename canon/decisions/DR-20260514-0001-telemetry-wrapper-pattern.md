@@ -7,7 +7,7 @@ tier: 2
 voice: neutral
 stability: semi_stable
 tags: ["canon", "decision", "adr", "telemetry", "instrumentation", "wrapper-pattern", "vodka-architecture", "billing-prerequisite", "epoch-8"]
-epoch: E0008
+epoch: E0009
 date: 2026-05-14
 status: active
 derives_from: "canon/constraints/telemetry-governance.md, canon/principles/vodka-architecture.md, canon/principles/maintainability-one-person-indefinitely.md, canon/observations/2026-05-14-telemetry-coverage-gap-quantified.md"
