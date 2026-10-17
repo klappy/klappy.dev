@@ -28,7 +28,7 @@ The gauntlet exists because every one of its steps was once skipped by a capable
 ## The Steps
 
 1. **Preflight.** Run `preflight` on the topic. Read what it surfaces; the doors an essay points at must exist before the essay promises them.
-2. **Fetch the law, live.** Writing canon (five extraction tiers, header scan), triangle pass (the seven-item entry-layer checklist), guide posture (their pain before our system), dual-context writing (no surface-assuming phrases), AI voice clichés (the pattern list). Fetched in-session, at current hash. Recall does not count.
+2. **Fetch the law, live.** Writing canon (five extraction tiers, header scan), triangle pass (the seven-item entry-layer checklist), guide posture (their pain before our system), dual-context writing (no surface-assuming phrases), AI voice clichés (the pattern list). Fetched in-session, at current hash. Recall does not count. The current epoch is read from `docs/appendices/epochs.md` in the same fetch and stamped in frontmatter; an epoch inherited from a sibling page is recall.
 3. **Draft inside the constraints.** Stance title; complete-compressed-argument blockquote; `## Summary —` extraction key; headers that tell the story in sequence; reader as hero.
 4. **Mechanical audit.** Count em dashes and their clustering; scan for negation parallelism, formulaic transitions, uniform pacing, context-assuming phrases. Numbers in the record.
 5. **Challenge, published-essay mode.** The claim set as the essay actually states it. `block_until_addressed: true` halts the line until gaps are resolved in the text or explicitly declined with reasons — calibrated, so the essay stays an essay and not a hedge-fog.
