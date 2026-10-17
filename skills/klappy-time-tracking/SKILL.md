@@ -1,5 +1,5 @@
 ---
-name: time-tracking
+name: klappy-time-tracking
 description: "Track time, measure elapsed durations, and compare timestamps using available time tools. Use when the user says 'start timer', 'stop timer', 'how long has it been', 'what time is it', 'time this', 'start', 'stop' (in timing context), or asks about elapsed time between events. Also trigger when the user asks Claude to keep time, track duration, or measure how long something takes."
 ---
 

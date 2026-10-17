@@ -26,7 +26,7 @@ target_repo: "outcomes-driven-development"
 
 Every consumer of a spawned-agent-session runtime chooses a path before any code is written. The choice is binary and binding: the runtime's invocation contract is the same either way (`runtime.invoke(persona, mode, role, surface, engagement, task)` per `canon/methods/persona-shaped-agent-runtime.md`), but the *deployment shape* and what the runtime can assume about its caller diverge sharply.
 
-**Assistant-orchestrated** is the path the `managed-agents` skill at `skills/managed-agents/SKILL.md` implements. Claude in a chat session uses a tool to dispatch a Managed Agent (or any runtime); the dispatch is synchronous-ish polled; results return to the chat session; the operator reads them through the assistant. Clarifying questions can be surfaced back to the operator inline. Errors get explained in chat. The assistant is the consumer of record.
+**Assistant-orchestrated** is the path the `klappy-managed-agents` skill at `skills/klappy-managed-agents/SKILL.md` implements. Claude in a chat session uses a tool to dispatch a Managed Agent (or any runtime); the dispatch is synchronous-ish polled; results return to the chat session; the operator reads them through the assistant. Clarifying questions can be surfaced back to the operator inline. Errors get explained in chat. The assistant is the consumer of record.
 
 **Autonomous-trigger** is the path the AMS audit gate (forthcoming), Oddie-on-TinCan, and every "X happens → persona processes" workflow takes. An external event wakes the runtime. There is no chat session, no inline operator, no inline assistant. Clarifying questions are incoherent — there is no listener. Errors must emit to a configured channel (PR comment, Slack message, journal entry), not to a void. The runtime is its own consumer.
 
@@ -83,7 +83,7 @@ There is no fourth case. A use case that resists this decomposition usually has 
 
 ## Confidence and Retraction
 
-**Working belief, two implementations.** The two-path framing is consistent with the deployed `managed-agents` skill (assistant-orchestrated) and the in-design AMS audit gate (autonomous-trigger). It has not been pressure-tested against a third deployment.
+**Working belief, two implementations.** The two-path framing is consistent with the deployed `klappy-managed-agents` skill (assistant-orchestrated) and the in-design AMS audit gate (autonomous-trigger). It has not been pressure-tested against a third deployment.
 
 **Retraction conditions.** The two-path framing is retracted as canonical if:
 

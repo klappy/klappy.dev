@@ -56,7 +56,7 @@ I watched that clip and thought: why a year? What's so hard about telling time? 
 
 I'd known about time blindness for a while — anyone who works with AI daily bumps into it constantly. But it was one of those problems you live with because you don't know where to start. Watching ChatGPT confidently gaslight a user about a mile run he never took — and watching the CEO of the company shrug it off as a year-long problem — that's what made me stop tolerating it and start building.
 
-So I built one. It took two hours. Now you can too — add the [time-tracking skill](https://github.com/klappy/klappy.dev/blob/main/skills/time-tracking/SKILL.md) to your Claude project and say "start."
+So I built one. It took two hours. Now you can too — add the [time-tracking skill](https://github.com/klappy/klappy.dev/blob/main/skills/klappy-time-tracking/SKILL.md) to your Claude project and say "start."
 
 Then I spent another hour trying to teach ChatGPT the same trick. In text mode with oddkit connected, it worked — but only after turning off the reasoning model. With thinking enabled, the reasoning step added variable seconds to every tool call, destroying timing precision. With thinking off, precision improved to about 2 seconds — usable, but the variability was still much greater than Claude, even in Claude's voice mode. And the moment I switched ChatGPT to voice — the exact modality where Husk exposed the problem — it tried to reach oddkit and failed. Every time. The connection just wouldn't complete.
 
