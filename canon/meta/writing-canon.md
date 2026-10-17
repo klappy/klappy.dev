@@ -152,7 +152,7 @@ The practical test: if your document were loaded alongside `canon/values/axioms.
 
 1. **Title test:** Does the title name the concept and its stance? Could someone decide relevance from the title alone?
 2. **Blockquote test:** Does the blockquote contain the complete compressed argument? Could an agent act on title + blockquote alone?
-3. **Metadata test:** Do the metadata fields orient the document in the canon? Is the epoch, derivation, and governance clear? Are derivation references full file paths, not floating names?
+3. **Metadata test:** Do the metadata fields orient the document in the canon? Is the epoch, derivation, and governance clear? Are derivation references full file paths, not floating names? Is the `epoch` the current one as read from `docs/appendices/epochs.md` at the moment of authoring, never copied from a sibling or predecessor page? (A copied epoch is a status that aged silently in the text; `klappy://canon/principles/status-carries-three-tenses`.)
 4. **Summary test:** Is the summary self-contained? Could someone skip everything below it and still have the full picture?
 5. **Header scan test:** Do the headers tell the document's story when read in sequence? Do structural markers have descriptive subtitles?
 6. **No buried claims:** Is every key assertion present in compressed form at a higher tier? Does the body elaborate rather than introduce?
