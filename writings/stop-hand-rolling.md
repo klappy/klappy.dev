@@ -4,12 +4,12 @@ title: "Stop Hand-Rolling"
 subtitle: "They Measure in Hours for the Build. You Measure in Years for the Maintenance."
 author: Klappy
 type: essay
-public: false
+public: true
 audience: public
-exposure: draft
+exposure: public
 tier: 3
 voice: first_person
-stability: draft
+stability: stable
 tags: ["writings", "essay", "agents", "infrastructure", "maintenance", "hand-rolled", "6B", "borrow", "library-not-hand-rolled", "ownership-outlives-the-build", "silence-is-not-consent", "generative-ui"]
 epoch: E0012
 date: 2026-10-16
@@ -24,7 +24,7 @@ twitter_description: "They measure in hours for the build. You measure in years 
 slug: stop-hand-rolling
 derives_from: "canon/principles/ownership-outlives-the-build.md, canon/principles/silence-is-not-consent.md, canon/methods/library-not-hand-rolled.md, canon/methods/borrow-bend-break-beget-build.md, canon/constraints/borrow-evaluation-before-implementation.md, canon/principles/capability-is-not-permission.md"
 complements: "writings/the-dream-house-and-pre-optimization.md, writings/we-were-the-wire.md"
-status: draft
+status: active
 provenance:
   trigger: "Captain brain dump by voice, 2026-10-16 ~17:28 ET, after ruling the canon split (kitchen rail 2026-10-16-split-library-not-hand-rolled)"
   author_interventions: "pending author's pass; cleaned quotes from the dump marked in text"
