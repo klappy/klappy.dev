@@ -8,7 +8,7 @@ tier: 3
 voice: neutral
 stability: stable
 tags: ["odd", "ledger", "session", "journal", "pr100", "rage-quit", "bugbot", "defect-class-blindness", "historical"]
-epoch: E0007
+epoch: E0008
 date: 2026-04-17
 session_span: "2026-04-17 (single 12-hour session ending in handoff)"
 governs: "Historical session record — the 2026-04-17 rage-quit session that ended with Klappy handing off to a new model after 12 hours of bugbot ping-pong on klappy/oddkit#100. Captures 15+ bugs across three review surfaces (gauntlet, bugbot, Klappy), defect-class blindness as the consistent failure pattern, and the voice-dump invariant story. Preserved for its empirical evidence on why the prompt-over-code refactor and live-smoke ship-blocker contract were necessary."

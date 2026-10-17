@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: semi_stable
 tags: ["canon", "constraint", "output", "delivery", "magical-first-run", "theory-of-constraints", "operator-attention", "mobile", "agent-behavior", "debrief", "anti-pattern"]
-epoch: E0008.5
+epoch: E0010
 date: 2026-06-14
 derives_from: "canon/principles/magical-first-run.md, canon/bootstrap/model-operating-contract.md, canon/values/axioms.md"
 complements: "canon/constraints/release-validation-gate.md"

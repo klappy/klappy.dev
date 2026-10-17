@@ -11,7 +11,7 @@ status: ratified
 tags: ["odd", "architecture", "identity", "uri", "cqrs", "bifurcation", "read-model", "write-model"]
 relevance: decision
 execution_posture: governing
-epoch: E0009
+epoch: E0010
 date: 2026-06-09
 derives_from:
   - "canon/principles/identity-resolved-by-protocol.md"

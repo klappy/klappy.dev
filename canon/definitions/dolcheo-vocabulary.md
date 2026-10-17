@@ -7,7 +7,7 @@ tier: 2
 voice: neutral
 stability: semi_stable
 tags: ["canon", "definitions", "dolcheot", "dolcheo", "dolche", "oldc-h", "vocabulary", "session-capture", "project-journal", "open-items", "priority-bands", "tension", "tensions", "derived", "epoch-9"]
-epoch: E0009
+epoch: E0010
 date: 2026-06-24
 derives_from: "canon/values/axioms.md, canon/definitions/epistemic-modes.md, docs/oddkit/proactive/dolche-vocabulary.md, docs/oddkit/proactive/oldc-h-vocabulary.md, odd/ledger/2026-04-19-agent-team-pilot.md"
 complements: "canon/meta/writing-canon.md, docs/oddkit/proactive/continuous-encoding.md, docs/oddkit/proactive/encode-does-not-persist.md, odd/ledger/project-journal-best-practices.md"

@@ -8,7 +8,7 @@ tier: 2
 voice: neutral
 stability: experimental
 tags: ["bootstrap", "boarding", "disclosure-ladder", "progressive-disclosure", "multi-seat", "harness-agnostic", "crew-not-clone", "E0010"]
-epoch: E0010
+epoch: E0011
 date: 2026-08-29
 derives_from: "canon/bootstrap/generic-boarding-pass.md, canon/bootstrap/flight-deck-model.md, canon/bootstrap/model-operating-contract.md, canon/methods/document-routing-tests.md"
 complements: "writings/crew-not-clone.md, docs/examples/project-instructions-template.md"

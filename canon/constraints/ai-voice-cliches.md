@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: evolving
 tags: ["canon", "constraints", "writing", "ai-voice", "cliches", "editing", "quality", "wikipedia"]
-epoch: E0007
+epoch: E0008
 date: 2026-04-09
 derives_from: "canon/meta/writing-canon.md, canon/constraints/guide-posture.md"
 complements: "canon/constraints/author-identity-language.md, canon/constraints/relational-sensitivity.md"

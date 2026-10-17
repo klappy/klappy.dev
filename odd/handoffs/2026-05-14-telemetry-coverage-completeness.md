@@ -8,7 +8,7 @@ tier: 2
 voice: terse
 stability: draft
 tags: ["handoff", "session", "telemetry", "observability", "billing-prerequisite", "epoch-8", "execution-contract"]
-epoch: E0008
+epoch: E0009
 date: 2026-05-14
 status: draft-for-gate
 derives_from: "canon/constraints/telemetry-governance.md, canon/principles/vodka-architecture.md, canon/principles/maintainability-one-person-indefinitely.md, canon/constraints/release-validation-gate.md, docs/oddkit/release-notes/2026-05-12-epoch-9-substrate-becomes-the-wire.md"

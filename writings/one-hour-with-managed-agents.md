@@ -12,7 +12,7 @@ tier: 1
 voice: first_person
 stability: evolving
 date: 2026-04-09
-epoch: E0007
+epoch: E0008
 description: "What happens when you wire an epistemic guidance system into Anthropic's new agent infrastructure? A systems architect discovers the answer in sixty minutes."
 hook: "An autonomous agent searched before claiming, admitted what it didn't know, refused to guess — and then filed a PR fixing the bug we discovered together."
 og_title: "One Hour with Claude Managed Agents"

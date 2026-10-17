@@ -8,7 +8,7 @@ tier: 1
 voice: neutral
 stability: stable
 tags: ["bootstrap", "boarding-pass", "otto", "cdo", "dispatcher", "flight-crew", "crew-not-clone", "progressive-disclosure", "E0010", "ars"]
-epoch: E0010
+epoch: E0011
 date: 2026-07-19
 derives_from: "canon/values/trust-kernel.md, canon/bootstrap/otto-boarding-pass.md (2026-07-13 recut), canon/bootstrap/model-operating-contract.md, canon/bootstrap/otto-operating-card.md"
 complements: "canon/constraints/dispatcher-dispatches-never-executes.md, canon/constraints/dispatcher-spawns-its-own-coordinators.md, canon/principles/voice-as-cognitive-load-shedding.md"

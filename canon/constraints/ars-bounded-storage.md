@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: evolving
 tags: ["canon", "constraint", "ars", "storage", "durable-object", "sqlite", "r2", "bounded-row", "retention", "mirror", "write-freeze", "policy-first", "prompt-over-code"]
-epoch: E0010
+epoch: E0011
 date: 2026-07-17
 derives_from: "agent-role-service/docs/adr/ADR-0001-ars-per-entity-do-sqlite.md, agent-role-service/docs/policy/ars-data-model-philosophy.md, agent-role-service/docs/policy/ars-nouns-and-verbs.md, agent-role-service/docs/policy/ars-v1-operating-policy.md, canon/constraints/ratified-model-requires-reconciliation-and-enforcer.md, canon/principles/policy-first-self-building-self-documenting.md, canon/meta/enforceable-policy-anatomy.md, outputs/debrief-ars-monolith-2026-07-16.md"
 complements: "canon/constraints/release-validation-gate.md, canon/meta/constraint-driven-audits.md, canon/principles/vodka-architecture.md"

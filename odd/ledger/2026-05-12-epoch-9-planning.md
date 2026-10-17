@@ -8,7 +8,7 @@ tier: 3
 voice: neutral
 stability: stable
 tags: ["ledger", "session-journal", "dolcheo", "epoch-9", "planning", "gauntlet", "handoff", "governance-change-discipline", "challenge-catch"]
-epoch: E0008.6
+epoch: E0009
 date: 2026-05-12
 session_start: "2026-05-12T01:38Z"
 session_end: "2026-05-12T02:45Z"

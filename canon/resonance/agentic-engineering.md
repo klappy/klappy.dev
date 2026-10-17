@@ -7,7 +7,7 @@ voice: neutral
 stability: evolving
 tags: ["canon", "resonance", "agentic-engineering", "karpathy", "ai-coding", "verification", "mode-discipline", "convergence", "6B", "borrow"]
 exposure: nav
-epoch: E0009
+epoch: E0011
 date: 2026-07-18
 derives_from: "canon/values/axioms.md, canon/methods/borrow-bend-break-beget-build.md, canon/constraints/borrow-evaluation-before-implementation.md, canon/definitions/epistemic-modes.md"
 complements: "canon/resonance/ai-coding-toolkit.md, writings/the-harness-and-the-operating-system.md, odd/odd-compared.md, canon/constraints/mode-discipline-and-bottleneck-respect.md, canon/principles/verification-requires-fresh-context.md, canon/methods/community-checking.md"

@@ -7,7 +7,7 @@ tier: 2
 voice: neutral
 stability: semi_stable
 tags: ["case-study", "engagement", "multi-stakeholder", "acceleration", "proof-of-concept", "epistemic-state-extraction", "puzzle-model", "lovable", "build-spec", "field-deployment"]
-epoch: E0005
+epoch: E0006
 date: 2026-04-01
 derives_from: "canon/values/axioms.md, canon/constraints/definition-of-done.md"
 complements: "canon/meta/writing-canon.md, docs/oddkit/tools/oddkit_encode.md"

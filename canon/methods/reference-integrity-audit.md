@@ -7,7 +7,7 @@ tier: 1
 voice: neutral
 stability: evolving
 tags: ["canon", "methods", "audit", "references", "drift", "managed-agents", "anti-cache-lying"]
-epoch: E0007
+epoch: E0008
 date: 2026-04-09
 derives_from: "odd/constraint/anti-cache-lying.md, canon/methods/governance-validation-via-agents.md, canon/values/axioms.md"
 complements: "canon/meta/frontmatter-schema.md, canon/methods/supersession.md, canon/methods/self-audit.md"

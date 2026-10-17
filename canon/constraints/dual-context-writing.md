@@ -14,7 +14,7 @@ tags:
   - book
   - essay
   - website
-epoch: E0007
+epoch: E0008
 date: 2026-04-09
 derives_from: "docs/book/governance.md, docs/planning/book-vs-website-distribution.md, canon/constraints/guide-posture.md"
 complements: "canon/meta/writing-canon.md, docs/book/how-to-read-this-book.md"
