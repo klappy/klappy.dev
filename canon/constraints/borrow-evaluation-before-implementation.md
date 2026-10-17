@@ -145,7 +145,7 @@ The following are violations regardless of how the resulting code performs:
 - Declaring a Bide without a tripwire. Bide-without-tripwire is dropped scope wearing a costume.
 - Marking `inspected-and-rejected` without naming which inspection criterion applied and what specifically was inspected.
 - Skipping the Reversibility Note. The note is one line; absence is not brevity, it is an omission.
-- Re-deciding a stack the operator's governing documents have already bound. A bound stack rule for a class of load-bearing infrastructure (a UI framework, a protocol SDK, a database, auth, transport, build tooling) pre-fills the Borrow row; a six-row result whose verdict contradicts that rule is a HOLD that quotes the rule, never a decision; `Bide` may not be used to defer a bound rule. (Added 2026-10-16 by operator ruling after an evaluation placed a bound UI-framework rule at Bide; see `canon/principles/library-not-hand-rolled`.)
+- Re-deciding a stack the operator's governing documents have already bound. A bound stack rule for a class of load-bearing infrastructure (a UI framework, a protocol SDK, a database, auth, transport, build tooling) pre-fills the Borrow row; a six-row result whose verdict contradicts that rule is a HOLD that quotes the rule, never a decision; `Bide` may not be used to defer a bound rule. (Added 2026-10-16 by operator ruling after an evaluation placed a bound UI-framework rule at Bide; see `canon/methods/library-not-hand-rolled` § Method, pre-emption.)
 
 ---
 
