@@ -7,7 +7,7 @@ audience: canon
 kind: canon
 exposure: nav
 tier: 2
-voice: third_person
+voice: neutral
 stability: draft
 tags: ["canon", "methods", "theory-of-constraints", "ooda", "cadence", "orchestration", "token-economy"]
 relevance: decision
@@ -74,6 +74,8 @@ Work in progress through the operator is one. Anything only the operator can do 
 ## Scaling ladder
 
 Start with one small loop and widen only after the smaller shape held. The order on 3D Review:
+
+For a proposed treatment of how linked tests inform the next batch's size, see [PDSA Ramps](/canon/methods/pdsa-ramps.md). That learning pattern complements this ladder; this method's tasting status and operator-only questions below remain unchanged.
 
 Triage feedback with ToC and OODA (3dfe#01, 3dfe#05). Widen to the whole roadmap once asked whether all of it was orchestrated and the answer was "partial" (3dfe#29, 3dfe#30). Cut one design batch into bounded slices (3dfe#32, 3dfe#63 to 3dfe#67). Hand the build to one fresh worker under a charter, with internal agents limited to planning and review (3dfe#72). Make small measured amendments (3dfe#89 to 3dfe#96). Then run the 30-minute drum with parallel workers (3dfe#98). Finally, pause new features and ship two accepted slices, keeping unfinished work for later (3dfe#117).
 
