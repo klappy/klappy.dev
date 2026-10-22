@@ -30,7 +30,7 @@ I have always worked this way without knowing its official name: start small, va
 
 In practice, choose one small complete slice, predict what it will demonstrate, and observe the result. Have a fresh reviewer check the actual work. Then study what repeated, what surprised you and what remains untested. The next cycle may stay small, change a condition, or grow once the evidence supports it. A failure is a reason to narrow the next test, not lower acceptance. The [proposed method](/canon/methods/pdsa-ramps.md) carries the full pattern and its source boundaries; existing planning, verification and publication approvals still apply.
 
-ToC helps choose the constraint to address, OODA keeps that choice current, premortems expose risks to test, and the established sprint cadence provides a checkpoint. Keep the learning in the existing work record. If the extra process costs more attention than it saves, simplify it and reconsider the method.
+ToC helps choose the constraint to address, OODA keeps that choice current, and premortems expose risks to test. Where thirty-minute sprints are the agreed cadence, they provide an evidence checkpoint; batch growth still follows what the tests teach. Keep the learning in the existing work record. If the extra process costs more attention than it saves, simplify it and reconsider the method.
 
 ## Outline
 
@@ -51,7 +51,7 @@ The [Institute for Healthcare Improvement](https://www.ihi.org/library/model-for
 
 Consider reproducing an approved website. A team could build all the pages before anyone sees a complete result. If its interpretation of the layout is wrong, the same mistake may spread through every page.
 
-In the current application, the chosen starting point is the QR slice, followed by work forward from Home through the user journey. That sequence is a local choice. What travels is the reason for choosing a calibration slice: it must expose the uncertain pattern without avoiding the integrations that could break it.
+In the current application, the planned starting point is a page called the “QR slice” (the QR-code page), followed by work forward from Home through the user journey. That is a local project label and sequence. For another project, choose one small connected user path with its start, finish and uncertain handoff specified in the agreed acceptance criteria. The test should exercise that handoff before the pattern spreads.
 
 Before work begins, record a prediction such as: “This slice will reproduce the approved content and layout using the agreed components, and its connected user path will work under the named review conditions.” Record what would contradict it. If the slice omits the difficult handoff, it cannot tell us whether that handoff will work when the batch grows.
 

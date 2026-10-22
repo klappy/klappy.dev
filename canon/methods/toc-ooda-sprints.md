@@ -1,16 +1,14 @@
 ---
 uri: klappy://canon/methods/toc-ooda-sprints
 title: "Method: ToC OODA Sprints"
-status: tasting
+status: proposed
 date: 2026-09-23
 audience: canon
-kind: canon
 exposure: nav
 tier: 2
 voice: neutral
 stability: draft
 tags: ["canon", "methods", "theory-of-constraints", "ooda", "cadence", "orchestration", "token-economy"]
-relevance: decision
 ---
 
 # Method: ToC OODA Sprints
@@ -75,11 +73,11 @@ Work in progress through the operator is one. Anything only the operator can do 
 
 Start with one small loop and widen only after the smaller shape held. The order on 3D Review:
 
-For a proposed treatment of how linked tests inform the next batch's size, see [PDSA Ramps](/canon/methods/pdsa-ramps.md). That learning pattern complements this ladder; this method's tasting status and operator-only questions below remain unchanged.
-
 Triage feedback with ToC and OODA (3dfe#01, 3dfe#05). Widen to the whole roadmap once asked whether all of it was orchestrated and the answer was "partial" (3dfe#29, 3dfe#30). Cut one design batch into bounded slices (3dfe#32, 3dfe#63 to 3dfe#67). Hand the build to one fresh worker under a charter, with internal agents limited to planning and review (3dfe#72). Make small measured amendments (3dfe#89 to 3dfe#96). Then run the 30-minute drum with parallel workers (3dfe#98). Finally, pause new features and ship two accepted slices, keeping unfinished work for later (3dfe#117).
 
 A shape scales when a lane can take an order, start on its own branch and hit its checkpoint without the operator, with review running beside it. That held for the three implementation lanes (3dfe#100, 3dfe#101, 3dfe#111). It did not hold for release, which missed every slot (3dfe#104, 3dfe#109). So the drum alone does not make a serial step parallel; where one lane depends on outside tools or operator proof, the method has not yet shown it helps. The earlier lesson points the same way: parallelize only after schemas, contracts and the design shape are fixed (Mori session fa24aa61, 2026-09-19, secondary source).
+
+For a proposed treatment of how linked tests inform the next batch's size, see [PDSA Ramps](/canon/methods/pdsa-ramps.md). That learning pattern complements this ladder; this method's tasting status and operator-only questions below remain unchanged.
 
 ## Failure modes observed
 
