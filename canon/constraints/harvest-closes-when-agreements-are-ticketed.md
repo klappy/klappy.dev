@@ -40,7 +40,7 @@ target_repo: "outcomes-driven-development"
 
 Meetings produce agreements; summaries do not keep them. A harvest that records "we agreed to X" in a journal row, a state file or a recap has captured the information in a form nobody acts on. This is the delivery failure named by [`actionable-output-in-actionable-form`](klappy://canon/constraints/actionable-output-in-actionable-form) applied to commitments: an agreement is delivered only when it is a unit someone can claim. The harvest is therefore not complete — whatever else it captured — until each agreement has a filed unit.
 
-Milestone work adds a second obligation. A status walk for a milestone can only find what carries the milestone's tag, so the tag is applied when the unit is filed, not when someone remembers later. And because a status must say what was, is and will be ([`status-carries-three-tenses`](klappy://canon/principles/status-carries-three-tenses)), a tagged unit that misses its freeze is moved to the project's queue with the miss recorded — its history stays legible instead of vanishing.
+Milestone work adds a second obligation. A status walk for a milestone can only find what carries the milestone's tag, so the tag is applied when the unit is filed, not when someone remembers later. And under [`status-carries-three-tenses`](klappy://canon/principles/status-carries-three-tenses), a tagged unit that misses its freeze is moved to the project's queue with the miss recorded — its history stays legible instead of vanishing.
 
 ---
 
@@ -71,8 +71,8 @@ A project declares `summit` as its current milestone tag, carried as `tags: summ
 
 ## Prior Art (cited, not restated)
 
-- [`klappy://canon/constraints/actionable-output-in-actionable-form`](klappy://canon/constraints/actionable-output-in-actionable-form) — output is undelivered until it is in its actionable form.
-- [`klappy://canon/principles/status-carries-three-tenses`](klappy://canon/principles/status-carries-three-tenses) — a status places every claim as was / is / will be.
+- [`klappy://canon/constraints/actionable-output-in-actionable-form`](klappy://canon/constraints/actionable-output-in-actionable-form)
+- [`klappy://canon/principles/status-carries-three-tenses`](klappy://canon/principles/status-carries-three-tenses)
 - `klappy/3d-review-cookbook` `HYGIENE.md` §§11–12 and `PROCEDURE.md` step 7 @ `331fea8` — first project copy of this rule.
 - `klappy/fia-app-cookbook` `harvest/PROCEDURE.md` step 6 @ `127976e` — second project copy, public-repo wording.
 
