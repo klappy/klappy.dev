@@ -5,7 +5,7 @@ audience: canon
 tier: 3
 voice: neutral
 stability: evolving
-tags: ["resonance", "proton", "engineering-manifesto", "theory-of-constraints", "bottleneck", "debrief", "canon-loop", "review", "autonomy", "6B", "borrow"]
+tags: ["canon", "resonance", "proton", "engineering-manifesto", "theory-of-constraints", "bottleneck", "debrief", "canon-loop", "review", "autonomy", "6B", "borrow"]
 relevance: background
 execution_posture: exploratory
 exposure: draft
@@ -13,12 +13,12 @@ epoch: E0012
 date: 2026-11-01
 derives_from: "canon/values/axioms.md, canon/values/trust-kernel.md, canon/methods/borrow-bend-break-beget-build.md, canon/constraints/borrow-evaluation-before-implementation.md, canon/constraints/mode-discipline-and-bottleneck-respect.md"
 complements: "canon/resonance/agentic-engineering.md, canon/resonance/ai-coding-toolkit.md, canon/principles/antifragile-failures-grow-canon.md, canon/principles/verification-requires-fresh-context.md, canon/constraints/critic-cannot-be-resolver.md, canon/methods/toc-ooda-sprints.md, writings/shifting-bottlenecks-climbing-ladders.md, writings/crew-not-clone.md"
-status: draft — captain review pending; provenance in Bide; flip exposure to nav on approval
+status: proposed
 ---
 
 # AI @ Proton, Engineering Manifesto (Resonance)
 
-> Internal memo to Proton engineering, signed "Bart"; surfaced publicly as three screenshots in an X post by @mstockton, observed 2026-11-01. The memo's thesis: programming is dead, engineering is not; every engineer is now a team lead whose reports are models; the organization has been stuck at "phase 1" (LLMs speeding up existing tasks) and must enter "phase 2" (rework the whole lifecycle around the bottleneck that moves); and this is a collective-action problem the company must now resource. The resonance is strong and mechanical — Theory of Constraints, failures-become-fixes, autonomy with less babysitting, expertise relocates rather than dies. The divergence is the one every resonance of this family has shown: the memo is an exhortation to a culture; ODD is the substrate the memo says it needs and does not describe. Two claims the memo makes, ODD refuses: that most human code review will end, and that the model is a direct report. Sibling pages: [Agentic Engineering (Karpathy)](klappy://canon/resonance/agentic-engineering), [AI Coding Toolkit](klappy://canon/resonance/ai-coding-toolkit).
+> Internal memo to Proton engineering, signed "Bart"; surfaced publicly as three screenshots in an X post by @mstockton, observed 2026-11-01. The memo's thesis: programming is dead, engineering is not; every engineer is now a team lead whose reports are models; the organization has been stuck at "phase 1" (LLMs speeding up existing tasks) and must enter "phase 2" (rework the whole lifecycle around the bottleneck that moves); and this is a collective-action problem the company must now resource. The resonance is strong and mechanical — Theory of Constraints, failures-become-fixes, autonomy with less babysitting, expertise relocates rather than dies. The divergence is the one every resonance of this family has shown: the memo is an exhortation to a culture; ODD is the substrate the memo says it needs and does not describe. Two claims the memo makes, ODD refuses: that most human code review will end, and that the model is a direct report. Draft pending captain review: `exposure` flips to `nav` and `status` to `active` on approval; provenance is held in the Bide row. Sibling pages: [Agentic Engineering (Karpathy)](klappy://canon/resonance/agentic-engineering), [AI Coding Toolkit](klappy://canon/resonance/ai-coding-toolkit).
 
 ---
 
@@ -86,13 +86,13 @@ ODD's bet is that every mechanism the memo asks for has to be a thing a session 
 
 ---
 
-## 6B Operationalization — Borrow the Diagnosis, Bend Two Formulations, Break Two Claims
+## 6B Operationalization — Borrow the Diagnosis, Bend Two Formulations, Break Two Claims, Beget Before Bide
 
 - **Borrow** — The three-reason diagnosis (mentality, phase-1 stall, collective action) as a framing for explaining ODD to an engineering organization. It is the problem statement ODD answers, written by a buyer. The phase-1/phase-2 vocabulary is market-tested and compatible.
 - **Bend** — Two formulations are crisper than canon's current wording and are candidates with attribution, subject to `canon/constraints/borrow-evaluation-before-implementation`: (a) *a repeated failure triggers an investigation and a fix* — a candidate Simple Rule for the debrief loop, shorter than anything in `antifragile-failures-grow-canon`; (b) *when a cost drops, redraw the line that cost justified* — the tests example generalized into a named principle of cost recalibration, which canon implies but does not state.
 - **Break** — The "most human code review will end" prediction and the "direct reports" metaphor. Neither is a defect to fix in the memo; both mark where exhortation stops being safe without a substrate. Also not adopted: urgency as the adoption lever.
-- **Bide** — Waiting, with tripwires: the memo's authenticity, author identity ("Bart" is consistent with Proton's CTO per prior knowledge; unverified here), date, and completeness are all unconfirmed — the source is screenshots in a third party's post. Tripwire: if Proton publishes the memo, the quote and attribution are re-verified against it and this page's status moves to stable; if Proton disavows or materially corrects it, the Convergent Quotes section is revised and the page is re-evaluated against the litmus test.
 - **Beget** — Let Proton and its engineering leadership carry the argument that the retooling is an organizational commitment, not an individual hobby. A privacy-first company with a mission to defend saying this to its own engineers reaches an audience canon cannot, and says it with a credibility canon does not need to manufacture.
+- **Bide** — Waiting, with tripwires: the memo's authenticity, author identity ("Bart" is consistent with Proton's CTO per prior knowledge; unverified here), date, and completeness are all unconfirmed — the source is screenshots in a third party's post. Tripwire: if Proton publishes the memo, the quote and attribution are re-verified against it and this page's status moves to stable; if Proton disavows or materially corrects it, the Convergent Quotes section is revised and the page is re-evaluated against the litmus test.
 - **Build** — Only what the memo names and cannot ship: canon as the shared context layer, the rail as the autonomy layer, the fresh-context validator as the review that does not end, the debrief loop that makes a fix everyone's. Same conclusion as the sibling pages, now from an engineering organization's internal memo rather than a thought leader's thread: build the substrate; the field will keep writing the manifesto.
 
 ---
