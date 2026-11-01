@@ -8,11 +8,12 @@ stability: evolving
 tags: ["resonance", "proton", "engineering-manifesto", "theory-of-constraints", "bottleneck", "debrief", "canon-loop", "review", "autonomy", "6B", "borrow"]
 relevance: background
 execution_posture: exploratory
-exposure: nav
+exposure: draft
+epoch: E0012
 date: 2026-11-01
 derives_from: "canon/values/axioms.md, canon/values/trust-kernel.md, canon/methods/borrow-bend-break-beget-build.md, canon/constraints/borrow-evaluation-before-implementation.md, canon/constraints/mode-discipline-and-bottleneck-respect.md"
 complements: "canon/resonance/agentic-engineering.md, canon/resonance/ai-coding-toolkit.md, canon/principles/antifragile-failures-grow-canon.md, canon/principles/verification-requires-fresh-context.md, canon/constraints/critic-cannot-be-resolver.md, canon/methods/toc-ooda-sprints.md, writings/shifting-bottlenecks-climbing-ladders.md, writings/crew-not-clone.md"
-status: draft — captain review pending; provenance in Bide
+status: draft — captain review pending; provenance in Bide; flip exposure to nav on approval
 ---
 
 # AI @ Proton, Engineering Manifesto (Resonance)
@@ -21,9 +22,9 @@ status: draft — captain review pending; provenance in Bide
 
 ---
 
-## Summary — A CTO Writes the Problem Statement; ODD Is Already the Answer Shape
+## Summary — An Engineering Leader Writes the Problem Statement; ODD Is Already the Answer Shape
 
-The memo is unusually honest for its genre. It does not say "use AI more." It says the organization has been doing that for a year and productivity did not move, and then names three reasons: engineer mentality has not shifted from writing code to managing the thing that writes code; the company optimized one step (code writing) inside an unchanged lifecycle, so the bottleneck simply moved to CI, review, approvals and specification; and retooling a whole organization is a collective-action problem no individual can solve alone — and the company has not yet invested in the tools to even see where its bottlenecks are.
+The memo — attributed to Proton engineering leadership only as far as a signature in a screenshot can attribute anything; see Bide — is unusually honest for its genre. It does not say "use AI more." It says the organization has been doing that for a year and productivity did not move, and then names three reasons: engineer mentality has not shifted from writing code to managing the thing that writes code; the company optimized one step (code writing) inside an unchanged lifecycle, so the bottleneck simply moved to CI, review, approvals and specification; and retooling a whole organization is a collective-action problem no individual can solve alone — and the company has not yet invested in the tools to even see where its bottlenecks are.
 
 Every one of those three is a load-bearing ODD structure, documented from local pain before this memo was read: attention as the bottleneck under Theory of Constraints, the moving bottleneck as a law rather than a surprise, the debrief→canon loop that turns one engineer's lesson into every seat's rule, and canon as the shared substrate that dissolves the collective-action problem by making the retooling a fetch rather than a per-person habit.
 
