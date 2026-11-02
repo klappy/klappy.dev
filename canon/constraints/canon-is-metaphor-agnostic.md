@@ -67,6 +67,13 @@ knows what a "pass" or a "flight" is, that sentence is captured.
 
 ---
 
+### References flow up only
+Canon never points to an adopter repository, path, or URL — no repo names, no `rail/`, `journal/`, `health-code/`, `boarding/`, `cookbook/` paths, no adopter links, including in provenance, examples, and mapping tables.
+Adopters may point to canon (by `klappy://` URI); that is the only direction.
+Provenance that lives in an adopter is recorded in the adopter, which cites the canon URI it produced. Canon may say "derived from an operator instance" without naming it.
+Mapping tables (neutral term → metaphor term) may name a vocabulary, never a location.
+Check: `grep` canon for adopter repo names and path prefixes returns zero hits outside this rule's own examples.
+
 ## WHY — Rationale and the Motivating Failure
 
 The school has already outlived one metaphor. The operating frame moved from
